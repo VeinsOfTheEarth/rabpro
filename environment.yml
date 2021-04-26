@@ -1,0 +1,23 @@
+name: rp
+channels:
+  - jschwenk
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - gdal
+  - numpy
+  - geopandas=0.7.0
+  - scikit-image
+  - opencv
+  - networkx
+  - matplotlib
+  - pyproj
+  - shapely
+  - fiona
+  - rivgraph=0.3
+  - fastdtw
+  - rasterstats
+  - joblib
+  - ipython=7.15
+  - spyder
