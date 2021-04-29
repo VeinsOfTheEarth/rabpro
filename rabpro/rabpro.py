@@ -308,6 +308,7 @@ class profiler:
                     print('No basin statistics found for export.')
             elif w == 'subbasins':
                 if hasattr(self, 'basins'):
+                    print('doingit')
                     self.basins.to_file(self.paths['subbasins'], driver='GeoJSON')
                     if hasattr(self, 'basins_inc'):
                         self.basins_inc.to_file(self.paths['subbasins_inc'], driver='GeoJSON')
