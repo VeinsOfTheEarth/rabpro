@@ -304,6 +304,8 @@ class profiler:
             what = [what]
             
         for w in what:
+            if w not in ['elevs', 'subbasins', 'stats']:
+                raise KeyError('Requested export {} not available. Choose from {}.'.format(w, ['elevs','subbasins', 'stats']))
             if w == 'stats':
                 if hasattr(self, 'stats'):
                     self.stats.to_csv(self.paths['stats'], index=False)
