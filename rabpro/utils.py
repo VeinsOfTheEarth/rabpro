@@ -53,7 +53,7 @@ def get_datapaths():
     datapaths['metadata'] = metadata_path
     
     # Inserted for special case!
-    datapaths['metadata'] =  r"X:\RaBPro\Results\Arctic Gages\data_metadata_Arctic_gages.csv"
+    # datapaths['metadata'] =  r"X:\RaBPro\Results\Arctic Gages\data_metadata_Arctic_gages.csv"
     
     # Ensure that DEM virtual rasters are built
     if os.path.isfile(datapaths['DEM']) is False:
