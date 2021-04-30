@@ -115,6 +115,7 @@ def get_exportpaths(name, basepath=None, overwrite=False):
             'basenamed' : str(namedresults),
             'stats' : str(namedresults / 'subbasin_stats.csv'),
             'subbasins' : str(namedresults / 'subbasins.json'),
+            'mapping_info' : str(namedresults / 'mapping.csv'),
             'subbasins_inc' : str(namedresults / 'subbasins_inc.json'),
             'centerline_results' : str(namedresults / 'centerline_results.json'),
             'dem_results' : str(namedresults / 'dem_flowpath.json')            
