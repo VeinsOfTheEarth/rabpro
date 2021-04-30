@@ -298,7 +298,8 @@ class profiler:
         """
         if what == 'all':
             what = ['elevs', 'subbasins', 'stats']
-        print('Exporting {} to {}.'.format(what, self.paths['basenamed']))
+        if self.verbose is True:
+            print('Exporting {} to {}.'.format(what, self.paths['basenamed']))
         
         if type(what) is str:
             what = [what]
@@ -309,7 +310,8 @@ class profiler:
             if w == 'stats':
                 if hasattr(self, 'stats'):
                     self.stats.to_csv(self.paths['stats'], index=False)
-                    print('Statistics written successfully.')
+                    if self.verbose is True:
+                        print('Statistics written successfully.')
                 else:
                     print('No basin statistics found for export.')
             elif w == 'subbasins':
@@ -317,7 +319,8 @@ class profiler:
                     self.basins.to_file(self.paths['subbasins'], driver='GeoJSON')
                     if hasattr(self, 'basins_inc'):
                         self.basins_inc.to_file(self.paths['subbasins_inc'], driver='GeoJSON')
-                    print('Basins geojson written successfully.')
+                    if self.verbose is True:
+                        print('Basins geojson written successfully.')
                 else:
                     print('No subbasins found for export.')
             elif w == 'elevs':
@@ -325,6 +328,7 @@ class profiler:
                     self.gdf.to_file(self.paths['centerline_results'], driver='GeoJSON')
                 if hasattr(self, 'merit_gdf') is True:
                     self.merit_gdf.to_file(self.paths['dem_results'], driver='GeoJSON')
-                    print('Centerline geojsons written successfully.')
+                    if self.verbose is True:
+                        print('Centerline geojsons written successfully.')
                 else:
                     print('No elevations found for export.')
