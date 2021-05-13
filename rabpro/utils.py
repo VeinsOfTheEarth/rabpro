@@ -267,7 +267,7 @@ def build_vrt(tilespath, clipper=None, extents=None, outputfile=None, nodataval=
         elif ftype == 'nc':
             checktype = ('nc')
         else:
-            raise TypeError('Unsupported filetype provided-must be tif, hgt, or vrt.')
+            raise TypeError('Unsupported filetype provided-must be tif, hgt, nc, or vrt.')
       
         for f in os.listdir(tilespath):
             if f.lower().endswith(checktype): # ensure we're looking at a tif

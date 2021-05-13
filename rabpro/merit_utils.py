@@ -5,15 +5,14 @@ Created on Thu Jul  9 16:40:33 2020
 @author: Jon
 """
 import rivgraph.im_utils as im
-import shapely
 from shapely.geometry import Polygon
 from shapely import ops
+import math
 import numpy as np
 from scipy.ndimage.morphology import distance_transform_edt
 import sys, os
 sys.path.append(os.path.realpath(os.path.dirname(__file__)+"/.."))
 import utils as ru
-import math
 
 
 def trace_flowpath(fdr_obj, da_obj, cr_stpt, cr_enpt=None, n_steps=None):    
@@ -59,6 +58,12 @@ def trace_flowpath(fdr_obj, da_obj, cr_stpt, cr_enpt=None, n_steps=None):
         # Take the step
         row = cr[1] + rowdict[fdr]
         col = cr[0] + coldict[fdr]
+        
+        # Handle meridian wrapping
+        if col < 0:
+            col = fdr_obj.RasterXSize + col
+        elif col > fdr_obj.RasterXSize - 1:
+            col = col - fdr_obj.RasterXSize
         
         do_pt.append(np.ravel_multi_index((col, row), imshape))
         da.append(da_obj.ReadAsArray(xoff=int(col), yoff=int(row), xsize=1, ysize=1)[0][0])
