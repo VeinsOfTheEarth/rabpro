@@ -13,7 +13,7 @@ from shapely.geometry import shape
 from rasterstats.io import read_features, Raster # JPS
 from rasterstats.utils import (rasterize_geom, get_percentile, check_stats, # JPS
                     remap_categories, key_assoc_val, boxify_points)
-import ogr, gdal
+from osgeo import ogr, gdal
 
 """ NOTE CHANGES """
 # I wanted to have the ability to supply a separate raster to use as an 
