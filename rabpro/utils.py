@@ -7,7 +7,7 @@ Created on Mon Feb  5 09:33:21 2018
 
 import os, shutil
 import shapely
-import gdal, osr, ogr, osgeo
+from osgeo import gdal, osr, ogr
 import subprocess
 import geopandas as gpd
 import numpy as np

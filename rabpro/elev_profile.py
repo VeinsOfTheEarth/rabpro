@@ -7,7 +7,7 @@ Created on Fri Jun  5 12:10:12 2020
 
 # Build merit vrts
 import utils as ru
-import gdal
+from osgeo import gdal
 import numpy as np
 import geopandas as gpd
 from pyproj import CRS
