@@ -10,7 +10,7 @@ import geopandas as gpd
 from shapely.geometry import Point, MultiPolygon
 import utils as ru
 from pathlib import Path
-import gdal
+from osgeo import gdal
 from pyproj import CRS
 import sys, os
 sys.path.append(os.path.realpath(os.path.dirname(__file__)+"/.."))

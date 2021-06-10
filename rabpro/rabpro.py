@@ -5,7 +5,7 @@ Created on Sat Feb 15 19:55:00 2020
 @author: Jon
 """
 
-import gdal
+from osgeo import gdal
 import numpy as np
 import geopandas as gpd
 import pandas as pd

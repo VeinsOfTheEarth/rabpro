@@ -8,12 +8,14 @@ warnings.simplefilter(action='ignore', category=FutureWarning) # JPS to ignore t
 import numpy as np
 from numpy import matlib
 import warnings
-from affine import Affine
-from shapely.geometry import shape
-from rasterstats.io import read_features, Raster # JPS
-from rasterstats.utils import (rasterize_geom, get_percentile, check_stats, # JPS
-                    remap_categories, key_assoc_val, boxify_points)
-import ogr, gdal
+from osgeo import gdal, ogr
+
+ # uncomment the following! temporary disabling only 
+# from affine import Affine
+# from shapely.geometry import shape
+# from rasterstats.io import read_features, Raster # JPS
+# from rasterstats.utils import (rasterize_geom, get_percentile, check_stats, # JPS
+#                     remap_categories, key_assoc_val, boxify_points)
 
 """ NOTE CHANGES """
 # I wanted to have the ability to supply a separate raster to use as an 

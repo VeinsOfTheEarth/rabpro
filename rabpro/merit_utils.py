@@ -5,17 +5,21 @@ Created on Thu Jul  9 16:40:33 2020
 @author: Jon
 """
 import rivgraph.im_utils as im
-from shapely.geometry import Polygon
+from shapely.geometry import Polygon, LineString
 from shapely import ops
 import math
 import numpy as np
+import pandas as pd
 from scipy.ndimage.morphology import distance_transform_edt
 import sys, os
-sys.path.append(os.path.realpath(os.path.dirname(__file__)+"/.."))
+try:
+    sys.path.append(os.path.realpath(os.path.dirname(__file__)+"/.."))
+except:
+    pass
 import utils as ru
 
 
-def trace_flowpath(fdr_obj, da_obj, cr_stpt, cr_enpt=None, n_steps=None):    
+def trace_flowpath(fdr_obj, da_obj, cr_stpt, cr_enpt=None, n_steps=None, fmap=[32, 64, 128, 16, 1, 8, 4, 2]):    
     """
     Walks along a flow direction grid from stpt to enpt. Returns a list of 
     pixels from stpt to enpt. Walks from downstream to upstream.
@@ -28,11 +32,30 @@ def trace_flowpath(fdr_obj, da_obj, cr_stpt, cr_enpt=None, n_steps=None):
     cr_stpt - column, row of point to start walk
     cr_enpt - column, row of point to end walk
     n_steps - optional; number of steps (pixels) to walk before halting
+    fmap - [NW, N, NE, W, E, SW, S, SE]
     """      
-    imshape = (fdr_obj.RasterXSize, fdr_obj.RasterYSize)           
-    intodirs = np.array((2, 4, 8, 1, 3, 16, 128, 64, 32), dtype=np.uint8) # The 3 is a dummy variable placeholder. Basically want it to be any value that cannot occur in the flow directions map.
-    rowdict = {2: -1, 4: -1, 8: -1, 1: 0, 16: 0, 128: 1, 64: 1, 32: 1}
-    coldict = {2: -1, 4: 0, 8: 1, 1: -1, 16: 1, 128: -1, 64: 0, 32: 1}
+    imshape = (fdr_obj.RasterXSize, fdr_obj.RasterYSize)      
+
+    # Make array specifying the fdir values that flow into the center cell
+    intodirs = np.array([fv for fv in fmap][::-1], dtype=np.uint8)     
+    intodirs = np.insert(intodirs, 4, 3) # 3 is a dummy value that should not appear in the fdir_obj values
+    
+    # Make dictionaries for rows and columns to add for a given fdr value
+    rowdict = {}
+    coldict = {}
+    for ifd, fd in enumerate(fmap):
+        if ifd < 3:
+            rowdict[fd] = 1
+        elif ifd < 5:
+            rowdict[fd] = 0
+        else:
+            rowdict[fd] = -1
+        if ifd in [0, 3, 5]:
+            coldict[fd] = 1
+        elif ifd in [1, 6]:
+            coldict[fd] = 0
+        else:
+            coldict[fd] = -1
 
     stpti = np.ravel_multi_index(cr_stpt, imshape)
 
@@ -219,7 +242,7 @@ def get_basin_pixels(start_cr, da_obj, fdr_obj, fdir_map=[32,64,128,16,1,8,4,2])
     # Make arrays for finding neighboring indices
     imshape = (fdr_obj.RasterXSize, fdr_obj.RasterYSize) 
     intodirs = np.flipud(np.array(fdir_map, dtype=np.uint8))
-    intodirs = np.insert(intodirs, 4, 0)
+    intodirs = np.insert(intodirs, 4, -99998) # Need the center element to be a value not possible in the fdr_obj grid
     
     coladds = np.array((-1, 0, 1, -1, 0, 1, -1, 0, 1)) * imshape[1]
     rowadds = np.array((-1, -1, -1, 0, 0, 0, 1, 1, 1)) 
@@ -517,31 +540,74 @@ def nrows_and_cols_from_coordinate_precision(lon, lat, gt):
     
 
 
-def map_cl_pt_to_flowline(lonlat, da_obj, nrows, ncols, da=None):
+def map_cl_pt_to_flowline(lonlat, da_obj, nrows, ncols, da=None, basin_pgon=None, fdr_obj=None, fdr_map=None):
     """
-    Maps a point of known drainage area to a flowline in a FAC product. Here,
-    we use MERIT-Hydro, whose FAC is in square kilometers. 
-    
-    Returns the row, col of the mapped-to pixel.
-    
-    lonlat - two-entry list or tuple or whatever of lon, lat of point to map
-    da_obj - gdal object of drainage area raster created by gdal.Open()
-    da - known drainage area of lonlat
-    
-    solve_method - indicates the reason why mapping succeeded/failed:
+    Maps a point of known drainage area to a flowline of a flow accumulation
+    grid. Returns the row, col of the mapped-to pixel. User may provide 
+    a basin polygon (in EPSG:4326) if already known. This polygon will be used
+    to ensure the mapped-to-flowline is the correct one. If the basin polygon
+    is provided, a flow directors object and its mapping must also be
+    provided as well as the drainage area.
+
+
+    Parameters
+    ----------
+    lonlat : list or tuple
+        Two-element list/tuple containing (longitude, latitude) coordinates
+        of the point to map to a flowline.
+    da_obj : osgeo.gdal.Dataset
+        Flow accumulation object. Created by gdal.Open() on raster containing
+        flow accumulations.
+    nrows : int
+        Number of rows in the neighborhood of the point to search.
+    ncols : int
+        Number of rows in the neighborhood of the point to search.
+    da : float, optional
+        Drainage area of the point/gage if known. Units should correspond to 
+        those in da_obj, typically km^2. The default is None.
+    basin_pgon : shapely.geometry.polygon.Polygon, optional
+        Polygon of the watershed of the point, if known.
+    fdr_obj : osgeo.gdal.Dataset, optional
+        Flow direction object. Created by gdal.Open() on raster containing
+        flow directions. Must be specified in order to use the basin_pgon.
+    fdr_map : list, optional
+        8-entry list corresponding to the numeric value for flow directions. 
+        The list should take the form [NW, N, NE, W, E, SW, S, SE].
+
+    Returns
+    -------
+    (c_mapped, r_mapped) : tuple or None
+        x and y coordinates of the mapped points. If no mapping is possible,
+        None is returned. The x and y coordinates are with respect to the
+        fac_obj.
+    solve_method : int
+        Indicates the reason why mapping succeeded/failed:
         1 - (success) DA provided; a nearby flowline pixel was found within 15% of the provided DA
         2 - (success) DA provided; match was found on a nearby flowline that is within our DA certainty bounds
+        3 - (success) basin polygon provided; a mappable flowline was found
         4 - (success) DA not provided; mapped to the nearest flowline (>1km^2)
         5 - (fail) DA not provided; no nearby flowlines exist
         6 - (fail) DA provided; but no nearby DAs were close enough to map to    
-     
-    """     
-    # Need odd window values for the new value-puller
+        7 - (fail) basin polygon provided; but no nearby DAs were within the allowable rang
+        8 - (fail) basin polygon provided; no flowlines were 25% within the provided basin
+        
+    """
+    
+    # Check if we have all the required inputs for a basin polygon comparison
+    if basin_pgon is not None:
+        if fdr_map is None or fdr_obj is None or da is None:
+            print('You provided a basin polygon but not the drainage area, flow directions, or flow directions map. Cannot use polygon.')
+            basin_compare = False
+        else:
+            basin_compare = True
+        
+    # Need odd window values for the value-puller
     if nrows % 2 == 0:
         nrows = nrows + 1
     if ncols % 2 == 0:
         ncols = ncols + 1
     
+    # Get an image of the drainage areas in the neighborhood
     cr = ru.lonlat_to_xy(lonlat[0], lonlat[1], da_obj.GetGeoTransform())
     pull_shape = (nrows, ncols)
     Idas = neighborhood_vals_from_raster(cr[0], pull_shape, da_obj, nodataval=np.nan)
@@ -577,6 +643,92 @@ def map_cl_pt_to_flowline(lonlat, da_obj, nrows, ncols, da=None):
         lower = max(da - interval, 1) 
         lower = min(lower, da) # In case provided DA is less than 1
         return lower, upper
+    
+    # Use the known watershed geometry to map the coordinate
+    if basin_compare is True:
+        
+        nrows_half = int(nrows/2 + 0.5) - 1
+        ncols_half = int(ncols/2 + 0.5) - 1
+        
+        # Set some parameters
+        gt = da_obj.GetGeoTransform()
+        thresh_DA_min, thresh_DA_max = get_DA_error_bounds(da)
+        max_trace_dist = 100 # maximum distance to trace a centerline, in kilometers
+        max_trace_pixels = max(25, int(max_trace_dist / (111 * gt[1]))) # rough approximation of # pixels, minimum of 25
+
+        # Possible pixels to map to
+        ppr, ppc = np.where(np.logical_and(Idas>thresh_DA_min, Idas<thresh_DA_max))
+        
+        # If there are no pixels within our threshold DA, the point is 
+        # unmappable
+        if len(ppr) == 0:
+            return (np.nan, np.nan), 7
+        
+        ppda = Idas[ppr, ppc]
+        ppi = np.ravel_multi_index((ppr, ppc), Idas.shape)
+        # Keep track of pixels with DataFrame
+        df = pd.DataFrame(data={'idx':ppi, 'da':ppda, 'row':ppr, 'col':ppc})  
+        df = df.sort_values(by='da', ascending=False)
+        # To globalize the rows, cols
+        c_topleft = cr[0][0] - ncols_half
+        r_topleft = cr[0][1] - nrows_half
+        
+        # Resolve the flowlines
+        cl_trace_ls = []
+        cl_trace_local_idx = []
+        while len(df) > 0:
+            cl, rl = df['col'].values[0], df['row'].values[0]
+            cr_stpt = (c_topleft + cl, r_topleft + rl)
+            rc = trace_flowpath(fdr_obj, da_obj, cr_stpt, cr_enpt=None, n_steps=max_trace_pixels, fmap=fdr_map)
+            
+            # Remove the possible pixels from the DataFrame that our flowline
+            # trace already traverses
+            r_local = rc[0] - cr[0][1] + nrows_half
+            c_local = rc[1] - cr[0][0] + ncols_half
+            # This is crappy boundary handling, but there are few cases where this would occur
+            out_of_bounds = np.logical_or(r_local<0, r_local>=Idas.shape[0])
+            out_of_bounds = out_of_bounds + np.logical_or(c_local<0, c_local>=Idas.shape[1])
+            r_local = r_local[~out_of_bounds]
+            c_local = c_local[~out_of_bounds]
+            idx_local = np.ravel_multi_index((r_local, c_local), Idas.shape)
+            df = df[df['idx'].isin(idx_local) == False]
+            
+            # Store the flowline information.
+            # Skip cases where flowpath is a single pixel. 
+            # These *should* never be the true flowpath due to ensuring that
+            # mapping is only attempted above some threshold DA (which is
+            # much bigger than any single-pixel's area). We therefore skip them.            
+            if len(rc[0]) > 1:
+                lo, la = ru.xy_to_coords(rc[1], rc[0], gt)
+                cl_trace_ls.append(LineString(zip(lo, la)))
+
+                # Store the flowline
+                cl_trace_local_idx.append(idx_local)
+            
+        # Use the known watershed polygon to determine what fraction of each 
+        # extracted flowline is within the boundaries   
+        fraction_in = [ls.intersection(basin_pgon).length/ls.length for ls in cl_trace_ls]
+        
+        # import geopandas as gpd
+        # gdf = gpd.GeoDataFrame(geometry=cl_trace_ls, crs=CRS.from_epsg(4326))
+        # gdf.to_file(r'C:\Users\Jon\Desktop\temp\lstest.shp')
+        
+        # The highest fraction is the correct flowline
+        if max(fraction_in) > 0.25:
+            fl_idx = fraction_in.index(max(fraction_in))
+        else: 
+            return (np.nan, np.nan), 8
+        
+        # With the flowline known, we now choose the pixel along it within
+        # our domain that most closely matches the provided DA.
+        rl, cl = np.unravel_index(cl_trace_local_idx[fl_idx], Idas.shape)
+        fl_das = Idas[rl, cl]
+        min_da_idx = np.argmin(fl_das-da)
+        row_mapped = rl[min_da_idx] + r_topleft
+        col_mapped = cl[min_da_idx] + c_topleft
+        
+        return (col_mapped, row_mapped), 3
+
     
     # We first check if the point is positioned very-near perfectly to avoid
     # moving it around unnecessarily
