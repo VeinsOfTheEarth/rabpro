@@ -29,7 +29,7 @@ def get_rabpropath():
     import rabpro as rp
     filepath = os.path.dirname(rp.__file__)
 
-    filepath = filepath.lower()
+    # filepath = filepath.lower()
     st_idx = filepath.index('rabpro')
     en_idx = st_idx + len('rabpro')
     rabpropath = Path(filepath[:en_idx])
