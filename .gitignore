@@ -1,1 +1,10 @@
 rabpro/__pycache__
+Data/*/*/*.tif
+Data/*/*/*.txt
+Data/*/*/*.vrt
+Data/HydroBasins/*/*.shp
+Data/HydroBasins/*/*.shx
+Data/HydroBasins/*/*.prj
+Data/HydroBasins/*/*.dbf
+Data/HydroBasins/*/*.fix
+Data/HydroBasins/*/*.cpg
