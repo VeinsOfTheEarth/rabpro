@@ -31,5 +31,6 @@ rpo = rabpro.profiler(coords_file)
 rpo.delineate_basins() # requires hydrobasins levels 1 and 12
 # name = "test"
 # rpo.basins.to_file('Data/gaugebasin_shp/'+name+'.shp',driver='ESRI Shapefile')
-rpo.elev_profile() # requires merit dem
+rpo.elev_profile() # requires merit-dem (this ex. requires n30w090 [elv, fdr, upa, wth])
+rpo.basin_stats(years="all") # requires "mswep" Beck et al 2019?
 ```
