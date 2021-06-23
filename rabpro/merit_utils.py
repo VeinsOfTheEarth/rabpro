@@ -67,7 +67,7 @@ def trace_flowpath(
         else:
             coldict[fd] = -1
 
-    breakpoint()
+    # breakpoint()
     stpti = np.ravel_multi_index(cr_stpt, imshape)
 
     da = [
@@ -697,8 +697,8 @@ def map_cl_pt_to_flowline(
     Idas = neighborhood_vals_from_raster(cr[0], pull_shape, da_obj, nodataval=np.nan)
 
     # check to make sure Idas is not all nan?
-    breakpoint()
-    np.isnan(Idas).all()
+    # breakpoint()
+    # np.isnan(Idas).all()
 
     # Make an error image based on provided drainage area, if provided
     # This is difficult to do correctly because there are uncertainties with
