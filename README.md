@@ -4,10 +4,19 @@ longitudinal river profiles, global watershed delineation, watershed stats
 
 ## Setup
 
+### Software
 ```shell
 conda env create -f environment.yml
 source activate rp
 ```
+
+### Data
+Locate the MERIT DEM "tile" of interest and set it as the `target` variable in [Data/scripts/get_merit_dem.py](Data/scripts/get_merit_dem.py). Run the script. Manually unzip and place in the relevant subfolder of `Data/DEM/`
+```python
+target = r'n30w090'
+```
+
+Download Hydrobasins levels 1 and 12 using [Data/scripts/get_hydrobasins.py](Data/scripts/get_hydrobasins.py)
 
 ## Usage
 
