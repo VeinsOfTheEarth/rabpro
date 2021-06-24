@@ -53,6 +53,7 @@ class profiler:
         coords,
         da=None,
         name="unnamed",
+        path_data=None,
         path_results=None,
         force_merit=False,
         verbose=True,
@@ -99,7 +100,7 @@ class profiler:
 
         # This line will ensure that all the virtual rasters are built
         # and available.
-        _ = rpu.get_datapaths()
+        _ = rpu.get_datapaths(path_data)
 
     def coordinates_to_gdf(self, coords):
         """

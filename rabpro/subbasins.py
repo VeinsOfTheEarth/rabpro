@@ -432,7 +432,7 @@ def main_merit(cl_gdf, da, nrows=51, ncols=51, map_only=False, verbose=False):
         DESCRIPTION.
 
     """
-
+    # rp = rpo
     # nrows = rp.nrows
     # ncols = rp.ncols
     # cl_gdf = rp.gdf
@@ -461,7 +461,7 @@ def main_merit(cl_gdf, da, nrows=51, ncols=51, map_only=False, verbose=False):
     # blah = ru.xy_to_coords(cr_start_mapped[0], cr_start_mapped[1], da_obj.GetGeoTransform())
     # from shapely.geometry import Point
     # blah2 = gpd.GeoDataFrame(geometry=[Point(blah)], crs=CRS.from_epsg(4326))
-    # blah2.to_file(r'C:\Users\Jon\Desktop\temp\poo.shp')
+    # blah2.to_file(r'C:\Users\Jon\Desktop\temp\crap.shp')
 
     # If mapping the point was unsuccessful, return nans
     if np.nan in cr_start_mapped:
@@ -493,6 +493,7 @@ def main_merit(cl_gdf, da, nrows=51, ncols=51, map_only=False, verbose=False):
         print("Delineating basin from MERIT...", end="")
 
     # Get all the pixels in the basin
+    # cr_start_mapped = (2396, 4775)
     idcs = mu.get_basin_pixels(cr_start_mapped, da_obj, fdr_obj)
 
     if verbose is True:

@@ -32,18 +32,21 @@ def get_rabpropath():
 
     # filepath = filepath.lower()
     st_idx = filepath.index("rabpro")
-    en_idx = st_idx + len("rabpro")
-    rabpropath = Path(filepath[:en_idx])
+    # en_idx = st_idx + len("rabpro") 
+    rabpropath = Path(filepath[:st_idx])
 
     return rabpropath
 
 
-def get_datapaths():
+def get_datapaths(datapath=None):
     """
     Returns a dictionary of paths to all data that RaBPro uses.
     """
-    basepath = get_rabpropath()
-    datapath = basepath / "Data"
+    if datapath is None:
+        basepath = get_rabpropath()
+        datapath = basepath / "Data"
+    else:
+        datapath = Path(datapath)
     metadata_path = datapath / "data_metadata.csv"
     if metadata_path.is_file() is False:
         metadata_path = datapath / "data_metadata_darwin.csv"
