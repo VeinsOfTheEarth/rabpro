@@ -31,7 +31,7 @@ def get_rabpropath():
     filepath = os.path.dirname(rp.__file__)
 
     # filepath = filepath.lower()
-    st_idx = filepath.index("rabpro")
+    st_idx = filepath.rindex("rabpro")
     # en_idx = st_idx + len("rabpro") 
     rabpropath = Path(filepath[:st_idx])
 
@@ -52,7 +52,7 @@ def get_datapaths(datapath=None):
         metadata_path = datapath / "data_metadata_darwin.csv"
     metadata = pd.read_csv(metadata_path)
     rel_paths = [rp.replace("\\", os.sep) for rp in metadata.rel_path.values]
-    dpaths = [str(basepath / Path(p)) for p in rel_paths]
+    dpaths = [str(datapath.parent.absolute() / Path(p)) for p in rel_paths]
     dnames = metadata.dataID.values
     datapaths = {dn: dp for dp, dn in zip(dpaths, dnames)}
     datapaths["metadata"] = metadata_path
