@@ -79,8 +79,8 @@ class profiler:
             # Convert it to EPSG:4326
             self.gdf = coords
             if self.gdf.crs.to_epsg() != 4326:
-                self.gdf = self.gdf.to_crs(CRS.from_epsg(4326))
                 print("Reprojecting provided coordinates to EPSG:4326.")
+                self.gdf = self.gdf.to_crs(CRS.from_epsg(4326))
         else:
             raise ValueError("Invalid coordinate input type.")
 
@@ -107,9 +107,7 @@ class profiler:
         Converts a list of coordinates to a GeoDataFrame. Coordinates should
         be (lat, lon) pairs with EPSG==4326.
         """
-        geoms = []
-        for xy in coords:
-            geoms.append(shapely.geometry.Point((xy[1], xy[0])))
+        geoms = [shapely.geometry.Point((xy[1], xy[0])) for xy in coords]
 
         gdf = gpd.GeoDataFrame(geometry=geoms)
         gdf.crs = CRS.from_epsg(4326)
@@ -132,9 +130,7 @@ class profiler:
 
         lats = df.latitude.values
         lons = df.longitude.values
-        geoms = []
-        for lat, lon in zip(lats, lons):
-            geoms.append(shapely.geometry.Point((lon, lat)))
+        geoms = [shapely.geometry.Point((lon, lat)) for lat, lon in zip(lats, lons)]
 
         gdf = gpd.GeoDataFrame(geometry=geoms)
         gdf.crs = CRS.from_epsg(4326)
@@ -150,9 +146,7 @@ class profiler:
         if self.gdf.crs is not None:
             if self.EPSG != self.gdf.crs.to_epsg():
                 raise ValueError(
-                    "Provided EPSG is {}, but GeoDataFrame thinks EPSG is {}. Rectify before continuing.".format(
-                        self.EPSG, self.coords.crs["init"][5:]
-                    )
+                    f"Provided EPSG is {self.EPSG}, but GeoDataFrame thinks EPSG is {self.coords.crs['init'][5:]}. Rectify before continuing."
                 )
         else:
             self.gdf.crs = CRS.from_epsg(self.EPSG)
@@ -164,10 +158,7 @@ class profiler:
         Determines if the provided coordinates define a centerline. Basically
         just checks for the number of input pairs.
         """
-        if self.gdf.shape[0] == 1:
-            return False
-        else:
-            return True
+        return self.gdf.shape[0] != 1
 
     def which_method(self, force_merit, merit_thresh=500):
         """
@@ -179,7 +170,7 @@ class profiler:
             if self.da < merit_thresh:
                 method = "merit"
 
-        if force_merit is True:
+        if force_merit:
             method = "merit"
 
         return method
@@ -233,7 +224,7 @@ class profiler:
 
             # Ensure the provided coordinate was mappable
             if self.basins is None:
-                if map_only is False:
+                if not map_only:
                     print(
                         "Could not find a suitable flowline to map given coordinate and DA. No basin can be delineated."
                     )
@@ -243,10 +234,9 @@ class profiler:
 
                 # Ensure the MERIT-delineated polygon's area is within 10% of the mapped value
                 # If the basin crosses the -180/180 meridian, need to use a projection that splits elsewhere
-                if self.mapped["meridian_cross"] is True:
-                    rp_epsg = 2193  # new zealand, seems to work fine for areas though
-                else:
-                    rp_epsg = 3410
+                # 2193 for new zealand, seems to work fine for areas though
+                rp_epsg = 2193 if self.mapped["meridian_cross"] else 3410
+
                 reproj_ea_meters = self.basins.to_crs(crs=CRS.from_epsg(rp_epsg))
                 pgon_area = (
                     reproj_ea_meters.geometry.values[0].area / 10 ** 6
@@ -254,14 +244,12 @@ class profiler:
                 pct_diff = abs(pgon_area - self.mapped["da"]) / self.mapped["da"] * 100
                 if pct_diff > 10:
                     print(
-                        "Check delineated basin. There is a difference of {} % between MERIT DA and polygon area.".format(
-                            pct_diff
-                        )
+                        f"Check delineated basin. There is a difference of {pct_diff}% between MERIT DA and polygon area."
                     )
 
     def elev_profile(self):
 
-        if hasattr(self, "nrows") is False:
+        if not hasattr(self, "nrows"):
             self.nrows = 50
             self.ncols = 50
 
@@ -336,8 +324,8 @@ class profiler:
         """
         if what == "all":
             what = ["elevs", "subbasins", "stats"]
-        if self.verbose is True:
-            print("Exporting {} to {}.".format(what, self.paths["basenamed"]))
+        if self.verbose:
+            print(f"Exporting {what} to {self.paths['basenamed']}.")
 
         if type(what) is str:
             what = [what]
@@ -345,14 +333,12 @@ class profiler:
         for w in what:
             if w not in ["elevs", "subbasins", "stats"]:
                 raise KeyError(
-                    "Requested export {} not available. Choose from {}.".format(
-                        w, ["elevs", "subbasins", "stats"]
-                    )
+                    f"Requested export {w} not available. Choose from {['elevs', 'subbasins', 'stats']}."
                 )
             if w == "stats":
                 if hasattr(self, "stats"):
                     self.stats.to_csv(self.paths["stats"], index=False)
-                    if self.verbose is True:
+                    if self.verbose:
                         print("Statistics written successfully.")
                 else:
                     print("No basin statistics found for export.")
@@ -363,16 +349,16 @@ class profiler:
                         self.basins_inc.to_file(
                             self.paths["subbasins_inc"], driver="GeoJSON"
                         )
-                    if self.verbose is True:
+                    if self.verbose:
                         print("Basins geojson written successfully.")
                 else:
                     print("No subbasins found for export.")
             elif w == "elevs":
                 if "Elevation (m)" in self.gdf.keys():
                     self.gdf.to_file(self.paths["centerline_results"], driver="GeoJSON")
-                if hasattr(self, "merit_gdf") is True:
+                if hasattr(self, "merit_gdf"):
                     self.merit_gdf.to_file(self.paths["dem_results"], driver="GeoJSON")
-                    if self.verbose is True:
+                    if self.verbose:
                         print("Centerline geojsons written successfully.")
                 else:
                     print("No elevations found for export.")
