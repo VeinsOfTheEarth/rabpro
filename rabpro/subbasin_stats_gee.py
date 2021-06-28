@@ -3,7 +3,6 @@ import ee
 import json
 import pandas as pd
 import numpy as np
-import rasterstats_modified as rsm
 import utils as ru
 
 def main(sb_inc_gdf, stYYYY, enYYYY, verbose=False, folder=None):
@@ -13,8 +12,8 @@ def main(sb_inc_gdf, stYYYY, enYYYY, verbose=False, folder=None):
     # the values as we move downstream to the next subbasin
 
     # Dictionary for determining which rasters and statistics to compute
-    control = get_controls(sb_inc_gdf.DA.values[0])
-    ee.Authenticate()
+    control = get_controls()
+    ee.Initialize()
 
     # Convert GeoDataFrame to ee.Feature objects
     features = []
@@ -30,6 +29,9 @@ def main(sb_inc_gdf, stYYYY, enYYYY, verbose=False, folder=None):
         imgcol = ee.ImageCollection(r["rastpath"]).select(r["bands"]).filterDate(stYYYY, enYYYY)
         if verbose:
             print(f"Computing subbasin stats for {r['rastpath']}...")
+
+        # if r["maskraster"]: # TODO
+        # Add threshold mask using GSW occurrence to image
 
         # Generate reducer - mean and count always computed
         reducer = ee.Reducer.count().combine(reducer2=ee.Reducer.mean(), sharedInputs=True)
@@ -58,7 +60,7 @@ def main(sb_inc_gdf, stYYYY, enYYYY, verbose=False, folder=None):
         table = reducedFC.flatten()
 
         # Map across feature collection and use min and max to compute range
-        # if "range" in r["stats"]:
+        # if "range" in r["stats"]: #TODO
 
         #print(table.getDownloadURL(filetype='csv'))
         task = ee.batch.Export.table.toDrive(
@@ -66,13 +68,9 @@ def main(sb_inc_gdf, stYYYY, enYYYY, verbose=False, folder=None):
         )
         task.start()
 
-def get_controls(DAmax):
+def get_controls():
 
     """Prepare paths and parameters for computing subbasin raster stats"""
-
-    # Determine if we need to use the coarse rasters
-    DAthresh = 50000  # km^2, analyses with any basin DAs larger than this value will use the coarse DEM. Testing on the Colville showed that using the coarse resulted in differences in less than 1% for all stats (most were well under 1%)
-    usecoarse = DAmax > DAthresh
 
     # Load raster metadata file
     datapaths = ru.get_datapaths()
@@ -113,25 +111,20 @@ def get_controls(DAmax):
         img["rastpath"] = row["rel_path"]
 
         # resolution
-        resolution = 0.001 if usecoarse else row["resolution"]
-        img["resolution"] = resolution
+        img["resolution"] = row["resolution"]
 
         # Dates - GEE takes care of out of range dates for us
 
         # Bands
-        bands_tmp = row["bands"]
         if pd.isna(bands_tmp):
             bands_tmp = []
         else:
-            bands_tmp = list(set([band.strip() for band in bands_tmp.split(",")]))
+            bands_tmp = list(set([band.strip() for band in row["bands"].split(",")]))
 
         img["bands"] = bands_tmp
 
         # Should we also mask water pixels?
-        if row["water mask?"] == "yes":
-            img["maskraster"] = datapaths["watermask"] #TODO
-        else:
-            img["maskraster"] = None
+        img["maskraster"] = row["water mask?"] == "yes"
 
         # Which stats to compute?
         stats_tmp = row["stats"]

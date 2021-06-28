@@ -312,7 +312,7 @@ class profiler:
             years = [1900, 2200]
 
         self.stats = ss.main(
-            self.gdf, self.basins, years[0], years[1], verbose=self.verbose
+            self.basins, years[0], years[1], verbose=self.verbose
         )
 
     def export(self, what="all"):
