@@ -15,6 +15,9 @@ def main(sb_inc_gdf, stYYYY, enYYYY, verbose=False, folder=None):
     control = get_controls()
     ee.Initialize()
 
+    # Create water occurence mask
+    occ_mask = ee.Image('JRC/GSW1_0/GlobalSurfaceWater').select('occurrence').lt(90)
+
     # Convert GeoDataFrame to ee.Feature objects
     features = []
     for i in range(sb_inc_gdf.shape[0]):
@@ -30,13 +33,14 @@ def main(sb_inc_gdf, stYYYY, enYYYY, verbose=False, folder=None):
         if verbose:
             print(f"Computing subbasin stats for {r['rastpath']}...")
 
-        # if r["maskraster"]: # TODO
-        # Add threshold mask using GSW occurrence to image
+        # Add threshold mask to image using GSW occurrence band
+        if r["maskraster"]:
+            imgcol = imgcol.map(lambda img: img.updateMask(occ_mask))
 
         # Generate reducer - mean and count always computed
         reducer = ee.Reducer.count().combine(reducer2=ee.Reducer.mean(), sharedInputs=True)
 
-        if "min" in r["stats"] and "max" in r["stats"]: # or "range" in r["stats"]
+        if ("min" in r["stats"] and "max" in r["stats"]) or "range" in r["stats"]:
             reducer = reducer.combine(reducer2=ee.Reducer.minMax(), sharedInputs=True)
         elif "min" in r["stats"]:
             reducer = reducer.combine(reducer2=ee.Reducer.min(len(r["bands"])), sharedInputs=True)
@@ -59,10 +63,16 @@ def main(sb_inc_gdf, stYYYY, enYYYY, verbose=False, folder=None):
         reducedFC = imgcol.map(map_func)
         table = reducedFC.flatten()
 
+        def range_func(feat):
+            # TODO: Change column names later depending on output formatting
+            return feat.set("range", feat.get("max") - feat.get("min"))
+
         # Map across feature collection and use min and max to compute range
-        # if "range" in r["stats"]: #TODO
+        if "range" in r["stats"]:
+            table = table.map(range_func)
 
         #print(table.getDownloadURL(filetype='csv'))
+        # TODO: Add selectors to export
         task = ee.batch.Export.table.toDrive(
             collection=table, description=r["rID"], folder=folder, fileFormat="csv"
         )
