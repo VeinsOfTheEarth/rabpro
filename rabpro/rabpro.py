@@ -296,24 +296,17 @@ class profiler:
         elev_smooth = savgol_filter(self.elevs["elev_raw"], windowsize, k)
         return elev_smooth
 
-    def basin_stats(self, years="all"):
+    def basin_stats(self, datasets):
         """
         Computes watershed statistics.
 
         Keywords
         ----------
-        years : str OR list
-            If years = 'all', then all available years of statistics will be
-            returned. Else years should be a two-entry list like [2000 2012]
-            that specify the start and end year of the desired analysis.
+        datasets : list of Dataset objects
+            See the Dataset class
         """
 
-        if years == "all":
-            years = [1900, 2200]
-
-        self.stats = ss.main(
-            self.basins, years[0], years[1], verbose=self.verbose
-        )
+        self.stats = ss.main(self.basins, datasets, verbose=self.verbose)
 
     def export(self, what="all"):
         """
