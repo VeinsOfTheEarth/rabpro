@@ -83,9 +83,9 @@ def main(sb_inc_gdf, dataset_list, verbose=False, folder=None):
         if ("min" in d.stats and "max" in d.stats) or "range" in d.stats:
             reducer = reducer.combine(reducer2=ee.Reducer.minMax(), sharedInputs=True)
         elif "min" in d.stats:
-            reducer = reducer.combine(reducer2=ee.Reducer.min(len(r["bands"])), sharedInputs=True)
+            reducer = reducer.combine(reducer2=ee.Reducer.min(), sharedInputs=True)
         elif "max" in d.stats:
-            reducer = reducer.combine(reducer2=ee.Reducer.max(len(r["bands"])), sharedInputs=True)
+            reducer = reducer.combine(reducer2=ee.Reducer.max(), sharedInputs=True)
 
         if "std" in d.stats:
             reducer = reducer.combine(reducer2=ee.Reducer.stdDev(), sharedInputs=True)
@@ -99,7 +99,7 @@ def main(sb_inc_gdf, dataset_list, verbose=False, folder=None):
         def map_func(img):
             # TODO: change to reduceRegion or simplify geometries
             return img.reduceRegions(
-                collection=featureCollection, reducer=reducer, scale=r["resolution"]
+                collection=featureCollection, reducer=reducer, scale=d.resolution
             )
 
         reducedFC = imgcol.map(map_func)
