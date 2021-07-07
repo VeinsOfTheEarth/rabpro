@@ -93,7 +93,7 @@ def main(sb_inc_gdf, dataset_list, verbose=False, folder=None):
         elif "max" in d.stats:
             reducer = reducer.combine(reducer2=ee.Reducer.max(), sharedInputs=True)
 
-        if "std" in d.stats:
+        if "stdDev" in d.stats:
             reducer = reducer.combine(reducer2=ee.Reducer.stdDev(), sharedInputs=True)
         if "sum" in d.stats:
             reducer = reducer.combine(reducer2=ee.Reducer.sum(), sharedInputs=True)
