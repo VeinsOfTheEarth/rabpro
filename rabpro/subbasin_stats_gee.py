@@ -41,8 +41,9 @@ class Dataset:
         self.resolution = resolution
         self.start = start
         self.end = end
-        self.stats = stats if stats is None else []
+        self.stats = stats if stats is not None else []
         self.mask = mask
+        # TODO add type
 
 
 def main(sb_inc_gdf, dataset_list, verbose=False, folder=None):
@@ -69,7 +70,12 @@ def main(sb_inc_gdf, dataset_list, verbose=False, folder=None):
 
     # For each raster
     for d in control:
-        imgcol = ee.ImageCollection(d.data_id).select(d.band).filterDate(d.start, d.end)
+        print(d.stats)
+        if d.type == "Image":
+            imgcol = ee.ImageCollection(ee.Image(d.data_id).select(d.band))
+        else:
+            imgcol = ee.ImageCollection(d.data_id).select(d.band).filterDate(d.start, d.end)
+
         if verbose:
             print(f"Computing subbasin stats for {d.data_id}...")
 
@@ -99,15 +105,15 @@ def main(sb_inc_gdf, dataset_list, verbose=False, folder=None):
         def map_func(img):
             # TODO: change to reduceRegion or simplify geometries
             return img.reduceRegions(
-                collection=featureCollection, reducer=reducer, scale=d.resolution
+                collection=featureCollection, reducer=reducer#, scale=d.resolution # TODO: take care of units in resolution
             )
 
         reducedFC = imgcol.map(map_func)
         table = reducedFC.flatten()
 
         def range_func(feat):
-            # TODO: Change column names later depending on output formatting
-            return feat.set("range", feat.get("max") - feat.get("min"))
+            # TODO: Change to aggregateArray - more efficient?
+            return feat.set("range", feat.getNumber("max").subtract(feat.getNumber("min")))
 
         # Map across feature collection and use min and max to compute range
         if "range" in d.stats:
@@ -116,7 +122,7 @@ def main(sb_inc_gdf, dataset_list, verbose=False, folder=None):
         # print(table.getDownloadURL(filetype='csv'))
         # TODO: Add selectors to export and change file name
         task = ee.batch.Export.table.toDrive(
-            collection=table, description=f"{d.data_id}_{d.band}", folder=folder, fileFormat="csv"
+            collection=table, description=f"{d.data_id}_{d.band}".replace('/', '-'), folder=folder, fileFormat="csv"
         )
         task.start()
 
@@ -128,10 +134,17 @@ def get_controls(datasets):
     """
 
     # Load raster metadata file
-    # TODO: Change to json file + user json file
     datapaths = ru.get_datapaths()
-    with open(datapaths["metadata"]) as json_file:
+    with open(datapaths["gee_metadata"]) as json_file:
         datadict = {d["id"]: d for d in json.load(json_file)}
+
+    #print(datapaths["user_gee_metadata"])
+    if datapaths["user_gee_metadata"] is not None:
+        with open(datapaths["user_gee_metadata"]) as json_file:
+            user_datadict = {d["id"]: d for d in json.load(json_file)}
+
+        # TODO switch to x | y notation in Python 3.9. Add try/except for this section?
+        datadict = {**datadict, **user_datadict} # merge dictionaries
 
     control = []
     for d in datasets:
@@ -145,7 +158,7 @@ def get_controls(datasets):
 
         gee_dataset = datadict[d.data_id]
 
-        if d.band not in gee_dataset:
+        if d.band not in gee_dataset["bands"]:
             print(f"Warning: invalid data band provided: {d.data_id}:{d.band}")
             continue
 
@@ -153,16 +166,21 @@ def get_controls(datasets):
             d.resolution = gee_dataset["resolution"]
 
         if d.start is None or date.fromisoformat(d.start) < date.fromisoformat(
-            gee_dataset["start"]
+            gee_dataset["start_date"]
         ):
-            d.start = gee_dataset["start"]
+            d.start = gee_dataset["start_date"]
             print(f"Warning: overrode start date for {d.data_id}:{d.band}")
 
-        if d.end is None or date.fromisoformat(d.end) > date.fromisoformat(gee_dataset["end"]):
-            d.end = gee_dataset["end"]
+        if d.end is None or date.fromisoformat(d.end) > date.fromisoformat(gee_dataset["end_date"]):
+            d.end = gee_dataset["end_date"]
             print(f"Warning: overrode end date for {d.data_id}:{d.band}")
 
         d.stats = set(d.stats + ["count", "mean"])
+        
+        if "no_data" in gee_dataset["bands"][d.band]:
+            d.no_data = gee_dataset["bands"][d.band]["no_data"]
+
+        d.type = gee_dataset["type"]
         control.append(d)
 
     return control

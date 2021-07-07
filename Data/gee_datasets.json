@@ -5,6 +5,7 @@
         "start_date": "1984-03-16",
         "end_date": "2021-01-01",
         "resolution": "30 meters",
+        "type": "Image",
         "bands": {
             "occurrence": {
                 "units": "%",
@@ -42,6 +43,7 @@
         "start_date": "1948-01-0",
         "end_date": "2010-12-31",
         "resolution": "0.25 arc degrees",
+        "type": "ImageCollection",
         "bands": {
             "Albedo_inst": {
                 "units": "%",

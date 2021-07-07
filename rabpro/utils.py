@@ -39,6 +39,7 @@ def get_rabpropath():
 
 
 def get_datapaths(datapath=None):
+    # TODO tear down and rebuild this function when metadata is finalized
     """
     Returns a dictionary of paths to all data that RaBPro uses.
     """
@@ -56,6 +57,15 @@ def get_datapaths(datapath=None):
     dnames = metadata.dataID.values
     datapaths = {dn: dp for dp, dn in zip(dpaths, dnames)}
     datapaths["metadata"] = metadata_path
+
+    gee_metadata_path = datapath / "gee_datasets.json" #TODO change this path later
+    datapaths["gee_metadata"] = gee_metadata_path
+    
+    # User defined GEE datasets
+    user_gee_metadata_path = datapath / "user_gee_datasets.json" # TODO change this path later
+    datapaths["user_gee_metadata"] = user_gee_metadata_path
+    if user_gee_metadata_path.is_file() is False:
+        datapaths["user_gee_metadata"] = None
 
     # Inserted for special case!
     # datapaths['metadata'] =  r"X:\RaBPro\Results\Arctic Gages\data_metadata_Arctic_gages.csv"
