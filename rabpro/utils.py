@@ -55,6 +55,7 @@ def get_datapaths():
     """
     global _DATAPATHS
     if _DATAPATHS is not None:
+        _build_virtual_rasters(_DATAPATHS)
         return _DATAPATHS
 
     datapath = Path(appdirs.user_data_dir("rabpro", "jschwenk"))
@@ -95,6 +96,12 @@ def get_datapaths():
     if not user_gee_metadata_path.is_file():
         datapaths["user_gee_metadata"] = None
 
+    _build_virtual_rasters(datapaths)
+    _DATAPATHS = datapaths
+    return datapaths
+
+
+def _build_virtual_rasters(datapaths):
     msg_dict = {
         "DEM": "Building virtual raster DEM from MERIT tiles...",
         "DEM_fdr": "Building flow direction virtual raster DEM from MERIT tiles...",
@@ -110,9 +117,6 @@ def get_datapaths():
             build_vrt(
                 os.path.dirname(os.path.realpath(datapaths[key])), outputfile=datapaths[key],
             )
-
-    _DATAPATHS = datapaths
-    return datapaths
 
 
 def get_exportpaths(name, basepath=None, overwrite=False):
