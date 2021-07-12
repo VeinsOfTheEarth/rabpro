@@ -26,8 +26,8 @@ class Dataset:
         Desired end date of data in ISO format: YYYY-MM-DD
     stats : list
         List of desired stats to compute: min, max, range, mean, count, std, 
-        sum and percentiles in the following format: pct1, pct90, pct100, etc.
-    mask: boolean
+        sum, and percentiles in the following format: pct1, pct90, pct100, etc.
+    mask : boolean
         Whether or not to mask out water in the dataset using the Global 
         Surface Water occurrence band
 
@@ -45,11 +45,27 @@ class Dataset:
         self.mask = mask
 
 
-def main(sb_inc_gdf, dataset_list, verbose=False, folder=None):
-    """Compute subbasin statistics for each raster in control file"""
-    # For improved speed, rather than computing statistics for each subbasin,
-    # fetch values for the subbasins, then compute statistics by combining
-    # the values as we move downstream to the next subbasin
+def main(sb_inc_gdf, dataset_list, reducer_funcs=None, verbose=False, folder=None):
+    """
+    Compute subbasin statistics for each dataset and band specified.
+
+    Attributes
+    ----------
+    sb_inc_gdf : GeoDataFrame
+        Table of subbasin geometries
+    dataset_list : list of Datasets
+        List of Dataset objects to computer statistics over
+    reducer_funcs : list of tuples of str and function
+        List of functions to apply to each feature over each dataset and strings 
+        to name the output columns. Each function should take in an ee.Feature()
+        object. For example, this is how the function and header are applied on 
+        a feature:
+            feature.set(header, function(feature))
+    verbose : boolean
+    folder : str
+        Google Drive folder to place results in
+    
+    """
 
     # Dictionary for determining which rasters and statistics to compute
     control = get_controls(dataset_list)
@@ -116,6 +132,12 @@ def main(sb_inc_gdf, dataset_list, verbose=False, folder=None):
         # Map across feature collection and use min and max to compute range
         if "range" in d.stats:
             table = table.map(range_func)
+
+        # Apply reducer functions
+        for f, header in reducer_funcs:
+            def reducer_func(feat):
+                return feat.set(header, f(feat))
+            table = table.map(reducer_func)
 
         # print(table.getDownloadURL(filetype='csv'))
         # TODO: Add selectors to export and change file name
