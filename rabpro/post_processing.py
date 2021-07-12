@@ -8,14 +8,14 @@ Created on Tue Apr  3 14:26:07 2018
 import re
 import pandas as pd
 import numpy as np
-import rabpro.utils as ru
+from rabpro import utils as ru
 
 
 def main(controlfile, rabpropath=r"X:\RaBPro"):
 
 #    controlfile = r"X:\RaBPro\control_files\Indigirka.csv"
     
-    patru = ru.prepare_patru(controlfile, rabpropath, clear_results=False)
+    patru = ru.prepare_paths(controlfile, clear_results=False)
     
     # Load CSVs that we'll draw from to compile results
     cf = pd.read_csv(controlfile)
