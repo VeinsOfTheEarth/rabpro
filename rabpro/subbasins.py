@@ -13,9 +13,7 @@ from pathlib import Path
 from osgeo import gdal
 from pyproj import CRS
 import sys, os
-
-sys.path.append(os.path.realpath(os.path.dirname(__file__) + "/.."))
-import merit_utils as mu
+from rabpro import merit_utils as mu
 
 
 def main_hb(cl_gdf, verbose=False):

@@ -10,11 +10,11 @@ import numpy as np
 import geopandas as gpd
 import pandas as pd
 import shapely
-import elev_profile as ep
-import subbasins as sb
-import subbasin_stats as ss
-import utils as rpu
-import merit_utils as mu
+from rabpro import elev_profile as ep
+from rabpro import subbasins as sb
+from rabpro import subbasin_stats_gee as ss
+from rabpro import utils as rpu
+from rabpro import merit_utils as mu
 from pyproj import CRS
 
 
@@ -100,7 +100,7 @@ class profiler:
 
         # This line will ensure that all the virtual rasters are built
         # and available.
-        _ = rpu.get_datapaths(path_data)
+        rpu.get_datapaths(path_data)
 
     def coordinates_to_gdf(self, coords):
         """

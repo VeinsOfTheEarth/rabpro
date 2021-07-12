@@ -6,7 +6,7 @@ Created on Fri Jun  5 12:10:12 2020
 """
 
 # Build merit vrts
-import utils as ru
+from rabpro import utils as ru
 from osgeo import gdal
 import numpy as np
 import geopandas as gpd
