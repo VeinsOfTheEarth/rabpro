@@ -111,14 +111,6 @@ def get_datapaths():
                 os.path.dirname(os.path.realpath(datapaths[key])), outputfile=datapaths[key],
             )
 
-    if not os.path.isfile(datapaths["DEM_coarse"]):
-        print("Building coarse virtual raster DEM from MERIT tiles...")
-        build_vrt(
-            os.path.dirname(os.path.realpath(datapaths["DEM"])),
-            outputfile=datapaths["DEM_coarse"],
-            res=0.001,
-        )
-
     _DATAPATHS = datapaths
     return datapaths
 
