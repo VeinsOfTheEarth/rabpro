@@ -19,6 +19,14 @@ from pathlib import Path
 import platform
 from shapely.geometry import Polygon, MultiPolygon
 from shapely.ops import unary_union
+from datetime import datetime, timedelta
+import appdirs
+import requests
+import json
+
+CATALOG_URL = (
+    "https://raw.githubusercontent.com/tzussman/rabpro/gee-conversion/Data/gee_catalog.json"
+)
 
 
 def get_rabpropath():
@@ -32,88 +40,77 @@ def get_rabpropath():
 
     # filepath = filepath.lower()
     st_idx = filepath.rindex("rabpro")
-    # en_idx = st_idx + len("rabpro") 
+    # en_idx = st_idx + len("rabpro")
     rabpropath = Path(filepath[:st_idx])
 
     return rabpropath
 
 
-def get_datapaths(datapath=None):
+def get_datapaths():
     # TODO tear down and rebuild this function when metadata is finalized
     """
     Returns a dictionary of paths to all data that RaBPro uses.
     """
-    if datapath is None:
-        basepath = get_rabpropath()
-        datapath = basepath / "Data"
-    else:
-        datapath = Path(datapath)
+    datapath = appdirs.user_data_dir("rabpro", "jschwenk")
+
     metadata_path = datapath / "data_metadata.csv"
-    if metadata_path.is_file() is False:
-        metadata_path = datapath / "data_metadata_darwin.csv"
     metadata = pd.read_csv(metadata_path)
     rel_paths = [rp.replace("\\", os.sep) for rp in metadata.rel_path.values]
-    dpaths = [str(datapath.parent.absolute() / Path(p)) for p in rel_paths]
+    dpaths = [str(datapath / Path(p)) for p in rel_paths]
     dnames = metadata.dataID.values
     datapaths = {dn: dp for dp, dn in zip(dpaths, dnames)}
     datapaths["metadata"] = metadata_path
 
-    gee_metadata_path = datapath / "gee_datasets.json" #TODO change this path later
-    datapaths["gee_metadata"] = gee_metadata_path
-    
+    gee_metadata_path = datapath / "gee_datasets.json"
+    datapaths["gee_metadata"] = str(gee_metadata_path)
+
+    # Download catalog JSON file
+    if gee_metadata_path.is_file():
+        mtime = datetime.fromtimestamp(gee_metadata_path.stat().st_mtime)
+        delta = datetime.now() - mtime
+
+    if not gee_metadata_path.is_file() or delta > timedelta(days=1):
+        try:
+            response = requests.get(CATALOG_URL)
+            if response.status_code == 200:
+                r = response.json()
+                with open(datapaths["gee_metadata"], "w") as f:
+                    json.dump(r, f, indent=4)
+            else:
+                print(
+                    f"{CATALOG_URL} returned error status code {response.status_code}. Download manually into {gee_metadata_path}"
+                )
+        except Exception as e:
+            print(e)
+
     # User defined GEE datasets
-    user_gee_metadata_path = datapath / "user_gee_datasets.json" # TODO change this path later
-    datapaths["user_gee_metadata"] = user_gee_metadata_path
-    if user_gee_metadata_path.is_file() is False:
+    user_gee_metadata_path = datapath / "user_gee_datasets.json"  # TODO change this path later
+    datapaths["user_gee_metadata"] = str(user_gee_metadata_path)
+    if not user_gee_metadata_path.is_file():
         datapaths["user_gee_metadata"] = None
 
-    # Inserted for special case!
-    # datapaths['metadata'] =  r"X:\RaBPro\Results\Arctic Gages\data_metadata_Arctic_gages.csv"
+    msg_dict = {
+        "DEM": "Building virtual raster DEM from MERIT tiles...",
+        "DEM_fdr": "Building flow direction virtual raster DEM from MERIT tiles...",
+        "DEM_uda": "Building drainage areas virtual raster DEM from MERIT tiles...",
+        "DEM_elev_hp": "Building hydrologically-processed elevations virtual raster DEM from MERIT tiles...",
+        "DEM_width": "Building width virtual raster from MERIT tiles...",
+    }
 
     # Ensure that DEM virtual rasters are built
-    if os.path.isfile(datapaths["DEM"]) is False:
-        print("Building virtual raster DEM from MERIT tiles...")
-        build_vrt(
-            os.path.dirname(os.path.realpath(datapaths["DEM"])),
-            outputfile=datapaths["DEM"],
-        )
+    for key in msg_dict:
+        if not os.path.isfile(datapaths[key]):
+            print(msg_dict[key])
+            build_vrt(
+                os.path.dirname(os.path.realpath(datapaths[key])), outputfile=datapaths[key],
+            )
 
-    if os.path.isfile(datapaths["DEM_coarse"]) is False:
+    if not os.path.isfile(datapaths["DEM_coarse"]):
         print("Building coarse virtual raster DEM from MERIT tiles...")
         build_vrt(
             os.path.dirname(os.path.realpath(datapaths["DEM"])),
             outputfile=datapaths["DEM_coarse"],
             res=0.001,
-        )
-
-    if os.path.isfile(datapaths["DEM_fdr"]) is False:
-        print("Building flow direction virtual raster DEM from MERIT tiles...")
-        build_vrt(
-            os.path.dirname(os.path.realpath(datapaths["DEM_fdr"])),
-            outputfile=datapaths["DEM_fdr"],
-        )
-
-    if os.path.isfile(datapaths["DEM_uda"]) is False:
-        print("Building drainage areas virtual raster DEM from MERIT tiles...")
-        build_vrt(
-            os.path.dirname(os.path.realpath(datapaths["DEM_uda"])),
-            outputfile=datapaths["DEM_uda"],
-        )
-
-    if os.path.isfile(datapaths["DEM_elev_hp"]) is False:
-        print(
-            "Building hydrologically-processed elevations virtual raster DEM from MERIT tiles..."
-        )
-        build_vrt(
-            os.path.dirname(os.path.realpath(datapaths["DEM_elev_hp"])),
-            outputfile=datapaths["DEM_elev_hp"],
-        )
-
-    if os.path.isfile(datapaths["DEM_width"]) is False:
-        print("Building width virtual raster from MERIT tiles...")
-        build_vrt(
-            os.path.dirname(os.path.realpath(datapaths["DEM_width"])),
-            outputfile=datapaths["DEM_width"],
         )
 
     return datapaths
@@ -177,16 +174,10 @@ def prepare_paths(controlfile, clear_results=True):
     paths["cl_results"] = os.path.join(paths["outfolder"], "cl_results.csv")
     paths["subbasin_results"] = os.path.join(paths["outfolder"], "subbasin_results.csv")
     paths["results_pp"] = os.path.join(paths["outfolder"], "results_pp.csv")
-    paths["erosion_file"] = (
-        paths["width_file"].replace("T1", "").replace("Width", "Erode")
-    )
+    paths["erosion_file"] = paths["width_file"].replace("T1", "").replace("Width", "Erode")
 
-    paths["cl_geojson"] = os.path.join(
-        paths["outfolder"], paths["run_name"] + "_cl.geojson"
-    )
-    paths["sb_geojson"] = os.path.join(
-        paths["outfolder"], paths["run_name"] + "_subbasins.geojson"
-    )
+    paths["cl_geojson"] = os.path.join(paths["outfolder"], paths["run_name"] + "_cl.geojson")
+    paths["sb_geojson"] = os.path.join(paths["outfolder"], paths["run_name"] + "_subbasins.geojson")
     paths["sb_inc_geojson"] = os.path.join(
         paths["outfolder"], paths["run_name"] + "_subbasins_inc.geojson"
     )
@@ -201,16 +192,12 @@ def prepare_paths(controlfile, clear_results=True):
 
     # Prepare raster paths
     paths["rasters"] = os.path.join(base_dir, "Data", "Rasters")
-    paths["watermask"] = os.path.join(
-        paths["rasters"], "WaterMask", "JRCoccurrence.vrt"
-    )
+    paths["watermask"] = os.path.join(paths["rasters"], "WaterMask", "JRCoccurrence.vrt")
     paths["watermask_coarse"] = os.path.join(
         paths["rasters"], "WaterMask", "JRCoccurrence_coarse.vrt"
     )
     paths["topo_slope"] = os.path.join(paths["rasters"], "Slope", "_slope.vrt")
-    paths["topo_slope_coarse"] = os.path.join(
-        paths["rasters"], "Slope", "_slope_coarse.vrt"
-    )
+    paths["topo_slope_coarse"] = os.path.join(paths["rasters"], "Slope", "_slope_coarse.vrt")
     paths["rast_metadata"] = os.path.join(paths["rasters"], "_raster_metadata.csv")
 
     if clear_results:
@@ -221,16 +208,8 @@ def prepare_paths(controlfile, clear_results=True):
         # Initialize results csv
         cl_df = pd.read_csv(paths["cl_file"])
         keys = cl_df.keys()
-        lati = [
-            i
-            for i, j in enumerate(keys)
-            if j.lower() == "lat" or j.lower() == "latitude"
-        ]
-        loni = [
-            i
-            for i, j in enumerate(keys)
-            if j.lower() == "lon" or j.lower() == "longitude"
-        ]
+        lati = [i for i, j in enumerate(keys) if j.lower() == "lat" or j.lower() == "latitude"]
+        loni = [i for i, j in enumerate(keys) if j.lower() == "lon" or j.lower() == "longitude"]
         disti = [i for i, j in enumerate(keys) if "t1distance" in j.lower()]
         if len(disti) == 0:
             disti = [i for i, j in enumerate(keys) if "dist" in j.lower()]
@@ -332,9 +311,7 @@ def build_vrt(
         elif ftype == "nc":
             checktype = "nc"
         else:
-            raise TypeError(
-                "Unsupported filetype provided-must be tif, hgt, nc, or vrt."
-            )
+            raise TypeError("Unsupported filetype provided-must be tif, hgt, nc, or vrt.")
 
         for f in os.listdir(tilespath):
             if f.lower().endswith(checktype):  # ensure we're looking at a tif
@@ -403,9 +380,7 @@ def build_vrt(
 
     # Check that vrt built successfully
     if len(stderr) > 3:
-        raise RuntimeError(
-            "Virtual raster did not build sucessfully. Error: {}".format(stderr)
-        )
+        raise RuntimeError("Virtual raster did not build sucessfully. Error: {}".format(stderr))
     else:
         print(stdout)
 
@@ -445,9 +420,7 @@ def parse_path(path):
     are empty if a directory is passed.
     """
 
-    if (
-        path[0] != os.sep and platform.system() != "Windows"
-    ):  # This is for non-windows...
+    if path[0] != os.sep and platform.system() != "Windows":  # This is for non-windows...
         path = os.sep + path
 
     # Pull out extension and filename, if exist
@@ -630,8 +603,7 @@ def lonlat_plus_distance(lon, lat, dist, bearing=0):
     lonr = np.radians(lon)  # Current long point converted to radians
 
     lat_m = np.arcsin(
-        np.sin(latr) * np.cos(dist / R)
-        + np.cos(latr) * np.sin(dist / R) * np.cos(bearing)
+        np.sin(latr) * np.cos(dist / R) + np.cos(latr) * np.sin(dist / R) * np.cos(bearing)
     )
 
     lon_m = lonr + np.arctan2(
@@ -753,17 +725,13 @@ def regionprops(I, props, connectivity=2):
                 Ip, pads = crop_binary_coords(blob, npad=1)
                 Ip = np.array(Ip, dtype="uint8")
 
-                _, contours, _ = cv2.findContours(
-                    Ip, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE
-                )
+                _, contours, _ = cv2.findContours(Ip, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
                 # IMPORTANT: findContours returns points as (x,y) rather than (row, col)
                 contours = contours[0]
                 crows = []
                 ccols = []
                 for c in contours:
-                    crows.append(
-                        c[0][1] + pads[1]
-                    )  # must add back the cropped rows and columns
+                    crows.append(c[0][1] + pads[1])  # must add back the cropped rows and columns
                     ccols.append(c[0][0] + pads[0])
                 cont_np = np.transpose(np.array((crows, ccols)))  # format the output
                 perim.append(cont_np)
@@ -821,9 +789,7 @@ def union_gdf_polygons(gdf, idcs, buffer=True):
     polys = []
     for i in idcs:
         if buffer:
-            polys.append(
-                gdf.iloc[i].geometry.buffer(eps, 1, join_style=JOIN_STYLE.mitre)
-            )
+            polys.append(gdf.iloc[i].geometry.buffer(eps, 1, join_style=JOIN_STYLE.mitre))
         #            polys.append(gdf.iloc[i].geometry.buffer(eps))
         else:
             polys.append(gdf.iloc[i].geometry)
@@ -843,15 +809,9 @@ def pts_df_to_gdf(df, crs={"init": "epsg:4326"}):
     or "longitdue" describing point locations, returns a pandas geodataframe.
     """
     keys = df.keys()
-    lati = [
-        i for i, j in enumerate(keys) if j.lower() == "lat" or j.lower() == "latitude"
-    ]
-    loni = [
-        i for i, j in enumerate(keys) if j.lower() == "lon" or j.lower() == "longitude"
-    ]
-    geometry = [
-        shapely.geometry.Point(xy) for xy in zip(df[keys[loni[0]]], df[keys[lati[0]]])
-    ]
+    lati = [i for i, j in enumerate(keys) if j.lower() == "lat" or j.lower() == "latitude"]
+    loni = [i for i, j in enumerate(keys) if j.lower() == "lon" or j.lower() == "longitude"]
+    geometry = [shapely.geometry.Point(xy) for xy in zip(df[keys[loni[0]]], df[keys[lati[0]]])]
     df = df.drop([keys[loni[0]], keys[lati[0]]], axis=1)
     gdf = gpd.GeoDataFrame(df, crs=crs, geometry=geometry)
 
@@ -864,9 +824,7 @@ def ensure_us_to_ds(clpath):
 
     # Get distances; could have various column names
     keys = cl_df.keys()
-    disti = [
-        i for i, j in enumerate(keys) if j.lower() == "distance" or j.lower() == "dist"
-    ]
+    disti = [i for i, j in enumerate(keys) if j.lower() == "distance" or j.lower() == "dist"]
     dists = cl_df[keys[disti]].values.ravel()
 
     # Ensure that coordinates are US-->DS order
@@ -898,10 +856,7 @@ def downsample_binary_image(I, newsize):
 
     # Scale the row,col coordinates and turn them into integers
     rowcol = np.vstack(
-        (
-            np.array(row * rowfact, dtype=np.uint16),
-            np.array(col * colfact, dtype=np.uint16),
-        )
+        (np.array(row * rowfact, dtype=np.uint16), np.array(col * colfact, dtype=np.uint16),)
     )
 
     # Get the number of smaller pixels within each larger pixel
