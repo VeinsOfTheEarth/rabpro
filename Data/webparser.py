@@ -24,6 +24,10 @@ def parse_url(url):
         gee_name = r["title"]
         gee_type = r["gee:type"]
 
+        if "deprecated" in r and r["deprecated"]:
+            print(f"Skipping {r['id']} (deprecated)")
+            return None
+
         # TODO Ignoring anything that's not an Image or ImageCollection for now
         if gee_type == "image_collection":
             img = ee.ImageCollection(gee_id)
@@ -46,7 +50,11 @@ def parse_url(url):
                 gee_end = datetime.now().strftime("%Y-%m-%d")
 
         if gee_type == "image_collection":
-            img = img.first()
+            l = img.toList(2)
+            if img.toList(2).length().getInfo() > 1:
+                img = ee.Image(l.get(1))
+            else:
+                img = img.first()
 
         # Get band, units, and resolution information
         bands = r["summaries"]["eo:bands"]

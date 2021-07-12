@@ -185,8 +185,8 @@ def get_controls(datasets):
             print(f"Warning: invalid data band provided: {d.data_id}:{d.band}")
             continue
 
-        if d.resolution is None:
-            d.resolution = gee_dataset["resolution"]
+        if d.resolution is None and "resolution" in gee_dataset[d.band]:
+            d.resolution = gee_dataset[d.band]["resolution"]
 
         if d.start is None or date.fromisoformat(d.start) < date.fromisoformat(
             gee_dataset["start_date"]

@@ -211,91 +211,6 @@
         }
     },
     {
-        "id": "CIESIN/GPWv4/ancillary-data-grids",
-        "name": "GPWv4: Gridded Population of the World Version 4, Ancillary Data Grids [deprecated]",
-        "start_date": "2000-01-01",
-        "end_date": "2020-01-01",
-        "type": "image",
-        "bands": {
-            "water-mask": {
-                "units": null,
-                "resolution": 927.6624232772859
-            },
-            "data-context": {
-                "units": null,
-                "resolution": 927.6624232772793
-            },
-            "mean-administrative-unit-area": {
-                "units": "km^2",
-                "resolution": 927.6624232773394
-            },
-            "national-identifier": {
-                "units": null,
-                "resolution": 927.6624232773394
-            },
-            "land-area": {
-                "units": "km^2",
-                "resolution": 927.662423277286
-            },
-            "water-area": {
-                "units": "km^2",
-                "resolution": 927.662423277286
-            }
-        }
-    },
-    {
-        "id": "CIESIN/GPWv4/population-count",
-        "name": "GPWv4: Gridded Population of the World Version 4, Population Count [deprecated]",
-        "start_date": "2000-01-01",
-        "end_date": "2020-01-01",
-        "type": "image_collection",
-        "bands": {
-            "population-count": {
-                "units": null,
-                "resolution": 927.662423277286
-            }
-        }
-    },
-    {
-        "id": "CIESIN/GPWv4/population-density",
-        "name": "GPWv4: Gridded Population of the World Version 4, Population Density [deprecated]",
-        "start_date": "2000-01-01",
-        "end_date": "2020-01-01",
-        "type": "image_collection",
-        "bands": {
-            "population-density": {
-                "units": null,
-                "resolution": 927.662423277286
-            }
-        }
-    },
-    {
-        "id": "CIESIN/GPWv4/unwpp-adjusted-population-count",
-        "name": "GPWv4: Gridded Population of the World Version 4, UN-Adjusted Population Count [deprecated]",
-        "start_date": "2000-01-01",
-        "end_date": "2020-01-01",
-        "type": "image_collection",
-        "bands": {
-            "population-count": {
-                "units": null,
-                "resolution": 927.662423277286
-            }
-        }
-    },
-    {
-        "id": "CIESIN/GPWv4/unwpp-adjusted-population-density",
-        "name": "GPWv4: Gridded Population of the World Version 4, UN-Adjusted Population Density [deprecated]",
-        "start_date": "2000-01-01",
-        "end_date": "2020-01-01",
-        "type": "image_collection",
-        "bands": {
-            "population-density": {
-                "units": null,
-                "resolution": 927.662423277286
-            }
-        }
-    },
-    {
         "id": "CIESIN/GPWv411/GPW_Basic_Demographic_Characteristics",
         "name": "GPWv411: Basic Demographic Characteristics (Gridded Population of the World Version 4.11)",
         "start_date": "2000-01-01",
@@ -439,19 +354,6 @@
         }
     },
     {
-        "id": "COPERNICUS/CORINE/V18_5_1/100m",
-        "name": "Copernicus CORINE Land Cover [deprecated]",
-        "start_date": "1986-01-01",
-        "end_date": "2012-12-31",
-        "type": "image_collection",
-        "bands": {
-            "landcover": {
-                "units": null,
-                "resolution": 100
-            }
-        }
-    },
-    {
         "id": "COPERNICUS/CORINE/V20/100m",
         "name": "Copernicus CORINE Land Cover",
         "start_date": "1986-01-01",
@@ -465,10 +367,10 @@
         }
     },
     {
-        "id": "COPERNICUS/Landcover/100m/Proba-V/Global",
-        "name": "Copernicus Global Land Cover Layers: CGLS-LC100 collection 2 [deprecated]",
+        "id": "COPERNICUS/Landcover/100m/Proba-V-C3/Global",
+        "name": "Copernicus Global Land Cover Layers: CGLS-LC100 collection 3",
         "start_date": "2015-01-01",
-        "end_date": "2015-01-01",
+        "end_date": "2019-12-31",
         "type": "image_collection",
         "bands": {
             "discrete_classification": {
@@ -527,28 +429,8 @@
                 "units": null,
                 "resolution": 100
             },
-            "bare-coverfraction-stddev": {
-                "units": "%",
-                "resolution": 100
-            },
-            "crops-coverfraction-stddev": {
-                "units": "%",
-                "resolution": 100
-            },
-            "grass-coverfraction-stddev": {
-                "units": "%",
-                "resolution": 100
-            },
-            "moss-coverfraction-stddev": {
-                "units": "%",
-                "resolution": 100
-            },
-            "shrub-coverfraction-stddev": {
-                "units": "%",
-                "resolution": 100
-            },
-            "tree-coverfraction-stddev": {
-                "units": "%",
+            "change-confidence": {
+                "units": null,
                 "resolution": 100
             }
         }
@@ -648,91 +530,91 @@
         "bands": {
             "Oa01_radiance": {
                 "units": "W m^-2 sr^-1 \u03bcm^-1",
-                "resolution": 313.1677541740562
+                "resolution": 193.21728723819726
             },
             "Oa02_radiance": {
                 "units": "W m^-2 sr^-1 \u03bcm^-1",
-                "resolution": 313.1677541740562
+                "resolution": 193.21728723819726
             },
             "Oa03_radiance": {
                 "units": "W m^-2 sr^-1 \u03bcm^-1",
-                "resolution": 313.1677541740562
+                "resolution": 193.21728723819726
             },
             "Oa04_radiance": {
                 "units": "W m^-2 sr^-1 \u03bcm^-1",
-                "resolution": 313.1677541740562
+                "resolution": 193.21728723819726
             },
             "Oa05_radiance": {
                 "units": "W m^-2 sr^-1 \u03bcm^-1",
-                "resolution": 313.1677541740562
+                "resolution": 193.21728723819726
             },
             "Oa06_radiance": {
                 "units": "W m^-2 sr^-1 \u03bcm^-1",
-                "resolution": 313.1677541740562
+                "resolution": 193.21728723819726
             },
             "Oa07_radiance": {
                 "units": "W m^-2 sr^-1 \u03bcm^-1",
-                "resolution": 313.1677541740562
+                "resolution": 193.21728723819726
             },
             "Oa08_radiance": {
                 "units": "W m^-2 sr^-1 \u03bcm^-1",
-                "resolution": 313.1677541740562
+                "resolution": 193.21728723819726
             },
             "Oa09_radiance": {
                 "units": "W m^-2 sr^-1 \u03bcm^-1",
-                "resolution": 313.1677541740562
+                "resolution": 193.21728723819726
             },
             "Oa10_radiance": {
                 "units": "W m^-2 sr^-1 \u03bcm^-1",
-                "resolution": 313.1677541740562
+                "resolution": 193.21728723819726
             },
             "Oa11_radiance": {
                 "units": "W m^-2 sr^-1 \u03bcm^-1",
-                "resolution": 313.1677541740562
+                "resolution": 193.21728723819726
             },
             "Oa12_radiance": {
                 "units": "W m^-2 sr^-1 \u03bcm^-1",
-                "resolution": 313.1677541740562
+                "resolution": 193.21728723819726
             },
             "Oa13_radiance": {
                 "units": "W m^-2 sr^-1 \u03bcm^-1",
-                "resolution": 313.1677541740562
+                "resolution": 193.21728723819726
             },
             "Oa14_radiance": {
                 "units": "W m^-2 sr^-1 \u03bcm^-1",
-                "resolution": 313.1677541740562
+                "resolution": 193.21728723819726
             },
             "Oa15_radiance": {
                 "units": "W m^-2 sr^-1 \u03bcm^-1",
-                "resolution": 313.1677541740562
+                "resolution": 193.21728723819726
             },
             "Oa16_radiance": {
                 "units": "W m^-2 sr^-1 \u03bcm^-1",
-                "resolution": 313.1677541740562
+                "resolution": 193.21728723819726
             },
             "Oa17_radiance": {
                 "units": "W m^-2 sr^-1 \u03bcm^-1",
-                "resolution": 313.1677541740562
+                "resolution": 193.21728723819726
             },
             "Oa18_radiance": {
                 "units": "W m^-2 sr^-1 \u03bcm^-1",
-                "resolution": 313.1677541740562
+                "resolution": 193.21728723819726
             },
             "Oa19_radiance": {
                 "units": "W m^-2 sr^-1 \u03bcm^-1",
-                "resolution": 313.1677541740562
+                "resolution": 193.21728723819726
             },
             "Oa20_radiance": {
                 "units": "W m^-2 sr^-1 \u03bcm^-1",
-                "resolution": 313.1677541740562
+                "resolution": 193.21728723819726
             },
             "Oa21_radiance": {
                 "units": "W m^-2 sr^-1 \u03bcm^-1",
-                "resolution": 313.1677541740562
+                "resolution": 193.21728723819726
             },
             "quality_flags": {
                 "units": null,
-                "resolution": 313.1677541740562
+                "resolution": 193.21728723819726
             }
         }
     },
@@ -2634,795 +2516,795 @@
         "bands": {
             "B008": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B009": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B010": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B011": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B012": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B013": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B014": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B015": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B016": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B017": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B018": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B019": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B020": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B021": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B022": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B023": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B024": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B025": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B026": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B027": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B028": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B029": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B030": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B031": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B032": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B033": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B034": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B035": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B036": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B037": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B038": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B039": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B040": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B041": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B042": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B043": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B044": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B045": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B046": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B047": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B048": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B049": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B050": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B051": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B052": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B053": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B054": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B055": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B056": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B057": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B077": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B078": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B079": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B080": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B081": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B082": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B083": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B084": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B085": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B086": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B087": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B088": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B089": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B090": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B091": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B092": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B093": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B094": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B095": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B096": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B097": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B098": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B099": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B100": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B101": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B102": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B103": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B104": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B105": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B106": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B107": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B108": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B109": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B110": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B111": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B112": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B113": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B114": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B115": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B116": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B117": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B118": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B119": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B120": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B121": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B122": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B123": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B124": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B125": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B126": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B127": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B128": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B129": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B130": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B131": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B132": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B133": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B134": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B135": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B136": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B137": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B138": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B139": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B140": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B141": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B142": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B143": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B144": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B145": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B146": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B147": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B148": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B149": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B150": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B151": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B152": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B153": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B154": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B155": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B156": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B157": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B158": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B159": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B160": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B161": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B162": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B163": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B164": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B165": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B166": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B167": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B168": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B169": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B170": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B171": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B172": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B173": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B174": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B175": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B176": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B177": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B178": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B179": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B180": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B181": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B182": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B183": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B184": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B185": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B186": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B187": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B188": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B189": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B190": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B191": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B192": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B193": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B194": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B195": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B196": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B197": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B198": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B199": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B200": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B201": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B202": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B203": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B204": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B205": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B206": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B207": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B208": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B209": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B210": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B211": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B212": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B213": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B214": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B215": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B216": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B217": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B218": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B219": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B220": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B221": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B222": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B223": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             },
             "B224": {
                 "units": "W/m^2 SR\u00b5m",
-                "resolution": 29.98751535203991
+                "resolution": 29.98722308786945
             }
         }
     },
@@ -3623,19 +3505,6 @@
         }
     },
     {
-        "id": "FORMA/FORMA_500m",
-        "name": "FORMA Global Forest Watch Deforestation Alerts, 500m [deprecated]",
-        "start_date": "2006-01-01",
-        "end_date": "2015-06-10",
-        "type": "image",
-        "bands": {
-            "constant": {
-                "units": "seconds",
-                "resolution": 463.312716528
-            }
-        }
-    },
-    {
         "id": "GFW/GFF/V1/fishing_hours",
         "name": "GFW (Global Fishing Watch) Daily Fishing Hours",
         "start_date": "2012-01-01",
@@ -3698,27 +3567,6 @@
             "trawlers": {
                 "units": "hours/sq. km",
                 "resolution": 1113.1949079327358
-            }
-        }
-    },
-    {
-        "id": "GLCF/GLS_TCC",
-        "name": "GLCF: Landsat Tree Cover Continuous Fields [deprecated]",
-        "start_date": "2000-01-01",
-        "end_date": "2010-12-31",
-        "type": "image_collection",
-        "bands": {
-            "tree_canopy_cover": {
-                "units": "%",
-                "resolution": 30
-            },
-            "uncertainty": {
-                "units": null,
-                "resolution": 30
-            },
-            "source_index": {
-                "units": null,
-                "resolution": 30
             }
         }
     },
@@ -3845,348 +3693,6 @@
             "z": {
                 "units": null,
                 "resolution": 4638.312116386398
-            }
-        }
-    },
-    {
-        "id": "HYCOM/GLBu0_08/sea_surface_elevation",
-        "name": "HYCOM: Hybrid Coordinate Ocean Model, Sea Surface Elevation [deprecated]",
-        "start_date": "1992-10-02",
-        "end_date": "2018-12-09",
-        "type": "image_collection",
-        "bands": {
-            "surface_elevation": {
-                "units": "m",
-                "resolution": 8905.559807134887
-            }
-        }
-    },
-    {
-        "id": "HYCOM/GLBu0_08/sea_water_velocity",
-        "name": "HYCOM: Hybrid Coordinate Ocean Model, Water Velocity [deprecated]",
-        "start_date": "1992-10-02",
-        "end_date": "2018-12-09",
-        "type": "image_collection",
-        "bands": {
-            "velocity_u_0": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_0": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_2": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_2": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_4": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_4": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_6": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_6": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_8": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_8": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_10": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_10": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_12": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_12": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_15": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_15": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_20": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_20": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_25": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_25": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_30": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_30": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_35": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_35": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_40": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_40": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_45": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_45": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_50": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_50": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_60": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_60": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_70": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_70": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_80": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_80": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_90": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_90": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_100": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_100": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_125": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_125": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_150": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_150": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_200": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_200": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_250": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_250": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_300": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_300": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_350": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_350": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_400": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_400": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_500": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_500": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_600": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_600": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_700": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_700": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_800": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_800": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_900": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_900": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_1000": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_1000": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_1250": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_1250": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_1500": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_1500": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_2000": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_2000": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_2500": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_2500": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_3000": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_3000": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_4000": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_4000": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_u_5000": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
-            },
-            "velocity_v_5000": {
-                "units": "m/s",
-                "resolution": 8905.559807134887
             }
         }
     },
@@ -5013,19 +4519,6 @@
         }
     },
     {
-        "id": "IDAHO_EPSCOR/PDSI",
-        "name": "PDSI: University of Idaho Palmer Drought Severity Index [deprecated]",
-        "start_date": "1979-03-01",
-        "end_date": "2020-06-20",
-        "type": "image_collection",
-        "bands": {
-            "pdsi": {
-                "units": null,
-                "resolution": 4638.312116386398
-            }
-        }
-    },
-    {
         "id": "IDAHO_EPSCOR/TERRACLIMATE",
         "name": "TerraClimate:  Monthly Climate and Climatic Water Balance for Global Terrestrial Surfaces, University of Idaho",
         "start_date": "1958-01-01",
@@ -5099,94 +4592,19 @@
         "bands": {
             "B1": {
                 "units": null,
-                "resolution": 10.000000014847958
+                "resolution": 10.000000002757645
             },
             "B2": {
                 "units": null,
-                "resolution": 10.000000014847958
+                "resolution": 10.000000002757645
             },
             "B3": {
                 "units": null,
-                "resolution": 10.000000014847958
+                "resolution": 10.000000002757645
             },
             "B4": {
                 "units": null,
-                "resolution": 10.000000014847958
-            }
-        }
-    },
-    {
-        "id": "JAXA/ALOS/AW3D30/V1_1",
-        "name": "ALOS DSM: Global 30m [deprecated]",
-        "start_date": "2006-01-24",
-        "end_date": "2011-05-12",
-        "type": "image",
-        "bands": {
-            "AVE": {
-                "units": "Meters",
-                "resolution": 30.922080775909325
-            },
-            "MED": {
-                "units": "Meters",
-                "resolution": 30.922080775909325
-            },
-            "AVE_STK": {
-                "units": null,
-                "resolution": 30.922080775909325
-            },
-            "MED_STK": {
-                "units": null,
-                "resolution": 30.922080775909325
-            },
-            "AVE_MSK": {
-                "units": null,
-                "resolution": 30.922080775909325
-            },
-            "MED_MSK": {
-                "units": null,
-                "resolution": 30.922080775909325
-            }
-        }
-    },
-    {
-        "id": "JAXA/ALOS/AW3D30/V2_1",
-        "name": "ALOS DSM: Global 30m [deprecated]",
-        "start_date": "2006-01-24",
-        "end_date": "2011-05-12",
-        "type": "image",
-        "bands": {
-            "AVE_DSM": {
-                "units": null,
-                "resolution": 30.922080775909325
-            },
-            "AVE_STK": {
-                "units": null,
-                "resolution": 30.922080775909325
-            },
-            "AVE_MSK": {
-                "units": null,
-                "resolution": 30.922080775909325
-            }
-        }
-    },
-    {
-        "id": "JAXA/ALOS/AW3D30/V2_2",
-        "name": "ALOS DSM: Global 30m [deprecated]",
-        "start_date": "2006-01-24",
-        "end_date": "2011-05-12",
-        "type": "image",
-        "bands": {
-            "AVE_DSM": {
-                "units": null,
-                "resolution": 30.922080775909325
-            },
-            "AVE_STK": {
-                "units": null,
-                "resolution": 30.922080775909325
-            },
-            "AVE_MSK": {
-                "units": null,
-                "resolution": 30.922080775909325
+                "resolution": 10.000000002757645
             }
         }
     },
@@ -5495,309 +4913,6 @@
         }
     },
     {
-        "id": "JRC/GSW1_0/GlobalSurfaceWater",
-        "name": "JRC Global Surface Water Mapping Layers, v1.0 [deprecated]",
-        "start_date": "1984-03-16",
-        "end_date": "2015-10-18",
-        "type": "image",
-        "bands": {
-            "occurrence": {
-                "units": "%",
-                "resolution": 30.000000000000004
-            },
-            "change_abs": {
-                "units": "%",
-                "resolution": 30.000000000000004
-            },
-            "change_norm": {
-                "units": "%",
-                "resolution": 30.000000000000004
-            },
-            "seasonality": {
-                "units": null,
-                "resolution": 30.000000000000004
-            },
-            "recurrence": {
-                "units": "%",
-                "resolution": 30.000000000000004
-            },
-            "transition": {
-                "units": null,
-                "resolution": 30.000000000000004
-            },
-            "max_extent": {
-                "units": null,
-                "resolution": 30.000000000000004
-            }
-        }
-    },
-    {
-        "id": "JRC/GSW1_0/Metadata",
-        "name": "JRC Global Surface Water Metadata, v1.0 [deprecated]",
-        "start_date": "1984-03-16",
-        "end_date": "2015-10-18",
-        "type": "image",
-        "bands": {
-            "detections": {
-                "units": null,
-                "resolution": 30.000000000000004
-            },
-            "valid_obs": {
-                "units": null,
-                "resolution": 30.000000000000004
-            },
-            "total_obs": {
-                "units": null,
-                "resolution": 30.000000000000004
-            }
-        }
-    },
-    {
-        "id": "JRC/GSW1_0/MonthlyHistory",
-        "name": "JRC Monthly Water History, v1.0 [deprecated]",
-        "start_date": "1984-03-16",
-        "end_date": "2015-10-18",
-        "type": "image_collection",
-        "bands": {
-            "water": {
-                "units": null,
-                "resolution": 30.000000000000004
-            }
-        }
-    },
-    {
-        "id": "JRC/GSW1_0/MonthlyRecurrence",
-        "name": "JRC Monthly Water Recurrence, v1.0 [deprecated]",
-        "start_date": "1984-03-16",
-        "end_date": "2015-10-18",
-        "type": "image_collection",
-        "bands": {
-            "monthly_recurrence": {
-                "units": "%",
-                "resolution": 30.000000000000004
-            },
-            "has_observations": {
-                "units": null,
-                "resolution": 30.000000000000004
-            }
-        }
-    },
-    {
-        "id": "JRC/GSW1_0/YearlyHistory",
-        "name": "JRC Yearly Water Classification History, v1.0 [deprecated]",
-        "start_date": "1984-03-16",
-        "end_date": "2015-10-18",
-        "type": "image_collection",
-        "bands": {
-            "waterClass": {
-                "units": null,
-                "resolution": 30.000000000000004
-            }
-        }
-    },
-    {
-        "id": "JRC/GSW1_1/GlobalSurfaceWater",
-        "name": "JRC Global Surface Water Mapping Layers, v1.1 [deprecated]",
-        "start_date": "1984-03-16",
-        "end_date": "2019-01-01",
-        "type": "image",
-        "bands": {
-            "occurrence": {
-                "units": "%",
-                "resolution": 30.000000000000004
-            },
-            "change_abs": {
-                "units": "%",
-                "resolution": 30.000000000000004
-            },
-            "change_norm": {
-                "units": "%",
-                "resolution": 30.000000000000004
-            },
-            "seasonality": {
-                "units": null,
-                "resolution": 30.000000000000004
-            },
-            "recurrence": {
-                "units": "%",
-                "resolution": 30.000000000000004
-            },
-            "transition": {
-                "units": null,
-                "resolution": 30.000000000000004
-            },
-            "max_extent": {
-                "units": null,
-                "resolution": 30.000000000000004
-            }
-        }
-    },
-    {
-        "id": "JRC/GSW1_1/Metadata",
-        "name": "JRC Global Surface Water Metadata, v1.1 [deprecated]",
-        "start_date": "1984-03-16",
-        "end_date": "2019-01-01",
-        "type": "image",
-        "bands": {
-            "detections": {
-                "units": null,
-                "resolution": 30.000000000000004
-            },
-            "valid_obs": {
-                "units": null,
-                "resolution": 30.000000000000004
-            },
-            "total_obs": {
-                "units": null,
-                "resolution": 30.000000000000004
-            }
-        }
-    },
-    {
-        "id": "JRC/GSW1_1/MonthlyHistory",
-        "name": "JRC Monthly Water History, v1.1 [deprecated]",
-        "start_date": "1984-03-16",
-        "end_date": "2019-01-01",
-        "type": "image_collection",
-        "bands": {
-            "water": {
-                "units": null,
-                "resolution": 30.000000000000004
-            }
-        }
-    },
-    {
-        "id": "JRC/GSW1_1/MonthlyRecurrence",
-        "name": "JRC Monthly Water Recurrence, v1.1 [deprecated]",
-        "start_date": "1984-03-16",
-        "end_date": "2019-01-01",
-        "type": "image_collection",
-        "bands": {
-            "monthly_recurrence": {
-                "units": "%",
-                "resolution": 30.000000000000004
-            },
-            "has_observations": {
-                "units": null,
-                "resolution": 30.000000000000004
-            }
-        }
-    },
-    {
-        "id": "JRC/GSW1_1/YearlyHistory",
-        "name": "JRC Yearly Water Classification History, v1.1 [deprecated]",
-        "start_date": "1984-03-16",
-        "end_date": "2019-01-01",
-        "type": "image_collection",
-        "bands": {
-            "waterClass": {
-                "units": null,
-                "resolution": 30.000000000000004
-            }
-        }
-    },
-    {
-        "id": "JRC/GSW1_2/GlobalSurfaceWater",
-        "name": "JRC Global Surface Water Mapping Layers, v1.2 [deprecated]",
-        "start_date": "1984-03-16",
-        "end_date": "2020-01-01",
-        "type": "image",
-        "bands": {
-            "occurrence": {
-                "units": "%",
-                "resolution": 30.000000000000004
-            },
-            "change_abs": {
-                "units": "%",
-                "resolution": 30.000000000000004
-            },
-            "change_norm": {
-                "units": "%",
-                "resolution": 30.000000000000004
-            },
-            "seasonality": {
-                "units": null,
-                "resolution": 30.000000000000004
-            },
-            "recurrence": {
-                "units": "%",
-                "resolution": 30.000000000000004
-            },
-            "transition": {
-                "units": null,
-                "resolution": 30.000000000000004
-            },
-            "max_extent": {
-                "units": null,
-                "resolution": 30.000000000000004
-            }
-        }
-    },
-    {
-        "id": "JRC/GSW1_2/Metadata",
-        "name": "JRC Global Surface Water Metadata, v1.2 [deprecated]",
-        "start_date": "1984-03-16",
-        "end_date": "2020-01-01",
-        "type": "image",
-        "bands": {
-            "detections": {
-                "units": null,
-                "resolution": 29.999999999999996
-            },
-            "valid_obs": {
-                "units": null,
-                "resolution": 29.999999999999996
-            },
-            "total_obs": {
-                "units": null,
-                "resolution": 29.999999999999996
-            }
-        }
-    },
-    {
-        "id": "JRC/GSW1_2/MonthlyHistory",
-        "name": "JRC Monthly Water History, v1.2 [deprecated]",
-        "start_date": "1984-03-16",
-        "end_date": "2020-01-01",
-        "type": "image_collection",
-        "bands": {
-            "water": {
-                "units": null,
-                "resolution": 30.000000000000004
-            }
-        }
-    },
-    {
-        "id": "JRC/GSW1_2/MonthlyRecurrence",
-        "name": "JRC Monthly Water Recurrence, v1.2 [deprecated]",
-        "start_date": "1984-03-16",
-        "end_date": "2020-01-01",
-        "type": "image_collection",
-        "bands": {
-            "monthly_recurrence": {
-                "units": "%",
-                "resolution": 30.000000000000004
-            },
-            "has_observations": {
-                "units": null,
-                "resolution": 30.000000000000004
-            }
-        }
-    },
-    {
-        "id": "JRC/GSW1_2/YearlyHistory",
-        "name": "JRC Yearly Water Classification History, v1.2 [deprecated]",
-        "start_date": "1984-03-16",
-        "end_date": "2020-01-01",
-        "type": "image_collection",
-        "bands": {
-            "waterClass": {
-                "units": null,
-                "resolution": 30.000000000000004
-            }
-        }
-    },
-    {
         "id": "JRC/GSW1_3/GlobalSurfaceWater",
         "name": "JRC Global Surface Water Mapping Layers, v1.3",
         "start_date": "1984-03-16",
@@ -6102,7 +5217,7 @@
         "bands": {
             "EVT": {
                 "units": null,
-                "resolution": 30
+                "resolution": 30.000000000000004
             }
         }
     },
@@ -6137,7 +5252,24 @@
         "start_date": "1975-01-01",
         "end_date": "1976-01-01",
         "type": "image_collection",
-        "bands": {}
+        "bands": {
+            "10": {
+                "units": null,
+                "resolution": 111319.49079327357
+            },
+            "20": {
+                "units": null,
+                "resolution": 111319.49079327357
+            },
+            "30": {
+                "units": null,
+                "resolution": 111319.49079327357
+            },
+            "40": {
+                "units": null,
+                "resolution": 111319.49079327357
+            }
+        }
     },
     {
         "id": "LANDSAT/GLS2005",
@@ -6560,63 +5692,6 @@
         }
     },
     {
-        "id": "LANDSAT/LC08/C01/T1_SR",
-        "name": "USGS Landsat 8 Surface Reflectance Tier 1 [deprecated]",
-        "start_date": "2013-04-11",
-        "end_date": "2021-07-02",
-        "type": "image_collection",
-        "bands": {
-            "B1": {
-                "units": null,
-                "resolution": 30
-            },
-            "B2": {
-                "units": null,
-                "resolution": 30
-            },
-            "B3": {
-                "units": null,
-                "resolution": 30
-            },
-            "B4": {
-                "units": null,
-                "resolution": 30
-            },
-            "B5": {
-                "units": null,
-                "resolution": 30
-            },
-            "B6": {
-                "units": null,
-                "resolution": 30
-            },
-            "B7": {
-                "units": null,
-                "resolution": 30
-            },
-            "B10": {
-                "units": "Kelvin",
-                "resolution": 30
-            },
-            "B11": {
-                "units": "Kelvin",
-                "resolution": 30
-            },
-            "sr_aerosol": {
-                "units": null,
-                "resolution": 30
-            },
-            "pixel_qa": {
-                "units": null,
-                "resolution": 30
-            },
-            "radsat_qa": {
-                "units": null,
-                "resolution": 30
-            }
-        }
-    },
-    {
         "id": "LANDSAT/LC08/C01/T1_TOA",
         "name": "USGS Landsat 8 Collection 1 Tier 1 TOA Reflectance",
         "start_date": "2013-04-11",
@@ -6725,63 +5800,6 @@
                 "resolution": 30
             },
             "BQA": {
-                "units": null,
-                "resolution": 30
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LC08/C01/T2_SR",
-        "name": "USGS Landsat 8 Surface Reflectance Tier 2 [deprecated]",
-        "start_date": "2013-04-11",
-        "end_date": "2021-07-02",
-        "type": "image_collection",
-        "bands": {
-            "B1": {
-                "units": null,
-                "resolution": 30
-            },
-            "B2": {
-                "units": null,
-                "resolution": 30
-            },
-            "B3": {
-                "units": null,
-                "resolution": 30
-            },
-            "B4": {
-                "units": null,
-                "resolution": 30
-            },
-            "B5": {
-                "units": null,
-                "resolution": 30
-            },
-            "B6": {
-                "units": null,
-                "resolution": 30
-            },
-            "B7": {
-                "units": null,
-                "resolution": 30
-            },
-            "B10": {
-                "units": "Kelvin",
-                "resolution": 30
-            },
-            "B11": {
-                "units": "Kelvin",
-                "resolution": 30
-            },
-            "sr_aerosol": {
-                "units": null,
-                "resolution": 30
-            },
-            "pixel_qa": {
-                "units": null,
-                "resolution": 30
-            },
-            "radsat_qa": {
                 "units": null,
                 "resolution": 30
             }
@@ -6924,467 +5942,6 @@
                 "resolution": 30
             },
             "QA_RADSAT": {
-                "units": null,
-                "resolution": 30
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LC8",
-        "name": "USGS Landsat 8 Raw Scenes [deprecated]",
-        "start_date": "2013-04-11",
-        "end_date": "2017-04-30",
-        "type": "image_collection",
-        "bands": {
-            "B1": {
-                "units": null,
-                "resolution": 30
-            },
-            "B2": {
-                "units": null,
-                "resolution": 30
-            },
-            "B3": {
-                "units": null,
-                "resolution": 30
-            },
-            "B4": {
-                "units": null,
-                "resolution": 30
-            },
-            "B5": {
-                "units": null,
-                "resolution": 30
-            },
-            "B6": {
-                "units": null,
-                "resolution": 30
-            },
-            "B7": {
-                "units": null,
-                "resolution": 30
-            },
-            "B8": {
-                "units": null,
-                "resolution": 15
-            },
-            "B9": {
-                "units": null,
-                "resolution": 30
-            },
-            "B10": {
-                "units": null,
-                "resolution": 30
-            },
-            "B11": {
-                "units": null,
-                "resolution": 30
-            },
-            "BQA": {
-                "units": null,
-                "resolution": 30
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LC8_L1T",
-        "name": "USGS Landsat 8 Raw Scenes (Orthorectified) [deprecated]",
-        "start_date": "2013-04-11",
-        "end_date": "2017-04-30",
-        "type": "image_collection",
-        "bands": {
-            "B1": {
-                "units": null,
-                "resolution": 30
-            },
-            "B2": {
-                "units": null,
-                "resolution": 30
-            },
-            "B3": {
-                "units": null,
-                "resolution": 30
-            },
-            "B4": {
-                "units": null,
-                "resolution": 30
-            },
-            "B5": {
-                "units": null,
-                "resolution": 30
-            },
-            "B6": {
-                "units": null,
-                "resolution": 30
-            },
-            "B7": {
-                "units": null,
-                "resolution": 30
-            },
-            "B8": {
-                "units": null,
-                "resolution": 15
-            },
-            "B9": {
-                "units": null,
-                "resolution": 30
-            },
-            "B10": {
-                "units": null,
-                "resolution": 30
-            },
-            "B11": {
-                "units": null,
-                "resolution": 30
-            },
-            "BQA": {
-                "units": null,
-                "resolution": 30
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_32DAY_BAI",
-        "name": "Landsat 8 32-Day BAI Composite [deprecated]",
-        "start_date": "2013-04-07",
-        "end_date": "2017-05-09",
-        "type": "image_collection",
-        "bands": {
-            "BAI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_32DAY_EVI",
-        "name": "Landsat 8 32-Day EVI Composite [deprecated]",
-        "start_date": "2013-04-07",
-        "end_date": "2017-05-09",
-        "type": "image_collection",
-        "bands": {
-            "EVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_32DAY_NBRT",
-        "name": "Landsat 8 32-Day NBRT Composite [deprecated]",
-        "start_date": "2013-04-07",
-        "end_date": "2017-05-09",
-        "type": "image_collection",
-        "bands": {
-            "NBRT": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_32DAY_NDSI",
-        "name": "Landsat 8 32-Day NDSI Composite [deprecated]",
-        "start_date": "2013-04-07",
-        "end_date": "2017-05-09",
-        "type": "image_collection",
-        "bands": {
-            "NDSI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_32DAY_NDVI",
-        "name": "Landsat 8 32-Day NDVI Composite [deprecated]",
-        "start_date": "2013-04-07",
-        "end_date": "2017-05-09",
-        "type": "image_collection",
-        "bands": {
-            "NDVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_32DAY_NDWI",
-        "name": "Landsat 8 32-Day NDWI Composite [deprecated]",
-        "start_date": "2013-04-07",
-        "end_date": "2017-05-09",
-        "type": "image_collection",
-        "bands": {
-            "NDWI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_32DAY_RAW",
-        "name": "Landsat 8 32-Day Raw Composite [deprecated]",
-        "start_date": "2013-04-07",
-        "end_date": "2017-05-09",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_32DAY_TOA",
-        "name": "Landsat 8 32-Day TOA Reflectance Composite [deprecated]",
-        "start_date": "2013-04-07",
-        "end_date": "2017-05-09",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_8DAY_BAI",
-        "name": "Landsat 8 8-Day BAI Composite [deprecated]",
-        "start_date": "2013-04-07",
-        "end_date": "2017-05-01",
-        "type": "image_collection",
-        "bands": {
-            "BAI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_8DAY_EVI",
-        "name": "Landsat 8 8-Day EVI Composite [deprecated]",
-        "start_date": "2013-04-07",
-        "end_date": "2017-05-01",
-        "type": "image_collection",
-        "bands": {
-            "EVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_8DAY_NBRT",
-        "name": "Landsat 8 8-Day NBRT Composite [deprecated]",
-        "start_date": "2013-04-07",
-        "end_date": "2017-05-01",
-        "type": "image_collection",
-        "bands": {
-            "NBRT": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_8DAY_NDSI",
-        "name": "Landsat 8 8-Day NDSI Composite [deprecated]",
-        "start_date": "2013-04-07",
-        "end_date": "2017-05-01",
-        "type": "image_collection",
-        "bands": {
-            "NDSI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_8DAY_NDVI",
-        "name": "Landsat 8 8-Day NDVI Composite [deprecated]",
-        "start_date": "2013-04-07",
-        "end_date": "2017-05-01",
-        "type": "image_collection",
-        "bands": {
-            "NDVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_8DAY_NDWI",
-        "name": "Landsat 8 8-Day NDWI Composite [deprecated]",
-        "start_date": "2013-04-07",
-        "end_date": "2017-05-01",
-        "type": "image_collection",
-        "bands": {
-            "NDWI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_8DAY_RAW",
-        "name": "Landsat 8 8-Day Raw Composite [deprecated]",
-        "start_date": "2013-04-07",
-        "end_date": "2017-05-01",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_8DAY_TOA",
-        "name": "Landsat 8 8-Day TOA Reflectance Composite [deprecated]",
-        "start_date": "2013-04-07",
-        "end_date": "2017-05-01",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_ANNUAL_BAI",
-        "name": "Landsat 8 Annual BAI Composite [deprecated]",
-        "start_date": "2013-01-01",
-        "end_date": "2018-01-01",
-        "type": "image_collection",
-        "bands": {
-            "BAI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_ANNUAL_EVI",
-        "name": "Landsat 8 Annual EVI Composite [deprecated]",
-        "start_date": "2013-01-01",
-        "end_date": "2018-01-01",
-        "type": "image_collection",
-        "bands": {
-            "EVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_ANNUAL_GREENEST_TOA",
-        "name": "Landsat 8 Annual Greenest-Pixel TOA Reflectance Composite [deprecated]",
-        "start_date": "2013-04-11",
-        "end_date": "2017-04-30",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_ANNUAL_NBRT",
-        "name": "Landsat 8 Annual NBRT Composite [deprecated]",
-        "start_date": "2013-01-01",
-        "end_date": "2018-01-01",
-        "type": "image_collection",
-        "bands": {
-            "NBRT": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_ANNUAL_NDSI",
-        "name": "Landsat 8 Annual NDSI Composite [deprecated]",
-        "start_date": "2013-01-01",
-        "end_date": "2018-01-01",
-        "type": "image_collection",
-        "bands": {
-            "NDSI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_ANNUAL_NDVI",
-        "name": "Landsat 8 Annual NDVI Composite [deprecated]",
-        "start_date": "2013-01-01",
-        "end_date": "2018-01-01",
-        "type": "image_collection",
-        "bands": {
-            "NDVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_ANNUAL_NDWI",
-        "name": "Landsat 8 Annual NDWI Composite [deprecated]",
-        "start_date": "2013-01-01",
-        "end_date": "2018-01-01",
-        "type": "image_collection",
-        "bands": {
-            "NDWI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_ANNUAL_RAW",
-        "name": "Landsat 8 Annual Raw Composite [deprecated]",
-        "start_date": "2013-01-01",
-        "end_date": "2018-01-01",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_ANNUAL_TOA",
-        "name": "Landsat 8 Annual TOA Reflectance Composite [deprecated]",
-        "start_date": "2013-01-01",
-        "end_date": "2018-01-01",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LC8_L1T_TOA",
-        "name": "USGS Landsat 8 TOA Reflectance (Orthorectified) [deprecated]",
-        "start_date": "2013-04-11",
-        "end_date": "2017-04-30",
-        "type": "image_collection",
-        "bands": {
-            "B1": {
-                "units": null,
-                "resolution": 30
-            },
-            "B2": {
-                "units": null,
-                "resolution": 30
-            },
-            "B3": {
-                "units": null,
-                "resolution": 30
-            },
-            "B4": {
-                "units": null,
-                "resolution": 30
-            },
-            "B5": {
-                "units": null,
-                "resolution": 30
-            },
-            "B6": {
-                "units": null,
-                "resolution": 30
-            },
-            "B7": {
-                "units": null,
-                "resolution": 30
-            },
-            "B8": {
-                "units": null,
-                "resolution": 15
-            },
-            "B9": {
-                "units": null,
-                "resolution": 30
-            },
-            "B10": {
-                "units": null,
-                "resolution": 30
-            },
-            "B11": {
-                "units": null,
-                "resolution": 30
-            },
-            "BQA": {
                 "units": null,
                 "resolution": 30
             }
@@ -8074,296 +6631,6 @@
                 "resolution": 30
             }
         }
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_32DAY_BAI",
-        "name": "Landsat 7 32-Day BAI Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2017-05-09",
-        "type": "image_collection",
-        "bands": {
-            "BAI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_32DAY_EVI",
-        "name": "Landsat 7 32-Day EVI Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2017-05-09",
-        "type": "image_collection",
-        "bands": {
-            "EVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_32DAY_NBRT",
-        "name": "Landsat 7 32-Day NBRT Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2017-05-09",
-        "type": "image_collection",
-        "bands": {
-            "NBRT": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_32DAY_NDSI",
-        "name": "Landsat 7 32-Day NDSI Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2017-05-09",
-        "type": "image_collection",
-        "bands": {
-            "NDSI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_32DAY_NDVI",
-        "name": "Landsat 7 32-Day NDVI Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2017-05-09",
-        "type": "image_collection",
-        "bands": {
-            "NDVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_32DAY_NDWI",
-        "name": "Landsat 7 32-Day NDWI Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2017-05-09",
-        "type": "image_collection",
-        "bands": {
-            "NDWI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_32DAY_RAW",
-        "name": "Landsat 7 32-Day Raw Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2017-05-09",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_32DAY_TOA",
-        "name": "Landsat 7 32-Day TOA Reflectance Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2017-05-09",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_8DAY_BAI",
-        "name": "Landsat 7 8-Day BAI Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2017-05-01",
-        "type": "image_collection",
-        "bands": {
-            "BAI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_8DAY_EVI",
-        "name": "Landsat 7 8-Day EVI Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2017-05-01",
-        "type": "image_collection",
-        "bands": {
-            "EVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_8DAY_NBRT",
-        "name": "Landsat 7 8-Day NBRT Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2017-05-01",
-        "type": "image_collection",
-        "bands": {
-            "NBRT": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_8DAY_NDSI",
-        "name": "Landsat 7 8-Day NDSI Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2017-05-01",
-        "type": "image_collection",
-        "bands": {
-            "NDSI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_8DAY_NDVI",
-        "name": "Landsat 7 8-Day NDVI Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2017-05-01",
-        "type": "image_collection",
-        "bands": {
-            "NDVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_8DAY_NDWI",
-        "name": "Landsat 7 8-Day NDWI Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2017-05-01",
-        "type": "image_collection",
-        "bands": {
-            "NDWI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_8DAY_RAW",
-        "name": "Landsat 7 8-Day Raw Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2017-05-01",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_8DAY_TOA",
-        "name": "Landsat 7 8-Day TOA Reflectance Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2017-05-01",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_ANNUAL_BAI",
-        "name": "Landsat 7 Annual BAI Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2018-01-01",
-        "type": "image_collection",
-        "bands": {
-            "BAI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_ANNUAL_EVI",
-        "name": "Landsat 7 Annual EVI Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2018-01-01",
-        "type": "image_collection",
-        "bands": {
-            "EVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_ANNUAL_GREENEST_TOA",
-        "name": "Landsat 7 Annual Greenest-Pixel TOA Reflectance Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2017-04-30",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_ANNUAL_NBRT",
-        "name": "Landsat 7 Annual NBRT Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2018-01-01",
-        "type": "image_collection",
-        "bands": {
-            "NBRT": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_ANNUAL_NDSI",
-        "name": "Landsat 7 Annual NDSI Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2018-01-01",
-        "type": "image_collection",
-        "bands": {
-            "NDSI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_ANNUAL_NDVI",
-        "name": "Landsat 7 Annual NDVI Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2018-01-01",
-        "type": "image_collection",
-        "bands": {
-            "NDVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_ANNUAL_NDWI",
-        "name": "Landsat 7 Annual NDWI Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2018-01-01",
-        "type": "image_collection",
-        "bands": {
-            "NDWI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_ANNUAL_RAW",
-        "name": "Landsat 7 Annual Raw Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2018-01-01",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LE7_L1T_ANNUAL_TOA",
-        "name": "Landsat 7 Annual TOA Reflectance Composite [deprecated]",
-        "start_date": "1999-01-01",
-        "end_date": "2018-01-01",
-        "type": "image_collection",
-        "bands": {}
     },
     {
         "id": "LANDSAT/LE7_TOA_1YEAR",
@@ -9862,570 +8129,6 @@
         }
     },
     {
-        "id": "LANDSAT/LT4_L1T_32DAY_BAI",
-        "name": "Landsat 4 TM 32-Day BAI Composite [deprecated]",
-        "start_date": "1982-08-13",
-        "end_date": "1993-12-19",
-        "type": "image_collection",
-        "bands": {
-            "BAI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_32DAY_EVI",
-        "name": "Landsat 4 TM 32-Day EVI Composite [deprecated]",
-        "start_date": "1982-08-13",
-        "end_date": "1993-12-19",
-        "type": "image_collection",
-        "bands": {
-            "EVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_32DAY_NBRT",
-        "name": "Landsat 4 TM 32-Day NBRT Composite [deprecated]",
-        "start_date": "1982-08-13",
-        "end_date": "1993-12-19",
-        "type": "image_collection",
-        "bands": {
-            "NBRT": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_32DAY_NDSI",
-        "name": "Landsat 4 TM 32-Day NDSI Composite [deprecated]",
-        "start_date": "1982-08-13",
-        "end_date": "1993-12-19",
-        "type": "image_collection",
-        "bands": {
-            "NDSI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_32DAY_NDVI",
-        "name": "Landsat 4 TM 32-Day NDVI Composite [deprecated]",
-        "start_date": "1982-08-13",
-        "end_date": "1993-12-19",
-        "type": "image_collection",
-        "bands": {
-            "NDVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_32DAY_NDWI",
-        "name": "Landsat 4 TM 32-Day NDWI Composite [deprecated]",
-        "start_date": "1982-08-13",
-        "end_date": "1993-12-19",
-        "type": "image_collection",
-        "bands": {
-            "NDWI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_32DAY_RAW",
-        "name": "Landsat 4 TM 32-Day Raw Composite [deprecated]",
-        "start_date": "1982-08-13",
-        "end_date": "1993-12-19",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_32DAY_TOA",
-        "name": "Landsat 4 TM 32-Day TOA Reflectance Composite [deprecated]",
-        "start_date": "1982-08-13",
-        "end_date": "1993-12-19",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_8DAY_BAI",
-        "name": "Landsat 4 TM 8-Day BAI Composite [deprecated]",
-        "start_date": "1982-08-21",
-        "end_date": "1993-12-19",
-        "type": "image_collection",
-        "bands": {
-            "BAI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_8DAY_EVI",
-        "name": "Landsat 4 TM 8-Day EVI Composite [deprecated]",
-        "start_date": "1982-08-21",
-        "end_date": "1993-12-19",
-        "type": "image_collection",
-        "bands": {
-            "EVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_8DAY_NBRT",
-        "name": "Landsat 4 TM 8-Day NBRT Composite [deprecated]",
-        "start_date": "1982-08-21",
-        "end_date": "1993-12-19",
-        "type": "image_collection",
-        "bands": {
-            "NBRT": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_8DAY_NDSI",
-        "name": "Landsat 4 TM 8-Day NDSI Composite [deprecated]",
-        "start_date": "1982-08-21",
-        "end_date": "1993-12-19",
-        "type": "image_collection",
-        "bands": {
-            "NDSI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_8DAY_NDVI",
-        "name": "Landsat 4 TM 8-Day NDVI Composite [deprecated]",
-        "start_date": "1982-08-21",
-        "end_date": "1993-12-19",
-        "type": "image_collection",
-        "bands": {
-            "NDVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_8DAY_NDWI",
-        "name": "Landsat 4 TM 8-Day NDWI Composite [deprecated]",
-        "start_date": "1982-08-21",
-        "end_date": "1993-12-19",
-        "type": "image_collection",
-        "bands": {
-            "NDWI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_8DAY_RAW",
-        "name": "Landsat 4 TM 8-Day Raw Composite [deprecated]",
-        "start_date": "1982-08-21",
-        "end_date": "1993-12-19",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_8DAY_TOA",
-        "name": "Landsat 4 TM 8-Day TOA Reflectance Composite [deprecated]",
-        "start_date": "1982-08-21",
-        "end_date": "1993-12-19",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_ANNUAL_BAI",
-        "name": "Landsat 4 TM Annual BAI Composite [deprecated]",
-        "start_date": "1982-01-01",
-        "end_date": "1994-01-01",
-        "type": "image_collection",
-        "bands": {
-            "BAI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_ANNUAL_EVI",
-        "name": "Landsat 4 TM Annual EVI Composite [deprecated]",
-        "start_date": "1982-01-01",
-        "end_date": "1994-01-01",
-        "type": "image_collection",
-        "bands": {
-            "EVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_ANNUAL_NBRT",
-        "name": "Landsat 4 TM Annual NBRT Composite [deprecated]",
-        "start_date": "1982-01-01",
-        "end_date": "1994-01-01",
-        "type": "image_collection",
-        "bands": {
-            "NBRT": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_ANNUAL_NDSI",
-        "name": "Landsat 4 TM Annual NDSI Composite [deprecated]",
-        "start_date": "1982-01-01",
-        "end_date": "1994-01-01",
-        "type": "image_collection",
-        "bands": {
-            "NDSI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_ANNUAL_NDVI",
-        "name": "Landsat 4 TM Annual NDVI Composite [deprecated]",
-        "start_date": "1982-01-01",
-        "end_date": "1994-01-01",
-        "type": "image_collection",
-        "bands": {
-            "NDVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_ANNUAL_NDWI",
-        "name": "Landsat 4 TM Annual NDWI Composite [deprecated]",
-        "start_date": "1982-01-01",
-        "end_date": "1994-01-01",
-        "type": "image_collection",
-        "bands": {
-            "NDWI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_ANNUAL_RAW",
-        "name": "Landsat 4 TM Annual Raw Composite [deprecated]",
-        "start_date": "1982-01-01",
-        "end_date": "1994-01-01",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LT4_L1T_ANNUAL_TOA",
-        "name": "Landsat 4 TM Annual TOA Reflectance Composite [deprecated]",
-        "start_date": "1982-01-01",
-        "end_date": "1994-01-01",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_32DAY_BAI",
-        "name": "Landsat 5 TM 32-Day BAI Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2012-05-08",
-        "type": "image_collection",
-        "bands": {
-            "BAI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_32DAY_EVI",
-        "name": "Landsat 5 TM 32-Day EVI Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2012-05-08",
-        "type": "image_collection",
-        "bands": {
-            "EVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_32DAY_NBRT",
-        "name": "Landsat 5 TM 32-Day NBRT Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2012-05-08",
-        "type": "image_collection",
-        "bands": {
-            "NBRT": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_32DAY_NDSI",
-        "name": "Landsat 5 TM 32-Day NDSI Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2012-05-08",
-        "type": "image_collection",
-        "bands": {
-            "NDSI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_32DAY_NDVI",
-        "name": "Landsat 5 TM 32-Day NDVI Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2012-05-08",
-        "type": "image_collection",
-        "bands": {
-            "NDVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_32DAY_NDWI",
-        "name": "Landsat 5 TM 32-Day NDWI Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2012-05-08",
-        "type": "image_collection",
-        "bands": {
-            "NDWI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_32DAY_RAW",
-        "name": "Landsat 5 TM 32-Day Raw Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2012-05-08",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_32DAY_TOA",
-        "name": "Landsat 5 TM 32-Day TOA Reflectance Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2012-05-08",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_8DAY_BAI",
-        "name": "Landsat 5 TM 8-Day BAI Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2012-05-08",
-        "type": "image_collection",
-        "bands": {
-            "BAI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_8DAY_EVI",
-        "name": "Landsat 5 TM 8-Day EVI Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2012-05-08",
-        "type": "image_collection",
-        "bands": {
-            "EVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_8DAY_NBRT",
-        "name": "Landsat 5 TM 8-Day NBRT Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2012-05-08",
-        "type": "image_collection",
-        "bands": {
-            "NBRT": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_8DAY_NDSI",
-        "name": "Landsat 5 TM 8-Day NDSI Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2012-05-08",
-        "type": "image_collection",
-        "bands": {
-            "NDSI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_8DAY_NDVI",
-        "name": "Landsat 5 TM 8-Day NDVI Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2012-05-08",
-        "type": "image_collection",
-        "bands": {
-            "NDVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_8DAY_NDWI",
-        "name": "Landsat 5 TM 8-Day NDWI Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2012-05-08",
-        "type": "image_collection",
-        "bands": {
-            "NDWI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_8DAY_RAW",
-        "name": "Landsat 5 TM 8-Day Raw Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2012-05-08",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_8DAY_TOA",
-        "name": "Landsat 5 TM 8-Day TOA Reflectance Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2012-05-08",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_ANNUAL_BAI",
-        "name": "Landsat 5 TM Annual BAI Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2013-01-01",
-        "type": "image_collection",
-        "bands": {
-            "BAI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_ANNUAL_EVI",
-        "name": "Landsat 5 TM Annual EVI Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2013-01-01",
-        "type": "image_collection",
-        "bands": {
-            "EVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_ANNUAL_NBRT",
-        "name": "Landsat 5 TM Annual NBRT Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2013-01-01",
-        "type": "image_collection",
-        "bands": {
-            "NBRT": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_ANNUAL_NDSI",
-        "name": "Landsat 5 TM Annual NDSI Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2013-01-01",
-        "type": "image_collection",
-        "bands": {
-            "NDSI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_ANNUAL_NDVI",
-        "name": "Landsat 5 TM Annual NDVI Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2013-01-01",
-        "type": "image_collection",
-        "bands": {
-            "NDVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_ANNUAL_NDWI",
-        "name": "Landsat 5 TM Annual NDWI Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2013-01-01",
-        "type": "image_collection",
-        "bands": {
-            "NDWI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_ANNUAL_RAW",
-        "name": "Landsat 5 TM Annual Raw Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2013-01-01",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "LANDSAT/LT5_L1T_ANNUAL_TOA",
-        "name": "Landsat 5 TM Annual TOA Reflectance Composite [deprecated]",
-        "start_date": "1984-01-01",
-        "end_date": "2013-01-01",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
         "id": "LANDSAT/MANGROVE_FORESTS",
         "name": "Global Mangrove Forests Distribution, v1 (2000)",
         "start_date": "2000-01-01",
@@ -11360,55 +9063,6 @@
         }
     },
     {
-        "id": "MODIS/006/MOD08_M3",
-        "name": "MOD08_M3.006 Terra Aerosol Cloud Water Vapor Ozone Monthly Global Product 1Deg CMG [deprecated]",
-        "start_date": "2000-03-01",
-        "end_date": "2018-04-01",
-        "type": "image_collection",
-        "bands": {
-            "Aerosol_Optical_Depth_Land_Ocean_Mean_Mean": {
-                "units": null,
-                "resolution": 111319.49079327357
-            },
-            "Aerosol_Optical_Depth_Land_Ocean_Std_Deviation_Mean": {
-                "units": null,
-                "resolution": 111319.49079327357
-            },
-            "Aerosol_Optical_Depth_Land_QA_Mean_Mean_470": {
-                "units": null,
-                "resolution": 111319.49079327357
-            },
-            "Aerosol_Optical_Depth_Land_QA_Std_Deviation_Mean_470": {
-                "units": null,
-                "resolution": 111319.49079327357
-            },
-            "Cirrus_Fraction_SWIR_FMean": {
-                "units": null,
-                "resolution": 111319.49079327357
-            },
-            "Cirrus_Fraction_SWIR_FStd": {
-                "units": null,
-                "resolution": 111319.49079327357
-            },
-            "Cloud_Optical_Thickness_Liquid_Log_Mean_Mean": {
-                "units": null,
-                "resolution": 111319.49079327357
-            },
-            "Cloud_Optical_Thickness_Liquid_Log_Std_Deviation_Mean": {
-                "units": null,
-                "resolution": 111319.49079327357
-            },
-            "Cloud_Optical_Thickness_Liquid_Mean_Uncertainty": {
-                "units": null,
-                "resolution": 111319.49079327357
-            },
-            "Cloud_Optical_Thickness_Liquid_Log_Mean_Uncertainty": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
         "id": "MODIS/006/MOD09A1",
         "name": "MOD09A1.006 Terra Surface Reflectance 8-Day Global 500m",
         "start_date": "2000-03-05",
@@ -12088,23 +9742,6 @@
         }
     },
     {
-        "id": "MODIS/006/MOD17A3H",
-        "name": "MOD17A3H.006: Terra Net Primary Production Yearly Global 500m [deprecated]",
-        "start_date": "2000-01-01",
-        "end_date": "2014-01-01",
-        "type": "image_collection",
-        "bands": {
-            "Npp": {
-                "units": "kg*C/m^2",
-                "resolution": 463.31271652770823
-            },
-            "Npp_QC": {
-                "units": null,
-                "resolution": 463.31271652770823
-            }
-        }
-    },
-    {
         "id": "MODIS/006/MOD17A3HGF",
         "name": "MOD17A3HGF.006: Terra Net Primary Production  Gap-Filled Yearly Global 500m",
         "start_date": "2001-01-01",
@@ -12172,55 +9809,6 @@
             "water_mask_QA": {
                 "units": null,
                 "resolution": 231.656358264
-            }
-        }
-    },
-    {
-        "id": "MODIS/006/MYD08_M3",
-        "name": "MYD08_M3.006 Aqua Aerosol Cloud Water Vapor Ozone Monthly Global Product 1Deg CMG [deprecated]",
-        "start_date": "2002-07-04",
-        "end_date": "2018-04-01",
-        "type": "image_collection",
-        "bands": {
-            "Aerosol_Optical_Depth_Land_Ocean_Mean_Mean": {
-                "units": null,
-                "resolution": 111319.49079327357
-            },
-            "Aerosol_Optical_Depth_Land_Ocean_Std_Deviation_Mean": {
-                "units": null,
-                "resolution": 111319.49079327357
-            },
-            "Aerosol_Optical_Depth_Land_QA_Mean_Mean_470": {
-                "units": null,
-                "resolution": 111319.49079327357
-            },
-            "Aerosol_Optical_Depth_Land_QA_Std_Deviation_Mean_470": {
-                "units": null,
-                "resolution": 111319.49079327357
-            },
-            "Cirrus_Fraction_SWIR_FMean": {
-                "units": null,
-                "resolution": 111319.49079327357
-            },
-            "Cirrus_Fraction_SWIR_FStd": {
-                "units": null,
-                "resolution": 111319.49079327357
-            },
-            "Cloud_Optical_Thickness_Liquid_Log_Mean_Mean": {
-                "units": null,
-                "resolution": 111319.49079327357
-            },
-            "Cloud_Optical_Thickness_Liquid_Log_Std_Deviation_Mean": {
-                "units": null,
-                "resolution": 111319.49079327357
-            },
-            "Cloud_Optical_Thickness_Liquid_Mean_Uncertainty": {
-                "units": null,
-                "resolution": 111319.49079327357
-            },
-            "Cloud_Optical_Thickness_Liquid_Log_Mean_Uncertainty": {
-                "units": null,
-                "resolution": 111319.49079327357
             }
         }
     },
@@ -12875,23 +10463,6 @@
         }
     },
     {
-        "id": "MODIS/006/MYD17A3H",
-        "name": "MYD17A3H.006: Aqua Net Primary Production Yearly Global 500m [deprecated]",
-        "start_date": "2002-07-04",
-        "end_date": "2014-01-01",
-        "type": "image_collection",
-        "bands": {
-            "Npp": {
-                "units": "kg*C/m^2",
-                "resolution": 463.31271652770823
-            },
-            "Npp_QC": {
-                "units": null,
-                "resolution": 463.31271652770823
-            }
-        }
-    },
-    {
         "id": "MODIS/006/MYD17A3HGF",
         "name": "MYD17A3HGF.006: Aqua Net Primary Production  Gap-Filled Yearly Global 500m",
         "start_date": "2002-07-04",
@@ -12905,27 +10476,6 @@
             "Npp_QC": {
                 "units": "%",
                 "resolution": 463.31271652770823
-            }
-        }
-    },
-    {
-        "id": "MODIS/055/MOD17A3",
-        "name": "MOD17A3.055: Terra Net Primary Production Yearly Global 1km [deprecated]",
-        "start_date": "2000-01-01",
-        "end_date": "2015-01-01",
-        "type": "image_collection",
-        "bands": {
-            "Gpp": {
-                "units": "kg*C/m^2",
-                "resolution": 926.6254330555
-            },
-            "Npp": {
-                "units": "kg*C/m^2",
-                "resolution": 926.6254330555
-            },
-            "Gpp_Npp_QC": {
-                "units": "%",
-                "resolution": 926.6254330555
             }
         }
     },
@@ -13028,30 +10578,6 @@
         }
     },
     {
-        "id": "MODIS/MCD43A1",
-        "name": "MCD43A1.005 BRDF-Albedo Model Parameters 16-Day L3 Global 500m [deprecated]",
-        "start_date": "2000-02-18",
-        "end_date": "2017-03-14",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MCD43A2",
-        "name": "MCD43A2.005 BRDF-Albedo Quality 16-Day Global 500m [deprecated]",
-        "start_date": "2000-02-18",
-        "end_date": "2017-03-14",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MCD43A4",
-        "name": "MCD43A4.005 BRDF-Adjusted Reflectance 16-Day Global 500m [deprecated]",
-        "start_date": "2000-02-18",
-        "end_date": "2017-03-14",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
         "id": "MODIS/MCD43A4_006_BAI",
         "name": "MODIS Combined 16-Day BAI",
         "start_date": "2000-02-18",
@@ -13088,62 +10614,6 @@
         "name": "MODIS Combined 16-Day NDWI",
         "start_date": "2000-02-18",
         "end_date": "2021-07-03",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MCD43A4_BAI",
-        "name": "MODIS Combined 16-Day BAI [deprecated]",
-        "start_date": "2000-02-18",
-        "end_date": "2017-03-14",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MCD43A4_EVI",
-        "name": "MODIS Combined 16-Day EVI [deprecated]",
-        "start_date": "2000-02-18",
-        "end_date": "2017-03-14",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MCD43A4_NDSI",
-        "name": "MODIS Combined 16-Day NDSI [deprecated]",
-        "start_date": "2000-02-18",
-        "end_date": "2017-03-14",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MCD43A4_NDVI",
-        "name": "MODIS Combined 16-Day NDVI [deprecated]",
-        "start_date": "2000-02-18",
-        "end_date": "2017-03-14",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MCD43A4_NDWI",
-        "name": "MODIS Combined 16-Day NDWI [deprecated]",
-        "start_date": "2000-02-18",
-        "end_date": "2017-03-14",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MOD09A1",
-        "name": "MOD09A1.005 Surface Reflectance 8-Day Global 500m [deprecated]",
-        "start_date": "2000-03-05",
-        "end_date": "2017-03-22",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MOD09GA",
-        "name": "MOD09GA.005 Terra Surface Reflectance Daily L2G Global 1km and 500m [deprecated]",
-        "start_date": "2000-02-24",
-        "end_date": "2017-03-30",
         "type": "image_collection",
         "bands": {}
     },
@@ -13188,119 +10658,6 @@
         "bands": {}
     },
     {
-        "id": "MODIS/MOD09GA_BAI",
-        "name": "MODIS Terra Daily BAI [deprecated]",
-        "start_date": "2000-02-24",
-        "end_date": "2017-03-30",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MOD09GA_EVI",
-        "name": "MODIS Terra Daily EVI [deprecated]",
-        "start_date": "2000-02-24",
-        "end_date": "2017-03-30",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MOD09GA_NDSI",
-        "name": "MODIS Terra Daily NDSI [deprecated]",
-        "start_date": "2000-02-24",
-        "end_date": "2017-03-30",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MOD09GA_NDVI",
-        "name": "MODIS Terra Daily NDVI [deprecated]",
-        "start_date": "2000-02-24",
-        "end_date": "2017-03-30",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MOD09GA_NDWI",
-        "name": "MODIS Terra Daily NDWI [deprecated]",
-        "start_date": "2000-02-24",
-        "end_date": "2017-03-30",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MOD09GQ",
-        "name": "MOD09GQ.005 Terra Surface Reflectance Daily L2G Global 250m [deprecated]",
-        "start_date": "2000-02-24",
-        "end_date": "2017-03-30",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MOD09Q1",
-        "name": "MOD09Q1.005 Surface Reflectance 8-Day Global 250m [deprecated]",
-        "start_date": "2000-03-05",
-        "end_date": "2017-03-22",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MOD10A1",
-        "name": "MOD10A1.005 Terra Snow Cover Daily Global 500m [deprecated]",
-        "start_date": "2000-02-24",
-        "end_date": "2016-12-26",
-        "type": "image_collection",
-        "bands": {
-            "Snow_Cover_Daily_Tile": {
-                "units": null,
-                "resolution": 463.31271652770823
-            },
-            "Snow_Spatial_QA": {
-                "units": null,
-                "resolution": 463.31271652770823
-            },
-            "Snow_Albedo_Daily_Tile": {
-                "units": null,
-                "resolution": 463.31271652770823
-            },
-            "Fractional_Snow_Cover": {
-                "units": null,
-                "resolution": 463.31271652770823
-            }
-        }
-    },
-    {
-        "id": "MODIS/MOD11A1",
-        "name": "MOD11A1.005 Terra Land Surface Temperature and Emissivity Daily Global 1 km Grid SIN [deprecated]",
-        "start_date": "2000-03-05",
-        "end_date": "2017-03-30",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MOD11A2",
-        "name": "MOD11A2.005 Land Surface Temperature and Emissivity 8-Day Global 1km [deprecated]",
-        "start_date": "2000-03-05",
-        "end_date": "2017-03-22",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MOD13A1",
-        "name": "MOD13A1.005 Vegetation Indices 16-Day L3 Global 500m [deprecated]",
-        "start_date": "2000-02-18",
-        "end_date": "2017-03-06",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MOD13Q1",
-        "name": "MOD13Q1.005 Vegetation Indices 16-Day Global 250m [deprecated]",
-        "start_date": "2000-02-18",
-        "end_date": "2017-03-06",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
         "id": "MODIS/MOD44W/MOD44W_005_2000_02_24",
         "name": "MOD44W.005 Land Water Mask Derived from MODIS and SRTM",
         "start_date": "2000-02-24",
@@ -13316,22 +10673,6 @@
                 "resolution": 231.65635826395828
             }
         }
-    },
-    {
-        "id": "MODIS/MYD09A1",
-        "name": "MYD09A1.005 Surface Reflectance 8-Day L3 Global 500m [deprecated]",
-        "start_date": "2002-07-04",
-        "end_date": "2017-03-22",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MYD09GA",
-        "name": "MYD09GA.005 Aqua Surface Reflectance Daily L2G Global 1km and 500m [deprecated]",
-        "start_date": "2002-07-04",
-        "end_date": "2017-03-30",
-        "type": "image_collection",
-        "bands": {}
     },
     {
         "id": "MODIS/MYD09GA_006_BAI",
@@ -13370,119 +10711,6 @@
         "name": "MODIS Aqua Daily NDWI",
         "start_date": "2002-07-04",
         "end_date": "2021-07-10",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MYD09GA_BAI",
-        "name": "MODIS Aqua Daily BAI [deprecated]",
-        "start_date": "2002-07-04",
-        "end_date": "2017-03-30",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MYD09GA_EVI",
-        "name": "MODIS Aqua Daily EVI [deprecated]",
-        "start_date": "2002-07-04",
-        "end_date": "2017-03-30",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MYD09GA_NDSI",
-        "name": "MODIS Aqua Daily NDSI [deprecated]",
-        "start_date": "2002-07-04",
-        "end_date": "2017-03-30",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MYD09GA_NDVI",
-        "name": "MODIS Aqua Daily NDVI [deprecated]",
-        "start_date": "2002-07-04",
-        "end_date": "2017-03-30",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MYD09GA_NDWI",
-        "name": "MODIS Aqua Daily NDWI [deprecated]",
-        "start_date": "2002-07-04",
-        "end_date": "2017-03-30",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MYD09GQ",
-        "name": "MYD09GQ.005 Aqua Surface Reflectance Daily L2G Global 250m [deprecated]",
-        "start_date": "2002-07-04",
-        "end_date": "2017-03-30",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MYD09Q1",
-        "name": "MYD09Q1.005 Surface Reflectance 8-Day L3 Global 250m [deprecated]",
-        "start_date": "2002-07-04",
-        "end_date": "2017-03-22",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MYD10A1",
-        "name": "MYD10A1.005 Aqua Snow Cover Daily Global 500m [deprecated]",
-        "start_date": "2002-07-04",
-        "end_date": "2016-12-26",
-        "type": "image_collection",
-        "bands": {
-            "Snow_Cover_Daily_Tile": {
-                "units": null,
-                "resolution": 463.31271652770823
-            },
-            "Snow_Spatial_QA": {
-                "units": null,
-                "resolution": 463.31271652770823
-            },
-            "Snow_Albedo_Daily_Tile": {
-                "units": null,
-                "resolution": 463.31271652770823
-            },
-            "Fractional_Snow_Cover": {
-                "units": null,
-                "resolution": 463.31271652770823
-            }
-        }
-    },
-    {
-        "id": "MODIS/MYD11A1",
-        "name": "MYD11A1.005 Land Surface Temperature and Emissivity Daily Global 1 km Grid SIN [deprecated]",
-        "start_date": "2002-07-08",
-        "end_date": "2017-03-30",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MYD11A2",
-        "name": "MYD11A2.005 Land Surface Temperature and Emissivity 8-Day L3 Global 1km [deprecated]",
-        "start_date": "2002-07-04",
-        "end_date": "2017-03-22",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MYD13A1",
-        "name": "MYD13A1.005 Vegetation Indices 16-Day L3 Global 500m [deprecated]",
-        "start_date": "2002-07-04",
-        "end_date": "2017-03-14",
-        "type": "image_collection",
-        "bands": {}
-    },
-    {
-        "id": "MODIS/MYD13Q1",
-        "name": "MYD13Q1.005 Vegetation Indices 16-Day Global 250m [deprecated]",
-        "start_date": "2002-07-04",
-        "end_date": "2017-03-14",
         "type": "image_collection",
         "bands": {}
     },
@@ -14475,7 +11703,7 @@
             },
             "sst": {
                 "units": "\u00b0C",
-                "resolution": 4638.3123130216245
+                "resolution": 4638.312264812386
             }
         }
     },
@@ -14586,43 +11814,6 @@
         }
     },
     {
-        "id": "NASA/ORNL/DAYMET_V3",
-        "name": "Daymet V3: Daily Surface Weather and Climatological Summaries [deprecated]",
-        "start_date": "1980-01-01",
-        "end_date": "2019-12-31",
-        "type": "image_collection",
-        "bands": {
-            "dayl": {
-                "units": "seconds",
-                "resolution": 1000
-            },
-            "prcp": {
-                "units": "mm",
-                "resolution": 1000
-            },
-            "srad": {
-                "units": "W/m^2",
-                "resolution": 1000
-            },
-            "swe": {
-                "units": "kg/m^2",
-                "resolution": 1000
-            },
-            "tmax": {
-                "units": "\u00b0C",
-                "resolution": 1000
-            },
-            "tmin": {
-                "units": "\u00b0C",
-                "resolution": 1000
-            },
-            "vp": {
-                "units": "Pa",
-                "resolution": 1000
-            }
-        }
-    },
-    {
         "id": "NASA/ORNL/DAYMET_V4",
         "name": "Daymet V4: Daily Surface Weather and Climatological Summaries",
         "start_date": "1980-01-01",
@@ -14714,64 +11905,6 @@
         }
     },
     {
-        "id": "NASA_USDA/HSL/SMAP_soil_moisture",
-        "name": "NASA-USDA SMAP Global Soil Moisture Data [deprecated]",
-        "start_date": "2015-04-01",
-        "end_date": "2020-12-31",
-        "type": "image_collection",
-        "bands": {
-            "ssm": {
-                "units": "mm",
-                "resolution": 27829.87269831839
-            },
-            "susm": {
-                "units": "mm",
-                "resolution": 27829.87269831839
-            },
-            "smp": {
-                "units": "fraction",
-                "resolution": 27829.87269831839
-            },
-            "ssma": {
-                "units": "-",
-                "resolution": 27829.87269831839
-            },
-            "susma": {
-                "units": "-",
-                "resolution": 27829.87269831839
-            }
-        }
-    },
-    {
-        "id": "NASA_USDA/HSL/soil_moisture",
-        "name": "NASA-USDA Global Soil Moisture Data [deprecated]",
-        "start_date": "2010-01-01",
-        "end_date": "2020-12-31",
-        "type": "image_collection",
-        "bands": {
-            "ssm": {
-                "units": "mm",
-                "resolution": 27829.87269831839
-            },
-            "susm": {
-                "units": "mm",
-                "resolution": 27829.87269831839
-            },
-            "smp": {
-                "units": "fraction",
-                "resolution": 27829.87269831839
-            },
-            "ssma": {
-                "units": "-",
-                "resolution": 27829.87269831839
-            },
-            "susma": {
-                "units": "-",
-                "resolution": 27829.87269831839
-            }
-        }
-    },
-    {
         "id": "NCEP_RE/sea_level_pressure",
         "name": "NCEP/NCAR Reanalysis Data, Sea-Level Pressure",
         "start_date": "1948-01-01",
@@ -14849,27 +11982,6 @@
         }
     },
     {
-        "id": "NOAA/CDR/AVHRR/LAI_FAPAR/V4",
-        "name": "NOAA CDR AVHRR LAI FAPAR: Leaf Area Index and Fraction of Absorbed Photosynthetically Active Radiation, Version 4 [deprecated]",
-        "start_date": "1981-06-24",
-        "end_date": "2019-05-16",
-        "type": "image_collection",
-        "bands": {
-            "LAI": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "FAPAR": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "QA": {
-                "units": null,
-                "resolution": 5565.974539663679
-            }
-        }
-    },
-    {
         "id": "NOAA/CDR/AVHRR/LAI_FAPAR/V5",
         "name": "NOAA CDR AVHRR LAI FAPAR: Leaf Area Index and Fraction of Absorbed Photosynthetically Active Radiation, Version 5",
         "start_date": "1981-06-24",
@@ -14891,27 +12003,6 @@
         }
     },
     {
-        "id": "NOAA/CDR/AVHRR/NDVI/V4",
-        "name": "NOAA CDR AVHRR NDVI: Normalized Difference Vegetation Index, Version 4 [deprecated]",
-        "start_date": "1981-06-24",
-        "end_date": "2019-05-16",
-        "type": "image_collection",
-        "bands": {
-            "NDVI": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "TIMEOFDAY": {
-                "units": "hours",
-                "resolution": 5565.974539663679
-            },
-            "QA": {
-                "units": null,
-                "resolution": 5565.974539663679
-            }
-        }
-    },
-    {
         "id": "NOAA/CDR/AVHRR/NDVI/V5",
         "name": "NOAA CDR AVHRR NDVI: Normalized Difference Vegetation Index, Version 5",
         "start_date": "1981-06-24",
@@ -14924,59 +12015,6 @@
             },
             "TIMEOFDAY": {
                 "units": "hours",
-                "resolution": 5565.974539663679
-            },
-            "QA": {
-                "units": null,
-                "resolution": 5565.974539663679
-            }
-        }
-    },
-    {
-        "id": "NOAA/CDR/AVHRR/SR/V4",
-        "name": "NOAA CDR AVHRR: Surface Reflectance, Version 4 [deprecated]",
-        "start_date": "1981-06-24",
-        "end_date": "2019-05-16",
-        "type": "image_collection",
-        "bands": {
-            "SREFL_CH1": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "SREFL_CH2": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "SREFL_CH3": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "BT_CH3": {
-                "units": "K",
-                "resolution": 5565.974539663679
-            },
-            "BT_CH4": {
-                "units": "K",
-                "resolution": 5565.974539663679
-            },
-            "BT_CH5": {
-                "units": "K",
-                "resolution": 5565.974539663679
-            },
-            "TIMEOFDAY": {
-                "units": "hours",
-                "resolution": 5565.974539663679
-            },
-            "RELAZ": {
-                "units": "Degrees",
-                "resolution": 5565.974539663679
-            },
-            "SZEN": {
-                "units": "Degrees",
-                "resolution": 5565.974539663679
-            },
-            "VZEN": {
-                "units": "Degrees",
                 "resolution": 5565.974539663679
             },
             "QA": {
@@ -15124,31 +12162,6 @@
             },
             "fill_missing_qc": {
                 "units": null,
-                "resolution": 27829.87269831839
-            }
-        }
-    },
-    {
-        "id": "NOAA/CDR/OISST/V2",
-        "name": "NOAA CDR OISST v2: Optimum Interpolation Sea Surface Temperature [deprecated]",
-        "start_date": "1981-09-01",
-        "end_date": "2020-04-26",
-        "type": "image_collection",
-        "bands": {
-            "sst": {
-                "units": "\u00b0C",
-                "resolution": 27829.87269831839
-            },
-            "anom": {
-                "units": "\u00b0C",
-                "resolution": 27829.87269831839
-            },
-            "ice": {
-                "units": "%",
-                "resolution": 27829.87269831839
-            },
-            "err": {
-                "units": "\u00b0C",
                 "resolution": 27829.87269831839
             }
         }
@@ -15962,131 +12975,131 @@
         "bands": {
             "CMI_C01": {
                 "units": "Reflectance factor",
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "DQF_C01": {
                 "units": null,
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "CMI_C02": {
                 "units": "Reflectance factor",
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "DQF_C02": {
                 "units": null,
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "CMI_C03": {
                 "units": "Reflectance factor",
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "DQF_C03": {
                 "units": null,
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "CMI_C04": {
                 "units": "Reflectance factor",
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "DQF_C04": {
                 "units": null,
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "CMI_C05": {
                 "units": "Reflectance factor",
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "DQF_C05": {
                 "units": null,
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "CMI_C06": {
                 "units": "Reflectance factor",
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "DQF_C06": {
                 "units": null,
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "CMI_C07": {
                 "units": "K",
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "DQF_C07": {
                 "units": null,
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "CMI_C08": {
                 "units": "K",
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "DQF_C08": {
                 "units": null,
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "CMI_C09": {
                 "units": "K",
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "DQF_C09": {
                 "units": null,
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "CMI_C10": {
                 "units": "K",
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "DQF_C10": {
                 "units": null,
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "CMI_C11": {
                 "units": "K",
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "DQF_C11": {
                 "units": null,
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "CMI_C12": {
                 "units": "K",
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "DQF_C12": {
                 "units": null,
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "CMI_C13": {
                 "units": "K",
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "DQF_C13": {
                 "units": null,
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "CMI_C14": {
                 "units": "K",
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "DQF_C14": {
                 "units": null,
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "CMI_C15": {
                 "units": "K",
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "DQF_C15": {
                 "units": null,
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "CMI_C16": {
                 "units": "K",
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             },
             "DQF_C16": {
                 "units": null,
-                "resolution": 2004.01731548424
+                "resolution": 2004.0173154875408
             }
         }
     },
@@ -16900,7 +13913,7 @@
         "bands": {
             "elevation": {
                 "units": "Meters",
-                "resolution": 23.191560581931995
+                "resolution": 23.19156058193191
             }
         }
     },
@@ -17857,19 +14870,6 @@
         }
     },
     {
-        "id": "Oxford/MAP/accessibility_to_cities_2015_v1_0",
-        "name": "Accessibility to Cities 2015 [deprecated]",
-        "start_date": "2015-01-01",
-        "end_date": "2016-01-01",
-        "type": "image",
-        "bands": {
-            "accessibility": {
-                "units": "minutes",
-                "resolution": 927.6620522123104
-            }
-        }
-    },
-    {
         "id": "Oxford/MAP/accessibility_to_healthcare_2019",
         "name": "Accessibility to Healthcare 2019",
         "start_date": "2019-01-01",
@@ -17883,19 +14883,6 @@
             "accessibility_walking_only": {
                 "units": "minutes",
                 "resolution": 927.6624232772797
-            }
-        }
-    },
-    {
-        "id": "Oxford/MAP/friction_surface_2015_v1_0",
-        "name": "Global Friction Surface 2015 [deprecated]",
-        "start_date": "2015-01-01",
-        "end_date": "2016-01-01",
-        "type": "image",
-        "bands": {
-            "friction": {
-                "units": "minutes/meter",
-                "resolution": 927.6620522123104
             }
         }
     },
@@ -18086,494 +15073,6 @@
         }
     },
     {
-        "id": "UMD/hansen/global_forest_change_2013",
-        "name": "Hansen Global Forest Change v1.0 (2000-2012) [deprecated]",
-        "start_date": "2000-01-01",
-        "end_date": "2013-01-01",
-        "type": "image",
-        "bands": {
-            "treecover2000": {
-                "units": "%",
-                "resolution": 30.922080775909325
-            },
-            "loss": {
-                "units": null,
-                "resolution": 30.922080775909325
-            },
-            "gain": {
-                "units": null,
-                "resolution": 30.922080775909325
-            },
-            "first_b30": {
-                "units": null,
-                "resolution": 30.922080775909325
-            },
-            "first_b40": {
-                "units": null,
-                "resolution": 30.922080775909325
-            },
-            "first_b50": {
-                "units": null,
-                "resolution": 30.922080775909325
-            },
-            "first_b70": {
-                "units": null,
-                "resolution": 30.922080775909325
-            },
-            "last_b30": {
-                "units": null,
-                "resolution": 30.922080775909325
-            },
-            "last_b40": {
-                "units": null,
-                "resolution": 30.922080775909325
-            },
-            "last_b50": {
-                "units": null,
-                "resolution": 30.922080775909325
-            },
-            "last_b70": {
-                "units": null,
-                "resolution": 30.922080775909325
-            },
-            "datamask": {
-                "units": null,
-                "resolution": 30.922080775909325
-            },
-            "lossyear": {
-                "units": null,
-                "resolution": 30.922080775909325
-            }
-        }
-    },
-    {
-        "id": "UMD/hansen/global_forest_change_2014",
-        "name": "Hansen Global Forest Change v1.1 (2000-2013) [deprecated]",
-        "start_date": "2000-01-01",
-        "end_date": "2014-01-01",
-        "type": "image",
-        "bands": {
-            "treecover2000": {
-                "units": "%",
-                "resolution": 27.829872698318393
-            },
-            "loss": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "gain": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b30": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b40": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b50": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b70": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b30": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b40": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b50": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b70": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "datamask": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "lossyear": {
-                "units": null,
-                "resolution": 27.829872698318393
-            }
-        }
-    },
-    {
-        "id": "UMD/hansen/global_forest_change_2015",
-        "name": "Hansen Global Forest Change v1.2 (2000-2014) [deprecated]",
-        "start_date": "2000-01-01",
-        "end_date": "2015-01-01",
-        "type": "image",
-        "bands": {
-            "treecover2000": {
-                "units": "%",
-                "resolution": 27.829872698318393
-            },
-            "loss": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "gain": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b30": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b40": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b50": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b70": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b30": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b40": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b50": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b70": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "datamask": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "lossyear": {
-                "units": null,
-                "resolution": 27.829872698318393
-            }
-        }
-    },
-    {
-        "id": "UMD/hansen/global_forest_change_2015_v1_3",
-        "name": "Hansen Global Forest Change v1.3 (2000-2015) [deprecated]",
-        "start_date": "2000-01-01",
-        "end_date": "2016-01-01",
-        "type": "image",
-        "bands": {
-            "treecover2000": {
-                "units": "%",
-                "resolution": 27.829872698318393
-            },
-            "loss": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "gain": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b30": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b40": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b50": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b70": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b30": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b40": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b50": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b70": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "datamask": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "lossyear": {
-                "units": null,
-                "resolution": 27.829872698318393
-            }
-        }
-    },
-    {
-        "id": "UMD/hansen/global_forest_change_2016_v1_4",
-        "name": "Hansen Global Forest Change v1.4 (2000-2016) [deprecated]",
-        "start_date": "2000-01-01",
-        "end_date": "2017-01-01",
-        "type": "image",
-        "bands": {
-            "treecover2000": {
-                "units": "%",
-                "resolution": 27.829872698318393
-            },
-            "loss": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "gain": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b30": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b40": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b50": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b70": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b30": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b40": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b50": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b70": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "datamask": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "lossyear": {
-                "units": null,
-                "resolution": 27.829872698318393
-            }
-        }
-    },
-    {
-        "id": "UMD/hansen/global_forest_change_2017_v1_5",
-        "name": "Hansen Global Forest Change v1.5 (2000-2017) [deprecated]",
-        "start_date": "2000-01-01",
-        "end_date": "2018-01-01",
-        "type": "image",
-        "bands": {
-            "treecover2000": {
-                "units": "%",
-                "resolution": 27.829872698318393
-            },
-            "loss": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "gain": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b30": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b40": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b50": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b70": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b30": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b40": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b50": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b70": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "datamask": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "lossyear": {
-                "units": null,
-                "resolution": 27.829872698318393
-            }
-        }
-    },
-    {
-        "id": "UMD/hansen/global_forest_change_2018_v1_6",
-        "name": "Hansen Global Forest Change v1.6 (2000-2018) [deprecated]",
-        "start_date": "2000-01-01",
-        "end_date": "2019-01-01",
-        "type": "image",
-        "bands": {
-            "treecover2000": {
-                "units": "%",
-                "resolution": 27.829872698318393
-            },
-            "loss": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "gain": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b30": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b40": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b50": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b70": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b30": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b40": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b50": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b70": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "datamask": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "lossyear": {
-                "units": null,
-                "resolution": 27.829872698318393
-            }
-        }
-    },
-    {
-        "id": "UMD/hansen/global_forest_change_2019_v1_7",
-        "name": "Hansen Global Forest Change v1.7 (2000-2019) [deprecated]",
-        "start_date": "2000-01-01",
-        "end_date": "2020-01-01",
-        "type": "image",
-        "bands": {
-            "treecover2000": {
-                "units": "%",
-                "resolution": 27.829872698318393
-            },
-            "loss": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "gain": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b30": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b40": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b50": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "first_b70": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b30": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b40": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b50": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "last_b70": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "datamask": {
-                "units": null,
-                "resolution": 27.829872698318393
-            },
-            "lossyear": {
-                "units": null,
-                "resolution": 27.829872698318393
-            }
-        }
-    },
-    {
         "id": "UMD/hansen/global_forest_change_2020_v1_8",
         "name": "Hansen Global Forest Change v1.8 (2000-2020)",
         "start_date": "2000-01-01",
@@ -18631,40 +15130,6 @@
             "lossyear": {
                 "units": null,
                 "resolution": 27.829872698318393
-            }
-        }
-    },
-    {
-        "id": "UMN/PGC/ArcticDEM/V2/2m",
-        "name": "ArcticDEM Strips [deprecated]",
-        "start_date": "2009-08-16",
-        "end_date": "2017-03-12",
-        "type": "image_collection",
-        "bands": {
-            "elevation": {
-                "units": "Meters",
-                "resolution": 2
-            },
-            "matchtag": {
-                "units": null,
-                "resolution": 2
-            }
-        }
-    },
-    {
-        "id": "UMN/PGC/ArcticDEM/V2/5m",
-        "name": "ArcticDEM Mosaic [deprecated]",
-        "start_date": "2016-09-21",
-        "end_date": "2016-09-21",
-        "type": "image",
-        "bands": {
-            "elevation": {
-                "units": "Meters",
-                "resolution": 5
-            },
-            "matchtag": {
-                "units": null,
-                "resolution": 5
             }
         }
     },
@@ -18914,19 +15379,6 @@
             "landcover": {
                 "units": null,
                 "resolution": 15
-            }
-        }
-    },
-    {
-        "id": "USGS/GFSAD1000_V0",
-        "name": "GFSAD1000: Cropland Extent 1km Crop Dominance, Global Food-Support Analysis Data [deprecated]",
-        "start_date": "2010-01-01",
-        "end_date": "2011-01-01",
-        "type": "image",
-        "bands": {
-            "landcover": {
-                "units": null,
-                "resolution": 993.882349974298
             }
         }
     },
@@ -19189,128 +15641,6 @@
             "TIME": {
                 "units": "Minutes",
                 "resolution": 331.30800831326115
-            }
-        }
-    },
-    {
-        "id": "VITO/PROBAV/S1_TOC_100M",
-        "name": "PROBA-V C0 Top Of Canopy Daily Synthesis 100m [deprecated]",
-        "start_date": "2013-10-17",
-        "end_date": "2016-12-14",
-        "type": "image_collection",
-        "bands": {
-            "RED": {
-                "units": null,
-                "resolution": 110.43600277110473
-            },
-            "NIR": {
-                "units": null,
-                "resolution": 110.43600277110473
-            },
-            "BLUE": {
-                "units": null,
-                "resolution": 110.43600277110473
-            },
-            "SWIR": {
-                "units": null,
-                "resolution": 110.43600277110473
-            },
-            "NDVI": {
-                "units": null,
-                "resolution": 110.43600277110473
-            },
-            "SZA": {
-                "units": "Degrees",
-                "resolution": 110.43600277110473
-            },
-            "SAA": {
-                "units": "Degrees",
-                "resolution": 110.43600277110473
-            },
-            "SWIRVAA": {
-                "units": "Degrees",
-                "resolution": 110.43600277110473
-            },
-            "SWIRVZA": {
-                "units": "Degree",
-                "resolution": 110.43600277110473
-            },
-            "VNIRVAA": {
-                "units": "Degrees",
-                "resolution": 110.43600277110473
-            },
-            "VNIRVZA": {
-                "units": "Degrees",
-                "resolution": 110.43600277110473
-            },
-            "SM": {
-                "units": null,
-                "resolution": 110.43600277110473
-            },
-            "TIME": {
-                "units": "Minutes",
-                "resolution": 110.43600277110473
-            }
-        }
-    },
-    {
-        "id": "VITO/PROBAV/S1_TOC_333M",
-        "name": "PROBA-V C0 Top Of Canopy Daily Synthesis 333m [deprecated]",
-        "start_date": "2013-10-17",
-        "end_date": "2016-12-14",
-        "type": "image_collection",
-        "bands": {
-            "RED": {
-                "units": null,
-                "resolution": 331.3080083133142
-            },
-            "NIR": {
-                "units": null,
-                "resolution": 331.3080083133142
-            },
-            "BLUE": {
-                "units": null,
-                "resolution": 331.3080083133142
-            },
-            "SWIR": {
-                "units": null,
-                "resolution": 331.3080083133142
-            },
-            "NDVI": {
-                "units": null,
-                "resolution": 331.3080083133142
-            },
-            "SZA": {
-                "units": "Degrees",
-                "resolution": 331.3080083133142
-            },
-            "SAA": {
-                "units": "Degrees",
-                "resolution": 331.3080083133142
-            },
-            "SWIRVAA": {
-                "units": "Degrees",
-                "resolution": 331.3080083133142
-            },
-            "SWIRVZA": {
-                "units": "Degree",
-                "resolution": 331.3080083133142
-            },
-            "VNIRVAA": {
-                "units": "Degrees",
-                "resolution": 331.3080083133142
-            },
-            "VNIRVZA": {
-                "units": "Degrees",
-                "resolution": 331.3080083133142
-            },
-            "SM": {
-                "units": null,
-                "resolution": 331.3080083133142
-            },
-            "TIME": {
-                "units": "Minutes",
-                "resolution": 331.3080083133142
             }
         }
     },
@@ -19702,7 +16032,7 @@
         "bands": {
             "population": {
                 "units": null,
-                "resolution": 92.76624203150153
+                "resolution": 92.76624195554629
             },
             "M_0": {
                 "units": null,
@@ -19859,7 +16189,7 @@
         "bands": {
             "population": {
                 "units": null,
-                "resolution": 92.76624203150153
+                "resolution": 92.76624195554629
             },
             "M_0": {
                 "units": null,
@@ -20004,19 +16334,6 @@
             "F_80": {
                 "units": null,
                 "resolution": 92.766241956663
-            }
-        }
-    },
-    {
-        "id": "WorldPop/POP",
-        "name": "WorldPop Project Population Data: Estimated Residential Population per 100x100m Grid Square [deprecated]",
-        "start_date": "2010-01-01",
-        "end_date": "2016-01-01",
-        "type": "image_collection",
-        "bands": {
-            "population": {
-                "units": null,
-                "resolution": 92.76253167803486
             }
         }
     },
