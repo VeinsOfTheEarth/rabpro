@@ -43,7 +43,6 @@ class Dataset:
         self.end = end
         self.stats = stats if stats is not None else []
         self.mask = mask
-        # TODO add type
 
 
 def main(sb_inc_gdf, dataset_list, verbose=False, folder=None):
@@ -71,7 +70,7 @@ def main(sb_inc_gdf, dataset_list, verbose=False, folder=None):
     # For each raster
     for d in control:
         print(d.stats)
-        if d.type == "Image":
+        if d.type == "image":
             imgcol = ee.ImageCollection(ee.Image(d.data_id).select(d.band))
         else:
             imgcol = ee.ImageCollection(d.data_id).select(d.band).filterDate(d.start, d.end)
@@ -105,7 +104,7 @@ def main(sb_inc_gdf, dataset_list, verbose=False, folder=None):
         def map_func(img):
             # TODO: change to reduceRegion or simplify geometries
             return img.reduceRegions(
-                collection=featureCollection, reducer=reducer#, scale=d.resolution # TODO: take care of units in resolution
+                collection=featureCollection, reducer=reducer, scale=d.resolution
             )
 
         reducedFC = imgcol.map(map_func)
@@ -122,7 +121,10 @@ def main(sb_inc_gdf, dataset_list, verbose=False, folder=None):
         # print(table.getDownloadURL(filetype='csv'))
         # TODO: Add selectors to export and change file name
         task = ee.batch.Export.table.toDrive(
-            collection=table, description=f"{d.data_id}_{d.band}".replace('/', '-'), folder=folder, fileFormat="csv"
+            collection=table,
+            description=f"{d.data_id}__{d.band}".replace("/", "-"),
+            folder=folder,
+            fileFormat="csv",
         )
         task.start()
 
@@ -138,13 +140,13 @@ def get_controls(datasets):
     with open(datapaths["gee_metadata"]) as json_file:
         datadict = {d["id"]: d for d in json.load(json_file)}
 
-    #print(datapaths["user_gee_metadata"])
+    # print(datapaths["user_gee_metadata"])
     if datapaths["user_gee_metadata"] is not None:
         with open(datapaths["user_gee_metadata"]) as json_file:
             user_datadict = {d["id"]: d for d in json.load(json_file)}
 
         # TODO switch to x | y notation in Python 3.9. Add try/except for this section?
-        datadict = {**datadict, **user_datadict} # merge dictionaries
+        datadict = {**datadict, **user_datadict}  # merge dictionaries
 
     control = []
     for d in datasets:
@@ -176,7 +178,7 @@ def get_controls(datasets):
             print(f"Warning: overrode end date for {d.data_id}:{d.band}")
 
         d.stats = set(d.stats + ["count", "mean"])
-        
+
         if "no_data" in gee_dataset["bands"][d.band]:
             d.no_data = gee_dataset["bands"][d.band]["no_data"]
 
