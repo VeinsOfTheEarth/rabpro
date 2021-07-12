@@ -14,9 +14,7 @@ from pyproj import CRS
 import scipy.interpolate as si
 from shapely.geometry import LineString, Point
 import sys, os
-
-sys.path.append(os.path.realpath(os.path.dirname(__file__) + "/.."))
-import merit_utils as mu
+from rabpro import merit_utils as mu
 
 
 def main(cl_gdf, verbose=False, nrows=50, ncols=50):
