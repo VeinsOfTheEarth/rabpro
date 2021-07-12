@@ -24,15 +24,20 @@ def parse_url(url):
         gee_name = r["title"]
         gee_type = r["gee:type"]
 
-        # TODO Ignoring FeatureCollections and Features for now...
-        img = ee.ImageCollection(gee_id) if gee_type == "image_collection" else ee.Image(gee_id)
+        # TODO Ignoring anything that's not an Image or ImageCollection for now
+        if gee_type == "image_collection":
+            img = ee.ImageCollection(gee_id)
+        elif gee_type == "image":
+            img = ee.Image(gee_id)
+        else:
+            return None
 
+        # Get date range information
         try:
             start_timestamp, end_timestamp = img.get("date_range").getInfo()
             gee_start = parse_date(start_timestamp)
             gee_end = parse_date(end_timestamp)
         except Exception as e:
-            # print(f'Warning: {e}, {gee_id}')
             # Fallback method to compute the date range
             gee_start = r["extent"]["temporal"]["interval"][0][0].split("T")[0]
             if r["extent"]["temporal"]["interval"][0][1] is not None:
@@ -43,21 +48,23 @@ def parse_url(url):
         if gee_type == "image_collection":
             img = img.first()
 
-        # TODO Error check this
-        gee_resolution = img.projection().nominalScale().getInfo()
-
+        # Get band, units, and resolution information
         bands = r["summaries"]["eo:bands"]
         gee_bands = {}
         for band in bands:
             unit = band["gee:unit"] if "gee:unit" in band else None
             gee_bands[band["name"]] = {"units": unit}
 
+        bandslist = ee.List(list(gee_bands.keys()))
+        resolutions = bandslist.map(lambda b : ee.List([b, img.select([b]).projection().nominalScale()])).getInfo()
+        for band, resolution in resolutions:
+            gee_bands[band]["resolution"] = resolution
+
         asset = {
             "id": gee_id,
             "name": gee_name,
             "start_date": gee_start,
             "end_date": gee_end,
-            "resolution": gee_resolution,
             "type": gee_type,
             "bands": gee_bands,
         }
