@@ -28,6 +28,8 @@ CATALOG_URL = (
     "https://raw.githubusercontent.com/tzussman/rabpro/gee-conversion/Data/gee_catalog.json"
 )
 
+_DATAPATHS = None
+
 
 def get_rabpropath():
     """
@@ -51,7 +53,11 @@ def get_datapaths():
     """
     Returns a dictionary of paths to all data that RaBPro uses.
     """
-    datapath = appdirs.user_data_dir("rabpro", "jschwenk")
+    global _DATAPATHS
+    if _DATAPATHS is not None:
+        return _DATAPATHS
+
+    datapath = Path(appdirs.user_data_dir("rabpro", "jschwenk"))
 
     metadata_path = datapath / "data_metadata.csv"
     metadata = pd.read_csv(metadata_path)
@@ -59,7 +65,7 @@ def get_datapaths():
     dpaths = [str(datapath / Path(p)) for p in rel_paths]
     dnames = metadata.dataID.values
     datapaths = {dn: dp for dp, dn in zip(dpaths, dnames)}
-    datapaths["metadata"] = metadata_path
+    datapaths["metadata"] = str(metadata_path)
 
     gee_metadata_path = datapath / "gee_datasets.json"
     datapaths["gee_metadata"] = str(gee_metadata_path)
@@ -113,6 +119,7 @@ def get_datapaths():
             res=0.001,
         )
 
+    _DATAPATHS = datapaths
     return datapaths
 
 
