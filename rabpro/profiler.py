@@ -100,7 +100,7 @@ class profiler:
 
         # This line will ensure that all the virtual rasters are built
         # and available.
-        rpu.get_datapaths(path_data)
+        rpu.get_datapaths()
 
     def coordinates_to_gdf(self, coords):
         """

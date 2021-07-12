@@ -8,10 +8,7 @@ A simple example of RaBPro's functionality, except for computing basin
 statistics.
 """
 import sys, os
-sys.path.append(r'/Users/talzussman/Documents/School Files/LANL/rabpro-fork/rabpro')
-os.chdir(r'/Users/talzussman/Documents/School Files/LANL/rabpro-fork/')
 import rabpro
-
 
 # Specify a point within our test DEM region
 coords = (32.97287, -88.15829)

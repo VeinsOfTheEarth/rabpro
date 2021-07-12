@@ -69,7 +69,6 @@ def main(sb_inc_gdf, dataset_list, verbose=False, folder=None):
 
     # For each raster
     for d in control:
-        print(d.stats)
         if d.type == "image":
             imgcol = ee.ImageCollection(ee.Image(d.data_id).select(d.band))
         else:
