@@ -10,8 +10,8 @@ from datetime import date
 class Dataset:
     """
     Represents one band of a GEE dataset with parameters specifying how to
-    compute statistics.  
-    
+    compute statistics.
+
     Attributes
     ----------
     data_id : str
@@ -25,10 +25,10 @@ class Dataset:
     end : str
         Desired end date of data in ISO format: YYYY-MM-DD
     stats : list
-        List of desired stats to compute: min, max, range, mean, count, std, 
+        List of desired stats to compute: min, max, range, mean, count, std,
         sum, and percentiles in the following format: pct1, pct90, pct100, etc.
     mask : boolean
-        Whether or not to mask out water in the dataset using the Global 
+        Whether or not to mask out water in the dataset using the Global
         Surface Water occurrence band
 
     """
@@ -56,15 +56,15 @@ def main(sb_inc_gdf, dataset_list, reducer_funcs=None, verbose=False, folder=Non
     dataset_list : list of Datasets
         List of Dataset objects to computer statistics over
     reducer_funcs : list of tuples of str and function
-        List of functions to apply to each feature over each dataset and strings 
+        List of functions to apply to each feature over each dataset and strings
         to name the output columns. Each function should take in an ee.Feature()
-        object. For example, this is how the function and header are applied on 
+        object. For example, this is how the function and header are applied on
         a feature:
             feature.set(header, function(feature))
     verbose : boolean
     folder : str
         Google Drive folder to store results in
-    
+
     """
 
     # Dictionary for determining which rasters and statistics to compute
@@ -77,7 +77,7 @@ def main(sb_inc_gdf, dataset_list, reducer_funcs=None, verbose=False, folder=Non
     # Convert GeoDataFrame to ee.Feature objects
     features = []
     for i in range(sb_inc_gdf.shape[0]):
-        geom = sb_inc_gdf.iloc[i : i + 1, :]
+        geom = sb_inc_gdf.iloc[i:i + 1, :]
         jsonDict = json.loads(geom.to_json())
         geojsonDict = jsonDict["features"][0]
         features.append(ee.Feature(geojsonDict))
