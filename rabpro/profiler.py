@@ -12,7 +12,7 @@ import pandas as pd
 import shapely
 from rabpro import elev_profile as ep
 from rabpro import subbasins as sb
-from rabpro import subbasin_stats_gee as ss
+from rabpro import subbasin_stats as ss
 from rabpro import utils as rpu
 from rabpro import merit_utils as mu
 from pyproj import CRS

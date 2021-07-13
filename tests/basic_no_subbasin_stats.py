@@ -35,7 +35,7 @@ basins = rpo.basins
 # Can export it as well
 rpo.basins.to_file(rpo.paths['subbasins'], driver='GeoJSON')
 
-data = rabpro.subbasin_stats_gee.Dataset("JRC/GSW1_3/GlobalSurfaceWater", "occurrence",stats=['min', 'max', 'range', 'std', 'sum', 'pct50', 'pct3'])
+data = rabpro.subbasin_stats.Dataset("JRC/GSW1_3/GlobalSurfaceWater", "occurrence", stats=['min', 'max', 'range', 'std', 'sum', 'pct50', 'pct3'])
 
 # Finally, we can compute basin statistics - this will not work without
 # auxiliary datasets. We could compute topographic stats actually.
