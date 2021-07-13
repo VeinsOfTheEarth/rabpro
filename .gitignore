@@ -9,3 +9,4 @@ Data/HydroBasins/*/*.dbf
 Data/HydroBasins/*/*.fix
 Data/HydroBasins/*/*.cpg
 Results/*
+rabpro.egg-info
