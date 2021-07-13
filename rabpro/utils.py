@@ -37,14 +37,10 @@ def get_rabpropath():
     """
     Returns a pathlib Path object of RaBPro's basepath.
     """
-    #    filepath = os.getcwd()
     import rabpro as rp
 
     filepath = os.path.dirname(rp.__file__)
-
-    # filepath = filepath.lower()
     st_idx = filepath.rindex("rabpro")
-    # en_idx = st_idx + len("rabpro")
     rabpropath = Path(filepath[:st_idx])
 
     return rabpropath
@@ -127,21 +123,20 @@ def get_exportpaths(name, basepath=None, overwrite=False):
     results folders when necessary.
 
     If overwrite is True, only the directory named "name" will be overwritten,
-    not the entire 'Results' directory.
+    not the entire 'results' directory.
     """
     if basepath is None:
-        basepath = get_rabpropath()
-        results = basepath / "Results"
+        results = Path(os.getcwd()) / "results"
     else:
         results = Path(basepath)
 
     # Make a results directory if it doesn't exist
-    if results.exists() is False:
+    if not results.exists():
         results.mkdir(parents=True, exist_ok=True)
 
     namedresults = results / name
 
-    # Make a results directory if it doesn't exist
+    # Make a named results directory if it doesn't exist
     if namedresults.exists() is False:
         namedresults.mkdir(parents=True, exist_ok=True)
     elif overwrite is True:
@@ -466,21 +461,12 @@ def fetch_paths_from_file(csvpath):
 
 
 def create_folder(folderpath):
-
     """
     Creates a folder or deletes all the files if the folder exists.
     """
     # Check that the folder exists first
     if os.path.exists(folderpath):
-        for the_file in os.listdir(folderpath):
-            file_path = os.path.join(folderpath, the_file)
-            try:
-                if os.path.isfile(file_path):
-                    os.unlink(file_path)
-                elif os.path.isdir(file_path):
-                    shutil.rmtree(file_path)
-            except Exception as e:
-                print(e)
+        clear_directory(folderpath)
     else:
         os.makedirs(folderpath)
 
@@ -898,10 +884,10 @@ def clear_directory(Path_obj):
     not remove the directory itself.
     """
     for child in Path_obj.glob("*"):
-        if child.is_file():
+        if not child.is_dir():
             child.unlink()
         else:
-            clear_directory(child)
+            shutil.rmtree(child)
 
 
 def haversine(lats, lons):
@@ -926,7 +912,7 @@ def haversine(lats, lons):
     dLat = np.radians(np.diff(lats))
     dLon = np.radians(np.diff(lons))
 
-    lat1 = np.radians(lats[0:-1])
+    lat1 = np.radians(lats[:-1])
     lat2 = np.radians(lats[1:])
 
     a = np.sin(dLat / 2) ** 2 + np.cos(lat1) * np.cos(lat2) * np.sin(dLon / 2) ** 2

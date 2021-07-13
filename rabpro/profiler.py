@@ -53,7 +53,6 @@ class profiler:
         coords,
         da=None,
         name="unnamed",
-        path_data=None,
         path_results=None,
         force_merit=False,
         verbose=True,
