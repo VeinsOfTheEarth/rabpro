@@ -8,7 +8,7 @@ Created on Fri Feb  2 10:53:37 2018
 import numpy as np
 import geopandas as gpd
 from shapely.geometry import Point, MultiPolygon
-import utils as ru
+from rabpro import utils as ru
 from pathlib import Path
 from osgeo import gdal
 from pyproj import CRS

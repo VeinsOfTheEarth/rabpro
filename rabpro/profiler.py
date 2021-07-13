@@ -45,7 +45,6 @@ class profiler:
     verbose : bool
         If True, will print updates as processing progresses.
 
-
     """
 
     def __init__(
