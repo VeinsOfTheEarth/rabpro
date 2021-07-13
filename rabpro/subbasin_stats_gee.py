@@ -1,10 +1,12 @@
-import os
-import ee
 import json
-import pandas as pd
-import numpy as np
-from rabpro import utils as ru
+import os
 from datetime import date
+
+import ee
+import numpy as np
+import pandas as pd
+
+from rabpro import utils as ru
 
 
 class Dataset:
@@ -77,7 +79,7 @@ def main(sb_inc_gdf, dataset_list, reducer_funcs=None, verbose=False, folder=Non
     # Convert GeoDataFrame to ee.Feature objects
     features = []
     for i in range(sb_inc_gdf.shape[0]):
-        geom = sb_inc_gdf.iloc[i:i + 1, :]
+        geom = sb_inc_gdf.iloc[i : i + 1, :]
         jsonDict = json.loads(geom.to_json())
         geojsonDict = jsonDict["features"][0]
         features.append(ee.Feature(geojsonDict))
