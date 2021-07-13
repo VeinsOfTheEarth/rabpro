@@ -22,7 +22,7 @@ da = 18680
 # Boot up the profiler; note that providing the drainage area (da) is optional
 # We also choose to set force_merit to True, which will use MERIT data to
 # perform basin delineation.
-rpo = rabpro.profiler.profiler(coords, name='basic_test', da=da, force_merit=True)
+rpo = rabpro.profiler(coords, name='basic_test', da=da, force_merit=True)
 
 # Compute the watershed for this point - this can take a few minutes since
 # we've chosen a rather large basin

@@ -44,7 +44,7 @@ from rabpro.subbasin_stats import Dataset
 # utils.get_datapaths()
 
 coords_file = gpd.read_file(r"../tests/input/Big Blue River.geojson")
-rpo = rabpro.profiler.profiler(coords_file)
+rpo = rabpro.profiler(coords_file)
 rpo.delineate_basins() # requires hydrobasins levels 1 and 12
 # name = "test"
 # rpo.basins.to_file('Data/gaugebasin_shp/'+name+'.shp',driver='ESRI Shapefile')
