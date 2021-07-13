@@ -63,12 +63,12 @@ def main(sb_inc_gdf, dataset_list, reducer_funcs=None, verbose=False, folder=Non
             feature.set(header, function(feature))
     verbose : boolean
     folder : str
-        Google Drive folder to place results in
+        Google Drive folder to store results in
     
     """
 
     # Dictionary for determining which rasters and statistics to compute
-    control = get_controls(dataset_list)
+    control = _get_controls(dataset_list)
     ee.Initialize()
 
     # Create water occurence mask
@@ -135,12 +135,13 @@ def main(sb_inc_gdf, dataset_list, reducer_funcs=None, verbose=False, folder=Non
 
         # Apply reducer functions
         for f, header in reducer_funcs:
+
             def reducer_func(feat):
                 return feat.set(header, f(feat))
+
             table = table.map(reducer_func)
 
-        # print(table.getDownloadURL(filetype='csv'))
-        # TODO: Add selectors to export and change file name
+        # TODO: Add selectors to export
         task = ee.batch.Export.table.toDrive(
             collection=table,
             description=f"{d.data_id}__{d.band}".replace("/", "-"),
@@ -150,7 +151,7 @@ def main(sb_inc_gdf, dataset_list, reducer_funcs=None, verbose=False, folder=Non
         task.start()
 
 
-def get_controls(datasets):
+def _get_controls(datasets):
     """
     Prepare paths and parameters for computing subbasin raster stats.
     Takes in list of user specified datasets.
@@ -161,7 +162,6 @@ def get_controls(datasets):
     with open(datapaths["gee_metadata"]) as json_file:
         datadict = {d["id"]: d for d in json.load(json_file)}
 
-    # print(datapaths["user_gee_metadata"])
     if datapaths["user_gee_metadata"] is not None:
         with open(datapaths["user_gee_metadata"]) as json_file:
             user_datadict = {d["id"]: d for d in json.load(json_file)}
@@ -171,10 +171,7 @@ def get_controls(datasets):
 
     control = []
     for d in datasets:
-        # TODO: Improve warnings:
-        # - Add resolution value check
-        # - Use proper warnings module?
-        # - dates only support ISO format (YYYY-MM-DD)
+        # TODO Use actual warnings module?
         if d.data_id not in datadict:
             print(f"Warning: invalid data ID provided: {d.data_id}")
             continue
@@ -185,25 +182,31 @@ def get_controls(datasets):
             print(f"Warning: invalid data band provided: {d.data_id}:{d.band}")
             continue
 
-        if d.resolution is None and "resolution" in gee_dataset[d.band]:
-            d.resolution = gee_dataset[d.band]["resolution"]
-
-        if d.start is None or date.fromisoformat(d.start) < date.fromisoformat(
-            gee_dataset["start_date"]
-        ):
+        if d.start is None:
             d.start = gee_dataset["start_date"]
-            print(f"Warning: overrode start date for {d.data_id}:{d.band}")
+        elif date.fromisoformat(d.start) < date.fromisoformat(gee_dataset["start_date"]):
+            print(f"Warning: requested start date earlier than expected for {d.data_id}:{d.band}")
 
-        if d.end is None or date.fromisoformat(d.end) > date.fromisoformat(gee_dataset["end_date"]):
+        if d.end is None:
             d.end = gee_dataset["end_date"]
-            print(f"Warning: overrode end date for {d.data_id}:{d.band}")
+        elif date.fromisoformat(d.end) > date.fromisoformat(gee_dataset["end_date"]):
+            print(f"Warning: requested end date later than expected for {d.data_id}:{d.band}")
 
         d.stats = set(d.stats + ["count", "mean"])
 
         if "no_data" in gee_dataset["bands"][d.band]:
             d.no_data = gee_dataset["bands"][d.band]["no_data"]
 
+        resolution = None
+        if "resolution" in gee_dataset["bands"][d.band]:
+            resolution = gee_dataset["bands"][d.band]["resolution"]
+        if d.resolution is None:
+            d.resolution = resolution
+        if d.resolution and resolution and d.resolution < resolution:
+            print(f"Warning: requested resolution is less than the native raster resolution")
+
         d.type = gee_dataset["type"]
+
         control.append(d)
 
     return control
