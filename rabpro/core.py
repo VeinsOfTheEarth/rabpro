@@ -5,17 +5,18 @@ Created on Sat Feb 15 19:55:00 2020
 @author: Jon
 """
 
-from osgeo import gdal
-import numpy as np
 import geopandas as gpd
+import numpy as np
 import pandas as pd
 import shapely
-import elev_profile as ep
-import subbasins as sb
-import subbasin_stats as ss
-import utils as rpu
-import merit_utils as mu
+from osgeo import gdal
 from pyproj import CRS
+
+from rabpro import elev_profile as ep
+from rabpro import merit_utils as mu
+from rabpro import subbasins as sb
+from rabpro import subbasin_stats as ss
+from rabpro import utils as rpu
 
 
 class profiler:
@@ -45,7 +46,6 @@ class profiler:
     verbose : bool
         If True, will print updates as processing progresses.
 
-
     """
 
     def __init__(
@@ -53,7 +53,6 @@ class profiler:
         coords,
         da=None,
         name="unnamed",
-        path_data=None,
         path_results=None,
         force_merit=False,
         verbose=True,
@@ -100,7 +99,7 @@ class profiler:
 
         # This line will ensure that all the virtual rasters are built
         # and available.
-        _ = rpu.get_datapaths(path_data)
+        rpu.get_datapaths()
 
     def coordinates_to_gdf(self, coords):
         """
@@ -284,24 +283,17 @@ class profiler:
         elev_smooth = savgol_filter(self.elevs["elev_raw"], windowsize, k)
         return elev_smooth
 
-    def basin_stats(self, years="all"):
+    def basin_stats(self, datasets):
         """
         Computes watershed statistics.
 
         Keywords
         ----------
-        years : str OR list
-            If years = 'all', then all available years of statistics will be
-            returned. Else years should be a two-entry list like [2000 2012]
-            that specify the start and end year of the desired analysis.
+        datasets : list of Dataset objects
+            See the Dataset class
         """
 
-        if years == "all":
-            years = [1900, 2200]
-
-        self.stats = ss.main(
-            self.gdf, self.basins, years[0], years[1], verbose=self.verbose
-        )
+        self.stats = ss.main(self.basins, datasets, verbose=self.verbose)
 
     def export(self, what="all"):
         """

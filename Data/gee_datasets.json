@@ -1,0 +1,54 @@
+[
+    {
+        "id": "JRC/GSW1_3/GlobalSurfaceWater",
+        "name": "JRC Global Surface Water Mapping Layers",
+        "start_date": "1984-03-16",
+        "end_date": "2021-01-01",
+        "resolution": "30 meters",
+        "type": "Image",
+        "bands": {
+            "occurrence": {
+                "units": "%",
+                "no_data": "None"
+            },
+            "change_abs": {
+                "units": "%",
+                "no_data": "None"
+            },
+            "change_norm": {
+                "units": "%",
+                "no_data": "None"
+            },
+            "seasonality": {
+                "units": "None",
+                "no_data": "None"
+            },
+            "recurrence": {
+                "units": "%",
+                "no_data": "None"
+            },
+            "transition": {
+                "units": "None",
+                "no_data": "None"
+            },
+            "max_extent": {
+                "units": "None",
+                "no_data": "None"
+            }
+        }
+    },
+    {
+        "id": "NASA/GLDAS/V20/NOAH/G025/T3H",
+        "name": "Reprocessed GLDAS-2.0: Global Land Data Assimilation System",
+        "start_date": "1948-01-0",
+        "end_date": "2010-12-31",
+        "resolution": "0.25 arc degrees",
+        "type": "ImageCollection",
+        "bands": {
+            "Albedo_inst": {
+                "units": "%",
+                "no_data": "None"
+            }
+        }
+    }
+]

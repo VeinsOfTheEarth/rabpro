@@ -4,21 +4,18 @@ Created on Thu Jul  9 16:40:33 2020
 
 @author: Jon
 """
-import rivgraph.im_utils as im
-from shapely.geometry import Polygon, LineString
-from shapely import ops
 import math
+import os
+import sys
+
 import numpy as np
 import pandas as pd
+import rivgraph.im_utils as im
 from scipy.ndimage.morphology import distance_transform_edt
-import sys, os
+from shapely.geometry import Polygon, LineString
+from shapely import ops
 
-try:
-    sys.path.append(os.path.realpath(os.path.dirname(__file__) + "/.."))
-    sys.path.append(os.path.realpath(os.path.dirname(__file__)))
-except:
-    pass
-import utils as ru
+from rabpro import utils as ru
 
 
 def trace_flowpath(

@@ -1,4 +1,4 @@
-name: rp
+name: rabpro
 channels:
   - jschwenk
   - conda-forge
@@ -10,12 +10,10 @@ dependencies:
   - geopandas=0.7.0
   - scikit-image
   - opencv
-  - networkx
   - matplotlib
   - pyproj
   - shapely
-  - fiona
   - rivgraph=0.3
-  - fastdtw
-  - rasterstats
-  - joblib
+  - requests
+  - appdirs
+  - earthengine-api

@@ -4,13 +4,13 @@ Created on Thu Jun 24 10:30:07 2021
 
 @author: Jon
 
-A simple example of RaBPro's functionality, except for computing basin
-statistics.
+A simple example of RaBPro's functionality, including computing basin
+statistics using Google Earth Engine.
 """
-import sys, os
-sys.path.append(r'X:\RaBPro\Code\rabpro')
-os.chdir(r'X:\RaBPro\Code')
-from rabpro import rabpro
+import os
+import sys
+
+import rabpro
 
 # Specify a point within our test DEM region
 coords = (32.97287, -88.15829)
@@ -37,6 +37,8 @@ basins = rpo.basins
 # Can export it as well
 rpo.basins.to_file(rpo.paths['subbasins'], driver='GeoJSON')
 
+data = rabpro.subbasin_stats.Dataset("JRC/GSW1_3/GlobalSurfaceWater", "occurrence", stats=['min', 'max', 'range', 'std', 'sum', 'pct50', 'pct3'])
+
 # Finally, we can compute basin statistics - this will not work without
 # auxiliary datasets. We could compute topographic stats actually.
-rpo.basin_stats(years="all") # requires "mswep" Beck et al 2019?
+rpo.basin_stats([data]) # requires "mswep" Beck et al 2019?

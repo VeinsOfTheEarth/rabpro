@@ -5,17 +5,18 @@ Created on Fri Feb  2 10:53:37 2018
 @author: Jon
 """
 
-import numpy as np
-import geopandas as gpd
-from shapely.geometry import Point, MultiPolygon
-import utils as ru
+import os
+import sys
 from pathlib import Path
+
+import geopandas as gpd
+import numpy as np
 from osgeo import gdal
 from pyproj import CRS
-import sys, os
+from shapely.geometry import Point, MultiPolygon
 
-sys.path.append(os.path.realpath(os.path.dirname(__file__) + "/.."))
-import merit_utils as mu
+from rabpro import merit_utils as mu
+from rabpro import utils as ru
 
 
 def main_hb(cl_gdf, verbose=False):
