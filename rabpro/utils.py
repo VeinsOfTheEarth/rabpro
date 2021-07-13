@@ -5,24 +5,26 @@ Created on Mon Feb  5 09:33:21 2018
 @author: Jon
 """
 
-import os, shutil
-import shapely
-from osgeo import gdal, osr, ogr
-import osgeo
+import json
+import os
+import platform
+import shutil
 import subprocess
+from datetime import datetime, timedelta
+from pathlib import Path
+
+import appdirs
+import cv2
 import geopandas as gpd
 import numpy as np
+import osgeo
 import pandas as pd
-import cv2
-from skimage import measure
-from pathlib import Path
-import platform
+import requests
+import shapely
+from osgeo import gdal, osr, ogr
 from shapely.geometry import Polygon, MultiPolygon
 from shapely.ops import unary_union
-from datetime import datetime, timedelta
-import appdirs
-import requests
-import json
+from skimage import measure
 
 CATALOG_URL = (
     "https://raw.githubusercontent.com/tzussman/rabpro/gee-conversion/Data/gee_catalog.json"

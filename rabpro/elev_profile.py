@@ -6,15 +6,18 @@ Created on Fri Jun  5 12:10:12 2020
 """
 
 # Build merit vrts
-from rabpro import utils as ru
-from osgeo import gdal
-import numpy as np
+import os
+import sys
+
 import geopandas as gpd
-from pyproj import CRS
+import numpy as np
 import scipy.interpolate as si
+from osgeo import gdal
+from pyproj import CRS
 from shapely.geometry import LineString, Point
-import sys, os
+
 from rabpro import merit_utils as mu
+from rabpro import utils as ru
 
 
 def main(cl_gdf, verbose=False, nrows=50, ncols=50):

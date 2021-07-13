@@ -4,10 +4,12 @@ Created on Thu Jun 24 10:30:07 2021
 
 @author: Jon
 
-A simple example of RaBPro's functionality, except for computing basin
-statistics.
+A simple example of RaBPro's functionality, including computing basin
+statistics using Google Earth Engine.
 """
-import sys, os
+import os
+import sys
+
 import rabpro
 
 # Specify a point within our test DEM region
@@ -21,7 +23,7 @@ da = 18680
 # We also choose to set force_merit to True, which will use MERIT data to
 # perform basin delineation.
 rpo = rabpro.profiler.profiler(coords, name='basic_test', da=da, force_merit=True)
-#path_data='/Users/talzussman/Documents/School Files/LANL/rabpro/Data'
+
 # Compute the watershed for this point - this can take a few minutes since
 # we've chosen a rather large basin
 rpo.delineate_basins() # requires merit n30w090 [elv, fdr, upa, MERIT103]

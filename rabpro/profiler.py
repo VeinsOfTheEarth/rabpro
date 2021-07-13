@@ -5,17 +5,18 @@ Created on Sat Feb 15 19:55:00 2020
 @author: Jon
 """
 
-from osgeo import gdal
-import numpy as np
 import geopandas as gpd
+import numpy as np
 import pandas as pd
 import shapely
+from osgeo import gdal
+from pyproj import CRS
+
 from rabpro import elev_profile as ep
+from rabpro import merit_utils as mu
 from rabpro import subbasins as sb
 from rabpro import subbasin_stats as ss
 from rabpro import utils as rpu
-from rabpro import merit_utils as mu
-from pyproj import CRS
 
 
 class profiler:
