@@ -283,7 +283,7 @@ class profiler:
         elev_smooth = savgol_filter(self.elevs["elev_raw"], windowsize, k)
         return elev_smooth
 
-    def basin_stats(self, datasets):
+    def basin_stats(self, datasets, reducer_funcs=None, folder=None):
         """
         Computes watershed statistics.
 
@@ -293,7 +293,7 @@ class profiler:
             See the Dataset class
         """
 
-        self.stats = ss.main(self.basins, datasets, verbose=self.verbose)
+        self.stats = ss.main(self.basins, datasets, reducer_funcs=reducer_funcs, folder=folder, verbose=self.verbose)
 
     def export(self, what="all"):
         """

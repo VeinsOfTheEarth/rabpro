@@ -47,7 +47,7 @@ class Dataset:
         self.mask = mask
 
 
-def main(sb_inc_gdf, dataset_list, reducer_funcs=None, verbose=False, folder=None):
+def main(sb_inc_gdf, dataset_list, reducer_funcs=None, folder=None, verbose=False):
     """
     Compute subbasin statistics for each dataset and band specified.
 
