@@ -136,12 +136,13 @@ def main(sb_inc_gdf, dataset_list, reducer_funcs=None, verbose=False, folder=Non
             table = table.map(range_func)
 
         # Apply reducer functions
-        for f, header in reducer_funcs:
+        if reducer_funcs is not None:
+            for f, header in reducer_funcs:
 
-            def reducer_func(feat):
-                return feat.set(header, f(feat))
+                def reducer_func(feat):
+                    return feat.set(header, f(feat))
 
-            table = table.map(reducer_func)
+                table = table.map(reducer_func)
 
         # TODO: Add selectors to export
         task = ee.batch.Export.table.toDrive(
