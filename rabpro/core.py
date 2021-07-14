@@ -87,8 +87,7 @@ class profiler:
         # Prepare and fetch paths for exporting results
         self.paths = rpu.get_exportpaths(self.name, basepath=path_results, overwrite=True)
 
-        # This line will ensure that all the virtual rasters are built
-        # and available.
+        # This line will ensure that all the virtual rasters are built and available.
         rpu.get_datapaths()
 
     def _coordinates_to_gdf(self, coords):
@@ -125,13 +124,6 @@ class profiler:
         gdf.crs = CRS.from_epsg(4326)
 
         return gdf
-
-    def is_centerline(self):
-        """
-        Determines if the provided coordinates define a centerline. Basically
-        just checks for the number of input pairs.
-        """
-        return self.gdf.shape[0] != 1
 
     def _which_method(self, force_merit, merit_thresh=500):
         """
