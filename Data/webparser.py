@@ -98,7 +98,7 @@ def ee_catalog():
             print(e)
 
     # TODO change file path
-    with open("gee_catalog.json", "w") as f:
+    with open("gee_datasets.json", "w") as f:
         json.dump(catalog, f, indent=4)
 
 

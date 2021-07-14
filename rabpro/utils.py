@@ -27,7 +27,7 @@ from shapely.ops import unary_union
 from skimage import measure
 
 CATALOG_URL = (
-    "https://raw.githubusercontent.com/jonschwenk/rabpro/main/Data/gee_catalog.json"
+    "https://raw.githubusercontent.com/jonschwenk/rabpro/main/Data/gee_datasets.json"
 )
 
 _DATAPATHS = None
