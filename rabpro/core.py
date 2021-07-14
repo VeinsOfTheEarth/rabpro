@@ -49,13 +49,7 @@ class profiler:
     """
 
     def __init__(
-        self,
-        coords,
-        da=None,
-        name="unnamed",
-        path_results=None,
-        force_merit=False,
-        verbose=True,
+        self, coords, da=None, name="unnamed", path_results=None, force_merit=False, verbose=True,
     ):
 
         self.name = name
@@ -63,18 +57,16 @@ class profiler:
 
         # Parse the provided coordinates into a GeoDataFrame (if not already)
         if type(coords) is tuple:  # A single point was provided
-            self.gdf = self.coordinates_to_gdf([coords])
+            self.gdf = self._coordinates_to_gdf([coords])
         elif type(coords) is list:  # A list of tuples was provided (centerline)
-            self.gdf = self.coordinates_to_gdf(coords)
+            self.gdf = self._coordinates_to_gdf(coords)
         elif type(coords) is str:  # A path to .csv or .shp file was provided
             ext = coords.split(".")[-1]
             if ext == "csv":
-                self.gdf = self.csv_to_gdf(coords)
+                self.gdf = self._csv_to_gdf(coords)
             elif ext == "shp" or ext == "json" or ext == "geojson":
                 self.gdf = gpd.read_file(coords)
-        elif (
-            type(coords) is gpd.geodataframe.GeoDataFrame
-        ):  # A GeoDataFrame was provided.
+        elif type(coords) is gpd.geodataframe.GeoDataFrame:  # A GeoDataFrame was provided.
             # Convert it to EPSG:4326
             self.gdf = coords
             if self.gdf.crs.to_epsg() != 4326:
@@ -85,7 +77,7 @@ class profiler:
 
         # Determine the method for delineation
         self.da = da
-        self.method = self.which_method(force_merit)
+        self.method = self._which_method(force_merit)
 
         # Append drainage area to gdf
         if len(self.gdf) == 1:
@@ -93,15 +85,12 @@ class profiler:
                 self.gdf["DA"] = da
 
         # Prepare and fetch paths for exporting results
-        self.paths = rpu.get_exportpaths(
-            self.name, basepath=path_results, overwrite=True
-        )
+        self.paths = rpu.get_exportpaths(self.name, basepath=path_results, overwrite=True)
 
-        # This line will ensure that all the virtual rasters are built
-        # and available.
+        # This line will ensure that all the virtual rasters are built and available.
         rpu.get_datapaths()
 
-    def coordinates_to_gdf(self, coords):
+    def _coordinates_to_gdf(self, coords):
         """
         Converts a list of coordinates to a GeoDataFrame. Coordinates should
         be (lat, lon) pairs with EPSG==4326.
@@ -113,7 +102,7 @@ class profiler:
 
         return gdf
 
-    def csv_to_gdf(self, csvpath):
+    def _csv_to_gdf(self, csvpath):
         """
         Creates a GeoDataFrame from an input path to a csv. The csv must contain
         columns named latitude and longitdue in EPSG==4326.
@@ -136,30 +125,7 @@ class profiler:
 
         return gdf
 
-    def ensure_crs_match(self):
-        """
-        Checks that the crs of the coordinates GeoDataFrame matches that
-        supplied by keyword argument.
-        """
-
-        if self.gdf.crs is not None:
-            if self.EPSG != self.gdf.crs.to_epsg():
-                raise ValueError(
-                    f"Provided EPSG is {self.EPSG}, but GeoDataFrame thinks EPSG is {self.coords.crs['init'][5:]}. Rectify before continuing."
-                )
-        else:
-            self.gdf.crs = CRS.from_epsg(self.EPSG)
-
-        return
-
-    def is_centerline(self):
-        """
-        Determines if the provided coordinates define a centerline. Basically
-        just checks for the number of input pairs.
-        """
-        return self.gdf.shape[0] != 1
-
-    def which_method(self, force_merit, merit_thresh=500):
+    def _which_method(self, force_merit, merit_thresh=500):
         """
         Returns the method to use for delineating watersheds.
         """
@@ -237,9 +203,7 @@ class profiler:
                 rp_epsg = 2193 if self.mapped["meridian_cross"] else 3410
 
                 reproj_ea_meters = self.basins.to_crs(crs=CRS.from_epsg(rp_epsg))
-                pgon_area = (
-                    reproj_ea_meters.geometry.values[0].area / 10 ** 6
-                )  # square km
+                pgon_area = reproj_ea_meters.geometry.values[0].area / 10 ** 6  # square km
                 pct_diff = abs(pgon_area - self.mapped["da"]) / self.mapped["da"] * 100
                 if pct_diff > 10:
                     print(
@@ -252,38 +216,9 @@ class profiler:
             self.nrows = 50
             self.ncols = 50
 
-        self.gdf, self.merit_gdf = ep.main(
-            self.gdf, self.verbose, self.nrows, self.ncols
-        )
+        self.gdf, self.merit_gdf = ep.main(self.gdf, self.verbose, self.nrows, self.ncols)
 
-    def smooth_elevations(self, windowsize, k=1):
-        """
-        Applies a Savitzky-Golay filter to the raw elevation profile. I suggest
-        leaving the polynomial order (k) at 1, which is a moving average. Higher
-        order polynomials will oftentimes result in portions of the profile
-        that go 'uphill.'
-
-        Parameters
-        ----------
-        windowsize : int
-            Size of the window in number of centerline vertices.
-        k : int, optional
-            order of the polynomial to use for regression. The default is 1.
-
-        Returns
-        -------
-        elev_smooth : np.array
-            The smoothed elevations.
-        """
-        if ~hasattr(self, "stats"):
-            print("Elevations have not yet been computed.")
-        if windowsize % 2 == 0:
-            windowsize = int(windowsize + 1)
-
-        elev_smooth = savgol_filter(self.elevs["elev_raw"], windowsize, k)
-        return elev_smooth
-
-    def basin_stats(self, datasets):
+    def basin_stats(self, datasets, reducer_funcs=None, folder=None):
         """
         Computes watershed statistics.
 
@@ -293,7 +228,9 @@ class profiler:
             See the Dataset class
         """
 
-        self.stats = ss.main(self.basins, datasets, verbose=self.verbose)
+        ss.main(
+            self.basins, datasets, reducer_funcs=reducer_funcs, folder=folder, verbose=self.verbose
+        )
 
     def export(self, what="all"):
         """
@@ -306,7 +243,6 @@ class profiler:
             'all' - all computed data
             'elevs' - centerline json is exported with elevation and distance attributes
             'subbasins' - subbasins and incremental subbasins shapefiles
-            'stats' - csv of all subbasin statistics computed
             The default is 'all'.
 
         Returns
@@ -315,7 +251,7 @@ class profiler:
 
         """
         if what == "all":
-            what = ["elevs", "subbasins", "stats"]
+            what = ["elevs", "subbasins"]
         if self.verbose:
             print(f"Exporting {what} to {self.paths['basenamed']}.")
 
@@ -323,24 +259,15 @@ class profiler:
             what = [what]
 
         for w in what:
-            if w not in ["elevs", "subbasins", "stats"]:
+            if w not in ["elevs", "subbasins"]:
                 raise KeyError(
-                    f"Requested export {w} not available. Choose from {['elevs', 'subbasins', 'stats']}."
+                    f"Requested export {w} not available. Choose from {['elevs', 'subbasins']}."
                 )
-            if w == "stats":
-                if hasattr(self, "stats"):
-                    self.stats.to_csv(self.paths["stats"], index=False)
-                    if self.verbose:
-                        print("Statistics written successfully.")
-                else:
-                    print("No basin statistics found for export.")
             elif w == "subbasins":
                 if hasattr(self, "basins"):
                     self.basins.to_file(self.paths["subbasins"], driver="GeoJSON")
                     if hasattr(self, "basins_inc"):
-                        self.basins_inc.to_file(
-                            self.paths["subbasins_inc"], driver="GeoJSON"
-                        )
+                        self.basins_inc.to_file(self.paths["subbasins_inc"], driver="GeoJSON")
                     if self.verbose:
                         print("Basins geojson written successfully.")
                 else:
