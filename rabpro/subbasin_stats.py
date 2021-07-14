@@ -74,7 +74,7 @@ def main(sb_inc_gdf, dataset_list, reducer_funcs=None, verbose=False, folder=Non
     ee.Initialize()
 
     # Create water occurence mask
-    occ_mask = ee.Image("JRC/GSW1_0/GlobalSurfaceWater").select("occurrence").lt(90)
+    occ_mask = ee.Image("JRC/GSW1_3/GlobalSurfaceWater").select("occurrence").lt(90)
 
     # Convert GeoDataFrame to ee.Feature objects
     features = []
@@ -205,7 +205,7 @@ def _get_controls(datasets):
         if d.resolution is None:
             d.resolution = resolution
         if d.resolution and resolution and d.resolution < resolution:
-            print(f"Warning: requested resolution is less than the native raster resolution")
+            print("Warning: requested resolution is less than the native raster resolution")
 
         d.type = gee_dataset["type"]
 
