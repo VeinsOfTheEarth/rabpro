@@ -11,7 +11,7 @@ This is a wrapper script for using RaBPro via command line.
 
 """ For Darwin only """
 import argparse
-from rabpro import profiler as rp
+import rabpro
 
 def main(coords_file, da, name, years, force_merit=False, verbose=True):
     
@@ -22,7 +22,7 @@ def main(coords_file, da, name, years, force_merit=False, verbose=True):
     if da == -1:
         da = None
                         
-    rpo = rp.profiler(coords_file, da=da, name=name, force_merit=force_merit, verbose=verbose)
+    rpo = rabpro.profiler(coords_file, da=da, name=name, force_merit=force_merit, verbose=verbose)
     rpo.delineate_basins()
     rpo.basins.to_file('/projects/rabpro/gaugebasin_shp/'+name+'.shp',driver='ESRI Shapefile')
     rpo.elev_profile()

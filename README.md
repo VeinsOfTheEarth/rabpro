@@ -49,5 +49,5 @@ rpo.delineate_basins() # requires hydrobasins levels 1 and 12
 # name = "test"
 # rpo.basins.to_file('Data/gaugebasin_shp/'+name+'.shp',driver='ESRI Shapefile')
 rpo.elev_profile() # requires merit-dem (this ex. requires n30w090 [elv, fdr, upa, wth])
-rpo.basin_stats([Dataset("JRC/GSW1_0/GlobalSurfaceWater", "occurrence")]) # requires Google Earth Engine access
+rpo.basin_stats([Dataset("JRC/GSW1_3/GlobalSurfaceWater", "occurrence")]) # requires Google Earth Engine access
 ```
