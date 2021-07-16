@@ -10,7 +10,10 @@ longitudinal river profiles, global watershed delineation, watershed stats
 
 ```shell
 conda env create -f environment.yml
-source activate rp
+source activate rabpro
+
+# set use-feature to silence deprecation warning
+# pip install --use-feature=in-tree-build . 
 ```
 
 ### Data
@@ -43,7 +46,7 @@ from rabpro.subbasin_stats import Dataset
 # utils.get_rabpropath()
 # utils.get_datapaths()
 
-coords_file = gpd.read_file(r"../tests/input/Big Blue River.geojson")
+coords_file = gpd.read_file(r"../tests/test_data/Big Blue River.geojson")
 rpo = rabpro.profiler(coords_file)
 rpo.delineate_basins() # requires hydrobasins levels 1 and 12
 # name = "test"
