@@ -436,6 +436,30 @@
         }
     },
     {
+        "id": "COPERNICUS/S1_GRD",
+        "name": "Sentinel-1 SAR GRD: C-band Synthetic Aperture Radar Ground Range Detected, log scaling",
+        "start_date": "2014-10-03",
+        "end_date": "2021-07-15",
+        "type": "image_collection",
+        "bands": {
+            "HH": {
+                "units": null
+            },
+            "HV": {
+                "units": null
+            },
+            "VV": {
+                "units": null
+            },
+            "VH": {
+                "units": null
+            },
+            "angle": {
+                "units": "Degrees"
+            }
+        }
+    },
+    {
         "id": "COPERNICUS/S2",
         "name": "Sentinel-2 MSI: MultiSpectral Instrument, Level-1C",
         "start_date": "2015-06-23",
