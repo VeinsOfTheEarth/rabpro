@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import json
+import os
 from datetime import datetime, timezone
 
 import ee
@@ -116,8 +117,8 @@ def ee_catalog(deprecated, verbose):
         except Exception as e:
             print(e)
 
-    # TODO change file path
-    with open("gee_datasets.json", "w") as f:
+    filepath = os.path.join(os.path.abspath(os.path.dirname(__file__)),"gee_datasets.json")
+    with open(filepath, "w") as f:
         json.dump(catalog, f, indent=4)
 
 
