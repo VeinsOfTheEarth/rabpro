@@ -10,7 +10,7 @@ longitudinal river profiles, global watershed delineation, watershed stats
 
 ```shell
 conda env create -f environment.yml
-source activate rp
+source activate rabpro
 ```
 
 ### Data
