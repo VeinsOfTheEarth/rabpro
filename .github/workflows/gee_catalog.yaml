@@ -1,45 +1,44 @@
-name: gee_catalog_parser
+name: GEE Data Catalog Parser
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '0 3 * * *'
+    - cron: "0 3 * * *"
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout repo
+      - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: setup python
+      - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8.x'
+          python-version: "3.8.x"
 
       # TODO: Add pip cache and requirements.txt
-      
-      - name: install dependencies
+
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install requests earthengine-api
 
-      - name: set up credentials
+      - name: Set up credentials
         run: |
           mkdir -p "$HOME/.config/earthengine"
           echo "$EARTH_ENGINE_KEY" > "$HOME/.config/earthengine/credentials"
         env:
           EARTH_ENGINE_KEY: ${{ secrets.EARTH_ENGINE_SECRET }}
 
-      - name: run web parser
+      - name: Run catalog parser
         run: python3 ./Data/webparser.py
 
-      - name: commit json file
+      - name: Commit JSON file
         run: |
           git config --global user.name 'GitHub Action'
           git config --local user.email "action@github.com"
           git add -A
           git commit -m "Updated GEE datasets ($(date +"%Y-%m-%d"))" -a
 
-      - name: push json file
+      - name: Push JSON file
         run: git push
-        

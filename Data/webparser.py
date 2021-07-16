@@ -117,7 +117,7 @@ def ee_catalog(deprecated, verbose):
         except Exception as e:
             print(e)
 
-    filepath = os.path.join(os.path.abspath(os.path.dirname(__file__)),"gee_datasets.json")
+    filepath = os.path.join(os.path.abspath(os.path.dirname(__file__)), "gee_datasets.json")
     with open(filepath, "w") as f:
         json.dump(catalog, f, indent=4)
 
@@ -126,8 +126,6 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="Parse GEE Data Catalog metadata")
 
-    parser.add_argument("--verbose", default=False, action="store_true")
-
     parser.add_argument(
         "-d",
         "--deprecated",
@@ -135,6 +133,8 @@ if __name__ == "__main__":
         action="store_true",
         help="include deprecated GEE assets",
     )
+
+    parser.add_argument("--verbose", default=False, action="store_true")
 
     args = parser.parse_args()
 
