@@ -28,7 +28,7 @@ jobs:
           mkdir -p "$HOME/.config/earthengine"
           echo "$EARTH_ENGINE_KEY" > "$HOME/.config/earthengine/credentials"
         env:
-          EARTH_ENGINE_KEY = ${{ secrets.EARTH_ENGINE_SECRET }}
+          EARTH_ENGINE_KEY: ${{ secrets.EARTH_ENGINE_SECRET }}
 
       - name: run web parser
         run: python3 ./Data/webparser.py
