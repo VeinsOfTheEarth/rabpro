@@ -226,6 +226,13 @@ class profiler:
         ----------
         datasets : list of Dataset objects
             See the Dataset class
+        reducer_funcs : list of functions
+            List of functions to apply to each feature over each dataset.
+            Each function should take in an ee.Feature() object. For example,
+            this is how the function and header are applied on a feature:
+                feature.set(f.__name__, function(feature))
+        folder : str
+            Google Drive folder to store results in
         """
 
         ss.main(
