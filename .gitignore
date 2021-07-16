@@ -18,4 +18,4 @@ results
 rabpro.egg-info
 
 #Docs
-docs/_build
+docs/build
