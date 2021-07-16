@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'rabpro'
-copyright = '2021, Jon Schwenk, Tal Zussman'
-author = 'Jon Schwenk, Tal Zussman'
+copyright = '2021, Jon Schwenk'
+author = 'Jon Schwenk'
 
 
 # -- General configuration ---------------------------------------------------
