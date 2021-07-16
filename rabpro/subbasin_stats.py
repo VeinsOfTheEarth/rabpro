@@ -57,12 +57,11 @@ def main(sb_inc_gdf, dataset_list, reducer_funcs=None, folder=None, verbose=Fals
         Table of subbasin geometries
     dataset_list : list of Datasets
         List of Dataset objects to computer statistics over
-    reducer_funcs : list of tuples of str and function
-        List of functions to apply to each feature over each dataset and strings
-        to name the output columns. Each function should take in an ee.Feature()
-        object. For example, this is how the function and header are applied on
-        a feature:
-            feature.set(header, function(feature))
+    reducer_funcs : list of functions
+        List of functions to apply to each feature over each dataset.
+        Each function should take in an ee.Feature() object. For example,
+        this is how the function and header are applied on a feature:
+            feature.set(f.__name__, function(feature))
     verbose : boolean
     folder : str
         Google Drive folder to store results in
@@ -137,10 +136,10 @@ def main(sb_inc_gdf, dataset_list, reducer_funcs=None, folder=None, verbose=Fals
 
         # Apply reducer functions
         if reducer_funcs is not None:
-            for f, header in reducer_funcs:
+            for f in reducer_funcs:
 
                 def reducer_func(feat):
-                    return feat.set(header, f(feat))
+                    return feat.set(f.__name__, f(feat))
 
                 table = table.map(reducer_func)
 
