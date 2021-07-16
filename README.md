@@ -43,7 +43,7 @@ from rabpro.subbasin_stats import Dataset
 # utils.get_rabpropath()
 # utils.get_datapaths()
 
-coords_file = gpd.read_file(r"../tests/input/Big Blue River.geojson")
+coords_file = gpd.read_file(r"../tests/test_data/Big Blue River.geojson")
 rpo = rabpro.profiler(coords_file)
 rpo.delineate_basins() # requires hydrobasins levels 1 and 12
 # name = "test"
