@@ -11,6 +11,9 @@ longitudinal river profiles, global watershed delineation, watershed stats
 ```shell
 conda env create -f environment.yml
 source activate rabpro
+
+# set use-feature to silence deprecation warning
+# pip install --use-feature=in-tree-build . 
 ```
 
 ### Data
