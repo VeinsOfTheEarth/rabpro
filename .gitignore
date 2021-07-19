@@ -1,4 +1,6 @@
 rabpro/__pycache__
+
+# Data files
 Data/*/*/*.tif
 Data/*/*/*.txt
 Data/*/*/*.vrt
@@ -8,5 +10,12 @@ Data/HydroBasins/*/*.prj
 Data/HydroBasins/*/*.dbf
 Data/HydroBasins/*/*.fix
 Data/HydroBasins/*/*.cpg
-Results/*
+
+# Output
+results
+
+# Packaging
 rabpro.egg-info
+
+#Docs
+docs/build
