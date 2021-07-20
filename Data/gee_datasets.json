@@ -55,7 +55,7 @@
         "id": "ASTER/AST_L1T_003",
         "name": "ASTER L1T Radiance",
         "start_date": "2000-03-04",
-        "end_date": "2021-07-16",
+        "end_date": "2021-07-17",
         "type": "image_collection",
         "bands": {
             "B01": {
@@ -439,7 +439,7 @@
         "id": "COPERNICUS/S1_GRD",
         "name": "Sentinel-1 SAR GRD: C-band Synthetic Aperture Radar Ground Range Detected, log scaling",
         "start_date": "2014-10-03",
-        "end_date": "2021-07-18",
+        "end_date": "2021-07-19",
         "type": "image_collection",
         "bands": {
             "HH": {
@@ -6331,7 +6331,7 @@
         "id": "LANDSAT/LC08/C01/T1_RT_TOA",
         "name": "USGS Landsat 8 Collection 1 Tier 1 and Real-Time data TOA Reflectance",
         "start_date": "2013-04-11",
-        "end_date": "2021-07-18",
+        "end_date": "2021-07-19",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -6942,7 +6942,7 @@
         "id": "LANDSAT/LE07/C01/T1_RT_TOA",
         "name": "USGS Landsat 7 Collection 1 Tier 1 and Real-Time data TOA Reflectance",
         "start_date": "1999-01-01",
-        "end_date": "2021-07-18",
+        "end_date": "2021-07-19",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -7195,7 +7195,7 @@
         "id": "LANDSAT/LE07/C01/T2_TOA",
         "name": "USGS Landsat 7 Collection 1 Tier 2 TOA Reflectance",
         "start_date": "1999-01-01",
-        "end_date": "2021-06-21",
+        "end_date": "2021-06-22",
         "type": "image_collection",
         "bands": {
             "B1": {
