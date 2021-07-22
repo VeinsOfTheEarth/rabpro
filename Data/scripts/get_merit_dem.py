@@ -21,7 +21,7 @@ merit_hydro_paths = {
 }
 
 datapath = appdirs.user_data_dir("rabpro", "jschwenk")
-os.makedirs(datapath, exist_ok = True)
+
 
 def merit_dem(target, username, password):
     baseurl = "http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/"
@@ -33,14 +33,14 @@ def merit_dem(target, username, password):
 
     url = baseurl + url
     filename = os.path.join(datapath, merit_hydro_paths["dem"], filename)
-    os.makedirs(os.path.dirname(filename), exist_ok = True)
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
 
     print(f"Downloading '{url}' into '{filename}'")
     download_file(url, filename, username, password)
     print()
 
 
-def merit_hydro(target, username, password):    
+def merit_hydro(target, username, password):
     baseurl = "http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/"
 
     response = requests.get(baseurl)
@@ -48,7 +48,7 @@ def merit_hydro(target, username, password):
     urls = [x["href"][2:] for x in soup.findAll("a", text=re.compile(target), href=True)]
     # The [2:] gets rid of the "./" in the URL
 
-    for urlfile in urls:        
+    for urlfile in urls:
         url = baseurl + urlfile
         filename = os.path.basename(urllib.parse.urlparse(url).path)
 
@@ -56,7 +56,7 @@ def merit_hydro(target, username, password):
             continue
 
         filename = os.path.join(datapath, merit_hydro_paths[filename[:3]], filename)
-        os.makedirs(os.path.dirname(filename), exist_ok = True)
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
 
         print(f"Downloading '{url}' into '{filename}'")
         download_file(url, filename, username, password)
@@ -80,8 +80,8 @@ def download_file(url, filename, username, password):
         tqdmbar.close()
 
     # Extract TAR archive and remove artifacts
-    tf = tarfile.open(filename)
-    tf.extractall(os.path.dirname(filename))
+    with tarfile.open(filename) as tf:
+        tf.extractall(os.path.dirname(filename))
 
     tar_dir = filename[:-4]
     files = os.listdir(tar_dir)
@@ -89,7 +89,7 @@ def download_file(url, filename, username, password):
         shutil.move(os.path.join(tar_dir, f), os.path.join(os.path.dirname(tar_dir), f))
 
     os.rmdir(tar_dir)
-    # os.remove(filename)
+    os.remove(filename)
 
 
 if __name__ == "__main__":
