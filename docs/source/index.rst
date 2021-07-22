@@ -10,6 +10,13 @@ Welcome to rabpro's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   apiref/index
+   background/index
+   contributing/index
+   examples/index
+   install/index
+   issues/index
+
 
 
 Indices and tables

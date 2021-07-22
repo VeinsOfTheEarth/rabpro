@@ -29,9 +29,13 @@ author = 'Jon Schwenk'
 # ones.
 
 import sphinx_rtd_theme
+import rabpro
 
 extensions = [
-    "sphinx_rtd_theme"
+    "sphinx_rtd_theme",
+    "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
+    "sphinx.ext.githubpages"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
