@@ -473,64 +473,6 @@ def idcs_to_geopolygons(idcs, gdobj, buf_amt=0.001):
     return pgons, crossing
 
 
-def idcs_to_polygon(idcs, gdobj, verbose=False):
-    """
-    Converts a set of indices within the MERIT dataset to a
-    polygon tracing their exterior.
-    """
-    imshape = (gdobj.RasterXSize, gdobj.RasterYSize)
-    # Make a raster to store the pixel locations
-    cr = np.unravel_index(list(idcs), imshape)
-    xmax, xmin = np.max(cr[0]), np.min(cr[0])
-    ymax, ymin = np.max(cr[1]), np.min(cr[1])
-    ncols, nrows = xmax - xmin + 1, ymax - ymin + 1
-    I = np.zeros((nrows, ncols), dtype=np.bool)
-    I[cr[1] - ymin, cr[0] - xmin] = True
-    sumI = I.sum()
-
-    # We need to return a non-self-intersecting polygon, which is problematic
-    # when we have 8-connected pixels at the boundary. This method is not ideal
-    # as it trims the watershed just for numerical convenience, but after some
-    # research/thinking, a proper solution would be quite complex. Will add
-    # verbosity to inform use of how many pixels were trimmed.
-    I = im.largest_blobs(I, action="keep", connectivity=1)
-    sumI_filt = I.sum()
-
-    if verbose is True:
-        nremoved = sumI - sumI_filt
-        if nremoved > 0:
-            print(
-                "{} corner-connected pixels out of {} were trimmed from basin...".format(
-                    nremoved, sumI
-                ),
-                end="",
-            )
-
-    # Similarly, need to fill in 8-connected holes
-    sumI = I.sum()
-    I = im.fill_holes(I)
-    if verbose is True:
-        nadded = I.sum() - sumI
-        if nadded > 0:
-            print(
-                "{} pixels out of {} were filled in basin...".format(nremoved, sumI),
-                end="",
-            )
-
-    # # Get the polygon of the remaining blob
-    # ys, xs = blob_to_polygon(I)
-    # coords = ru.xy_to_coords(xs + xmin, ys + ymin, gdobj.GetGeoTransform())
-    # pgon = Polygon(zip(coords[0], coords[1]))
-
-    yss, xss = blob_to_polygon_shapely(I)
-    coords = ru.xy_to_coords(
-        xss + xmin - 0.5, yss + ymin - 0.5, gdobj.GetGeoTransform()
-    )
-    pgon = Polygon(zip(coords[0], coords[1]))
-
-    return pgon
-
-
 def nrows_and_cols_from_search_radius(lon, lat, search_radius, gt):
     """
     search_radius is in meters.
@@ -547,70 +489,6 @@ def nrows_and_cols_from_search_radius(lon, lat, search_radius, gt):
     )
     nrows = abs(boundsxy[0, 1] - boundsxy[1, 1])
     ncols = abs(boundsxy[0, 0] - boundsxy[1, 0])
-
-    return nrows, ncols
-
-
-def float_precision(x):
-    """
-    Taken from https://stackoverflow.com/questions/3018758/determine-precision-and-scale-of-particular-number-in-python
-    If x is cast as a float(), it will return as many decimal places as seen upon print(x) -- i.e. no round-off for
-    0.99999 etc.
-
-    Parameters
-    ----------
-    x : TYPE
-        DESCRIPTION.
-
-    Returns
-    -------
-    TYPE
-        DESCRIPTION.
-    TYPE
-        DESCRIPTION.
-
-    """
-    max_digits = 14
-    int_part = int(abs(x))
-    magnitude = 1 if int_part == 0 else int(math.log10(int_part)) + 1
-    if magnitude >= max_digits:
-        return 0
-    frac_part = abs(x) - int_part
-    multiplier = 10 ** (max_digits - magnitude)
-    frac_digits = multiplier + int(multiplier * frac_part + 0.5)
-    while frac_digits % 10 == 0:
-        frac_digits /= 10
-    scale = int(math.log10(frac_digits))
-    return scale
-
-
-def nrows_and_cols_from_coordinate_precision(lon, lat, gt):
-    """
-    UNUSED
-    Returns the number of rows and columns to account for the precision of the
-    provided coordinate. Assumes +/- one unit of the most precise coordinate.
-    E.g. if the coordinate is 45.42, returns the nrows and ncols associated
-    with +/- 0.01 degrees.
-
-    Assumes gt has same units as lon and lat.
-
-    Parameters
-    ----------
-    lon : TYPE
-        DESCRIPTION.
-    lat : TYPE
-        DESCRIPTION.
-
-    Returns
-    -------
-    None.
-
-    """
-    prec_lon = 10 ** -float_precision(lon)
-    prec_lat = 10 ** -float_precision(lat)
-
-    ncols = math.ceil(prec_lon / gt[1] * 2)
-    nrows = math.ceil(prec_lat / abs(gt[5]) * 2)
 
     return nrows, ncols
 
@@ -912,62 +790,6 @@ def map_cl_pt_to_flowline(
     # row_mapped = cr[0][1]
 
     return (int(col_mapped), int(row_mapped)), solve_method  # longitude, latitude
-
-
-def dem_path(fdr_obj, cr_us, cr_ds=None, n_steps=None):
-    """
-    Walks along a flow direction grid from stpt to enpt. Returns a list of
-    pixels from stpt to enpt. If only the downstream point is provided, will
-    trace the centerline. Walks from upstream to downstream.
-
-    fdr_obj - flow direction object opened with gdal.Open(). Assumes flow
-              direction symbology matches MERIT-Hydro:
-                32 64 128
-                16     1
-                8   4  2
-    cr_stpt - column, row of point to start walk
-    cr_enpt - column, row of point to end walk
-    """
-    imshape = (fdr_obj.RasterXSize, fdr_obj.RasterYSize)
-
-    # Dictionary for looking up row, column additions when walking
-    rowdict = {32: -1, 64: -1, 128: -1, 16: 0, 1: 0, 8: 1, 4: 1, 2: 1}
-    coldict = {32: -1, 64: 0, 128: 1, 16: -1, 1: 1, 8: -1, 4: 0, 2: 1}
-
-    us_pti = np.ravel_multi_index(cr_us, imshape)
-    if cr_ds is not None:
-        ds_pti = np.ravel_multi_index(cr_ds, imshape)
-    else:
-        ds_pti = None
-
-    do_pt = [us_pti]
-    ct = 1
-    while 1:
-        cr = np.unravel_index(do_pt[-1], imshape)
-        fdr = fdr_obj.ReadAsArray(xoff=int(cr[0]), yoff=int(cr[1]), xsize=1, ysize=1)
-        fdr = fdr[0][0]
-
-        # If we reach a pixel with no direction
-        if fdr not in rowdict.keys():
-            break
-
-        row = cr[1] + rowdict[fdr]
-        col = cr[0] + coldict[fdr]
-
-        do_pt.append(np.ravel_multi_index((col, row), imshape))
-
-        # Halt if we've reached the end coordinate
-        if ds_pti == do_pt[-1]:
-            break
-
-        # Halt if we've reached the number of steps
-        ct = ct + 1
-        if ct == n_steps:
-            break
-
-    colrow = np.unravel_index(do_pt, imshape)
-
-    return (colrow[1], colrow[0])
 
 
 def blob_to_polygon(I, ret_type="coords"):
