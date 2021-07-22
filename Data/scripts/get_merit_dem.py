@@ -1,60 +1,104 @@
-# http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/
+#!/usr/bin/env python3
 
-import requests
-# import urllib.request
-from bs4 import BeautifulSoup
-import re
+import argparse
 import os
+import re
+import shutil
+import tarfile
 import urllib.parse
-import numpy as np
 
-baseurl = "http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/"
-
-response = requests.get(baseurl)
-soup = BeautifulSoup(response.text, 'html.parser')
-individual_pages = soup.findAll('a')
-
-detect_url = lambda x: re.findall(r'(?<=a href=".\/)distribute\/v1\.0\/elv.*(?=")', x)
-urls = [detect_url(str(x)) for x in individual_pages]
-urls = list(filter(None, urls))
-
-# target = r'n30w090' # north america
-# target = r's60w180' # oceania
-detect_target = lambda x: re.findall(target, x)
-target_position = np.argmax([len(x) for x in [detect_target(str(x)) for x in urls]])
-
-url = baseurl + urls[target_position][0]
-
-# elv_n30w090.tar 
-# url = 'http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/distribute/v1.0/elv_s60w180.tar'
-filename = os.path.basename(urllib.parse.urlparse(url).path)
-username = "hydrography"
-password = "rivernetwork"
-
-# ---
-# https://stackoverflow.com/a/47342052/3362993
+import appdirs
+import requests
 import tqdm
+from bs4 import BeautifulSoup
 
-def download_file(url, filename):
-    
-    r = requests.get(url, auth=(username,password), stream=True)
-    total_size = int(r.headers.get('content-length', 0))
+merit_hydro_paths = {
+    "elv": f"DEM{os.sep}MERIT_ELEV_HP",
+    "dir": f"DEM{os.sep}MERIT_FDR",
+    "upa": f"DEM{os.sep}MERIT_UDA",
+    "wth": f"DEM{os.sep}MERIT_WTH",
+    "dem": f"DEM{os.sep}MERIT103",
+}
 
-    with open(filename, 'wb') as f:
-        for chunk in tqdm.tqdm(r.iter_content(32*1024), total=total_size,unit='B', unit_scale=True):
+datapath = appdirs.user_data_dir("rabpro", "jschwenk")
+
+
+def merit_dem(target, username, password):
+    baseurl = "http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/"
+    filename = f"dem_tif_{target}.tar"
+
+    response = requests.get(baseurl)
+    soup = BeautifulSoup(response.text, "html.parser")
+    url = [x["href"][2:] for x in soup.findAll("a", text=re.compile(filename), href=True)][0]
+
+    url = baseurl + url
+    filename = os.path.join(datapath, merit_hydro_paths["dem"], filename)
+    print(f"Downloading '{url}' into '{filename}'")
+    download_file(url, filename, username, password)
+    print()
+
+
+def merit_hydro(target, username, password):
+    baseurl = "http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/"
+
+    response = requests.get(baseurl)
+    soup = BeautifulSoup(response.text, "html.parser")
+    urls = [x["href"][2:] for x in soup.findAll("a", text=re.compile(target), href=True)]
+    # The [2:] gets rid of the "./" in the URL
+
+    for urlfile in urls:
+        url = baseurl + urlfile
+        filename = os.path.basename(urllib.parse.urlparse(url).path)
+
+        if filename[:3] not in merit_hydro_paths:
+            continue
+
+        filename = os.path.join(datapath, merit_hydro_paths[filename[:3]], filename)
+
+        print(f"Downloading '{url}' into '{filename}'")
+        download_file(url, filename, username, password)
+        print()
+
+
+def download_file(url, filename, username, password):
+    r = requests.get(url, auth=(username, password), stream=True)
+    total_size = int(r.headers.get("content-length", 0))
+
+    if r.status_code != 200:
+        print(f"{url} failed with status code {r.status_code}")
+        return
+
+    with open(filename, "wb") as f:
+        tqdmbar = tqdm.tqdm(total=total_size, unit="B", unit_scale=True)
+        for chunk in r.iter_content(4 * 1024):
             if chunk:
+                tqdmbar.update(len(chunk))
                 f.write(chunk)
+        tqdmbar.close()
 
-    return path
+    # Extract TAR archive and remove artifacts
+    tf = tarfile.open(filename)
+    tf.extractall(os.path.dirname(filename))
 
-download_file(url, filename)
+    tar_dir = filename[:-4]
+    files = os.listdir(tar_dir)
+    for f in files:
+        shutil.move(os.path.join(tar_dir, f), os.path.join(os.path.dirname(tar_dir), f))
 
-# ---
-r = requests.get(url)
-r = requests.get(url, auth=(username,password), timeout = None)
+    os.rmdir(tar_dir)
+    os.remove(filename)
 
-if r.status_code == 200:
-   with open(filename, 'wb') as out:
-      for bits in r.iter_content():
-          out.write(bits)
 
+if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("target", type=str, help="MERIT tile (e.g. 'n30w090')")
+
+    parser.add_argument("username", type=str, help="MERIT username")
+
+    parser.add_argument("password", type=str, help="MERIT password")
+
+    args = parser.parse_args()
+    merit_hydro(args.target, args.username, args.password)
+    merit_dem(args.target, args.username, args.password)
