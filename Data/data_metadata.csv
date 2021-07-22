@@ -1,8 +1,0 @@
-dataID,rel_path
-HydroBasins1,HydroBasins\level_one
-HydroBasins12,HydroBasins\level_twelve
-DEM,DEM\MERIT103\merit_dem.vrt
-DEM_fdr,DEM\MERIT_FDR\MERIT_FDR.vrt
-DEM_uda,DEM\MERIT_UDA\MERIT_UDA.vrt
-DEM_elev_hp,DEM\MERIT_ELEV_HP\MERIT_ELEV_HP.vrt
-DEM_width,DEM\MERIT_WTH\MERIT_WTH.vrt
