@@ -26,24 +26,9 @@ from shapely.geometry import Polygon, MultiPolygon
 from shapely.ops import unary_union
 from skimage import measure
 
-CATALOG_URL = (
-    "https://raw.githubusercontent.com/jonschwenk/rabpro/main/Data/gee_datasets.json"
-)
+CATALOG_URL = "https://raw.githubusercontent.com/jonschwenk/rabpro/main/Data/gee_datasets.json"
 
 _DATAPATHS = None
-
-
-def get_rabpropath():
-    """
-    Returns a pathlib Path object of RaBPro's basepath.
-    """
-    import rabpro as rp
-
-    filepath = os.path.dirname(rp.__file__)
-    st_idx = filepath.rindex("rabpro")
-    rabpropath = Path(filepath[:st_idx])
-
-    return rabpropath
 
 
 def get_datapaths():
@@ -137,18 +122,14 @@ def get_exportpaths(name, basepath=None, overwrite=False):
     namedresults = results / name
 
     # Make a named results directory if it doesn't exist
-    if namedresults.exists() is False:
+    if not namedresults.exists():
         namedresults.mkdir(parents=True, exist_ok=True)
-    elif overwrite is True:
+    elif overwrite:
         clear_directory(namedresults)
 
     # Results path dictionary
     exportpaths = {
-        "base": str(results),
-        "basenamed": str(namedresults),
-        "stats": str(namedresults / "subbasin_stats.csv"),
         "subbasins": str(namedresults / "subbasins.json"),
-        "mapping_info": str(namedresults / "mapping.csv"),
         "subbasins_inc": str(namedresults / "subbasins_inc.json"),
         "centerline_results": str(namedresults / "centerline_results.json"),
         "dem_results": str(namedresults / "dem_flowpath.json"),
@@ -244,7 +225,7 @@ def build_vrt(
         elif ftype == "nc":
             checktype = "nc"
         else:
-            raise TypeError("Unsupported filetype provided-must be tif, hgt, nc, or vrt.")
+            raise TypeError("Unsupported filetype provided - must be tif, hgt, nc, or vrt.")
 
         for f in os.listdir(tilespath):
             if f.lower().endswith(checktype):  # ensure we're looking at a tif
@@ -253,7 +234,7 @@ def build_vrt(
         filelist = [tilespath]
 
     if len(filelist) < 1:
-        print("Supplied path for building vrt: {}".format(filelist))
+        print(f"Supplied path for building vrt: {filelist}")
         raise RuntimeError("The path you supplied appears empty.")
 
     # Clear out .txt and .vrt files if they already exist
@@ -313,7 +294,7 @@ def build_vrt(
 
     # Check that vrt built successfully
     if len(stderr) > 3:
-        raise RuntimeError("Virtual raster did not build sucessfully. Error: {}".format(stderr))
+        raise RuntimeError(f"Virtual raster did not build sucessfully. Error: {stderr}")
     else:
         print(stdout)
 
@@ -379,31 +360,6 @@ def parse_path(path):
     return base, folder, filename, extension
 
 
-def fetch_paths_from_file(csvpath):
-    """
-    Loads the path csv and builds a dictionary to the different file paths.
-    """
-    paths = dict()
-
-    path_df = pd.read_csv(csvpath)
-    keys = path_df.keys()
-    for k in keys:
-        paths[k] = path_df[k].values[0]
-
-    return paths
-
-
-def create_folder(folderpath):
-    """
-    Creates a folder or deletes all the files if the folder exists.
-    """
-    # Check that the folder exists first
-    if os.path.exists(folderpath):
-        clear_directory(folderpath)
-    else:
-        os.makedirs(folderpath)
-
-
 def delete_file(file):
     # Deletes a file. Input is file's location on disk (path + filename)
     try:
@@ -412,67 +368,16 @@ def delete_file(file):
         pass
 
 
-def vrt_vals_from_lonlat(lonlats, vrt_obj, nrows=0, ncols=0):
+def clear_directory(Path_obj):
     """
-    Given an input list of lat, lon coordinates (latlons should be a Mx2 numpy
-    array), returns the value of a vrt (or tiff) defined by vrt_obj at those
-    coordinates. If you want to pull a neighborhood, nrows and ncols defines
-    the number of rows and columns on each side of the pixel to pull. E.g.
-    setting nrows = ncols = 1 will return a 3x3 set; =2 returns 5x5, etc.
-
-    Has been fixed for column/row confusion/switching.
+    Given a pathlib Path obj, clears all the contents of the directory. Does
+    not remove the directory itself.
     """
-    nrows = int(nrows)
-    ncols = int(ncols)
-
-    # How many points do we have?
-    nll = int(lonlats.size / 2)
-
-    if type(nrows) is int:
-        nrows = np.ones(nll) * nrows
-
-    if type(ncols) is int:
-        ncols = np.ones(nll) * ncols
-
-    if nll > 1 and len(nrows) != nll:
-        raise ValueError("Check padding in vrt_vals_from_latlon.")
-
-    # Lat/lon to row/col
-    if nll > 1:
-        lons = lonlats[:, 0]
-        lats = lonlats[:, 1]
-    else:
-        lons = lonlats[0]
-        lats = lonlats[1]
-
-    colrow = lonlat_to_xy(lons, lats, vrt_obj.GetGeoTransform())
-
-    # Pull value and neighborhood from vrt at row/col
-    vrtvals = []
-    for i, cr in enumerate(colrow):
-        if nrows[i] == ncols[i] == 0:
-            vrtvals.append(
-                vrt_obj.ReadAsArray(
-                    int(cr[0] - ncols[i]),
-                    int(cr[1] - nrows[i]),
-                    int(1 + 2 * ncols[i]),
-                    int(1 + 2 * nrows[i]),
-                )[0][0]
-            )
+    for child in Path_obj.glob("*"):
+        if not child.is_dir():
+            child.unlink()
         else:
-            vrtvals.append(
-                vrt_obj.ReadAsArray(
-                    int(cr[0] - ncols[i]),
-                    int(cr[1] - nrows[i]),
-                    int(1 + 2 * ncols[i]),
-                    int(1 + 2 * nrows[i]),
-                )
-            )
-
-    if len(vrtvals) == 1:
-        vrtvals = vrtvals[0]
-
-    return vrtvals, colrow
+            shutil.rmtree(child)
 
 
 def lonlat_to_xy(lons, lats, gt):
@@ -539,86 +444,6 @@ def lonlat_plus_distance(lon, lat, dist, bearing=0):
     lon_m = np.degrees(lon_m)
 
     return lon_m, lat_m
-
-
-def transform_coordinates(xs, ys, inputEPSG, outputEPSG):
-
-    if inputEPSG == outputEPSG:
-        return xs, ys
-
-    # Create an ogr object of multipoints
-    points = ogr.Geometry(ogr.wkbMultiPoint)
-    for i in range(len(xs)):
-        point = ogr.Geometry(ogr.wkbPoint)
-        point.AddPoint(float(xs[i]), float(ys[i]))
-        points.AddGeometry(point)
-
-    # Create coordinate transformation
-    inSpatialRef = osr.SpatialReference()
-    inSpatialRef.ImportFromEPSG(inputEPSG)
-
-    outSpatialRef = osr.SpatialReference()
-    outSpatialRef.ImportFromEPSG(outputEPSG)
-
-    coordTransform = osr.CoordinateTransformation(inSpatialRef, outSpatialRef)
-
-    # transform point
-    points.Transform(coordTransform)
-
-    xyout = np.array([0, 0, 0])
-    for i in range(len(xs)):
-        xyout = np.vstack((xyout, points.GetGeometryRef(i).GetPoints()))
-    xyout = xyout[1:, 0:2]
-
-    return xyout[:, 0], xyout[:, 1]
-
-
-def tifflist(folderpath, fileonly=0):
-    # Returns a list of all the .tif or .TIF files in a folder
-    folderpath = os.path.normpath(folderpath) + os.sep
-
-    filelist = []
-    for file in os.listdir(folderpath):
-        if (
-            file.endswith(".tif") or file.endswith(".TIF") or file.endswith(".tiff")
-        ):  # ensure we're looking at a tif
-            filelist.append(folderpath + file)
-
-    # If only the filename with extension should be returned (not the full filepath)
-    if fileonly != 0:
-        tifonly = []
-        for file in filelist:
-            tifonly.append(os.path.basename(file))
-        filelist = tifonly
-
-    return filelist
-
-
-def largest_blobs(I, nlargest=1, action="remove", connectivity=2):
-    """
-    Returns a binary image with the nlargest blobs removed from the input
-    binary image.
-    """
-    props = ["area", "coords"]
-    rp = regionprops(I, props, connectivity=connectivity)
-    areas = np.array(rp["area"])
-    coords = rp["coords"]
-    # Sorts the areas array and keeps the nlargest indices
-    maxidcs = areas.argsort()[-nlargest:][::-1]
-
-    if action == "remove":
-        Ic = np.copy(I)
-        for m in maxidcs:
-            Ic[coords[m][:, 0], coords[m][:, 1]] = False
-    elif action == "keep":
-        Ic = np.zeros_like(I)
-        for m in maxidcs:
-            Ic[coords[m][:, 0], coords[m][:, 1]] = True
-    else:
-        print("Improper action specified: either choose remove or keep")
-        Ic = I
-
-    return Ic
 
 
 def regionprops(I, props, connectivity=2):
@@ -727,102 +552,6 @@ def union_gdf_polygons(gdf, idcs, buffer=True):
     return polyout
 
 
-def pts_df_to_gdf(df, crs={"init": "epsg:4326"}):
-    """
-    Given an input dataframe with columns labeled "lat", or "latitude" and "lon"
-    or "longitdue" describing point locations, returns a pandas geodataframe.
-    """
-    keys = df.keys()
-    lati = [i for i, j in enumerate(keys) if j.lower() == "lat" or j.lower() == "latitude"]
-    loni = [i for i, j in enumerate(keys) if j.lower() == "lon" or j.lower() == "longitude"]
-    geometry = [shapely.geometry.Point(xy) for xy in zip(df[keys[loni[0]]], df[keys[lati[0]]])]
-    df = df.drop([keys[loni[0]], keys[lati[0]]], axis=1)
-    gdf = gpd.GeoDataFrame(df, crs=crs, geometry=geometry)
-
-    return gdf
-
-
-def ensure_us_to_ds(clpath):
-
-    cl_df = pd.read_csv(clpath)
-
-    # Get distances; could have various column names
-    keys = cl_df.keys()
-    disti = [i for i, j in enumerate(keys) if j.lower() == "distance" or j.lower() == "dist"]
-    dists = cl_df[keys[disti]].values.ravel()
-
-    # Ensure that coordinates are US-->DS order
-    if np.sum(np.diff(dists) < 0) > 0:
-        print("Coordinates not arranged in US->DS order; rearranging file: " + clpath)
-        sorted_idcs = dists.ravel().argsort()
-        cl_df = cl_df.loc[sorted_idcs]
-        cl_df.to_csv(clpath)
-
-
-def downsample_binary_image(I, newsize):
-    """
-    Given an input binary image and a new size, this downsamples (i.e. reduces
-    resolution) the input image to the new size. A pixel is considered "on"
-    in the new image if 'thresh' fraction of its area is covered by the
-    higher-res image. E.g. set 'thresh' to zero if you want the output image
-    to be "on" everywhere at least a single pixel is "on" in the original
-    image.
-    """
-
-    thresh = 0.05  # fraction that each larger pixel needs to contain of smaller pixels to consider it "on"
-
-    # Get locations of all smaller pixels
-    row, col = np.where(I > 0)
-
-    # Get the scaling factor in both directions
-    rowfact = newsize[0] / I.shape[0]
-    colfact = newsize[1] / I.shape[1]
-
-    # Scale the row,col coordinates and turn them into integers
-    rowcol = np.vstack(
-        (np.array(row * rowfact, dtype=np.uint16), np.array(col * colfact, dtype=np.uint16),)
-    )
-
-    # Get the number of smaller pixels within each larger pixel
-    rc_unique, rc_counts = np.unique(rowcol, axis=1, return_counts=True)
-
-    # Filter out the large-pixel coordinates that don't contain enough area
-    area_ratio = rowfact * colfact
-    area_fracs = rc_counts * area_ratio
-    rc_unique = rc_unique[:, np.where(area_fracs >= thresh)[0]]
-
-    # Create the downsampled image
-    Iout = np.zeros(newsize)
-    Iout[rc_unique[0, :], rc_unique[1, :]] = 1
-
-    return Iout
-
-
-def get_proj4_crs(path):
-    """
-    Given a path to a georeferenced raster (.nc, .tif, etc.), returns its
-    CRS in proj4 format.
-    """
-    gdobj = gdal.Open(path)
-    srs = osgeo.osr.SpatialReference()
-    srs.ImportFromWkt(gdobj.GetProjection())
-    p4 = srs.ExportToProj4()
-
-    return p4
-
-
-def clear_directory(Path_obj):
-    """
-    Given a pathlib Path obj, clears all the contents of the directory. Does
-    not remove the directory itself.
-    """
-    for child in Path_obj.glob("*"):
-        if not child.is_dir():
-            child.unlink()
-        else:
-            shutil.rmtree(child)
-
-
 def haversine(lats, lons):
     """
     Computes distances between latitude and longitude pairs of points.
@@ -888,49 +617,3 @@ def validify_polygons(polys):
                 geomsv.append(geom)
 
     return geomsv
-
-
-""" Graveyard """
-# def build_dem_vrt(dempaths, outpath, nodataval=0, res=None, sampling='nearest', name=''):
-#
-#    vrttxtname = os.path.join(outpath, name + '.txt')
-#    vrtname = os.path.join(outpath, name + '.vrt')
-#
-#    # Clear out .txt and .vrt files if they already exist
-#    delete_file(vrttxtname)
-#    delete_file(vrtname)
-#
-#    filelist = []
-#    for dp in dempaths:
-#        filelist = filelist + tifflist(dp)
-#
-#    with open(vrttxtname, 'w') as tempfilelist:
-#        for f in filelist:
-#            tempfilelist.writelines('%s\n' %f)
-#
-#    # Get SRTM resolution
-#    if res is None:
-#        srtm_temp = gdal.Open(filelist[-1])
-#        gt = srtm_temp.GetGeoTransform()
-#        xres = gt[1]
-#        yres = abs(gt[5])
-#    else:
-#        xres = res
-#        yres = res
-#
-#    callstring = ['gdalbuildvrt',
-#                  '-tr', str(xres), str(yres),
-#                  '-srcnodata', str(nodataval),
-#                  '-overwrite',
-#                  '-r',  sampling,
-#                  '-input_file_list', vrttxtname,
-#                  vrtname]
-#    proc = subprocess.Popen(callstring, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-#    stdout,stderr=proc.communicate()
-#
-#    if len(stderr) < 4:
-#        print('VRT built successfully.')
-#    else:
-#        raise RuntimeError('VRT did not build successfully. Error: {}'.format(stderr))
-#
-#    return vrtname
