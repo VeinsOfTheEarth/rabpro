@@ -2,8 +2,8 @@
 
 import argparse
 import os
-import shutil
 import re
+import shutil
 import tarfile
 import urllib.parse
 
@@ -44,6 +44,7 @@ def merit_hydro(target, username, password):
     response = requests.get(baseurl)
     soup = BeautifulSoup(response.text, "html.parser")
     urls = [x["href"][2:] for x in soup.findAll("a", text=re.compile(target), href=True)]
+    # The [2:] gets rid of the "./" in the URL
 
     for urlfile in urls:
         url = baseurl + urlfile
@@ -60,7 +61,6 @@ def merit_hydro(target, username, password):
 
 
 def download_file(url, filename, username, password):
-
     r = requests.get(url, auth=(username, password), stream=True)
     total_size = int(r.headers.get("content-length", 0))
 
