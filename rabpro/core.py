@@ -131,11 +131,7 @@ class profiler:
         """
 
         method = "hydrobasins"
-        if self.da is not None:
-            if self.da < merit_thresh:
-                method = "merit"
-
-        if force_merit:
+        if force_merit or (self.da is not None and self.da < merit_thresh):
             method = "merit"
 
         return method
@@ -211,7 +207,6 @@ class profiler:
                     )
 
     def elev_profile(self):
-
         if not hasattr(self, "nrows"):
             self.nrows = 50
             self.ncols = 50
