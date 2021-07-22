@@ -17,3 +17,5 @@ dependencies:
   - requests
   - appdirs
   - earthengine-api
+  - tqdm
+  - beautifulsoup4

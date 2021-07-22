@@ -33,6 +33,8 @@ def merit_dem(target, username, password):
 
     url = baseurl + url
     filename = os.path.join(datapath, merit_hydro_paths["dem"], filename)
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
+
     print(f"Downloading '{url}' into '{filename}'")
     download_file(url, filename, username, password)
     print()
@@ -54,6 +56,7 @@ def merit_hydro(target, username, password):
             continue
 
         filename = os.path.join(datapath, merit_hydro_paths[filename[:3]], filename)
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
 
         print(f"Downloading '{url}' into '{filename}'")
         download_file(url, filename, username, password)
@@ -77,8 +80,8 @@ def download_file(url, filename, username, password):
         tqdmbar.close()
 
     # Extract TAR archive and remove artifacts
-    tf = tarfile.open(filename)
-    tf.extractall(os.path.dirname(filename))
+    with tarfile.open(filename) as tf:
+        tf.extractall(os.path.dirname(filename))
 
     tar_dir = filename[:-4]
     files = os.listdir(tar_dir)
