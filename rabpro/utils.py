@@ -30,9 +30,20 @@ CATALOG_URL = "https://raw.githubusercontent.com/jonschwenk/rabpro/main/Data/gee
 
 _DATAPATHS = None
 
+_PATH_CONSTANTS = {
+    "HydroBasins1": f"HydroBasins{os.sep}level_one",
+    "HydroBasins12": f"HydroBasins{os.sep}level_twelve",
+    "DEM": f"DEM{os.sep}MERIT103{os.sep}merit_dem.vrt",
+    "DEM_fdr": f"DEM{os.sep}MERIT_FDR{os.sep}MERIT_FDR.vrt",
+    "DEM_uda": f"DEM{os.sep}MERIT_UDA{os.sep}MERIT_UDA.vrt",
+    "DEM_elev_hp": f"DEM{os.sep}MERIT_ELEV_HP{os.sep}MERIT_ELEV_HP.vrt",
+    "DEM_width": f"DEM{os.sep}MERIT_WTH{os.sep}MERIT_WTH.vrt",
+}
+
+_GEE_CACHE_DAYS = 1
+
 
 def get_datapaths():
-    # TODO tear down and rebuild this function when metadata is finalized
     """
     Returns a dictionary of paths to all data that RaBPro uses.
     """
@@ -42,15 +53,8 @@ def get_datapaths():
         return _DATAPATHS
 
     datapath = Path(appdirs.user_data_dir("rabpro", "jschwenk"))
-
-    metadata_path = datapath / "data_metadata.csv"
-    metadata = pd.read_csv(metadata_path)
-    rel_paths = [rp.replace("\\", os.sep) for rp in metadata.rel_path.values]
-    dpaths = [str(datapath / Path(p)) for p in rel_paths]
-    dnames = metadata.dataID.values
-    datapaths = {dn: dp for dp, dn in zip(dpaths, dnames)}
-    datapaths["metadata"] = str(metadata_path)
-
+    configpath = Path(appdirs.user_config_dir("rabpro", "jschwenk"))
+    datapaths = {key: str(datapath / Path(val)) for key, val in _PATH_CONSTANTS.items()}
     gee_metadata_path = datapath / "gee_datasets.json"
     datapaths["gee_metadata"] = str(gee_metadata_path)
 
@@ -59,7 +63,7 @@ def get_datapaths():
         mtime = datetime.fromtimestamp(gee_metadata_path.stat().st_mtime)
         delta = datetime.now() - mtime
 
-    if not gee_metadata_path.is_file() or delta > timedelta(days=1):
+    if not gee_metadata_path.is_file() or delta > timedelta(days=_GEE_CACHE_DAYS):
         try:
             response = requests.get(CATALOG_URL)
             if response.status_code == 200:
@@ -74,7 +78,7 @@ def get_datapaths():
             print(e)
 
     # User defined GEE datasets
-    user_gee_metadata_path = datapath / "user_gee_datasets.json"  # TODO change this path later
+    user_gee_metadata_path = configpath / "user_gee_datasets.json"
     datapaths["user_gee_metadata"] = str(user_gee_metadata_path)
     if not user_gee_metadata_path.is_file():
         datapaths["user_gee_metadata"] = None
