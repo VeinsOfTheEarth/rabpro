@@ -1,9 +1,10 @@
-# -*- coding: utf-8 -*-
 """
-Created on Thu Jul  9 16:40:33 2020
+MERIT Utilities (merit_utils.py)
+================================
 
-@author: Jon
+Utility functions for dealing with MERIT datasets
 """
+
 import math
 import os
 import sys
@@ -19,26 +20,34 @@ from rabpro import utils as ru
 
 
 def trace_flowpath(
-    fdr_obj,
-    da_obj,
-    cr_stpt,
-    cr_enpt=None,
-    n_steps=None,
-    fmap=[32, 64, 128, 16, 1, 8, 4, 2],
+    fdr_obj, da_obj, cr_stpt, cr_enpt=None, n_steps=None, fmap=[32, 64, 128, 16, 1, 8, 4, 2],
 ):
-    """
-    Walks along a flow direction grid from stpt to enpt. Returns a list of
+    """Walks along a flow direction grid from stpt to enpt. Returns a list of
     pixels from stpt to enpt. Walks from downstream to upstream.
 
-    fdr_obj - flow direction object opened with gdal.Open(). Assumes flow
-              direction symbology matches MERIT-Hydro:
-                32 64 128
-                16     1
-                8   4  2
-    cr_stpt - column, row of point to start walk
-    cr_enpt - column, row of point to end walk
-    n_steps - optional; number of steps (pixels) to walk before halting
-    fmap - [NW, N, NE, W, E, SW, S, SE]
+    Parameters
+    ----------
+    fdr_obj : [type]
+        flow direction object opened with gdal.Open(). Assumes flow
+        direction symbology matches MERIT-Hydro:
+        32 64 128
+        16     1
+        8   4  2
+    da_obj : [type]
+        [description]
+    cr_stpt : [type]
+        column, row of point to start walk
+    cr_enpt : [type], optional
+        column, row of point to end walk. By default None
+    n_steps : [type], optional
+        number of steps (pixels) to walk before halting. By default None
+    fmap : list, optional
+        [NW, N, NE, W, E, SW, S, SE], by default [32, 64, 128, 16, 1, 8, 4, 2]
+
+    Returns
+    -------
+    [type]
+        [description]
     """
     imshape = (fdr_obj.RasterXSize, fdr_obj.RasterYSize)
 
@@ -68,11 +77,7 @@ def trace_flowpath(
     # breakpoint()
     stpti = np.ravel_multi_index(cr_stpt, imshape)
 
-    da = [
-        da_obj.ReadAsArray(
-            xoff=int(cr_stpt[0]), yoff=int(cr_stpt[1]), xsize=1, ysize=1
-        )[0][0]
-    ]
+    da = [da_obj.ReadAsArray(xoff=int(cr_stpt[0]), yoff=int(cr_stpt[1]), xsize=1, ysize=1)[0][0]]
     do_pt = [stpti]
     ct = 0
     while 1:
@@ -110,9 +115,7 @@ def trace_flowpath(
             col = col - fdr_obj.RasterXSize
 
         do_pt.append(np.ravel_multi_index((col, row), imshape))
-        da.append(
-            da_obj.ReadAsArray(xoff=int(col), yoff=int(row), xsize=1, ysize=1)[0][0]
-        )
+        da.append(da_obj.ReadAsArray(xoff=int(col), yoff=int(row), xsize=1, ysize=1)[0][0])
 
         # Halt if we've reached the endpoint
         if cr == cr_enpt:
@@ -157,10 +160,10 @@ def neighborhood_vals_from_raster(cr, shape, vrt_obj, nodataval=np.nan, wrap=Non
         gdal.Open(path_to_raster).
     nodataval : object
         Value to assign neighbors that are beyond the bounds of the raster.
-        Default is np.nan.
+        By default np.nan.
     wrap : str or None
         String of 'h', 'v', or 'hv' denoting if horizontal and/or vertical
-        wrapping is desired. If None, no wrapping is performed. Default is None.
+        wrapping is desired. If None, no wrapping is performed. By default None.
 
     Returns
     -------
@@ -168,9 +171,7 @@ def neighborhood_vals_from_raster(cr, shape, vrt_obj, nodataval=np.nan, wrap=Non
         Array of same dimensions as shape containing the neighborhood values.
 
     """
-    nan_int = (
-        -9999
-    )  # denotes nan in an integer array since np.nan can't be stored as an integer
+    nan_int = -9999  # denotes nan in an integer array since np.nan can't be stored as an integer
 
     if wrap is None:
         wrap = ""
@@ -216,9 +217,7 @@ def neighborhood_vals_from_raster(cr, shape, vrt_obj, nodataval=np.nan, wrap=Non
         individually_flag = True
         replace = c_idcs < 0
         if "h" in wrap:
-            c_idcs[replace] = np.arange(
-                imshape_idcs[0], imshape_idcs[0] - np.sum(replace), -1
-            )
+            c_idcs[replace] = np.arange(imshape_idcs[0], imshape_idcs[0] - np.sum(replace), -1)
         else:
             c_idcs[replace] = nan_int
 
@@ -226,9 +225,7 @@ def neighborhood_vals_from_raster(cr, shape, vrt_obj, nodataval=np.nan, wrap=Non
         individually_flag = True
         replace = r_idcs < 0
         if "v" in wrap:
-            r_idcs[replace] = np.arange(
-                imshape_idcs[1], imshape_idcs[1] - np.sum(replace), -1
-            )
+            r_idcs[replace] = np.arange(imshape_idcs[1], imshape_idcs[1] - np.sum(replace), -1)
         else:
             r_idcs[replace] = nan_int
 
@@ -254,25 +251,24 @@ def neighborhood_vals_from_raster(cr, shape, vrt_obj, nodataval=np.nan, wrap=Non
 
 
 def get_basin_pixels(start_cr, da_obj, fdr_obj, fdir_map=[32, 64, 128, 16, 1, 8, 4, 2]):
-    """
-    Returns the indices of all pixels draining to the pixel defined by
+    """Returns the indices of all pixels draining to the pixel defined by
     start_cr.
 
     Parameters
     ----------
-    start_rc : TYPE
-        DESCRIPTION.
-    remove : TYPE, optional
-        DESCRIPTION. The default is set().
+    start_cr : [type]
+        [description]
+    da_obj : [type]
+        [description]
+    fdr_obj : [type]
+        [description]
+    fdir_map : list, optional
+        [NW, N, NE, W, E, SW, S, SE], by default [32, 64, 128, 16, 1, 8, 4, 2]
 
     Returns
     -------
-    done : TYPE
-        DESCRIPTION.
-
-    64 128 1
-    32     2
-    16  8  4
+    [type]
+        [description]
     """
 
     # Make arrays for finding neighboring indices
@@ -295,9 +291,7 @@ def get_basin_pixels(start_cr, da_obj, fdr_obj, fdir_map=[32, 64, 128, 16, 1, 8,
 
         do_cr = np.unravel_index(doidx, imshape)
         nb_fdr = (
-            neighborhood_vals_from_raster(
-                do_cr, (3, 3), fdr_obj, nodataval=-999, wrap="h"
-            )
+            neighborhood_vals_from_raster(do_cr, (3, 3), fdr_obj, nodataval=-999, wrap="h")
             .reshape(1, 9)
             .flatten()
         )
@@ -331,25 +325,26 @@ def get_basin_pixels(start_cr, da_obj, fdr_obj, fdir_map=[32, 64, 128, 16, 1, 8,
 
 def blob_to_polygon_shapely(I, ret_type="coords", buf_amt=0.001):
     """
-    Should return a list of polygons or coords.
+    Returns a list of polygons or coords.
 
     Parameters
     ----------
     I : TYPE
         DESCRIPTION.
-    ret_type : TYPE, optional
-        DESCRIPTION. The default is 'coords'.
-    buf_amt : TYPE, optional
-        DESCRIPTION. The default is 0.001.
+    ret_type : str, optional
+        Type of data to return. Either "coords" or "pgon". The default is
+        "coords".
+    buf_amt : numeric, optional
+        DESCRIPTION. By default 0.001.
 
     Raises
     ------
-    KeyError
-        DESCRIPTION.
+    ValueError
+        If `ret_type` is not "coords" or "pgon".
 
     Returns
     -------
-    ret : TYPE
+    ret : list of numpy.ndarray or shapely.geometry.Polygon
         DESCRIPTION.
 
     """
@@ -364,9 +359,7 @@ def blob_to_polygon_shapely(I, ret_type="coords", buf_amt=0.001):
         pix_pgons = []
         for x, y in zip(p[:, 1], p[:, 0]):
             pix_pgons.append(
-                Polygon(
-                    [(x, y), (x + 1, y), (x + 1, y + 1), (x, y + 1), (x, y)]
-                ).buffer(buf_amt)
+                Polygon([(x, y), (x + 1, y), (x + 1, y + 1), (x, y + 1), (x, y)]).buffer(buf_amt)
             )
 
         # Union the polygons and extract the boundary
@@ -383,7 +376,7 @@ def blob_to_polygon_shapely(I, ret_type="coords", buf_amt=0.001):
         elif ret_type == "pgon":
             ret.append(Polygon(zip(perimx, perimy)))
         else:
-            raise KeyError('Choose either "coords" or "pgon" as return types.')
+            raise ValueError('Choose either "coords" or "pgon" as return types.')
 
     return ret
 
@@ -393,7 +386,7 @@ def idcs_to_geopolygons(idcs, gdobj, buf_amt=0.001):
     Given a list of of pixel indices within a raster specified by gdobj, creates
     georeferenced polygons of the blobs formed by the union of the pixels.
 
-    "Wrapping" is also checked for--this is to handle cases where the dateline
+    "Wrapping" is also checked - this is to handle cases where the dateline
     meridian is crossed and return is therefore a set of polygons rather than
     a continuous one.
 
@@ -406,12 +399,12 @@ def idcs_to_geopolygons(idcs, gdobj, buf_amt=0.001):
         Object created by gdal.Open() on a raster or virtual raster.
     buf_amt : numeric, optional
         Amount by which to buffer pixels before unioning-helps close tiny gaps.
-        The default is 0.001.
+        By default 0.001.
 
     Returns
     -------
-    pgons : list
-        List of georefernced polygons; one per blob of indices.
+    pgons : list of shapely.geometry.Polygon
+        List of georeferenced polygons; one per blob of indices.
     crossing : bool
         If True, the polygons represent those that cross the dateline meridian
         (i.e. 180 degrees -> -180 degrees) and have been split.
@@ -461,21 +454,34 @@ def idcs_to_geopolygons(idcs, gdobj, buf_amt=0.001):
             xmax, xmin = np.max(cr_ew[0]), np.min(cr_ew[0])
             ymax, ymin = np.max(cr_ew[1]), np.min(cr_ew[1])
             pgons.extend(
-                Icr_to_geopolygon(
-                    cr_ew, (xmin, ymin), (xmax, ymax), gdobj.GetGeoTransform()
-                )
+                Icr_to_geopolygon(cr_ew, (xmin, ymin), (xmax, ymax), gdobj.GetGeoTransform())
             )
     else:
-        pgons.extend(
-            Icr_to_geopolygon(cr, (xmin, ymin), (xmax, ymax), gdobj.GetGeoTransform())
-        )
+        pgons.extend(Icr_to_geopolygon(cr, (xmin, ymin), (xmax, ymax), gdobj.GetGeoTransform()))
 
     return pgons, crossing
 
 
 def nrows_and_cols_from_search_radius(lon, lat, search_radius, gt):
-    """
-    search_radius is in meters.
+    """[summary]
+
+    Parameters
+    ----------
+    lon : [type]
+        [description]
+    lat : [type]
+        [description]
+    search_radius : numeric
+        search radius in meters
+    gt : [type]
+        [description]
+
+    Returns
+    -------
+    nrows : numeric
+        [description]
+    ncols : numeric
+        [description]
     """
 
     # Determine the number of rows and columns to search
@@ -484,9 +490,7 @@ def nrows_and_cols_from_search_radius(lon, lat, search_radius, gt):
         lo, la = ru.lonlat_plus_distance(lon, lat, search_radius / 1000, bearing=b)
         los.append(lo)
         las.append(la)
-    boundsxy = ru.lonlat_to_xy(
-        np.array([min(los), max(los)]), np.array([min(las), max(las)]), gt
-    )
+    boundsxy = ru.lonlat_to_xy(np.array([min(los), max(los)]), np.array([min(las), max(las)]), gt)
     nrows = abs(boundsxy[0, 1] - boundsxy[1, 1])
     ncols = abs(boundsxy[0, 0] - boundsxy[1, 0])
 
@@ -504,7 +508,6 @@ def map_cl_pt_to_flowline(
     is provided, a flow directors object and its mapping must also be
     provided as well as the drainage area.
 
-
     Parameters
     ----------
     lonlat : list or tuple
@@ -519,15 +522,17 @@ def map_cl_pt_to_flowline(
         Number of rows in the neighborhood of the point to search.
     da : float, optional
         Drainage area of the point/gage if known. Units should correspond to
-        those in da_obj, typically km^2. The default is None.
+        those in da_obj, typically km^2. By default None.
     basin_pgon : shapely.geometry.polygon.Polygon, optional
-        Polygon of the watershed of the point, if known.
+        Polygon of the watershed of the point, if known. By default None.
     fdr_obj : osgeo.gdal.Dataset, optional
         Flow direction object. Created by gdal.Open() on raster containing
         flow directions. Must be specified in order to use the basin_pgon.
+        By default None.
     fdr_map : list, optional
         8-entry list corresponding to the numeric value for flow directions.
-        The list should take the form [NW, N, NE, W, E, SW, S, SE].
+        The list should take the form [NW, N, NE, W, E, SW, S, SE]. By default
+        None.
 
     Returns
     -------
@@ -646,12 +651,7 @@ def map_cl_pt_to_flowline(
             cl, rl = df["col"].values[0], df["row"].values[0]
             cr_stpt = (c_topleft + cl, r_topleft + rl)
             rc = trace_flowpath(
-                fdr_obj,
-                da_obj,
-                cr_stpt,
-                cr_enpt=None,
-                n_steps=max_trace_pixels,
-                fmap=fdr_map,
+                fdr_obj, da_obj, cr_stpt, cr_enpt=None, n_steps=max_trace_pixels, fmap=fdr_map,
             )
 
             # Remove the possible pixels from the DataFrame that our flowline
@@ -660,9 +660,7 @@ def map_cl_pt_to_flowline(
             c_local = rc[1] - cr[0][0] + ncols_half
             # This is crappy boundary handling, but there are few cases where this would occur
             out_of_bounds = np.logical_or(r_local < 0, r_local >= Idas.shape[0])
-            out_of_bounds = out_of_bounds + np.logical_or(
-                c_local < 0, c_local >= Idas.shape[1]
-            )
+            out_of_bounds = out_of_bounds + np.logical_or(c_local < 0, c_local >= Idas.shape[1])
             r_local = r_local[~out_of_bounds]
             c_local = c_local[~out_of_bounds]
             idx_local = np.ravel_multi_index((r_local, c_local), Idas.shape)
@@ -682,9 +680,7 @@ def map_cl_pt_to_flowline(
 
         # Use the known watershed polygon to determine what fraction of each
         # extracted flowline is within the boundaries
-        fraction_in = [
-            ls.intersection(basin_pgon).length / ls.length for ls in cl_trace_ls
-        ]
+        fraction_in = [ls.intersection(basin_pgon).length / ls.length for ls in cl_trace_ls]
 
         # import geopandas as gpd
         # gdf = gpd.GeoDataFrame(geometry=cl_trace_ls, crs=CRS.from_epsg(4326))
@@ -710,8 +706,7 @@ def map_cl_pt_to_flowline(
     # moving it around unnecessarily
     if da is not None:
         if (
-            np.abs(Idas[int((nrows - 1) / 2), int((ncols - 1) / 2)] - da) / da * 100
-            <= 15
+            np.abs(Idas[int((nrows - 1) / 2), int((ncols - 1) / 2)] - da) / da * 100 <= 15
         ):  # If the coordinate's DA is within 15% of MERIT's, we assume it's correct
             col_mapped = cr[0][0]
             row_mapped = cr[0][1]
@@ -722,15 +717,9 @@ def map_cl_pt_to_flowline(
     # the get_DA_error_bounds function.
     if da is not None:
         lower, upper = get_DA_error_bounds(da)
-        Irn = np.logical_and(
-            Idas >= lower, Idas <= upper
-        )  # Threshold to get the flowlines
-        if (
-            Irn.sum() == 0
-        ):  # If no valid flowlines are found, no mapping can be performed
-            solve_method = (
-                6  # A DA was provided but no nearby DAs were close enough to map to
-            )
+        Irn = np.logical_and(Idas >= lower, Idas <= upper)  # Threshold to get the flowlines
+        if Irn.sum() == 0:  # If no valid flowlines are found, no mapping can be performed
+            solve_method = 6  # A DA was provided but no nearby DAs were close enough to map to
             return (np.nan, np.nan), solve_method
     else:  # If no DA was provided, use all local flowlines (assumes DA > 1km^2)
         Irn = Idas > 1
@@ -771,16 +760,12 @@ def map_cl_pt_to_flowline(
     if da is None:
         Ierr = Idist
         Ierr[~Irn] = np.nan
-        solve_method = (
-            4  # A DA was not provided; we map to the nearest flowline (>1km^2)
-        )
+        solve_method = 4  # A DA was not provided; we map to the nearest flowline (>1km^2)
 
     # Select the pixel in the drainage network that has the lowest error
     min_err = np.nanmin(Ierr)
     me_idx = np.where(Ierr == min_err)
-    if (
-        len(me_idx[0]) > 1
-    ):  # In the case of ties, choose the one that has the lower Idist error
+    if len(me_idx[0]) > 1:  # In the case of ties, choose the one that has the lower Idist error
         use_me_idx = np.argmin(Idist[me_idx[0], me_idx[1]])
         me_idx = np.array([[me_idx[0][use_me_idx]], [me_idx[1][use_me_idx]]])
 
@@ -790,99 +775,3 @@ def map_cl_pt_to_flowline(
     # row_mapped = cr[0][1]
 
     return (int(col_mapped), int(row_mapped)), solve_method  # longitude, latitude
-
-
-def blob_to_polygon(I, ret_type="coords"):
-    """
-    Does not handle corner-connected cases. Make sure to reduce the blob
-    to 4-connected before running. Also fill holes so that there are no
-    8-connected holes inside the mask.
-
-    ret_type : str
-        One of 'coords' or 'pgon'.
-    """
-
-    def edges(x, y):
-
-        pixedges = [
-            ((x - 0.5, y - 0.5), (x + 0.5, y - 0.5)),
-            ((x - 0.5, y + 0.5), (x + 0.5, y + 0.5)),
-            ((x - 0.5, y - 0.5), (x - 0.5, y + 0.5)),
-            ((x + 0.5, y - 0.5), (x + 0.5, y + 0.5)),
-        ]
-
-        return pixedges
-
-    rp, _ = im.regionprops(I, props=["perimeter"])
-
-    xs = rp["perimeter"][0][:, 1]
-    ys = rp["perimeter"][0][:, 0]
-
-    # Map pixel corners to their coordinates
-    xs4 = np.array([xs + 0.5, xs + 0.5, xs - 0.5, xs - 0.5]).flatten()
-    ys4 = np.array([ys + 0.5, ys - 0.5, ys + 0.5, ys - 0.5]).flatten()
-    xy4 = list(set(zip(xs4, ys4)))
-
-    # Get all valid edges (those surrounding all boundary pixels)
-    all_edges = [edges(x, y) for x, y in zip(xs, ys)]
-    all_edges = set([item for sublist in all_edges for item in sublist])
-
-    # Determine the "connectivity" for each node of xy4 (max possible = 4)
-    conn = []
-    for xy in xy4:
-
-        x = xy[0]
-        y = xy[1]
-        checkx = np.array([x + 0.5, x + 0.5, x - 0.5, x - 0.5], dtype=np.int)
-        checky = np.array([y + 0.5, y - 0.5, y + 0.5, y - 0.5], dtype=np.int)
-
-        rem = np.logical_or(
-            np.logical_or(checkx < 0, checkx > I.shape[1] - 1),
-            np.logical_or(checky < 0, checky > I.shape[0] - 1),
-        )
-        checkx = checkx[~rem]
-        checky = checky[~rem]
-
-        conn.append(np.sum(I[checky, checkx]))
-
-    poss_idcs = np.array(conn) < 4
-    edge_coords = [xy4[i] for i, tf in enumerate(poss_idcs) if tf == True]
-    conns = np.array(conn)[poss_idcs]
-
-    walk = [edge_coords.pop()]
-    dxs = [0, 0, 1, -1]
-    dys = [1, -1, 0, 0]
-    while edge_coords:
-        cur_pt = walk[-1]
-        # if cur_pt == (3.5, 67.5):
-        #     break
-        poss_walk = []
-        poss_edges = []
-        for dx, dy in zip(dxs, dys):
-            pt = (cur_pt[0] + dx, cur_pt[1] + dy)
-            if pt in edge_coords:
-                poss_walk.append(edge_coords.index(pt))
-                poss_edges.append((cur_pt, pt))
-
-        valid_edges = [pe in all_edges or pe[::-1] in all_edges for pe in poss_edges]
-        poss_walk = [pw for i, pw in enumerate(poss_walk) if valid_edges[i] == True]
-        walkconns = conns[poss_walk]
-        walkidx = np.argmin(walkconns)
-        conns = np.delete(conns, poss_walk[walkidx])
-        walk.append(edge_coords.pop(poss_walk[walkidx]))
-
-    cols = np.array([w[0] for w in walk])
-    rows = np.array([w[1] for w in walk])
-
-    # plt.close('all')
-    # plt.imshow(If)
-    # for w in walk:
-    #     plt.plot(w[0], w[1], 'ok')
-
-    if ret_type == "coords":
-        return rows, cols
-    elif ret_type == "pgon":
-        pgon = Polygon(zip(cols, I.shape[1] - rows))
-        return pgon
-    else:
-        raise KeyError('Choose either "coords" or "pgon" as return types.')
