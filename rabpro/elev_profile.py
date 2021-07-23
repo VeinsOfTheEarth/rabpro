@@ -1,11 +1,10 @@
-# -*- coding: utf-8 -*-
 """
-Created on Fri Jun  5 12:10:12 2020
+Elevation Profile Computation (elev_profile.py)
+===============================================
 
-@author: Jon
+Description
 """
 
-# Build merit vrts
 import os
 import sys
 
@@ -21,11 +20,33 @@ from rabpro import utils as ru
 
 
 def main(cl_gdf, verbose=False, nrows=50, ncols=50):
+    """ Description
+
+    Parameters
+    ----------
+    cl_gdf : GeoDataFrame
+        Desc. Should have a column called 'DA' that stores drainage areas.
+        Should be in EPSG 4326 for use of the Haversine formula
+    verbose : bool
+        Defaults to False.
+    nrows : int
+        Desc. Defaults to 50.
+    ncols : int
+        Desc. Defaults to 50.
+
+    Returns
+    -------
+    cl_gdf : GeoDataFrame
+        Desc.
+    merit_gdf : GeoDataFrame
+        Desc.
+
     """
-    cl_gdf should have a column called 'DA' that stores drainage areas
-    cl_gdf should be in 4326 for use of the Haversine formula...could add a
-    check and use other methods, but simpler this way.
-    """
+    
+    # cl_gdf should have a column called 'DA' that stores drainage areas
+    # cl_gdf should be in 4326 for use of the Haversine formula...could add a
+    # check and use other methods, but simpler this way.
+
     # Get data locked and loaded
     dps = ru.get_datapaths()
     hdem_obj = gdal.Open(dps["DEM_elev_hp"])
@@ -219,8 +240,22 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
 
 
 def compute_dists(gdf):
-    """
-    Computes cumulative distance in meters between points in gdf.
+    """ Computes cumulative distance in meters between points in gdf.
+
+    Parameters
+    ----------
+    gdf : GeoDataFrame
+        Desc.
+
+    Returns
+    -------
+    numpy.ndarray
+        Desc.
+
+    Raises
+    ------
+    TypeError
+        If gdf does not contain shapely.geometry.Point values.
     """
     gdfc = gdf.copy()
 
@@ -241,9 +276,22 @@ def compute_dists(gdf):
 
 
 def get_rc_values(gdobj, rc, nodata=-9999):
-    """
-    Returns the values within the raster pointed to by gdobj specified by
-    the row,col values in rc. Sets nodata. Returns numpy array.
+    """ Returns the values within the raster pointed to by gdobj specified by
+    the row, col values in rc. Sets nodata. Returns numpy array.
+
+    Parameters
+    ----------
+    gdobj : [type]
+        Points to raster to get values from
+    rc : [type]
+        [description]
+    nodata : int, optional
+        No data value for the raster, by default -9999
+
+    Returns
+    -------
+    numpy.ndarray
+        Raster values
     """
 
     vals = []
@@ -256,28 +304,42 @@ def get_rc_values(gdobj, rc, nodata=-9999):
 
 
 def pts_to_line_segments(pts):
-    """
-    Converts a list of shapely points to a set of line segments. Points should
-    be in order.
+    """ Converts a list of shapely points to a set of line segments. Points
+    should be in order.
 
-    Returns a  list of linestrings of length N-1, where N=length(pts).
+    Parameters
+    ----------
+    pts : list of shapely.geometry.Point
+        [description]
+
+    Returns
+    -------
+    list of shapely.geometry.LineString
+        length N-1, where N=length(pts)
     """
-    ls = []
-    for i in range(len(pts) - 1):
-        ls.append(LineString((pts[i], pts[i + 1])))
+    ls = [LineString((pts[i], pts[i + 1])) for i in range(len(pts) - 1)]
 
     return ls
 
 
 def find_nangroups(arr):
-    """
-    Returns groups of nans in an array.
+    """ Returns groups of nans in an array.
+
+    Parameters
+    ----------
+    arr : [type]
+        [description]
+
+    Returns
+    -------
+    list
+        [description]
     """
     nans = np.isnan(arr)
     nangroups = []
     nangroup = []
     for i, n in enumerate(nans):
-        if n == False:
+        if not n:
             if len(nangroup) > 0:
                 nangroups.append(nangroup)
             nangroup = []
@@ -288,8 +350,21 @@ def find_nangroups(arr):
 
 
 def interpolate_nangroups(arr, dists, nangroups):
-    """
-    Linearly interpolates across groups of nans in a 1-D array.
+    """ Linearly interpolates across groups of nans in a 1-D array.
+
+    Parameters
+    ----------
+    arr : [type]
+        [description]
+    dists : [type]
+        [description]
+    nangroups : [type]
+        [description]
+
+    Returns
+    -------
+    [type]
+        [description]
     """
     for ng in nangroups:
         if type(ng) is int:
