@@ -1,3 +1,10 @@
+"""
+Subbasin Statistics (subbasin_stats.py)
+=======================================
+
+Computes subbasin statistics using Google Earth Engine.
+"""
+
 import json
 import os
 from datetime import date
@@ -20,18 +27,22 @@ class Dataset:
         Google Earth Engine dataset asset id
     band : str
         Google Earth Engine dataset band name
-    resolution : int
-        Desired resolution in meters of the calculation over the dataset
-    start : str
-        Desired start date of data in ISO format: YYYY-MM-DD
-    end : str
-        Desired end date of data in ISO format: YYYY-MM-DD
-    stats : list
+    resolution : int, optional
+        Desired resolution in meters of the calculation over the dataset.
+        Defaults to native resoltion of dataset.
+    start : str, optional
+        Desired start date of data in ISO format: YYYY-MM-DD. Defaults to
+        dataset start.
+    end : str, optional
+        Desired end date of data in ISO format: YYYY-MM-DD. Defaults to dataset
+        end.
+    stats : list, optional
         List of desired stats to compute: min, max, range, mean, count, std,
         sum, and percentiles in the following format: pct1, pct90, pct100, etc.
-    mask : boolean
+        Computes ["count", "mean"] by default.
+    mask : bool, optional
         Whether or not to mask out water in the dataset using the Global
-        Surface Water occurrence band
+        Surface Water occurrence band. By default False.
 
     """
 
@@ -54,17 +65,18 @@ def main(sb_inc_gdf, dataset_list, reducer_funcs=None, folder=None, verbose=Fals
     Attributes
     ----------
     sb_inc_gdf : GeoDataFrame
-        Table of subbasin geometries
+        Table of subbasin geometries.
     dataset_list : list of Datasets
-        List of Dataset objects to computer statistics over
-    reducer_funcs : list of functions
+        List of Dataset objects to compute statistics over.
+    reducer_funcs : list of functions, optional
         List of functions to apply to each feature over each dataset.
         Each function should take in an ee.Feature() object. For example,
         this is how the function and header are applied on a feature:
-            feature.set(f.__name__, function(feature))
-    verbose : boolean
-    folder : str
-        Google Drive folder to store results in
+        feature.set(f.__name__, function(feature))
+    verbose : bool, optional
+        By default False.
+    folder : str, option
+        Google Drive folder to store results in, by default top-level root.
 
     """
 
