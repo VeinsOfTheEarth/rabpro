@@ -44,8 +44,8 @@ _GEE_CACHE_DAYS = 1
 
 def get_datapaths():
     """
-    Returns a dictionary of paths to all data that RaBPro uses.
-    Also builds virtual rasters for MERIT data.
+    Returns a dictionary of paths to all data that RaBPro uses. Also builds
+    virtual rasters for MERIT data.
 
     Returns
     -------
@@ -208,7 +208,7 @@ def build_vrt(
         contains an extension (e.g. .tif, .vrt), then that file is used.
         Otherwise, a virtual raster will be built of all the files in the
         provided folder. if filespath contains an extension (e.g. .tif, .vrt),
-        filenames  of tiffs to be written to vrt. This list can be created by
+        filenames of tiffs to be written to vrt. This list can be created by
         tifflist and should be in the same folder
     clipper : str, optional
         path to a georeferenced image, vrt, or shapefile that will be used to
@@ -378,8 +378,8 @@ def raster_extents(raster_path):
 def parse_path(path):
     """
     Parses a file or folderpath into: base, folder (where folder is the
-    outermost subdirectory), filename, and extention. Filename and extension
-    are empty if a directory is passed.
+    outermost subdirectory), filename, and extention. Filename and extension are
+    empty if a directory is passed.
     """
 
     if path[0] != os.sep and platform.system() != "Windows":  # This is for non-windows...

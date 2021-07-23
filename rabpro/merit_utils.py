@@ -28,8 +28,8 @@ def trace_flowpath(
     Parameters
     ----------
     fdr_obj : [type]
-        flow direction object opened with gdal.Open(). Assumes flow
-        direction symbology matches MERIT-Hydro:
+        flow direction object opened with gdal.Open(). Assumes flow direction
+        symbology matches MERIT-Hydro:
         32 64 128
         16     1
         8   4  2
@@ -133,14 +133,14 @@ def trace_flowpath(
 
 def neighborhood_vals_from_raster(cr, shape, vrt_obj, nodataval=np.nan, wrap=None):
     """
-    Queries a (virtual) raster object to return an array of neighbors surrounding
-    a given point specified by cr (column, row). A shape can be provided to
-    return as large of a neighborhood as desired; both dimensions must be odd.
-    This function is almost always unnecessary and could be replaced with a
-    single call to gdal's ReadAsArray(), except that throws errors when requesting
-    a neighborhood that is beyond the boundaries of the raster. Also note that
-    requests for negative offsets do not throw errors, which is dangerous.
-    This function checks for those cases and handles them.
+    Queries a (virtual) raster object to return an array of neighbors
+    surrounding a given point specified by cr (column, row). A shape can be
+    provided to return as large of a neighborhood as desired; both dimensions
+    must be odd. This function is almost always unnecessary and could be
+    replaced with a single call to gdal's ReadAsArray(), except that throws
+    errors when requesting a neighborhood that is beyond the boundaries of the
+    raster. Also note that requests for negative offsets do not throw errors,
+    which is dangerous. This function checks for those cases and handles them.
 
     An option is provided to 'wrap' in cases where neighborhoods are requested
     beyond the bounds of the raster. In these cases, the raster is effectively
@@ -153,14 +153,14 @@ def neighborhood_vals_from_raster(cr, shape, vrt_obj, nodataval=np.nan, wrap=Non
         (column, row) indices within the virtual raster specifying the point
         around which a neighborhood is requested.
     shape : tuple
-        Two-element tuple (nrows, ncols) specifying the shape of the neighborhood
-        around cr to query.
+        Two-element tuple (nrows, ncols) specifying the shape of the
+        neighborhood around cr to query.
     vrt_obj : gdal.Dataset
         Dataset object pointing to the raster from which to read; created by
         gdal.Open(path_to_raster).
     nodataval : object
-        Value to assign neighbors that are beyond the bounds of the raster.
-        By default np.nan.
+        Value to assign neighbors that are beyond the bounds of the raster. By
+        default np.nan.
     wrap : str or None
         String of 'h', 'v', or 'hv' denoting if horizontal and/or vertical
         wrapping is desired. If None, no wrapping is performed. By default None.
@@ -251,7 +251,7 @@ def neighborhood_vals_from_raster(cr, shape, vrt_obj, nodataval=np.nan, wrap=Non
 
 
 def get_basin_pixels(start_cr, da_obj, fdr_obj, fdir_map=[32, 64, 128, 16, 1, 8, 4, 2]):
-    """Returns the indices of all pixels draining to the pixel defined by
+    """ Returns the indices of all pixels draining to the pixel defined by
     start_cr.
 
     Parameters
@@ -387,14 +387,14 @@ def idcs_to_geopolygons(idcs, gdobj, buf_amt=0.001):
     georeferenced polygons of the blobs formed by the union of the pixels.
 
     "Wrapping" is also checked - this is to handle cases where the dateline
-    meridian is crossed and return is therefore a set of polygons rather than
-    a continuous one.
+    meridian is crossed and return is therefore a set of polygons rather than a
+    continuous one.
 
     Parameters
     ----------
     idcs : list of integers
-        Pixel indices within the raster specified by gdobj that should be included
-        in the polygon.
+        Pixel indices within the raster specified by gdobj that should be
+        included in the polygon.
     gdobj : osgeo.gdal.Dataset
         Object created by gdal.Open() on a raster or virtual raster.
     buf_amt : numeric, optional
@@ -502,17 +502,17 @@ def map_cl_pt_to_flowline(
 ):
     """
     Maps a point of known drainage area to a flowline of a flow accumulation
-    grid. Returns the row, col of the mapped-to pixel. User may provide
-    a basin polygon (in EPSG:4326) if already known. This polygon will be used
-    to ensure the mapped-to-flowline is the correct one. If the basin polygon
-    is provided, a flow directors object and its mapping must also be
-    provided as well as the drainage area.
+    grid. Returns the row, col of the mapped-to pixel. User may provide a basin
+    polygon (in EPSG:4326) if already known. This polygon will be used to ensure
+    the mapped-to-flowline is the correct one. If the basin polygon is provided,
+    a flow directors object and its mapping must also be provided as well as the
+    drainage area.
 
     Parameters
     ----------
     lonlat : list or tuple
-        Two-element list/tuple containing (longitude, latitude) coordinates
-        of the point to map to a flowline.
+        Two-element list/tuple containing (longitude, latitude) coordinates of
+        the point to map to a flowline.
     da_obj : osgeo.gdal.Dataset
         Flow accumulation object. Created by gdal.Open() on raster containing
         flow accumulations.
@@ -526,13 +526,12 @@ def map_cl_pt_to_flowline(
     basin_pgon : shapely.geometry.polygon.Polygon, optional
         Polygon of the watershed of the point, if known. By default None.
     fdr_obj : osgeo.gdal.Dataset, optional
-        Flow direction object. Created by gdal.Open() on raster containing
-        flow directions. Must be specified in order to use the basin_pgon.
-        By default None.
-    fdr_map : list, optional
-        8-entry list corresponding to the numeric value for flow directions.
-        The list should take the form [NW, N, NE, W, E, SW, S, SE]. By default
+        Flow direction object. Created by gdal.Open() on raster containing flow
+        directions. Must be specified in order to use the basin_pgon. By default
         None.
+    fdr_map : list, optional
+        8-entry list corresponding to the numeric value for flow directions. The
+        list should take the form [NW, N, NE, W, E, SW, S, SE]. By default None.
 
     Returns
     -------
@@ -594,8 +593,8 @@ def map_cl_pt_to_flowline(
         areas to consider as candidates for mapping.
 
         The idea is that smaller basins (order 1-10 km^2) are allowed a greater
-        % difference when searching for the point to map, while larger ones
-        are permitted smaller % differences. The reverese is true if considering
+        % difference when searching for the point to map, while larger ones are
+        permitted smaller % differences. The reverese is true if considering
         absolute differences (i.e. 10 km^2 error is a much higher % for a 1 km^2
         basin than a 1000 km^2 basin).
         """

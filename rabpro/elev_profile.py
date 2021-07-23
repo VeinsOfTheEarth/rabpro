@@ -42,7 +42,7 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
         Desc.
 
     """
-    
+
     # cl_gdf should have a column called 'DA' that stores drainage areas
     # cl_gdf should be in 4326 for use of the Haversine formula...could add a
     # check and use other methods, but simpler this way.
@@ -72,25 +72,18 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
     if intype == "point":
         # Trace the centerline all the way up to the headwaters
         ds_lonlat = np.array(
-            [
-                cl_gdf.geometry.values[0].coords.xy[0][0],
-                cl_gdf.geometry.values[0].coords.xy[1][0],
-            ]
+            [cl_gdf.geometry.values[0].coords.xy[0][0], cl_gdf.geometry.values[0].coords.xy[1][0],]
         )
         if "DA" in cl_gdf.keys():
             ds_da = cl_gdf.DA.values[0]
         else:
             ds_da = None
-        cr_ds_mapped, _ = mu.map_cl_pt_to_flowline(
-            ds_lonlat, da_obj, nrows, ncols, ds_da
-        )
+        cr_ds_mapped, _ = mu.map_cl_pt_to_flowline(ds_lonlat, da_obj, nrows, ncols, ds_da)
 
         # Mapping may be impossible
         if np.nan in cr_ds_mapped:
             if verbose is True:
-                print(
-                    "Cannot map provided point to a flowline; no way to extract centerline."
-                )
+                print("Cannot map provided point to a flowline; no way to extract centerline.")
             return cl_gdf, None
 
         flowpath = mu.trace_flowpath(fdr_obj, da_obj, cr_ds_mapped)
@@ -105,19 +98,12 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
             ]
         )
         us_lonlat = np.array(
-            [
-                cl_gdf.geometry.values[0].coords.xy[0][0],
-                cl_gdf.geometry.values[0].coords.xy[1][0],
-            ]
+            [cl_gdf.geometry.values[0].coords.xy[0][0], cl_gdf.geometry.values[0].coords.xy[1][0],]
         )
         ds_da = cl_gdf.DA.values[-1]
         us_da = cl_gdf.DA.values[0]
-        cr_ds_mapped, _ = mu.map_cl_pt_to_flowline(
-            ds_lonlat, da_obj, nrows, ncols, ds_da
-        )
-        cr_us_mapped, _ = mu.map_cl_pt_to_flowline(
-            us_lonlat, da_obj, nrows, ncols, us_da
-        )
+        cr_ds_mapped, _ = mu.map_cl_pt_to_flowline(ds_lonlat, da_obj, nrows, ncols, ds_da)
+        cr_us_mapped, _ = mu.map_cl_pt_to_flowline(us_lonlat, da_obj, nrows, ncols, us_da)
         flowpath = mu.trace_flowpath(fdr_obj, da_obj, cr_ds_mapped, cr_us_mapped)
         es = get_rc_values(hdem_obj, flowpath, nodata=-9999)
         wids = get_rc_values(w_obj, flowpath, nodata=-9999)
@@ -167,12 +153,10 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
             # Determine which point to map the intersection to by finding the closest
             # along centerline and DEM-flowpath
             us_dist_cl = ru.haversine(
-                (ls_cl.coords.xy[1][0], int_pt[1][0]),
-                (ls_cl.coords.xy[0][0], int_pt[0][0]),
+                (ls_cl.coords.xy[1][0], int_pt[1][0]), (ls_cl.coords.xy[0][0], int_pt[0][0]),
             )[0]
             ds_dist_cl = ru.haversine(
-                (ls_cl.coords.xy[1][1], int_pt[1][0]),
-                (ls_cl.coords.xy[0][1], int_pt[0][0]),
+                (ls_cl.coords.xy[1][1], int_pt[1][0]), (ls_cl.coords.xy[0][1], int_pt[0][0]),
             )[0]
             if us_dist_cl < ds_dist_cl:
                 cl_idx = clidx
@@ -180,12 +164,10 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
                 cl_idx = clidx + 1
 
             us_dist_dem = ru.haversine(
-                (ls_dem.coords.xy[1][0], int_pt[1][0]),
-                (ls_dem.coords.xy[0][0], int_pt[0][0]),
+                (ls_dem.coords.xy[1][0], int_pt[1][0]), (ls_dem.coords.xy[0][0], int_pt[0][0]),
             )[0]
             ds_dist_dem = ru.haversine(
-                (ls_dem.coords.xy[1][1], int_pt[1][0]),
-                (ls_dem.coords.xy[0][1], int_pt[0][0]),
+                (ls_dem.coords.xy[1][1], int_pt[1][0]), (ls_dem.coords.xy[0][1], int_pt[0][0]),
             )[0]
             if us_dist_dem < ds_dist_dem:
                 dem_idx = demidx

@@ -41,8 +41,8 @@ class Dataset:
         sum, and percentiles in the following format: pct1, pct90, pct100, etc.
         Computes ["count", "mean"] by default.
     mask : bool, optional
-        Whether or not to mask out water in the dataset using the Global
-        Surface Water occurrence band. By default False.
+        Whether or not to mask out water in the dataset using the Global Surface
+        Water occurrence band. By default False.
 
     """
 
@@ -69,9 +69,9 @@ def main(sb_inc_gdf, dataset_list, reducer_funcs=None, folder=None, verbose=Fals
     dataset_list : list of Datasets
         List of Dataset objects to compute statistics over.
     reducer_funcs : list of functions, optional
-        List of functions to apply to each feature over each dataset.
-        Each function should take in an ee.Feature() object. For example,
-        this is how the function and header are applied on a feature:
+        List of functions to apply to each feature over each dataset. Each
+        function should take in an ee.Feature() object. For example, this is how
+        the function and header are applied on a feature:
         feature.set(f.__name__, function(feature))
     verbose : bool, optional
         By default False.
@@ -167,8 +167,8 @@ def main(sb_inc_gdf, dataset_list, reducer_funcs=None, folder=None, verbose=Fals
 
 def _get_controls(datasets):
     """
-    Prepare paths and parameters for computing subbasin raster stats.
-    Takes in list of user specified datasets.
+    Prepare paths and parameters for computing subbasin raster stats. Takes in
+    list of user specified datasets.
     """
 
     # Load raster metadata file
