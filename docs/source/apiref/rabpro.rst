@@ -1,8 +1,8 @@
 .. _rabpro:
 
-========
+======
 rabpro
-========
+======
 
 .. automodule:: rabpro.core
    :members:
@@ -12,7 +12,7 @@ rabpro
    :members:
    :special-members:
 
-.. automodule:: rabpro.merit_utls
+.. automodule:: rabpro.merit_utils
    :members:
    :special-members:
 
