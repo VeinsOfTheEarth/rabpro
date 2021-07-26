@@ -1,11 +1,10 @@
-# -*- coding: utf-8 -*-
 """
-Created on Fri Jun  5 12:10:12 2020
+Elevation Profile Computation (elev_profile.py)
+===============================================
 
-@author: Jon
+Description
 """
 
-# Build merit vrts
 import os
 import sys
 
@@ -21,11 +20,33 @@ from rabpro import utils as ru
 
 
 def main(cl_gdf, verbose=False, nrows=50, ncols=50):
+    """ Description
+
+    Parameters
+    ----------
+    cl_gdf : GeoDataFrame
+        Desc. Should have a column called 'DA' that stores drainage areas.
+        Should be in EPSG 4326 for use of the Haversine formula
+    verbose : bool
+        Defaults to False.
+    nrows : int
+        Desc. Defaults to 50.
+    ncols : int
+        Desc. Defaults to 50.
+
+    Returns
+    -------
+    cl_gdf : GeoDataFrame
+        Desc.
+    merit_gdf : GeoDataFrame
+        Desc.
+
     """
-    cl_gdf should have a column called 'DA' that stores drainage areas
-    cl_gdf should be in 4326 for use of the Haversine formula...could add a
-    check and use other methods, but simpler this way.
-    """
+
+    # cl_gdf should have a column called 'DA' that stores drainage areas
+    # cl_gdf should be in 4326 for use of the Haversine formula...could add a
+    # check and use other methods, but simpler this way.
+
     # Get data locked and loaded
     dps = ru.get_datapaths()
     hdem_obj = gdal.Open(dps["DEM_elev_hp"])
@@ -51,25 +72,18 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
     if intype == "point":
         # Trace the centerline all the way up to the headwaters
         ds_lonlat = np.array(
-            [
-                cl_gdf.geometry.values[0].coords.xy[0][0],
-                cl_gdf.geometry.values[0].coords.xy[1][0],
-            ]
+            [cl_gdf.geometry.values[0].coords.xy[0][0], cl_gdf.geometry.values[0].coords.xy[1][0],]
         )
         if "DA" in cl_gdf.keys():
             ds_da = cl_gdf.DA.values[0]
         else:
             ds_da = None
-        cr_ds_mapped, _ = mu.map_cl_pt_to_flowline(
-            ds_lonlat, da_obj, nrows, ncols, ds_da
-        )
+        cr_ds_mapped, _ = mu.map_cl_pt_to_flowline(ds_lonlat, da_obj, nrows, ncols, ds_da)
 
         # Mapping may be impossible
         if np.nan in cr_ds_mapped:
             if verbose is True:
-                print(
-                    "Cannot map provided point to a flowline; no way to extract centerline."
-                )
+                print("Cannot map provided point to a flowline; no way to extract centerline.")
             return cl_gdf, None
 
         flowpath = mu.trace_flowpath(fdr_obj, da_obj, cr_ds_mapped)
@@ -84,19 +98,12 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
             ]
         )
         us_lonlat = np.array(
-            [
-                cl_gdf.geometry.values[0].coords.xy[0][0],
-                cl_gdf.geometry.values[0].coords.xy[1][0],
-            ]
+            [cl_gdf.geometry.values[0].coords.xy[0][0], cl_gdf.geometry.values[0].coords.xy[1][0],]
         )
         ds_da = cl_gdf.DA.values[-1]
         us_da = cl_gdf.DA.values[0]
-        cr_ds_mapped, _ = mu.map_cl_pt_to_flowline(
-            ds_lonlat, da_obj, nrows, ncols, ds_da
-        )
-        cr_us_mapped, _ = mu.map_cl_pt_to_flowline(
-            us_lonlat, da_obj, nrows, ncols, us_da
-        )
+        cr_ds_mapped, _ = mu.map_cl_pt_to_flowline(ds_lonlat, da_obj, nrows, ncols, ds_da)
+        cr_us_mapped, _ = mu.map_cl_pt_to_flowline(us_lonlat, da_obj, nrows, ncols, us_da)
         flowpath = mu.trace_flowpath(fdr_obj, da_obj, cr_ds_mapped, cr_us_mapped)
         es = get_rc_values(hdem_obj, flowpath, nodata=-9999)
         wids = get_rc_values(w_obj, flowpath, nodata=-9999)
@@ -146,12 +153,10 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
             # Determine which point to map the intersection to by finding the closest
             # along centerline and DEM-flowpath
             us_dist_cl = ru.haversine(
-                (ls_cl.coords.xy[1][0], int_pt[1][0]),
-                (ls_cl.coords.xy[0][0], int_pt[0][0]),
+                (ls_cl.coords.xy[1][0], int_pt[1][0]), (ls_cl.coords.xy[0][0], int_pt[0][0]),
             )[0]
             ds_dist_cl = ru.haversine(
-                (ls_cl.coords.xy[1][1], int_pt[1][0]),
-                (ls_cl.coords.xy[0][1], int_pt[0][0]),
+                (ls_cl.coords.xy[1][1], int_pt[1][0]), (ls_cl.coords.xy[0][1], int_pt[0][0]),
             )[0]
             if us_dist_cl < ds_dist_cl:
                 cl_idx = clidx
@@ -159,12 +164,10 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
                 cl_idx = clidx + 1
 
             us_dist_dem = ru.haversine(
-                (ls_dem.coords.xy[1][0], int_pt[1][0]),
-                (ls_dem.coords.xy[0][0], int_pt[0][0]),
+                (ls_dem.coords.xy[1][0], int_pt[1][0]), (ls_dem.coords.xy[0][0], int_pt[0][0]),
             )[0]
             ds_dist_dem = ru.haversine(
-                (ls_dem.coords.xy[1][1], int_pt[1][0]),
-                (ls_dem.coords.xy[0][1], int_pt[0][0]),
+                (ls_dem.coords.xy[1][1], int_pt[1][0]), (ls_dem.coords.xy[0][1], int_pt[0][0]),
             )[0]
             if us_dist_dem < ds_dist_dem:
                 dem_idx = demidx
@@ -219,8 +222,22 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
 
 
 def compute_dists(gdf):
-    """
-    Computes cumulative distance in meters between points in gdf.
+    """ Computes cumulative distance in meters between points in gdf.
+
+    Parameters
+    ----------
+    gdf : GeoDataFrame
+        Desc.
+
+    Returns
+    -------
+    numpy.ndarray
+        Desc.
+
+    Raises
+    ------
+    TypeError
+        If gdf does not contain shapely.geometry.Point values.
     """
     gdfc = gdf.copy()
 
@@ -241,9 +258,22 @@ def compute_dists(gdf):
 
 
 def get_rc_values(gdobj, rc, nodata=-9999):
-    """
-    Returns the values within the raster pointed to by gdobj specified by
-    the row,col values in rc. Sets nodata. Returns numpy array.
+    """ Returns the values within the raster pointed to by gdobj specified by
+    the row, col values in rc. Sets nodata. Returns numpy array.
+
+    Parameters
+    ----------
+    gdobj : [type]
+        Points to raster to get values from
+    rc : [type]
+        [description]
+    nodata : int, optional
+        No data value for the raster, by default -9999
+
+    Returns
+    -------
+    numpy.ndarray
+        Raster values
     """
 
     vals = []
@@ -256,28 +286,42 @@ def get_rc_values(gdobj, rc, nodata=-9999):
 
 
 def pts_to_line_segments(pts):
-    """
-    Converts a list of shapely points to a set of line segments. Points should
-    be in order.
+    """ Converts a list of shapely points to a set of line segments. Points
+    should be in order.
 
-    Returns a  list of linestrings of length N-1, where N=length(pts).
+    Parameters
+    ----------
+    pts : list of shapely.geometry.Point
+        [description]
+
+    Returns
+    -------
+    list of shapely.geometry.LineString
+        length N-1, where N=length(pts)
     """
-    ls = []
-    for i in range(len(pts) - 1):
-        ls.append(LineString((pts[i], pts[i + 1])))
+    ls = [LineString((pts[i], pts[i + 1])) for i in range(len(pts) - 1)]
 
     return ls
 
 
 def find_nangroups(arr):
-    """
-    Returns groups of nans in an array.
+    """ Returns groups of nans in an array.
+
+    Parameters
+    ----------
+    arr : [type]
+        [description]
+
+    Returns
+    -------
+    list
+        [description]
     """
     nans = np.isnan(arr)
     nangroups = []
     nangroup = []
     for i, n in enumerate(nans):
-        if n == False:
+        if not n:
             if len(nangroup) > 0:
                 nangroups.append(nangroup)
             nangroup = []
@@ -288,8 +332,21 @@ def find_nangroups(arr):
 
 
 def interpolate_nangroups(arr, dists, nangroups):
-    """
-    Linearly interpolates across groups of nans in a 1-D array.
+    """ Linearly interpolates across groups of nans in a 1-D array.
+
+    Parameters
+    ----------
+    arr : [type]
+        [description]
+    dists : [type]
+        [description]
+    nangroups : [type]
+        [description]
+
+    Returns
+    -------
+    [type]
+        [description]
     """
     for ng in nangroups:
         if type(ng) is int:

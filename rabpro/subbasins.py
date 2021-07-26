@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
 """
-Created on Fri Feb  2 10:53:37 2018
+Subbasin Computation (subbasins.py)
+===================================
 
-@author: Jon
+Functions to calculate subbasin geometries.
 """
 
 import os
@@ -20,11 +20,28 @@ from rabpro import utils as ru
 
 
 def main_hb(cl_gdf, verbose=False):
-    """
-    INPUTS:
-        cl_gdf - GeoDataFrame of the centerline
-        datapaths - dictionary that should contain level_one and level_twelve: paths to HydroSheds basins
-        verbose - True or (False), if you want to track progress
+    """[summary]
+
+    Parameters
+    ----------
+    cl_gdf : GeoDataFrame
+        Centerline geometry
+    verbose : bool, optional
+        By default False
+
+    Returns
+    -------
+    subbasins_gdf : GeoDataFrame
+        Contains subbasin geometries
+    sb_inc_gdf : GeoDataFrame
+        [description]
+    cl_das : [type]
+        Drainage areas
+
+    Raises
+    ------
+    RuntimeWarning
+        If cl_gdf has no CRS defined
     """
     datapaths = ru.get_datapaths()
 
@@ -38,9 +55,7 @@ def main_hb(cl_gdf, verbose=False):
         was_transformed = True
 
     # Load the appropriate HydroBasins shapefile as a geodataframe
-    HB_gdf = load_continent_basins(
-        cl_gdf, datapaths["HydroBasins1"], datapaths["HydroBasins12"]
-    )
+    HB_gdf = load_continent_basins(cl_gdf, datapaths["HydroBasins1"], datapaths["HydroBasins12"])
 
     # Find the chain of polygons
     if verbose:
@@ -92,8 +107,26 @@ def main_hb(cl_gdf, verbose=False):
 
 
 def load_continent_basins(cl_gdf, level_one, level_twelve):
-    """
-    cl_gdf should be in EPSG:4326.
+    """[summary]
+
+    Parameters
+    ----------
+    cl_gdf : GeoDataFrame
+        Centerline data. Should be in EPSG:4326.
+    level_one : str
+        Path to level 1 HydroBasins data
+    level_twelve : str
+        Path to level 12 HydroBasins data
+
+    Returns
+    -------
+    GeoDataFrame
+        [description]
+
+    Raises
+    ------
+    ValueError
+        If the provided point in cl_gdf doesn't fall in HydroBasins
     """
 
     # Prepare load level 1 dataframe
@@ -109,7 +142,7 @@ def load_continent_basins(cl_gdf, level_one, level_twelve):
     clpt_level_onei = gpd.sjoin(cl_us_pt, level_one_df, op="intersects")
     if len(clpt_level_onei) == 0:
         raise ValueError(
-            "Provided point ({}) does not fall within Hydrobasins. Check that lat/lon are not reversed in input.".format(
+            "Provided point ({}) does not fall within HydroBasins. Check that lat/lon are not reversed in input.".format(
                 [xy_cl[0][0], xy_cl[1][0]]
             )
         )
@@ -133,16 +166,35 @@ def load_continent_basins(cl_gdf, level_one, level_twelve):
 
 def initial_basin_chain(HB_gdf, cl_gdf, buf_wid=0.1):
     """
-    Finds the chain of draiange basins from the upstream-most centerline point
-    to the sink (e.g. ocean). HB_gdf and cl are geodataframes.
+    Finds the chain of drainage basins from the upstream-most centerline point
+    to the sink (e.g. ocean).
+
+    Parameters
+    ----------
+    HB_gdf : GeoDataFrame
+        [description]
+    cl_gdf : GeoDataFrame
+        Centerline coordinates
+    buf_wid : float, optional
+        [description], by default 0.1
+
+    Returns
+    -------
+    list
+        [description]
+
+    Raises
+    ------
+    RuntimeError
+        If it cannot find a chain of basins that includes more than half the
+        input centerline points
     """
 
     def get_chain(HB_gdf, basin_id_start):
         """
         Given an input geodataframe called HB_gdf that is created from a
-        HydroBasins shapefile, this function returns all the downstream
-        basins of an input basin_id_start corresponding to
-        a HYBAS_ID
+        HydroBasins shapefile, this function returns all the downstream basins
+        of an input basin_id_start corresponding to a HYBAS_ID
         """
         chain = [basin_id_start]
         while 1:
@@ -157,10 +209,10 @@ def initial_basin_chain(HB_gdf, cl_gdf, buf_wid=0.1):
     def frac_pts_within_chain(HB_gdf, chain, cl_gdf, buf_wid=0.1):
         """
         Given an input chain created by get_chain and a geodataframe containing
-        centerline coordinates (or any coordinates), this function returns
-        the fraction of the input coordinates that are within the chain. The
-        chain is first buffered by buf_wid, which is in units of the chain's
-        native projection (i.e. WGS84, no projection -> units = degrees).
+        centerline coordinates (or any coordinates), this function returns the
+        fraction of the input coordinates that are within the chain. The chain
+        is first buffered by buf_wid, which is in units of the chain's native
+        projection (i.e. WGS84, no projection -> units = degrees).
         """
 
         chainids = [HB_gdf.index[HB_gdf.HYBAS_ID == c].values[0] for c in chain]
@@ -230,14 +282,29 @@ def initial_basin_chain(HB_gdf, cl_gdf, buf_wid=0.1):
 
 def map_points_to_chain(HB_gdf, cl_gdf, chainids):
     """
-     Maps all centerline points to level-12 drainage basins within chain. 
-     1. Identify the polygon each point falls into. 
-     2. Push the points that don't fall into a polygon into the nearest (Euclidean distance) one. 
-     3. Check that drainage area does not decrease as we move downstream. If so, \
-        assign point to previous (next upstream) basin.
-    Returns idxmap that maps each centerline point to a basin index within the
-    HB_gdf geodataframe; also returns drainage areas (DA) for each centerline
-    point. 
+    Maps all centerline points to level-12 drainage basins within chain. 
+    1. Identify the polygon each point falls into. 
+    2. Push the points that don't fall into a polygon into the nearest
+    (Euclidean distance) one. 
+    3. Check that drainage area does not decrease as we move downstream.
+    If so, assign point to previous (next upstream) basin.
+
+    Parameters
+    ----------
+    HB_gdf : GeoDataFrame
+        [description]
+    cl_gdf : GeoDataFrame
+        Centerline coordinates
+    chainids : [type]
+        [description]
+
+    Returns
+    -------
+    idxap : list
+        Maps each centerline point to a basin index within the HB_gdf
+        GeoDataFrame
+    DA : int
+        Drainage areas for each centerline point
     """
 
     # Re-intersect the individual basin polygons with the centerline points
@@ -300,14 +367,25 @@ def map_points_to_chain(HB_gdf, cl_gdf, chainids):
 
 
 def delineate_subbasins(idxmap, HB_gdf):
-    """
-    Finds all the upstream contributing basins for each basin in idxmap.
+    """ Finds all the upstream contributing basins for each basin in idxmap.
     This could perhaps be optimized, but the current implementation just solves
     each basin in idxmap independently.
-    Returns a geodataframe containing the polygons of each basin's catchment AND
-    a geodataframe containing the polygons of the _incremental_ catchments. The
-    upstream-most basin will be the largest polygon in most cases, but that
-    depends on the input centerline.
+
+    Parameters
+    ----------
+    idxmap : list
+        [description]
+    HB_gdf : GeoDataFrame
+        [description]
+
+    Returns
+    -------
+    subHB_gdf : GeoDataFrame
+        Contains the polygons of each basin's catchment
+    inc_df : GeoDataFrame
+        Contains the polygons of the incremental catchments. The upstream-most
+        basin will be the largest polygon in most cases, but that depends on the
+        input centerline.
     """
 
     # idxmap contains only the polygons (indices) in the chain that contain
@@ -325,14 +403,10 @@ def delineate_subbasins(idxmap, HB_gdf):
 
     # Make polygons of the incremental subbasins
     inc_df = gpd.GeoDataFrame(
-        index=range(0, len(subbasin_idcs)),
-        columns=["geometry", "areas"],
-        crs=HB_gdf.crs,
+        index=range(0, len(subbasin_idcs)), columns=["geometry", "areas"], crs=HB_gdf.crs,
     )
     subHB_gdf = gpd.GeoDataFrame(
-        index=range(0, len(subbasin_idcs)),
-        columns=["geometry", "areas"],
-        crs=HB_gdf.crs,
+        index=range(0, len(subbasin_idcs)), columns=["geometry", "areas"], crs=HB_gdf.crs,
     )
 
     for i, si in enumerate(subbasin_idcs):
@@ -354,32 +428,40 @@ def delineate_subbasins(idxmap, HB_gdf):
             #            temp_gdf.geometry = [inc_df.loc[i].geometry, subHB_gdf.loc[i-1].geometry]
             #            subHB_gdf.loc[i].geometry = ru.union_gdf_polygons(temp_gdf, range(0, 2))
             #            inc_df.loc[i].areas = subHB_gdf.loc[i].areas - subHB_gdf.loc[i-1].areas
-            temp_gdf = gpd.GeoDataFrame(
-                index=range(0, 2), columns=["geometry"], crs=HB_gdf.crs
-            )
+            temp_gdf = gpd.GeoDataFrame(index=range(0, 2), columns=["geometry"], crs=HB_gdf.crs)
             temp_gdf.geometry = [
                 inc_df.geometry.values[i],
                 subHB_gdf.geometry.values[i - 1],
             ]
             subHB_gdf.geometry.values[i] = ru.union_gdf_polygons(temp_gdf, range(0, 2))
-            inc_df.areas.values[i] = (
-                subHB_gdf.areas.values[i] - subHB_gdf.areas.values[i - 1]
-            )
+            inc_df.areas.values[i] = subHB_gdf.areas.values[i] - subHB_gdf.areas.values[i - 1]
 
     return subHB_gdf, inc_df
 
 
 def find_contributing_basins(chainids, HB_gdf):
     """
-    Given an input geodataframe of HydroBasins shapefiles and a list of chainids
+    Given an input GeoDataFrame of HydroBasins shapefiles and a list of chainids
     denoting which basins are part of the chain, this function walks upstream
     from the upstream-most basin by following the "NEXT_DOWN" attribute until
     all possible basins are included. This process is repeated, but stops when
     the previous basin is encountered. The result is a list of sets, where each
-    set contains the INCREMENTAL basin indices for each subbasin. I.e. the
+    set contains the INCREMENTAL basin indices for each subbasin. i.e. the
     most-downstream subbasin would be found by unioning all the sets.
 
     IMPORTANT: chainids must be arranged in US->DS direction.
+
+    Parameters
+    ----------
+    chainids : list
+        Denotes which basins are part of the chain
+    HB_gdf : GeoDataFrame
+        HydroBasins shapefiles
+
+    Returns
+    -------
+    list of sets
+        each set contains the incremental basin indices for each subbasin
     """
     subbasin_idcs = []
     visited_subbasins = set()
@@ -397,9 +479,7 @@ def find_contributing_basins(chainids, HB_gdf):
 
             basin_id_check = HB_gdf.HYBAS_ID[idx_check]
             sb_check = (
-                sb_check
-                | set(HB_gdf[HB_gdf.NEXT_DOWN == basin_id_check].index)
-                - visited_subbasins
+                sb_check | set(HB_gdf[HB_gdf.NEXT_DOWN == basin_id_check].index) - visited_subbasins
             )
 
         # Store the incremental indices
@@ -412,36 +492,34 @@ def find_contributing_basins(chainids, HB_gdf):
 
 
 def main_merit(cl_gdf, da, nrows=51, ncols=51, map_only=False, verbose=False):
-    """
+    """ Calculates subbasins using MERIT
 
     Parameters
     ----------
-    cl_gdf : TYPE
-        DESCRIPTION.
-    da : TYPE
-        DESCRIPTION.
-    verbose : TYPE
-        DESCRIPTION.
-    search_radius : float, optional
-        Search radius in meters to consider where mapping a provided coordinate
-        to the MERIT flowlines. The default is None, which will result in a
-        51 x 51 pixel window.
+    cl_gdf : GeoDataFrame
+        Centerline coordinates
+    da : int
+        Drainage area
+    nrows : int
+        [desc], by default 51
+    ncols : int
+        [desc], by default 51
+    mapped : bool
+        Don't return subbasins. By default False
+    verbose : bool
+        by default False
 
     Returns
     -------
-    basins : TYPE
-        DESCRIPTION.
+    basins : GeoDataFrame
+        Table of subbasins
+    mapped : dict
+        Contains mapped values and info
 
     """
-    # rp = rpo
-    # nrows = rp.nrows
-    # ncols = rp.ncols
-    # cl_gdf = rp.gdf
-    # da = rp.da
 
     # Dictionary to store mapped values and info
-    mapped = dict()
-    mapped["successful"] = False
+    mapped = {"successful": False}
 
     # Boot up the data
     dps = ru.get_datapaths()
@@ -450,19 +528,9 @@ def main_merit(cl_gdf, da, nrows=51, ncols=51, map_only=False, verbose=False):
 
     # Get the starting row,column for the delineation with MERIT
     ds_lonlat = np.array(
-        [
-            cl_gdf.geometry.values[-1].coords.xy[0][0],
-            cl_gdf.geometry.values[-1].coords.xy[1][0],
-        ]
+        [cl_gdf.geometry.values[-1].coords.xy[0][0], cl_gdf.geometry.values[-1].coords.xy[1][0],]
     )
-    cr_start_mapped, map_method = mu.map_cl_pt_to_flowline(
-        ds_lonlat, da_obj, nrows, ncols, da
-    )
-
-    # blah = ru.xy_to_coords(cr_start_mapped[0], cr_start_mapped[1], da_obj.GetGeoTransform())
-    # from shapely.geometry import Point
-    # blah2 = gpd.GeoDataFrame(geometry=[Point(blah)], crs=CRS.from_epsg(4326))
-    # blah2.to_file(r'C:\Users\Jon\Desktop\temp\crap.shp')
+    cr_start_mapped, map_method = mu.map_cl_pt_to_flowline(ds_lonlat, da_obj, nrows, ncols, da)
 
     # If mapping the point was unsuccessful, return nans
     if np.nan in cr_start_mapped:
@@ -475,10 +543,7 @@ def main_merit(cl_gdf, da, nrows=51, ncols=51, map_only=False, verbose=False):
         mapped["successful"] = True
         mapped["da"] = float(
             da_obj.ReadAsArray(
-                xoff=int(cr_start_mapped[0]),
-                yoff=int(cr_start_mapped[1]),
-                xsize=1,
-                ysize=1,
+                xoff=int(cr_start_mapped[0]), yoff=int(cr_start_mapped[1]), xsize=1, ysize=1,
             )[0][0]
         )
         mapped["map_method"] = map_method
@@ -487,17 +552,17 @@ def main_merit(cl_gdf, da, nrows=51, ncols=51, map_only=False, verbose=False):
         )
 
     # If we only want to map the point and not delineate the basin
-    if map_only is True:
+    if map_only:
         return None, mapped
 
-    if verbose is True:
+    if verbose:
         print("Delineating basin from MERIT...", end="")
 
     # Get all the pixels in the basin
     # cr_start_mapped = (2396, 4775)
     idcs = mu.get_basin_pixels(cr_start_mapped, da_obj, fdr_obj)
 
-    if verbose is True:
+    if verbose:
         print("done.")
         print("Making basin polygon(s)...", end="")
 
@@ -508,7 +573,7 @@ def main_merit(cl_gdf, da, nrows=51, ncols=51, map_only=False, verbose=False):
     # Attempt to ensure a valid polygon (can still return invalid ones)
     polygons = ru.validify_polygons(polygons)
 
-    if verbose is True:
+    if verbose:
         print("done.")
 
     # Store as geodataframe
@@ -517,9 +582,7 @@ def main_merit(cl_gdf, da, nrows=51, ncols=51, map_only=False, verbose=False):
     else:
         polygon = polygons[0]
 
-    basins = gpd.GeoDataFrame(
-        geometry=[polygon], columns=["DA"], crs=CRS.from_epsg(4326)
-    )
+    basins = gpd.GeoDataFrame(geometry=[polygon], columns=["DA"], crs=CRS.from_epsg(4326))
 
     # Append the drainage area of the polygon
     basins["DA"].values[0] = mapped["da"]

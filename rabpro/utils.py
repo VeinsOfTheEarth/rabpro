@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 """
-Created on Mon Feb  5 09:33:21 2018
+Utility functions (utils.py)
+============================
 
-@author: Jon
 """
 
 import json
@@ -45,8 +44,15 @@ _GEE_CACHE_DAYS = 1
 
 def get_datapaths():
     """
-    Returns a dictionary of paths to all data that RaBPro uses.
+    Returns a dictionary of paths to all data that RaBPro uses. Also builds
+    virtual rasters for MERIT data.
+
+    Returns
+    -------
+    dict
+        contains paths to all data that RaBPro uses
     """
+
     global _DATAPATHS
     if _DATAPATHS is not None:
         _build_virtual_rasters(_DATAPATHS)
@@ -107,13 +113,25 @@ def _build_virtual_rasters(datapaths):
 
 
 def get_exportpaths(name, basepath=None, overwrite=False):
-    """
-    Returns a dictionary of paths for exporting RaBPro results. Also creates
-    results folders when necessary.
+    """ Returns a dictionary of paths for exporting RaBPro results. Also creates
+    "results" folders when necessary.
 
-    If overwrite is True, only the directory named "name" will be overwritten,
-    not the entire 'results' directory.
+    Parameters
+    ----------
+    name : str
+        Name of directory to create within "results" directory.
+    basepath : str, optional
+        path to put "results" directory. By default None. If None, creates in
+        current working directory.
+    overwrite : bool, optional
+        overwrite "name" directory, by default False
+
+    Returns
+    -------
+    dict
+        contains paths to all output that RaBPro generates
     """
+
     if basepath is None:
         results = Path(os.getcwd()) / "results"
     else:
@@ -143,9 +161,19 @@ def get_exportpaths(name, basepath=None, overwrite=False):
 
 
 def parse_keys(gdf):
-    """
-    Attempts to interpret the column names of the input dataframe. In particular,
-    looks for widths and distances along centerline.
+    """ 
+    Attempts to interpret the column names of the input dataframe.
+    In particular, looks for widths and distances along centerline.
+
+    Parameters
+    ----------
+    gdf : GeoDataFrame
+        table to parse
+
+    Returns
+    -------
+    dict
+        contains column names and corresponding properties
     """
     keys = gdf.keys()
     parsed = {"distance": None, "width": None}
@@ -169,37 +197,54 @@ def build_vrt(
     ftype="tif",
     separate=False,
 ):
-
-    """
-    Creates a text file for input to gdalbuildvrt, then builds vrt file with
+    """ Creates a text file for input to gdalbuildvrt, then builds vrt file with
     same name. If output path is not specified, vrt is given the name of the
     final folder in the path.
 
-    INPUTS:
-      tilespath - str:  the path to the file (or folder of files) to be clipped--
-                        if tilespath contains an extension (e.g. .tif, .vrt), then
-                        that file is used. Otherwise, a virtual raster will be
-                        built of all the files in the provided folder.
-                        if filespath contains an extension (e.g. .tif, .vrt),
-                        filenames  of tiffs to be written to vrt. This list
-                        can be created by tifflist and should be in the same
-                        folder
-        extents - list: (optional) - the extents by which to crop the vrt. Extents
-                        should be a 4 element list: [left, right, top, bottom] in
-                        the ssame projection coordinates as the file(s) to be clipped
-        clipper - str:  path to a georeferenced image, vrt, or shapefile that will be used
-                        to clip
-     outputfile - str:  path (including filename w/ext) to output the vrt. If
-                        none is provided, the vrt will be saved in the 'filespath'
-                        path
-            res - flt:  resolution of the output vrt (applied to both x and y directions)
-       sampling - str:  resampling scheme (nearest, bilinear, cubic, cubicspline, lanczos, average, mode)
-      nodataval - int:  (optional) - value to be masked as nodata
-          ftype - str:  'tif' if buuilding from a list of tiffs, or 'vrt' if
-                        building from a vrt
+    Parameters
+    ----------
+    tilespath : str
+        the path to the file (or folder of files) to be clipped-- if tilespath
+        contains an extension (e.g. .tif, .vrt), then that file is used.
+        Otherwise, a virtual raster will be built of all the files in the
+        provided folder. if filespath contains an extension (e.g. .tif, .vrt),
+        filenames of tiffs to be written to vrt. This list can be created by
+        tifflist and should be in the same folder
+    clipper : str, optional
+        path to a georeferenced image, vrt, or shapefile that will be used to
+        clip. By default None
+    extents : list, optional
+        the extents by which to crop the vrt. Extents should be a 4 element
+        list: [left, right, top, bottom] in the same projection coordinates as
+        the file(s) to be clipped. By default None
+    outputfile : str, optional
+        path (including filename w/ext) to output the vrt. If none is provided,
+        the vrt will be saved in the 'filespath' path. By default None
+    nodataval : int, optional
+        value to be masked as nodata, by default None
+    res : flt, optional
+        resolution of the output vrt (applied to both x and y directions), by
+        default None
+    sampling : str, optional
+        resampling scheme (nearest, bilinear, cubic, cubicspline, lanczos,
+        average, mode), by default "nearest"
+    ftype : str, optional
+        "tif" if building from a list of tiffs, or "vrt" if building from a vrt,
+        by default "tif"
+    separate : bool, optional
+        [description], by default False
 
-    OUTPUTS:
-        vrtname - str:  path+filname of the built virtual raster
+    Returns
+    -------
+    str
+        path of the built virtual raster
+
+    Raises
+    ------
+    TypeError
+        Unsupported file type passed in 'ftype'
+    RuntimeError
+        No files found to build raster or raster build fails
     """
     base, folder, file, ext = parse_path(tilespath)
 
@@ -331,11 +376,10 @@ def raster_extents(raster_path):
 
 
 def parse_path(path):
-
     """
     Parses a file or folderpath into: base, folder (where folder is the
-    outermost subdirectory), filename, and extention. Filename and extension
-    are empty if a directory is passed.
+    outermost subdirectory), filename, and extention. Filename and extension are
+    empty if a directory is passed.
     """
 
     if path[0] != os.sep and platform.system() != "Windows":  # This is for non-windows...
@@ -402,17 +446,19 @@ def xy_to_coords(xs, ys, gt):
     Transforms a set of x and y coordinates to their corresponding coordinates
     within a geotiff image.
 
-    Arguments
-    ---------
-    (xs, ys) : (np.array(), np.array())
-        Specifies the coordinates to transform.
+    Parameters
+    ----------
+    xs : numpy.ndarray
+        x coordinates to transform
+    ys : numpy.ndarray
+        y coordinates to transform
     gt : tuple
         6-element tuple gdal GeoTransform. (uL_x, x_res, rotation, ul_y, rotation, y_res).
         Automatically created by gdal's GetGeoTransform() method.
 
     Returns
     ----------
-    cx, cy : tuple
+    cx, cy : tuple of ints
         Column and row indices of the provided coordinates.
     """
 
@@ -524,13 +570,28 @@ def crop_binary_coords(coords, npad=0):
 
 def union_gdf_polygons(gdf, idcs, buffer=True):
     """
-    Given an input geodataframe and a list of indices, return a shapely
-    geometry that unions the geometries found at idcs into a single
-    shapely geometry object.
+    Given an input geodataframe and a list of indices, return a shapely geometry
+    that unions the geometries found at idcs into a single shapely geometry
+    object.
 
-    This function also buffers each polygon slightly, then un-buffers
-    the unioned polygon by the same amount. This is to avoid errors associated
-    with floating-point round-off; see here: https://gis.stackexchange.com/questions/277334/shapely-polygon-union-results-in-strange-artifacts-of-tiny-non-overlapping-area
+    This function also buffers each polygon slightly, then un-buffers the
+    unioned polygon by the same amount. This is to avoid errors associated with
+    floating-point round-off; see here:
+    https://gis.stackexchange.com/questions/277334/shapely-polygon-union-results-in-strange-artifacts-of-tiny-non-overlapping-area
+
+    Parameters
+    ----------
+    gdf : GeoDataFrame
+        Geometries to combine
+    idcs : list
+        Indicates which geometris in 'gdf' to combine
+    buffer : bool, optional
+        buffer polygons, by default True
+
+    Returns
+    -------
+    shapely.geometry object
+        Union of passed geometries
     """
 
     if buffer:
@@ -569,7 +630,7 @@ def haversine(lats, lons):
 
     Returns
     -------
-    np.array()
+    numpy.ndarray
         Distances between each point defined by lats, lons.
     """
 
@@ -595,12 +656,12 @@ def validify_polygons(polys):
     Parameters
     ----------
     geom : list
-        List of shapely polygons.
+        List of shapely.geometry.Polygon
 
     Returns
     -------
     geomsv : list
-        List of shapely polygons that have been attempted to validify.
+        List of shapely.geometry.Polygon that have been attempted to validify.
 
     """
     geomsv = []

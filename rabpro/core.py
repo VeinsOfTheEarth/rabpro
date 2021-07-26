@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
 """
-Created on Sat Feb 15 19:55:00 2020
+RaBPro (core.py)
+================
+Class for running RaBPro commands on your data.
 
-@author: Jon
 """
 
 import geopandas as gpd
@@ -20,24 +20,23 @@ from rabpro import utils as rpu
 
 
 class profiler:
-    """
-    The profiler class organizes data and methods for using RaBPro. This is
+    """ The profiler class organizes data and methods for using RaBPro. This is
     a parent class to the centerline and point classes which inherit profiler
-    methods and attributes.
+    methods and attributes. You should use `rabpro.profiler` rather than
+    `rabpro.core.profiler`.
 
     Attributes
     ----------
     coords : tuple OR list OR str OR GeoDataFrame
         Coordinates of point(s) to delineate. A single point may be provided as
         a (lat, lon) tuple. If a river centerline is being provided, its points
-        must be arranged US->DS. River centerline coordinates may be provided
-        as a list of (lat, lon) pairs. Point(s) may also be provided via a
-        shapefile or .csv file. If provided as .csv file, the columns must
-        be labeled 'latitude' and 'longitude'. If a shapefile path is provided,
-        the shapefile may also contain columns for widths and/or along-valley
-        distances. These columns should have "width" and "distance" somewhere
-        in their column names, respectively, in order for RaBPro to exploit
-        them.
+        must be arranged US->DS. River centerline coordinates may be provided as
+        a list of (lat, lon) pairs. Point(s) may also be provided via a
+        shapefile or .csv file. If provided as .csv file, the columns must be
+        labeled 'latitude' and 'longitude'. If a shapefile path is provided, the
+        shapefile may also contain columns for widths and/or along-valley
+        distances. These columns should have "width" and "distance" somewhere in
+        their column names, respectively, in order for RaBPro to exploit them.
     da : number
         Represents the drainage area in square kilometers of the downstream-most
         point in the provided coords.
@@ -92,7 +91,7 @@ class profiler:
 
     def _coordinates_to_gdf(self, coords):
         """
-        Converts a list of coordinates to a GeoDataFrame. Coordinates should
+        Converts a list of coordinates to a `GeoDataFrame`. Coordinates should
         be (lat, lon) pairs with EPSG==4326.
         """
         geoms = [shapely.geometry.Point((xy[1], xy[0])) for xy in coords]
@@ -104,7 +103,7 @@ class profiler:
 
     def _csv_to_gdf(self, csvpath):
         """
-        Creates a GeoDataFrame from an input path to a csv. The csv must contain
+        Creates a `GeoDataFrame` from an input path to a csv. The csv must contain
         columns named latitude and longitdue in EPSG==4326.
         """
 
@@ -126,8 +125,7 @@ class profiler:
         return gdf
 
     def _which_method(self, force_merit, merit_thresh=500):
-        """
-        Returns the method to use for delineating watersheds.
+        """ Returns the method to use for delineating watersheds.
         """
 
         method = "hydrobasins"
@@ -137,19 +135,25 @@ class profiler:
         return method
 
     def delineate_basins(self, search_radius=None, map_only=False):
-        """
-        Computes the watersheds for each lat/lon pair and adds their drainage
-        areas to the self.gdf GeoDataFrame.
+        """ Computes the watersheds for each lat/lon pair and adds their drainage
+        areas to the self.gdf `GeoDataFrame`.
 
-        There are two methods used for delineating basins: HydroBASINS and MERIT.
-        HydroBASINS is appropriate for large basins (500 km^2 and larger), and
-        MERIT can provide more detailed basin delineations for smaller basins.
-        The method used depends on the size of the basin, which is interpreted
-        via the provided drainage area. If no drainage area was provided,
-        HydroBASINS will be used. Otherwise, if the provided drainage area is
-        less than 500 km^2, MERIT will be used. MERIT may also be forced for
-        larger basins using the 'force_merit' argument when instantiating the
-        profiler.
+        There are two methods used for delineating basins: HydroBASINS and
+        MERIT. HydroBASINS is appropriate for large basins (500 km^2 and
+        larger), and MERIT can provide more detailed basin delineations for
+        smaller basins. The method used depends on the size of the basin, which
+        is interpreted via the provided drainage area. If no drainage area was
+        provided, HydroBASINS will be used. Otherwise, if the provided drainage
+        area is less than 500 km^2, MERIT will be used. MERIT may also be forced
+        for larger basins using the 'force_merit' argument when instantiating
+        the profiler.
+
+        Parameters
+        ----------
+        search_radius : numeric, optional
+            in meters, by default None
+        map_only : bool, optional
+            [description], by default False
         """
 
         if self.method == "hydrobasins":
@@ -207,6 +211,10 @@ class profiler:
                     )
 
     def elev_profile(self):
+        """
+        Compute the elevation profile.
+        """
+
         if not hasattr(self, "nrows"):
             self.nrows = 50
             self.ncols = 50
@@ -217,15 +225,15 @@ class profiler:
         """
         Computes watershed statistics.
 
-        Keywords
+        Parameters
         ----------
-        datasets : list of Dataset objects
-            See the Dataset class
+        datasets : list of Dataset
+            Datasets to compute stats over. See the subbasin_stats.Dataset class
         reducer_funcs : list of functions
-            List of functions to apply to each feature over each dataset.
-            Each function should take in an ee.Feature() object. For example,
-            this is how the function and header are applied on a feature:
-                feature.set(f.__name__, function(feature))
+            List of functions to apply to each feature over each dataset. Each
+            function should take in an ee.Feature() object. For example, this is
+            how the function and header are applied on a feature:
+            feature.set(f.__name__, function(feature))
         folder : str
             Google Drive folder to store results in
         """
@@ -246,10 +254,6 @@ class profiler:
             'elevs' - centerline json is exported with elevation and distance attributes
             'subbasins' - subbasins and incremental subbasins shapefiles
             The default is 'all'.
-
-        Returns
-        -------
-        None.
 
         """
         if what == "all":
