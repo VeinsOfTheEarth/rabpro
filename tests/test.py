@@ -5,7 +5,7 @@ import unittest
 
 import rabpro as rp
 
-# elevs, subbasins, stats
+# Run from top level repo directory
 class DataTestCase(unittest.TestCase):
     def datatest(self, coords, da, force_merit, test_name, results_name):
         # Generate data
@@ -16,11 +16,11 @@ class DataTestCase(unittest.TestCase):
 
         # Check if output files are equal
         test_elv_output = os.path.join("results", test_name, "dem_flowpath.json")
-        check_elv_output = os.path.join("results", results_name, "dem_flowpath.json")
+        check_elv_output = os.path.join("tests", "results", results_name, "dem_flowpath.json")
         self.assertTrue(filecmp.cmp(test_elv_output, check_elv_output, shallow=False))
 
         test_subbasin_output = os.path.join("results", test_name, "subbasins.json")
-        check_subbasin_output = os.path.join("results", results_name, "subbasins.json")
+        check_subbasin_output = os.path.join("tests", "results", results_name, "subbasins.json")
         self.assertTrue(filecmp.cmp(test_subbasin_output, check_subbasin_output, shallow=False))
 
         # Check statistics
@@ -41,7 +41,7 @@ class DataTestCase(unittest.TestCase):
             "range": 100,
             "sum": 4091273.6039215205,
         }
-
+        print(stats, data["features"][0]["properties"])
         self.assertTrue(stats == data["features"][0]["properties"])
 
         for _ in range(12):
