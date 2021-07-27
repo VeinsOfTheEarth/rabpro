@@ -347,7 +347,7 @@ def build_vrt(
     if len(stderr) > 3:
         raise RuntimeError(f"Virtual raster did not build sucessfully. Error: {stderr}")
     else:
-        print(stdout)
+        print(stdout.decode())
 
     return vrtname
 
