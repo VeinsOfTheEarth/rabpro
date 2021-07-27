@@ -419,7 +419,7 @@ def idcs_to_geopolygons(idcs, gdobj, buf_amt=0.001):
 
         pgons = []
         ncols, nrows = maxs[0] - mins[0] + 1, maxs[1] - mins[1] + 1
-        I = np.zeros((nrows, ncols), dtype=np.bool)
+        I = np.zeros((nrows, ncols), dtype=bool)
         I[cr[1] - mins[1], cr[0] - mins[0]] = True
         coords = blob_to_polygon_shapely(I, ret_type="coords", buf_amt=0.001)
         for c in coords:
@@ -727,7 +727,7 @@ def map_cl_pt_to_flowline(
             return (np.nan, np.nan), solve_method
 
     # Compute errors based on distance away from provided coordinates
-    Idist = np.ones(Idas.shape, dtype=np.bool)
+    Idist = np.ones(Idas.shape, dtype=bool)
     Idist[int((nrows - 1) / 2), int((ncols - 1) / 2)] = False
     # Idist = np.log(distance_transform_edt(Idist) + 1) / np.log(100)
     Idist = np.sqrt(distance_transform_edt(Idist))

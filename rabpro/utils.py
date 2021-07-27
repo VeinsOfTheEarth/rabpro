@@ -347,7 +347,7 @@ def build_vrt(
     if len(stderr) > 3:
         raise RuntimeError(f"Virtual raster did not build sucessfully. Error: {stderr}")
     else:
-        print(stdout)
+        print(stdout.decode())
 
     return vrtname
 
@@ -496,78 +496,6 @@ def lonlat_plus_distance(lon, lat, dist, bearing=0):
     lon_m = np.degrees(lon_m)
 
     return lon_m, lat_m
-
-
-def regionprops(I, props, connectivity=2):
-
-    Ilabeled = measure.label(I, background=0, connectivity=connectivity)
-    properties = measure.regionprops(Ilabeled, intensity_image=I)
-
-    out = {}
-    # Get the coordinates of each blob in case we need them later
-    if "coords" in props or "perimeter" in props:
-        coords = [p.coords for p in properties]
-
-    for prop in props:
-        if prop == "area":
-            allprop = [p.area for p in properties]
-        elif prop == "coords":
-            allprop = coords
-        elif prop == "centroid":
-            allprop = [p.centroid for p in properties]
-        elif prop == "mean":
-            allprop = [p.mean_intensity for p in properties]
-        elif prop == "perim_len":
-            allprop = [p.perimeter for p in properties]
-        elif prop == "perimeter":
-            perim = []
-            for blob in coords:
-                # Crop to blob to reduce cv2 computation time and save memory
-                Ip, pads = crop_binary_coords(blob, npad=1)
-                Ip = np.array(Ip, dtype="uint8")
-
-                _, contours, _ = cv2.findContours(Ip, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
-                # IMPORTANT: findContours returns points as (x,y) rather than (row, col)
-                contours = contours[0]
-                crows = []
-                ccols = []
-                for c in contours:
-                    crows.append(c[0][1] + pads[1])  # must add back the cropped rows and columns
-                    ccols.append(c[0][0] + pads[0])
-                cont_np = np.transpose(np.array((crows, ccols)))  # format the output
-                perim.append(cont_np)
-            allprop = perim
-        elif prop == "convex_area":
-            allprop = [p.convex_area for p in properties]
-        elif prop == "eccentricity":
-            allprop = [p.eccentricity for p in properties]
-        elif prop == "equivalent_diameter":
-            allprop = [p.equivalent_diameter for p in properties]
-        elif prop == "major_axis_length":
-            allprop = [p.major_axis_length for p in properties]
-
-        else:
-            print("{} is not a valid property.".format(prop))
-
-        out[prop] = np.array(allprop)
-
-    return out
-
-
-def crop_binary_coords(coords, npad=0):
-
-    # Coords are of format [y, x]
-
-    uly = np.min(coords[:, 0]) - npad
-    ulx = np.min(coords[:, 1]) - npad
-    lry = np.max(coords[:, 0]) + npad
-    lrx = np.max(coords[:, 1]) + npad
-
-    I = np.zeros((lry - uly + 1, lrx - ulx + 1))
-    I[coords[:, 0] - uly, coords[:, 1] - ulx] = True
-
-    pads = [ulx, uly, lrx, lry]
-    return I, pads
 
 
 def union_gdf_polygons(gdf, idcs, buffer=True):
