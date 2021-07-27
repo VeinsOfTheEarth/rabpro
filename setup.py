@@ -15,6 +15,23 @@ setuptools.setup(
     project_urls={
         "Bug Tracker": "https://github.com/jschwenk/rabpro/issues",
     },
+    install_requires=[
+        "python>=3.6",
+        "gdal",
+        "numpy",
+        "geopandas=0.7.0",
+        "scikit-image",
+        "opencv",
+        "matplotlib",
+        "pyproj",
+        "shapely",
+        "rivgraph=0.3",
+        "requests",
+        "appdirs",
+        "earthengine-api",
+        "tqdm",
+        "beautifulsoup4"
+    ],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
