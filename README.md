@@ -18,10 +18,10 @@ source activate rabpro
 
 ### Data
 
-Locate the MERIT DEM "tile" of interest and set it as the `target` variable in [Data/scripts/get_merit_dem.py](Data/scripts/get_merit_dem.py). Run the script. Manually unzip and place in the relevant subfolder of `Data/DEM/`
+Locate the MERIT DEM "tile" of interest and run [Data/scripts/get_merit_dem.py](Data/scripts/get_merit_dem.py) with username and password arguments.
 
-```python
-target = r'n30w090'
+```shell
+python Data/scripts/get_merit_dem.py n30w090 <username> <password>
 ```
 
 Download Hydrobasins levels 1 and 12 using [Data/scripts/get_hydrobasins.py](Data/scripts/get_hydrobasins.py)
@@ -46,7 +46,7 @@ from rabpro.subbasin_stats import Dataset
 # utils.get_rabpropath()
 # utils.get_datapaths()
 
-coords_file = gpd.read_file(r"../tests/test_data/Big Blue River.geojson")
+coords_file = gpd.read_file(r"tests/test_data/Big Blue River.geojson")
 rpo = rabpro.profiler(coords_file)
 rpo.delineate_basins() # requires hydrobasins levels 1 and 12
 # name = "test"
