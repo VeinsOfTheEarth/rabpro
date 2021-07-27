@@ -151,6 +151,8 @@ def get_exportpaths(name, basepath=None, overwrite=False):
 
     # Results path dictionary
     exportpaths = {
+        "base": str(results),
+        "basenamed": str(namedresults),
         "subbasins": str(namedresults / "subbasins.json"),
         "subbasins_inc": str(namedresults / "subbasins_inc.json"),
         "centerline_results": str(namedresults / "centerline_results.json"),

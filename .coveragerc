@@ -1,0 +1,6 @@
+[run]
+source = rabpro
+
+omit =
+    *__init__*
+    *cli*

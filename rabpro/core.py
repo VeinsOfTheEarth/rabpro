@@ -221,7 +221,7 @@ class profiler:
 
         self.gdf, self.merit_gdf = ep.main(self.gdf, self.verbose, self.nrows, self.ncols)
 
-    def basin_stats(self, datasets, reducer_funcs=None, folder=None):
+    def basin_stats(self, datasets, reducer_funcs=None, folder=None, test=False):
         """
         Computes watershed statistics.
 
@@ -238,8 +238,8 @@ class profiler:
             Google Drive folder to store results in
         """
 
-        ss.main(
-            self.basins, datasets, reducer_funcs=reducer_funcs, folder=folder, verbose=self.verbose
+        return ss.main(
+            self.basins, datasets, reducer_funcs=reducer_funcs, folder=folder, verbose=self.verbose, test=test
         )
 
     def export(self, what="all"):

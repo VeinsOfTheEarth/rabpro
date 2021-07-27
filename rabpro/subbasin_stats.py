@@ -58,7 +58,7 @@ class Dataset:
         self.mask = mask
 
 
-def main(sb_inc_gdf, dataset_list, reducer_funcs=None, folder=None, verbose=False):
+def main(sb_inc_gdf, dataset_list, reducer_funcs=None, folder=None, verbose=False, test=False):
     """
     Compute subbasin statistics for each dataset and band specified.
 
@@ -155,6 +155,9 @@ def main(sb_inc_gdf, dataset_list, reducer_funcs=None, folder=None, verbose=Fals
 
                 table = table.map(reducer_func)
 
+        if test:
+            data = table.getInfo()
+
         # TODO: Add selectors to export
         task = ee.batch.Export.table.toDrive(
             collection=table,
@@ -162,7 +165,11 @@ def main(sb_inc_gdf, dataset_list, reducer_funcs=None, folder=None, verbose=Fals
             folder=folder,
             fileFormat="csv",
         )
+
         task.start()
+
+        if test:
+            return data, task
 
 
 def _get_controls(datasets):

@@ -1,4 +1,4 @@
-rabpro/__pycache__
+**/__pycache__
 
 # Data files
 Data/*/*/*.tif
@@ -19,3 +19,6 @@ rabpro.egg-info
 
 #Docs
 docs/build
+
+# Testing
+.coverage
