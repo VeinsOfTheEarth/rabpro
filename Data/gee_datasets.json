@@ -55,7 +55,7 @@
         "id": "ASTER/AST_L1T_003",
         "name": "ASTER L1T Radiance",
         "start_date": "2000-03-04",
-        "end_date": "2021-07-23",
+        "end_date": "2021-07-24",
         "type": "image_collection",
         "bands": {
             "B01": {
@@ -439,7 +439,7 @@
         "id": "COPERNICUS/S1_GRD",
         "name": "Sentinel-1 SAR GRD: C-band Synthetic Aperture Radar Ground Range Detected, log scaling",
         "start_date": "2014-10-03",
-        "end_date": "2021-07-25",
+        "end_date": "2021-07-26",
         "type": "image_collection",
         "bands": {
             "HH": {
@@ -6331,7 +6331,7 @@
         "id": "LANDSAT/LC08/C01/T1_RT_TOA",
         "name": "USGS Landsat 8 Collection 1 Tier 1 and Real-Time data TOA Reflectance",
         "start_date": "2013-04-11",
-        "end_date": "2021-07-25",
+        "end_date": "2021-07-26",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -6942,7 +6942,7 @@
         "id": "LANDSAT/LE07/C01/T1_RT_TOA",
         "name": "USGS Landsat 7 Collection 1 Tier 1 and Real-Time data TOA Reflectance",
         "start_date": "1999-01-01",
-        "end_date": "2021-07-25",
+        "end_date": "2021-07-26",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -7044,7 +7044,7 @@
         "id": "LANDSAT/LE07/C01/T1_TOA",
         "name": "USGS Landsat 7 Collection 1 Tier 1 TOA Reflectance",
         "start_date": "1999-01-01",
-        "end_date": "2021-06-29",
+        "end_date": "2021-06-30",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -7195,7 +7195,7 @@
         "id": "LANDSAT/LE07/C01/T2_TOA",
         "name": "USGS Landsat 7 Collection 1 Tier 2 TOA Reflectance",
         "start_date": "1999-01-01",
-        "end_date": "2021-06-28",
+        "end_date": "2021-06-29",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -11376,7 +11376,7 @@
         "id": "MODIS/MCD43A4_006_BAI",
         "name": "MODIS Combined 16-Day BAI",
         "start_date": "2000-02-18",
-        "end_date": "2021-07-16",
+        "end_date": "2021-07-17",
         "type": "image_collection",
         "bands": {}
     },
@@ -11384,7 +11384,7 @@
         "id": "MODIS/MCD43A4_006_EVI",
         "name": "MODIS Combined 16-Day EVI",
         "start_date": "2000-02-18",
-        "end_date": "2021-07-16",
+        "end_date": "2021-07-17",
         "type": "image_collection",
         "bands": {}
     },
@@ -11392,7 +11392,7 @@
         "id": "MODIS/MCD43A4_006_NDSI",
         "name": "MODIS Combined 16-Day NDSI",
         "start_date": "2000-02-18",
-        "end_date": "2021-07-16",
+        "end_date": "2021-07-17",
         "type": "image_collection",
         "bands": {}
     },
@@ -11400,7 +11400,7 @@
         "id": "MODIS/MCD43A4_006_NDVI",
         "name": "MODIS Combined 16-Day NDVI",
         "start_date": "2000-02-18",
-        "end_date": "2021-07-16",
+        "end_date": "2021-07-17",
         "type": "image_collection",
         "bands": {}
     },
@@ -11408,7 +11408,7 @@
         "id": "MODIS/MCD43A4_006_NDWI",
         "name": "MODIS Combined 16-Day NDWI",
         "start_date": "2000-02-18",
-        "end_date": "2021-07-16",
+        "end_date": "2021-07-17",
         "type": "image_collection",
         "bands": {}
     },
@@ -11416,7 +11416,7 @@
         "id": "MODIS/MOD09GA_006_BAI",
         "name": "MODIS Terra Daily BAI",
         "start_date": "2000-02-24",
-        "end_date": "2021-07-23",
+        "end_date": "2021-07-24",
         "type": "image_collection",
         "bands": {}
     },
@@ -11424,7 +11424,7 @@
         "id": "MODIS/MOD09GA_006_EVI",
         "name": "MODIS Terra Daily EVI",
         "start_date": "2000-02-24",
-        "end_date": "2021-07-23",
+        "end_date": "2021-07-24",
         "type": "image_collection",
         "bands": {}
     },
@@ -11432,7 +11432,7 @@
         "id": "MODIS/MOD09GA_006_NDSI",
         "name": "MODIS Terra Daily NDSI",
         "start_date": "2000-02-24",
-        "end_date": "2021-07-23",
+        "end_date": "2021-07-24",
         "type": "image_collection",
         "bands": {}
     },
@@ -11440,7 +11440,7 @@
         "id": "MODIS/MOD09GA_006_NDVI",
         "name": "MODIS Terra Daily NDVI",
         "start_date": "2000-02-24",
-        "end_date": "2021-07-23",
+        "end_date": "2021-07-24",
         "type": "image_collection",
         "bands": {}
     },
@@ -11448,7 +11448,7 @@
         "id": "MODIS/MOD09GA_006_NDWI",
         "name": "MODIS Terra Daily NDWI",
         "start_date": "2000-02-24",
-        "end_date": "2021-07-23",
+        "end_date": "2021-07-24",
         "type": "image_collection",
         "bands": {}
     },
@@ -11473,7 +11473,7 @@
         "id": "MODIS/MYD09GA_006_BAI",
         "name": "MODIS Aqua Daily BAI",
         "start_date": "2002-07-04",
-        "end_date": "2021-07-22",
+        "end_date": "2021-07-24",
         "type": "image_collection",
         "bands": {}
     },
@@ -11481,7 +11481,7 @@
         "id": "MODIS/MYD09GA_006_EVI",
         "name": "MODIS Aqua Daily EVI",
         "start_date": "2002-07-04",
-        "end_date": "2021-07-22",
+        "end_date": "2021-07-24",
         "type": "image_collection",
         "bands": {}
     },
@@ -11489,7 +11489,7 @@
         "id": "MODIS/MYD09GA_006_NDSI",
         "name": "MODIS Aqua Daily NDSI",
         "start_date": "2002-07-04",
-        "end_date": "2021-07-22",
+        "end_date": "2021-07-24",
         "type": "image_collection",
         "bands": {}
     },
@@ -11497,7 +11497,7 @@
         "id": "MODIS/MYD09GA_006_NDVI",
         "name": "MODIS Aqua Daily NDVI",
         "start_date": "2002-07-04",
-        "end_date": "2021-07-22",
+        "end_date": "2021-07-24",
         "type": "image_collection",
         "bands": {}
     },
@@ -11505,7 +11505,7 @@
         "id": "MODIS/MYD09GA_006_NDWI",
         "name": "MODIS Aqua Daily NDWI",
         "start_date": "2002-07-04",
-        "end_date": "2021-07-22",
+        "end_date": "2021-07-24",
         "type": "image_collection",
         "bands": {}
     },
