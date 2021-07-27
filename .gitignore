@@ -16,8 +16,9 @@ results
 
 # Packaging
 rabpro.egg-info
+dist/**
 
-#Docs
+# Docs
 docs/build
 
 # Testing
