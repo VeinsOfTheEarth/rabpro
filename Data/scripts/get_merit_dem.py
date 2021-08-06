@@ -23,7 +23,7 @@ merit_hydro_paths = {
 datapath = appdirs.user_data_dir("rabpro", "rabpro")
 
 
-def merit_dem(target, username, password, proxy=None):
+def merit_dem(target, username, password, proxy=None, clean=True):
     baseurl = "http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/"
     filename = f"dem_tif_{target}.tar"
 
@@ -40,12 +40,10 @@ def merit_dem(target, username, password, proxy=None):
     filename = os.path.join(datapath, merit_hydro_paths["dem"], filename)
     os.makedirs(os.path.dirname(filename), exist_ok=True)
 
-    print(f"Downloading '{url}' into '{filename}'")
-    download_file(url, filename, username, password, proxy)
-    print()
+    download_file(url, filename, username, password, proxy, clean)   
 
 
-def merit_hydro(target, username, password, proxy=None):
+def merit_hydro(target, username, password, proxy=None, clean=True):
     baseurl = "http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/"
 
     if proxy is not None:
@@ -68,12 +66,16 @@ def merit_hydro(target, username, password, proxy=None):
         filename = os.path.join(datapath, merit_hydro_paths[filename[:3]], filename)
         os.makedirs(os.path.dirname(filename), exist_ok=True)
 
-        print(f"Downloading '{url}' into '{filename}'")
-        download_file(url, filename, username, password, proxy)
-        print()
+        download_file(url, filename, username, password, proxy, clean)
 
 
-def download_file(url, filename, username, password, proxy=None):
+def download_file(url, filename, username, password, proxy=None, clean=True):
+    if not clean:
+        if os.path.isfile(filename):
+            return
+
+    print(f"Downloading '{url}' into '{filename}'")
+
     if proxy is not None:
         r = requests.get(
             url, auth=(username, password), stream=True, proxies={"http": proxy}
@@ -97,6 +99,7 @@ def download_file(url, filename, username, password, proxy=None):
 
     # Extract TAR archive and remove artifacts
     with tarfile.open(filename) as tf:
+        # breakpoint()
         tf.extractall(os.path.dirname(filename))
 
     tar_dir = filename[:-4]
@@ -104,8 +107,9 @@ def download_file(url, filename, username, password, proxy=None):
     for f in files:
         shutil.move(os.path.join(tar_dir, f), os.path.join(os.path.dirname(tar_dir), f))
 
-    os.rmdir(tar_dir)
-    os.remove(filename)
+    if not clean:
+        os.rmdir(tar_dir)
+        os.remove(filename)
 
 
 if __name__ == "__main__":
@@ -125,6 +129,13 @@ if __name__ == "__main__":
         help="Enable beautifulsoup to navigate a proxy, optional",
     )
 
+    parser.add_argument(
+        "clean",
+        type=str,
+        nargs="?",
+        help="Re-download tar archives, delete after unpacking, optional",
+    )
+
     args = parser.parse_args()
-    merit_hydro(args.target, args.username, args.password, args.proxy)
-    merit_dem(args.target, args.username, args.password, args.proxy)
+    merit_hydro(args.target, args.username, args.password, args.proxy, args.clean)
+    merit_dem(args.target, args.username, args.password, args.proxy, args.clean)
