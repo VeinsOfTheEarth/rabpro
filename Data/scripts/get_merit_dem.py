@@ -41,7 +41,7 @@ def merit_dem(target, username, password, proxy=None):
     os.makedirs(os.path.dirname(filename), exist_ok=True)
 
     print(f"Downloading '{url}' into '{filename}'")
-    download_file(url, filename, username, password)
+    download_file(url, filename, username, password, proxy)
     print()
 
 
@@ -69,12 +69,18 @@ def merit_hydro(target, username, password, proxy=None):
         os.makedirs(os.path.dirname(filename), exist_ok=True)
 
         print(f"Downloading '{url}' into '{filename}'")
-        download_file(url, filename, username, password)
+        download_file(url, filename, username, password, proxy)
         print()
 
 
-def download_file(url, filename, username, password):
-    r = requests.get(url, auth=(username, password), stream=True)
+def download_file(url, filename, username, password, proxy=None):
+    if proxy is not None:
+        r = requests.get(
+            url, auth=(username, password), stream=True, proxies={"http": proxy}
+        )
+    else:
+        r = requests.get(url, auth=(username, password), stream=True)
+
     total_size = int(r.headers.get("content-length", 0))
 
     if r.status_code != 200:
@@ -113,7 +119,10 @@ if __name__ == "__main__":
     parser.add_argument("password", type=str, help="MERIT password")
 
     parser.add_argument(
-        "proxy", type=str, help="Enable beautifulsoup to navigate a proxy, optional"
+        "proxy",
+        type=str,
+        nargs="?",
+        help="Enable beautifulsoup to navigate a proxy, optional",
     )
 
     args = parser.parse_args()
