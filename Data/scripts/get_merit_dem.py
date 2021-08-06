@@ -23,11 +23,14 @@ merit_hydro_paths = {
 datapath = appdirs.user_data_dir("rabpro", "rabpro")
 
 
-def merit_dem(target, username, password):
+def merit_dem(target, username, password, proxy=None):
     baseurl = "http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/"
     filename = f"dem_tif_{target}.tar"
 
-    response = requests.get(baseurl)
+    if proxy is not None:
+        response = requests.get(baseurl, proxies={"http": proxy})
+    else:
+        response = requests.get(baseurl)
     soup = BeautifulSoup(response.text, "html.parser")
     url = [
         x["href"][2:] for x in soup.findAll("a", text=re.compile(filename), href=True)
@@ -42,10 +45,13 @@ def merit_dem(target, username, password):
     print()
 
 
-def merit_hydro(target, username, password):
+def merit_hydro(target, username, password, proxy=None):
     baseurl = "http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/"
 
-    response = requests.get(baseurl)
+    if proxy is not None:
+        response = requests.get(baseurl, proxies={"http": proxy})
+    else:
+        response = requests.get(baseurl)
     soup = BeautifulSoup(response.text, "html.parser")
     urls = [
         x["href"][2:] for x in soup.findAll("a", text=re.compile(target), href=True)
@@ -106,6 +112,10 @@ if __name__ == "__main__":
 
     parser.add_argument("password", type=str, help="MERIT password")
 
+    parser.add_argument(
+        "proxy", type=str, help="Enable beautifulsoup to navigate a proxy, optional"
+    )
+
     args = parser.parse_args()
-    merit_hydro(args.target, args.username, args.password)
-    merit_dem(args.target, args.username, args.password)
+    merit_hydro(args.target, args.username, args.password, args.proxy)
+    merit_dem(args.target, args.username, args.password, args.proxy)
