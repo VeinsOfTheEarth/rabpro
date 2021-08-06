@@ -16,12 +16,18 @@ class DataTestCase(unittest.TestCase):
 
         # Check if output files are equal
         test_elv_output = os.path.join("results", test_name, "dem_flowpath.json")
-        check_elv_output = os.path.join("tests", "results", results_name, "dem_flowpath.json")
+        check_elv_output = os.path.join(
+            "tests", "results", results_name, "dem_flowpath.json"
+        )
         self.assertTrue(filecmp.cmp(test_elv_output, check_elv_output, shallow=False))
 
         test_subbasin_output = os.path.join("results", test_name, "subbasins.json")
-        check_subbasin_output = os.path.join("tests", "results", results_name, "subbasins.json")
-        self.assertTrue(filecmp.cmp(test_subbasin_output, check_subbasin_output, shallow=False))
+        check_subbasin_output = os.path.join(
+            "tests", "results", results_name, "subbasins.json"
+        )
+        self.assertTrue(
+            filecmp.cmp(test_subbasin_output, check_subbasin_output, shallow=False)
+        )
 
         # Check statistics
         statlist = ["min", "max", "range", "std", "sum", "pct50", "pct3"]

@@ -54,3 +54,9 @@ rpo.delineate_basins() # requires hydrobasins levels 1 and 12
 rpo.elev_profile() # requires merit-dem (this ex. requires n30w090 [elv, fdr, upa, wth])
 rpo.basin_stats([Dataset("JRC/GSW1_3/GlobalSurfaceWater", "occurrence")]) # requires Google Earth Engine access
 ```
+
+## Testing
+
+```python
+python -m unittest tests/test.py
+```
