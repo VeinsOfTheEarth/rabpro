@@ -60,8 +60,8 @@ def get_datapaths():
         _build_virtual_rasters(_DATAPATHS)
         return _DATAPATHS
 
-    datapath = Path(appdirs.user_data_dir("rabpro", "jschwenk"))
-    configpath = Path(appdirs.user_config_dir("rabpro", "jschwenk"))
+    datapath = Path(appdirs.user_data_dir("rabpro", "rabpro"))
+    configpath = Path(appdirs.user_config_dir("rabpro", "rabpro"))
     datapaths = {key: str(datapath / Path(val)) for key, val in _PATH_CONSTANTS.items()}
     gee_metadata_path = datapath / "gee_datasets.json"
     datapaths["gee_metadata"] = str(gee_metadata_path)

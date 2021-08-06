@@ -20,7 +20,7 @@ merit_hydro_paths = {
     "dem": f"DEM{os.sep}MERIT103",
 }
 
-datapath = appdirs.user_data_dir("rabpro", "jschwenk")
+datapath = appdirs.user_data_dir("rabpro", "rabpro")
 
 
 def merit_dem(target, username, password):
