@@ -25,7 +25,9 @@ from shapely.geometry import Polygon, MultiPolygon
 from shapely.ops import unary_union
 from skimage import measure
 
-CATALOG_URL = "https://raw.githubusercontent.com/jonschwenk/rabpro/main/Data/gee_datasets.json"
+CATALOG_URL = (
+    "https://raw.githubusercontent.com/jonschwenk/rabpro/main/Data/gee_datasets.json"
+)
 
 _DATAPATHS = None
 
@@ -108,7 +110,8 @@ def _build_virtual_rasters(datapaths):
         if not os.path.isfile(datapaths[key]):
             print(msg_dict[key])
             build_vrt(
-                os.path.dirname(os.path.realpath(datapaths[key])), outputfile=datapaths[key],
+                os.path.dirname(os.path.realpath(datapaths[key])),
+                outputfile=datapaths[key],
             )
 
 
@@ -276,7 +279,9 @@ def build_vrt(
         elif ftype == "nc":
             checktype = "nc"
         else:
-            raise TypeError("Unsupported filetype provided - must be tif, hgt, nc, or vrt.")
+            raise TypeError(
+                "Unsupported filetype provided - must be tif, hgt, nc, or vrt."
+            )
 
         for f in os.listdir(tilespath):
             if f.lower().endswith(checktype):  # ensure we're looking at a tif
@@ -384,7 +389,9 @@ def parse_path(path):
     empty if a directory is passed.
     """
 
-    if path[0] != os.sep and platform.system() != "Windows":  # This is for non-windows...
+    if (
+        path[0] != os.sep and platform.system() != "Windows"
+    ):  # This is for non-windows...
         path = os.sep + path
 
     # Pull out extension and filename, if exist
@@ -484,7 +491,8 @@ def lonlat_plus_distance(lon, lat, dist, bearing=0):
     lonr = np.radians(lon)  # Current long point converted to radians
 
     lat_m = np.arcsin(
-        np.sin(latr) * np.cos(dist / R) + np.cos(latr) * np.sin(dist / R) * np.cos(bearing)
+        np.sin(latr) * np.cos(dist / R)
+        + np.cos(latr) * np.sin(dist / R) * np.cos(bearing)
     )
 
     lon_m = lonr + np.arctan2(
@@ -533,7 +541,9 @@ def union_gdf_polygons(gdf, idcs, buffer=True):
     polys = []
     for i in idcs:
         if buffer:
-            polys.append(gdf.iloc[i].geometry.buffer(eps, 1, join_style=JOIN_STYLE.mitre))
+            polys.append(
+                gdf.iloc[i].geometry.buffer(eps, 1, join_style=JOIN_STYLE.mitre)
+            )
         #            polys.append(gdf.iloc[i].geometry.buffer(eps))
         else:
             polys.append(gdf.iloc[i].geometry)
