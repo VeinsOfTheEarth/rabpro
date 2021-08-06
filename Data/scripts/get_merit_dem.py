@@ -29,7 +29,9 @@ def merit_dem(target, username, password):
 
     response = requests.get(baseurl)
     soup = BeautifulSoup(response.text, "html.parser")
-    url = [x["href"][2:] for x in soup.findAll("a", text=re.compile(filename), href=True)][0]
+    url = [
+        x["href"][2:] for x in soup.findAll("a", text=re.compile(filename), href=True)
+    ][0]
 
     url = baseurl + url
     filename = os.path.join(datapath, merit_hydro_paths["dem"], filename)
@@ -45,7 +47,9 @@ def merit_hydro(target, username, password):
 
     response = requests.get(baseurl)
     soup = BeautifulSoup(response.text, "html.parser")
-    urls = [x["href"][2:] for x in soup.findAll("a", text=re.compile(target), href=True)]
+    urls = [
+        x["href"][2:] for x in soup.findAll("a", text=re.compile(target), href=True)
+    ]
     # The [2:] gets rid of the "./" in the URL
 
     for urlfile in urls:
