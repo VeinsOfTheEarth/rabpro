@@ -116,7 +116,7 @@ def _build_virtual_rasters(datapaths):
 
 
 def get_exportpaths(name, basepath=None, overwrite=False):
-    """ Returns a dictionary of paths for exporting RaBPro results. Also creates
+    """Returns a dictionary of paths for exporting RaBPro results. Also creates
     "results" folders when necessary.
 
     Parameters
@@ -166,7 +166,7 @@ def get_exportpaths(name, basepath=None, overwrite=False):
 
 
 def parse_keys(gdf):
-    """ 
+    """
     Attempts to interpret the column names of the input dataframe.
     In particular, looks for widths and distances along centerline.
 
@@ -202,7 +202,7 @@ def build_vrt(
     ftype="tif",
     separate=False,
 ):
-    """ Creates a text file for input to gdalbuildvrt, then builds vrt file with
+    """Creates a text file for input to gdalbuildvrt, then builds vrt file with
     same name. If output path is not specified, vrt is given the name of the
     final folder in the path.
 
