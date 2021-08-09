@@ -45,4 +45,4 @@ data = rabpro.subbasin_stats.Dataset(
 
 # Finally, we can compute basin statistics - this will not work without
 # auxiliary datasets. We could compute topographic stats actually.
-rpo.basin_stats([data])  # requires "mswep" Beck et al 2019?
+# rpo.basin_stats([data])

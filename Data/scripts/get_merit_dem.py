@@ -40,7 +40,7 @@ def merit_dem(target, username, password, proxy=None, clean=True):
     filename = os.path.join(datapath, merit_hydro_paths["dem"], filename)
     os.makedirs(os.path.dirname(filename), exist_ok=True)
 
-    download_file(url, filename, username, password, proxy, clean)   
+    download_file(url, filename, username, password, proxy, clean)
 
 
 def merit_hydro(target, username, password, proxy=None, clean=True):
