@@ -60,7 +60,7 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
     if cl_gdf.shape[0] == 1:
         intype = "point"
     else:
-        intype = "centerline"
+        intype = "centerline" # deprecated
 
     # Here, we get the MERIT flowline corresponding to the centerline. If we
     # are provided only a single point, the flowline is delineated to its
@@ -90,119 +90,119 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
         es = get_rc_values(hdem_obj, flowpath, nodata=-9999)
         wids = get_rc_values(w_obj, flowpath, nodata=-9999)
 
-    elif intype == "centerline":
-        ds_lonlat = np.array(
-            [
-                cl_gdf.geometry.values[-1].coords.xy[0][0],
-                cl_gdf.geometry.values[-1].coords.xy[1][0],
-            ]
-        )
-        us_lonlat = np.array(
-            [cl_gdf.geometry.values[0].coords.xy[0][0], cl_gdf.geometry.values[0].coords.xy[1][0],]
-        )
-        ds_da = cl_gdf.DA.values[-1]
-        us_da = cl_gdf.DA.values[0]
-        cr_ds_mapped, _ = mu.map_cl_pt_to_flowline(ds_lonlat, da_obj, nrows, ncols, ds_da)
-        cr_us_mapped, _ = mu.map_cl_pt_to_flowline(us_lonlat, da_obj, nrows, ncols, us_da)
-        flowpath = mu.trace_flowpath(fdr_obj, da_obj, cr_ds_mapped, cr_us_mapped)
-        es = get_rc_values(hdem_obj, flowpath, nodata=-9999)
-        wids = get_rc_values(w_obj, flowpath, nodata=-9999)
+    # elif intype == "centerline":
+    #     ds_lonlat = np.array(
+    #         [
+    #             cl_gdf.geometry.values[-1].coords.xy[0][0],
+    #             cl_gdf.geometry.values[-1].coords.xy[1][0],
+    #         ]
+    #     )
+    #     us_lonlat = np.array(
+    #         [cl_gdf.geometry.values[0].coords.xy[0][0], cl_gdf.geometry.values[0].coords.xy[1][0],]
+    #     )
+    #     ds_da = cl_gdf.DA.values[-1]
+    #     us_da = cl_gdf.DA.values[0]
+    #     cr_ds_mapped, _ = mu.map_cl_pt_to_flowline(ds_lonlat, da_obj, nrows, ncols, ds_da)
+    #     cr_us_mapped, _ = mu.map_cl_pt_to_flowline(us_lonlat, da_obj, nrows, ncols, us_da)
+    #     flowpath = mu.trace_flowpath(fdr_obj, da_obj, cr_ds_mapped, cr_us_mapped)
+    #     es = get_rc_values(hdem_obj, flowpath, nodata=-9999)
+    #     wids = get_rc_values(w_obj, flowpath, nodata=-9999)
 
-        # Intersect the centerline with the MERIT flowpath to interpolate values
-        # to each centerline point
+    #     # Intersect the centerline with the MERIT flowpath to interpolate values
+    #     # to each centerline point
 
-        # Convert the centerline vertices to a set of multilinestrings for intersection
-        cli_gdf = gpd.GeoDataFrame(
-            geometry=pts_to_line_segments(cl_gdf.geometry.values), crs=cl_gdf.crs
-        )
+    #     # Convert the centerline vertices to a set of multilinestrings for intersection
+    #     cli_gdf = gpd.GeoDataFrame(
+    #         geometry=pts_to_line_segments(cl_gdf.geometry.values), crs=cl_gdf.crs
+    #     )
 
-        # Prepare the DEM-flowpath for intersection with the user-provided centerline
-        # DEM is already in EPSG:4326
-        dem_ll = ru.xy_to_coords(flowpath[1], flowpath[0], hdem_obj.GetGeoTransform())
-        dem_cl_lonlat = [Point(d0, d1) for d0, d1 in zip(dem_ll[0], dem_ll[1])]
-        demi_gdf = gpd.GeoDataFrame(
-            geometry=pts_to_line_segments(dem_cl_lonlat), crs=CRS.from_epsg(4326)
-        )
+    #     # Prepare the DEM-flowpath for intersection with the user-provided centerline
+    #     # DEM is already in EPSG:4326
+    #     dem_ll = ru.xy_to_coords(flowpath[1], flowpath[0], hdem_obj.GetGeoTransform())
+    #     dem_cl_lonlat = [Point(d0, d1) for d0, d1 in zip(dem_ll[0], dem_ll[1])]
+    #     demi_gdf = gpd.GeoDataFrame(
+    #         geometry=pts_to_line_segments(dem_cl_lonlat), crs=CRS.from_epsg(4326)
+    #     )
 
-        # Intersect centerline with DEM-flowpath
-        res_intersection = gpd.sjoin(cli_gdf, demi_gdf, op="intersects", how="inner")
+    #     # Intersect centerline with DEM-flowpath
+    #     res_intersection = gpd.sjoin(cli_gdf, demi_gdf, op="intersects", how="inner")
 
-        if verbose:
-            print(
-                "Found {} intersections between provided centerline and DEM flowpath.".format(
-                    len(res_intersection)
-                )
-            )
+    #     if verbose:
+    #         print(
+    #             "Found {} intersections between provided centerline and DEM flowpath.".format(
+    #                 len(res_intersection)
+    #             )
+    #         )
 
-        # Map each point of the centerline to the DEM-flowpath
-        mapper = {}
-        att_keys = ru.parse_keys(cl_gdf)
-        if att_keys["distance"] is None:
-            dists = compute_dists(cl_gdf)
-        else:
-            dists = cl_gdf[att_keys["distance"]].values
-        for r in res_intersection.iterrows():
-            clidx = r[0]
-            demidx = r[1]["index_right"]
+    #     # Map each point of the centerline to the DEM-flowpath
+    #     mapper = {}
+    #     att_keys = ru.parse_keys(cl_gdf)
+    #     if att_keys["distance"] is None:
+    #         dists = compute_dists(cl_gdf)
+    #     else:
+    #         dists = cl_gdf[att_keys["distance"]].values
+    #     for r in res_intersection.iterrows():
+    #         clidx = r[0]
+    #         demidx = r[1]["index_right"]
 
-            # Get intersection point
-            ls_cl = cli_gdf.geometry.values[clidx]
-            ls_dem = demi_gdf.geometry.values[demidx]
-            int_pt = ls_cl.intersection(ls_dem).coords.xy
+    #         # Get intersection point
+    #         ls_cl = cli_gdf.geometry.values[clidx]
+    #         ls_dem = demi_gdf.geometry.values[demidx]
+    #         int_pt = ls_cl.intersection(ls_dem).coords.xy
 
-            # Determine which point to map the intersection to by finding the closest
-            # along centerline and DEM-flowpath
-            us_dist_cl = ru.haversine(
-                (ls_cl.coords.xy[1][0], int_pt[1][0]), (ls_cl.coords.xy[0][0], int_pt[0][0]),
-            )[0]
-            ds_dist_cl = ru.haversine(
-                (ls_cl.coords.xy[1][1], int_pt[1][0]), (ls_cl.coords.xy[0][1], int_pt[0][0]),
-            )[0]
-            if us_dist_cl < ds_dist_cl:
-                cl_idx = clidx
-            else:
-                cl_idx = clidx + 1
+    #         # Determine which point to map the intersection to by finding the closest
+    #         # along centerline and DEM-flowpath
+    #         us_dist_cl = ru.haversine(
+    #             (ls_cl.coords.xy[1][0], int_pt[1][0]), (ls_cl.coords.xy[0][0], int_pt[0][0]),
+    #         )[0]
+    #         ds_dist_cl = ru.haversine(
+    #             (ls_cl.coords.xy[1][1], int_pt[1][0]), (ls_cl.coords.xy[0][1], int_pt[0][0]),
+    #         )[0]
+    #         if us_dist_cl < ds_dist_cl:
+    #             cl_idx = clidx
+    #         else:
+    #             cl_idx = clidx + 1
 
-            us_dist_dem = ru.haversine(
-                (ls_dem.coords.xy[1][0], int_pt[1][0]), (ls_dem.coords.xy[0][0], int_pt[0][0]),
-            )[0]
-            ds_dist_dem = ru.haversine(
-                (ls_dem.coords.xy[1][1], int_pt[1][0]), (ls_dem.coords.xy[0][1], int_pt[0][0]),
-            )[0]
-            if us_dist_dem < ds_dist_dem:
-                dem_idx = demidx
-            else:
-                dem_idx = demidx + 1
-            mapper[cl_idx] = dem_idx
+    #         us_dist_dem = ru.haversine(
+    #             (ls_dem.coords.xy[1][0], int_pt[1][0]), (ls_dem.coords.xy[0][0], int_pt[0][0]),
+    #         )[0]
+    #         ds_dist_dem = ru.haversine(
+    #             (ls_dem.coords.xy[1][1], int_pt[1][0]), (ls_dem.coords.xy[0][1], int_pt[0][0]),
+    #         )[0]
+    #         if us_dist_dem < ds_dist_dem:
+    #             dem_idx = demidx
+    #         else:
+    #             dem_idx = demidx + 1
+    #         mapper[cl_idx] = dem_idx
 
-        # Make the elevation profile using the mapping
-        cl_elevs = np.ones(len(cl_gdf)) * np.nan
-        cl_wids = np.ones(len(cl_gdf)) * np.nan
-        for k in mapper.keys():
-            cl_elevs[k] = es[mapper[k]]
-            cl_wids[k] = wids[mapper[k]]
+    #     # Make the elevation profile using the mapping
+    #     cl_elevs = np.ones(len(cl_gdf)) * np.nan
+    #     cl_wids = np.ones(len(cl_gdf)) * np.nan
+    #     for k in mapper.keys():
+    #         cl_elevs[k] = es[mapper[k]]
+    #         cl_wids[k] = wids[mapper[k]]
 
-        # Assign the first and last centerline elevation values to match the DEM
-        # These points have already been mapped
-        cl_elevs[0] = es[0]
-        cl_elevs[-1] = es[-1]
+    #     # Assign the first and last centerline elevation values to match the DEM
+    #     # These points have already been mapped
+    #     cl_elevs[0] = es[0]
+    #     cl_elevs[-1] = es[-1]
 
-        nans = np.isnan(cl_elevs)
+    #     nans = np.isnan(cl_elevs)
 
-        # Fill in the nans using a linear interpolation between known values
-        # First find all the groups of nans that need interpolating across
-        e_nangroups = find_nangroups(cl_elevs)
-        w_nangroups = find_nangroups(cl_wids)
+    #     # Fill in the nans using a linear interpolation between known values
+    #     # First find all the groups of nans that need interpolating across
+    #     e_nangroups = find_nangroups(cl_elevs)
+    #     w_nangroups = find_nangroups(cl_wids)
 
-        # Do the interpolations
-        cl_elevs = interpolate_nangroups(cl_elevs, dists, e_nangroups)
-        cl_wids = interpolate_nangroups(cl_wids, dists, w_nangroups)
+    #     # Do the interpolations
+    #     cl_elevs = interpolate_nangroups(cl_elevs, dists, e_nangroups)
+    #     cl_wids = interpolate_nangroups(cl_wids, dists, w_nangroups)
 
-        # Store the elevation profile and distances in the centerline geodataframe
-        cl_gdf["MERIT Elev (m)"] = cl_elevs
-        cl_gdf["Distance (m)"] = compute_dists(cl_gdf)
-        cl_gdf["MERIT Width (m)"] = cl_wids
-        cl_gdf["intersected_DEM_flowline?"] = ~nans
+    #     # Store the elevation profile and distances in the centerline geodataframe
+    #     cl_gdf["MERIT Elev (m)"] = cl_elevs
+    #     cl_gdf["Distance (m)"] = compute_dists(cl_gdf)
+    #     cl_gdf["MERIT Width (m)"] = cl_wids
+    #     cl_gdf["intersected_DEM_flowline?"] = ~nans
 
     # Store the elevation profile and distances of the MERIT-derived flowpath
     coords_fp = ru.xy_to_coords(flowpath[1], flowpath[0], da_obj.GetGeoTransform())
@@ -285,23 +285,23 @@ def get_rc_values(gdobj, rc, nodata=-9999):
     return vals
 
 
-def pts_to_line_segments(pts):
-    """ Converts a list of shapely points to a set of line segments. Points
-    should be in order.
+# def pts_to_line_segments(pts):
+#     """ Converts a list of shapely points to a set of line segments. Points
+#     should be in order.
 
-    Parameters
-    ----------
-    pts : list of shapely.geometry.Point
-        [description]
+#     Parameters
+#     ----------
+#     pts : list of shapely.geometry.Point
+#         [description]
 
-    Returns
-    -------
-    list of shapely.geometry.LineString
-        length N-1, where N=length(pts)
-    """
-    ls = [LineString((pts[i], pts[i + 1])) for i in range(len(pts) - 1)]
+#     Returns
+#     -------
+#     list of shapely.geometry.LineString
+#         length N-1, where N=length(pts)
+#     """
+#     ls = [LineString((pts[i], pts[i + 1])) for i in range(len(pts) - 1)]
 
-    return ls
+#     return ls
 
 
 def find_nangroups(arr):
