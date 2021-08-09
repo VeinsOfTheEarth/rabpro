@@ -79,7 +79,6 @@ def trace_flowpath(
         else:
             coldict[fd] = -1
 
-    # breakpoint()
     stpti = np.ravel_multi_index(cr_stpt, imshape)
 
     da = [
@@ -580,7 +579,6 @@ def map_cl_pt_to_flowline(
     """
 
     # Check if we have all the required inputs for a basin polygon comparison
-    # breakpoint()
     if basin_pgon is not None:
         if fdr_map is None or fdr_obj is None or da is None:
             print(
@@ -604,7 +602,6 @@ def map_cl_pt_to_flowline(
     Idas = neighborhood_vals_from_raster(cr[0], pull_shape, da_obj, nodataval=np.nan)
 
     # check to make sure Idas is not all nan?
-    # breakpoint()
     # np.isnan(Idas).all()
 
     # Make an error image based on provided drainage area, if provided

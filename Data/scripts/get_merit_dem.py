@@ -99,7 +99,6 @@ def download_file(url, filename, username, password, proxy=None, clean=True):
 
     # Extract TAR archive and remove artifacts
     with tarfile.open(filename) as tf:
-        # breakpoint()
         tf.extractall(os.path.dirname(filename))
 
     tar_dir = filename[:-4]
