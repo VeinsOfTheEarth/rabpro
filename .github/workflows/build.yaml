@@ -78,7 +78,7 @@ jobs:
         if: matrix.os == 'windows-latest'
         run: |
           mkdir -p "$USERPROFILE/AppData/Local/jschwenk/rabpro"
-          cp -r ./tests/data/DEM ./tests/data/HydroBasins "$USERPROFILE/AppData/Local/jschwenk/rabpro/"
+          cp -r ./tests/data/DEM ./tests/data/HydroBasins "$USERPROFILE/AppData/Local/rabpro/rabpro/"
 
       - name: Run unit tests
         run: |
