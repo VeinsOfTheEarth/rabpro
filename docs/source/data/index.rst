@@ -69,7 +69,7 @@ Linux: ``~/.local/share/rabpro/``
 
 macOS: ``~/Library/Application Support/rabpro/``
 
-Windows: ``%UserProfile%\AppData\Local\jschwenk\rabpro\``
+Windows: ``%UserProfile%\AppData\Local\rabpro\rabpro\``
 
 with the following directory structure:
 ::
