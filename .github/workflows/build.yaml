@@ -1,0 +1,87 @@
+name: build
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "main"
+    paths:
+      - "rabpro/**"
+      - "tests/**"
+  pull_request:
+    branches:
+      - "main"
+    paths:
+      - "rabpro/**"
+      - "tests/**"
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: [3.7, 3.8, 3.9]
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Set up conda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+          miniconda-version: "latest"
+          channels: conda-forge, jschwenk, defaults
+
+      - name: Install dependencies and rabpro
+        shell: bash
+        run: |
+          mamba env create -q --file environment.yml
+          conda activate rabpro
+          pip install coverage
+          python setup.py install
+
+      - name: Set up credentials (Linux & macOS)
+        if: matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'
+        shell: bash
+        run: |
+          mkdir -p "$HOME/.config/earthengine"
+          echo "$EARTH_ENGINE_KEY" > "$HOME/.config/earthengine/credentials"
+        env:
+          EARTH_ENGINE_KEY: ${{ secrets.EARTH_ENGINE_SECRET }}
+
+      - name: Set up credentials (Windows)
+        if: matrix.os == 'windows-latest'
+        shell: bash
+        run: |
+          mkdir -p "$USERPROFILE/.config/earthengine"
+          echo "$EARTH_ENGINE_KEY" > "$USERPROFILE/.config/earthengine/credentials"
+        env:
+          EARTH_ENGINE_KEY: ${{ secrets.EARTH_ENGINE_SECRET }}
+
+      - name: Set up data (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        shell: bash
+        run: |
+          mkdir -p "$HOME/.local/share/rabpro"
+          cp -r ./tests/data/DEM ./tests/data/HydroBasins "$HOME/.local/share/rabpro"
+
+      - name: Set up data (macOS)
+        if: matrix.os == 'macos-latest'
+        shell: bash
+        run: |
+          mkdir -p "$HOME/Library/Application Support/rabpro"
+          cp -r ./tests/data/DEM ./tests/data/HydroBasins "$HOME/Library/Application Support/rabpro"
+
+      - name: Set up data (Windows)
+        if: matrix.os == 'windows-latest'
+        shell: bash
+        run: |
+          mkdir -p "$USERPROFILE/AppData/Local/jschwenk/rabpro"
+          cp -r ./tests/data/DEM ./tests/data/HydroBasins "$USERPROFILE/AppData/Local/jschwenk/rabpro/"
+
+      - name: Run unit tests
+        run: |
+          coverage run -m unittest
+          coverage report -m
