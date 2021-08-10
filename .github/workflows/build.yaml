@@ -66,13 +66,13 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: |
           mkdir -p "$HOME/.local/share/rabpro"
-          cp -r ./tests/data/DEM ./tests/data/HydroBasins "$HOME/.local/share/rabpro"
+          cp -r ./tests/data/DEM ./tests/data/HydroBasins "$HOME/.local/share/rabpro/"
 
       - name: Set up data (macOS)
         if: matrix.os == 'macos-latest'
         run: |
           mkdir -p "$HOME/Library/Application Support/rabpro"
-          cp -r ./tests/data/DEM ./tests/data/HydroBasins "$HOME/Library/Application Support/rabpro"
+          cp -r ./tests/data/DEM ./tests/data/HydroBasins "$HOME/Library/Application Support/rabpro/"
 
       - name: Set up data (Windows)
         if: matrix.os == 'windows-latest'
@@ -82,5 +82,5 @@ jobs:
 
       - name: Run unit tests
         run: |
-          coverage run -m unittest
+          coverage run -m unittest tests/test.py
           coverage report -m
