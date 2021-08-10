@@ -22,6 +22,9 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
         python-version: [3.7, 3.8, 3.9]
+    defaults:
+      run:
+        shell: bash -l {0}
 
     steps:
       - name: Checkout repo
@@ -38,14 +41,13 @@ jobs:
           auto-activate-base: false
 
       - name: Install dependencies and rabpro
-        shell: bash
         run: |
+          conda info
           pip install coverage
-          python setup.py install
+          python3 setup.py install
 
       - name: Set up credentials (Linux & macOS)
         if: matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'
-        shell: bash
         run: |
           mkdir -p "$HOME/.config/earthengine"
           echo "$EARTH_ENGINE_KEY" > "$HOME/.config/earthengine/credentials"
@@ -54,7 +56,6 @@ jobs:
 
       - name: Set up credentials (Windows)
         if: matrix.os == 'windows-latest'
-        shell: bash
         run: |
           mkdir -p "$USERPROFILE/.config/earthengine"
           echo "$EARTH_ENGINE_KEY" > "$USERPROFILE/.config/earthengine/credentials"
@@ -63,21 +64,18 @@ jobs:
 
       - name: Set up data (Linux)
         if: matrix.os == 'ubuntu-latest'
-        shell: bash
         run: |
           mkdir -p "$HOME/.local/share/rabpro"
           cp -r ./tests/data/DEM ./tests/data/HydroBasins "$HOME/.local/share/rabpro"
 
       - name: Set up data (macOS)
         if: matrix.os == 'macos-latest'
-        shell: bash
         run: |
           mkdir -p "$HOME/Library/Application Support/rabpro"
           cp -r ./tests/data/DEM ./tests/data/HydroBasins "$HOME/Library/Application Support/rabpro"
 
       - name: Set up data (Windows)
         if: matrix.os == 'windows-latest'
-        shell: bash
         run: |
           mkdir -p "$USERPROFILE/AppData/Local/jschwenk/rabpro"
           cp -r ./tests/data/DEM ./tests/data/HydroBasins "$USERPROFILE/AppData/Local/jschwenk/rabpro/"
