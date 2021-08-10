@@ -25,7 +25,6 @@ setuptools.setup(
         "matplotlib",
         "pyproj",
         "shapely",
-        #"rivgraph>=0.3",
         "requests",
         "appdirs",
         "earthengine-api",

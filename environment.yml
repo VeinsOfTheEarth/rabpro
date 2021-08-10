@@ -1,6 +1,5 @@
 name: rabpro
 channels:
-  - jschwenk
   - conda-forge
   - defaults
 dependencies:
@@ -13,7 +12,6 @@ dependencies:
   - matplotlib
   - pyproj
   - shapely
-  - rivgraph=0.3
   - requests
   - appdirs
   - earthengine-api
