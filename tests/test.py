@@ -3,6 +3,7 @@ import os
 import time
 import unittest
 
+import numpy as np
 import rabpro as rp
 
 # Run from top level repo directory
@@ -16,8 +17,9 @@ class DataTestCase(unittest.TestCase):
         self.rpo.elev_profile()
         self.rpo.export("all")
 
-        print(self.rpo.method)
-        print(self.rpo.nrows, self.rpo.ncols)
+        print(f"method: {self.rpo.method}")
+        print(f"nrows: {self.rpo.nrows}")
+        print(f"ncols: {self.rpo.ncols}")
 
         # Check if output files are equal
         test_elv_output = os.path.join("results", test_name, "dem_flowpath.json")
@@ -33,12 +35,23 @@ class DataTestCase(unittest.TestCase):
         self.assertEqual(self.rpo.nrows, nrows)
         self.assertEqual(self.rpo.ncols, ncols)
 
-    def stattest(self, stats, datasets):
+    def stattest(self, stats, datasets, length=1):
         # Check statistics
         data, task = self.rpo.basin_stats(datasets, folder="rabpro test", test=True)
 
-        print(stats, data["features"][0]["properties"])
-        self.assertTrue(stats == data["features"][0]["properties"])
+        # Only check one set of stats for time-series data, but check length is equal
+        self.assertEqual(len(data["features"]), length)
+
+        ret_stats = data["features"][0]["properties"]
+        print(f"Expected stats: {stats}")
+        print(f"Returned stats: {ret_stats}")
+
+        # Checking if the values are approximately equal due to GEE bug
+        # yielding slightly diff values on identical runs
+        self.assertEqual(stats.keys(), ret_stats.keys())
+        np.testing.assert_allclose(
+            np.array(list(stats.values())), np.array(list(ret_stats.values())), rtol=1e-03
+        )
 
         for _ in range(12):
             if task.status()["state"] == "COMPLETED":
@@ -49,7 +62,6 @@ class DataTestCase(unittest.TestCase):
 
 
 class MERITTest(DataTestCase):
-    
     def test_files(self):
         coords = (56.22659, -130.87974)
         da = 1994
@@ -72,14 +84,32 @@ class MERITTest(DataTestCase):
         )
 
         self.datatest(coords, da, True, "merit_test_check", "merit_test")
-        self.metatest('merit', 50, 50)
+        self.metatest("merit", 50, 50)
         self.stattest(stats, [data])
+
+    def test_imgcol(self):
+        coords = (56.22659, -130.87974)
+        da = 1994
+
+        stats = {"DA": 1993.9169921875, "count": 4017116, "mean": 0}
+
+        data = rp.subbasin_stats.Dataset(
+            "JRC/GSW1_3/MonthlyHistory",
+            "water",
+            stats=["count"],
+            start="2020-10-01",
+            end="2020-12-10",
+        )
+
+        self.datatest(coords, da, True, "merit_imgcol_check", "merit_imgcol")
+        self.metatest("merit", 50, 50)
+        self.stattest(stats, [data], length=3)
 
     def test_radius(self):
         coords = (56.22659, -130.87974)
         da = 1994
         self.datatest(coords, da, True, "merit_radius_check", "merit_radius", radius=1000)
-        self.metatest('merit', 22, 39)
+        self.metatest("merit", 22, 39)
 
     def test_shapefile(self):
         coords = os.path.join("tests", "data", "test_coords.shp")
@@ -114,7 +144,7 @@ class HydroBasinsTest(DataTestCase):
         )
 
         self.datatest(coords, da, False, "hydro_test_check", "hydro_test")
-        self.metatest('hydrobasins', 50, 50)
+        self.metatest("hydrobasins", 50, 50)
         self.stattest(stats, [data])
 
 
