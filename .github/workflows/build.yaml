@@ -43,6 +43,17 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
+      - name: Cache conda
+        uses: actions/cache@v2
+        env:
+          # Increase this value to reset cache if environment.yml has not changed
+          CACHE_NUMBER: 0
+        with:
+          path: ~/conda_pkgs_dir
+          key:
+            ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{
+            hashFiles('environment.yml') }}
+
       - name: Set up conda environment
         uses: conda-incubator/setup-miniconda@v2
         with:
@@ -52,6 +63,7 @@ jobs:
           environment-file: environment.yml
           channels: jschwenk, conda-forge, defaults
           auto-activate-base: false
+          use-only-tar-bz2: true # needs to be set for caching to work
 
       - name: Install dependencies and rabpro
         run: |
