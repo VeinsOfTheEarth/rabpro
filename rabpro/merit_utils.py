@@ -11,7 +11,6 @@ import sys
 
 import numpy as np
 import pandas as pd
-import rivgraph.im_utils as im
 from scipy.ndimage.morphology import distance_transform_edt
 from shapely.geometry import Polygon, LineString
 from shapely import ops
@@ -370,7 +369,7 @@ def blob_to_polygon_shapely(I, ret_type="coords", buf_amt=0.001):
     ret = []
 
     # Get perimeter pixels of the blob
-    rp, _ = im.regionprops(I, props=["perimeter"])
+    rp, _ = ru.regionprops(I, props=["perimeter"])
 
     for p in rp["perimeter"]:
         # Make slightly-buffered shapely polygons of each pixel's outline
