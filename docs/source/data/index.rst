@@ -33,11 +33,11 @@ of this file, and will attempt to retrieve an updated version when run or daily
 <https://github.com/jonschwenk/rabpro/blob/main/Data/gee_datasets.json>`_, and
 will be downloaded to the following locations:
 
-Linux:
+Linux: ``~/.local/share/rabpro/``
 
-macOS:
+macOS: ``~/Library/Application Support/rabpro/``
 
-Windows:
+Windows: ``%UserProfile%\AppData\Local\jschwenk\rabpro\``
 
 This file should not be edited manually - any changes will be overwritten when an updated version is retrieved.
 
@@ -65,11 +65,11 @@ These can be installed manually or programatically through the RaBPro API or CLI
 
 The data files should be located in the following paths:
 
-Linux:
+Linux: ``~/.local/share/rabpro/``
 
-macOS:
+macOS: ``~/Library/Application Support/rabpro/``
 
-Windows:
+Windows: ``%UserProfile%\AppData\Local\jschwenk\rabpro\``
 
 with the following directory structure:
 ::
