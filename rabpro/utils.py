@@ -51,9 +51,9 @@ def get_datapaths(datapath=None, configpath=None):
     Parameters
     ----------
     datapath: string, optional
-        path to rabpro data folder, will read from an environment variable "rabpro_data", if not set uses appdirs
+        path to rabpro data folder, will read from an environment variable "RABPRO_DATA", if not set uses appdirs
     configpath: string, optional
-        path to rabpro config folder, will read from an environment variable "rabpro_config", if not set uses appdirs
+        path to rabpro config folder, will read from an environment variable "RABPRO_CONFIG", if not set uses appdirs
     Returns
     -------
     dict
@@ -67,16 +67,16 @@ def get_datapaths(datapath=None, configpath=None):
 
     if datapath is None:
         try:
-            datapath = Path(os.environ["rabpro_data"])
+            datapath = Path(os.environ["RABPRO_DATA"])
         except:
             datapath = Path(appdirs.user_data_dir("rabpro", "rabpro"))
 
     if configpath is None:
         try:
-            configpath = Path(os.environ["rabpro_config"])
+            configpath = Path(os.environ["RABPRO_CONFIG"])
         except:
             configpath = Path(appdirs.user_config_dir("rabpro", "rabpro"))
-            
+
     datapaths = {key: str(datapath / Path(val)) for key, val in _PATH_CONSTANTS.items()}
     gee_metadata_path = datapath / "gee_datasets.json"
     datapaths["gee_metadata"] = str(gee_metadata_path)
