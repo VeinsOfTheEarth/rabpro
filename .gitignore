@@ -19,7 +19,7 @@ rabpro.egg-info
 dist/**
 
 # Docs
-docs/build
+docs/_build
 
 # Testing
 .coverage
