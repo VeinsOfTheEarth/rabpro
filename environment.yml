@@ -9,7 +9,6 @@ dependencies:
   - geopandas=0.7.0
   - scikit-image
   - opencv
-  - matplotlib
   - pyproj
   - shapely
   - requests
