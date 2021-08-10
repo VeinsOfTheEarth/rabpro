@@ -507,75 +507,136 @@ def lonlat_plus_distance(lon, lat, dist, bearing=0):
 
 
 def regionprops(I, props, connectivity=2):
+    """
+    Finds blobs within a binary image and returns requested properties of
+    each blob.
+    This function was modeled after matlab's regionprops and is essentially
+    a wrapper for skimage's regionprops. Not all of skimage's available blob
+    properties are available here, but they can easily be added.
+    Taken from RivGraph.im_utils
+
+    Parameters
+    ----------
+    I : np.array
+        Binary image containing blobs.
+    props : list
+        Properties to compute for each blob. Can include 'area', 'coords',
+        'perimeter', 'centroid', 'mean', 'perim_len', 'convex_area',
+        'eccentricity', 'major_axis_length', 'minor_axis_length',
+        'label'.
+    connectivity : int, optional
+        If 1, 4-connectivity will be used to determine connected blobs. If
+        2, 8-connectivity will be used. The default is 2.
+    Returns
+    -------
+    out : dict
+        Keys of the dictionary correspond to the requested properties. Values
+        for each key are lists of that property, in order such that, e.g., the
+        first entry of each property's list corresponds to the same blob.
+    Ilabeled : np.array
+        Image where each pixel's value corresponds to its blob label. Labels
+        can be returned by specifying 'label' as a property.
+    """
+    # Check that appropriate props are requested
+    available_props = ['area', 'coords', 'perimeter', 'centroid', 'mean', 'perim_len',
+              'convex_area', 'eccentricity', 'major_axis_length',
+              'minor_axis_length', 'equivalent_diameter', 'label']
+    props_do = [p for p in props if p in available_props]
+    cant_do = set(props) - set(props_do)
+    if len(cant_do) > 0:
+        print('Cannot compute the following properties: {}'.format(cant_do))
 
     Ilabeled = measure.label(I, background=0, connectivity=connectivity)
     properties = measure.regionprops(Ilabeled, intensity_image=I)
 
     out = {}
     # Get the coordinates of each blob in case we need them later
-    if "coords" in props or "perimeter" in props:
+    if 'coords' in props_do or 'perimeter' in props_do:
         coords = [p.coords for p in properties]
 
-    for prop in props:
-        if prop == "area":
-            allprop = [p.area for p in properties]
-        elif prop == "coords":
-            allprop = coords
-        elif prop == "centroid":
-            allprop = [p.centroid for p in properties]
-        elif prop == "mean":
-            allprop = [p.mean_intensity for p in properties]
-        elif prop == "perim_len":
-            allprop = [p.perimeter for p in properties]
-        elif prop == "perimeter":
+    for prop in props_do:
+        if prop == 'area':
+            out[prop] = np.array([p.area for p in properties])
+        elif prop == 'coords':
+            out[prop] = list(coords)
+        elif prop == 'centroid':
+            out[prop] = np.array([p.centroid for p in properties])
+        elif prop == 'mean':
+            out[prop] = np.array([p.mean_intensity for p in properties])
+        elif prop == 'perim_len':
+            out[prop] = np.array([p.perimeter for p in properties])
+        elif prop == 'perimeter':
             perim = []
             for blob in coords:
                 # Crop to blob to reduce cv2 computation time and save memory
-                Ip, pads = crop_binary_coords(blob, npad=1)
-                Ip = np.array(Ip, dtype="uint8")
+                Ip, cropped = crop_binary_coords(blob)
 
-                _, contours, _ = cv2.findContours(Ip, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
+                # Pad cropped image to avoid edge effects
+                Ip = np.pad(Ip, 1, mode='constant')
+
+                # Convert to cv2-ingestable data type
+                Ip = np.array(Ip, dtype='uint8')
+                contours, _ = cv2.findContours(Ip, cv2.RETR_TREE,
+                                               cv2.CHAIN_APPROX_NONE)
                 # IMPORTANT: findContours returns points as (x,y) rather than (row, col)
                 contours = contours[0]
                 crows = []
                 ccols = []
                 for c in contours:
-                    crows.append(c[0][1] + pads[1])  # must add back the cropped rows and columns
-                    ccols.append(c[0][0] + pads[0])
+                     # must add back the cropped rows and columns, as well as the single-pixel pad
+                    crows.append(c[0][1] + cropped[1] - 1) 
+                    ccols.append(c[0][0] + cropped[0] - 1)
                 cont_np = np.transpose(np.array((crows, ccols)))  # format the output
                 perim.append(cont_np)
-            allprop = perim
-        elif prop == "convex_area":
-            allprop = [p.convex_area for p in properties]
-        elif prop == "eccentricity":
-            allprop = [p.eccentricity for p in properties]
-        elif prop == "equivalent_diameter":
-            allprop = [p.equivalent_diameter for p in properties]
-        elif prop == "major_axis_length":
-            allprop = [p.major_axis_length for p in properties]
-
+            out[prop] = perim
+        elif prop == 'convex_area':
+            out[prop] = np.array([p.convex_area for p in properties])
+        elif prop == 'eccentricity':
+            out[prop] = np.array([p.eccentricity for p in properties])
+        elif prop == 'equivalent_diameter':
+            out[prop] = np.array([p.equivalent_diameter for p in properties])
+        elif prop == 'major_axis_length':
+            out[prop] = np.array([p.major_axis_length for p in properties])
+        elif prop == 'minor_axis_length':
+            out[prop] = np.array([p.minor_axis_length for p in properties])
+        elif prop == 'label':
+            out[prop] = np.array([p.label for p in properties])
         else:
-            print("{} is not a valid property.".format(prop))
+            print('{} is not a valid property.'.format(prop))
 
-        out[prop] = np.array(allprop)
-
-    return out
+    return out, Ilabeled
 
 
-def crop_binary_coords(coords, npad=0):
+def crop_binary_coords(coords):
+    """
+    Crops an array of (row, col) coordinates (e.g. blob indices) to the smallest
+    possible array.
+    Taken from RivGraph.im_utils
 
-    # Coords are of format [y, x]
+    Parameters
+    ----------
+    coords : np.array
+        N x 2 array. First column are rows, second are columns of pixel coordinates.
+    Returns
+    -------
+    I : np.array
+        Image of the cropped coordinates, plus padding if desired.
+    clipped : list
+        Number of pixels in [left, top, right, bottom] direction that were
+        clipped.  Clipped returns the indices within the original coords image
+        that define where I should be positioned within the original image.
+    """
+    top = np.min(coords[:, 0])
+    bottom = np.max(coords[:, 0])
+    left = np.min(coords[:, 1])
+    right = np.max(coords[:, 1])
 
-    uly = np.min(coords[:, 0]) - npad
-    ulx = np.min(coords[:, 1]) - npad
-    lry = np.max(coords[:, 0]) + npad
-    lrx = np.max(coords[:, 1]) + npad
+    I = np.zeros((bottom-top+1, right-left+1))
+    I[coords[:, 0]-top,coords[:, 1]-left] = True
 
-    I = np.zeros((lry - uly + 1, lrx - ulx + 1))
-    I[coords[:, 0] - uly, coords[:, 1] - ulx] = True
+    clipped = [left, top, right, bottom]
 
-    pads = [ulx, uly, lrx, lry]
-    return I, pads
+    return I, clipped
 
 
 def union_gdf_polygons(gdf, idcs, buffer=True):
