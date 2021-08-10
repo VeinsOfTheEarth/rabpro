@@ -22,6 +22,19 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
         python-version: [3.7, 3.8, 3.9]
+        include:
+          - os: ubuntu-latest
+            credentials-path: "$HOME/.config/earthengine"
+            data-path: "$HOME/.local/share/rabpro/"
+
+          - os: macos-latest
+            credentials-path: "$HOME/.config/earthengine"
+            data-path: "$HOME/Library/Application Support/rabpro/"
+
+          - os: windows-latest
+            credentials-path: "$USERPROFILE/.config/earthengine"
+            data-path: "$USERPROFILE/AppData/Local/rabpro/rabpro/"
+
     defaults:
       run:
         shell: bash -l {0}
@@ -46,39 +59,21 @@ jobs:
           pip install coverage
           python3 setup.py install
 
-      - name: Set up credentials (Linux & macOS)
-        if: matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'
+      - name: Set up credentials
         run: |
-          mkdir -p "$HOME/.config/earthengine"
-          echo "$EARTH_ENGINE_KEY" > "$HOME/.config/earthengine/credentials"
+          mkdir -p "$CREDENTIALS_PATH"
+          echo "$EARTH_ENGINE_KEY" > "${CREDENTIALS_PATH}/credentials"
         env:
           EARTH_ENGINE_KEY: ${{ secrets.EARTH_ENGINE_SECRET }}
+          CREDENTIALS_PATH: ${{ matrix.credentials-path }}
 
-      - name: Set up credentials (Windows)
-        if: matrix.os == 'windows-latest'
-        run: |
-          mkdir -p "$USERPROFILE/.config/earthengine"
-          echo "$EARTH_ENGINE_KEY" > "$USERPROFILE/.config/earthengine/credentials"
-        env:
-          EARTH_ENGINE_KEY: ${{ secrets.EARTH_ENGINE_SECRET }}
-
-      - name: Set up data (Linux)
+      - name: Set up data
         if: matrix.os == 'ubuntu-latest'
         run: |
-          mkdir -p "$HOME/.local/share/rabpro"
-          cp -r ./tests/data/DEM ./tests/data/HydroBasins "$HOME/.local/share/rabpro/"
-
-      - name: Set up data (macOS)
-        if: matrix.os == 'macos-latest'
-        run: |
-          mkdir -p "$HOME/Library/Application Support/rabpro"
-          cp -r ./tests/data/DEM ./tests/data/HydroBasins "$HOME/Library/Application Support/rabpro/"
-
-      - name: Set up data (Windows)
-        if: matrix.os == 'windows-latest'
-        run: |
-          mkdir -p "$USERPROFILE/AppData/Local/jschwenk/rabpro"
-          cp -r ./tests/data/DEM ./tests/data/HydroBasins "$USERPROFILE/AppData/Local/rabpro/rabpro/"
+          mkdir -p "$DATA_PATH"
+          cp -r ./tests/data/DEM ./tests/data/HydroBasins "$DATA_PATH"
+        env:
+          DATA_PATH: ${{ matrix.data-path }}
 
       - name: Run unit tests
         run: |
