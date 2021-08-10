@@ -8,8 +8,6 @@ on:
       - "rabpro/**"
       - "docs/**"
   pull_request:
-    branches:
-      - "main"
     paths:
       - "rabpro/**"
       - "docs/**"
@@ -36,6 +34,7 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.4
+        if: ${{ github.event_name == 'push'}}
         with:
           branch: gh-pages
           folder: docs/build/html
