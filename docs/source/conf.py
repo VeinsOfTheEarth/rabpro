@@ -26,7 +26,6 @@ sys.modules["geopandas"] = Mock()
 sys.modules["numpy"] = Mock()
 sys.modules["pandas"] = Mock()
 sys.modules["pyproj"] = Mock()
-sys.modules["requests"] = Mock()
 sys.modules["rivgraph"] = Mock()
 sys.modules["rivgraph.im_utils"] = Mock()
 sys.modules["scipy"] = Mock()
@@ -40,8 +39,8 @@ sys.modules["skimage"] = Mock()
 # -- Project information -----------------------------------------------------
 
 project = "rabpro"
-copyright = "2021, Jon Schwenk"
-author = "Jon Schwenk"
+copyright = "2021, T. Zussman, J. Schwenk, & J. Rowland"
+author = "T. Zussman, J. Schwenk, & J. Rowland"
 
 
 # -- General configuration ---------------------------------------------------
