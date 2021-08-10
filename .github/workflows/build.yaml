@@ -37,7 +37,7 @@ jobs:
       - name: Install dependencies and rabpro
         shell: bash
         run: |
-          mamba env create -q --file environment.yml
+          conda env create -q --file environment.yml
           conda activate rabpro
           pip install coverage
           python setup.py install
