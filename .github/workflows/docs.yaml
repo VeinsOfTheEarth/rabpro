@@ -7,6 +7,12 @@ on:
     paths:
       - "rabpro/**"
       - "docs/**"
+  pull_request:
+    branches:
+      - "main"
+    paths:
+      - "rabpro/**"
+      - "docs/**"
 
 jobs:
   build:
