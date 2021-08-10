@@ -28,14 +28,17 @@ jobs:
         python-version: [3.7, 3.8, 3.9]
         include:
           - os: ubuntu-latest
+            cache-path: ~/.cache/conda/
             credentials-path: "$HOME/.config/earthengine"
             data-path: "$HOME/.local/share/rabpro/"
 
           - os: macos-latest
+            cache-path: ~/Library/Caches/
             credentials-path: "$HOME/.config/earthengine"
             data-path: "$HOME/Library/Application Support/rabpro/"
 
           - os: windows-latest
+            cache-path: ~\AppData\Local\conda\Cache
             credentials-path: "$USERPROFILE/.config/earthengine"
             data-path: "$USERPROFILE/AppData/Local/rabpro/rabpro/"
 
@@ -53,10 +56,8 @@ jobs:
           # Increase this value to reset cache if environment.yml has not changed
           CACHE_NUMBER: 0
         with:
-          path: ~/conda_pkgs_dir
-          key:
-            ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{
-            hashFiles('environment.yml') }}
+          path: ${{ matrix.cache-path }}
+          key: ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('environment.yml') }}
 
       - name: Set up conda environment
         uses: conda-incubator/setup-miniconda@v2
