@@ -27,18 +27,19 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Set up conda
+      - name: Set up conda environment
         uses: conda-incubator/setup-miniconda@v2
         with:
           python-version: ${{ matrix.python-version }}
           miniconda-version: "latest"
-          channels: conda-forge, jschwenk, defaults
+          activate-environment: rabpro
+          environment-file: environment.yml
+          channels: jschwenk, conda-forge, defaults
+          auto-activate-base: false
 
       - name: Install dependencies and rabpro
         shell: bash
         run: |
-          conda env create -q --file environment.yml
-          conda activate rabpro
           pip install coverage
           python setup.py install
 
