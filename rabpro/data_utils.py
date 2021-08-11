@@ -23,7 +23,6 @@ _DATAPATH = Path(appdirs.user_data_dir("rabpro", "rabpro"))
 _PATH_CONSTANTS = {
     "HydroBasins1": f"HydroBasins{os.sep}level_one",
     "HydroBasins12": f"HydroBasins{os.sep}level_twelve",
-    "DEM": f"DEM{os.sep}MERIT103{os.sep}merit_dem.vrt",
     "DEM_fdr": f"DEM{os.sep}MERIT_FDR{os.sep}MERIT_FDR.vrt",
     "DEM_uda": f"DEM{os.sep}MERIT_UDA{os.sep}MERIT_UDA.vrt",
     "DEM_elev_hp": f"DEM{os.sep}MERIT_ELEV_HP{os.sep}MERIT_ELEV_HP.vrt",
@@ -39,7 +38,6 @@ merit_hydro_paths = {
     "dir": f"DEM{os.sep}MERIT_FDR",
     "upa": f"DEM{os.sep}MERIT_UDA",
     "wth": f"DEM{os.sep}MERIT_WTH",
-    "dem": f"DEM{os.sep}MERIT103",
 }
 
 
@@ -93,29 +91,6 @@ def download_gee_metadata():
                 )
         except Exception as e:
             print(e)
-
-
-def merit_dem(target, username, password, proxy=None, clean=True):
-    baseurl = "http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/"
-    filename = f"dem_tif_{target}.tar"
-
-    if proxy is not None:
-        response = requests.get(baseurl, proxies={"http": proxy})
-    else:
-        response = requests.get(baseurl)
-    soup = BeautifulSoup(response.text, "html.parser")
-    
-    url = [x["href"][2:] for x in soup.findAll("a", text=re.compile(filename), href=True)]
-    if len(url) == 0:
-        raise ValueError(f"No tile matching '{target}' found.")
-
-    url = url[0]
-
-    url = baseurl + url
-    filename = os.path.join(_DATAPATH, merit_hydro_paths["dem"], filename)
-    os.makedirs(os.path.dirname(filename), exist_ok=True)
-
-    download_tar_file(url, filename, username, password, proxy, clean)
 
 
 def merit_hydro(target, username, password, proxy=None, clean=True):

@@ -33,7 +33,7 @@ if __name__ == "__main__":
     parser_dl.add_argument(
         "source",
         type=str,
-        choices=["merit-dem", "merit-hydro", "hydrobasins"],
+        choices=["merit", "hydrobasins"],
         help="Data to download",
     )
 
