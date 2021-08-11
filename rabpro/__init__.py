@@ -4,4 +4,5 @@ from . import core
 from .core import profiler
 from . import subbasin_stats
 from . import subbasins
+from . import data_utils
 from . import utils

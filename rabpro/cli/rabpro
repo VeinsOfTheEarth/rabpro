@@ -1,0 +1,73 @@
+#!/usr/bin/env python3
+import argparse
+import sys
+
+import rabpro.data_utils as du
+
+
+def download(args):
+    if args.source == "merit-dem" or args.source == "merit-hydro":
+        if args.username is None or args.password is None or args.target is None:
+            sys.tracebacklimit=0
+            raise ValueError("MERIT data requires a target, username, and password.")
+
+    if args.source == "merit-dem":
+        du.merit_dem(args.target, args.username, args.password, args.proxy, args.preserve)
+    elif args.source == "merit-hydro":
+        du.merit_hydro(args.target, args.username, args.password, args.proxy, args.preserve)
+    elif args.source == "hydrobasins":
+        du.hydrobasins(args.proxy, args.preserve)
+
+
+if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser()
+    parser.set_defaults(func=None)
+    subparsers = parser.add_subparsers(title="subcommands", help="Subcommands for rabpro")
+
+    # Download subparser
+    parser_dl = subparsers.add_parser(
+        "download", aliases=["dl"], help="Download MERIT and HydroBASINS data"
+    )
+
+    parser_dl.add_argument(
+        "source",
+        type=str,
+        choices=["merit-dem", "merit-hydro", "hydrobasins"],
+        help="Data to download",
+    )
+
+    parser_dl.add_argument(
+        "target", type=str, nargs="?", help="MERIT tile (e.g. 'n30w090'). Required for MERIT data."
+    )
+
+    parser_dl.add_argument(
+        "username", type=str, nargs="?", help="MERIT username. Required for MERIT data."
+    )
+
+    parser_dl.add_argument(
+        "password", type=str, nargs="?", help="MERIT password. Required for MERIT data."
+    )
+
+    parser_dl.set_defaults(func=download)
+
+    parser_dl.add_argument(
+        "proxy",
+        type=str,
+        nargs="?",
+        default=None,
+        help="Enable beautifulsoup to navigate a proxy, optional",
+    )
+
+    parser_dl.add_argument(
+        "--preserve", action="store_false", help="Preserve artifacts and don't overwrite files",
+    )
+
+    # Add more subparsers here
+
+    args = parser.parse_args()
+
+    if args.func is None:
+        parser.print_help()
+    else:
+        args.func(args)

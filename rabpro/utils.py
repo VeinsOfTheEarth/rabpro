@@ -4,12 +4,10 @@ Utility functions (utils.py)
 
 """
 
-import json
 import os
 import platform
 import shutil
 import subprocess
-from datetime import datetime, timedelta
 from pathlib import Path
 
 import appdirs
@@ -24,9 +22,7 @@ from shapely.geometry import Polygon, MultiPolygon
 from shapely.ops import unary_union
 from skimage import measure
 
-CATALOG_URL = (
-    "https://raw.githubusercontent.com/jonschwenk/rabpro/main/Data/gee_datasets.json"
-)
+import rabpro.data_utils as du
 
 _DATAPATHS = None
 
@@ -40,7 +36,6 @@ _PATH_CONSTANTS = {
 }
 
 _GEE_CACHE_DAYS = 1
-
 
 def get_datapaths(datapath=None, configpath=None):
     """
@@ -63,46 +58,8 @@ def get_datapaths(datapath=None, configpath=None):
         _build_virtual_rasters(_DATAPATHS)
         return _DATAPATHS
 
-    if datapath is None:
-        try:
-            datapath = Path(os.environ["RABPRO_DATA"])
-        except:
-            datapath = Path(appdirs.user_data_dir("rabpro", "rabpro"))
-
-    if configpath is None:
-        try:
-            configpath = Path(os.environ["RABPRO_CONFIG"])
-        except:
-            configpath = Path(appdirs.user_config_dir("rabpro", "rabpro"))
-
-    datapaths = {key: str(datapath / Path(val)) for key, val in _PATH_CONSTANTS.items()}
-    gee_metadata_path = datapath / "gee_datasets.json"
-    datapaths["gee_metadata"] = str(gee_metadata_path)
-
-    # Download catalog JSON file
-    if gee_metadata_path.is_file():
-        mtime = datetime.fromtimestamp(gee_metadata_path.stat().st_mtime)
-        delta = datetime.now() - mtime
-
-    if not gee_metadata_path.is_file() or delta > timedelta(days=_GEE_CACHE_DAYS):
-        try:
-            response = requests.get(CATALOG_URL)
-            if response.status_code == 200:
-                r = response.json()
-                with open(datapaths["gee_metadata"], "w") as f:
-                    json.dump(r, f, indent=4)
-            else:
-                print(
-                    f"{CATALOG_URL} returned error status code {response.status_code}. Download manually into {gee_metadata_path}"
-                )
-        except Exception as e:
-            print(e)
-
-    # User defined GEE datasets
-    user_gee_metadata_path = configpath / "user_gee_datasets.json"
-    datapaths["user_gee_metadata"] = str(user_gee_metadata_path)
-    if not user_gee_metadata_path.is_file():
-        datapaths["user_gee_metadata"] = None
+    datapaths = du.create_datapaths(datapath=datapath, configpath=configpath)
+    du.download_gee_metadata()
 
     _build_virtual_rasters(datapaths)
     _DATAPATHS = datapaths
