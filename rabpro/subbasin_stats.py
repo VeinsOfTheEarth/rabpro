@@ -10,8 +10,6 @@ import os
 from datetime import date
 
 import ee
-import numpy as np
-import pandas as pd
 
 from rabpro import utils as ru
 
