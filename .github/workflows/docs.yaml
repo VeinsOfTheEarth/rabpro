@@ -34,7 +34,7 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.4
-        if: ${{ github.event_name != pull_request}}
+        if: ${{ github.event_name != 'pull_request' }}
         with:
           branch: gh-pages
           folder: docs/_build/html
