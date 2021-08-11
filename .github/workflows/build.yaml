@@ -34,8 +34,8 @@ jobs:
             data-path: Library/Application Support/rabpro/
 
           - os: windows-latest
-            credentials-path: $USERPROFILE/.config/earthengine
-            data-path: $USERPROFILE/AppData/Local/rabpro/rabpro/
+            credentials-path: .config/earthengine
+            data-path: AppData/Local/rabpro/rabpro/
 
     defaults:
       run:
@@ -53,7 +53,10 @@ jobs:
         with:
           path: ~/conda_pkgs_dir
           key: ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('environment.yml') }}
-          restore-keys: ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-
+          restore-keys: |
+            ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-
+            ${{ runner.os }}-conda-
+            ${{ runner.os }}-
 
       - name: Set up conda environment
         uses: conda-incubator/setup-miniconda@v2
@@ -74,7 +77,7 @@ jobs:
 
       - name: Set up credentials
         run: |
-          mkdir -p "$CREDENTIALS_PATH"
+          mkdir -p ~/"$CREDENTIALS_PATH"
           echo "$EARTH_ENGINE_KEY" > ~/"$CREDENTIALS_PATH"/credentials
         env:
           EARTH_ENGINE_KEY: ${{ secrets.EARTH_ENGINE_SECRET }}
