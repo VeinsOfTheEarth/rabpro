@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import sys
 
 import rabpro.data_utils as du
 
@@ -7,6 +8,7 @@ import rabpro.data_utils as du
 def download(args):
     if args.source == "merit-dem" or args.source == "merit-hydro":
         if args.username is None or args.password is None or args.target is None:
+            sys.tracebacklimit=0
             raise ValueError("MERIT data requires a target, username, and password.")
 
     if args.source == "merit-dem":
