@@ -20,7 +20,7 @@ dist/**
 build/**
 
 # Docs
-docs/build
+docs/_build
 
 # Testing
 .coverage

@@ -16,6 +16,7 @@ Engine <https://developers.google.com/earth-engine/>`_.
 
    install/index
    background/index
+   data/index
    examples/index
    contributing/index
    issues/index
