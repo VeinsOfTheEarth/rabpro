@@ -83,7 +83,7 @@ def main_hb(cl_gdf, verbose=False):
     # Construct the map of cl points -> which delineated subbasin. This will be
     # used for assigning raster statistics to each centerline point.
     # Re-index the indexmap from 0 --> len(idxmap)
-    idxmap = np.array(idxmap, dtype=np.int)
+    idxmap = np.array(idxmap, dtype=int)
     unique_sb_idcs = np.sort(np.unique(idxmap, return_index=True)[1])
     ct = 0
     for ui in unique_sb_idcs:
@@ -315,7 +315,7 @@ def map_points_to_chain(HB_gdf, cl_gdf, chainids):
     # it into the upstream one
     u_idx, u_ct = np.unique(cl_in_basins.index.values, return_counts=True)
     idx_in_two_basins = np.where(u_ct > 1)[0]
-    remrow = np.array([], dtype=np.int)
+    remrow = np.array([], dtype=int)
     for i in idx_in_two_basins:
         idx = u_idx[i]
         rowidcs = np.where(idx == cl_in_basins.index.values)[0]

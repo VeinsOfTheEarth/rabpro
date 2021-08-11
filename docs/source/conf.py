@@ -9,17 +9,38 @@
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-#
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
 
+import os
+import sys
+
+sys.path.insert(0, os.path.abspath("../.."))
+
+# Since we aren't installing package here, we mock imports of the dependencies.
+from unittest.mock import Mock
+
+sys.modules["appdirs"] = Mock()
+sys.modules["cv2"] = Mock()
+sys.modules["ee"] = Mock()
+sys.modules["gdal"] = Mock()
+sys.modules["geopandas"] = Mock()
+sys.modules["numpy"] = Mock()
+sys.modules["pandas"] = Mock()
+sys.modules["pyproj"] = Mock()
+sys.modules["rivgraph"] = Mock()
+sys.modules["rivgraph.im_utils"] = Mock()
+sys.modules["scipy"] = Mock()
+sys.modules["scipy.interpolate"] = Mock()
+sys.modules["scipy.ndimage.morphology"] = Mock()
+sys.modules["shapely"] = Mock()
+sys.modules["shapely.geometry"] = Mock()
+sys.modules["shapely.ops"] = Mock()
+sys.modules["skimage"] = Mock()
 
 # -- Project information -----------------------------------------------------
 
-project = 'rabpro'
-copyright = '2021, Jon Schwenk'
-author = 'Jon Schwenk'
+project = "rabpro"
+copyright = "2021, T. Zussman, J. Schwenk, & J. Rowland"
+author = "T. Zussman, J. Schwenk, & J. Rowland"
 
 
 # -- General configuration ---------------------------------------------------
@@ -35,20 +56,35 @@ extensions = [
     "sphinx_rtd_theme",
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
-    "sphinx.ext.githubpages"
+    "sphinx.ext.githubpages",
 ]
 
-autodoc_default_options = {
-    'exclude-members': '__weakref__'
-}
+autodoc_default_options = {"exclude-members": "__weakref__"}
+
+autodoc_mock_imports = [
+    "appdirs",
+    "cv2",
+    "ee",
+    "gdal",
+    "geopandas",
+    "numpy",
+    "pandas",
+    "pyproj",
+    "requests",
+    "rivgraph",
+    "scipy",
+    "shapely",
+    "skimage",
+]
+
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ["_templates"]
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -61,4 +97,4 @@ html_theme = "sphinx_rtd_theme"
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ["_static"]
