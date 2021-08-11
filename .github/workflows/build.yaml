@@ -26,19 +26,16 @@ jobs:
         python-version: [3.8] #[3.7, 3.8, 3.9] # undo once rivgraph dep removed
         include:
           - os: ubuntu-latest
-            cache-path: ~/.cache/conda/
-            credentials-path: "$HOME/.config/earthengine"
-            data-path: "$HOME/.local/share/rabpro/"
+            credentials-path: ~/.config/earthengine
+            data-path: ~/.local/share/rabpro/
 
           - os: macos-latest
-            cache-path: ~/Library/Caches/
-            credentials-path: "$HOME/.config/earthengine"
-            data-path: "$HOME/Library/Application Support/rabpro/"
+            credentials-path: ~/.config/earthengine
+            data-path: ~/Library/Application Support/rabpro/
 
           - os: windows-latest
-            cache-path: ~\AppData\Local\conda\Cache
-            credentials-path: "$USERPROFILE/.config/earthengine"
-            data-path: "$USERPROFILE/AppData/Local/rabpro/rabpro/"
+            credentials-path: $USERPROFILE/.config/earthengine
+            data-path: $USERPROFILE/AppData/Local/rabpro/rabpro/
 
     defaults:
       run:
@@ -54,7 +51,7 @@ jobs:
           # Increase this value to reset cache if environment.yml has not changed
           CACHE_NUMBER: 0
         with:
-          path: ${{ matrix.cache-path }}
+          path: ~/conda_pkgs_dir
           key: ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('environment.yml') }}
 
       - name: Set up conda environment
@@ -72,7 +69,7 @@ jobs:
         run: |
           conda info
           pip install coverage
-          python3 setup.py install
+          pip install .
 
       - name: Set up credentials
         run: |
@@ -83,7 +80,6 @@ jobs:
           CREDENTIALS_PATH: ${{ matrix.credentials-path }}
 
       - name: Set up data
-        if: matrix.os == 'ubuntu-latest'
         run: |
           mkdir -p "$DATA_PATH"
           cp -r ./tests/data/DEM ./tests/data/HydroBasins "$DATA_PATH"
