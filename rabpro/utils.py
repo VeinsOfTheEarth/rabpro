@@ -19,8 +19,7 @@ import numpy as np
 import osgeo
 import pandas as pd
 import requests
-import shapely
-from osgeo import gdal, osr, ogr
+from osgeo import gdal, ogr
 from shapely.geometry import Polygon, MultiPolygon
 from shapely.ops import unary_union
 from skimage import measure
