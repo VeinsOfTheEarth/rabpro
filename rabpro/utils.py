@@ -17,8 +17,7 @@ import numpy as np
 import osgeo
 import pandas as pd
 import requests
-import shapely
-from osgeo import gdal, osr, ogr
+from osgeo import gdal, ogr
 from shapely.geometry import Polygon, MultiPolygon
 from shapely.ops import unary_union
 from skimage import measure
@@ -27,6 +26,16 @@ import rabpro.data_utils as du
 
 _DATAPATHS = None
 
+_PATH_CONSTANTS = {
+    "HydroBasins1": f"HydroBasins{os.sep}level_one",
+    "HydroBasins12": f"HydroBasins{os.sep}level_twelve",
+    "DEM_fdr": f"DEM{os.sep}MERIT_FDR{os.sep}MERIT_FDR.vrt",
+    "DEM_uda": f"DEM{os.sep}MERIT_UDA{os.sep}MERIT_UDA.vrt",
+    "DEM_elev_hp": f"DEM{os.sep}MERIT_ELEV_HP{os.sep}MERIT_ELEV_HP.vrt",
+    "DEM_width": f"DEM{os.sep}MERIT_WTH{os.sep}MERIT_WTH.vrt",
+}
+
+_GEE_CACHE_DAYS = 1
 
 def get_datapaths(datapath=None, configpath=None):
     """
@@ -59,7 +68,6 @@ def get_datapaths(datapath=None, configpath=None):
 
 def _build_virtual_rasters(datapaths):
     msg_dict = {
-        "DEM": "Building virtual raster DEM from MERIT tiles...",
         "DEM_fdr": "Building flow direction virtual raster DEM from MERIT tiles...",
         "DEM_uda": "Building drainage areas virtual raster DEM from MERIT tiles...",
         "DEM_elev_hp": "Building hydrologically-processed elevations virtual raster DEM from MERIT tiles...",
@@ -125,31 +133,31 @@ def get_exportpaths(name, basepath=None, overwrite=False):
 
     return exportpaths
 
+  
+# def parse_keys(gdf): # Used only in centerline, deprecated
+#     """ 
+#     Attempts to interpret the column names of the input dataframe.
+#     In particular, looks for widths and distances along centerline.
 
-def parse_keys(gdf):
-    """
-    Attempts to interpret the column names of the input dataframe.
-    In particular, looks for widths and distances along centerline.
+#     Parameters
+#     ----------
+#     gdf : GeoDataFrame
+#         table to parse
 
-    Parameters
-    ----------
-    gdf : GeoDataFrame
-        table to parse
+#     Returns
+#     -------
+#     dict
+#         contains column names and corresponding properties
+#     """
+#     keys = gdf.keys()
+#     parsed = {"distance": None, "width": None}
+#     for k in keys:
+#         if "distance" in k.lower():
+#             parsed["distance"] = k
+#         if "width" in k.lower():
+#             parsed["width"] = k
 
-    Returns
-    -------
-    dict
-        contains column names and corresponding properties
-    """
-    keys = gdf.keys()
-    parsed = {"distance": None, "width": None}
-    for k in keys:
-        if "distance" in k.lower():
-            parsed["distance"] = k
-        if "width" in k.lower():
-            parsed["width"] = k
-
-    return parsed
+#     return parsed
 
 
 def build_vrt(
@@ -465,6 +473,139 @@ def lonlat_plus_distance(lon, lat, dist, bearing=0):
     lon_m = np.degrees(lon_m)
 
     return lon_m, lat_m
+
+
+def regionprops(I, props, connectivity=2):
+    """
+    Finds blobs within a binary image and returns requested properties of
+    each blob.
+    This function was modeled after matlab's regionprops and is essentially
+    a wrapper for skimage's regionprops. Not all of skimage's available blob
+    properties are available here, but they can easily be added.
+    Taken from RivGraph.im_utils
+
+    Parameters
+    ----------
+    I : np.array
+        Binary image containing blobs.
+    props : list
+        Properties to compute for each blob. Can include 'area', 'coords',
+        'perimeter', 'centroid', 'mean', 'perim_len', 'convex_area',
+        'eccentricity', 'major_axis_length', 'minor_axis_length',
+        'label'.
+    connectivity : int, optional
+        If 1, 4-connectivity will be used to determine connected blobs. If
+        2, 8-connectivity will be used. The default is 2.
+    Returns
+    -------
+    out : dict
+        Keys of the dictionary correspond to the requested properties. Values
+        for each key are lists of that property, in order such that, e.g., the
+        first entry of each property's list corresponds to the same blob.
+    Ilabeled : np.array
+        Image where each pixel's value corresponds to its blob label. Labels
+        can be returned by specifying 'label' as a property.
+    """
+    # Check that appropriate props are requested
+    available_props = ['area', 'coords', 'perimeter', 'centroid', 'mean', 'perim_len',
+              'convex_area', 'eccentricity', 'major_axis_length',
+              'minor_axis_length', 'equivalent_diameter', 'label']
+    props_do = [p for p in props if p in available_props]
+    cant_do = set(props) - set(props_do)
+    if len(cant_do) > 0:
+        print('Cannot compute the following properties: {}'.format(cant_do))
+
+    Ilabeled = measure.label(I, background=0, connectivity=connectivity)
+    properties = measure.regionprops(Ilabeled, intensity_image=I)
+
+    out = {}
+    # Get the coordinates of each blob in case we need them later
+    if 'coords' in props_do or 'perimeter' in props_do:
+        coords = [p.coords for p in properties]
+
+    for prop in props_do:
+        if prop == 'area':
+            out[prop] = np.array([p.area for p in properties])
+        elif prop == 'coords':
+            out[prop] = list(coords)
+        elif prop == 'centroid':
+            out[prop] = np.array([p.centroid for p in properties])
+        elif prop == 'mean':
+            out[prop] = np.array([p.mean_intensity for p in properties])
+        elif prop == 'perim_len':
+            out[prop] = np.array([p.perimeter for p in properties])
+        elif prop == 'perimeter':
+            perim = []
+            for blob in coords:
+                # Crop to blob to reduce cv2 computation time and save memory
+                Ip, cropped = crop_binary_coords(blob)
+
+                # Pad cropped image to avoid edge effects
+                Ip = np.pad(Ip, 1, mode='constant')
+
+                # Convert to cv2-ingestable data type
+                Ip = np.array(Ip, dtype='uint8')
+                contours, _ = cv2.findContours(Ip, cv2.RETR_TREE,
+                                               cv2.CHAIN_APPROX_NONE)
+                # IMPORTANT: findContours returns points as (x,y) rather than (row, col)
+                contours = contours[0]
+                crows = []
+                ccols = []
+                for c in contours:
+                     # must add back the cropped rows and columns, as well as the single-pixel pad
+                    crows.append(c[0][1] + cropped[1] - 1) 
+                    ccols.append(c[0][0] + cropped[0] - 1)
+                cont_np = np.transpose(np.array((crows, ccols)))  # format the output
+                perim.append(cont_np)
+            out[prop] = perim
+        elif prop == 'convex_area':
+            out[prop] = np.array([p.convex_area for p in properties])
+        elif prop == 'eccentricity':
+            out[prop] = np.array([p.eccentricity for p in properties])
+        elif prop == 'equivalent_diameter':
+            out[prop] = np.array([p.equivalent_diameter for p in properties])
+        elif prop == 'major_axis_length':
+            out[prop] = np.array([p.major_axis_length for p in properties])
+        elif prop == 'minor_axis_length':
+            out[prop] = np.array([p.minor_axis_length for p in properties])
+        elif prop == 'label':
+            out[prop] = np.array([p.label for p in properties])
+        else:
+            print('{} is not a valid property.'.format(prop))
+
+    return out, Ilabeled
+
+
+def crop_binary_coords(coords):
+    """
+    Crops an array of (row, col) coordinates (e.g. blob indices) to the smallest
+    possible array.
+    Taken from RivGraph.im_utils
+
+    Parameters
+    ----------
+    coords : np.array
+        N x 2 array. First column are rows, second are columns of pixel coordinates.
+    Returns
+    -------
+    I : np.array
+        Image of the cropped coordinates, plus padding if desired.
+    clipped : list
+        Number of pixels in [left, top, right, bottom] direction that were
+        clipped.  Clipped returns the indices within the original coords image
+        that define where I should be positioned within the original image.
+    """
+    top = np.min(coords[:, 0])
+    bottom = np.max(coords[:, 0])
+    left = np.min(coords[:, 1])
+    right = np.max(coords[:, 1])
+
+    I = np.zeros((bottom-top+1, right-left+1))
+    I[coords[:, 0]-top,coords[:, 1]-left] = True
+
+    clipped = [left, top, right, bottom]
+
+    return I, clipped
 
 
 def union_gdf_polygons(gdf, idcs, buffer=True):

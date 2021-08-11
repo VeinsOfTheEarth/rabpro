@@ -1,19 +1,16 @@
 name: rabpro
 channels:
-  - jschwenk
   - conda-forge
   - defaults
 dependencies:
-  - python=3.8
+  - python>=3.7
   - gdal
   - numpy
-  - geopandas=0.7.0
+  - geopandas>=0.7.0
   - scikit-image
   - opencv
-  - matplotlib
   - pyproj
   - shapely
-  - rivgraph=0.3
   - requests
   - appdirs
   - earthengine-api
