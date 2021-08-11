@@ -74,7 +74,7 @@ jobs:
         env:
           EARTH_ENGINE_KEY: ${{ secrets.EARTH_ENGINE_SECRET }}
 
-      - name: Set up data and run unit tests
+      - name: Set up data
         run: |
           mkdir -p "$HOME/$DATA_PATH"
           cp -r ./tests/data/DEM ./tests/data/HydroBasins "$HOME/$DATA_PATH"
