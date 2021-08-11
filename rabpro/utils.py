@@ -44,11 +44,16 @@ _PATH_CONSTANTS = {
 _GEE_CACHE_DAYS = 1
 
 
-def get_datapaths():
+def get_datapaths(datapath=None, configpath=None):
     """
     Returns a dictionary of paths to all data that RaBPro uses. Also builds
     virtual rasters for MERIT data.
-
+    Parameters
+    ----------
+    datapath: string, optional
+        path to rabpro data folder, will read from an environment variable "RABPRO_DATA", if not set uses appdirs
+    configpath: string, optional
+        path to rabpro config folder, will read from an environment variable "RABPRO_CONFIG", if not set uses appdirs
     Returns
     -------
     dict
@@ -60,8 +65,18 @@ def get_datapaths():
         _build_virtual_rasters(_DATAPATHS)
         return _DATAPATHS
 
-    datapath = Path(appdirs.user_data_dir("rabpro", "rabpro"))
-    configpath = Path(appdirs.user_config_dir("rabpro", "rabpro"))
+    if datapath is None:
+        try:
+            datapath = Path(os.environ["RABPRO_DATA"])
+        except:
+            datapath = Path(appdirs.user_data_dir("rabpro", "rabpro"))
+
+    if configpath is None:
+        try:
+            configpath = Path(os.environ["RABPRO_CONFIG"])
+        except:
+            configpath = Path(appdirs.user_config_dir("rabpro", "rabpro"))
+
     datapaths = {key: str(datapath / Path(val)) for key, val in _PATH_CONSTANTS.items()}
     gee_metadata_path = datapath / "gee_datasets.json"
     datapaths["gee_metadata"] = str(gee_metadata_path)
@@ -116,7 +131,7 @@ def _build_virtual_rasters(datapaths):
 
 
 def get_exportpaths(name, basepath=None, overwrite=False):
-    """ Returns a dictionary of paths for exporting RaBPro results. Also creates
+    """Returns a dictionary of paths for exporting RaBPro results. Also creates
     "results" folders when necessary.
 
     Parameters
@@ -166,7 +181,7 @@ def get_exportpaths(name, basepath=None, overwrite=False):
 
 
 def parse_keys(gdf):
-    """ 
+    """
     Attempts to interpret the column names of the input dataframe.
     In particular, looks for widths and distances along centerline.
 
@@ -202,7 +217,7 @@ def build_vrt(
     ftype="tif",
     separate=False,
 ):
-    """ Creates a text file for input to gdalbuildvrt, then builds vrt file with
+    """Creates a text file for input to gdalbuildvrt, then builds vrt file with
     same name. If output path is not specified, vrt is given the name of the
     final folder in the path.
 
