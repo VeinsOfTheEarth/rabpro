@@ -18,7 +18,7 @@ import requests
 import tqdm
 from bs4 import BeautifulSoup
 
-_DATAPATH = Path(appdirs.user_data_dir("rabpro", "rabpro"))
+_DATAPATH = Path(str(appdirs.user_data_dir("rabpro", "rabpro")))
 
 _PATH_CONSTANTS = {
     "HydroBasins1": f"HydroBasins{os.sep}level_one",
