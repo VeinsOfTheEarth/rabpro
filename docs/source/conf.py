@@ -22,6 +22,7 @@ sys.modules["appdirs"] = Mock()
 sys.modules["cv2"] = Mock()
 sys.modules["ee"] = Mock()
 sys.modules["gdal"] = Mock()
+sys.modules["osgeo"] = Mock()
 sys.modules["geopandas"] = Mock()
 sys.modules["numpy"] = Mock()
 sys.modules["pandas"] = Mock()
@@ -68,6 +69,7 @@ autodoc_mock_imports = [
     "gdal",
     "geopandas",
     "numpy",
+    "osgeo",
     "pandas",
     "pyproj",
     "requests",
