@@ -8,7 +8,7 @@ Class for running RaBPro commands on your data.
 import geopandas as gpd
 import numpy as np
 import pandas as pd
-import shapely
+import shapely.geometry
 from osgeo import gdal
 from pyproj import CRS
 
