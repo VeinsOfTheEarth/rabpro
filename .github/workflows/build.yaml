@@ -22,7 +22,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest] #, macos-latest, windows-latest] # undo once ubuntu works
         python-version: [3.8] #[3.7, 3.8, 3.9] # undo once rivgraph dep removed
         include:
           - os: ubuntu-latest
@@ -83,6 +83,8 @@ jobs:
         run: |
           mkdir -p "$DATA_PATH"
           cp -r ./tests/data/DEM ./tests/data/HydroBasins "$DATA_PATH"
+          echo $DATA_PATH
+          ls -al "$DATA_PATH"
         env:
           DATA_PATH: ${{ matrix.data-path }}
 
