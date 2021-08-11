@@ -26,17 +26,6 @@ import rabpro.data_utils as du
 
 _DATAPATHS = None
 
-_PATH_CONSTANTS = {
-    "HydroBasins1": f"HydroBasins{os.sep}level_one",
-    "HydroBasins12": f"HydroBasins{os.sep}level_twelve",
-    "DEM_fdr": f"DEM{os.sep}MERIT_FDR{os.sep}MERIT_FDR.vrt",
-    "DEM_uda": f"DEM{os.sep}MERIT_UDA{os.sep}MERIT_UDA.vrt",
-    "DEM_elev_hp": f"DEM{os.sep}MERIT_ELEV_HP{os.sep}MERIT_ELEV_HP.vrt",
-    "DEM_width": f"DEM{os.sep}MERIT_WTH{os.sep}MERIT_WTH.vrt",
-}
-
-_GEE_CACHE_DAYS = 1
-
 def get_datapaths(datapath=None, configpath=None):
     """
     Returns a dictionary of paths to all data that RaBPro uses. Also builds

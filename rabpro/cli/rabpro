@@ -6,14 +6,12 @@ import rabpro.data_utils as du
 
 
 def download(args):
-    if args.source == "merit-dem" or args.source == "merit-hydro":
+    if args.source == "merit":
         if args.username is None or args.password is None or args.target is None:
             sys.tracebacklimit=0
             raise ValueError("MERIT data requires a target, username, and password.")
 
-    if args.source == "merit-dem":
-        du.merit_dem(args.target, args.username, args.password, args.proxy, args.preserve)
-    elif args.source == "merit-hydro":
+    if args.source == "merit":
         du.merit_hydro(args.target, args.username, args.password, args.proxy, args.preserve)
     elif args.source == "hydrobasins":
         du.hydrobasins(args.proxy, args.preserve)
@@ -33,7 +31,7 @@ if __name__ == "__main__":
     parser_dl.add_argument(
         "source",
         type=str,
-        choices=["merit-dem", "merit-hydro", "hydrobasins"],
+        choices=["merit", "hydrobasins"],
         help="Data to download",
     )
 
