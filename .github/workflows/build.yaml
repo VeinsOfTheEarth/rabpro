@@ -22,9 +22,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest , macos-latest, windows-latest] # undo once ubuntu works
+        os: [ubuntu-latest , macos-latest, windows-latest]
         python-version: [3.8] #[3.7, 3.8, 3.9] # undo once rivgraph dep removed
         include:
+          # All paths are relative to $HOME
           - os: ubuntu-latest
             credentials-path: .config/earthengine
             data-path: .local/share/rabpro/
@@ -77,21 +78,20 @@ jobs:
 
       - name: Set up credentials
         run: |
-          mkdir -p ~/"$CREDENTIALS_PATH"
-          echo "$EARTH_ENGINE_KEY" > ~/"$CREDENTIALS_PATH"/credentials
+          mkdir -p "$HOME/$CREDENTIALS_PATH"
+          echo "$EARTH_ENGINE_KEY" > "$HOME/$CREDENTIALS_PATH/credentials"
         env:
           EARTH_ENGINE_KEY: ${{ secrets.EARTH_ENGINE_SECRET }}
           CREDENTIALS_PATH: ${{ matrix.credentials-path }}
 
       - name: Set up data and run unit tests
         run: |
-          mkdir -p ~/"$DATA_PATH"
-          cp -r ./tests/data/DEM ./tests/data/HydroBasins ~/"$DATA_PATH"
-          echo $HOME $DATA_PATH
-          pwd
-          echo ~
-          ls -al -- ~/"$DATA_PATH"/DEM/* ~/"$DATA_PATH"/HydroBasins/* 
-          coverage run -m unittest tests/test.py
-          coverage report -m
+          mkdir -p "$HOME/$DATA_PATH"
+          cp -r ./tests/data/DEM ./tests/data/HydroBasins "$HOME/$DATA_PATH"
         env:
           DATA_PATH: ${{ matrix.data-path }}
+
+      - name: Run unit tests
+        run: |
+          coverage run -m unittest tests/test.py
+          coverage report -m
