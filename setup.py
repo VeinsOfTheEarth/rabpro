@@ -15,6 +15,7 @@ setuptools.setup(
     project_urls={
         "Bug Tracker": "https://github.com/jschwenk/rabpro/issues",
     },
+    scripts=['rabpro/cli/rabpro'],
     python_requires=">=3.6",
     install_requires=[
         #"gdal",
