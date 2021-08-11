@@ -650,7 +650,7 @@ def union_gdf_polygons(gdf, idcs, buffer=True):
         else:
             polys.append(gdf.iloc[i].geometry)
 
-    polyout = shapely.ops.unary_union(polys)
+    polyout = unary_union(polys)
 
     if buffer:
         #        polyout = polyout.buffer(-eps)
