@@ -27,15 +27,12 @@ jobs:
         include:
           # All paths are relative to $HOME
           - os: ubuntu-latest
-            credentials-path: .config/earthengine
             data-path: .local/share/rabpro/
 
           - os: macos-latest
-            credentials-path: .config/earthengine
             data-path: Library/Application Support/rabpro/
 
           - os: windows-latest
-            credentials-path: .config/earthengine
             data-path: AppData/Local/rabpro/rabpro/
 
     defaults:
@@ -78,11 +75,10 @@ jobs:
 
       - name: Set up credentials
         run: |
-          mkdir -p "$HOME/$CREDENTIALS_PATH"
-          echo "$EARTH_ENGINE_KEY" > "$HOME/$CREDENTIALS_PATH/credentials"
+          mkdir -p "$HOME/.config/earthengine"
+          echo "$EARTH_ENGINE_KEY" > "$HOME/.config/earthengine/credentials"
         env:
           EARTH_ENGINE_KEY: ${{ secrets.EARTH_ENGINE_SECRET }}
-          CREDENTIALS_PATH: ${{ matrix.credentials-path }}
 
       - name: Set up data and run unit tests
         run: |
