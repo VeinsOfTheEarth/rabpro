@@ -62,7 +62,7 @@ class DataTestCase(unittest.TestCase):
         for _ in range(12):
             status = task.status()["state"]
             if status in ["READY", "RUNNING", "COMPLETED"]:
-                self.assertTrue(True)
+                break
             time.sleep(10)
 
         self.assertTrue(task.status()["state"] in ["READY", "RUNNING", "COMPLETED"])
