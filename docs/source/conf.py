@@ -19,6 +19,7 @@ sys.path.insert(0, os.path.abspath("../.."))
 from unittest.mock import Mock
 
 sys.modules["appdirs"] = Mock()
+sys.modules["beautifulsoup4"] = Mock()
 sys.modules["cv2"] = Mock()
 sys.modules["ee"] = Mock()
 sys.modules["gdal"] = Mock()
@@ -35,6 +36,7 @@ sys.modules["scipy.ndimage.morphology"] = Mock()
 sys.modules["shapely"] = Mock()
 sys.modules["shapely.geometry"] = Mock()
 sys.modules["shapely.ops"] = Mock()
+sys.modules["tqdm"] = Mock()
 sys.modules["skimage"] = Mock()
 
 # -- Project information -----------------------------------------------------
@@ -64,6 +66,7 @@ autodoc_default_options = {"exclude-members": "__weakref__"}
 
 autodoc_mock_imports = [
     "appdirs",
+    "beautifulsoup4",
     "cv2",
     "ee",
     "gdal",
@@ -77,6 +80,7 @@ autodoc_mock_imports = [
     "scipy",
     "shapely",
     "skimage",
+    "tqdm",
 ]
 
 
