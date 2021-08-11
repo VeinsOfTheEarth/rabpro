@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.abspath("../.."))
 from unittest.mock import Mock
 
 sys.modules["appdirs"] = Mock()
-sys.modules["beautifulsoup4"] = Mock()
+sys.modules["bs4"] = Mock()
 sys.modules["cv2"] = Mock()
 sys.modules["ee"] = Mock()
 sys.modules["gdal"] = Mock()
@@ -66,7 +66,7 @@ autodoc_default_options = {"exclude-members": "__weakref__"}
 
 autodoc_mock_imports = [
     "appdirs",
-    "beautifulsoup4",
+    "bs4",
     "cv2",
     "ee",
     "gdal",
