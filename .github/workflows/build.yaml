@@ -29,13 +29,13 @@ jobs:
             credentials-path: ~/.config/earthengine
             data-path: ~/.local/share/rabpro/
 
-          - os: macos-latest
-            credentials-path: ~/.config/earthengine
-            data-path: ~/Library/Application Support/rabpro/
+          #- os: macos-latest
+          #  credentials-path: ~/.config/earthengine
+          #  data-path: ~/Library/Application Support/rabpro/
 
-          - os: windows-latest
-            credentials-path: $USERPROFILE/.config/earthengine
-            data-path: $USERPROFILE/AppData/Local/rabpro/rabpro/
+          #- os: windows-latest
+          #  credentials-path: $USERPROFILE/.config/earthengine
+          #  data-path: $USERPROFILE/AppData/Local/rabpro/rabpro/
 
     defaults:
       run:
@@ -53,6 +53,7 @@ jobs:
         with:
           path: ~/conda_pkgs_dir
           key: ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{ hashFiles('environment.yml') }}
+          restore-keys: ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-
 
       - name: Set up conda environment
         uses: conda-incubator/setup-miniconda@v2
@@ -79,16 +80,13 @@ jobs:
           EARTH_ENGINE_KEY: ${{ secrets.EARTH_ENGINE_SECRET }}
           CREDENTIALS_PATH: ${{ matrix.credentials-path }}
 
-      - name: Set up data
+      - name: Set up data and run unit tests
         run: |
           mkdir -p "$DATA_PATH"
           cp -r ./tests/data/DEM ./tests/data/HydroBasins "$DATA_PATH"
           echo $DATA_PATH
-          ls -al "$DATA_PATH"
-        env:
-          DATA_PATH: ${{ matrix.data-path }}
-
-      - name: Run unit tests
-        run: |
+          ls -al -- $DATA_PATH/**
           coverage run -m unittest tests/test.py
           coverage report -m
+        env:
+          DATA_PATH: ${{ matrix.data-path }}
