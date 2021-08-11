@@ -25,7 +25,9 @@ from shapely.geometry import Polygon, MultiPolygon
 from shapely.ops import unary_union
 from skimage import measure
 
-CATALOG_URL = "https://raw.githubusercontent.com/jonschwenk/rabpro/main/Data/gee_datasets.json"
+CATALOG_URL = (
+    "https://raw.githubusercontent.com/jonschwenk/rabpro/main/Data/gee_datasets.json"
+)
 
 _DATAPATHS = None
 
@@ -42,11 +44,16 @@ _PATH_CONSTANTS = {
 _GEE_CACHE_DAYS = 1
 
 
-def get_datapaths():
+def get_datapaths(datapath=None, configpath=None):
     """
     Returns a dictionary of paths to all data that RaBPro uses. Also builds
     virtual rasters for MERIT data.
-
+    Parameters
+    ----------
+    datapath: string, optional
+        path to rabpro data folder, will read from an environment variable "RABPRO_DATA", if not set uses appdirs
+    configpath: string, optional
+        path to rabpro config folder, will read from an environment variable "RABPRO_CONFIG", if not set uses appdirs
     Returns
     -------
     dict
@@ -58,8 +65,18 @@ def get_datapaths():
         _build_virtual_rasters(_DATAPATHS)
         return _DATAPATHS
 
-    datapath = Path(appdirs.user_data_dir("rabpro", "jschwenk"))
-    configpath = Path(appdirs.user_config_dir("rabpro", "jschwenk"))
+    if datapath is None:
+        try:
+            datapath = Path(os.environ["RABPRO_DATA"])
+        except:
+            datapath = Path(appdirs.user_data_dir("rabpro", "rabpro"))
+
+    if configpath is None:
+        try:
+            configpath = Path(os.environ["RABPRO_CONFIG"])
+        except:
+            configpath = Path(appdirs.user_config_dir("rabpro", "rabpro"))
+
     datapaths = {key: str(datapath / Path(val)) for key, val in _PATH_CONSTANTS.items()}
     gee_metadata_path = datapath / "gee_datasets.json"
     datapaths["gee_metadata"] = str(gee_metadata_path)
@@ -108,12 +125,13 @@ def _build_virtual_rasters(datapaths):
         if not os.path.isfile(datapaths[key]):
             print(msg_dict[key])
             build_vrt(
-                os.path.dirname(os.path.realpath(datapaths[key])), outputfile=datapaths[key],
+                os.path.dirname(os.path.realpath(datapaths[key])),
+                outputfile=datapaths[key],
             )
 
 
 def get_exportpaths(name, basepath=None, overwrite=False):
-    """ Returns a dictionary of paths for exporting RaBPro results. Also creates
+    """Returns a dictionary of paths for exporting RaBPro results. Also creates
     "results" folders when necessary.
 
     Parameters
@@ -161,7 +179,7 @@ def get_exportpaths(name, basepath=None, overwrite=False):
 
     return exportpaths
 
-
+  
 # def parse_keys(gdf): # Used only in centerline, deprecated
 #     """ 
 #     Attempts to interpret the column names of the input dataframe.
@@ -199,7 +217,7 @@ def build_vrt(
     ftype="tif",
     separate=False,
 ):
-    """ Creates a text file for input to gdalbuildvrt, then builds vrt file with
+    """Creates a text file for input to gdalbuildvrt, then builds vrt file with
     same name. If output path is not specified, vrt is given the name of the
     final folder in the path.
 
@@ -276,7 +294,9 @@ def build_vrt(
         elif ftype == "nc":
             checktype = "nc"
         else:
-            raise TypeError("Unsupported filetype provided - must be tif, hgt, nc, or vrt.")
+            raise TypeError(
+                "Unsupported filetype provided - must be tif, hgt, nc, or vrt."
+            )
 
         for f in os.listdir(tilespath):
             if f.lower().endswith(checktype):  # ensure we're looking at a tif
@@ -384,7 +404,9 @@ def parse_path(path):
     empty if a directory is passed.
     """
 
-    if path[0] != os.sep and platform.system() != "Windows":  # This is for non-windows...
+    if (
+        path[0] != os.sep and platform.system() != "Windows"
+    ):  # This is for non-windows...
         path = os.sep + path
 
     # Pull out extension and filename, if exist
@@ -484,7 +506,8 @@ def lonlat_plus_distance(lon, lat, dist, bearing=0):
     lonr = np.radians(lon)  # Current long point converted to radians
 
     lat_m = np.arcsin(
-        np.sin(latr) * np.cos(dist / R) + np.cos(latr) * np.sin(dist / R) * np.cos(bearing)
+        np.sin(latr) * np.cos(dist / R)
+        + np.cos(latr) * np.sin(dist / R) * np.cos(bearing)
     )
 
     lon_m = lonr + np.arctan2(
@@ -533,7 +556,9 @@ def union_gdf_polygons(gdf, idcs, buffer=True):
     polys = []
     for i in idcs:
         if buffer:
-            polys.append(gdf.iloc[i].geometry.buffer(eps, 1, join_style=JOIN_STYLE.mitre))
+            polys.append(
+                gdf.iloc[i].geometry.buffer(eps, 1, join_style=JOIN_STYLE.mitre)
+            )
         #            polys.append(gdf.iloc[i].geometry.buffer(eps))
         else:
             polys.append(gdf.iloc[i].geometry)

@@ -20,7 +20,12 @@ from rabpro import utils as ru
 
 
 def trace_flowpath(
-    fdr_obj, da_obj, cr_stpt, cr_enpt=None, n_steps=None, fmap=[32, 64, 128, 16, 1, 8, 4, 2],
+    fdr_obj,
+    da_obj,
+    cr_stpt,
+    cr_enpt=None,
+    n_steps=None,
+    fmap=[32, 64, 128, 16, 1, 8, 4, 2],
 ):
     """Walks along a flow direction grid from stpt to enpt. Returns a list of
     pixels from stpt to enpt. Walks from downstream to upstream.
@@ -74,10 +79,13 @@ def trace_flowpath(
         else:
             coldict[fd] = -1
 
-    # breakpoint()
     stpti = np.ravel_multi_index(cr_stpt, imshape)
 
-    da = [da_obj.ReadAsArray(xoff=int(cr_stpt[0]), yoff=int(cr_stpt[1]), xsize=1, ysize=1)[0][0]]
+    da = [
+        da_obj.ReadAsArray(
+            xoff=int(cr_stpt[0]), yoff=int(cr_stpt[1]), xsize=1, ysize=1
+        )[0][0]
+    ]
     do_pt = [stpti]
     ct = 0
     while 1:
@@ -115,7 +123,9 @@ def trace_flowpath(
             col = col - fdr_obj.RasterXSize
 
         do_pt.append(np.ravel_multi_index((col, row), imshape))
-        da.append(da_obj.ReadAsArray(xoff=int(col), yoff=int(row), xsize=1, ysize=1)[0][0])
+        da.append(
+            da_obj.ReadAsArray(xoff=int(col), yoff=int(row), xsize=1, ysize=1)[0][0]
+        )
 
         # Halt if we've reached the endpoint
         if cr == cr_enpt:
@@ -171,7 +181,9 @@ def neighborhood_vals_from_raster(cr, shape, vrt_obj, nodataval=np.nan, wrap=Non
         Array of same dimensions as shape containing the neighborhood values.
 
     """
-    nan_int = -9999  # denotes nan in an integer array since np.nan can't be stored as an integer
+    nan_int = (
+        -9999
+    )  # denotes nan in an integer array since np.nan can't be stored as an integer
 
     if wrap is None:
         wrap = ""
@@ -217,7 +229,9 @@ def neighborhood_vals_from_raster(cr, shape, vrt_obj, nodataval=np.nan, wrap=Non
         individually_flag = True
         replace = c_idcs < 0
         if "h" in wrap:
-            c_idcs[replace] = np.arange(imshape_idcs[0], imshape_idcs[0] - np.sum(replace), -1)
+            c_idcs[replace] = np.arange(
+                imshape_idcs[0], imshape_idcs[0] - np.sum(replace), -1
+            )
         else:
             c_idcs[replace] = nan_int
 
@@ -225,7 +239,9 @@ def neighborhood_vals_from_raster(cr, shape, vrt_obj, nodataval=np.nan, wrap=Non
         individually_flag = True
         replace = r_idcs < 0
         if "v" in wrap:
-            r_idcs[replace] = np.arange(imshape_idcs[1], imshape_idcs[1] - np.sum(replace), -1)
+            r_idcs[replace] = np.arange(
+                imshape_idcs[1], imshape_idcs[1] - np.sum(replace), -1
+            )
         else:
             r_idcs[replace] = nan_int
 
@@ -251,7 +267,7 @@ def neighborhood_vals_from_raster(cr, shape, vrt_obj, nodataval=np.nan, wrap=Non
 
 
 def get_basin_pixels(start_cr, da_obj, fdr_obj, fdir_map=[32, 64, 128, 16, 1, 8, 4, 2]):
-    """ Returns the indices of all pixels draining to the pixel defined by
+    """Returns the indices of all pixels draining to the pixel defined by
     start_cr.
 
     Parameters
@@ -291,7 +307,9 @@ def get_basin_pixels(start_cr, da_obj, fdr_obj, fdir_map=[32, 64, 128, 16, 1, 8,
 
         do_cr = np.unravel_index(doidx, imshape)
         nb_fdr = (
-            neighborhood_vals_from_raster(do_cr, (3, 3), fdr_obj, nodataval=-999, wrap="h")
+            neighborhood_vals_from_raster(
+                do_cr, (3, 3), fdr_obj, nodataval=-999, wrap="h"
+            )
             .reshape(1, 9)
             .flatten()
         )
@@ -359,7 +377,9 @@ def blob_to_polygon_shapely(I, ret_type="coords", buf_amt=0.001):
         pix_pgons = []
         for x, y in zip(p[:, 1], p[:, 0]):
             pix_pgons.append(
-                Polygon([(x, y), (x + 1, y), (x + 1, y + 1), (x, y + 1), (x, y)]).buffer(buf_amt)
+                Polygon(
+                    [(x, y), (x + 1, y), (x + 1, y + 1), (x, y + 1), (x, y)]
+                ).buffer(buf_amt)
             )
 
         # Union the polygons and extract the boundary
@@ -454,10 +474,14 @@ def idcs_to_geopolygons(idcs, gdobj, buf_amt=0.001):
             xmax, xmin = np.max(cr_ew[0]), np.min(cr_ew[0])
             ymax, ymin = np.max(cr_ew[1]), np.min(cr_ew[1])
             pgons.extend(
-                Icr_to_geopolygon(cr_ew, (xmin, ymin), (xmax, ymax), gdobj.GetGeoTransform())
+                Icr_to_geopolygon(
+                    cr_ew, (xmin, ymin), (xmax, ymax), gdobj.GetGeoTransform()
+                )
             )
     else:
-        pgons.extend(Icr_to_geopolygon(cr, (xmin, ymin), (xmax, ymax), gdobj.GetGeoTransform()))
+        pgons.extend(
+            Icr_to_geopolygon(cr, (xmin, ymin), (xmax, ymax), gdobj.GetGeoTransform())
+        )
 
     return pgons, crossing
 
@@ -490,7 +514,9 @@ def nrows_and_cols_from_search_radius(lon, lat, search_radius, gt):
         lo, la = ru.lonlat_plus_distance(lon, lat, search_radius / 1000, bearing=b)
         los.append(lo)
         las.append(la)
-    boundsxy = ru.lonlat_to_xy(np.array([min(los), max(los)]), np.array([min(las), max(las)]), gt)
+    boundsxy = ru.lonlat_to_xy(
+        np.array([min(los), max(los)]), np.array([min(las), max(las)]), gt
+    )
     nrows = abs(boundsxy[0, 1] - boundsxy[1, 1])
     ncols = abs(boundsxy[0, 0] - boundsxy[1, 0])
 
@@ -553,7 +579,6 @@ def map_cl_pt_to_flowline(
     """
 
     # Check if we have all the required inputs for a basin polygon comparison
-    # breakpoint()
     if basin_pgon is not None:
         if fdr_map is None or fdr_obj is None or da is None:
             print(
@@ -577,7 +602,6 @@ def map_cl_pt_to_flowline(
     Idas = neighborhood_vals_from_raster(cr[0], pull_shape, da_obj, nodataval=np.nan)
 
     # check to make sure Idas is not all nan?
-    # breakpoint()
     # np.isnan(Idas).all()
 
     # Make an error image based on provided drainage area, if provided
@@ -650,7 +674,12 @@ def map_cl_pt_to_flowline(
             cl, rl = df["col"].values[0], df["row"].values[0]
             cr_stpt = (c_topleft + cl, r_topleft + rl)
             rc = trace_flowpath(
-                fdr_obj, da_obj, cr_stpt, cr_enpt=None, n_steps=max_trace_pixels, fmap=fdr_map,
+                fdr_obj,
+                da_obj,
+                cr_stpt,
+                cr_enpt=None,
+                n_steps=max_trace_pixels,
+                fmap=fdr_map,
             )
 
             # Remove the possible pixels from the DataFrame that our flowline
@@ -659,7 +688,9 @@ def map_cl_pt_to_flowline(
             c_local = rc[1] - cr[0][0] + ncols_half
             # This is crappy boundary handling, but there are few cases where this would occur
             out_of_bounds = np.logical_or(r_local < 0, r_local >= Idas.shape[0])
-            out_of_bounds = out_of_bounds + np.logical_or(c_local < 0, c_local >= Idas.shape[1])
+            out_of_bounds = out_of_bounds + np.logical_or(
+                c_local < 0, c_local >= Idas.shape[1]
+            )
             r_local = r_local[~out_of_bounds]
             c_local = c_local[~out_of_bounds]
             idx_local = np.ravel_multi_index((r_local, c_local), Idas.shape)
@@ -679,7 +710,9 @@ def map_cl_pt_to_flowline(
 
         # Use the known watershed polygon to determine what fraction of each
         # extracted flowline is within the boundaries
-        fraction_in = [ls.intersection(basin_pgon).length / ls.length for ls in cl_trace_ls]
+        fraction_in = [
+            ls.intersection(basin_pgon).length / ls.length for ls in cl_trace_ls
+        ]
 
         # import geopandas as gpd
         # gdf = gpd.GeoDataFrame(geometry=cl_trace_ls, crs=CRS.from_epsg(4326))
@@ -705,7 +738,8 @@ def map_cl_pt_to_flowline(
     # moving it around unnecessarily
     if da is not None:
         if (
-            np.abs(Idas[int((nrows - 1) / 2), int((ncols - 1) / 2)] - da) / da * 100 <= 15
+            np.abs(Idas[int((nrows - 1) / 2), int((ncols - 1) / 2)] - da) / da * 100
+            <= 15
         ):  # If the coordinate's DA is within 15% of MERIT's, we assume it's correct
             col_mapped = cr[0][0]
             row_mapped = cr[0][1]
@@ -716,9 +750,15 @@ def map_cl_pt_to_flowline(
     # the get_DA_error_bounds function.
     if da is not None:
         lower, upper = get_DA_error_bounds(da)
-        Irn = np.logical_and(Idas >= lower, Idas <= upper)  # Threshold to get the flowlines
-        if Irn.sum() == 0:  # If no valid flowlines are found, no mapping can be performed
-            solve_method = 6  # A DA was provided but no nearby DAs were close enough to map to
+        Irn = np.logical_and(
+            Idas >= lower, Idas <= upper
+        )  # Threshold to get the flowlines
+        if (
+            Irn.sum() == 0
+        ):  # If no valid flowlines are found, no mapping can be performed
+            solve_method = (
+                6  # A DA was provided but no nearby DAs were close enough to map to
+            )
             return (np.nan, np.nan), solve_method
     else:  # If no DA was provided, use all local flowlines (assumes DA > 1km^2)
         Irn = Idas > 1
@@ -759,12 +799,16 @@ def map_cl_pt_to_flowline(
     if da is None:
         Ierr = Idist
         Ierr[~Irn] = np.nan
-        solve_method = 4  # A DA was not provided; we map to the nearest flowline (>1km^2)
+        solve_method = (
+            4  # A DA was not provided; we map to the nearest flowline (>1km^2)
+        )
 
     # Select the pixel in the drainage network that has the lowest error
     min_err = np.nanmin(Ierr)
     me_idx = np.where(Ierr == min_err)
-    if len(me_idx[0]) > 1:  # In the case of ties, choose the one that has the lower Idist error
+    if (
+        len(me_idx[0]) > 1
+    ):  # In the case of ties, choose the one that has the lower Idist error
         use_me_idx = np.argmin(Idist[me_idx[0], me_idx[1]])
         me_idx = np.array([[me_idx[0][use_me_idx]], [me_idx[1][use_me_idx]]])
 
