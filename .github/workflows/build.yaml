@@ -22,20 +22,20 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest] #, macos-latest, windows-latest] # undo once ubuntu works
+        os: [ubuntu-latest , macos-latest, windows-latest] # undo once ubuntu works
         python-version: [3.8] #[3.7, 3.8, 3.9] # undo once rivgraph dep removed
         include:
           - os: ubuntu-latest
-            credentials-path: ~/.config/earthengine
-            data-path: ~/.local/share/rabpro/
+            credentials-path: .config/earthengine
+            data-path: .local/share/rabpro/
 
-          #- os: macos-latest
-          #  credentials-path: ~/.config/earthengine
-          #  data-path: ~/Library/Application Support/rabpro/
+          - os: macos-latest
+            credentials-path: .config/earthengine
+            data-path: Library/Application Support/rabpro/
 
-          #- os: windows-latest
-          #  credentials-path: $USERPROFILE/.config/earthengine
-          #  data-path: $USERPROFILE/AppData/Local/rabpro/rabpro/
+          - os: windows-latest
+            credentials-path: $USERPROFILE/.config/earthengine
+            data-path: $USERPROFILE/AppData/Local/rabpro/rabpro/
 
     defaults:
       run:
@@ -75,17 +75,19 @@ jobs:
       - name: Set up credentials
         run: |
           mkdir -p "$CREDENTIALS_PATH"
-          echo "$EARTH_ENGINE_KEY" > "${CREDENTIALS_PATH}/credentials"
+          echo "$EARTH_ENGINE_KEY" > ~/"$CREDENTIALS_PATH"/credentials
         env:
           EARTH_ENGINE_KEY: ${{ secrets.EARTH_ENGINE_SECRET }}
           CREDENTIALS_PATH: ${{ matrix.credentials-path }}
 
       - name: Set up data and run unit tests
         run: |
-          mkdir -p "$DATA_PATH"
-          cp -r ./tests/data/DEM ./tests/data/HydroBasins "$DATA_PATH"
-          echo $DATA_PATH
-          ls -al -- $DATA_PATH/**
+          mkdir -p ~/"$DATA_PATH"
+          cp -r ./tests/data/DEM ./tests/data/HydroBasins ~/"$DATA_PATH"
+          echo $HOME $DATA_PATH
+          pwd
+          echo ~
+          ls -al -- ~/"$DATA_PATH"/DEM/* ~/"$DATA_PATH"/HydroBasins/* 
           coverage run -m unittest tests/test.py
           coverage report -m
         env:
