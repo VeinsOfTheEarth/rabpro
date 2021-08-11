@@ -34,7 +34,6 @@ _DATAPATHS = None
 _PATH_CONSTANTS = {
     "HydroBasins1": f"HydroBasins{os.sep}level_one",
     "HydroBasins12": f"HydroBasins{os.sep}level_twelve",
-    "DEM": f"DEM{os.sep}MERIT103{os.sep}merit_dem.vrt",
     "DEM_fdr": f"DEM{os.sep}MERIT_FDR{os.sep}MERIT_FDR.vrt",
     "DEM_uda": f"DEM{os.sep}MERIT_UDA{os.sep}MERIT_UDA.vrt",
     "DEM_elev_hp": f"DEM{os.sep}MERIT_ELEV_HP{os.sep}MERIT_ELEV_HP.vrt",
@@ -113,7 +112,6 @@ def get_datapaths(datapath=None, configpath=None):
 
 def _build_virtual_rasters(datapaths):
     msg_dict = {
-        "DEM": "Building virtual raster DEM from MERIT tiles...",
         "DEM_fdr": "Building flow direction virtual raster DEM from MERIT tiles...",
         "DEM_uda": "Building drainage areas virtual raster DEM from MERIT tiles...",
         "DEM_elev_hp": "Building hydrologically-processed elevations virtual raster DEM from MERIT tiles...",
