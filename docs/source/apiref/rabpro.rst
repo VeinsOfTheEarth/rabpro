@@ -8,6 +8,10 @@ rabpro
    :members:
    :special-members:
 
+.. automodule:: rabpro.data_utils
+   :members:
+   :special-members:
+
 .. automodule:: rabpro.elev_profile
    :members:
    :special-members:

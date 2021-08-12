@@ -57,6 +57,7 @@ import rabpro
 
 extensions = [
     "sphinx_rtd_theme",
+    "numpydoc",
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
     "sphinx.ext.githubpages",

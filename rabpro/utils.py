@@ -30,12 +30,14 @@ def get_datapaths(datapath=None, configpath=None):
     """
     Returns a dictionary of paths to all data that RaBPro uses. Also builds
     virtual rasters for MERIT data.
+
     Parameters
     ----------
     datapath: string, optional
         path to rabpro data folder, will read from an environment variable "RABPRO_DATA", if not set uses appdirs
     configpath: string, optional
         path to rabpro config folder, will read from an environment variable "RABPRO_CONFIG", if not set uses appdirs
+
     Returns
     -------
     dict

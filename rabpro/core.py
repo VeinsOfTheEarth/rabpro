@@ -45,6 +45,17 @@ class profiler:
     verbose : bool
         If True, will print updates as processing progresses.
 
+    Methods
+    -------
+    delineate_basins:
+        Computes the watersheds for each lat/lon pair
+    elev_profile:
+        Compute the elevation profile
+    basin_stats:
+        Computes watershed statistics
+    export:
+        Exports computed data
+
     """
 
     def __init__(
@@ -135,8 +146,8 @@ class profiler:
         return method
 
     def delineate_basins(self, search_radius=None, map_only=False):
-        """ Computes the watersheds for each lat/lon pair and adds their drainage
-        areas to the self.gdf `GeoDataFrame`.
+        """ Computes the watersheds for each lat/lon pair and adds their
+        drainage areas to the self.gdf `GeoDataFrame`.
 
         There are two methods used for delineating basins: HydroBASINS and
         MERIT. HydroBASINS is appropriate for large basins (500 km^2 and
