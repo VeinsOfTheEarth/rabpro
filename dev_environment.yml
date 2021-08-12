@@ -1,0 +1,25 @@
+name: rabpro
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.7
+  - gdal
+  - numpy
+  - geopandas>=0.7.0
+  - scikit-image
+  - opencv
+  - pyproj
+  - shapely
+  - requests
+  - appdirs
+  - earthengine-api
+  - tqdm
+  - beautifulsoup4
+  - coverage
+  - sphinx
+  - numpydoc
+  - sphinx_rtd_theme
+  - black
+  - setuptools
+  - twine
