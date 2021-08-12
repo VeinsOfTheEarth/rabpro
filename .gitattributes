@@ -1,2 +1,2 @@
 # Normalize and convert results files to native line endings on checkout
-tests/results/** text
+tests/results/*/*.json text
