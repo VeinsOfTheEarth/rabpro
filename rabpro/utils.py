@@ -26,6 +26,7 @@ import rabpro.data_utils as du
 
 _DATAPATHS = None
 
+
 def get_datapaths(datapath=None, configpath=None):
     """
     Returns a dictionary of paths to all data that RaBPro uses. Also builds
@@ -124,9 +125,9 @@ def get_exportpaths(name, basepath=None, overwrite=False):
 
     return exportpaths
 
-  
+
 # def parse_keys(gdf): # Used only in centerline, deprecated
-#     """ 
+#     """
 #     Attempts to interpret the column names of the input dataframe.
 #     In particular, looks for widths and distances along centerline.
 
@@ -498,71 +499,81 @@ def regionprops(I, props, connectivity=2):
         can be returned by specifying 'label' as a property.
     """
     # Check that appropriate props are requested
-    available_props = ['area', 'coords', 'perimeter', 'centroid', 'mean', 'perim_len',
-              'convex_area', 'eccentricity', 'major_axis_length',
-              'minor_axis_length', 'equivalent_diameter', 'label']
+    available_props = [
+        "area",
+        "coords",
+        "perimeter",
+        "centroid",
+        "mean",
+        "perim_len",
+        "convex_area",
+        "eccentricity",
+        "major_axis_length",
+        "minor_axis_length",
+        "equivalent_diameter",
+        "label",
+    ]
     props_do = [p for p in props if p in available_props]
     cant_do = set(props) - set(props_do)
     if len(cant_do) > 0:
-        print('Cannot compute the following properties: {}'.format(cant_do))
+        print("Cannot compute the following properties: {}".format(cant_do))
 
     Ilabeled = measure.label(I, background=0, connectivity=connectivity)
     properties = measure.regionprops(Ilabeled, intensity_image=I)
 
     out = {}
     # Get the coordinates of each blob in case we need them later
-    if 'coords' in props_do or 'perimeter' in props_do:
+    if "coords" in props_do or "perimeter" in props_do:
         coords = [p.coords for p in properties]
 
     for prop in props_do:
-        if prop == 'area':
+        if prop == "area":
             out[prop] = np.array([p.area for p in properties])
-        elif prop == 'coords':
+        elif prop == "coords":
             out[prop] = list(coords)
-        elif prop == 'centroid':
+        elif prop == "centroid":
             out[prop] = np.array([p.centroid for p in properties])
-        elif prop == 'mean':
+        elif prop == "mean":
             out[prop] = np.array([p.mean_intensity for p in properties])
-        elif prop == 'perim_len':
+        elif prop == "perim_len":
             out[prop] = np.array([p.perimeter for p in properties])
-        elif prop == 'perimeter':
+        elif prop == "perimeter":
             perim = []
             for blob in coords:
                 # Crop to blob to reduce cv2 computation time and save memory
                 Ip, cropped = crop_binary_coords(blob)
 
                 # Pad cropped image to avoid edge effects
-                Ip = np.pad(Ip, 1, mode='constant')
+                Ip = np.pad(Ip, 1, mode="constant")
 
                 # Convert to cv2-ingestable data type
-                Ip = np.array(Ip, dtype='uint8')
-                contours, _ = cv2.findContours(Ip, cv2.RETR_TREE,
-                                               cv2.CHAIN_APPROX_NONE)
+                Ip = np.array(Ip, dtype="uint8")
+                contours, _ = cv2.findContours(Ip, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
                 # IMPORTANT: findContours returns points as (x,y) rather than (row, col)
                 contours = contours[0]
                 crows = []
                 ccols = []
                 for c in contours:
-                     # must add back the cropped rows and columns, as well as the single-pixel pad
-                    crows.append(c[0][1] + cropped[1] - 1) 
+                    # must add back the cropped rows and columns, as well as the single-pixel pad
+                    crows.append(c[0][1] + cropped[1] - 1)
                     ccols.append(c[0][0] + cropped[0] - 1)
                 cont_np = np.transpose(np.array((crows, ccols)))  # format the output
                 perim.append(cont_np)
             out[prop] = perim
-        elif prop == 'convex_area':
+        elif prop == "convex_area":
             out[prop] = np.array([p.convex_area for p in properties])
-        elif prop == 'eccentricity':
+        elif prop == "eccentricity":
             out[prop] = np.array([p.eccentricity for p in properties])
-        elif prop == 'equivalent_diameter':
+        elif prop == "equivalent_diameter":
             out[prop] = np.array([p.equivalent_diameter for p in properties])
-        elif prop == 'major_axis_length':
+        elif prop == "major_axis_length":
             out[prop] = np.array([p.major_axis_length for p in properties])
-        elif prop == 'minor_axis_length':
+        elif prop == "minor_axis_length":
             out[prop] = np.array([p.minor_axis_length for p in properties])
-        elif prop == 'label':
+        elif prop == "label":
             out[prop] = np.array([p.label for p in properties])
         else:
-            print('{} is not a valid property.'.format(prop))
+            print("{} is not a valid property.".format(prop))
 
     return out, Ilabeled
 
@@ -591,8 +602,8 @@ def crop_binary_coords(coords):
     left = np.min(coords[:, 1])
     right = np.max(coords[:, 1])
 
-    I = np.zeros((bottom-top+1, right-left+1))
-    I[coords[:, 0]-top,coords[:, 1]-left] = True
+    I = np.zeros((bottom - top + 1, right - left + 1))
+    I[coords[:, 0] - top, coords[:, 1] - left] = True
 
     clipped = [left, top, right, bottom]
 
