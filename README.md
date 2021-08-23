@@ -21,7 +21,7 @@ source activate rabpro
 Locate the MERIT DEM "tile" of interest and run [Data/scripts/get_merit_dem.py](Data/scripts/get_merit_dem.py) with username and password arguments.
 
 ```shell
-python Data/scripts/get_merit_dem.py n30w090 <username> <password>
+./rabpro/cli/rabpro download merit n30w090 <username> <password>
 ```
 
 Download Hydrobasins levels 1 and 12 using [Data/scripts/get_hydrobasins.py](Data/scripts/get_hydrobasins.py)
