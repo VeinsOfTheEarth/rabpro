@@ -8,13 +8,25 @@ import rabpro.data_utils as du
 def download(args):
     if args.source == "merit":
         if args.username is None or args.password is None or args.target is None:
-            sys.tracebacklimit=0
             raise ValueError("MERIT data requires a target, username, and password.")
-
-    if args.source == "merit":
         du.merit_hydro(args.target, args.username, args.password, args.proxy, args.preserve)
     elif args.source == "hydrobasins":
         du.hydrobasins(args.proxy, args.preserve)
+    elif args.source == "gee":
+        du.download_gee_metadata()
+
+
+def create(args):
+    du.create_file_structure(args.datapath, args.configpath)
+
+
+def delete(args):
+    du.delete_file_structure(args.datapath, args.configpath)
+
+def paths(args):
+    p = du.create_datapaths(args.datapath, args.configpath)
+    for key in p:
+        print(f"{key}: {p[key]}")
 
 
 if __name__ == "__main__":
@@ -31,7 +43,7 @@ if __name__ == "__main__":
     parser_dl.add_argument(
         "source",
         type=str,
-        choices=["merit", "hydrobasins"],
+        choices=["merit", "hydrobasins", "gee"],
         help="Data to download",
     )
 
@@ -60,6 +72,51 @@ if __name__ == "__main__":
     parser_dl.add_argument(
         "--preserve", action="store_false", help="Preserve artifacts and don't overwrite files",
     )
+
+    # Create file structure subparser
+    parser_create = subparsers.add_parser(
+        "create", help="Create RaBPro data and config file structure"
+    )
+
+    parser_create.add_argument(
+        "--datapath", type=str, nargs="?", default=None, help="Datapath, optional."
+    )
+
+    parser_create.add_argument(
+        "--configpath", type=str, nargs="?", default=None, help="Configpath, optional."
+    )
+
+    parser_create.set_defaults(func=create)
+
+    # Delete file structure subparser
+    parser_delete = subparsers.add_parser(
+        "delete", help="Delete RaBPro data and config file structure"
+    )
+
+    parser_delete.add_argument(
+        "--datapath", type=str, nargs="?", default=None, help="Datapath, optional."
+    )
+
+    parser_delete.add_argument(
+        "--configpath", type=str, nargs="?", default=None, help="Configpath, optional."
+    )
+
+    parser_delete.set_defaults(func=delete)
+
+    # Get paths subparser
+    parser_paths = subparsers.add_parser(
+        "paths", help="Get RaBPro file structure paths"
+    )
+
+    parser_paths.add_argument(
+        "--datapath", type=str, nargs="?", default=None, help="Datapath, optional."
+    )
+
+    parser_paths.add_argument(
+        "--configpath", type=str, nargs="?", default=None, help="Configpath, optional."
+    )
+
+    parser_paths.set_defaults(func=paths)
 
     # Add more subparsers here
 
