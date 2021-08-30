@@ -23,6 +23,7 @@ def create(args):
 def delete(args):
     du.delete_file_structure(args.datapath, args.configpath)
 
+
 def paths(args):
     p = du.create_datapaths(args.datapath, args.configpath)
     for key in p:
@@ -41,10 +42,7 @@ if __name__ == "__main__":
     )
 
     parser_dl.add_argument(
-        "source",
-        type=str,
-        choices=["merit", "hydrobasins", "gee"],
-        help="Data to download",
+        "source", type=str, choices=["merit", "hydrobasins", "gee"], help="Data to download",
     )
 
     parser_dl.add_argument(
@@ -104,9 +102,7 @@ if __name__ == "__main__":
     parser_delete.set_defaults(func=delete)
 
     # Get paths subparser
-    parser_paths = subparsers.add_parser(
-        "paths", help="Get RaBPro file structure paths"
-    )
+    parser_paths = subparsers.add_parser("paths", help="Get RaBPro file structure paths")
 
     parser_paths.add_argument(
         "--datapath", type=str, nargs="?", default=None, help="Datapath, optional."
