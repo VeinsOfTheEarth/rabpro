@@ -18,8 +18,6 @@ import requests
 import tqdm
 from bs4 import BeautifulSoup
 
-_DATAPATH = Path(str(appdirs.user_data_dir("rabpro", "rabpro")))
-
 _PATH_CONSTANTS = {
     "HydroBasins1": f"HydroBasins{os.sep}level_one",
     "HydroBasins12": f"HydroBasins{os.sep}level_twelve",
@@ -40,22 +38,14 @@ merit_hydro_paths = {
     "wth": f"DEM{os.sep}MERIT_WTH",
 }
 
+hydrobasins_paths = {
+    "HydroBasins1": f"HydroBasins{os.sep}level_one",
+    "HydroBasins12": f"HydroBasins{os.sep}level_twelve",
+}
+
 
 def create_datapaths(datapath=None, configpath=None):
-    global _DATAPATH
-    if datapath is None:
-        try:
-            datapath = Path(os.environ["RABPRO_DATA"])
-        except:
-            datapath = Path(appdirs.user_data_dir("rabpro", "rabpro"))
-
-    _DATAPATH = datapath
-
-    if configpath is None:
-        try:
-            configpath = Path(os.environ["RABPRO_CONFIG"])
-        except:
-            configpath = Path(appdirs.user_config_dir("rabpro", "rabpro"))
+    datapath, configpath = _path_generator_util(datapath, configpath)
 
     datapaths = {key: str(datapath / Path(val)) for key, val in _PATH_CONSTANTS.items()}
     gee_metadata_path = datapath / "gee_datasets.json"
@@ -70,8 +60,44 @@ def create_datapaths(datapath=None, configpath=None):
     return datapaths
 
 
-def download_gee_metadata():
-    gee_metadata_path = _DATAPATH / "gee_datasets.json"
+def create_file_structure(datapath=None, configpath=None):
+
+    datapath, configpath = _path_generator_util(datapath, configpath)
+
+    os.makedirs(configpath, exist_ok=True)
+    for key in merit_hydro_paths:
+        os.makedirs(os.path.join(datapath, merit_hydro_paths[key]), exist_ok=True)
+
+    for key in hydrobasins_paths:
+        os.makedirs(os.path.join(datapath, hydrobasins_paths[key]), exist_ok=True)
+
+
+def delete_file_structure(datapath=None, configpath=None):
+    datapath, configpath = _path_generator_util(datapath, configpath)
+
+    shutil.rmtree(configpath, ignore_errors=True)
+    shutil.rmtree(datapath, ignore_errors=True)
+
+
+def _path_generator_util(datapath, configpath):
+    if datapath is None:
+        try:
+            datapath = Path(os.environ["RABPRO_DATA"])
+        except:
+            datapath = Path(appdirs.user_data_dir("rabpro", "rabpro"))
+
+    if configpath is None:
+        try:
+            configpath = Path(os.environ["RABPRO_CONFIG"])
+        except:
+            configpath = Path(appdirs.user_config_dir("rabpro", "rabpro"))
+
+    return datapath, configpath
+
+
+def download_gee_metadata(datapath=None):
+    datapath, _ = _path_generator_util(datapath, None)
+    gee_metadata_path = datapath / "gee_datasets.json"
 
     # Download catalog JSON file
     if gee_metadata_path.is_file():
@@ -93,7 +119,7 @@ def download_gee_metadata():
             print(e)
 
 
-def merit_hydro(target, username, password, proxy=None, clean=True):
+def merit_hydro(target, username, password, proxy=None, clean=True, datapath=None):
     baseurl = "http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/"
 
     if proxy is not None:
@@ -107,6 +133,8 @@ def merit_hydro(target, username, password, proxy=None, clean=True):
     if len(urls) == 0:
         raise ValueError(f"No tile matching '{target}' found.")
 
+    datapath, _ = _path_generator_util(datapath, None)
+
     for urlfile in urls:
         url = baseurl + urlfile
         filename = os.path.basename(urllib.parse.urlparse(url).path)
@@ -114,7 +142,7 @@ def merit_hydro(target, username, password, proxy=None, clean=True):
         if filename[:3] not in merit_hydro_paths:
             continue
 
-        filename = os.path.join(_DATAPATH, merit_hydro_paths[filename[:3]], filename)
+        filename = os.path.join(datapath, merit_hydro_paths[filename[:3]], filename)
         os.makedirs(os.path.dirname(filename), exist_ok=True)
 
         download_tar_file(url, filename, username, password, proxy, clean)
@@ -169,10 +197,11 @@ _HYDROBASINS_IDS = {
 }
 
 
-def hydrobasins(proxy=None, clean=True):
+def hydrobasins(proxy=None, clean=True, datapath=None):
     filebase = "hybas_all_lev01_v1c."
     urlbase = "https://drive.google.com/uc?export=download&id="
-    pathbase = _DATAPATH / Path(_PATH_CONSTANTS["HydroBasins1"])
+    datapath, _ = _path_generator_util(datapath, None)
+    pathbase = datapath / Path(_PATH_CONSTANTS["HydroBasins1"])
 
     os.makedirs(pathbase, exist_ok=True)
 

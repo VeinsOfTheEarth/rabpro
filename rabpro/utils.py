@@ -58,6 +58,7 @@ def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True):
         return _DATAPATHS
 
     datapaths = du.create_datapaths(datapath=datapath, configpath=configpath)
+    du.create_file_structure(datapath=datapath, configpath=configpath)
     du.download_gee_metadata()
 
     _build_virtual_rasters(datapaths, force_rebuild=rebuild_vrts)
