@@ -27,7 +27,7 @@ import rabpro.data_utils as du
 _DATAPATHS = None
 
 
-def get_datapaths(datapath=None, configpath=None):
+def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True):
     """
     Returns a dictionary of paths to all data that RaBPro uses. Also builds
     virtual rasters for MERIT data.
@@ -38,27 +38,34 @@ def get_datapaths(datapath=None, configpath=None):
         path to rabpro data folder, will read from an environment variable "RABPRO_DATA", if not set uses appdirs
     configpath: string, optional
         path to rabpro config folder, will read from an environment variable "RABPRO_CONFIG", if not set uses appdirs
+    rebuild_vrts: boolean, optional
+        rebuild virtual raster files, default is True
 
     Returns
     -------
     dict
         contains paths to all data that RaBPro uses
+
+    Example
+    -------
+    import utils
+    utils.get_datapaths()
     """
 
     global _DATAPATHS
     if _DATAPATHS is not None:
-        _build_virtual_rasters(_DATAPATHS)
+        _build_virtual_rasters(_DATAPATHS, force_rebuild=rebuild_vrts)
         return _DATAPATHS
 
     datapaths = du.create_datapaths(datapath=datapath, configpath=configpath)
     du.download_gee_metadata()
 
-    _build_virtual_rasters(datapaths)
+    _build_virtual_rasters(datapaths, force_rebuild=rebuild_vrts)
     _DATAPATHS = datapaths
     return datapaths
 
 
-def _build_virtual_rasters(datapaths):
+def _build_virtual_rasters(datapaths, force_rebuild=True):
     msg_dict = {
         "DEM_fdr": "Building flow direction virtual raster DEM from MERIT tiles...",
         "DEM_uda": "Building drainage areas virtual raster DEM from MERIT tiles...",
@@ -68,7 +75,7 @@ def _build_virtual_rasters(datapaths):
 
     # Ensure that DEM virtual rasters are built
     for key in msg_dict:
-        if not os.path.isfile(datapaths[key]):
+        if not os.path.isfile(datapaths[key]) or force_rebuild:
             print(msg_dict[key])
             build_vrt(
                 os.path.dirname(os.path.realpath(datapaths[key])),
