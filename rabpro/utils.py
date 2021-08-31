@@ -326,8 +326,12 @@ def build_vrt(
 
 
 def raster_extents(raster_path):
+    """Output raster extents as [xmin, xmax, ymin, ymax]
 
-    # Outputs extents as [xmin, xmax, ymin, ymax]
+    Example:
+        import utils
+        utils.raster_extents(utils.get_datapaths(rebuild_vrts=False)["DEM_fdr"])
+    """
 
     # Check if file is shapefile, else treat as raster
     fext = raster_path.split(".")[-1]
