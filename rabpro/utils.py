@@ -27,7 +27,7 @@ import rabpro.data_utils as du
 _DATAPATHS = None
 
 
-def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True):
+def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True, **kwargs):
     """
     Returns a dictionary of paths to all data that RaBPro uses. Also builds
     virtual rasters for MERIT data.
@@ -40,6 +40,8 @@ def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True):
         path to rabpro config folder, will read from an environment variable "RABPRO_CONFIG", if not set uses appdirs
     rebuild_vrts: boolean, optional
         rebuild virtual raster files, default is True
+    kwargs:
+        arguments passed to build_vrt
 
     Returns
     -------
@@ -50,22 +52,23 @@ def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True):
     -------
     import utils
     utils.get_datapaths()
+    utils.get_datapaths(extents=[-180.00041666666667, 179.99958333333913, 84.99958333333333, -60.000416666669])
     """
 
     global _DATAPATHS
     if _DATAPATHS is not None:
-        _build_virtual_rasters(_DATAPATHS, force_rebuild=rebuild_vrts)
+        _build_virtual_rasters(_DATAPATHS, force_rebuild=rebuild_vrts, **kwargs)
         return _DATAPATHS
 
     datapaths = du.create_datapaths(datapath=datapath, configpath=configpath)
     du.download_gee_metadata()
 
-    _build_virtual_rasters(datapaths, force_rebuild=rebuild_vrts)
+    _build_virtual_rasters(datapaths, force_rebuild=rebuild_vrts, **kwargs)
     _DATAPATHS = datapaths
     return datapaths
 
 
-def _build_virtual_rasters(datapaths, force_rebuild=True):
+def _build_virtual_rasters(datapaths, force_rebuild=True, **kwargs):
     msg_dict = {
         "DEM_fdr": "Building flow direction virtual raster DEM from MERIT tiles...",
         "DEM_uda": "Building drainage areas virtual raster DEM from MERIT tiles...",
@@ -80,6 +83,7 @@ def _build_virtual_rasters(datapaths, force_rebuild=True):
             build_vrt(
                 os.path.dirname(os.path.realpath(datapaths[key])),
                 outputfile=datapaths[key],
+                **kwargs,
             )
 
 
@@ -326,8 +330,12 @@ def build_vrt(
 
 
 def raster_extents(raster_path):
+    """Output raster extents as [xmin, xmax, ymin, ymax]
 
-    # Outputs extents as [xmin, xmax, ymin, ymax]
+    Example:
+        import utils
+        utils.raster_extents(utils.get_datapaths(rebuild_vrts=False)["DEM_fdr"])
+    """
 
     # Check if file is shapefile, else treat as raster
     fext = raster_path.split(".")[-1]
