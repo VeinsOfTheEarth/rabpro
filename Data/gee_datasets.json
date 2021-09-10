@@ -55,7 +55,7 @@
         "id": "ASTER/AST_L1T_003",
         "name": "ASTER L1T Radiance",
         "start_date": "2000-03-04",
-        "end_date": "2021-09-05",
+        "end_date": "2021-09-06",
         "type": "image_collection",
         "bands": {
             "B01": {
