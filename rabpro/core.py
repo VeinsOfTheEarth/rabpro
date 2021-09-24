@@ -20,7 +20,7 @@ from rabpro import utils as rpu
 
 
 class profiler:
-    """ The profiler class organizes data and methods for using RaBPro. This is
+    """The profiler class organizes data and methods for using RaBPro. This is
     a parent class to the centerline and point classes which inherit profiler
     methods and attributes. You should use `rabpro.profiler` rather than
     `rabpro.core.profiler`.
@@ -59,7 +59,13 @@ class profiler:
     """
 
     def __init__(
-        self, coords, da=None, name="unnamed", path_results=None, force_merit=False, verbose=True,
+        self,
+        coords,
+        da=None,
+        name="unnamed",
+        path_results=None,
+        force_merit=False,
+        verbose=True,
     ):
 
         self.name = name
@@ -76,7 +82,9 @@ class profiler:
                 self.gdf = self._csv_to_gdf(coords)
             elif ext == "shp" or ext == "json" or ext == "geojson":
                 self.gdf = gpd.read_file(coords)
-        elif type(coords) is gpd.geodataframe.GeoDataFrame:  # A GeoDataFrame was provided.
+        elif (
+            type(coords) is gpd.geodataframe.GeoDataFrame
+        ):  # A GeoDataFrame was provided.
             # Convert it to EPSG:4326
             self.gdf = coords
             if self.gdf.crs.to_epsg() != 4326:
@@ -95,7 +103,9 @@ class profiler:
                 self.gdf["DA"] = da
 
         # Prepare and fetch paths for exporting results
-        self.paths = rpu.get_exportpaths(self.name, basepath=path_results, overwrite=True)
+        self.paths = rpu.get_exportpaths(
+            self.name, basepath=path_results, overwrite=True
+        )
 
         # This line will ensure that all the virtual rasters are built and available.
         rpu.get_datapaths()
@@ -136,8 +146,7 @@ class profiler:
         return gdf
 
     def _which_method(self, force_merit, merit_thresh=500):
-        """ Returns the method to use for delineating watersheds.
-        """
+        """Returns the method to use for delineating watersheds."""
 
         method = "hydrobasins"
         if force_merit or (self.da is not None and self.da < merit_thresh):
@@ -146,7 +155,7 @@ class profiler:
         return method
 
     def delineate_basins(self, search_radius=None, map_only=False):
-        """ Computes the watersheds for each lat/lon pair and adds their
+        """Computes the watersheds for each lat/lon pair and adds their
         drainage areas to the self.gdf `GeoDataFrame`.
 
         There are two methods used for delineating basins: HydroBASINS and
@@ -173,7 +182,7 @@ class profiler:
 
         elif self.method == "merit":
             if search_radius is not None:
-                dps = rpu.get_datapaths()
+                dps = rpu.get_datapaths(rebuild_vrts=False)
                 ds_lonlat = np.array(
                     [
                         self.gdf.geometry.values[-1].coords.xy[0][0],
@@ -214,7 +223,9 @@ class profiler:
                 rp_epsg = 2193 if self.mapped["meridian_cross"] else 3410
 
                 reproj_ea_meters = self.basins.to_crs(crs=CRS.from_epsg(rp_epsg))
-                pgon_area = reproj_ea_meters.geometry.values[0].area / 10 ** 6  # square km
+                pgon_area = (
+                    reproj_ea_meters.geometry.values[0].area / 10 ** 6
+                )  # square km
                 pct_diff = abs(pgon_area - self.mapped["da"]) / self.mapped["da"] * 100
                 if pct_diff > 10:
                     print(
@@ -230,7 +241,9 @@ class profiler:
             self.nrows = 50
             self.ncols = 50
 
-        self.gdf, self.merit_gdf = ep.main(self.gdf, self.verbose, self.nrows, self.ncols)
+        self.gdf, self.merit_gdf = ep.main(
+            self.gdf, self.verbose, self.nrows, self.ncols
+        )
 
     def basin_stats(self, datasets, reducer_funcs=None, folder=None, test=False):
         """
@@ -250,7 +263,12 @@ class profiler:
         """
 
         return ss.main(
-            self.basins, datasets, reducer_funcs=reducer_funcs, folder=folder, verbose=self.verbose, test=test
+            self.basins,
+            datasets,
+            reducer_funcs=reducer_funcs,
+            folder=folder,
+            verbose=self.verbose,
+            test=test,
         )
 
     def export(self, what="all"):
@@ -284,7 +302,9 @@ class profiler:
                 if hasattr(self, "basins"):
                     self.basins.to_file(self.paths["subbasins"], driver="GeoJSON")
                     if hasattr(self, "basins_inc"):
-                        self.basins_inc.to_file(self.paths["subbasins_inc"], driver="GeoJSON")
+                        self.basins_inc.to_file(
+                            self.paths["subbasins_inc"], driver="GeoJSON"
+                        )
                     if self.verbose:
                         print("Basins geojson written successfully.")
                 else:
