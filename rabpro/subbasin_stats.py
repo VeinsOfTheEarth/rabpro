@@ -45,7 +45,14 @@ class Dataset:
     """
 
     def __init__(
-        self, data_id, band, resolution=None, start=None, end=None, stats=None, mask=False
+        self,
+        data_id,
+        band,
+        resolution=None,
+        start=None,
+        end=None,
+        stats=None,
+        mask=False,
     ):
         self.data_id = data_id
         self.band = band
@@ -56,7 +63,9 @@ class Dataset:
         self.mask = mask
 
 
-def main(sb_inc_gdf, dataset_list, reducer_funcs=None, folder=None, verbose=False, test=False):
+def main(
+    sb_inc_gdf, dataset_list, reducer_funcs=None, folder=None, verbose=False, test=False
+):
     """
     Compute subbasin statistics for each dataset and band specified.
 
@@ -99,7 +108,9 @@ def main(sb_inc_gdf, dataset_list, reducer_funcs=None, folder=None, verbose=Fals
         if d.type == "image":
             imgcol = ee.ImageCollection(ee.Image(d.data_id).select(d.band))
         else:
-            imgcol = ee.ImageCollection(d.data_id).select(d.band).filterDate(d.start, d.end)
+            imgcol = (
+                ee.ImageCollection(d.data_id).select(d.band).filterDate(d.start, d.end)
+            )
 
         if verbose:
             print(f"Computing subbasin stats for {d.data_id}...")
@@ -109,7 +120,9 @@ def main(sb_inc_gdf, dataset_list, reducer_funcs=None, folder=None, verbose=Fals
             imgcol = imgcol.map(lambda img: img.updateMask(occ_mask))
 
         # Generate reducer - mean and count always computed
-        reducer = ee.Reducer.count().combine(reducer2=ee.Reducer.mean(), sharedInputs=True)
+        reducer = ee.Reducer.count().combine(
+            reducer2=ee.Reducer.mean(), sharedInputs=True
+        )
 
         if ("min" in d.stats and "max" in d.stats) or "range" in d.stats:
             reducer = reducer.combine(reducer2=ee.Reducer.minMax(), sharedInputs=True)
@@ -125,7 +138,9 @@ def main(sb_inc_gdf, dataset_list, reducer_funcs=None, folder=None, verbose=Fals
 
         pct_list = [int(pct[3:]) for pct in d.stats if pct[:3] == "pct"]
         if pct_list:
-            reducer = reducer.combine(reducer2=ee.Reducer.percentile(pct_list), sharedInputs=True)
+            reducer = reducer.combine(
+                reducer2=ee.Reducer.percentile(pct_list), sharedInputs=True
+            )
 
         def map_func(img):
             # TODO: change to reduceRegion or simplify geometries
@@ -138,7 +153,9 @@ def main(sb_inc_gdf, dataset_list, reducer_funcs=None, folder=None, verbose=Fals
 
         def range_func(feat):
             # TODO: Change to aggregateArray - more efficient?
-            return feat.set("range", feat.getNumber("max").subtract(feat.getNumber("min")))
+            return feat.set(
+                "range", feat.getNumber("max").subtract(feat.getNumber("min"))
+            )
 
         # Map across feature collection and use min and max to compute range
         if "range" in d.stats:
@@ -203,13 +220,19 @@ def _get_controls(datasets):
 
         if d.start is None:
             d.start = gee_dataset["start_date"]
-        elif date.fromisoformat(d.start) < date.fromisoformat(gee_dataset["start_date"]):
-            print(f"Warning: requested start date earlier than expected for {d.data_id}:{d.band}")
+        elif date.fromisoformat(d.start) < date.fromisoformat(
+            gee_dataset["start_date"]
+        ):
+            print(
+                f"Warning: requested start date earlier than expected for {d.data_id}:{d.band}"
+            )
 
         if d.end is None:
             d.end = gee_dataset["end_date"]
         elif date.fromisoformat(d.end) > date.fromisoformat(gee_dataset["end_date"]):
-            print(f"Warning: requested end date later than expected for {d.data_id}:{d.band}")
+            print(
+                f"Warning: requested end date later than expected for {d.data_id}:{d.band}"
+            )
 
         d.stats = set(d.stats + ["count", "mean"])
 
@@ -222,7 +245,9 @@ def _get_controls(datasets):
         if d.resolution is None:
             d.resolution = resolution
         if d.resolution and resolution and d.resolution < resolution:
-            print("Warning: requested resolution is less than the native raster resolution")
+            print(
+                "Warning: requested resolution is less than the native raster resolution"
+            )
 
         d.type = gee_dataset["type"]
 
