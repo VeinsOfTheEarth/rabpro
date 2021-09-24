@@ -20,7 +20,7 @@ from rabpro import utils as ru
 
 
 def main(cl_gdf, verbose=False, nrows=50, ncols=50):
-    """ Description
+    """Description
 
     Parameters
     ----------
@@ -60,7 +60,7 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
     if cl_gdf.shape[0] == 1:
         intype = "point"
     else:
-        intype = "centerline" # deprecated
+        intype = "centerline"  # deprecated
 
     # Here, we get the MERIT flowline corresponding to the centerline. If we
     # are provided only a single point, the flowline is delineated to its
@@ -72,18 +72,25 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
     if intype == "point":
         # Trace the centerline all the way up to the headwaters
         ds_lonlat = np.array(
-            [cl_gdf.geometry.values[0].coords.xy[0][0], cl_gdf.geometry.values[0].coords.xy[1][0],]
+            [
+                cl_gdf.geometry.values[0].coords.xy[0][0],
+                cl_gdf.geometry.values[0].coords.xy[1][0],
+            ]
         )
         if "DA" in cl_gdf.keys():
             ds_da = cl_gdf.DA.values[0]
         else:
             ds_da = None
-        cr_ds_mapped, _ = mu.map_cl_pt_to_flowline(ds_lonlat, da_obj, nrows, ncols, ds_da)
+        cr_ds_mapped, _ = mu.map_cl_pt_to_flowline(
+            ds_lonlat, da_obj, nrows, ncols, ds_da
+        )
 
         # Mapping may be impossible
         if np.nan in cr_ds_mapped:
             if verbose is True:
-                print("Cannot map provided point to a flowline; no way to extract centerline.")
+                print(
+                    "Cannot map provided point to a flowline; no way to extract centerline."
+                )
             return cl_gdf, None
 
         flowpath = mu.trace_flowpath(fdr_obj, da_obj, cr_ds_mapped)
@@ -222,7 +229,7 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
 
 
 def compute_dists(gdf):
-    """ Computes cumulative distance in meters between points in gdf.
+    """Computes cumulative distance in meters between points in gdf.
 
     Parameters
     ----------
@@ -258,7 +265,7 @@ def compute_dists(gdf):
 
 
 def get_rc_values(gdobj, rc, nodata=-9999):
-    """ Returns the values within the raster pointed to by gdobj specified by
+    """Returns the values within the raster pointed to by gdobj specified by
     the row, col values in rc. Sets nodata. Returns numpy array.
 
     Parameters
@@ -305,7 +312,7 @@ def get_rc_values(gdobj, rc, nodata=-9999):
 
 
 def find_nangroups(arr):
-    """ Returns groups of nans in an array.
+    """Returns groups of nans in an array.
 
     Parameters
     ----------
@@ -332,7 +339,7 @@ def find_nangroups(arr):
 
 
 def interpolate_nangroups(arr, dists, nangroups):
-    """ Linearly interpolates across groups of nans in a 1-D array.
+    """Linearly interpolates across groups of nans in a 1-D array.
 
     Parameters
     ----------
