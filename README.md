@@ -58,5 +58,15 @@ rpo.basin_stats([Dataset("JRC/GSW1_3/GlobalSurfaceWater", "occurrence")]) # requ
 ## Testing
 
 ```python
+# file-based testing
 python -m unittest tests/test.py
+
+# object-based testing
+python -m pytest
+```
+
+## Docs
+
+```shell
+cd docs && make html
 ```
