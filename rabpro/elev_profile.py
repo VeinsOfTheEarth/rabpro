@@ -48,7 +48,7 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
     # check and use other methods, but simpler this way.
 
     # Get data locked and loaded
-    dps = ru.get_datapaths()
+    dps = ru.get_datapaths(rebuild_vrts=False)
     hdem_obj = gdal.Open(dps["DEM_elev_hp"])
     da_obj = gdal.Open(dps["DEM_uda"])
     fdr_obj = gdal.Open(dps["DEM_fdr"])
