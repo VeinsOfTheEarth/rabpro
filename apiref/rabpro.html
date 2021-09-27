@@ -503,7 +503,7 @@ fac_obj.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.merit_utils.neighborhood_vals_from_raster">
-<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">cr</span></em>, <em class="sig-param"><span class="pre">shape</span></em>, <em class="sig-param"><span class="pre">vrt_obj</span></em>, <em class="sig-param"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='140314581643520'&gt;</span></em>, <em class="sig-param"><span class="pre">wrap=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">cr</span></em>, <em class="sig-param"><span class="pre">shape</span></em>, <em class="sig-param"><span class="pre">vrt_obj</span></em>, <em class="sig-param"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='140653366464768'&gt;</span></em>, <em class="sig-param"><span class="pre">wrap=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
 <dd><p>Queries a (virtual) raster object to return an array of neighbors
 surrounding a given point specified by cr (column, row). A shape can be
 provided to return as large of a neighborhood as desired; both dimensions
@@ -971,13 +971,15 @@ Taken from RivGraph.im_utils</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>coords</strong><span class="classifier">np.array</span></dt><dd><p>N x 2 array. First column are rows, second are columns of pixel coordinates.</p>
+<dt><strong>coords: np.array</strong></dt><dd><p>N x 2 array. First column are rows, second are columns of pixel coordinates.</p>
 </dd>
-<dt><strong>Returns</strong></dt><dd></dd>
-<dt><strong>——-</strong></dt><dd></dd>
-<dt><strong>I</strong><span class="classifier">np.array</span></dt><dd><p>Image of the cropped coordinates, plus padding if desired.</p>
+</dl>
 </dd>
-<dt><strong>clipped</strong><span class="classifier">list</span></dt><dd><p>Number of pixels in [left, top, right, bottom] direction that were
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>I: np.array</dt><dd><p>Image of the cropped coordinates, plus padding if desired.</p>
+</dd>
+<dt>clipped: list</dt><dd><p>Number of pixels in [left, top, right, bottom] direction that were
 clipped.  Clipped returns the indices within the original coords image
 that define where I should be positioned within the original image.</p>
 </dd>
