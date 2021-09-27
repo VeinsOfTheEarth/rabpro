@@ -602,13 +602,14 @@ def crop_binary_coords(coords):
 
     Parameters
     ----------
-    coords : np.array
+    coords: np.array
         N x 2 array. First column are rows, second are columns of pixel coordinates.
+
     Returns
     -------
-    I : np.array
+    I: np.array
         Image of the cropped coordinates, plus padding if desired.
-    clipped : list
+    clipped: list
         Number of pixels in [left, top, right, bottom] direction that were
         clipped.  Clipped returns the indices within the original coords image
         that define where I should be positioned within the original image.
