@@ -194,7 +194,7 @@ def _get_controls(datasets):
     """
 
     # Load raster metadata file
-    datapaths = ru.get_datapaths()
+    datapaths = ru.get_datapaths(rebuild_vrts=False)
     with open(datapaths["gee_metadata"]) as json_file:
         datadict = {d["id"]: d for d in json.load(json_file)}
 
