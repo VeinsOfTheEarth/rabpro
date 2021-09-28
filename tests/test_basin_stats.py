@@ -36,6 +36,26 @@ def test_timeindexed_imgcol():
     assert res.shape[0] > 0
 
 
+def test_timeindexedspecific_imgcol():
+
+    data, task = rabpro.subbasin_stats.main(
+        gdf,
+        [
+            Dataset(
+                "JRC/GSW1_3/YearlyHistory",
+                "waterClass",
+                start="2017-01-01",
+                end="2019-01-01",
+            )
+        ],
+        test=True,
+    )
+
+    res = pd.concat([clean_res(feature) for feature in data["features"]])
+
+    assert res.shape[0] == 2
+
+
 def test_nontimeindexed_imgcol():
 
     data, task = rabpro.subbasin_stats.main(
