@@ -108,9 +108,7 @@ def main(
         if d.type == "image":
             imgcol = ee.ImageCollection(ee.Image(d.data_id).select(d.band))
         else:
-            imgcol = (
-                ee.ImageCollection(d.data_id).select(d.band).filterDate(d.start, d.end)
-            )
+            imgcol = ee.ImageCollection(d.data_id).select(d.band)
 
         if verbose:
             print(f"Computing subbasin stats for {d.data_id}...")
