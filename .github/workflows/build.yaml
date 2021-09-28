@@ -26,8 +26,8 @@ jobs:
           - os: macos-latest
             data-path: Library/Application Support/rabpro/
 
-          - os: windows-latest
-            data-path: AppData/Local/rabpro/rabpro/
+          # - os: windows-latest
+          #   data-path: AppData/Local/rabpro/rabpro/
 
     defaults:
       run:
