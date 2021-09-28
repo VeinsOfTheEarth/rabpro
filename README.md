@@ -39,20 +39,14 @@ python rabpro/run_rabpro.py
 ```python
 import geopandas as gpd
 import rabpro
-from rabpro import utils
 from rabpro.subbasin_stats import Dataset
-
-# verify pathing setup "works"
-# utils.get_rabpropath()
-# utils.get_datapaths()
 
 coords_file = gpd.read_file(r"tests/data/Big Blue River.geojson")
 rpo = rabpro.profiler(coords_file)
-rpo.delineate_basins() # requires hydrobasins levels 1 and 12
+rpo.delineate_basins()
 # name = "test"
 # rpo.basins.to_file('Data/gaugebasin_shp/'+name+'.shp',driver='ESRI Shapefile')
-rpo.elev_profile() # requires merit-dem (this ex. requires n30w090 [elv, fdr, upa, wth])
-rpo.basin_stats([Dataset("JRC/GSW1_3/GlobalSurfaceWater", "occurrence")]) # requires Google Earth Engine access
+rpo.basin_stats([Dataset("JRC/GSW1_3/GlobalSurfaceWater", "occurrence")])
 ```
 
 ## Testing
