@@ -108,7 +108,14 @@ def main(
         if d.type == "image":
             imgcol = ee.ImageCollection(ee.Image(d.data_id).select(d.band))
         else:
-            imgcol = ee.ImageCollection(d.data_id).select(d.band)
+            if d.start is not None and d.end is not None:
+                imgcol = (
+                    ee.ImageCollection(d.data_id)
+                    .select(d.band)
+                    .filterDate(d.start, d.end)
+                )
+            else:
+                imgcol = ee.ImageCollection(d.data_id).select(d.band)
 
         if verbose:
             print(f"Computing subbasin stats for {d.data_id}...")
@@ -216,21 +223,19 @@ def _get_controls(datasets):
             print(f"Warning: invalid data band provided: {d.data_id}:{d.band}")
             continue
 
-        if d.start is None:
-            d.start = gee_dataset["start_date"]
-        elif date.fromisoformat(d.start) < date.fromisoformat(
-            gee_dataset["start_date"]
-        ):
-            print(
-                f"Warning: requested start date earlier than expected for {d.data_id}:{d.band}"
-            )
+        if d.start is not None:
+            if date.fromisoformat(d.start) < date.fromisoformat(
+                gee_dataset["start_date"]
+            ):
+                print(
+                    f"Warning: requested start date earlier than expected for {d.data_id}:{d.band}"
+                )
 
-        if d.end is None:
-            d.end = gee_dataset["end_date"]
-        elif date.fromisoformat(d.end) > date.fromisoformat(gee_dataset["end_date"]):
-            print(
-                f"Warning: requested end date later than expected for {d.data_id}:{d.band}"
-            )
+        if d.end is not None:
+            if date.fromisoformat(d.end) > date.fromisoformat(gee_dataset["end_date"]):
+                print(
+                    f"Warning: requested end date later than expected for {d.data_id}:{d.band}"
+                )
 
         d.stats = set(d.stats + ["count", "mean"])
 
