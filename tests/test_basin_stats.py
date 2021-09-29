@@ -33,6 +33,22 @@ def clean_freqhist(feature, name_category):
     return res
 
 
+def test_customreducer():
+    def asdf(feat):
+        return feat.getNumber("max")
+
+    data, task = rabpro.subbasin_stats.main(
+        gdf,
+        [Dataset("JRC/GSW1_3/YearlyHistory", "waterClass", stats=["max"])],
+        reducer_funcs=[asdf],
+        test=True,
+    )
+
+    res = pd.concat([clean_res(feature) for feature in data["features"]])
+
+    assert all(res["asdf"] == res["max"])
+
+
 def test_categorical_imgcol():
     data, task = rabpro.subbasin_stats.main(
         gdf,
