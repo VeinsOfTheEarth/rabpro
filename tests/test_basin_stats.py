@@ -3,6 +3,8 @@ import rabpro
 from rabpro.subbasin_stats import Dataset
 from shapely.geometry import box
 import pandas as pd
+import ee
+import copy
 
 
 coords_file = gpd.read_file(r"tests/data/Big Blue River.geojson")
@@ -15,6 +17,34 @@ def clean_res(feature):
     res = pd.DataFrame(feature["properties"], index=[0])
     res["id"] = feature["id"]
     return res
+
+
+def clean_freqhist(feature, name_category):
+    feature = copy.deepcopy(feature)
+    res_hist = pd.DataFrame(feature["properties"]["histogram"], index=[0])
+    res_hist.columns = [name_category + "_" + x for x in res_hist.columns]
+
+    del feature["properties"]["histogram"]
+    res = pd.DataFrame(feature["properties"], index=[0])
+    res["id"] = feature["id"]
+
+    res = pd.concat([res, res_hist], axis=1)
+
+    return res
+
+
+def test_categorical_imgcol():
+    data, task = rabpro.subbasin_stats.main(
+        gdf,
+        [Dataset("MODIS/006/MCD12Q1", "LC_Type1", stats=["freqhist"])],
+        test=True,
+    )
+
+    res = pd.concat(
+        [clean_freqhist(feature, "LC_Type1") for feature in data["features"]]
+    )
+
+    assert res.shape[1] > 4
 
 
 def test_timeindexed_imgcol():

@@ -140,6 +140,10 @@ def main(
             reducer = reducer.combine(reducer2=ee.Reducer.stdDev(), sharedInputs=True)
         if "sum" in d.stats:
             reducer = reducer.combine(reducer2=ee.Reducer.sum(), sharedInputs=True)
+        if "freqhist" in d.stats:
+            reducer = reducer.combine(
+                reducer2=ee.Reducer.frequencyHistogram(), sharedInputs=True
+            )
 
         pct_list = [int(pct[3:]) for pct in d.stats if pct[:3] == "pct"]
         if pct_list:
