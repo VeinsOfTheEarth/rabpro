@@ -194,6 +194,8 @@ def main(
 
         if test:
             return data, task
+        else:
+            return None, task
 
 
 def _get_controls(datasets):
