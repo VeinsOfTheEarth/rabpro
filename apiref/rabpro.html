@@ -503,7 +503,7 @@ fac_obj.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.merit_utils.neighborhood_vals_from_raster">
-<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">cr</span></em>, <em class="sig-param"><span class="pre">shape</span></em>, <em class="sig-param"><span class="pre">vrt_obj</span></em>, <em class="sig-param"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='140458330157312'&gt;</span></em>, <em class="sig-param"><span class="pre">wrap=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">cr</span></em>, <em class="sig-param"><span class="pre">shape</span></em>, <em class="sig-param"><span class="pre">vrt_obj</span></em>, <em class="sig-param"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='140518975344896'&gt;</span></em>, <em class="sig-param"><span class="pre">wrap=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
 <dd><p>Queries a (virtual) raster object to return an array of neighbors
 surrounding a given point specified by cr (column, row). A shape can be
 provided to return as large of a neighborhood as desired; both dimensions
@@ -865,10 +865,10 @@ input centerline points</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.subbasins.map_points_to_chain">
 <span class="sig-prename descclassname"><span class="pre">rabpro.subbasins.</span></span><span class="sig-name descname"><span class="pre">map_points_to_chain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">HB_gdf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cl_gdf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chainids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.subbasins.map_points_to_chain" title="Permalink to this definition"></a></dt>
-<dd><p>Maps all centerline points to level-12 drainage basins within chain. 
-1. Identify the polygon each point falls into. 
+<dd><p>Maps all centerline points to level-12 drainage basins within chain.
+1. Identify the polygon each point falls into.
 2. Push the points that don’t fall into a polygon into the nearest
-(Euclidean distance) one. 
+(Euclidean distance) one.
 3. Check that drainage area does not decrease as we move downstream.
 If so, assign point to previous (next upstream) basin.</p>
 <dl class="field-list simple">
