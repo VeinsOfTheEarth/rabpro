@@ -56,7 +56,9 @@ class DataTestCase(unittest.TestCase):
         # yielding slightly diff values on identical runs
         self.assertEqual(stats.keys(), ret_stats.keys())
         np.testing.assert_allclose(
-            np.array(list(stats.values())), np.array(list(ret_stats.values())), rtol=1e-03
+            np.array(list(stats.values())),
+            np.array(list(ret_stats.values())),
+            rtol=1e-03,
         )
 
         for _ in range(12):
@@ -115,7 +117,9 @@ class MERITTest(DataTestCase):
     def test_radius(self):
         coords = (56.22659, -130.87974)
         da = 1994
-        self.datatest(coords, da, True, "merit_radius_check", "merit_radius", radius=1000)
+        self.datatest(
+            coords, da, True, "merit_radius_check", "merit_radius", radius=1000
+        )
         self.metatest("merit", 22, 39)
 
     def test_shapefile(self):
