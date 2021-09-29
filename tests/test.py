@@ -88,7 +88,7 @@ class MERITTest(DataTestCase):
         }
 
         statlist = ["min", "max", "range", "sum", "pct50", "pct3"]
-        data, task = rp.subbasin_stats.Dataset(
+        data = rp.subbasin_stats.Dataset(
             "JRC/GSW1_3/GlobalSurfaceWater", "occurrence", stats=statlist
         )
 
@@ -102,7 +102,7 @@ class MERITTest(DataTestCase):
 
         stats = {"DA": 1993.9169921875, "count": 4017116, "mean": 0}
 
-        data, task = rp.subbasin_stats.Dataset(
+        data = rp.subbasin_stats.Dataset(
             "JRC/GSW1_3/MonthlyHistory",
             "water",
             stats=["count"],
@@ -150,7 +150,7 @@ class HydroBasinsTest(DataTestCase):
         }
 
         statlist = ["min", "stdDev", "sum", "pct50", "pct3"]
-        data, task = rp.subbasin_stats.Dataset(
+        data = rp.subbasin_stats.Dataset(
             "JRC/GSW1_3/GlobalSurfaceWater", "occurrence", stats=statlist
         )
 
