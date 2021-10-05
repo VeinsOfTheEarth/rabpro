@@ -38,6 +38,8 @@ class Dataset:
         List of desired stats to compute: min, max, range, mean, count, std,
         sum, and percentiles in the following format: pct1, pct90, pct100, etc.
         Computes ["count", "mean"] by default.
+    time_stats : list, optional
+        List of desired stats to compute through time.
     mask : bool, optional
         Whether or not to mask out water in the dataset using the Global Surface
         Water occurrence band. By default False.
@@ -52,6 +54,7 @@ class Dataset:
         start=None,
         end=None,
         stats=None,
+        time_stats=None,
         mask=False,
     ):
         self.data_id = data_id
@@ -60,6 +63,7 @@ class Dataset:
         self.start = start
         self.end = end
         self.stats = stats if stats is not None else []
+        self.time_stats = time_stats if time_stats is not None else []
         self.mask = mask
 
 
@@ -108,6 +112,8 @@ def main(
 
     total_bounds = np.array([-85.91331249, 39.42609864, -85.88453019, 39.46429816])
     gdf = gpd.GeoDataFrame({"idx": [1], "geometry": [box(*total_bounds)]}, crs="EPSG:4326")
+
+    # defaults
     data, task = rabpro.subbasin_stats.main(
         [
             Dataset(
@@ -115,7 +121,21 @@ def main(
                 "monthly_recurrence",
             )
         ],
-        sb_inc_gdf = gdf
+        sb_inc_gdf = gdf,
+        test = True,
+    )
+
+    # with time_stats specified
+    data, task = rabpro.subbasin_stats.main(
+        [
+            Dataset(
+                "JRC/GSW1_3/MonthlyRecurrence",
+                "monthly_recurrence",
+                time_stats = ["median"]
+            )
+        ],
+        sb_inc_gdf = gdf,
+        test = True,
     )
     """
 
@@ -151,6 +171,11 @@ def main(
                 )
             else:
                 imgcol = ee.ImageCollection(d.data_id).select(d.band)
+
+        if len(d.time_stats) > 0:
+            time_reducer = _parse_reducers(base=getattr(ee.Reducer, d.time_stats[0])())
+            imgcol = imgcol.reduce(time_reducer)
+            imgcol = ee.ImageCollection(imgcol)
 
         if verbose:
             print(f"Computing subbasin stats for {d.data_id}...")
@@ -209,7 +234,7 @@ def main(
             return None, task
 
 
-def _parse_reducers(stats, base=None):
+def _parse_reducers(stats=None, base=None):
     """Generate reducer - mean and count always computed
 
     Examples:
@@ -225,6 +250,9 @@ def _parse_reducers(stats, base=None):
         )
     else:
         reducer = base
+
+    if stats is None:
+        return reducer
 
     if ("min" in stats and "max" in stats) or "range" in stats:
         reducer = reducer.combine(reducer2=ee.Reducer.minMax(), sharedInputs=True)
