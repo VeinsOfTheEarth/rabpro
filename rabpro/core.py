@@ -263,8 +263,8 @@ class profiler:
         """
 
         return ss.main(
-            self.basins,
             datasets,
+            sb_inc_gdf=self.basins,
             reducer_funcs=reducer_funcs,
             folder=folder,
             verbose=self.verbose,
