@@ -5,12 +5,13 @@ from shapely.geometry import box
 import pandas as pd
 import ee
 import copy
+import numpy as np
 
 
-coords_file = gpd.read_file(r"tests/data/Big Blue River.geojson")
-gdf = gpd.GeoDataFrame(
-    {"idx": [1], "geometry": [box(*coords_file.total_bounds)]}, crs="EPSG:4326"
-)
+# coords_file = gpd.read_file(r"tests/data/Big Blue River.geojson")
+# total_bounds = coords_file.total_bounds
+total_bounds = np.array([-85.91331249, 39.42609864, -85.88453019, 39.46429816])
+gdf = gpd.GeoDataFrame({"idx": [1], "geometry": [box(*total_bounds)]}, crs="EPSG:4326")
 
 
 def clean_res(feature):
@@ -38,8 +39,8 @@ def test_customreducer():
         return feat.getNumber("max")
 
     data, task = rabpro.subbasin_stats.main(
-        gdf,
         [Dataset("JRC/GSW1_3/YearlyHistory", "waterClass", stats=["max"])],
+        sb_inc_gdf=gdf,
         reducer_funcs=[asdf],
         test=True,
     )
@@ -50,9 +51,9 @@ def test_customreducer():
 
 
 def test_categorical_imgcol():
-    data, task = rabpro.subbasin_stats.main(
-        gdf,
+    data, task = rabpro.subbasin_stats.main(        
         [Dataset("MODIS/006/MCD12Q1", "LC_Type1", stats=["freqhist"])],
+        sb_inc_gdf=gdf,
         test=True,
     )
 
@@ -65,14 +66,14 @@ def test_categorical_imgcol():
 
 def test_timeindexed_imgcol():
 
-    data, task = rabpro.subbasin_stats.main(
-        gdf,
+    data, task = rabpro.subbasin_stats.main(        
         [
             Dataset(
                 "JRC/GSW1_3/YearlyHistory",
                 "waterClass",
             )
         ],
+        sb_inc_gdf=gdf,
         test=True,
     )
 
@@ -84,8 +85,7 @@ def test_timeindexed_imgcol():
 
 def test_timeindexedspecific_imgcol():
 
-    data, task = rabpro.subbasin_stats.main(
-        gdf,
+    data, task = rabpro.subbasin_stats.main(        
         [
             Dataset(
                 "JRC/GSW1_3/YearlyHistory",
@@ -94,6 +94,7 @@ def test_timeindexedspecific_imgcol():
                 end="2019-01-01",
             )
         ],
+        sb_inc_gdf=gdf,
         test=True,
     )
 
@@ -104,14 +105,14 @@ def test_timeindexedspecific_imgcol():
 
 def test_nontimeindexed_imgcol():
 
-    data, task = rabpro.subbasin_stats.main(
-        gdf,
+    data, task = rabpro.subbasin_stats.main(        
         [
             Dataset(
                 "JRC/GSW1_3/MonthlyRecurrence",
                 "monthly_recurrence",
             )
         ],
+        sb_inc_gdf=gdf,
         test=True,
     )
 
@@ -122,8 +123,7 @@ def test_nontimeindexed_imgcol():
 
 def test_img():
 
-    data, task = rabpro.subbasin_stats.main(
-        gdf,
+    data, task = rabpro.subbasin_stats.main(        
         [
             Dataset(
                 "JRC/GSW1_3/GlobalSurfaceWater",
@@ -131,6 +131,7 @@ def test_img():
                 stats=["min", "max", "range", "std", "sum", "pct50", "pct3"],
             )
         ],
+        sb_inc_gdf=gdf,
         test=True,
     )
 

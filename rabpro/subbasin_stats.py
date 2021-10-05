@@ -64,17 +64,25 @@ class Dataset:
 
 
 def main(
-    sb_inc_gdf, dataset_list, reducer_funcs=None, folder=None, verbose=False, test=False
+    dataset_list,
+    gee_feature_path=None,
+    sb_inc_gdf=None,
+    reducer_funcs=None,
+    folder=None,
+    verbose=False,
+    test=False,
 ):
     """
     Compute subbasin statistics for each dataset and band specified.
 
     Attributes
     ----------
-    sb_inc_gdf : GeoDataFrame
-        Table of subbasin geometries.
     dataset_list : list of Datasets
         List of Dataset objects to compute statistics over.
+    sb_inc_gdf : GeoDataFrame
+        Table of subbasin geometries.
+    gee_feature_path : string
+        Path to a GEE feature collection
     reducer_funcs : list of functions, optional
         List of functions to apply to each feature over each dataset. Each
         function should take in an ee.Feature() object. For example, this is how
@@ -85,6 +93,25 @@ def main(
     folder : str, option
         Google Drive folder to store results in, by default top-level root.
 
+    Examples
+    -------
+    import rabpro
+    from rabpro.subbasin_stats import Dataset
+    import numpy as np
+    import geopandas as gpd
+    from shapely.geometry import box
+
+    total_bounds = np.array([-85.91331249, 39.42609864, -85.88453019, 39.46429816])
+    gdf = gpd.GeoDataFrame({"idx": [1], "geometry": [box(*total_bounds)]}, crs="EPSG:4326")
+    data, task = rabpro.subbasin_stats.main(
+        [
+            Dataset(
+                "JRC/GSW1_3/MonthlyRecurrence",
+                "monthly_recurrence",
+            )
+        ],
+        sb_inc_gdf = gdf
+    )
     """
 
     # Dictionary for determining which rasters and statistics to compute
@@ -95,13 +122,16 @@ def main(
     occ_mask = ee.Image("JRC/GSW1_3/GlobalSurfaceWater").select("occurrence").lt(90)
 
     # Convert GeoDataFrame to ee.Feature objects
-    features = []
-    for i in range(sb_inc_gdf.shape[0]):
-        geom = sb_inc_gdf.iloc[i : i + 1, :]
-        jsonDict = json.loads(geom.to_json())
-        geojsonDict = jsonDict["features"][0]
-        features.append(ee.Feature(geojsonDict))
-    featureCollection = ee.FeatureCollection(features)
+    if sb_inc_gdf is not None:
+        features = []
+        for i in range(sb_inc_gdf.shape[0]):
+            geom = sb_inc_gdf.iloc[i : i + 1, :]
+            jsonDict = json.loads(geom.to_json())
+            geojsonDict = jsonDict["features"][0]
+            features.append(ee.Feature(geojsonDict))
+        featureCollection = ee.FeatureCollection(features)
+    else:  # gee_feature_path is specified
+        featureCollection = ee.FeatureCollection(gee_feature_path)
 
     # For each raster
     for d in control:
