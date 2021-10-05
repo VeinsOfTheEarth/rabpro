@@ -71,6 +71,7 @@ def main(
     folder=None,
     verbose=False,
     test=False,
+    tag="",
 ):
     """
     Compute subbasin statistics for each dataset and band specified.
@@ -90,8 +91,12 @@ def main(
         feature.set(f.__name__, function(feature))
     verbose : bool, optional
         By default False.
-    folder : str, option
+    folder : str, optional
         Google Drive folder to store results in, by default top-level root.
+    tag : str, optional
+        A string to append to files created on GDrive
+    test : bool, optional
+        Return results to the active python session in addition to GDrive
 
     Examples
     -------
@@ -215,7 +220,7 @@ def main(
         # TODO: Add selectors to export
         task = ee.batch.Export.table.toDrive(
             collection=table,
-            description=f"{d.data_id}__{d.band}".replace("/", "-"),
+            description=f"{d.data_id}__{d.band}".replace("/", "-") + "_" + tag,
             folder=folder,
             fileFormat="csv",
         )
