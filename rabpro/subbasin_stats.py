@@ -160,31 +160,7 @@ def main(
             imgcol = imgcol.map(lambda img: img.updateMask(occ_mask))
 
         # Generate reducer - mean and count always computed
-        reducer = ee.Reducer.count().combine(
-            reducer2=ee.Reducer.mean(), sharedInputs=True
-        )
-
-        if ("min" in d.stats and "max" in d.stats) or "range" in d.stats:
-            reducer = reducer.combine(reducer2=ee.Reducer.minMax(), sharedInputs=True)
-        elif "min" in d.stats:
-            reducer = reducer.combine(reducer2=ee.Reducer.min(), sharedInputs=True)
-        elif "max" in d.stats:
-            reducer = reducer.combine(reducer2=ee.Reducer.max(), sharedInputs=True)
-
-        if "stdDev" in d.stats:
-            reducer = reducer.combine(reducer2=ee.Reducer.stdDev(), sharedInputs=True)
-        if "sum" in d.stats:
-            reducer = reducer.combine(reducer2=ee.Reducer.sum(), sharedInputs=True)
-        if "freqhist" in d.stats:
-            reducer = reducer.combine(
-                reducer2=ee.Reducer.frequencyHistogram(), sharedInputs=True
-            )
-
-        pct_list = [int(pct[3:]) for pct in d.stats if pct[:3] == "pct"]
-        if pct_list:
-            reducer = reducer.combine(
-                reducer2=ee.Reducer.percentile(pct_list), sharedInputs=True
-            )
+        reducer = _parse_reducers(d.stats)
 
         def map_func(img):
             # TODO: change to reduceRegion or simplify geometries
@@ -231,6 +207,48 @@ def main(
             return data, task
         else:
             return None, task
+
+
+def _parse_reducers(stats, base=None):
+    """Generate reducer - mean and count always computed
+
+    Examples:
+        import ee
+        ee.Initialize()
+        _parse_reducers(["mean", "max"])
+        _parse_reducers(["max"], ee.Reducer.mean())
+    """
+
+    if base is None:
+        reducer = ee.Reducer.count().combine(
+            reducer2=ee.Reducer.mean(), sharedInputs=True
+        )
+    else:
+        reducer = base
+
+    if ("min" in stats and "max" in stats) or "range" in stats:
+        reducer = reducer.combine(reducer2=ee.Reducer.minMax(), sharedInputs=True)
+    elif "min" in stats:
+        reducer = reducer.combine(reducer2=ee.Reducer.min(), sharedInputs=True)
+    elif "max" in stats:
+        reducer = reducer.combine(reducer2=ee.Reducer.max(), sharedInputs=True)
+
+    if "stdDev" in stats:
+        reducer = reducer.combine(reducer2=ee.Reducer.stdDev(), sharedInputs=True)
+    if "sum" in stats:
+        reducer = reducer.combine(reducer2=ee.Reducer.sum(), sharedInputs=True)
+    if "freqhist" in stats:
+        reducer = reducer.combine(
+            reducer2=ee.Reducer.frequencyHistogram(), sharedInputs=True
+        )
+
+    pct_list = [int(pct[3:]) for pct in stats if pct[:3] == "pct"]
+    if pct_list:
+        reducer = reducer.combine(
+            reducer2=ee.Reducer.percentile(pct_list), sharedInputs=True
+        )
+
+    return reducer
 
 
 def _get_controls(datasets):
