@@ -503,7 +503,7 @@ fac_obj.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.merit_utils.neighborhood_vals_from_raster">
-<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">cr</span></em>, <em class="sig-param"><span class="pre">shape</span></em>, <em class="sig-param"><span class="pre">vrt_obj</span></em>, <em class="sig-param"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='140518975344896'&gt;</span></em>, <em class="sig-param"><span class="pre">wrap=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">cr</span></em>, <em class="sig-param"><span class="pre">shape</span></em>, <em class="sig-param"><span class="pre">vrt_obj</span></em>, <em class="sig-param"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='140318362218752'&gt;</span></em>, <em class="sig-param"><span class="pre">wrap=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
 <dd><p>Queries a (virtual) raster object to return an array of neighbors
 surrounding a given point specified by cr (column, row). A shape can be
 provided to return as large of a neighborhood as desired; both dimensions
@@ -652,14 +652,16 @@ Water occurrence band. By default False.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.subbasin_stats.main">
-<span class="sig-prename descclassname"><span class="pre">rabpro.subbasin_stats.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sb_inc_gdf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reducer_funcs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.subbasin_stats.main" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rabpro.subbasin_stats.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gee_feature_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sb_inc_gdf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reducer_funcs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.subbasin_stats.main" title="Permalink to this definition"></a></dt>
 <dd><p>Compute subbasin statistics for each dataset and band specified.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Attributes</dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
+<dt><strong>dataset_list</strong><span class="classifier">list of Datasets</span></dt><dd><p>List of Dataset objects to compute statistics over.</p>
+</dd>
 <dt><strong>sb_inc_gdf</strong><span class="classifier">GeoDataFrame</span></dt><dd><p>Table of subbasin geometries.</p>
 </dd>
-<dt><strong>dataset_list</strong><span class="classifier">list of Datasets</span></dt><dd><p>List of Dataset objects to compute statistics over.</p>
+<dt><strong>gee_feature_path</strong><span class="classifier">string</span></dt><dd><p>Path to a GEE feature collection</p>
 </dd>
 <dt><strong>reducer_funcs</strong><span class="classifier">list of functions, optional</span></dt><dd><p>List of functions to apply to each feature over each dataset. Each
 function should take in an ee.Feature() object. For example, this is how
@@ -670,6 +672,28 @@ feature.set(f.__name__, function(feature))</p>
 </dd>
 <dt><strong>folder</strong><span class="classifier">str, option</span></dt><dd><p>Google Drive folder to store results in, by default top-level root.</p>
 </dd>
+<dt><strong>Examples</strong></dt><dd></dd>
+<dt><strong>——-</strong></dt><dd></dd>
+<dt><strong>import rabpro</strong></dt><dd></dd>
+<dt><strong>from rabpro.subbasin_stats import Dataset</strong></dt><dd></dd>
+<dt><strong>import numpy as np</strong></dt><dd></dd>
+<dt><strong>import geopandas as gpd</strong></dt><dd></dd>
+<dt><strong>from shapely.geometry import box</strong></dt><dd></dd>
+<dt><strong>total_bounds = np.array([-85.91331249, 39.42609864, -85.88453019, 39.46429816])</strong></dt><dd></dd>
+<dt><strong>gdf = gpd.GeoDataFrame({“idx”: [1], “geometry”: [box(*total_bounds)]}, crs=”EPSG:4326”)</strong></dt><dd></dd>
+<dt><strong>data, task = rabpro.subbasin_stats.main(</strong></dt><dd><dl>
+<dt>[</dt><dd><dl class="simple">
+<dt>Dataset(</dt><dd><p>“JRC/GSW1_3/MonthlyRecurrence”,
+“monthly_recurrence”,</p>
+</dd>
+</dl>
+<p>)</p>
+</dd>
+</dl>
+<p>],
+sb_inc_gdf = gdf</p>
+</dd>
+<dt><strong>)</strong></dt><dd></dd>
 </dl>
 </dd>
 </dl>
