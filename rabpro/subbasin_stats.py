@@ -220,7 +220,7 @@ def main(
         # TODO: Add selectors to export
         task = ee.batch.Export.table.toDrive(
             collection=table,
-            description=f"{d.data_id}__{d.band}".replace("/", "-") + "_" + tag,
+            description=f"{d.data_id}__{d.band}".replace("/", "-") + "__" + tag,
             folder=folder,
             fileFormat="csv",
         )
