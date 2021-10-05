@@ -43,7 +43,7 @@ def main_hb(cl_gdf, verbose=False):
     RuntimeWarning
         If cl_gdf has no CRS defined
     """
-    datapaths = ru.get_datapaths()
+    datapaths = ru.get_datapaths(rebuild_vrts=False)
 
     # Convert the cl_gdf to EPSG:4326 if necessary in order to align with HydroSheds
     was_transformed = False
