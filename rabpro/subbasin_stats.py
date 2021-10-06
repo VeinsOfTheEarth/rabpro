@@ -215,6 +215,12 @@ def main(
 
                 table = table.map(reducer_func)
 
+        # https://geohackweek.github.io/GoogleEarthEngine/04-reducers/
+        def remove_geometry(feat):
+            return feat.select([".*"], None, False)
+
+        table = table.map(remove_geometry)
+
         if test:
             data = table.getInfo()
 
