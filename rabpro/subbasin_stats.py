@@ -224,10 +224,12 @@ def main(
         if test:
             data = table.getInfo()
 
-        # TODO: Add selectors to export
+        def dataset_to_filename(data_id, band, tag):
+            return f"{data_id}__{band}".replace("/", "-") + "__" + tag
+
         task = ee.batch.Export.table.toDrive(
             collection=table,
-            description=f"{d.data_id}__{d.band}".replace("/", "-") + "__" + tag,
+            description=dataset_to_filename(d.data_id, d.band, tag),
             folder=folder,
             fileFormat="csv",
         )
@@ -237,7 +239,12 @@ def main(
         if test:
             return data, task
         else:
-            return None, task
+            return (
+                table.getDownloadURL(
+                    filetype="csv", filename=dataset_to_filename(d.data_id, d.band, tag)
+                ),
+                task,
+            )
 
 
 def _parse_reducers(stats=None, base=None):
