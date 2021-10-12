@@ -49,10 +49,12 @@ def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True, **kwargs):
         contains paths to all data that RaBPro uses
 
     Examples
-    -------
-    >>> import utils
-    >>> utils.get_datapaths()
-    >>> utils.get_datapaths(extents=[-180.00041666666667, 179.99958333333913, 84.99958333333333, -60.000416666669])
+    --------
+    .. code-block:: python
+
+        import utils
+        utils.get_datapaths()
+        utils.get_datapaths(extents=[-180.00041666666667, 179.99958333333913, 84.99958333333333, -60.000416666669])
     """
 
     global _DATAPATHS

@@ -80,7 +80,7 @@ def main(
     """
     Compute subbasin statistics for each dataset and band specified.
 
-    Attributes
+    Parameters
     ----------
     dataset_list : list of Datasets
         List of Dataset objects to compute statistics over.
@@ -103,40 +103,42 @@ def main(
         Return results to the active python session in addition to GDrive
 
     Examples
-    -------
-    import rabpro
-    from rabpro.subbasin_stats import Dataset
-    import numpy as np
-    import geopandas as gpd
-    from shapely.geometry import box
+    --------
+    .. code-block:: python
 
-    total_bounds = np.array([-85.91331249, 39.42609864, -85.88453019, 39.46429816])
-    gdf = gpd.GeoDataFrame({"idx": [1], "geometry": [box(*total_bounds)]}, crs="EPSG:4326")
+        import rabpro
+        from rabpro.subbasin_stats import Dataset
+        import numpy as np
+        import geopandas as gpd
+        from shapely.geometry import box
 
-    # defaults
-    data, task = rabpro.subbasin_stats.main(
-        [
-            Dataset(
-                "JRC/GSW1_3/MonthlyRecurrence",
-                "monthly_recurrence",
-            )
-        ],
-        sb_inc_gdf = gdf,
-        test = True,
-    )
+        total_bounds = np.array([-85.91331249, 39.42609864, -85.88453019, 39.46429816])
+        gdf = gpd.GeoDataFrame({"idx": [1], "geometry": [box(*total_bounds)]}, crs="EPSG:4326")
 
-    # with time_stats specified
-    data, task = rabpro.subbasin_stats.main(
-        [
-            Dataset(
-                "JRC/GSW1_3/MonthlyRecurrence",
-                "monthly_recurrence",
-                time_stats = ["median"]
-            )
-        ],
-        sb_inc_gdf = gdf,
-        test = True,
-    )
+        # defaults
+        data, task = rabpro.subbasin_stats.main(
+            [
+                Dataset(
+                    "JRC/GSW1_3/MonthlyRecurrence",
+                    "monthly_recurrence",
+                )
+            ],
+            sb_inc_gdf = gdf,
+            test = True,
+        )
+
+        # with time_stats specified
+        data, task = rabpro.subbasin_stats.main(
+            [
+                Dataset(
+                    "JRC/GSW1_3/MonthlyRecurrence",
+                    "monthly_recurrence",
+                    time_stats = ["median"]
+                )
+            ],
+            sb_inc_gdf = gdf,
+            test = True,
+        )
     """
 
     # Dictionary for determining which rasters and statistics to compute
@@ -176,6 +178,8 @@ def main(
             time_reducer = _parse_reducers(base=getattr(ee.Reducer, d.time_stats[0])())
             imgcol = imgcol.reduce(time_reducer)
             imgcol = ee.ImageCollection(imgcol)
+
+        # imgcol = imgcol.map(lambda img: img.clipToCollection(featureCollection))
 
         if verbose:
             print(f"Computing subbasin stats for {d.data_id}...")
@@ -251,6 +255,8 @@ def _parse_reducers(stats=None, base=None):
     """Generate reducer - mean and count always computed
 
     Examples:
+    .. code-block:: python
+
         import ee
         ee.Initialize()
         _parse_reducers(["mean", "max"])
