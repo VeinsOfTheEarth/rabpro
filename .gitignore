@@ -24,3 +24,9 @@ docs/_build
 
 # Testing
 .coverage
+
+# Development
+.vscode
+*.Rproj
+.Rhistory
+.Rproj.user
