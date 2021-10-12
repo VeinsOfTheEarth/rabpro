@@ -503,7 +503,7 @@ fac_obj.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.merit_utils.neighborhood_vals_from_raster">
-<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">cr</span></em>, <em class="sig-param"><span class="pre">shape</span></em>, <em class="sig-param"><span class="pre">vrt_obj</span></em>, <em class="sig-param"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='140709622624512'&gt;</span></em>, <em class="sig-param"><span class="pre">wrap=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">cr</span></em>, <em class="sig-param"><span class="pre">shape</span></em>, <em class="sig-param"><span class="pre">vrt_obj</span></em>, <em class="sig-param"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='139786363691264'&gt;</span></em>, <em class="sig-param"><span class="pre">wrap=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
 <dd><p>Queries a (virtual) raster object to return an array of neighbors
 surrounding a given point specified by cr (column, row). A shape can be
 provided to return as large of a neighborhood as desired; both dimensions
@@ -656,9 +656,9 @@ Water occurrence band. By default False.</p>
 <dt class="sig sig-object py" id="rabpro.subbasin_stats.main">
 <span class="sig-prename descclassname"><span class="pre">rabpro.subbasin_stats.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gee_feature_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sb_inc_gdf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reducer_funcs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.subbasin_stats.main" title="Permalink to this definition"></a></dt>
 <dd><p>Compute subbasin statistics for each dataset and band specified.</p>
-<dl class="field-list">
-<dt class="field-odd">Attributes</dt>
-<dd class="field-odd"><dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
 <dt><strong>dataset_list</strong><span class="classifier">list of Datasets</span></dt><dd><p>List of Dataset objects to compute statistics over.</p>
 </dd>
 <dt><strong>sb_inc_gdf</strong><span class="classifier">GeoDataFrame</span></dt><dd><p>Table of subbasin geometries.</p>
@@ -678,49 +678,45 @@ feature.set(f.__name__, function(feature))</p>
 </dd>
 <dt><strong>test</strong><span class="classifier">bool, optional</span></dt><dd><p>Return results to the active python session in addition to GDrive</p>
 </dd>
-<dt><strong>Examples</strong></dt><dd></dd>
-<dt><strong>——-</strong></dt><dd></dd>
-<dt><strong>import rabpro</strong></dt><dd></dd>
-<dt><strong>from rabpro.subbasin_stats import Dataset</strong></dt><dd></dd>
-<dt><strong>import numpy as np</strong></dt><dd></dd>
-<dt><strong>import geopandas as gpd</strong></dt><dd></dd>
-<dt><strong>from shapely.geometry import box</strong></dt><dd></dd>
-<dt><strong>total_bounds = np.array([-85.91331249, 39.42609864, -85.88453019, 39.46429816])</strong></dt><dd></dd>
-<dt><strong>gdf = gpd.GeoDataFrame({“idx”: [1], “geometry”: [box(*total_bounds)]}, crs=”EPSG:4326”)</strong></dt><dd></dd>
-<dt><strong># defaults</strong></dt><dd></dd>
-<dt><strong>data, task = rabpro.subbasin_stats.main(</strong></dt><dd><dl>
-<dt>[</dt><dd><dl class="simple">
-<dt>Dataset(</dt><dd><p>“JRC/GSW1_3/MonthlyRecurrence”,
-“monthly_recurrence”,</p>
-</dd>
-</dl>
-<p>)</p>
-</dd>
-</dl>
-<p>],
-sb_inc_gdf = gdf,
-test = True,</p>
-</dd>
-<dt><strong>)</strong></dt><dd></dd>
-<dt><strong># with time_stats specified</strong></dt><dd></dd>
-<dt><strong>data, task = rabpro.subbasin_stats.main(</strong></dt><dd><dl>
-<dt>[</dt><dd><dl class="simple">
-<dt>Dataset(</dt><dd><p>“JRC/GSW1_3/MonthlyRecurrence”,
-“monthly_recurrence”,
-time_stats = [“median”]</p>
-</dd>
-</dl>
-<p>)</p>
-</dd>
-</dl>
-<p>],
-sb_inc_gdf = gdf,
-test = True,</p>
-</dd>
-<dt><strong>)</strong></dt><dd></dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rabpro</span>
+<span class="kn">from</span> <span class="nn">rabpro.subbasin_stats</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">box</span>
+
+<span class="n">total_bounds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">85.91331249</span><span class="p">,</span> <span class="mf">39.42609864</span><span class="p">,</span> <span class="o">-</span><span class="mf">85.88453019</span><span class="p">,</span> <span class="mf">39.46429816</span><span class="p">])</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">({</span><span class="s2">&quot;idx&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">box</span><span class="p">(</span><span class="o">*</span><span class="n">total_bounds</span><span class="p">)]},</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+
+<span class="c1"># defaults</span>
+<span class="n">data</span><span class="p">,</span> <span class="n">task</span> <span class="o">=</span> <span class="n">rabpro</span><span class="o">.</span><span class="n">subbasin_stats</span><span class="o">.</span><span class="n">main</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">Dataset</span><span class="p">(</span>
+            <span class="s2">&quot;JRC/GSW1_3/MonthlyRecurrence&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;monthly_recurrence&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">],</span>
+    <span class="n">sb_inc_gdf</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">,</span>
+    <span class="n">test</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># with time_stats specified</span>
+<span class="n">data</span><span class="p">,</span> <span class="n">task</span> <span class="o">=</span> <span class="n">rabpro</span><span class="o">.</span><span class="n">subbasin_stats</span><span class="o">.</span><span class="n">main</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">Dataset</span><span class="p">(</span>
+            <span class="s2">&quot;JRC/GSW1_3/MonthlyRecurrence&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;monthly_recurrence&quot;</span><span class="p">,</span>
+            <span class="n">time_stats</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;median&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+    <span class="p">],</span>
+    <span class="n">sb_inc_gdf</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">,</span>
+    <span class="n">test</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
@@ -1041,7 +1037,7 @@ that define where I should be positioned within the original image.</p>
 <span class="sig-prename descclassname"><span class="pre">rabpro.utils.</span></span><span class="sig-name descname"><span class="pre">get_datapaths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datapath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">configpath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rebuild_vrts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.utils.get_datapaths" title="Permalink to this definition"></a></dt>
 <dd><p>Returns a dictionary of paths to all data that RaBPro uses. Also builds
 virtual rasters for MERIT data.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>datapath: string, optional</strong></dt><dd><p>path to rabpro data folder, will read from an environment variable “RABPRO_DATA”, if not set uses appdirs</p>
@@ -1058,24 +1054,15 @@ virtual rasters for MERIT data.</p>
 <dd class="field-even"><dl class="simple">
 <dt>dict</dt><dd><p>contains paths to all data that RaBPro uses</p>
 </dd>
-<dt>Examples</dt><dd></dd>
 </dl>
-<blockquote>
-<div></div></blockquote>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">utils</span>
-<span class="go">    ..</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">get_datapaths</span><span class="p">()</span>
-<span class="go">    ..</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">get_datapaths</span><span class="p">(</span><span class="n">extents</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">180.00041666666667</span><span class="p">,</span> <span class="mf">179.99958333333913</span><span class="p">,</span> <span class="mf">84.99958333333333</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.000416666669</span><span class="p">])</span>
-<span class="go">    ..</span>
-</pre></div>
-</div>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils</span>
+<span class="n">utils</span><span class="o">.</span><span class="n">get_datapaths</span><span class="p">()</span>
+<span class="n">utils</span><span class="o">.</span><span class="n">get_datapaths</span><span class="p">(</span><span class="n">extents</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">180.00041666666667</span><span class="p">,</span> <span class="mf">179.99958333333913</span><span class="p">,</span> <span class="mf">84.99958333333333</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.000416666669</span><span class="p">])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
