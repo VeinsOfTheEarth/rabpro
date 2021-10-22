@@ -42,8 +42,8 @@ sys.modules["skimage"] = Mock()
 # -- Project information -----------------------------------------------------
 
 project = "rabpro"
-copyright = "2021, T. Zussman, J. Schwenk, & J. Rowland"
-author = "T. Zussman, J. Schwenk, & J. Rowland"
+copyright = "2021, T. Zussman, J. Schwenk, J. Stachelek, & J. Rowland"
+author = "T. Zussman, J. Schwenk, J. Stachelek, & J. Rowland"
 
 
 # -- General configuration ---------------------------------------------------
