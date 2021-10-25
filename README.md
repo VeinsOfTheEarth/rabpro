@@ -44,12 +44,28 @@ python rabpro/run_rabpro.py
 import geopandas as gpd
 import rabpro
 from rabpro.subbasin_stats import Dataset
+import requests
+import pandas as pd
+import matplotlib.pyplot as plt
 
 coords_file = gpd.read_file(r"tests/data/Big Blue River.geojson")
+
 rpo = rabpro.profiler(coords_file)
 rpo.delineate_basins()
-# rpo.basins.to_file('Data/gaugebasin_shp/big_blue_river.shp',driver='ESRI Shapefile')
-rpo.basin_stats([Dataset("JRC/GSW1_3/GlobalSurfaceWater", "occurrence")])
+rpo.basins.to_file('big_blue_river.gpkg',driver='GPKG')
+
+url, task = rpo.basin_stats([Dataset("JRC/GSW1_3/GlobalSurfaceWater", "occurrence")])
+r = requests.get(url)
+with open("big_blue_river_gsw.csv", 'wb') as f:
+    f.write(r.content)
+
+bbr_gsw = pd.read_csv("big_blue_river_gsw.csv")
+bbr_gdf = gpd.read_file('big_blue_river.gpkg')
+bbr_gdf["mean"] = [float(x) for x in bbr_gsw["mean"]]
+
+bbr_gdf.plot(column = "mean", legend = True)
+plt.legend(title="GSW occurrence %", loc = (0.95, 1), frameon = False)
+plt.show()
 ```
 
 ## Testing
