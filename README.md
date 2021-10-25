@@ -1,4 +1,5 @@
-# rabpro
+# rabpro <a href='https:///jonschwenk.github.io/rabpro/'><img src="docs/_static/logo.png" align="right" height=140/></a>
+
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) [![Anaconda badge](https://anaconda.org/jschwenk/rabpro/badges/version.svg)](https://anaconda.org/jschwenk/rabpro) [![build](https://github.com/jonschwenk/rabpro/actions/workflows/build.yaml/badge.svg)](https://github.com/jonschwenk/rabpro/actions/workflows/build.yaml)
 
@@ -48,25 +49,34 @@ import requests
 import pandas as pd
 import matplotlib.pyplot as plt
 
-coords_file = gpd.read_file(r"tests/data/Big Blue River.geojson")
+def pull_basin(tag):
+    # pull gdf
+    coords_file = gpd.read_file(r"tests/data/" + tag + ".shp")
+    rpo = rabpro.profiler(coords_file)
+    rpo.delineate_basins()
+    rpo.basins.to_file(tag + ".gpkg",driver="GPKG")    
+    
+    # pull gee
+    url, task = rpo.basin_stats([Dataset("JRC/GSW1_3/GlobalSurfaceWater", "occurrence")])
+    r = requests.get(url)
+    with open(tag + "_gsw.csv", "wb") as f:
+        f.write(r.content)
+    
+    # merge gee and gdf
+    csv_gsw = pd.read_csv(tag + "_gsw.csv")
+    gdf_gsw = gpd.read_file(tag + ".gpkg")
+    gdf_gsw["mean"] = [float(x) for x in csv_gsw["mean"]]
+    
+    return gdf_gsw
 
-rpo = rabpro.profiler(coords_file)
-rpo.delineate_basins()
-rpo.basins.to_file('big_blue_river.gpkg',driver='GPKG')
-
-url, task = rpo.basin_stats([Dataset("JRC/GSW1_3/GlobalSurfaceWater", "occurrence")])
-r = requests.get(url)
-with open("big_blue_river_gsw.csv", 'wb') as f:
-    f.write(r.content)
-
-bbr_gsw = pd.read_csv("big_blue_river_gsw.csv")
-bbr_gdf = gpd.read_file('big_blue_river.gpkg')
-bbr_gdf["mean"] = [float(x) for x in bbr_gsw["mean"]]
-
-bbr_gdf.plot(column = "mean", legend = True)
-plt.legend(title="GSW occurrence %", loc = (0.95, 1), frameon = False)
+res = [pull_basin(x) for x in ["test_coords", "test_coords2"]]
+res = pd.concat(res)
+res.plot(column = "mean", legend = True)
+plt.legend(title="GSW occurrence %", loc = (0.7, 1), frameon = False)
 plt.show()
 ```
+
+![](https://jonschwenk.github.io/rabpro/_images/readme.png)
 
 ## Testing
 
