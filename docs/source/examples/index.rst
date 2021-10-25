@@ -3,3 +3,5 @@
 ========
 Examples
 ========
+
+.. image:: ../../_static/readme.png
