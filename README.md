@@ -44,8 +44,7 @@ from rabpro.subbasin_stats import Dataset
 coords_file = gpd.read_file(r"tests/data/Big Blue River.geojson")
 rpo = rabpro.profiler(coords_file)
 rpo.delineate_basins()
-# name = "test"
-# rpo.basins.to_file('Data/gaugebasin_shp/'+name+'.shp',driver='ESRI Shapefile')
+# rpo.basins.to_file('Data/gaugebasin_shp/big_blue_river.shp',driver='ESRI Shapefile')
 rpo.basin_stats([Dataset("JRC/GSW1_3/GlobalSurfaceWater", "occurrence")])
 ```
 
