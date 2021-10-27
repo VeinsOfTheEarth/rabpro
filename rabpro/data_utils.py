@@ -27,7 +27,9 @@ _PATH_CONSTANTS = {
     "DEM_width": f"DEM{os.sep}MERIT_WTH{os.sep}MERIT_WTH.vrt",
 }
 
-CATALOG_URL = "https://raw.githubusercontent.com/jonschwenk/rabpro/main/Data/gee_datasets.json"
+CATALOG_URL = (
+    "https://raw.githubusercontent.com/jonschwenk/rabpro/main/Data/gee_datasets.json"
+)
 
 _GEE_CACHE_DAYS = 1
 
@@ -127,7 +129,9 @@ def merit_hydro(target, username, password, proxy=None, clean=True, datapath=Non
     else:
         response = requests.get(baseurl)
     soup = BeautifulSoup(response.text, "html.parser")
-    urls = [x["href"][2:] for x in soup.findAll("a", text=re.compile(target), href=True)]
+    urls = [
+        x["href"][2:] for x in soup.findAll("a", text=re.compile(target), href=True)
+    ]
     # The [2:] gets rid of the "./" in the URL
 
     if len(urls) == 0:
@@ -156,7 +160,9 @@ def download_tar_file(url, filename, username, password, proxy=None, clean=True)
     print(f"Downloading '{url}' into '{filename}'")
 
     if proxy is not None:
-        r = requests.get(url, auth=(username, password), stream=True, proxies={"http": proxy})
+        r = requests.get(
+            url, auth=(username, password), stream=True, proxies={"http": proxy}
+        )
     else:
         r = requests.get(url, auth=(username, password), stream=True)
 
