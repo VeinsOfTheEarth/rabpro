@@ -19,7 +19,10 @@ from shapely.ops import unary_union
 from skimage import measure
 import http.client as httplib
 
-import rabpro.data_utils as du
+try:
+    import rabpro.data_utils as du
+except:
+    import data_utils as du
 
 _DATAPATHS = None
 
