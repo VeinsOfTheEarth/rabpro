@@ -10,13 +10,9 @@ import shutil
 import subprocess
 from pathlib import Path
 
-import appdirs
+
 import cv2
-import geopandas as gpd
 import numpy as np
-import osgeo
-import pandas as pd
-import requests
 from osgeo import gdal, ogr
 from shapely.geometry import Polygon, MultiPolygon
 from shapely.ops import unary_union
