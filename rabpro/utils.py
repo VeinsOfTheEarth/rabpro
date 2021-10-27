@@ -21,10 +21,23 @@ from osgeo import gdal, ogr
 from shapely.geometry import Polygon, MultiPolygon
 from shapely.ops import unary_union
 from skimage import measure
+import http.client as httplib
 
 import rabpro.data_utils as du
 
 _DATAPATHS = None
+
+
+def has_internet():
+    # https://stackoverflow.com/a/29854274/3362993
+    conn = httplib.HTTPConnection("www.google.com", timeout=5)
+    try:
+        conn.request("HEAD", "/")
+        return True
+    except Exception:
+        return False
+    finally:
+        conn.close()
 
 
 def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True, **kwargs):
@@ -64,7 +77,8 @@ def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True, **kwargs):
 
     datapaths = du.create_datapaths(datapath=datapath, configpath=configpath)
     du.create_file_structure(datapath=datapath, configpath=configpath)
-    du.download_gee_metadata()
+    if has_internet():
+        du.download_gee_metadata()
 
     _build_virtual_rasters(datapaths, force_rebuild=rebuild_vrts, **kwargs)
     _DATAPATHS = datapaths
