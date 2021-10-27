@@ -1,6 +1,5 @@
 # rabpro - river and basin profiler <a href='https:///jonschwenk.github.io/rabpro/'><img src="docs/_static/logo.png" align="right" height=140/></a>
 
-
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) [![Anaconda badge](https://anaconda.org/jschwenk/rabpro/badges/version.svg)](https://anaconda.org/jschwenk/rabpro) [![build](https://github.com/jonschwenk/rabpro/actions/workflows/build.yaml/badge.svg)](https://github.com/jonschwenk/rabpro/actions/workflows/build.yaml)
 
 longitudinal river profiles, global watershed delineation, watershed stats
@@ -76,7 +75,7 @@ plt.legend(title="GSW occurrence %", loc = (0.7, 1), frameon = False)
 plt.show()
 ```
 
-![](https://jonschwenk.github.io/rabpro/_images/readme.png)
+![example output image](https://jonschwenk.github.io/rabpro/_images/readme.png)
 
 ## Testing
 
