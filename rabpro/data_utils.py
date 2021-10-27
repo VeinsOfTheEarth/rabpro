@@ -113,12 +113,10 @@ def download_gee_metadata(datapath=None):
                 r = response.json()
                 with open(gee_metadata_path, "w") as f:
                     json.dump(r, f, indent=4)
-            else:
-                print(
-                    f"{CATALOG_URL} returned error status code {response.status_code}. Download manually into {gee_metadata_path}"
-                )
-        except Exception as e:
-            print(e)
+        except:
+            print(
+                f"{CATALOG_URL} download error. Place manually into {gee_metadata_path}"
+            )
 
 
 def merit_hydro(target, username, password, proxy=None, clean=True, datapath=None):
