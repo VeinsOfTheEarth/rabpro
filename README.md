@@ -35,7 +35,7 @@ rabpro download hydrobasins
 ### command line
 
 ```shell
-python rabpro/run_rabpro.py
+python rabpro/cli/run_rabpro.py
 ```
 
 #### python
