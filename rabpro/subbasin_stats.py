@@ -67,8 +67,11 @@ class Dataset:
         self.mask = mask
 
 
-def dataset_to_filename(data_id, band, tag):
-    return f"{data_id}__{band}".replace("/", "-") + "__" + tag
+def dataset_to_filename(data_id, band, tag=""):
+    if tag == "":
+        return f"{data_id}__{band}".replace("/", "-")
+    else:
+        return f"{data_id}__{band}".replace("/", "-") + "__" + tag
 
 
 def main(
