@@ -67,6 +67,10 @@ class Dataset:
         self.mask = mask
 
 
+def dataset_to_filename(data_id, band, tag):
+    return f"{data_id}__{band}".replace("/", "-") + "__" + tag
+
+
 def main(
     dataset_list,
     gee_feature_path=None,
@@ -227,9 +231,6 @@ def main(
 
         if test:
             data = table.getInfo()
-
-        def dataset_to_filename(data_id, band, tag):
-            return f"{data_id}__{band}".replace("/", "-") + "__" + tag
 
         task = ee.batch.Export.table.toDrive(
             collection=table,
