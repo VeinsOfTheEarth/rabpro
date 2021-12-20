@@ -27,7 +27,7 @@ class Dataset:
         Google Earth Engine dataset band name
     resolution : int, optional
         Desired resolution in meters of the calculation over the dataset.
-        Defaults to native resoltion of dataset.
+        Defaults to native resolution of the dataset.
     start : str, optional
         Desired start date of data in ISO format: YYYY-MM-DD. Defaults to
         dataset start.
