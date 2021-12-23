@@ -66,7 +66,7 @@ def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True, **kwargs):
 
         import utils
         utils.get_datapaths()
-        utils.get_datapaths(extents=[-180.00041666666667, 179.99958333333913, 84.99958333333333, -60.000416666669])
+        utils.get_datapaths(extents=[-180.00041666666667, 179.99958333333913, 84.99958333333333, -60.000416666669], quiet=True)
     """
 
     global _DATAPATHS
@@ -84,7 +84,7 @@ def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True, **kwargs):
     return datapaths
 
 
-def _build_virtual_rasters(datapaths, force_rebuild=True, **kwargs):
+def _build_virtual_rasters(datapaths, force_rebuild=True, quiet=False, **kwargs):
     msg_dict = {
         "DEM_fdr": "Building flow direction virtual raster DEM from MERIT tiles...",
         "DEM_uda": "Building drainage areas virtual raster DEM from MERIT tiles...",
@@ -95,10 +95,12 @@ def _build_virtual_rasters(datapaths, force_rebuild=True, **kwargs):
     # Ensure that DEM virtual rasters are built
     for key in msg_dict:
         if not os.path.isfile(datapaths[key]) or force_rebuild:
-            print(msg_dict[key])
+            if not quiet:
+                print(msg_dict[key])
             build_vrt(
                 os.path.dirname(os.path.realpath(datapaths[key])),
                 outputfile=datapaths[key],
+                quiet=quiet,
                 **kwargs,
             )
 
@@ -189,6 +191,7 @@ def build_vrt(
     sampling="nearest",
     ftype="tif",
     separate=False,
+    quiet=False,
 ):
     """Creates a text file for input to gdalbuildvrt, then builds vrt file with
     same name. If output path is not specified, vrt is given the name of the
@@ -225,6 +228,8 @@ def build_vrt(
         "tif" if building from a list of tiffs, or "vrt" if building from a vrt,
         by default "tif"
     separate : bool, optional
+        [description], by default False
+    quiet : bool, optional
         [description], by default False
 
     Returns
@@ -340,7 +345,8 @@ def build_vrt(
     if len(stderr) > 3:
         raise RuntimeError(f"Virtual raster did not build sucessfully. Error: {stderr}")
     else:
-        print(stdout.decode())
+        if not quiet:
+            print(stdout.decode())
 
     return vrtname
 
