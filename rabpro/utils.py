@@ -64,7 +64,7 @@ def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True, **kwargs):
     --------
     .. code-block:: python
 
-        import utils
+        from rabpro import utils
         utils.get_datapaths()
         utils.get_datapaths(extents=[-180.00041666666667, 179.99958333333913, 84.99958333333333, -60.000416666669], quiet=True)
     """
