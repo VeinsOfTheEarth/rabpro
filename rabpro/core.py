@@ -44,6 +44,8 @@ class profiler:
         Name of location/river, used for filename saving purposes only.
     verbose : bool
         If True, will print updates as processing progresses.
+    quiet : bool
+        Passed to rebuild_vrts to silence rebuilding messages
 
     Methods
     -------
@@ -66,6 +68,7 @@ class profiler:
         path_results=None,
         force_merit=False,
         verbose=True,
+        quiet=False,
     ):
 
         self.name = name
@@ -108,7 +111,7 @@ class profiler:
         )
 
         # This line will ensure that all the virtual rasters are built and available.
-        rpu.get_datapaths()
+        rpu.get_datapaths(quiet=quiet)
 
     def _coordinates_to_gdf(self, coords):
         """
