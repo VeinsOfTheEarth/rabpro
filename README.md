@@ -41,15 +41,16 @@ python rabpro/cli/run_rabpro.py
 #### python
 
 ```python
-import geopandas as gpd
-import rabpro
-from rabpro.subbasin_stats import Dataset
 import requests
 import pandas as pd
+import geopandas as gpd
 import matplotlib.pyplot as plt
 
+import rabpro
+from rabpro.subbasin_stats import Dataset
+
 def pull_basin(tag):
-    # pull gdf
+    # tag = "test_coords"
     coords_file = gpd.read_file(r"tests/data/" + tag + ".shp")
     rpo = rabpro.profiler(coords_file)
     rpo.delineate_basins()
