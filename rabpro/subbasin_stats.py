@@ -23,7 +23,7 @@ class Dataset:
     ----------
     data_id : str
         Google Earth Engine dataset asset id
-    band : str
+    band : str, optional
         Google Earth Engine dataset band name
     resolution : int, optional
         Desired resolution in meters of the calculation over the dataset.
@@ -49,7 +49,7 @@ class Dataset:
     def __init__(
         self,
         data_id,
-        band,
+        band="None",
         resolution=None,
         start=None,
         end=None,
@@ -169,17 +169,26 @@ def main(
 
     # For each raster
     for d in control:
-        if d.type == "image":
-            imgcol = ee.ImageCollection(ee.Image(d.data_id).select(d.band))
-        else:
-            if d.start is not None and d.end is not None:
-                imgcol = (
-                    ee.ImageCollection(d.data_id)
-                    .select(d.band)
-                    .filterDate(d.start, d.end)
-                )
+        if d.band is None or d.band == "None":
+            if d.type == "image":
+                imgcol = ee.ImageCollection(ee.Image(d.data_id))
             else:
-                imgcol = ee.ImageCollection(d.data_id).select(d.band)
+                if d.start is not None and d.end is not None:
+                    imgcol = ee.ImageCollection(d.data_id).filterDate(d.start, d.end)
+                else:
+                    imgcol = ee.ImageCollection(d.data_id)
+        else:
+            if d.type == "image":
+                imgcol = ee.ImageCollection(ee.Image(d.data_id).select(d.band))
+            else:
+                if d.start is not None and d.end is not None:
+                    imgcol = (
+                        ee.ImageCollection(d.data_id)
+                        .select(d.band)
+                        .filterDate(d.start, d.end)
+                    )
+                else:
+                    imgcol = ee.ImageCollection(d.data_id).select(d.band)
 
         if len(d.time_stats) > 0:
             time_reducer = _parse_reducers(base=getattr(ee.Reducer, d.time_stats[0])())
