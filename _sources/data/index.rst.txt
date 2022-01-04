@@ -95,7 +95,7 @@ Place (or create) a file `user_gee_datasets.json` at the location returned by:
         from rabpro import data_utils as du
         du._path_generator_util(None, None)[1]
 
-User datasets typically do not have "bands". To create a valid json entry for such bandless datasets, enter something a json block similar to the following:
+User datasets typically do not have "bands". To create a valid json entry for such bandless datasets, enter a json block similar to the following:
 
 .. code-block:: json
 
