@@ -114,7 +114,7 @@ User datasets typically do not have "bands". To create a valid json entry for su
             }
         ]
 
-Call this dataset from `subbasin_stats` with specifying a band:
+Call this dataset from `subbasin_stats` without specifying a band:
 
 .. code-block:: python
 
