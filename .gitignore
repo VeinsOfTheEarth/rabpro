@@ -10,6 +10,10 @@ Data/HydroBasins/*/*.prj
 Data/HydroBasins/*/*.dbf
 Data/HydroBasins/*/*.fix
 Data/HydroBasins/*/*.cpg
+*.gpkg
+*.gpkg-shm
+*.gpkg-wal
+*.csv
 
 # Output
 results
