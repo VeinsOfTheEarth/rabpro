@@ -74,7 +74,7 @@ Windows: ``%UserProfile%\AppData\Local\rabpro\rabpro\``
 
 with the following directory structure:
 ::
-    DEM/
+    MERIT_Hydro/
     ├─ MERIT_ELEV_HP/
     ├─ MERIT_FDR/
     ├─ MERIT_UDA/

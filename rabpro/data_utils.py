@@ -34,10 +34,10 @@ CATALOG_URL = (
 _GEE_CACHE_DAYS = 1
 
 merit_hydro_paths = {
-    "elv": f"DEM{os.sep}MERIT_ELEV_HP",
-    "dir": f"DEM{os.sep}MERIT_FDR",
-    "upa": f"DEM{os.sep}MERIT_UDA",
-    "wth": f"DEM{os.sep}MERIT_WTH",
+    "elv": f"MERIT_Hydro{os.sep}MERIT_ELEV_HP",
+    "dir": f"MERIT_Hydro{os.sep}MERIT_FDR",
+    "upa": f"MERIT_Hydro{os.sep}MERIT_UDA",
+    "wth": f"MERIT_Hydro{os.sep}MERIT_WTH",
 }
 
 hydrobasins_paths = {

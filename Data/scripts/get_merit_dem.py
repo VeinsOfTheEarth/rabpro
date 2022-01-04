@@ -13,11 +13,11 @@ import tqdm
 from bs4 import BeautifulSoup
 
 merit_hydro_paths = {
-    "elv": f"DEM{os.sep}MERIT_ELEV_HP",
-    "dir": f"DEM{os.sep}MERIT_FDR",
-    "upa": f"DEM{os.sep}MERIT_UDA",
-    "wth": f"DEM{os.sep}MERIT_WTH",
-    "dem": f"DEM{os.sep}MERIT103",
+    "elv": f"MERIT_Hydro{os.sep}MERIT_ELEV_HP",
+    "dir": f"MERIT_Hydro{os.sep}MERIT_FDR",
+    "upa": f"MERIT_Hydro{os.sep}MERIT_UDA",
+    "wth": f"MERIT_Hydro{os.sep}MERIT_WTH",
+    "dem": f"MERIT_Hydro{os.sep}MERIT103",
 }
 
 datapath = appdirs.user_data_dir("rabpro", "rabpro")

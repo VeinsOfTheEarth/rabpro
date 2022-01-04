@@ -77,7 +77,7 @@ jobs:
       - name: Set up data
         run: |
           mkdir -p "$HOME/$DATA_PATH"
-          cp -r ./tests/data/DEM ./tests/data/HydroBasins "$HOME/$DATA_PATH"
+          cp -r ./tests/data/MERIT_Hydro ./tests/data/HydroBasins "$HOME/$DATA_PATH"
         env:
           DATA_PATH: ${{ matrix.data-path }}
 
