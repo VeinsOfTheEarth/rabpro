@@ -87,3 +87,42 @@ with the following directory structure:
 
 User Dataset Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Place (or create) a file `user_gee_datasets.json` at the location returned by: 
+
+.. code-block:: python
+
+        from rabpro import data_utils as du
+        du._path_generator_util(None, None)[1]
+
+User datasets typically do not have "bands". To create a valid json entry for such bandless datasets, enter something a json block similar to the following:
+
+.. code-block:: json
+
+        [
+            {
+                "id": "projects/sat-io/open-datasets/Geomorpho90m/slope",
+                "name": "Geomorpho90m: Slope",
+                "start_date": null,
+                "end_date": null,
+                "type": "image_collection",
+                "bands": {
+                    "None": {
+                        "resolution":90
+                    }
+                }
+            }
+        ]
+
+Call this dataset from `subbasin_stats` with specifying a band:
+
+.. code-block:: python
+
+    data, task = rabpro.subbasin_stats.main(
+        [
+            Dataset(
+                "projects/sat-io/open-datasets/Geomorpho90m/slope", time_stats=["median"]
+            )
+        ],
+        gee_feature_path="your/asset/path",
+    )

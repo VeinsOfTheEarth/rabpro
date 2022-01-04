@@ -151,6 +151,39 @@ HydroBasins/
 </section>
 <section id="user-dataset-configuration">
 <h3>User Dataset Configuration<a class="headerlink" href="#user-dataset-configuration" title="Permalink to this headline"></a></h3>
+<p>Place (or create) a file <cite>user_gee_datasets.json</cite> at the location returned by:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rabpro</span> <span class="kn">import</span> <span class="n">data_utils</span> <span class="k">as</span> <span class="n">du</span>
+<span class="n">du</span><span class="o">.</span><span class="n">_path_generator_util</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>User datasets typically do not have “bands”. To create a valid json entry for such bandless datasets, enter something a json block similar to the following:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;projects/sat-io/open-datasets/Geomorpho90m/slope&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Geomorpho90m: Slope&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;start_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;end_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;image_collection&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;bands&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;None&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;resolution&quot;</span><span class="p">:</span><span class="mi">90</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Call this dataset from <cite>subbasin_stats</cite> with specifying a band:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">,</span> <span class="n">task</span> <span class="o">=</span> <span class="n">rabpro</span><span class="o">.</span><span class="n">subbasin_stats</span><span class="o">.</span><span class="n">main</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">Dataset</span><span class="p">(</span>
+            <span class="s2">&quot;projects/sat-io/open-datasets/Geomorpho90m/slope&quot;</span><span class="p">,</span> <span class="n">time_stats</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;median&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+    <span class="p">],</span>
+    <span class="n">gee_feature_path</span><span class="o">=</span><span class="s2">&quot;your/asset/path&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>
