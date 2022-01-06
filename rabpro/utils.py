@@ -9,7 +9,7 @@ import platform
 import shutil
 import subprocess
 from pathlib import Path
-
+import zipfile
 
 import cv2
 import numpy as np
@@ -764,3 +764,16 @@ def validify_polygons(polys):
                 geomsv.append(geom)
 
     return geomsv
+
+
+def build_gee_vector_asset(basins, out_path="basins"):
+    os.makedirs("temp", exist_ok=True)
+    temp_dir = Path("temp")
+    basins.to_file(filename="temp/" + out_path + ".shp", driver="ESRI Shapefile")
+
+    with zipfile.ZipFile(out_path + ".zip", "w") as zipf:
+        for f in temp_dir.glob("*"):
+            zipf.write(f, arcname=f.name)
+
+    shutil.rmtree("temp")
+    return out_path + ".zip"
