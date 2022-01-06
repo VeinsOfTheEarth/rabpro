@@ -5,19 +5,19 @@ Utility functions (utils.py)
 """
 
 import os
-import platform
 import shutil
+import zipfile
+import platform
 import subprocess
 from pathlib import Path
-import zipfile
 
 import cv2
 import numpy as np
 from osgeo import gdal, ogr
-from shapely.geometry import Polygon, MultiPolygon
-from shapely.ops import unary_union
 from skimage import measure
 import http.client as httplib
+from shapely.ops import unary_union
+from shapely.geometry import Polygon, MultiPolygon
 
 try:
     import rabpro.data_utils as du
