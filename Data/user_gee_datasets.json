@@ -1,0 +1,14 @@
+[
+    {
+        "id": "projects/sat-io/open-datasets/Geomorpho90m/slope",
+        "name": "Geomorpho90m: Slope",
+        "start_date": null,
+        "end_date": null,
+        "type": "image_collection",
+        "bands": {
+            "None": {
+                "resolution":90
+            }
+        }
+    }
+]
