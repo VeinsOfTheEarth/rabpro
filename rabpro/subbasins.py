@@ -534,7 +534,7 @@ def main_merit(cl_gdf, da, nrows=51, ncols=51, map_only=False, verbose=False):
     mapped = {"successful": False}
 
     # Boot up the data
-    dps = ru.get_datapaths()
+    dps = ru.get_datapaths(rebuild_vrts=False)
     da_obj = gdal.Open(dps["DEM_uda"])
     fdr_obj = gdal.Open(dps["DEM_fdr"])
 
