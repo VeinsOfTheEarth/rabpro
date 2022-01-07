@@ -22,9 +22,12 @@ results
 rabpro.egg-info
 dist/**
 build/**
+*.tar.gz
+meta.yaml
 
 # Docs
 docs/_build
+*.xcf
 
 # Testing
 .coverage
@@ -34,3 +37,4 @@ docs/_build
 *.Rproj
 .Rhistory
 .Rproj.user
+Makefile
