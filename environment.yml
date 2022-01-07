@@ -16,3 +16,4 @@ dependencies:
   - earthengine-api
   - tqdm
   - beautifulsoup4
+  - rasterstats

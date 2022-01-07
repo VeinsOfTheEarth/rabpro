@@ -22,7 +22,7 @@ setuptools.setup(
         "numpy",
         "geopandas>=0.7.0",
         "scikit-image",
-        "opencv-python",
+        "py-opencv",
         "pyproj",
         "shapely",
         "requests",
