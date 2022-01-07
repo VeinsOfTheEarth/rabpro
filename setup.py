@@ -12,9 +12,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/jschwenk/rabpro",
-    project_urls={
-        "Bug Tracker": "https://github.com/jschwenk/rabpro/issues",
-    },
+    project_urls={"Bug Tracker": "https://github.com/jschwenk/rabpro/issues",},
     scripts=["rabpro/cli/rabpro"],
     python_requires=">=3.6",
     install_requires=[
@@ -22,7 +20,7 @@ setuptools.setup(
         "numpy",
         "geopandas>=0.7.0",
         "scikit-image",
-        "py-opencv",
+        "opencv-python",
         "pyproj",
         "shapely",
         "requests",

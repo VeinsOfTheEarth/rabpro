@@ -7,8 +7,7 @@ dependencies:
   - gdal
   - numpy
   - geopandas>=0.7.0
-  - scikit-image
-  - opencv
+  - scikit-image  
   - pyproj
   - shapely
   - requests
@@ -17,3 +16,6 @@ dependencies:
   - tqdm
   - beautifulsoup4
   - rasterstats
+  - pip
+  - pip:
+    - opencv-python
