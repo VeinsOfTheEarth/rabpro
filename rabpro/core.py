@@ -69,6 +69,7 @@ class profiler:
         force_merit=False,
         verbose=True,
         quiet=False,
+        rebuild_vrts=True
     ):
 
         self.name = name
@@ -111,7 +112,7 @@ class profiler:
         )
 
         # This line will ensure that all the virtual rasters are built and available.
-        rpu.get_datapaths(quiet=quiet)
+        rpu.get_datapaths(quiet=quiet, rebuild_vrts=rebuild_vrts)
 
     def _coordinates_to_gdf(self, coords):
         """
