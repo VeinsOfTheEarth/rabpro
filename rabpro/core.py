@@ -109,7 +109,7 @@ class profiler:
         )
 
         # This line will ensure that all the virtual rasters are built and available.
-        rpu.get_datapaths(quiet=verbose, rebuild_vrts=rebuild_vrts)
+        rpu.get_datapaths(quiet=~verbose, rebuild_vrts=rebuild_vrts)
 
     def _coordinates_to_gdf(self, coords):
         """
