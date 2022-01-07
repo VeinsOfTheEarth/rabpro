@@ -19,7 +19,7 @@ type:
 
 This will install all of rabpro's dependencies as well, as listed in
 `environment.yml
-<https://github.com/jonschwenk/rabpro/blob/master/environment.yml>`_.
+<https://github.com/VeinsOfTheEarth/rabpro/blob/master/environment.yml>`_.
 
 Installation from source
 ------------------------
@@ -29,18 +29,18 @@ If you would prefer to install *RaBPro* from source, do the following:
 1. Clone the repository
 ::
 
-   $ git clone https://github.com/jonschwenk/rabpro.git
+   $ git clone https://github.com/VeinsOfTheEarth/rabpro.git
 
 or, if you would prefer to use an SSH key:
 
 ::
 
-   $ git clone git@github.com:jonschwenk/rabpro.git
+   $ git clone git@github.com:VeinsOfTheEarth/rabpro.git
 
 2. Install dependencies
 
 Create a new `conda` environment from `environment.yml
-<https://github.com/jonschwenk/rabpro/blob/master/environment.yml>`_:
+<https://github.com/VeinsOfTheEarth/rabpro/blob/master/environment.yml>`_:
 ::
 
    $ conda env create --file environment.yml

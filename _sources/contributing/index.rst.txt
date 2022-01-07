@@ -6,7 +6,7 @@ Contributing
 
 We welcome all forms of user contributions including feature requests, bug
 reports, code, and documentation requests - simply open an `issue
-<https://github.com/jonschwenk/rabpro/issues>`_.
+<https://github.com/VeinsOfTheEarth/rabpro/issues>`_.
 
 Note that *RaBPro* adheres to `Black code style
 <https://black.readthedocs.io/en/stable/>`_ and `NumPy-style docstrings
