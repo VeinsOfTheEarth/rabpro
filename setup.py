@@ -11,8 +11,8 @@ setuptools.setup(
     description="Package to delineate subbasins and compute statistics.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/jschwenk/rabpro",
-    project_urls={"Bug Tracker": "https://github.com/jschwenk/rabpro/issues",},
+    url="https://github.com/VeinsOfTheEarth/rabpro",
+    project_urls={"Bug Tracker": "https://github.com/VeinsOfTheEarth/rabpro/issues",},
     scripts=["rabpro/cli/rabpro"],
     python_requires=">=3.6",
     install_requires=[

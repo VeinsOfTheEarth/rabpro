@@ -30,7 +30,7 @@ GEE in order to validate requests to the GEE API and fail fast if they're
 invalid. This JSON file is updated daily server-side. RaBPro caches a local copy
 of this file, and will attempt to retrieve an updated version when run or daily
 (the less frequent of the two). The file can be found `here
-<https://github.com/jonschwenk/rabpro/blob/main/Data/gee_datasets.json>`__, and
+<https://github.com/VeinsOfTheEarth/rabpro/blob/main/Data/gee_datasets.json>`__, and
 will be downloaded to the following locations:
 
 Linux: ``~/.local/share/rabpro/``

@@ -16,7 +16,7 @@ def parse_date(timestamp):
 
 def parse_url(url, deprecated, verbose):
     try:
-        response = requests.get(url)
+        response = requests.get(url, proxies={"http": "http://proxyout.lanl.gov:8080")
         if response.status_code != 200:
             print(f"{url} returned error status code {response.status_code}")
             return None
@@ -105,7 +105,7 @@ def parse_url(url, deprecated, verbose):
 
 def ee_catalog(deprecated, verbose):
     catalog = []
-    obj = requests.get(CATALOG_URL).json()
+    obj = requests.get(CATALOG_URL, proxies={"https": "http://proxyout.lanl.gov:8080"}).json()
 
     for assets in obj["links"]:
         try:

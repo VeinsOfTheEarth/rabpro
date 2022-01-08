@@ -13,11 +13,11 @@ import sys
 import rabpro
 
 # Specify a point within our test DEM region
-coords = (32.97287, -88.15829)
+coords = (56.22659, -130.87974)
 
 # We can also specify a drainage area for testing; looking at the test
 # region MERIT_upa grid, a value of 111,548 should be close
-da = 18680
+da = 1994
 
 # Boot up the profiler; note that providing the drainage area (da) is optional
 # We also choose to set force_merit to True, which will use MERIT data to

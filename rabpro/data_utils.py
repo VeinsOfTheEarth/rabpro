@@ -27,9 +27,7 @@ _PATH_CONSTANTS = {
     "DEM_width": f"MERIT_Hydro{os.sep}MERIT_WTH{os.sep}MERIT_WTH.vrt",
 }
 
-CATALOG_URL = (
-    "https://raw.githubusercontent.com/jonschwenk/rabpro/main/Data/gee_datasets.json"
-)
+CATALOG_URL = "https://raw.githubusercontent.com/VeinsOfTheEarth/rabpro/main/Data/gee_datasets.json"
 
 _GEE_CACHE_DAYS = 1
 

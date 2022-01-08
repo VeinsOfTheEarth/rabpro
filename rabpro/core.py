@@ -235,7 +235,8 @@ class profiler:
 
     def elev_profile(self):
         """
-        Compute the elevation profile.
+        Compute the elevation profile. The profile is computed such that the
+        provided coordinate is the centerpoint (check if this is true).
         """
 
         if not hasattr(self, "nrows"):
