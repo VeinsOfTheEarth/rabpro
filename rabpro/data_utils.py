@@ -61,6 +61,7 @@ def create_datapaths(datapath=None, configpath=None, reset_user_metadata=False):
         response = requests.get(CATALOG_URL_USER)
         if response.status_code == 200:
             r = response.json()
+            print(datapaths["user_gee_metadata"])
             with open(datapaths["user_gee_metadata"], "w") as f:
                 json.dump(r, f, indent=4)
 
@@ -72,6 +73,7 @@ def create_file_structure(datapath=None, configpath=None):
     datapath, configpath = _path_generator_util(datapath, configpath)
 
     os.makedirs(configpath, exist_ok=True)
+    print(configpath)
     for key in merit_hydro_paths:
         os.makedirs(os.path.join(datapath, merit_hydro_paths[key]), exist_ok=True)
 
