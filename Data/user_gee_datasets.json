@@ -7,7 +7,7 @@
         "type": "image_collection",
         "bands": {
             "None": {
-                "resolution":90
+                "resolution": 90
             }
         }
     },
@@ -20,7 +20,7 @@
         "bands": {
             "b1": {
                 "units": null,
-                "resolution":90
+                "resolution": 90
             }
         }
     }
