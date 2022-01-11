@@ -74,8 +74,8 @@ def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True, **kwargs):
         _build_virtual_rasters(_DATAPATHS, force_rebuild=rebuild_vrts, **kwargs)
         return _DATAPATHS
 
-    datapaths = du.create_datapaths(datapath=datapath, configpath=configpath)
     du.create_file_structure(datapath=datapath, configpath=configpath)
+    datapaths = du.create_datapaths(datapath=datapath, configpath=configpath)
     if has_internet():
         du.download_gee_metadata()
 
