@@ -28,6 +28,7 @@ _PATH_CONSTANTS = {
 }
 
 CATALOG_URL = "https://raw.githubusercontent.com/VeinsOfTheEarth/rabpro/main/Data/gee_datasets.json"
+CATALOG_URL_USER = "https://raw.githubusercontent.com/VeinsOfTheEarth/rabpro/main/Data/user_gee_datasets.json"
 
 _GEE_CACHE_DAYS = 1
 
@@ -55,7 +56,11 @@ def create_datapaths(datapath=None, configpath=None):
     user_gee_metadata_path = configpath / "user_gee_datasets.json"
     datapaths["user_gee_metadata"] = str(user_gee_metadata_path)
     if not user_gee_metadata_path.is_file():
-        datapaths["user_gee_metadata"] = None
+        response = requests.get(CATALOG_URL_USER)
+        if response.status_code == 200:
+            r = response.json()
+            with open(datapaths["user_gee_metadata"], "w") as f:
+                json.dump(r, f, indent=4)
 
     return datapaths
 

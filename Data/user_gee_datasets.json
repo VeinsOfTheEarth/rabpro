@@ -10,5 +10,18 @@
                 "resolution":90
             }
         }
+    },
+    {
+        "id": "users/jsta/FLO1K_qma",
+        "name": "FLOW1K qma",
+        "start_date": "1960-01-01",
+        "end_date": "2015-01-01",
+        "type": "image_collection",
+        "bands": {
+            "b1": {
+                "units": null,
+                "resolution":90
+            }
+        }
     }
 ]
