@@ -45,7 +45,7 @@ hydrobasins_paths = {
 }
 
 
-def create_datapaths(datapath=None, configpath=None):
+def create_datapaths(datapath=None, configpath=None, reset_user_metadata=False):
     datapath, configpath = _path_generator_util(datapath, configpath)
 
     datapaths = {key: str(datapath / Path(val)) for key, val in _PATH_CONSTANTS.items()}
@@ -55,6 +55,8 @@ def create_datapaths(datapath=None, configpath=None):
     # User defined GEE datasets
     user_gee_metadata_path = configpath / "user_gee_datasets.json"
     datapaths["user_gee_metadata"] = str(user_gee_metadata_path)
+    if reset_user_metadata:
+        os.remove(datapaths["user_gee_metadata"])
     if not user_gee_metadata_path.is_file():
         response = requests.get(CATALOG_URL_USER)
         if response.status_code == 200:
