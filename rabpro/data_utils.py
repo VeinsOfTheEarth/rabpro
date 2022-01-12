@@ -73,7 +73,6 @@ def create_file_structure(datapath=None, configpath=None):
     datapath, configpath = _path_generator_util(datapath, configpath)
 
     os.makedirs(configpath, exist_ok=True)
-    print(configpath)
     for key in merit_hydro_paths:
         os.makedirs(os.path.join(datapath, merit_hydro_paths[key]), exist_ok=True)
 
