@@ -767,6 +767,24 @@ def validify_polygons(polys):
 
 
 def build_gee_vector_asset(basins, out_path="basins"):
+    """Create zipped shapefile for uploading as a Google Earth Engine vector asset.
+
+    Args:
+        basins ([type]): [description]
+        out_path (str, optional): [description]. Defaults to "basins".
+
+    Returns:
+        [type]: [description]
+
+    Examples
+    --------
+    .. code-block:: python
+
+        from rabpro import utils
+        import geopandas as gpd
+        basins = gpd.read_file("tests/results/merit_test/subbasins.json")
+        utils.build_gee_vector_asset(basins)
+    """
     os.makedirs("temp", exist_ok=True)
     temp_dir = Path("temp")
     basins.to_file(filename="temp/" + out_path + ".shp", driver="ESRI Shapefile")
