@@ -5,10 +5,6 @@ MERIT Utilities (merit_utils.py)
 Utility functions for dealing with MERIT datasets
 """
 
-import math
-import os
-import sys
-
 import numpy as np
 import pandas as pd
 from scipy.ndimage.morphology import distance_transform_edt
@@ -572,7 +568,7 @@ def map_cl_pt_to_flowline(
         4 - (success) DA not provided; mapped to the nearest flowline (>1km^2)
         5 - (fail) DA not provided; no nearby flowlines exist
         6 - (fail) DA provided; but no nearby DAs were close enough to map to
-        7 - (fail) basin polygon provided; but no nearby DAs were within the allowable rang
+        7 - (fail) basin polygon provided; but no nearby DAs were within the allowable range
         8 - (fail) basin polygon provided; no flowlines were 25% within the provided basin
 
     """
@@ -626,7 +622,7 @@ def map_cl_pt_to_flowline(
         # This curve will be linearly interpolated for the provided da to
         # return the upper and lower bounds.
         das = [0.01, 0.1, 1, 100, 1000, 10000, 100000]
-        pcts = [100, 75, 50, 25, 20, 15, 10]
+        pcts = [100, 75, 50, 25, 20, 17, 15]
 
         pct = np.interp(da, das, pcts)
         interval = np.abs(da * pct / 100)
