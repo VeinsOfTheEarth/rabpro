@@ -58,7 +58,12 @@ def create_datapaths(datapath=None, configpath=None, reset_user_metadata=False):
     if reset_user_metadata:
         os.remove(datapaths["user_gee_metadata"])
     if not user_gee_metadata_path.is_file():
-        response = requests.get(CATALOG_URL_USER)
+        try:
+            https_proxy = os.environ["HTTPS_PROXY"]
+            response = requests.get(CATALOG_URL_USER, proxies={"https": https_proxy})
+        except:
+            response = requests.get(CATALOG_URL_USER)
+
         if response.status_code == 200:
             r = response.json()
             print(datapaths["user_gee_metadata"])
