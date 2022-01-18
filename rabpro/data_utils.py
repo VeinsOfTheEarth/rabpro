@@ -231,7 +231,7 @@ def hydrobasins(proxy=None, clean=True, datapath=None):
         print(f"Downloading '{url}' into '{filename}'")
 
         if proxy is not None:
-            r = requests.get(url, stream=True, proxies={"http": proxy})
+            r = requests.get(url, stream=True, proxies={"https": proxy})
         else:
             r = requests.get(url, stream=True)
 

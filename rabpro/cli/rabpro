@@ -69,7 +69,7 @@ if __name__ == "__main__":
     parser_dl.set_defaults(func=download)
 
     parser_dl.add_argument(
-        "proxy",
+        "--proxy",
         type=str,
         nargs="?",
         default=None,
