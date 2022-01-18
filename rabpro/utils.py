@@ -795,3 +795,70 @@ def build_gee_vector_asset(basins, out_path="basins"):
 
     shutil.rmtree("temp")
     return out_path + ".zip"
+
+
+def upload_gee_vector_asset(
+    zip_path, gee_user, gcp_bucket, gee_folder="", gcp_upload=True, gee_upload=True
+):
+    """[summary]
+
+    Args:
+        zip_path ([type]): [description]
+        gee_user ([type]): [description]
+        gcp_bucket ([type]): [description]
+        gee_folder (str, optional): [description]. Defaults to "".
+        gcp_upload (bool, optional): [description]. Defaults to True.
+        gee_upload (bool, optional): [description]. Defaults to True.
+
+    Returns:
+        [type]: [description]
+    
+    Examples
+    --------
+    .. code-block:: python
+
+        upload_gee_vector_asset("test.zip", "my_gee_user", "my_gcp_bucket")
+    ```
+    """
+    gee_path = (
+        "users/" + gee_user + "/" + os.path.splitext(os.path.basename(zip_path))[0]
+    )
+    if gee_folder == "":
+        out_path = gcp_bucket + "/" + os.path.basename(zip_path)
+    else:
+        out_path = gcp_bucket + "/" + gee_folder + "/" + os.path.basename(zip_path)
+
+    if gcp_upload:
+        shell_cmd = "gsutil cp " + zip_path + " " + out_path
+        print(shell_cmd)
+        # subprocess.call(shell_cmd)
+
+    if gee_upload:
+        shell_cmd = "earthengine upload table --asset_id " + gee_path + " " + out_path
+        print(shell_cmd)
+        # subprocess.call(shell_cmd)
+
+    return gee_path
+
+
+def upload_gee_tif_asset(
+    asset_filename, gcp_bucket, gcp_filename, gee_collection="", time_start="",
+):
+    if gee_collection != "":
+        gee_collection = gee_collection + "/"
+
+    shell_cmd = (
+        "earthengine upload image" + " --time_start=" + time_start + " --asset_id=",
+        gee_collection
+        + asset_filename
+        + " --crs EPSG:4326"
+        + " --force"
+        + " "
+        + gcp_bucket
+        + "/"
+        + gcp_filename,
+    )
+    print(shell_cmd)
+    subprocess.call(shell_cmd)
+
+    return None
