@@ -831,12 +831,12 @@ def upload_gee_vector_asset(
     if gcp_upload:
         shell_cmd = "gsutil cp " + zip_path + " " + out_path
         print(shell_cmd)
-        # subprocess.call(shell_cmd)
+        subprocess.call(shell_cmd)
 
     if gee_upload:
         shell_cmd = "earthengine upload table --asset_id " + gee_path + " " + out_path
         print(shell_cmd)
-        # subprocess.call(shell_cmd)
+        subprocess.call(shell_cmd)
 
     return gee_path
 
