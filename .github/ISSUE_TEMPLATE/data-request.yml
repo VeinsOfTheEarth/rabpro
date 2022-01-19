@@ -18,13 +18,15 @@ body:
     label: Projection
     description: Ideally enter an EPSG code. Lat-lon is EPSG 4326.
   validations:
-    required: true
+    required: false
 - type: input
   attributes:
     label: Time start
     description: YYYY-MM-DD
   validations:
     required: false
+    minlength: 10
+    maxlength: 10    
 - type: input
   attributes:
     label: Time end
