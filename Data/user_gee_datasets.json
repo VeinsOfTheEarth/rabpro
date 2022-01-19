@@ -23,5 +23,18 @@
                 "resolution": 90
             }
         }
+    },
+    {
+        "id": "users/jstacompute/UiO_PEX_PERPROB_5p0_20181128_2000_2016_NH",
+        "name": "Northern Hemisphere modeled permafrost probabilities",
+        "start_date": "2000-01-01",
+        "end_date": "2016-01-01",
+        "type": "image",
+        "bands": {
+            "b1": {
+                "units": null,
+                "resolution": 90
+            }
+        }
     }
 ]
