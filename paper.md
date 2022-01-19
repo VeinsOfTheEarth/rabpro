@@ -34,10 +34,10 @@ Here is [the documentation](https://VeinsOfTheEarth.github.io/rabpro/).
 
 ## Dependencies
 
-`rabpro` relies on functionality from the following Python packages: GDAL [@gdal2020]
+`rabpro` relies on functionality from the following Python packages: GDAL [@gdal2020], NumPy [@harrisArrayProgrammingNumPy2020],GeoPandas [@jordahlGeopandasGeopandasV02021], Shapely [@gillies2007], pyproj [@snowPyproj4PyprojRelease2021], scikit-image [@vanderwalt2014], scipy [@virtanenSciPyFundamentalAlgorithms2020], and earthengine-api [@gorelickGoogleEarthEngine2017].
 
 ## Acknowledgements
 
-These are our acknowledgements.
+These are our acknowledgements. `rabpro` has received financial support from Los Alamos National Laboratory's Lab Directed Research and Development (LDRD) program.
 
 ## References
