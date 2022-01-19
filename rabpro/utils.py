@@ -845,11 +845,13 @@ def upload_gee_tif_asset(
     tif_path,
     gee_user,
     gcp_bucket,
+    title,
     gcp_folder="",
     gee_folder="",
     time_start="",
     epsg="4326",
     description="",
+    citation="",
     gcp_upload=True,
     gee_upload=True,
 ):
@@ -860,10 +862,12 @@ def upload_gee_tif_asset(
         gee_user ([type]): [description]
         gcp_bucket ([type]): [description]
         gcp_folder ([type]): [description]
+        title ([type]): [description]
         gee_folder (str, optional): [description]. Defaults to "".
         time_start (str, optional): [description]. Defaults to "".
         epsg (str, optional): [description]. Defaults to 4326 (lat-lon).
         description (str, optional): [description]. Defaults to "".
+        citation (str, optional): [description]. Defaults to "".
         gcp_upload (bool, optional): [description]. Defaults to True.
         gee_upload (bool, optional): [description]. Defaults to True.
 
@@ -910,9 +914,17 @@ def upload_gee_tif_asset(
         shell_cmd = (
             'earthengine asset set -p description="'
             + description
+            + r" Suggested citation(s) "
+            + citation
             + '" '
             + gee_folder
             + gee_path
+        )
+        print(shell_cmd)
+        subprocess.call(shell_cmd)
+
+        shell_cmd = (
+            'earthengine asset set -p title="' + title + '" ' + gee_folder + gee_path
         )
         print(shell_cmd)
         subprocess.call(shell_cmd)
