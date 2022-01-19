@@ -24,9 +24,7 @@ body:
     label: Time start
     description: YYYY-MM-DD
   validations:
-    required: false
-    minlength: 10
-    maxlength: 10    
+    required: false        
 - type: input
   attributes:
     label: Time end
