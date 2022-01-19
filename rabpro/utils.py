@@ -769,12 +769,17 @@ def validify_polygons(polys):
 def build_gee_vector_asset(basins, out_path="basins"):
     """Create zipped shapefile for uploading as a Google Earth Engine vector asset.
 
-    Args:
-        basins ([type]): [description]
-        out_path (str, optional): [description]. Defaults to "basins".
+    Parameters
+    ----------
+    basins : [type]
+        [description]
+    out_path : str, optional
+        [description], by default "basins"
 
-    Returns:
-        [type]: [description]
+    Returns
+    -------
+    [type]
+        [description]
 
     Examples
     --------
@@ -785,6 +790,7 @@ def build_gee_vector_asset(basins, out_path="basins"):
         basins = gpd.read_file("tests/results/merit_test/subbasins.json")
         utils.build_gee_vector_asset(basins)
     """
+
     os.makedirs("temp", exist_ok=True)
     temp_dir = Path("temp")
     basins.to_file(filename="temp/" + out_path + ".shp", driver="ESRI Shapefile")
@@ -802,16 +808,30 @@ def upload_gee_vector_asset(
 ):
     """[summary]
 
-    Args:
-        zip_path ([type]): [description]
-        gee_user ([type]): [description]
-        gcp_bucket ([type]): [description]
-        gee_folder (str, optional): [description]. Defaults to "".
-        gcp_upload (bool, optional): [description]. Defaults to True.
-        gee_upload (bool, optional): [description]. Defaults to True.
+    Parameters
+    ----------
+    zip_path : [type]
+        [description]
+    gee_user : [type]
+        [description]
+    gcp_bucket : [type]
+        [description]
+    gee_folder : str, optional
+        [description], by default ""
+    gcp_upload : bool, optional
+        [description], by default True
+    gee_upload : bool, optional
+        [description], by default True
 
-    Returns:
-        [type]: [description]
+    Returns
+    -------
+    [type]
+        [description]
+
+    Raises
+    ------
+    RuntimeError
+        [description]
 
     Examples
     --------
@@ -831,7 +851,12 @@ def upload_gee_vector_asset(
     if gcp_upload:
         shell_cmd = "gsutil cp " + zip_path + " " + out_path
         print(shell_cmd)
-        subprocess.call(shell_cmd)
+        try:
+            subprocess.call(shell_cmd)
+        except:
+            raise RuntimeError(
+                "Errors here could indicate that gsutil is not installed."
+            )
 
     if gee_upload:
         shell_cmd = "earthengine upload table --asset_id " + gee_path + " " + out_path
@@ -857,22 +882,37 @@ def upload_gee_tif_asset(
 ):
     """[summary]
 
-    Args:
-        tif_path ([type]): [description]
-        gee_user ([type]): [description]
-        gcp_bucket ([type]): [description]
-        gcp_folder ([type]): [description]
-        title ([type]): [description]
-        gee_folder (str, optional): [description]. Defaults to "".
-        time_start (str, optional): [description]. Defaults to "".
-        epsg (str, optional): [description]. Defaults to 4326 (lat-lon).
-        description (str, optional): [description]. Defaults to "".
-        citation (str, optional): [description]. Defaults to "".
-        gcp_upload (bool, optional): [description]. Defaults to True.
-        gee_upload (bool, optional): [description]. Defaults to True.
+    Parameters
+    ----------
+    tif_path : [type]
+        [description]
+    gee_user : [type]
+        [description]
+    gcp_bucket : [type]
+        [description]
+    title : [type]
+        [description]
+    gcp_folder : str, optional
+        [description], by default ""
+    gee_folder : str, optional
+        [description], by default ""
+    time_start : str, optional
+        [description], by default ""
+    epsg : str, optional
+        [description], by default "4326"
+    description : str, optional
+        [description], by default ""
+    citation : str, optional
+        [description], by default ""
+    gcp_upload : bool, optional
+        [description], by default True
+    gee_upload : bool, optional
+        [description], by default True
 
-    Returns:
-        [type]: [description]
+    Returns
+    -------
+    [type]
+        [description]
 
     Examples
     --------
