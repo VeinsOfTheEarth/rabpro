@@ -505,7 +505,7 @@ fac_obj.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.merit_utils.neighborhood_vals_from_raster">
-<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vrt_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='139925385464992'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vrt_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='140243856362656'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
 <dd><p>Queries a (virtual) raster object to return an array of neighbors
 surrounding a given point specified by cr (column, row). A shape can be
 provided to return as large of a neighborhood as desired; both dimensions
@@ -947,11 +947,20 @@ GeoDataFrame</p>
 <dt class="sig sig-object py" id="rabpro.utils.build_gee_vector_asset">
 <span class="sig-prename descclassname"><span class="pre">rabpro.utils.</span></span><span class="sig-name descname"><span class="pre">build_gee_vector_asset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">basins</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'basins'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.utils.build_gee_vector_asset" title="Permalink to this definition"></a></dt>
 <dd><p>Create zipped shapefile for uploading as a Google Earth Engine vector asset.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>basins ([type]): [description]
-out_path (str, optional): [description]. Defaults to “basins”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>basins</strong><span class="classifier">[type]</span></dt><dd><p>[description]</p>
 </dd>
-<dt>Returns:</dt><dd><p>[type]: [description]</p>
+<dt><strong>out_path</strong><span class="classifier">str, optional</span></dt><dd><p>[description], by default “basins”</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>[type]</dt><dd><p>[description]</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1232,21 +1241,42 @@ floating-point round-off; see here:
 
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.utils.upload_gee_tif_asset">
-<span class="sig-prename descclassname"><span class="pre">rabpro.utils.</span></span><span class="sig-name descname"><span class="pre">upload_gee_tif_asset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tif_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gee_user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gcp_bucket</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gcp_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gee_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'4326'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gcp_upload</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gee_upload</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.utils.upload_gee_tif_asset" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rabpro.utils.</span></span><span class="sig-name descname"><span class="pre">upload_gee_tif_asset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tif_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gee_user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gcp_bucket</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gcp_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gee_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'4326'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">citation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gcp_upload</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gee_upload</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.utils.upload_gee_tif_asset" title="Permalink to this definition"></a></dt>
 <dd><p>[summary]</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>tif_path ([type]): [description]
-gee_user ([type]): [description]
-gcp_bucket ([type]): [description]
-gcp_folder ([type]): [description]
-gee_folder (str, optional): [description]. Defaults to “”.
-time_start (str, optional): [description]. Defaults to “”.
-epsg (str, optional): [description]. Defaults to 4326 (lat-lon).
-description (str, optional): [description]. Defaults to “”.
-gcp_upload (bool, optional): [description]. Defaults to True.
-gee_upload (bool, optional): [description]. Defaults to True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>tif_path</strong><span class="classifier">[type]</span></dt><dd><p>[description]</p>
 </dd>
-<dt>Returns:</dt><dd><p>[type]: [description]</p>
+<dt><strong>gee_user</strong><span class="classifier">[type]</span></dt><dd><p>[description]</p>
+</dd>
+<dt><strong>gcp_bucket</strong><span class="classifier">[type]</span></dt><dd><p>[description]</p>
+</dd>
+<dt><strong>title</strong><span class="classifier">[type]</span></dt><dd><p>[description]</p>
+</dd>
+<dt><strong>gcp_folder</strong><span class="classifier">str, optional</span></dt><dd><p>[description], by default “”</p>
+</dd>
+<dt><strong>gee_folder</strong><span class="classifier">str, optional</span></dt><dd><p>[description], by default “”</p>
+</dd>
+<dt><strong>time_start</strong><span class="classifier">str, optional</span></dt><dd><p>[description], by default “”</p>
+</dd>
+<dt><strong>epsg</strong><span class="classifier">str, optional</span></dt><dd><p>[description], by default “4326”</p>
+</dd>
+<dt><strong>description</strong><span class="classifier">str, optional</span></dt><dd><p>[description], by default “”</p>
+</dd>
+<dt><strong>citation</strong><span class="classifier">str, optional</span></dt><dd><p>[description], by default “”</p>
+</dd>
+<dt><strong>gcp_upload</strong><span class="classifier">bool, optional</span></dt><dd><p>[description], by default True</p>
+</dd>
+<dt><strong>gee_upload</strong><span class="classifier">bool, optional</span></dt><dd><p>[description], by default True</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>[type]</dt><dd><p>[description]</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1260,15 +1290,34 @@ gee_upload (bool, optional): [description]. Defaults to True.</p>
 <dt class="sig sig-object py" id="rabpro.utils.upload_gee_vector_asset">
 <span class="sig-prename descclassname"><span class="pre">rabpro.utils.</span></span><span class="sig-name descname"><span class="pre">upload_gee_vector_asset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zip_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gee_user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gcp_bucket</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gee_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gcp_upload</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gee_upload</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.utils.upload_gee_vector_asset" title="Permalink to this definition"></a></dt>
 <dd><p>[summary]</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>zip_path ([type]): [description]
-gee_user ([type]): [description]
-gcp_bucket ([type]): [description]
-gee_folder (str, optional): [description]. Defaults to “”.
-gcp_upload (bool, optional): [description]. Defaults to True.
-gee_upload (bool, optional): [description]. Defaults to True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>zip_path</strong><span class="classifier">[type]</span></dt><dd><p>[description]</p>
 </dd>
-<dt>Returns:</dt><dd><p>[type]: [description]</p>
+<dt><strong>gee_user</strong><span class="classifier">[type]</span></dt><dd><p>[description]</p>
+</dd>
+<dt><strong>gcp_bucket</strong><span class="classifier">[type]</span></dt><dd><p>[description]</p>
+</dd>
+<dt><strong>gee_folder</strong><span class="classifier">str, optional</span></dt><dd><p>[description], by default “”</p>
+</dd>
+<dt><strong>gcp_upload</strong><span class="classifier">bool, optional</span></dt><dd><p>[description], by default True</p>
+</dd>
+<dt><strong>gee_upload</strong><span class="classifier">bool, optional</span></dt><dd><p>[description], by default True</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>[type]</dt><dd><p>[description]</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>RuntimeError</dt><dd><p>[description]</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
