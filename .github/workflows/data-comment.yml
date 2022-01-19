@@ -15,4 +15,7 @@ jobs:
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
-            This issue is available for anyone to work on. **Make sure to reference this issue in your pull request.** :sparkles: Thank you for your contribution! :sparkles:
+            Thank you for the request. Maintainers can take the following steps to accept the request:
+            * [ ] upload to GEE with `rabpro.utils.upload_gee_tif_asset`
+            * [ ] add an entry to [Data/user_gee_datasets.json](Data/user_gee_datasets.json)
+            * [ ] test with `rabpro.subbasin_stats.main`
