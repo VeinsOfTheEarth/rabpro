@@ -812,13 +812,13 @@ def upload_gee_vector_asset(
 
     Returns:
         [type]: [description]
-    
+
     Examples
     --------
     .. code-block:: python
 
-        upload_gee_vector_asset("test.zip", "my_gee_user", "my_gcp_bucket")
-    ```
+        from rabpro import utils
+        utils.upload_gee_vector_asset("test.zip", "my_gee_user", "my_gcp_bucket")
     """
     gee_path = (
         "users/" + gee_user + "/" + os.path.splitext(os.path.basename(zip_path))[0]
@@ -831,34 +831,75 @@ def upload_gee_vector_asset(
     if gcp_upload:
         shell_cmd = "gsutil cp " + zip_path + " " + out_path
         print(shell_cmd)
-        # subprocess.call(shell_cmd)
+        subprocess.call(shell_cmd)
 
     if gee_upload:
         shell_cmd = "earthengine upload table --asset_id " + gee_path + " " + out_path
         print(shell_cmd)
-        # subprocess.call(shell_cmd)
+        subprocess.call(shell_cmd)
 
     return gee_path
 
 
 def upload_gee_tif_asset(
-    asset_filename, gcp_bucket, gcp_filename, gee_collection="", time_start="",
+    tif_path,
+    gee_user,
+    gcp_bucket,
+    gcp_folder="",
+    gee_folder="",
+    time_start="",
+    gcp_upload=True,
+    gee_upload=True,
 ):
-    if gee_collection != "":
-        gee_collection = gee_collection + "/"
+    """[summary]
 
-    shell_cmd = (
-        "earthengine upload image" + " --time_start=" + time_start + " --asset_id=",
-        gee_collection
-        + asset_filename
-        + " --crs EPSG:4326"
-        + " --force"
-        + " "
-        + gcp_bucket
-        + "/"
-        + gcp_filename,
+    Args:
+        tif_path ([type]): [description]
+        gee_user ([type]): [description]
+        gcp_bucket ([type]): [description]
+        gcp_folder ([type]): [description]
+        gee_folder (str, optional): [description]. Defaults to "".
+        time_start (str, optional): [description]. Defaults to "".
+        gcp_upload (bool, optional): [description]. Defaults to True.
+        gee_upload (bool, optional): [description]. Defaults to True.
+
+    Returns:
+        [type]: [description]
+
+    Examples
+    --------
+    .. code-block:: python
+
+        from rabpro import utils
+        utils.upload_gee_tif_asset("my.tif", "my_gee_user", "my_gcp_bucket")
+    """
+    gee_path = (
+        "users/" + gee_user + "/" + os.path.splitext(os.path.basename(tif_path))[0]
     )
-    print(shell_cmd)
-    subprocess.call(shell_cmd)
+    if gee_folder == "":
+        out_path = gcp_bucket + "/" + gcp_folder + "/" + os.path.basename(tif_path)
+    else:
+        out_path = gcp_bucket + "/" + gee_folder + "/" + os.path.basename(tif_path)
+
+    if gcp_upload:
+        shell_cmd = "gsutil cp " + tif_path + " " + out_path
+        print(shell_cmd)
+        subprocess.call(shell_cmd)
+
+    if gee_upload:
+        shell_cmd = (
+            "earthengine upload image"
+            + " --time_start="
+            + time_start
+            + " --asset_id="
+            + gee_folder
+            + gee_path
+            + " --crs EPSG:4326"
+            + " --force"
+            + " "
+            + out_path
+        )
+        print(shell_cmd)
+        subprocess.call(shell_cmd)
 
     return None

@@ -66,4 +66,3 @@ file_names = [
     drive.CreateFile({"id": id}).GetContentFile(name)
     for id, name in zip(file_ids, file_names)
 ]
-

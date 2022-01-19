@@ -38,3 +38,4 @@ docs/_build
 .Rhistory
 .Rproj.user
 Makefile
+client_secrets.json
