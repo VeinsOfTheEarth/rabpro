@@ -26,6 +26,14 @@ bibliography: rabpro.bib
 
 ``rabpro`` is a great project! It is related to [@schwenkRivGraphAutomaticExtraction2021]
 
+## Statement of Need
+
+## Functionality
+
+## Dependencies
+
+`rabpro` relies on functionality from the following Python packages:
+
 ## Acknowledgements
 
 These are our acknowledgements.
