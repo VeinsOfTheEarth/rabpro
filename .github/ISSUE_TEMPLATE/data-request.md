@@ -1,8 +1,6 @@
 ---
 name: Data request
 description: This template is for requesting a dataset to be added to the rabpro gee catalog.
-about: Data request
-title: Data request
 labels: data request
 assignees: ''
 
