@@ -24,7 +24,7 @@ bibliography: rabpro.bib
 
 ## Summary
 
-``rabpro`` is a great project!
+``rabpro`` is a great project! It is related to [@schwenkRivGraphAutomaticExtraction2021]
 
 ## Acknowledgements
 
