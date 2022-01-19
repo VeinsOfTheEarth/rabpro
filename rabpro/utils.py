@@ -766,7 +766,7 @@ def validify_polygons(polys):
     return geomsv
 
 
-def build_gee_vector_asset(basins, out_path="basins"):
+def build_gee_vector_asset(basins, out_path="basins.zip"):
     """Create zipped shapefile for uploading as a Google Earth Engine vector asset.
 
     Parameters
@@ -791,16 +791,19 @@ def build_gee_vector_asset(basins, out_path="basins"):
         utils.build_gee_vector_asset(basins)
     """
 
-    os.makedirs("temp", exist_ok=True)
-    temp_dir = Path("temp")
-    basins.to_file(filename="temp/" + out_path + ".shp", driver="ESRI Shapefile")
+    path_parts = out_path.split("/")
+    out_dir = "/".join(path_parts[0 : len(path_parts) - 1])
 
-    with zipfile.ZipFile(out_path + ".zip", "w") as zipf:
+    os.makedirs("temp/" + out_dir, exist_ok=True)
+    temp_dir = Path("temp/" + out_dir)
+    basins.to_file(filename="temp/" + out_dir + "/basins.shp", driver="ESRI Shapefile")
+
+    with zipfile.ZipFile(out_path, "w") as zipf:
         for f in temp_dir.glob("*"):
             zipf.write(f, arcname=f.name)
 
     shutil.rmtree("temp")
-    return out_path + ".zip"
+    return out_path
 
 
 def upload_gee_vector_asset(
@@ -859,7 +862,9 @@ def upload_gee_vector_asset(
             )
 
     if gee_upload:
-        shell_cmd = "earthengine upload table --asset_id " + gee_path + " " + out_path
+        shell_cmd = (
+            "earthengine upload table --force --asset_id " + gee_path + " " + out_path
+        )
         print(shell_cmd)
         subprocess.call(shell_cmd)
 
