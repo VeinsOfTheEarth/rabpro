@@ -7,10 +7,10 @@ authors:
   - name: Jon Schwenk
     orcid: 0000-0001-5803-9686
     affiliation: 1
-  - name: Tal
+  - name: Tal Zussman
     orcid: 0000-0003-3087-8511
     affiliation: 2
-  - name: Jem
+  - name: Jemma Stachelek
     orcid: 0000-0002-5924-2464
     affiliation: 1
 affiliations:
@@ -30,9 +30,11 @@ bibliography: rabpro.bib
 
 ## Functionality
 
+Here is [the documentation](https://VeinsOfTheEarth.github.io/rabpro/).
+
 ## Dependencies
 
-`rabpro` relies on functionality from the following Python packages:
+`rabpro` relies on functionality from the following Python packages: GDAL [@gdal2020]
 
 ## Acknowledgements
 
