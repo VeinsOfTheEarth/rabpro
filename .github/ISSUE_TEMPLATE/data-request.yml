@@ -2,7 +2,7 @@ name: Data request
 description: This template is for requesting a dataset to be added to the rabpro gee catalog.
 labels: [data request]
 body:
-- type: textarea
+- type: input
   attributes:
     label: Title    
   validations:
