@@ -16,6 +16,6 @@ jobs:
           issue-number: ${{ github.event.issue.number }}
           body: |
             Thank you for your request! Maintainers can take the following steps to accept it:
-            * [ ] upload to GEE with `rabpro.utils.upload_gee_tif_asset`
+            * [ ] upload to GEE with `rabpro.utils.upload_gee_tif_asset` (no spaces or extra periods are allowed in tif file pathing)            
             * [ ] add an entry to [Data/user_gee_datasets.json](Data/user_gee_datasets.json)
             * [ ] test with `rabpro.subbasin_stats.main`
