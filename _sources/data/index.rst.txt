@@ -44,6 +44,11 @@ an updated version is retrieved.
 
 User Datasets
 ~~~~~~~~~~~~~
+
+.. csv-table:: Datasets included in the user data catalog:
+   :file: ../user_gee_datasets.csv
+   :align: center
+
 You can add custom datasets to GEE by following the instructions `here
 <https://developers.google.com/earth-engine/guides/image_upload>`__. To ensure
 compatibility with RaBPro, upload GeoTIFFs and specify a no-data value if
