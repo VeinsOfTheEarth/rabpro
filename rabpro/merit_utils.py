@@ -7,9 +7,9 @@ Utility functions for dealing with MERIT datasets
 
 import numpy as np
 import pandas as pd
-from scipy.ndimage.morphology import distance_transform_edt
-from shapely.geometry import Polygon, LineString
 from shapely import ops
+from shapely.geometry import Polygon, LineString
+from scipy.ndimage.morphology import distance_transform_edt
 
 from rabpro import utils as ru
 
