@@ -1,4 +1,6 @@
 import os
+import glob
+import rabpro
 import config
 import subprocess
 
@@ -6,6 +8,16 @@ filename = os.path.expanduser(config.filename)
 out_folder = os.path.expanduser(config.out_folder)
 os.makedirs(out_folder, exist_ok=True)
 nlayers = config.nlayers
+
+title = config.title
+description = config.description
+citation = config.citation
+time_start = config.time_start
+epsg = config.epsg
+
+gee_user = config.gee_user
+gcp_bucket = config.gcp_bucket
+gcp_folder = config.gcp_folder
 
 
 def get_layer(filename, out_folder, layer):
@@ -30,5 +42,25 @@ def pull_tifs_from_nc(filename, out_folder, nlayers):
     return out_folder
 
 
+def push_tifs(out_folder):
+    tif_list = glob.glob(out_folder + "*")
+    # tif = tif_list[0]
+    rabpro.utils.upload_gee_tif_asset(
+        tif,
+        gee_user,
+        gcp_bucket,
+        title,
+        gcp_folder=gcp_folder,
+        description=description,
+        citation=citation,
+        time_start=time_start,
+        epsg=epsg,
+    )
+    return None
+
+
 #  ---- Execute
-pull_tifs_from_nc(filename, out_folder, nlayers)
+if os.path.splitext(filename)[1] == ".nc":
+    pull_tifs_from_nc(filename, out_folder, nlayers)
+
+push_tifs(out_folder)
