@@ -5,15 +5,12 @@ Elevation Profile Computation (elev_profile.py)
 Description
 """
 
-import os
-import sys
-
-import geopandas as gpd
 import numpy as np
-import scipy.interpolate as si
 from osgeo import gdal
 from pyproj import CRS
-from shapely.geometry import LineString, Point
+import geopandas as gpd
+import scipy.interpolate as si
+from shapely.geometry import Point
 
 from rabpro import merit_utils as mu
 from rabpro import utils as ru
