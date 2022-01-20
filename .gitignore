@@ -39,3 +39,4 @@ docs/_build
 .Rproj.user
 Makefile
 client_secrets.json
+config.py
