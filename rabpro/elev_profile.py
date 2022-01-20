@@ -58,6 +58,9 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
         intype = "point"
     else:
         intype = "centerline"  # deprecated
+        raise DeprecationWarning(
+            "elev_profile only supports single 'point' coordinate pairs, not multipoint 'centerlines"
+        )
 
     # Here, we get the MERIT flowline corresponding to the centerline. If we
     # are provided only a single point, the flowline is delineated to its
