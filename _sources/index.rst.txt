@@ -13,6 +13,7 @@ Engine <https://developers.google.com/earth-engine/>`_.
 .. toctree::
    :maxdepth: 1
    :caption: Contents:
+   :hidden:
 
    install/index
    background/index
@@ -21,3 +22,36 @@ Engine <https://developers.google.com/earth-engine/>`_.
    contributing/index
    issues/index
    apiref/index
+
+.. panels::
+
+   :card: + text-center bg-secondary
+   .. link-button:: install/index
+        :type: ref
+        :text: Installation
+        :classes: btn-link stretched-link font-weight-bold
+   ---   
+   :card: + text-center bg-secondary
+   .. link-button:: background/index
+        :type: ref
+        :text: Background
+        :classes: btn-link stretched-link font-weight-bold
+   ---   
+   :card: + text-center bg-secondary
+   .. link-button:: data/index
+        :type: ref
+        :text: GEE and Data
+        :classes: btn-link stretched-link font-weight-bold
+   ---
+   :card: + text-center bg-secondary
+   .. link-button:: examples/index
+        :type: ref
+        :text: Examples
+        :classes: btn-link stretched-link font-weight-bold
+   ---
+   :column: col-lg-12 p-2
+   :card: + text-center bg-info
+   .. link-button:: apiref/index
+        :type: ref
+        :text: API Reference
+        :classes: btn-link stretched-link font-weight-bold
