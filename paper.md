@@ -26,6 +26,8 @@ bibliography: rabpro.bib
 
 ``rabpro`` is a great project! It is related to [@schwenkRivGraphAutomaticExtraction2021]
 
+It is similar in function to `pysheds` [@bartos_2020].
+
 ## Statement of Need
 
 ## Functionality
