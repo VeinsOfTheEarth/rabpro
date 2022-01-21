@@ -5,6 +5,9 @@ import config
 import subprocess
 import datetime
 
+dry_run = config.dry_run
+gcp_upload = config.gcp_upload
+
 filename = os.path.expanduser(config.filename)
 out_folder = os.path.expanduser(config.out_folder)
 os.makedirs(out_folder, exist_ok=True)
@@ -21,7 +24,7 @@ epsg = config.epsg
 gee_user = config.gee_user
 gcp_bucket = config.gcp_bucket
 gcp_folder = config.gcp_folder
-
+gee_folder = config.gee_folder
 
 # def plus_1(x):
 #     return x + 1
@@ -29,8 +32,7 @@ gcp_folder = config.gcp_folder
 
 
 def get_layer(filename, out_folder, layer, out_path=None):
-    """get_layer(filename, out_folder, 1)
-    """
+    """get_layer(filename, out_folder, 1)"""
     if out_path is None:
         out_path = "{}{}_{}.tif".format(out_folder, os.path.basename(filename), layer)
 
@@ -63,7 +65,7 @@ def pull_tifs_from_nc(
     return out_folder
 
 
-def push_tifs(out_folder):
+def push_tifs(out_folder, **kwargs):
     tif_list = glob.glob(out_folder + "*")
     # tif = tif_list[0]
     for tif in tif_list:
@@ -77,6 +79,9 @@ def push_tifs(out_folder):
             citation=citation,
             time_start=time_start,
             epsg=epsg,
+            gee_folder=gee_folder,
+            dry_run=dry_run,
+            gcp_upload=gcp_upload,
         )
     return None
 
@@ -85,4 +90,4 @@ def push_tifs(out_folder):
 if os.path.splitext(filename)[1] == ".nc":
     pull_tifs_from_nc(filename, out_folder, nlayers, time_start, time_frequency)
 
-push_tifs(out_folder)
+push_tifs(out_folder, gee_folder=gee_folder, dry_run=dry_run, gcp_upload=gcp_upload)

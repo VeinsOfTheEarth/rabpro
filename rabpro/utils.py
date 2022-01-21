@@ -5,6 +5,7 @@ Utility functions (utils.py)
 """
 
 import os
+import sys
 import shutil
 import zipfile
 import platform
@@ -884,6 +885,7 @@ def upload_gee_tif_asset(
     citation="",
     gcp_upload=True,
     gee_upload=True,
+    dry_run=False,
 ):
     """[summary]
 
@@ -926,26 +928,46 @@ def upload_gee_tif_asset(
         from rabpro import utils
         utils.upload_gee_tif_asset("my.tif", "my_gee_user", "my_gcp_bucket")
     """
-    gee_path = (
-        "users/" + gee_user + "/" + os.path.splitext(os.path.basename(tif_path))[0]
-    )
+
     if gee_folder == "":
+        gee_path = (
+            "users/" + gee_user + "/" + os.path.splitext(os.path.basename(tif_path))[0]
+        )
         out_path = gcp_bucket + "/" + gcp_folder + "/" + os.path.basename(tif_path)
     else:
         out_path = gcp_bucket + "/" + gee_folder + "/" + os.path.basename(tif_path)
+        gee_path = (
+            "users/"
+            + gee_user
+            + "/"
+            + gee_folder
+            + "/"
+            + os.path.splitext(os.path.basename(tif_path))[0]
+        )
+        shell_cmd = "earthengine create collection users/" + gee_user + "/" + gee_folder
+        print(shell_cmd)
+        if not dry_run:
+            try:
+                subprocess.call(shell_cmd)
+            except:
+                pass
 
     if gcp_upload:
         shell_cmd = "gsutil cp " + tif_path + " " + out_path
         print(shell_cmd)
-        subprocess.call(shell_cmd)
+        if not dry_run:
+            subprocess.call(shell_cmd)
 
     if gee_upload:
+        if sys.platform == "win32" and int(time_start[0:4]) < 1970:
+            raise Exception(
+                "Can't upload GEE assets on Windows with time stamps before 1970 \n https://issuetracker.google.com/issues/191997926"
+            )
         shell_cmd = (
             "earthengine upload image"
             + " --time_start="
             + time_start
             + " --asset_id="
-            + gee_folder
             + gee_path
             + " --crs EPSG:"
             + str(epsg)
@@ -954,24 +976,26 @@ def upload_gee_tif_asset(
             + out_path
         )
         print(shell_cmd)
-        subprocess.call(shell_cmd)
+        if not dry_run:
+            subprocess.call(shell_cmd)
 
+        if gee_folder != "":
+            gee_path = "users/" + gee_user + "/" + gee_folder
         shell_cmd = (
             'earthengine asset set -p description="'
             + description
             + r" Suggested citation(s) "
             + citation
             + '" '
-            + gee_folder
             + gee_path
         )
-        print(shell_cmd)
-        subprocess.call(shell_cmd)
+        # print(shell_cmd)
+        if not dry_run:
+            subprocess.call(shell_cmd)
 
-        shell_cmd = (
-            'earthengine asset set -p title="' + title + '" ' + gee_folder + gee_path
-        )
-        print(shell_cmd)
-        subprocess.call(shell_cmd)
+        shell_cmd = 'earthengine asset set -p title="' + title + '" ' + gee_path
+        # print(shell_cmd)
+        if not dry_run:
+            subprocess.call(shell_cmd)
 
     return None
