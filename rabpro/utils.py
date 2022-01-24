@@ -959,10 +959,6 @@ def upload_gee_tif_asset(
             subprocess.call(shell_cmd)
 
     if gee_upload:
-        if sys.platform == "win32" and int(time_start[0:4]) < 1970:
-            raise Exception(
-                "Can't upload GEE assets on Windows with time stamps before 1970 \n https://issuetracker.google.com/issues/191997926"
-            )
         shell_cmd = (
             "earthengine upload image"
             + " --time_start="
@@ -977,7 +973,16 @@ def upload_gee_tif_asset(
         )
         print(shell_cmd)
         if not dry_run:
-            subprocess.call(shell_cmd)
+            try:
+                subprocess.call(shell_cmd)
+            except:
+                print(
+                    r"Are you on Windows? Try installing this fork of the earthengine-api package to enable timestamp handling: \n https://github.com/jsta/earthengine-api"
+                )
+                if sys.platform == "win32" and int(time_start[0:4]) < 1970:
+                    raise Exception(
+                        "Can't upload GEE assets on Windows with time stamps before 1970 \n https://issuetracker.google.com/issues/191997926"
+                    )
 
         if gee_folder != "":
             gee_path = "users/" + gee_user + "/" + gee_folder
