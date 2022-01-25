@@ -9,6 +9,7 @@ import dateutil
 dry_run = config.dry_run
 gcp_upload = config.gcp_upload
 gee_upload = config.gee_upload
+gee_force = config.gee_force
 
 filename = os.path.expanduser(config.filename)
 out_folder = os.path.expanduser(config.out_folder)
@@ -116,9 +117,10 @@ def push_tifs(out_folder, out_paths, **kwargs):
             time_start=time_start,
             epsg=epsg,
             gee_folder=gee_folder,
-            dry_run=dry_run,
             gcp_upload=gcp_upload,
             gee_upload=gee_upload,
+            dry_run=dry_run,
+            gee_force=gee_force,
         )
     return None
 
@@ -134,7 +136,8 @@ push_tifs(
     out_paths,
     time_frequency=time_frequency,
     gee_folder=gee_folder,
-    dry_run=dry_run,
     gcp_upload=gcp_upload,
     gee_upload=gee_upload,
+    dry_run=dry_run,
+    gee_force=gee_force,
 )

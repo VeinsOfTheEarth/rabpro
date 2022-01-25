@@ -886,6 +886,7 @@ def upload_gee_tif_asset(
     gcp_upload=True,
     gee_upload=True,
     dry_run=False,
+    gee_force=False,
 ):
     """[summary]
 
@@ -915,6 +916,10 @@ def upload_gee_tif_asset(
         [description], by default True
     gee_upload : bool, optional
         [description], by default True
+    dry_run : bool, optional
+        [description], by default False
+    gee_force : bool, optional
+        [description], by default False
 
     Returns
     -------
@@ -952,18 +957,15 @@ def upload_gee_tif_asset(
             subprocess.call(shell_cmd)
 
     if gee_upload:
-        shell_cmd = (
-            "earthengine upload image"
-            + " --time_start="
-            + time_start
-            + " --asset_id="
-            + gee_path
-            + " --crs EPSG:"
-            + str(epsg)
-            + " --force"
-            + " "
-            + out_path
+
+        force = ""
+        if gee_force:
+            force = "--force "
+
+        shell_cmd = "earthengine upload image --time_start={} --asset_id={} --crs EPSG:{} {}{}".format(
+            time_start, gee_path, epsg, force, out_path
         )
+
         print(shell_cmd)
         if not dry_run:
             try:
