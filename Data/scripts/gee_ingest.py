@@ -78,10 +78,16 @@ def pull_tifs_from_nc(
     for i, opath in zip(range(0, nlayers), out_paths):
         get_layer(filename, out_folder, i + 1, opath, dry_run=dry_run)
 
-    return out_folder
+    return out_paths
 
 
-def push_tifs(out_folder, **kwargs):
+def get_timestamp_month(x):
+    res = x.split("/")
+    res = os.path.splitext(res[len(res) - 1])[0]
+    return res + "-01"
+
+
+def push_tifs(out_folder, out_paths, **kwargs):
     if gee_folder != "":
         shell_cmd = "earthengine create collection users/" + gee_user + "/" + gee_folder
         print(shell_cmd)
@@ -92,9 +98,13 @@ def push_tifs(out_folder, **kwargs):
                 except:
                     pass
 
-    tif_list = glob.glob(out_folder + "/*")
+    tif_list = glob.glob(out_folder + "/*.tif")[0:nlayers]
+
+    if time_frequency == "months":
+        time_start_list = [get_timestamp_month(path) for path in out_paths]
+
     # tif = tif_list[0]
-    for tif in tif_list:
+    for tif, time_start in zip(tif_list, time_start_list):
         rabpro.utils.upload_gee_tif_asset(
             tif,
             gee_user,
@@ -115,12 +125,14 @@ def push_tifs(out_folder, **kwargs):
 
 #  ---- Execute
 if os.path.splitext(filename)[1] == ".nc":
-    pull_tifs_from_nc(
+    out_paths = pull_tifs_from_nc(
         filename, out_folder, nlayers, time_start, time_frequency, dry_run
     )
 
 push_tifs(
     out_folder,
+    out_paths,
+    time_frequency=time_frequency,
     gee_folder=gee_folder,
     dry_run=dry_run,
     gcp_upload=gcp_upload,
