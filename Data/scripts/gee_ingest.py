@@ -82,6 +82,16 @@ def pull_tifs_from_nc(
 
 
 def push_tifs(out_folder, **kwargs):
+    if gee_folder != "":
+        shell_cmd = "earthengine create collection users/" + gee_user + "/" + gee_folder
+        print(shell_cmd)
+        if gee_upload:
+            if not dry_run:
+                try:
+                    subprocess.call(shell_cmd)
+                except:
+                    pass
+
     tif_list = glob.glob(out_folder + "/*")
     # tif = tif_list[0]
     for tif in tif_list:
