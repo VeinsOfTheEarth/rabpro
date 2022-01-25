@@ -946,11 +946,12 @@ def upload_gee_tif_asset(
         )
         shell_cmd = "earthengine create collection users/" + gee_user + "/" + gee_folder
         print(shell_cmd)
-        if not dry_run:
-            try:
-                subprocess.call(shell_cmd)
-            except:
-                pass
+        if gee_upload:
+            if not dry_run:
+                try:
+                    subprocess.call(shell_cmd)
+                except:
+                    pass
 
     if gcp_upload:
         shell_cmd = "gsutil cp " + tif_path + " " + out_path
