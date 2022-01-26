@@ -11,12 +11,14 @@ CATALOG_URL = "https://earthengine-stac.storage.googleapis.com/catalog/catalog.j
 
 
 def parse_date(timestamp):
-    return datetime.fromtimestamp(timestamp / 1000, tz=timezone.utc).strftime("%Y-%m-%d")
+    return datetime.fromtimestamp(timestamp / 1000, tz=timezone.utc).strftime(
+        "%Y-%m-%d"
+    )
 
 
 def parse_url(url, deprecated, verbose):
     try:
-        response = requests.get(url, proxies={"http": "http://proxyout.lanl.gov:8080")
+        response = requests.get(url)
         if response.status_code != 200:
             print(f"{url} returned error status code {response.status_code}")
             return None
@@ -81,7 +83,9 @@ def parse_url(url, deprecated, verbose):
 
         try:
             bandslist = ee.List(list(gee_bands.keys()))
-            get_resolution = lambda b: ee.List([b, img.select([b]).projection().nominalScale()])
+            get_resolution = lambda b: ee.List(
+                [b, img.select([b]).projection().nominalScale()]
+            )
             resolutions = bandslist.map(get_resolution).getInfo()
             for band, resolution in resolutions:
                 gee_bands[band]["resolution"] = resolution
@@ -105,7 +109,7 @@ def parse_url(url, deprecated, verbose):
 
 def ee_catalog(deprecated, verbose):
     catalog = []
-    obj = requests.get(CATALOG_URL, proxies={"https": "http://proxyout.lanl.gov:8080"}).json()
+    obj = requests.get(CATALOG_URL).json()
 
     for assets in obj["links"]:
         try:
@@ -117,7 +121,9 @@ def ee_catalog(deprecated, verbose):
         except Exception as e:
             print(e)
 
-    filepath = os.path.join(os.path.abspath(os.path.dirname(__file__)), "gee_datasets.json")
+    filepath = os.path.join(
+        os.path.abspath(os.path.dirname(__file__)), "gee_datasets.json"
+    )
     with open(filepath, "w") as f:
         json.dump(catalog, f, indent=4)
 
