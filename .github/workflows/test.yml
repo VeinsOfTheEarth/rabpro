@@ -1,0 +1,10 @@
+name: test
+on:
+  workflow_dispatch:
+
+job-name:
+  runs-on: 'ubuntu-latest'
+  steps:
+    - uses: actions/checkout@v2
+    # Builds the package using the standard configuration
+    - uses: cascode-labs/build-conda-action/action.yml@v0
