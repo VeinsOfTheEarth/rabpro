@@ -4,10 +4,10 @@ on:
 
 jobs:
   build:
-    runs-on: 'ubuntu-latest'
+    runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout repo
         uses: actions/checkout@v2
-      # Builds the package using the standard configuration
-      - name: test
+
+      - name: Set up Python
         uses: cascode-labs/build-conda-action/action.yml@v0
