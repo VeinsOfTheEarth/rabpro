@@ -46,9 +46,9 @@ class DataTestCase(unittest.TestCase):
         data, task = self.rpo.basin_stats(datasets, folder="rabpro test", test=True)
 
         # Only check one set of stats for time-series data, but check length is equal
-        self.assertEqual(len(data["features"]), length)
+        self.assertEqual(len(data[0]["features"]), length)
 
-        ret_stats = data["features"][0]["properties"]
+        ret_stats = data[0]["features"][0]["properties"]
         print(f"Expected stats: {stats}")
         print(f"Returned stats: {ret_stats}")
 
@@ -62,12 +62,12 @@ class DataTestCase(unittest.TestCase):
         )
 
         for _ in range(12):
-            status = task.status()["state"]
+            status = task[0].status()["state"]
             if status in ["READY", "RUNNING", "COMPLETED"]:
                 break
             time.sleep(10)
 
-        self.assertTrue(task.status()["state"] in ["READY", "RUNNING", "COMPLETED"])
+        self.assertTrue(task[0].status()["state"] in ["READY", "RUNNING", "COMPLETED"])
 
 
 class MERITTest(DataTestCase):
