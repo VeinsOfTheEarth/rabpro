@@ -67,7 +67,7 @@ class DataTestCase(unittest.TestCase):
                 break
             time.sleep(10)
 
-        self.assertTrue(task.status()["state"] in ["READY", "RUNNING", "COMPLETED"])
+        self.assertTrue(task[0].status()["state"] in ["READY", "RUNNING", "COMPLETED"])
 
 
 class MERITTest(DataTestCase):
