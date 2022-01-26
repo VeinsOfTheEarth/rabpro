@@ -9,6 +9,9 @@ on:
       - "tests/**"
       - .coveragerc
       - setup.py
+  pull_request:
+    paths:
+      - "rabpro/**"
 
 jobs:
   build:
