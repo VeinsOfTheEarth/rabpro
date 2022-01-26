@@ -7,7 +7,7 @@ jobs:
     runs-on: 'ubuntu-latest'
     steps:
       - name: checkout
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
       # Builds the package using the standard configuration
       - name: test
-      - uses: cascode-labs/build-conda-action/action.yml@v0
+        uses: cascode-labs/build-conda-action/action.yml@v0
