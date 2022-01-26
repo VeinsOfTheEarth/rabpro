@@ -11,4 +11,4 @@ jobs:
         uses: actions/checkout@v2
 
       - name: conda-build
-        uses: cascode-labs/build-conda-action/action.yml@v0
+        uses: cascode-labs/build-conda-action/action.yml
