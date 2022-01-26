@@ -46,9 +46,9 @@ class DataTestCase(unittest.TestCase):
         data, task = self.rpo.basin_stats(datasets, folder="rabpro test", test=True)
 
         # Only check one set of stats for time-series data, but check length is equal
-        self.assertEqual(len(data["features"]), length)
+        self.assertEqual(len(data[0]["features"]), length)
 
-        ret_stats = data["features"][0]["properties"]
+        ret_stats = data[0]["features"][0]["properties"]
         print(f"Expected stats: {stats}")
         print(f"Returned stats: {ret_stats}")
 
@@ -94,7 +94,7 @@ class MERITTest(DataTestCase):
 
         self.datatest(coords, da, True, "merit_test_check", "merit_test")
         self.metatest("merit", 50, 50)
-        self.stattest(stats[0], [data])
+        self.stattest(stats, [data])
 
     def test_imgcol(self):
         coords = (56.22659, -130.87974)
@@ -112,7 +112,7 @@ class MERITTest(DataTestCase):
 
         self.datatest(coords, da, True, "merit_imgcol_check", "merit_imgcol")
         self.metatest("merit", 50, 50)
-        self.stattest(stats[0], [data], length=3)
+        self.stattest(stats, [data], length=3)
 
     def test_radius(self):
         coords = (56.22659, -130.87974)
@@ -156,7 +156,7 @@ class HydroBasinsTest(DataTestCase):
 
         self.datatest(coords, da, False, "hydro_test_check", "hydro_test")
         self.metatest("hydrobasins", 50, 50)
-        self.stattest(stats[0], [data])
+        self.stattest(stats, [data])
 
 
 if __name__ == "__main__":
