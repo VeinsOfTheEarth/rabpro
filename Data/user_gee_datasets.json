@@ -7,7 +7,46 @@
         "type": "image_collection",
         "bands": {
             "None": {
-                "resolution":90
+                "resolution": 90
+            }
+        }
+    },
+    {
+        "id": "users/jstacompute/FLO1K_qma",
+        "name": "FLOW1K qma",
+        "start_date": "1960-01-01",
+        "end_date": "2015-01-01",
+        "type": "image_collection",
+        "bands": {
+            "b1": {
+                "units": null,
+                "resolution": 90
+            }
+        }
+    },
+    {
+        "id": "users/jstacompute/UiO_PEX_PERPROB_5p0_20181128_2000_2016_NH",
+        "name": "Northern Hemisphere modeled permafrost probabilities",
+        "start_date": "2000-01-01",
+        "end_date": "2016-01-01",
+        "type": "image",
+        "bands": {
+            "b1": {
+                "units": null,
+                "resolution": 90
+            }
+        }
+    },
+    {
+        "id": "users/jstacompute/yang2020",
+        "name": "Yang et al. 2020 - Nitrogen deposition",
+        "start_date": "1901-01-01",
+        "end_date": "2018-01-01",
+        "type": "image_collection",
+        "bands": {
+            "b1": {
+                "units": null,
+                "resolution": 90
             }
         }
     }

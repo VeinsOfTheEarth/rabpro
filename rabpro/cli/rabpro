@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import argparse
-import sys
 
 import rabpro.data_utils as du
 
@@ -9,7 +8,9 @@ def download(args):
     if args.source == "merit":
         if args.username is None or args.password is None or args.target is None:
             raise ValueError("MERIT data requires a target, username, and password.")
-        du.merit_hydro(args.target, args.username, args.password, args.proxy, args.preserve)
+        du.merit_hydro(
+            args.target, args.username, args.password, args.proxy, args.preserve
+        )
     elif args.source == "hydrobasins":
         du.hydrobasins(args.proxy, args.preserve)
     elif args.source == "gee":
@@ -34,7 +35,9 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.set_defaults(func=None)
-    subparsers = parser.add_subparsers(title="subcommands", help="Subcommands for rabpro")
+    subparsers = parser.add_subparsers(
+        title="subcommands", help="Subcommands for rabpro"
+    )
 
     # Download subparser
     parser_dl = subparsers.add_parser(
@@ -42,11 +45,17 @@ if __name__ == "__main__":
     )
 
     parser_dl.add_argument(
-        "source", type=str, choices=["merit", "hydrobasins", "gee"], help="Data to download",
+        "source",
+        type=str,
+        choices=["merit", "hydrobasins", "gee"],
+        help="Data to download",
     )
 
     parser_dl.add_argument(
-        "target", type=str, nargs="?", help="MERIT tile (e.g. 'n30w090'). Required for MERIT data."
+        "target",
+        type=str,
+        nargs="?",
+        help="MERIT tile (e.g. 'n30w090'). Required for MERIT data.",
     )
 
     parser_dl.add_argument(
@@ -60,7 +69,7 @@ if __name__ == "__main__":
     parser_dl.set_defaults(func=download)
 
     parser_dl.add_argument(
-        "proxy",
+        "--proxy",
         type=str,
         nargs="?",
         default=None,
@@ -68,7 +77,9 @@ if __name__ == "__main__":
     )
 
     parser_dl.add_argument(
-        "--preserve", action="store_false", help="Preserve artifacts and don't overwrite files",
+        "--preserve",
+        action="store_false",
+        help="Preserve artifacts and don't overwrite files",
     )
 
     # Create file structure subparser
@@ -102,7 +113,9 @@ if __name__ == "__main__":
     parser_delete.set_defaults(func=delete)
 
     # Get paths subparser
-    parser_paths = subparsers.add_parser("paths", help="Get RaBPro file structure paths")
+    parser_paths = subparsers.add_parser(
+        "paths", help="Get RaBPro file structure paths"
+    )
 
     parser_paths.add_argument(
         "--datapath", type=str, nargs="?", default=None, help="Datapath, optional."

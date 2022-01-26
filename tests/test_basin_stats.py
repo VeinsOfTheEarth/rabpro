@@ -67,14 +67,7 @@ def test_categorical_imgcol():
 def test_timeindexed_imgcol():
 
     data, task = rabpro.subbasin_stats.main(
-        [
-            Dataset(
-                "JRC/GSW1_3/YearlyHistory",
-                "waterClass",
-            )
-        ],
-        sb_inc_gdf=gdf,
-        test=True,
+        [Dataset("JRC/GSW1_3/YearlyHistory", "waterClass",)], sb_inc_gdf=gdf, test=True,
     )
 
     res = pd.concat([clean_res(feature) for feature in data["features"]])
@@ -106,12 +99,7 @@ def test_timeindexedspecific_imgcol():
 def test_nontimeindexed_imgcol():
 
     data, task = rabpro.subbasin_stats.main(
-        [
-            Dataset(
-                "JRC/GSW1_3/MonthlyRecurrence",
-                "monthly_recurrence",
-            )
-        ],
+        [Dataset("JRC/GSW1_3/MonthlyRecurrence", "monthly_recurrence",)],
         sb_inc_gdf=gdf,
         test=True,
     )

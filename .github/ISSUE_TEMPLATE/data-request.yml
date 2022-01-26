@@ -1,0 +1,44 @@
+name: Data request
+description: This template is for requesting a dataset to be added to the rabpro gee catalog.
+labels: [data request]
+body:
+- type: input
+  attributes:
+    label: Title    
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Description    
+    description: Include data units, location, date of download, etc. Can be copy-pasted from original source.
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Citation    
+  validations:
+    required: true
+- type: input
+  attributes:
+    label: Projection
+    description: Ideally enter an EPSG code. Lat-lon is EPSG 4326.
+  validations:
+    required: false
+- type: input
+  attributes:
+    label: Time start
+    description: YYYY-MM-DD
+  validations:
+    required: false        
+- type: input
+  attributes:
+    label: Time end
+    description: YYYY-MM-DD
+  validations:
+    required: false
+- type: input
+  attributes:
+    label: URL    
+  validations:
+    required: true
+

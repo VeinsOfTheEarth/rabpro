@@ -61,6 +61,7 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
     "sphinx.ext.githubpages",
+    "sphinx_panels",
 ]
 
 autodoc_default_options = {"exclude-members": "__weakref__"}
@@ -93,6 +94,13 @@ templates_path = ["_templates"]
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
+panels_css_variables = {
+    "tabs-color-label-active": "hsla(231, 99%, 66%, 1)",
+    "tabs-color-label-inactive": "rgba(178, 206, 245, 0.62)",
+    "tabs-color-overline": "rgb(207, 236, 238)",
+    "tabs-color-underline": "rgb(207, 236, 238)",
+    "tabs-size-label": "1rem",
+}
 
 # -- Options for HTML output -------------------------------------------------
 

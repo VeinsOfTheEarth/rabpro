@@ -28,6 +28,7 @@ _PATH_CONSTANTS = {
 }
 
 CATALOG_URL = "https://raw.githubusercontent.com/VeinsOfTheEarth/rabpro/main/Data/gee_datasets.json"
+CATALOG_URL_USER = "https://raw.githubusercontent.com/VeinsOfTheEarth/rabpro/main/Data/user_gee_datasets.json"
 
 _GEE_CACHE_DAYS = 1
 
@@ -44,7 +45,7 @@ hydrobasins_paths = {
 }
 
 
-def create_datapaths(datapath=None, configpath=None):
+def create_datapaths(datapath=None, configpath=None, reset_user_metadata=False):
     datapath, configpath = _path_generator_util(datapath, configpath)
 
     datapaths = {key: str(datapath / Path(val)) for key, val in _PATH_CONSTANTS.items()}
@@ -54,8 +55,20 @@ def create_datapaths(datapath=None, configpath=None):
     # User defined GEE datasets
     user_gee_metadata_path = configpath / "user_gee_datasets.json"
     datapaths["user_gee_metadata"] = str(user_gee_metadata_path)
+    if reset_user_metadata:
+        os.remove(datapaths["user_gee_metadata"])
     if not user_gee_metadata_path.is_file():
-        datapaths["user_gee_metadata"] = None
+        try:
+            https_proxy = os.environ["HTTPS_PROXY"]
+            response = requests.get(CATALOG_URL_USER, proxies={"https": https_proxy})
+        except:
+            response = requests.get(CATALOG_URL_USER)
+
+        if response.status_code == 200:
+            r = response.json()
+            print(datapaths["user_gee_metadata"])
+            with open(datapaths["user_gee_metadata"], "w") as f:
+                json.dump(r, f, indent=4)
 
     return datapaths
 
@@ -218,7 +231,7 @@ def hydrobasins(proxy=None, clean=True, datapath=None):
         print(f"Downloading '{url}' into '{filename}'")
 
         if proxy is not None:
-            r = requests.get(url, stream=True, proxies={"http": proxy})
+            r = requests.get(url, stream=True, proxies={"https": proxy})
         else:
             r = requests.get(url, stream=True)
 

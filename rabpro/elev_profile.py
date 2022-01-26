@@ -5,15 +5,12 @@ Elevation Profile Computation (elev_profile.py)
 Description
 """
 
-import os
-import sys
-
-import geopandas as gpd
 import numpy as np
-import scipy.interpolate as si
 from osgeo import gdal
 from pyproj import CRS
-from shapely.geometry import LineString, Point
+import geopandas as gpd
+import scipy.interpolate as si
+from shapely.geometry import Point
 
 from rabpro import merit_utils as mu
 from rabpro import utils as ru
@@ -61,6 +58,9 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
         intype = "point"
     else:
         intype = "centerline"  # deprecated
+        raise DeprecationWarning(
+            "elev_profile only supports single 'point' coordinate pairs, not multipoint 'centerlines'"
+        )
 
     # Here, we get the MERIT flowline corresponding to the centerline. If we
     # are provided only a single point, the flowline is delineated to its
@@ -311,59 +311,59 @@ def get_rc_values(gdobj, rc, nodata=-9999):
 #     return ls
 
 
-def find_nangroups(arr):
-    """Returns groups of nans in an array.
+# def find_nangroups(arr):
+#     """Returns groups of nans in an array.
 
-    Parameters
-    ----------
-    arr : [type]
-        [description]
+#     Parameters
+#     ----------
+#     arr : [type]
+#         [description]
 
-    Returns
-    -------
-    list
-        [description]
-    """
-    nans = np.isnan(arr)
-    nangroups = []
-    nangroup = []
-    for i, n in enumerate(nans):
-        if not n:
-            if len(nangroup) > 0:
-                nangroups.append(nangroup)
-            nangroup = []
-        else:
-            nangroup.append(i)
+#     Returns
+#     -------
+#     list
+#         [description]
+#     """
+#     nans = np.isnan(arr)
+#     nangroups = []
+#     nangroup = []
+#     for i, n in enumerate(nans):
+#         if not n:
+#             if len(nangroup) > 0:
+#                 nangroups.append(nangroup)
+#             nangroup = []
+#         else:
+#             nangroup.append(i)
 
-    return nangroup
+#     return nangroup
 
 
-def interpolate_nangroups(arr, dists, nangroups):
-    """Linearly interpolates across groups of nans in a 1-D array.
+# def interpolate_nangroups(arr, dists, nangroups):
+#     """Linearly interpolates across groups of nans in a 1-D array.
 
-    Parameters
-    ----------
-    arr : [type]
-        [description]
-    dists : [type]
-        [description]
-    nangroups : [type]
-        [description]
+#     Parameters
+#     ----------
+#     arr : [type]
+#         [description]
+#     dists : [type]
+#         [description]
+#     nangroups : [type]
+#         [description]
 
-    Returns
-    -------
-    [type]
-        [description]
-    """
-    for ng in nangroups:
-        if type(ng) is int:
-            ng = [ng]
-        if 0 in ng or len(arr) - 1 in ng:
-            continue
-        interp = si.interp1d(
-            (dists[ng[0] - 1], dists[ng[-1] + 1]), (arr[ng[0] - 1], arr[ng[-1] + 1])
-        )
-        interp_pts = dists[np.arange(ng[0], ng[-1] + 1)]
-        arr[np.arange(ng[0], ng[-1] + 1)] = interp(interp_pts)
+#     Returns
+#     -------
+#     [type]
+#         [description]
+#     """
+#     for ng in nangroups:
+#         if type(ng) is int:
+#             ng = [ng]
+#         if 0 in ng or len(arr) - 1 in ng:
+#             continue
+#         interp = si.interp1d(
+#             (dists[ng[0] - 1], dists[ng[-1] + 1]), (arr[ng[0] - 1], arr[ng[-1] + 1])
+#         )
+#         interp_pts = dists[np.arange(ng[0], ng[-1] + 1)]
+#         arr[np.arange(ng[0], ng[-1] + 1)] = interp(interp_pts)
 
-    return arr
+#     return arr

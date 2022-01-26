@@ -5,6 +5,7 @@ Utility functions (utils.py)
 """
 
 import os
+import sys
 import shutil
 import zipfile
 import platform
@@ -74,8 +75,8 @@ def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True, **kwargs):
         _build_virtual_rasters(_DATAPATHS, force_rebuild=rebuild_vrts, **kwargs)
         return _DATAPATHS
 
-    datapaths = du.create_datapaths(datapath=datapath, configpath=configpath)
     du.create_file_structure(datapath=datapath, configpath=configpath)
+    datapaths = du.create_datapaths(datapath=datapath, configpath=configpath)
     if has_internet():
         du.download_gee_metadata()
 
@@ -766,14 +767,235 @@ def validify_polygons(polys):
     return geomsv
 
 
-def build_gee_vector_asset(basins, out_path="basins"):
-    os.makedirs("temp", exist_ok=True)
-    temp_dir = Path("temp")
-    basins.to_file(filename="temp/" + out_path + ".shp", driver="ESRI Shapefile")
+def build_gee_vector_asset(basins, out_path="basins.zip"):
+    """Create zipped shapefile for uploading as a Google Earth Engine vector asset.
 
-    with zipfile.ZipFile(out_path + ".zip", "w") as zipf:
+    Parameters
+    ----------
+    basins : [type]
+        [description]
+    out_path : str, optional
+        [description], by default "basins"
+
+    Returns
+    -------
+    [type]
+        [description]
+
+    Examples
+    --------
+    .. code-block:: python
+
+        from rabpro import utils
+        import geopandas as gpd
+        basins = gpd.read_file("tests/results/merit_test/subbasins.json")
+        utils.build_gee_vector_asset(basins)
+    """
+
+    path_parts = out_path.split("/")
+    out_dir = "/".join(path_parts[0 : len(path_parts) - 1])
+
+    os.makedirs("temp/" + out_dir, exist_ok=True)
+    temp_dir = Path("temp/" + out_dir)
+    basins.to_file(filename="temp/" + out_dir + "/basins.shp", driver="ESRI Shapefile")
+
+    with zipfile.ZipFile(out_path, "w") as zipf:
         for f in temp_dir.glob("*"):
             zipf.write(f, arcname=f.name)
 
     shutil.rmtree("temp")
-    return out_path + ".zip"
+    return out_path
+
+
+def upload_gee_vector_asset(
+    zip_path, gee_user, gcp_bucket, gee_folder="", gcp_upload=True, gee_upload=True
+):
+    """[summary]
+
+    Parameters
+    ----------
+    zip_path : [type]
+        [description]
+    gee_user : [type]
+        [description]
+    gcp_bucket : [type]
+        [description]
+    gee_folder : str, optional
+        [description], by default ""
+    gcp_upload : bool, optional
+        [description], by default True
+    gee_upload : bool, optional
+        [description], by default True
+
+    Returns
+    -------
+    [type]
+        [description]
+
+    Raises
+    ------
+    RuntimeError
+        [description]
+
+    Examples
+    --------
+    .. code-block:: python
+
+        from rabpro import utils
+        utils.upload_gee_vector_asset("test.zip", "my_gee_user", "my_gcp_bucket")
+    """
+    gee_path = (
+        "users/" + gee_user + "/" + os.path.splitext(os.path.basename(zip_path))[0]
+    )
+    if gee_folder == "":
+        out_path = gcp_bucket + "/" + os.path.basename(zip_path)
+    else:
+        out_path = gcp_bucket + "/" + gee_folder + "/" + os.path.basename(zip_path)
+
+    if gcp_upload:
+        shell_cmd = "gsutil cp " + zip_path + " " + out_path
+        print(shell_cmd)
+        try:
+            subprocess.call(shell_cmd)
+        except:
+            raise RuntimeError(
+                "Errors here could indicate that gsutil is not installed."
+            )
+
+    if gee_upload:
+        shell_cmd = (
+            "earthengine upload table --force --asset_id " + gee_path + " " + out_path
+        )
+        print(shell_cmd)
+        subprocess.call(shell_cmd)
+
+    return gee_path
+
+
+def upload_gee_tif_asset(
+    tif_path,
+    gee_user,
+    gcp_bucket,
+    title,
+    gcp_folder="",
+    gee_folder="",
+    time_start="",
+    epsg="4326",
+    description="",
+    citation="",
+    gcp_upload=True,
+    gee_upload=True,
+    dry_run=False,
+    gee_force=False,
+):
+    """[summary]
+
+    Parameters
+    ----------
+    tif_path : [type]
+        [description]
+    gee_user : [type]
+        [description]
+    gcp_bucket : [type]
+        [description]
+    title : [type]
+        [description]
+    gcp_folder : str, optional
+        [description], by default ""
+    gee_folder : str, optional
+        [description], by default ""
+    time_start : str, optional
+        [description], by default ""
+    epsg : str, optional
+        [description], by default "4326"
+    description : str, optional
+        [description], by default ""
+    citation : str, optional
+        [description], by default ""
+    gcp_upload : bool, optional
+        [description], by default True
+    gee_upload : bool, optional
+        [description], by default True
+    dry_run : bool, optional
+        [description], by default False
+    gee_force : bool, optional
+        [description], by default False
+
+    Returns
+    -------
+    [type]
+        [description]
+
+    Examples
+    --------
+    .. code-block:: python
+
+        from rabpro import utils
+        utils.upload_gee_tif_asset("my.tif", "my_gee_user", "my_gcp_bucket")
+    """
+
+    if gee_folder == "":
+        gee_path = (
+            "users/" + gee_user + "/" + os.path.splitext(os.path.basename(tif_path))[0]
+        )
+        out_path = gcp_bucket + "/" + gcp_folder + "/" + os.path.basename(tif_path)
+    else:
+        out_path = gcp_bucket + "/" + gee_folder + "/" + os.path.basename(tif_path)
+        gee_path = (
+            "users/"
+            + gee_user
+            + "/"
+            + gee_folder
+            + "/"
+            + os.path.splitext(os.path.basename(tif_path))[0]
+        )
+
+    if gcp_upload:
+        shell_cmd = "gsutil cp " + tif_path + " " + out_path
+        print(shell_cmd)
+        if not dry_run:
+            subprocess.call(shell_cmd)
+
+    if gee_upload:
+
+        force = ""
+        if gee_force:
+            force = "--force "
+
+        shell_cmd = "earthengine upload image --time_start={} --asset_id={} --crs EPSG:{} {}{}".format(
+            time_start, gee_path, epsg, force, out_path
+        )
+
+        print(shell_cmd)
+        if not dry_run:
+            try:
+                subprocess.call(shell_cmd)
+            except:
+                print(
+                    r"Are you on Windows? Try installing this fork of the earthengine-api package to enable timestamp handling: \n https://github.com/jsta/earthengine-api"
+                )
+                if sys.platform == "win32" and int(time_start[0:4]) < 1970:
+                    raise Exception(
+                        "Can't upload GEE assets on Windows with time stamps before 1970 \n https://issuetracker.google.com/issues/191997926"
+                    )
+
+        if gee_folder != "":
+            gee_path = "users/" + gee_user + "/" + gee_folder
+        shell_cmd = (
+            'earthengine asset set -p description="'
+            + description
+            + r" Suggested citation(s) "
+            + citation
+            + '" '
+            + gee_path
+        )
+        # print(shell_cmd)
+        if not dry_run:
+            subprocess.call(shell_cmd)
+
+        shell_cmd = 'earthengine asset set -p title="' + title + '" ' + gee_path
+        # print(shell_cmd)
+        if not dry_run:
+            subprocess.call(shell_cmd)
+
+    return None
