@@ -94,7 +94,7 @@ class MERITTest(DataTestCase):
 
         self.datatest(coords, da, True, "merit_test_check", "merit_test")
         self.metatest("merit", 50, 50)
-        self.stattest(stats, [data])
+        self.stattest(stats, [data[0]])
 
     def test_imgcol(self):
         coords = (56.22659, -130.87974)
@@ -112,7 +112,7 @@ class MERITTest(DataTestCase):
 
         self.datatest(coords, da, True, "merit_imgcol_check", "merit_imgcol")
         self.metatest("merit", 50, 50)
-        self.stattest(stats, [data], length=3)
+        self.stattest(stats, [data[0]], length=3)
 
     def test_radius(self):
         coords = (56.22659, -130.87974)
@@ -156,7 +156,7 @@ class HydroBasinsTest(DataTestCase):
 
         self.datatest(coords, da, False, "hydro_test_check", "hydro_test")
         self.metatest("hydrobasins", 50, 50)
-        self.stattest(stats, [data])
+        self.stattest(stats, [data[0]])
 
 
 if __name__ == "__main__":
