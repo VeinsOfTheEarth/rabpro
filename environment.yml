@@ -18,4 +18,4 @@ dependencies:
   - rasterstats
   - pip
   - pip:
-    - opencv-python
+    - opencv-python-headless
