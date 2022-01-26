@@ -45,7 +45,7 @@ def test_customreducer():
         test=True,
     )
 
-    res = pd.concat([clean_res(feature) for feature in data["features"]])
+    res = pd.concat([clean_res(feature) for feature in data[0]["features"]])
 
     assert all(res["asdf"] == res["max"])
 
@@ -58,7 +58,7 @@ def test_categorical_imgcol():
     )
 
     res = pd.concat(
-        [clean_freqhist(feature, "LC_Type1") for feature in data["features"]]
+        [clean_freqhist(feature, "LC_Type1") for feature in data[0]["features"]]
     )
 
     assert res.shape[1] > 4
@@ -70,7 +70,7 @@ def test_timeindexed_imgcol():
         [Dataset("JRC/GSW1_3/YearlyHistory", "waterClass",)], sb_inc_gdf=gdf, test=True,
     )
 
-    res = pd.concat([clean_res(feature) for feature in data["features"]])
+    res = pd.concat([clean_res(feature) for feature in data[0]["features"]])
 
     assert res["mean"].iloc[0] > 0
     assert res.shape[0] > 0
@@ -91,7 +91,7 @@ def test_timeindexedspecific_imgcol():
         test=True,
     )
 
-    res = pd.concat([clean_res(feature) for feature in data["features"]])
+    res = pd.concat([clean_res(feature) for feature in data[0]["features"]])
 
     assert res.shape[0] == 2
 
@@ -104,7 +104,7 @@ def test_nontimeindexed_imgcol():
         test=True,
     )
 
-    res = pd.concat([clean_res(feature) for feature in data["features"]])
+    res = pd.concat([clean_res(feature) for feature in data[0]["features"]])
 
     assert res.shape[0] > 0
 
@@ -123,7 +123,7 @@ def test_img():
         test=True,
     )
 
-    res = pd.DataFrame(data["features"][0]["properties"], index=[0])
+    res = pd.DataFrame(data[0]["features"][0]["properties"], index=[0])
 
     assert float(res["mean"]) > 0
     assert res.shape[1] == 9
