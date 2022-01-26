@@ -1,10 +1,16 @@
 import os
 import glob
-import rabpro
 import config
-import subprocess
 import datetime
 import dateutil
+import subprocess
+import numpy as np
+import geopandas as gpd
+from shapely.geometry import box
+
+import rabpro
+from rabpro.subbasin_stats import Dataset
+
 
 dry_run = config.dry_run
 gcp_upload = config.gcp_upload
@@ -141,3 +147,17 @@ push_tifs(
     dry_run=dry_run,
     gee_force=gee_force,
 )
+
+# ---- Test upload ----
+# Manually update user_gee_datasets.json and push to GH
+# rabpro.data_utils.create_datapaths(reset_user_metadata=True)
+# total_bounds = np.array([-85.91331249, 39.42609864, -85.88453019, 39.46429816])
+# gdf = gpd.GeoDataFrame({"idx": [1], "geometry": [box(*total_bounds)]}, crs="EPSG:4326")
+
+# data, task = rabpro.subbasin_stats.main(
+#     [Dataset("users/" + gee_user + "/" + gee_folder, "b1", time_stats=["median"])],
+#     sb_inc_gdf=gdf,
+#     test=True,
+# )
+
+# print(data)
