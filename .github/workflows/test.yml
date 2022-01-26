@@ -1,6 +1,7 @@
 name: test
 on:
   workflow_dispatch:
+  push:
 
 jobs:
   build:
@@ -9,5 +10,5 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Set up Python
+      - name: conda-build
         uses: cascode-labs/build-conda-action/action.yml@v0
