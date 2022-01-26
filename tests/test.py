@@ -62,7 +62,7 @@ class DataTestCase(unittest.TestCase):
         )
 
         for _ in range(12):
-            status = task.status()["state"]
+            status = task[0].status()["state"]
             if status in ["READY", "RUNNING", "COMPLETED"]:
                 break
             time.sleep(10)
