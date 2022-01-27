@@ -1,12 +1,12 @@
 {% set name = "rabpro" %}
-{% set version = "0.2.2" %}
+{% set version = "0.3.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/VeinsOfTheEarth/rabpro/archive/v{{ version }}.tar.gz
+  url: https://github.com/jsta/rabpro/archive/v{{ version }}.tar.gz
   sha256: aa2d84fba84f07b8f63cc5a6650154bfc2867275614859d922ec3606bd834a77
   # sha256 is the preferred checksum -- you can get it for a file with:
   #  `openssl sha256 <file name>`.  
@@ -19,7 +19,7 @@ build:
 requirements:  
   host:
     - pip
-    - python>=3.7
+    - python>=3.7,<3.10
     
   
   run:
