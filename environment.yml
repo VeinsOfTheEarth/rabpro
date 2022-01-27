@@ -16,6 +16,4 @@ dependencies:
   - tqdm
   - beautifulsoup4
   - rasterstats
-  - pip
-  - pip:
-    - opencv-python-headless
+  - opencv
