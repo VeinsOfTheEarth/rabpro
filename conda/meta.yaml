@@ -1,5 +1,5 @@
 {% set name = "rabpro" %}
-{% set version = "0.3.0" %}
+{% set version = "0.3.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/jsta/rabpro/archive/v{{ version }}.tar.gz
-  sha256: 3cc786e78c4f24b110e4821858757729677b0d440b63a003bcac41660fd8fab4
+  sha256: 1243ec81596aa3386c06144cbd981b5ebfbab5d1c6ad3fad37ded2d8a1e6979f
   # sha256 is the preferred checksum -- you can get it for a file with:
   #  `openssl sha256 <file name>`.  
 
