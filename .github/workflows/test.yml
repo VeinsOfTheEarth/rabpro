@@ -11,5 +11,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
+      - name: Setup miniconda
+        uses: conda-incubator/setup-miniconda@v2
+
       - name: conda-build
         uses: cascode-labs/build-conda-action@v0.1.4
