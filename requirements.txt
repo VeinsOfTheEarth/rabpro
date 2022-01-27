@@ -8,3 +8,4 @@ appdirs
 earthengine-api
 tqdm
 opencv-python
+beautifulsoup4
