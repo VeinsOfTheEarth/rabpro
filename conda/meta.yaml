@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/jsta/rabpro/archive/v{{ version }}.tar.gz
-  sha256: aa2d84fba84f07b8f63cc5a6650154bfc2867275614859d922ec3606bd834a77
+  sha256: 3cc786e78c4f24b110e4821858757729677b0d440b63a003bcac41660fd8fab4
   # sha256 is the preferred checksum -- you can get it for a file with:
   #  `openssl sha256 <file name>`.  
 
