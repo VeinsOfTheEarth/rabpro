@@ -50,7 +50,6 @@ requirements:
     - tqdm
     - colorama    
     - beautifulsoup4
-    - pip
     - opencv
 test:
   # Some packages might need a `test/commands` key to check CLI.
