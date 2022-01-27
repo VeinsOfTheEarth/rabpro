@@ -23,7 +23,6 @@ rabpro.egg-info
 dist/**
 build/**
 *.tar.gz
-meta.yaml
 
 # Docs
 docs/_build
