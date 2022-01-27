@@ -20,10 +20,7 @@ import http.client as httplib
 from shapely.ops import unary_union
 from shapely.geometry import Polygon, MultiPolygon
 
-try:
-    from rabpro import data_utils as du
-except:
-    import data_utils as du
+from rabpro import data_utils as du
 
 _DATAPATHS = None
 
