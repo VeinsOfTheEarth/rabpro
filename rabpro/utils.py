@@ -153,32 +153,6 @@ def get_exportpaths(name, basepath=None, overwrite=False):
     return exportpaths
 
 
-# def parse_keys(gdf): # Used only in centerline, deprecated
-#     """
-#     Attempts to interpret the column names of the input dataframe.
-#     In particular, looks for widths and distances along centerline.
-
-#     Parameters
-#     ----------
-#     gdf : GeoDataFrame
-#         table to parse
-
-#     Returns
-#     -------
-#     dict
-#         contains column names and corresponding properties
-#     """
-#     keys = gdf.keys()
-#     parsed = {"distance": None, "width": None}
-#     for k in keys:
-#         if "distance" in k.lower():
-#             parsed["distance"] = k
-#         if "width" in k.lower():
-#             parsed["width"] = k
-
-#     return parsed
-
-
 def build_vrt(
     tilespath,
     clipper=None,
