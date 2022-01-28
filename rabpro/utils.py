@@ -769,15 +769,14 @@ def build_gee_vector_asset(basins, out_path="basins.zip"):
 
     Parameters
     ----------
-    basins : [type]
-        [description]
+    basins : GeoDataFrame
     out_path : str, optional
-        [description], by default "basins"
+        by default "basins.zip"
 
     Returns
     -------
-    [type]
-        [description]
+    str
+        path to zip file
 
     Examples
     --------
