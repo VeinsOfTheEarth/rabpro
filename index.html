@@ -18,6 +18,7 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -45,7 +46,7 @@
 <li class="toctree-l1"><a class="reference internal" href="install/index.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="background/index.html">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data/index.html">GEE and Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/notebooks/basic_example.html">Basic example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing/index.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="issues/index.html">Issues</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apiref/index.html">API Reference</a></li>
@@ -75,7 +76,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="welcome-to-rabpro-s-documentation">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="welcome-to-rabpro-s-documentation">
 <h1>Welcome to rabpro’s documentation!<a class="headerlink" href="#welcome-to-rabpro-s-documentation" title="Permalink to this headline"></a></h1>
 <p>RaBPro provides methods to compute subbasin geometries from river centerline
 coordinates, and compute statistics over these subbasins using <a class="reference external" href="https://developers.google.com/earth-engine/">Google Earth
@@ -108,7 +133,7 @@ Engine</a>.</p>
 <div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
 <div class="card w-100 shadow text-center bg-secondary docutils">
 <div class="card-body docutils">
-<p class="card-text"><a class="sphinx-bs btn text-wrap btn-link stretched-link font-weight-bold reference internal" href="examples/index.html"><span class="doc">Examples</span></a></p>
+<p class="card-text"><a class="sphinx-bs btn text-wrap btn-link stretched-link font-weight-bold reference internal" href="examples/notebooks/basic_example.html"><span class="doc">Basic example</span></a></p>
 </div>
 </div>
 </div>
