@@ -18,7 +18,7 @@ Engine <https://developers.google.com/earth-engine/>`_.
    install/index
    background/index
    data/index
-   examples/index
+   examples/notebooks/basic_example
    contributing/index
    issues/index
    apiref/index
@@ -44,9 +44,9 @@ Engine <https://developers.google.com/earth-engine/>`_.
         :classes: btn-link stretched-link font-weight-bold
    ---
    :card: + text-center bg-secondary
-   .. link-button:: examples/index
+   .. link-button:: examples/notebooks/basic_example
         :type: ref
-        :text: Examples
+        :text: Basic example
         :classes: btn-link stretched-link font-weight-bold
    ---
    :column: col-lg-12 p-2

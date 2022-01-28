@@ -62,7 +62,11 @@ extensions = [
     "sphinx.ext.autosummary",
     "sphinx.ext.githubpages",
     "sphinx_panels",
+    "nbsphinx",
 ]
+
+nbsphinx_allow_errors = True
+nbsphinx_execute = "always"
 
 autodoc_default_options = {"exclude-members": "__weakref__"}
 
