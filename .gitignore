@@ -27,6 +27,7 @@ build/**
 # Docs
 docs/_build
 *.xcf
+*/.ipnb_checkpoints*
 
 # Testing
 .coverage
