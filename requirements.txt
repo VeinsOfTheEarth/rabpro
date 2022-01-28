@@ -1,0 +1,11 @@
+numpy
+geopandas>=0.7.0
+scikit-image
+pyproj
+shapely
+requests
+appdirs
+earthengine-api
+tqdm
+opencv-python
+beautifulsoup4
