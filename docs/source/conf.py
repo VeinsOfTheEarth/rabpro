@@ -66,7 +66,7 @@ extensions = [
 ]
 
 nbsphinx_allow_errors = True
-nbsphinx_execute = "always"
+nbsphinx_execute = "never"
 
 autodoc_default_options = {"exclude-members": "__weakref__"}
 
