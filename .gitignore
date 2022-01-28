@@ -39,3 +39,7 @@ docs/_build
 Makefile
 client_secrets.json
 config*.py
+test[0-9]*.py
+test.py
+test.R
+jsta.py
