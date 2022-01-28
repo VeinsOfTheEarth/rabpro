@@ -39,6 +39,7 @@ jobs:
 
       - name: Build documentation
         run: cd docs && make html
+        uses: docker://pandoc/core:2.9
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.4
