@@ -4,13 +4,8 @@ import config
 import datetime
 import dateutil
 import subprocess
-import numpy as np
-import geopandas as gpd
-from shapely.geometry import box
 
 import rabpro
-from rabpro.subbasin_stats import Dataset
-
 
 dry_run = config.dry_run
 gcp_upload = config.gcp_upload
@@ -149,6 +144,12 @@ push_tifs(
 )
 
 # ---- Test upload ----
+# import numpy as np
+# import geopandas as gpd
+# from shapely.geometry import box
+
+# from rabpro.subbasin_stats import Dataset
+
 # Manually update user_gee_datasets.json and push to GH
 # rabpro.data_utils.create_datapaths(reset_user_metadata=True)
 # total_bounds = np.array([-85.91331249, 39.42609864, -85.88453019, 39.46429816])
