@@ -151,7 +151,7 @@ def main(
     # Dictionary for determining which rasters and statistics to compute
     control = _get_controls(dataset_list)
     ee.Initialize()
-    
+
     # Create water occurence mask
     occ_mask = ee.Image("JRC/GSW1_3/GlobalSurfaceWater").select("occurrence").lt(90)
 
@@ -261,9 +261,10 @@ def main(
             datas.append(
                 table.getDownloadURL(
                     filetype="csv", filename=dataset_to_filename(d.data_id, d.band, tag)
-                ))
+                )
+            )
             tasks.append(task)
-            
+
     return datas, tasks
 
 
@@ -358,7 +359,7 @@ def _get_controls(datasets):
                 print(
                     f"Warning: requested end date later than expected for {d.data_id}:{d.band}"
                 )
-        
+
         d.stats = set(d.stats + ["count", "mean"])
 
         if "no_data" in gee_dataset["bands"][d.band]:
