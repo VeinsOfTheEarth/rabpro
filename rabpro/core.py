@@ -73,7 +73,9 @@ class profiler:
         # Parse the provided coordinates into a GeoDataFrame (if not already)
         if type(coords) is tuple:  # A single point was provided
             self.gdf = self._coordinates_to_gdf([coords])
-        elif type(coords) is list:  # A list of tuples was provided (centerline)
+        elif (
+            type(coords) is list
+        ):  # A list of tuples was provided (centerline) # pragma: no cover
             self.gdf = self._coordinates_to_gdf(coords)
             raise DeprecationWarning(
                 "elev_profile only supports single 'point' coordinate pairs, not multipoint 'centerlines'"
@@ -92,7 +94,7 @@ class profiler:
             if self.gdf.crs.to_epsg() != 4326:
                 print("Reprojecting provided coordinates to EPSG:4326.")
                 self.gdf = self.gdf.to_crs(CRS.from_epsg(4326))
-        else:
+        else:  # pragma: no cover
             raise ValueError("Invalid coordinate input type.")
 
         # Determine the method for delineation
@@ -211,7 +213,7 @@ class profiler:
 
             # Ensure the provided coordinate was mappable
             if self.basins is None:
-                if not map_only:
+                if not map_only:  # pragma: no cover
                     print(
                         "Could not find a suitable flowline to map given coordinate and DA. No basin can be delineated."
                     )
@@ -229,7 +231,7 @@ class profiler:
                     reproj_ea_meters.geometry.values[0].area / 10 ** 6
                 )  # square km
                 pct_diff = abs(pgon_area - self.mapped["da"]) / self.mapped["da"] * 100
-                if pct_diff > 10:
+                if pct_diff > 10:  # pragma: no cover
                     print(
                         f"Check delineated basin. There is a difference of {pct_diff}% between MERIT DA and polygon area."
                     )
