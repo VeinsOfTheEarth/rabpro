@@ -66,7 +66,7 @@ class profiler:
         path_results=None,
         force_merit=False,
         verbose=True,
-        rebuild_vrts=True
+        rebuild_vrts=True,
     ):
 
         self.name = name
