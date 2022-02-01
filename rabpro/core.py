@@ -75,6 +75,9 @@ class profiler:
             self.gdf = self._coordinates_to_gdf([coords])
         elif type(coords) is list:  # A list of tuples was provided (centerline)
             self.gdf = self._coordinates_to_gdf(coords)
+            raise DeprecationWarning(
+                "elev_profile only supports single 'point' coordinate pairs, not multipoint 'centerlines'"
+            )
         elif type(coords) is str:  # A path to .csv or .shp file was provided
             ext = coords.split(".")[-1]
             if ext == "csv":
