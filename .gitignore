@@ -14,6 +14,7 @@ Data/HydroBasins/*/*.cpg
 *.gpkg-shm
 *.gpkg-wal
 *.csv
+*.zip
 
 # Output
 results

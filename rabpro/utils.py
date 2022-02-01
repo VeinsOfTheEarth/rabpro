@@ -969,3 +969,12 @@ def upload_gee_tif_asset(
             subprocess.call(shell_cmd)
 
     return None
+
+
+def drop_column_if_exists(df, col_name_list):
+    for col_name in col_name_list:
+        if col_name in df.columns:
+            df = df.drop([col_name], axis=1)
+
+    return df
+
