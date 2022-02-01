@@ -29,9 +29,7 @@ class profiler:
     ----------
     coords : tuple OR list OR str OR GeoDataFrame
         Coordinates of point(s) to delineate. A single point may be provided as
-        a (lat, lon) tuple. If a river centerline is being provided, its points
-        must be arranged US->DS. River centerline coordinates may be provided as
-        a list of (lat, lon) pairs. Point(s) may also be provided via a
+        a (lat, lon) tuple. Point(s) may also be provided via a
         shapefile or .csv file. If provided as .csv file, the columns must be
         labeled 'latitude' and 'longitude'. If a shapefile path is provided, the
         shapefile may also contain columns for widths and/or along-valley
