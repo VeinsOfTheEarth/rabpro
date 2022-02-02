@@ -513,7 +513,6 @@ vdams_srilanka.head()
     basins_sl = []
     for i in range(0, len(coord_list)):
         print(i)
-        # i = 0
         rpo = rabpro.profiler(coord_list[i], force_merit=True, verbose=False)
         rpo.delineate_basins()
         basins_sl.append(rpo.basins)
@@ -526,12 +525,11 @@ else:
 </div>
 </div>
 <p>We need to upload our basin vector layer as a GEE asset because it too large to send as a json payload. This can be done manually through the GEE code editor or via <code class="docutils literal notranslate"><span class="pre">rabpro</span></code> automation. This automation requires that you have a writeable Google Cloud Platform (GCP) bucket and that you are authenticated via the command-line to call the <code class="docutils literal notranslate"><span class="pre">gsutil</span></code> and <code class="docutils literal notranslate"><span class="pre">earthengine</span></code> programs. These programs enable sending files to GCP and onward to GEE respectively.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">config</span>
-<span class="n">gcp_bucket</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">gcp_bucket</span>
-<span class="n">gee_user</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">gee_user</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gcp_bucket</span> <span class="o">=</span> <span class="s2">&quot;your_gcp_bucket&quot;</span>
+<span class="n">gee_user</span> <span class="o">=</span> <span class="s2">&quot;your_gee_username&quot;</span>
 <span class="n">zip_path</span> <span class="o">=</span> <span class="n">rabpro</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">build_gee_vector_asset</span><span class="p">(</span><span class="n">basins_sl</span><span class="p">,</span> <span class="s2">&quot;basins_sl.zip&quot;</span><span class="p">)</span>
 <span class="n">your_gee_asset</span> <span class="o">=</span> <span class="n">rabpro</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">upload_gee_vector_asset</span><span class="p">(</span>
-    <span class="n">zip_path</span><span class="p">,</span> <span class="n">gee_user</span><span class="p">,</span> <span class="n">gcp_bucket</span><span class="p">,</span> <span class="n">gee_folder</span><span class="o">=</span><span class="s2">&quot;rabpro&quot;</span>
+    <span class="n">zip_path</span><span class="p">,</span> <span class="n">gee_user</span><span class="p">,</span> <span class="n">gcp_bucket</span><span class="p">,</span> <span class="n">gcp_folder</span><span class="o">=</span><span class="s2">&quot;rabpro&quot;</span>
 <span class="p">)</span>
 </pre></div>
 </div>
