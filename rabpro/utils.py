@@ -778,7 +778,7 @@ def build_gee_vector_asset(basins, out_path="basins.zip"):
 
 
 def upload_gee_vector_asset(
-    zip_path, gee_user, gcp_bucket, gee_folder="", gcp_upload=True, gee_upload=True
+    zip_path, gee_user, gcp_bucket, gcp_folder="", gcp_upload=True, gee_upload=True
 ):
     """[summary]
 
@@ -790,7 +790,7 @@ def upload_gee_vector_asset(
         [description]
     gcp_bucket : [type]
         [description]
-    gee_folder : str, optional
+    gcp_folder : str, optional
         [description], by default ""
     gcp_upload : bool, optional
         [description], by default True
@@ -817,10 +817,10 @@ def upload_gee_vector_asset(
     gee_path = (
         "users/" + gee_user + "/" + os.path.splitext(os.path.basename(zip_path))[0]
     )
-    if gee_folder == "":
+    if gcp_folder == "":
         out_path = gcp_bucket + "/" + os.path.basename(zip_path)
     else:
-        out_path = gcp_bucket + "/" + gee_folder + "/" + os.path.basename(zip_path)
+        out_path = gcp_bucket + "/" + gcp_folder + "/" + os.path.basename(zip_path)
 
     if gcp_upload:
         shell_cmd = "gsutil cp " + zip_path + " " + out_path
