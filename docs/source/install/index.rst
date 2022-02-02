@@ -13,7 +13,7 @@ to avoid dependency conflicts, we recommend installing *RaBPro* into a fresh
 type:
 ::
 
-   $ conda env create rabpro
+   $ conda create -n rabpro
    $ conda activate rabpro
    $ conda install -c jschwenk rabpro
 
