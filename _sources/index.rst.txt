@@ -14,11 +14,25 @@ Engine <https://developers.google.com/earth-engine/>`_.
    :maxdepth: 1
    :caption: Contents:
    :hidden:
-
+   
    install/index
    background/index
    data/index
-   examples/notebooks/basic_example
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Examples:
+   :hidden:
+   :glob:
+      
+   examples/notebooks/basic_example.ipynb
+   examples/notebooks/full_example.ipynb
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Miscellanea:
+   :hidden:
+
    contributing/index
    issues/index
    apiref/index

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Basic example &mdash; rabpro  documentation</title>
+  <title>Full example &mdash; rabpro  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
@@ -24,8 +24,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Full example" href="full_example.html" />
-    <link rel="prev" title="GEE and Data" href="../../data/index.html" /> 
+    <link rel="next" title="Contributing" href="../../contributing/index.html" />
+    <link rel="prev" title="Basic example" href="basic_example.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -52,8 +52,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Basic example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="full_example.html">Full example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic_example.html">Basic example</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Full example</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Miscellanea:</span></p>
 <ul>
@@ -76,9 +76,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Basic example</li>
+      <li>Full example</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/examples/notebooks/basic_example.ipynb.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/examples/notebooks/full_example.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -356,80 +356,267 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<section id="Basic-example">
-<h1>Basic example<a class="headerlink" href="#Basic-example" title="Permalink to this headline"></a></h1>
-<p>This example demonstrates some of the core functionality and export features provided by RaBPro.</p>
+<section id="Full-example">
+<h1>Full example<a class="headerlink" href="#Full-example" title="Permalink to this headline"></a></h1>
+<p>This example demonstrates the power of the <code class="docutils literal notranslate"><span class="pre">rapbro</span></code> interface to Google Earth Engine (GEE) to collect many subbasin attributes associated with multiple coordinate pairs.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import os
+import pandas as pd
 import geopandas as gpd
+import contextily as cx
+import matplotlib.pyplot as plt
 
 import rabpro
+from rabpro.subbasin_stats import Dataset
 </pre></div>
 </div>
 </div>
-<p>First, we need to specify a point within our test DEM region.</p>
-<div class="nbinput nblast docutils container">
+<p>First let’s create a list of coordinate pairs that we’ll use to delineate our basins of interest. For this example, we’ll retrieve the subbasins associated with dams in Sri Lanka.</p>
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coords = (56.22659, -130.87974)
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>vdams_srilanka = pd.read_csv(&quot;vote-dams_sri-lanka.csv&quot;)
+coord_list = [
+    (vdams_srilanka.iloc[i][&quot;lat&quot;], vdams_srilanka.iloc[i][&quot;long&quot;])
+    for i in range(0, vdams_srilanka.shape[0])
+]
+vdams_srilanka.head()
 </pre></div>
 </div>
 </div>
-<p>Now we can initialize the profiler. The rabpro profiler is the main entry point into the package - it provides wrapper funcitons for most of the rabpro’s core functionality.</p>
-<p>Note that we can optionally specify a drainage area (<code class="docutils literal notranslate"><span class="pre">da</span></code>) or set <code class="docutils literal notranslate"><span class="pre">force_merit</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code>, to ensure that we use MERIT data rather than HydroBasins to perform basin delineation.</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>wkt_geom</th>
+      <th>vote_id</th>
+      <th>grand_id</th>
+      <th>geodar_id_v10</th>
+      <th>geodar_id_v11</th>
+      <th>nid_id</th>
+      <th>nid_otherstructure</th>
+      <th>eha_pid</th>
+      <th>long</th>
+      <th>lat</th>
+      <th>source</th>
+      <th>geom_all</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Point (80.32409599999999728 9.29935200000000073)</td>
+      <td>13331</td>
+      <td>0</td>
+      <td>4016</td>
+      <td>13456</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>80.324096</td>
+      <td>9.299352</td>
+      <td>geodar</td>
+      <td>POINT (80.32409600000005 9.299352000000056)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Point (81.01001970000000085 6.91596489999999964)</td>
+      <td>13332</td>
+      <td>0</td>
+      <td>4017</td>
+      <td>13457</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>81.010020</td>
+      <td>6.915965</td>
+      <td>geodar</td>
+      <td>POINT (81.01001970000004 6.915964900000063)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Point (80.22376599999999769 8.17094239999999949)</td>
+      <td>13333</td>
+      <td>0</td>
+      <td>4018</td>
+      <td>13458</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>80.223766</td>
+      <td>8.170942</td>
+      <td>geodar</td>
+      <td>POINT (80.22376600000007 8.170942400000058)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Point (80.38527779999999723 8.35194440000000071)</td>
+      <td>13334</td>
+      <td>0</td>
+      <td>4019</td>
+      <td>13459</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>80.385278</td>
+      <td>8.351944</td>
+      <td>geodar</td>
+      <td>POINT (80.38527780000005 8.351944400000036)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Point (80.58550379999999791 6.85771860000000011)</td>
+      <td>13335</td>
+      <td>0</td>
+      <td>4020</td>
+      <td>13460</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>80.585504</td>
+      <td>6.857719</td>
+      <td>geodar</td>
+      <td>POINT (80.5855038000001 6.857718600000055)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rpo = rabpro.profiler(coords, name=&#39;basic_test&#39;)
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>if not os.path.exists(&quot;basins_sl.gpkg&quot;):
+    basins_sl = []
+    for i in range(0, len(coord_list)):
+        print(i)
+        # i = 0
+        rpo = rabpro.profiler(coord_list[i], force_merit=True, verbose=False)
+        rpo.delineate_basins()
+        basins_sl.append(rpo.basins)
+
+    basins_sl = pd.concat(basins_sl)
+    basins_sl.to_file(&quot;basins_sl.gpkg&quot;, driver=&quot;GPKG&quot;)
+else:
+    basins_sl = gpd.read_file(&quot;basins_sl.gpkg&quot;)
 </pre></div>
 </div>
 </div>
-<p>rabpro can now compute the watershed for this point. This can take a few minutes to run.</p>
+<p>We need to upload our basin vector layer as a GEE asset because it too large to send as a json payload. This can be done manually through the GEE code editor or via <code class="docutils literal notranslate"><span class="pre">rabpro</span></code> automation. This automation requires that you have a writeable Google Cloud Platform (GCP) bucket and that you are authenticated via the command-line to call the <code class="docutils literal notranslate"><span class="pre">gsutil</span></code> and <code class="docutils literal notranslate"><span class="pre">earthengine</span></code> programs. These programs enable sending files to GCP and onward to GEE respectively.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">config</span>
+<span class="n">gcp_bucket</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">gcp_bucket</span>
+<span class="n">gee_user</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">gee_user</span>
+<span class="n">zip_path</span> <span class="o">=</span> <span class="n">rabpro</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">build_gee_vector_asset</span><span class="p">(</span><span class="n">basins_sl</span><span class="p">,</span> <span class="s2">&quot;basins_sl.zip&quot;</span><span class="p">)</span>
+<span class="n">your_gee_asset</span> <span class="o">=</span> <span class="n">rabpro</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">upload_gee_vector_asset</span><span class="p">(</span>
+    <span class="n">zip_path</span><span class="p">,</span> <span class="n">gee_user</span><span class="p">,</span> <span class="n">gcp_bucket</span><span class="p">,</span> <span class="n">gee_folder</span><span class="o">=</span><span class="s2">&quot;rabpro&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Next let’s define a list of Google Earth Engine (GEE) datasets to intersect with our delineated basins:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%capture
-rpo.delineate_basins()
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dataset_list = [
+    Dataset(
+        &quot;JRC/GSW1_3/GlobalSurfaceWater&quot;,
+        &quot;occurrence&quot;,
+        time_stats=[&quot;median&quot;],
+        stats=[&quot;mean&quot;],
+    ),
+    Dataset(
+        &quot;ECMWF/ERA5_LAND/MONTHLY&quot;,
+        &quot;temperature_2m&quot;,
+        time_stats=[&quot;median&quot;],
+        stats=[&quot;mean&quot;],
+    ),
+    Dataset(
+        &quot;UCSB-CHG/CHIRPS/DAILY&quot;, &quot;precipitation&quot;, time_stats=[&quot;median&quot;], stats=[&quot;mean&quot;]
+    ),
+]
 </pre></div>
 </div>
 </div>
-<p>The basin geometry is stored in a GeoPandas GeoDataFrame, and can be accessed through the <code class="docutils literal notranslate"><span class="pre">rpo</span></code> object.</p>
-<div class="nbinput docutils container">
+<p>Now let’s do the intersection with <code class="docutils literal notranslate"><span class="pre">rabpro.subbasin_stats.main</span></code>, format the results, and join it to our basins GeoDataFrame.</p>
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rpo.basins.plot()
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>your_gee_asset = &#39;users/jstacompute/basins_sl&#39;
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;AxesSubplot:&gt;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../../_images/examples_notebooks_basic_example_9_1.png" src="../../_images/examples_notebooks_basic_example_9_1.png" />
-</div>
-</div>
-<p>Next, we compute the river elevation profile.</p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rpo.elev_profile()
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>if not os.path.exists(&quot;res.gpkg&quot;):
+    urls, tasks = rabpro.subbasin_stats.main(
+        dataset_list, gee_feature_path=your_gee_asset, folder=&quot;rabpro&quot;
+    )
+    tag_list = [&quot;wateroccur&quot;, &quot;temperature_2m&quot;, &quot;precip&quot;]
+    data = rabpro.subbasin_stats.format_gee(urls, tag_list)
+
+    res = gpd.GeoDataFrame(pd.concat([data, basins_sl], axis=1))
+    res = res.set_geometry(&quot;geometry&quot;)
+    res.to_file(&quot;res.gpkg&quot;, driver=&quot;GPKG&quot;)
+else:
+    res = gpd.read_file(&quot;res.gpkg&quot;)
+</pre></div>
+</div>
+</div>
+<p>Finally, a visualization!</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def build_panel(col_name, col_label, axis):
+    axis.set_xlim([left-0.5, right+0.5])
+    axis.set_ylim([bot-0.2, top+0.2])
+    axis.set_axis_off()
+    res.plot(
+        ax=axis,
+        column=col_name,
+        legend=True,
+        legend_kwds={&quot;label&quot;: col_label, &quot;orientation&quot;: &quot;horizontal&quot;},
+    )
+    cx.add_basemap(axis, zoom=10, crs=res.crs, attribution=&quot;&quot;)
+    return axis
+
+
+left, bot, right, top = res.total_bounds
+fig, ax = plt.subplots(1, 3, figsize=(10, 10))
+ax = [
+    build_panel(col_name, col_label, ax[i])
+    for col_name, col_label, i in zip(
+        [x for x in res.columns[0:3]],
+        [&quot;Water occurence %&quot;, &quot;Temperature (K)&quot;, &quot;Precipitation (mm/day)&quot;],
+        range(0, 3),
+    )
+]
 </pre></div>
 </div>
 </div>
@@ -437,196 +624,8 @@ rpo.delineate_basins()
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-Extracting flowpath from DEM...
-</pre></div></div>
+<img alt="../../_images/examples_notebooks_full_example_13_0.png" src="../../_images/examples_notebooks_full_example_13_0.png" />
 </div>
-<p>The river elevation profile is stored in a GeoPandas GeoDataFrame, and can be accessed through the <code class="docutils literal notranslate"><span class="pre">rpo</span></code> object.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rpo.merit_gdf.head()
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>geometry</th>
-      <th>Elevation (m)</th>
-      <th>Width (m)</th>
-      <th>row</th>
-      <th>col</th>
-      <th>Distance (m)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>POINT (-130.19583 56.57917)</td>
-      <td>2011.500000</td>
-      <td>0.0</td>
-      <td>34529</td>
-      <td>58945</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>POINT (-130.19667 56.58000)</td>
-      <td>1978.400024</td>
-      <td>0.0</td>
-      <td>34528</td>
-      <td>58946</td>
-      <td>105.817633</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>POINT (-130.19750 56.58000)</td>
-      <td>1963.300049</td>
-      <td>0.0</td>
-      <td>34527</td>
-      <td>58947</td>
-      <td>156.867940</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>POINT (-130.19833 56.57917)</td>
-      <td>1943.300049</td>
-      <td>0.0</td>
-      <td>34528</td>
-      <td>58948</td>
-      <td>262.685573</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>POINT (-130.19917 56.57833)</td>
-      <td>1920.400024</td>
-      <td>0.0</td>
-      <td>34527</td>
-      <td>58949</td>
-      <td>368.503748</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
-</div>
-<p>The basins and river elevation profile can be exported to GeoJSON with the export command:</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%capture
-rpo.export(&quot;all&quot;)
-</pre></div>
-</div>
-</div>
-<p>Once the subbasins are delinated, rabpro can use Google Earth Engine (GEE) to compute statistics for each subbasin. Using Google Earth Engine reduces the need to store large datasets locally, and speeds up computation by using GEE’s parallel distributed computing capabilities.</p>
-<p>Note: In order to use rabpro for basin statistics, you’ll need to sign up for a GEE account. See rabpro’s documentation for more information.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Specify which statistics to calculate for the JRC/GSW1_3/GlobalSurfaceWater dataset&#39;s occurrence band
-statlist = [&#39;min&#39;, &#39;max&#39;, &#39;range&#39;, &#39;std&#39;, &#39;sum&#39;, &#39;pct50&#39;, &#39;pct3&#39;]
-data = rabpro.subbasin_stats.Dataset(&quot;JRC/GSW1_3/GlobalSurfaceWater&quot;, &quot;occurrence&quot;, stats=statlist)
-
-d, t = rpo.basin_stats([data], folder=&quot;rabpro test&quot;)
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Computing subbasin stats for JRC/GSW1_3/GlobalSurfaceWater...
-</pre></div></div>
-</div>
-<p>The output data will be placed in the <code class="docutils literal notranslate"><span class="pre">rabpro</span> <span class="pre">test</span></code> folder in your Google Drive if it already exists. If not, GEE will create a new <code class="docutils literal notranslate"><span class="pre">rabpro</span> <span class="pre">test</span></code> folder at the root level of your Drive.</p>
-<p><code class="docutils literal notranslate"><span class="pre">basin_stats</span></code> returns a url to the resulting csv data which can be read directly with <code class="docutils literal notranslate"><span class="pre">pandas</span></code>:</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.read_csv(d[0])
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>system:index</th>
-      <th>DA</th>
-      <th>count</th>
-      <th>max</th>
-      <th>mean</th>
-      <th>min</th>
-      <th>p3</th>
-      <th>p50</th>
-      <th>range</th>
-      <th>sum</th>
-      <th>.geo</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0_0</td>
-      <td>2121.3</td>
-      <td>91173</td>
-      <td>100</td>
-      <td>80.523354</td>
-      <td>0</td>
-      <td>22.328632</td>
-      <td>91.629346</td>
-      <td>100</td>
-      <td>4.757363e+06</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
 </div>
 </section>
 
@@ -634,8 +633,8 @@ Computing subbasin stats for JRC/GSW1_3/GlobalSurfaceWater...
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../../data/index.html" class="btn btn-neutral float-left" title="GEE and Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="full_example.html" class="btn btn-neutral float-right" title="Full example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="basic_example.html" class="btn btn-neutral float-left" title="Basic example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../contributing/index.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
