@@ -1,6 +1,6 @@
 FROM continuumio/miniconda3:4.7.10
 
-LABEL "repository"="https://github.com/jsta/conda-package-publish-action"
+LABEL "repository"="https://github.com/veinsoftheearth/rabpro"
 LABEL "maintainer"="Jemma Stachelek <stachel2@msu.edu>"
 
 RUN apt update --allow-releaseinfo-change
