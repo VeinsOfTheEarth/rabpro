@@ -29,6 +29,7 @@ setuptools.setup(
         "opencv-python",
         "beautifulsoup4",
     ],
+    extras_require={"test": ["pytest>=3"],},
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: BSD License",
