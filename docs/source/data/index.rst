@@ -123,7 +123,7 @@ Call this dataset from `subbasin_stats` without specifying a band:
 
 .. code-block:: python
 
-    data, task = rabpro.subbasin_stats.main(
+    data, task = rabpro.subbasin_stats.compute(
         [
             Dataset(
                 "projects/sat-io/open-datasets/Geomorpho90m/slope", time_stats=["median"]

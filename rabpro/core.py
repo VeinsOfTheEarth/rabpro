@@ -267,7 +267,7 @@ class profiler:
             Google Drive folder to store results in
         """
 
-        return ss.main(
+        return ss.compute(
             datasets,
             sb_inc_gdf=self.basins,
             reducer_funcs=reducer_funcs,

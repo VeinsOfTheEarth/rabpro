@@ -155,7 +155,7 @@ push_tifs(
 # total_bounds = np.array([-85.91331249, 39.42609864, -85.88453019, 39.46429816])
 # gdf = gpd.GeoDataFrame({"idx": [1], "geometry": [box(*total_bounds)]}, crs="EPSG:4326")
 
-# data, task = rabpro.subbasin_stats.main(
+# data, task = rabpro.subbasin_stats.compute(
 #     [Dataset("users/" + gee_user + "/" + gee_folder, "b1", time_stats=["median"])],
 #     sb_inc_gdf=gdf,
 #     test=True,

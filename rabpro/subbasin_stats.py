@@ -95,7 +95,7 @@ def format_gee(
     return pd.concat(res, axis=1)
 
 
-def main(
+def compute(
     dataset_list,
     gee_feature_path=None,
     sb_inc_gdf=None,
@@ -144,7 +144,7 @@ def main(
         gdf = gpd.GeoDataFrame({"idx": [1], "geometry": [box(*total_bounds)]}, crs="EPSG:4326")
 
         # defaults
-        data, task = rabpro.subbasin_stats.main(
+        data, task = rabpro.subbasin_stats.compute(
             [
                 Dataset(
                     "JRC/GSW1_3/MonthlyRecurrence",
@@ -156,7 +156,7 @@ def main(
         )
 
         # with time_stats specified
-        data, task = rabpro.subbasin_stats.main(
+        data, task = rabpro.subbasin_stats.compute(
             [
                 Dataset(
                     "JRC/GSW1_3/MonthlyRecurrence",
