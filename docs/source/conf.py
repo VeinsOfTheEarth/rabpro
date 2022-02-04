@@ -106,6 +106,8 @@ panels_css_variables = {
     "tabs-size-label": "1rem",
 }
 
+html_show_sourcelink = False
+
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
