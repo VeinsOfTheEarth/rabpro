@@ -269,7 +269,7 @@ class profiler:
 
         return ss.compute(
             datasets,
-            sb_inc_gdf=self.basins,
+            basins_gdf=self.basins,
             reducer_funcs=reducer_funcs,
             folder=folder,
             verbose=self.verbose,

@@ -98,7 +98,7 @@ def format_gee(
 def compute(
     dataset_list,
     gee_feature_path=None,
-    sb_inc_gdf=None,
+    basins_gdf=None,
     reducer_funcs=None,
     folder=None,
     verbose=False,
@@ -112,7 +112,7 @@ def compute(
     ----------
     dataset_list : list of Datasets
         List of Dataset objects to compute statistics over.
-    sb_inc_gdf : GeoDataFrame
+    basins_gdf : GeoDataFrame
         Table of subbasin geometries.
     gee_feature_path : string
         Path to a GEE feature collection
@@ -151,7 +151,7 @@ def compute(
                     "monthly_recurrence",
                 )
             ],
-            sb_inc_gdf = gdf,
+            basins_gdf = gdf,
             test = True,
         )
 
@@ -164,7 +164,7 @@ def compute(
                     time_stats = ["median"]
                 )
             ],
-            sb_inc_gdf = gdf,
+            basins_gdf = gdf,
             test = True,
         )
     """
@@ -177,10 +177,10 @@ def compute(
     occ_mask = ee.Image("JRC/GSW1_3/GlobalSurfaceWater").select("occurrence").lt(90)
 
     # Convert GeoDataFrame to ee.Feature objects
-    if sb_inc_gdf is not None:
+    if basins_gdf is not None:
         features = []
-        for i in range(sb_inc_gdf.shape[0]):
-            geom = sb_inc_gdf.iloc[i : i + 1, :]
+        for i in range(basins_gdf.shape[0]):
+            geom = basins_gdf.iloc[i : i + 1, :]
             jsonDict = json.loads(geom.to_json())
             geojsonDict = jsonDict["features"][0]
             features.append(ee.Feature(geojsonDict))

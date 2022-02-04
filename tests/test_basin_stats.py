@@ -41,7 +41,7 @@ def test_customreducer():
 
     data, task = rabpro.subbasin_stats.compute(
         [Dataset("JRC/GSW1_3/YearlyHistory", "waterClass", stats=["max"])],
-        sb_inc_gdf=gdf,
+        basins_gdf=gdf,
         reducer_funcs=[asdf],
         test=True,
     )
@@ -54,7 +54,7 @@ def test_customreducer():
 def test_categorical_imgcol():
     data, task = rabpro.subbasin_stats.compute(
         [Dataset("MODIS/006/MCD12Q1", "LC_Type1", stats=["freqhist"])],
-        sb_inc_gdf=gdf,
+        basins_gdf=gdf,
         test=True,
     )
 
@@ -68,7 +68,7 @@ def test_categorical_imgcol():
 def test_timeindexed_imgcol():
 
     data, task = rabpro.subbasin_stats.compute(
-        [Dataset("JRC/GSW1_3/YearlyHistory", "waterClass",)], sb_inc_gdf=gdf, test=True,
+        [Dataset("JRC/GSW1_3/YearlyHistory", "waterClass",)], basins_gdf=gdf, test=True,
     )
 
     res = pd.concat([clean_res(feature) for feature in data[0]["features"]])
@@ -88,7 +88,7 @@ def test_timeindexedspecific_imgcol():
                 end="2019-01-01",
             )
         ],
-        sb_inc_gdf=gdf,
+        basins_gdf=gdf,
         test=True,
     )
 
@@ -101,7 +101,7 @@ def test_nontimeindexed_imgcol():
 
     data, task = rabpro.subbasin_stats.compute(
         [Dataset("JRC/GSW1_3/MonthlyRecurrence", "monthly_recurrence",)],
-        sb_inc_gdf=gdf,
+        basins_gdf=gdf,
         test=True,
     )
 
@@ -120,7 +120,7 @@ def test_img():
                 stats=["min", "max", "range", "std", "sum", "pct50", "pct3"],
             )
         ],
-        sb_inc_gdf=gdf,
+        basins_gdf=gdf,
         test=True,
     )
 
