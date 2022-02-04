@@ -93,8 +93,8 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
             return cl_gdf, None
 
         flowpath = mu.trace_flowpath(fdr_obj, da_obj, cr_ds_mapped)
-        es = get_rc_values(hdem_obj, flowpath, nodata=-9999)
-        wids = get_rc_values(w_obj, flowpath, nodata=-9999)
+        es = _get_rc_values(hdem_obj, flowpath, nodata=-9999)
+        wids = _get_rc_values(w_obj, flowpath, nodata=-9999)
 
     # Store the elevation profile and distances of the MERIT-derived flowpath
     coords_fp = ru.xy_to_coords(flowpath[1], flowpath[0], da_obj.GetGeoTransform())
@@ -149,16 +149,16 @@ def compute_dists(gdf):
     return dists
 
 
-def get_rc_values(gdobj, rc, nodata=-9999):
+def _get_rc_values(gdobj, rc, nodata=-9999):
     """Returns the values within the raster pointed to by gdobj specified by
     the row, col values in rc. Sets nodata. Returns numpy array.
 
     Parameters
     ----------
-    gdobj : [type]
+    gdobj : osgeo.gdal.Dataset
         Points to raster to get values from
-    rc : [type]
-        [description]
+    rc : tuple
+        A tuple containing lists of row and col values.
     nodata : int, optional
         No data value for the raster, by default -9999
 

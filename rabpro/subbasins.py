@@ -516,8 +516,8 @@ def main_merit(cl_gdf, da, nrows=51, ncols=51, map_only=False, verbose=False):
         [desc], by default 51
     ncols : int
         [desc], by default 51
-    mapped : bool
-        Don't return subbasins. By default False
+    map_only : bool
+        If we only want to map the point and not delineate the basin, by default False
     verbose : bool
         by default False
 

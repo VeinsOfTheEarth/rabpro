@@ -177,7 +177,7 @@ class profiler:
         search_radius : numeric, optional
             in meters, by default None
         map_only : bool, optional
-            [description], by default False
+            If we only want to map the point and not delineate the basin, by default False
         """
 
         if self.method == "hydrobasins":

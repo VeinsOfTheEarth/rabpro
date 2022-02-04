@@ -7,6 +7,7 @@ rabpro
 .. automodule:: rabpro.core
    :members:
    :special-members:
+   :exclude-members: __init__, __weakref__
 
 .. automodule:: rabpro.data_utils
    :members:
@@ -23,6 +24,7 @@ rabpro
 .. automodule:: rabpro.subbasin_stats
    :members:
    :special-members:
+   :exclude-members: __init__, __weakref__
 
 .. automodule:: rabpro.subbasins
    :members:
