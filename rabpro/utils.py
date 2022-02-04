@@ -153,32 +153,6 @@ def get_exportpaths(name, basepath=None, overwrite=False):
     return exportpaths
 
 
-# def parse_keys(gdf): # Used only in centerline, deprecated
-#     """
-#     Attempts to interpret the column names of the input dataframe.
-#     In particular, looks for widths and distances along centerline.
-
-#     Parameters
-#     ----------
-#     gdf : GeoDataFrame
-#         table to parse
-
-#     Returns
-#     -------
-#     dict
-#         contains column names and corresponding properties
-#     """
-#     keys = gdf.keys()
-#     parsed = {"distance": None, "width": None}
-#     for k in keys:
-#         if "distance" in k.lower():
-#             parsed["distance"] = k
-#         if "width" in k.lower():
-#             parsed["width"] = k
-
-#     return parsed
-
-
 def build_vrt(
     tilespath,
     clipper=None,
@@ -804,7 +778,7 @@ def build_gee_vector_asset(basins, out_path="basins.zip"):
 
 
 def upload_gee_vector_asset(
-    zip_path, gee_user, gcp_bucket, gee_folder="", gcp_upload=True, gee_upload=True
+    zip_path, gee_user, gcp_bucket, gcp_folder="", gcp_upload=True, gee_upload=True
 ):
     """[summary]
 
@@ -816,7 +790,7 @@ def upload_gee_vector_asset(
         [description]
     gcp_bucket : [type]
         [description]
-    gee_folder : str, optional
+    gcp_folder : str, optional
         [description], by default ""
     gcp_upload : bool, optional
         [description], by default True
@@ -843,10 +817,10 @@ def upload_gee_vector_asset(
     gee_path = (
         "users/" + gee_user + "/" + os.path.splitext(os.path.basename(zip_path))[0]
     )
-    if gee_folder == "":
+    if gcp_folder == "":
         out_path = gcp_bucket + "/" + os.path.basename(zip_path)
     else:
-        out_path = gcp_bucket + "/" + gee_folder + "/" + os.path.basename(zip_path)
+        out_path = gcp_bucket + "/" + gcp_folder + "/" + os.path.basename(zip_path)
 
     if gcp_upload:
         shell_cmd = "gsutil cp " + zip_path + " " + out_path
@@ -995,3 +969,12 @@ def upload_gee_tif_asset(
             subprocess.call(shell_cmd)
 
     return None
+
+
+def drop_column_if_exists(df, col_name_list):
+    for col_name in col_name_list:
+        if col_name in df.columns:
+            df = df.drop([col_name], axis=1)
+
+    return df
+

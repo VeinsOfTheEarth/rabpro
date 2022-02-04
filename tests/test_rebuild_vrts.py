@@ -11,7 +11,8 @@ def test_rebuild_vrts():
     with contextlib.redirect_stdout(f):
         rpo = rabpro.profiler(coords_file)
     output = f.getvalue()
-    assert len(output) > 0
+    # # jschwenk turned off all rebuild_vrt printing
+    # assert len(output) > 0
 
     # Ensure delineate_basins calls to get_datapaths DOES NOT trigger rebuild_vrts
     f = io.StringIO()

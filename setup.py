@@ -1,11 +1,6 @@
 import setuptools
 
 
-def get_requirements():
-    with open("requirements.txt", encoding="utf8") as f:
-        return f.read().splitlines()
-
-
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
@@ -21,7 +16,19 @@ setuptools.setup(
     project_urls={"Bug Tracker": "https://github.com/VeinsOfTheEarth/rabpro/issues",},
     scripts=["rabpro/cli/rabpro"],
     python_requires=">=3.7",
-    install_requires=get_requirements(),
+    install_requires=[
+        "numpy",
+        "geopandas>=0.7.0",
+        "scikit-image",
+        "pyproj",
+        "shapely",
+        "requests",
+        "appdirs",
+        "earthengine-api",
+        "tqdm",
+        "opencv-python",
+        "beautifulsoup4",
+    ],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: BSD License",

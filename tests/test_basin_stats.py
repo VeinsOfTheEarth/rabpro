@@ -1,11 +1,12 @@
-import geopandas as gpd
-import rabpro
-from rabpro.subbasin_stats import Dataset
-from shapely.geometry import box
-import pandas as pd
 import ee
 import copy
 import numpy as np
+import pandas as pd
+import geopandas as gpd
+from shapely.geometry import box
+from rabpro.subbasin_stats import Dataset
+
+import rabpro
 
 
 # coords_file = gpd.read_file(r"tests/data/Big Blue River.geojson")

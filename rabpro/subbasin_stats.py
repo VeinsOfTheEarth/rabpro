@@ -6,7 +6,7 @@ Computes subbasin statistics using Google Earth Engine.
 """
 
 import json
-import os
+import pandas as pd
 from datetime import date
 
 import ee
@@ -72,6 +72,27 @@ def dataset_to_filename(data_id, band, tag=""):
         return f"{data_id}__{band}".replace("/", "-")
     else:
         return f"{data_id}__{band}".replace("/", "-") + "__" + tag
+
+
+def format_gee(
+    url_list,
+    tag_list,
+    col_drop_list=[],
+    col_drop_defaults=["DA", "count", ".geo", "system:index"],
+):
+    df_list = [pd.read_csv(url) for url in url_list]
+
+    def clean_gee(df, tag, col_drop_list):
+        df = ru.drop_column_if_exists(df, col_drop_list + col_drop_defaults)
+        df.columns = [tag + "_" + x for x in df.columns]
+        return df
+
+    res = [
+        clean_gee(df, tag, col_drop_list=col_drop_list)
+        for df, tag in zip(df_list, tag_list)
+    ]
+
+    return pd.concat(res, axis=1)
 
 
 def main(
@@ -151,7 +172,7 @@ def main(
     # Dictionary for determining which rasters and statistics to compute
     control = _get_controls(dataset_list)
     ee.Initialize()
-    
+
     # Create water occurence mask
     occ_mask = ee.Image("JRC/GSW1_3/GlobalSurfaceWater").select("occurrence").lt(90)
 
@@ -261,9 +282,10 @@ def main(
             datas.append(
                 table.getDownloadURL(
                     filetype="csv", filename=dataset_to_filename(d.data_id, d.band, tag)
-                ))
+                )
+            )
             tasks.append(task)
-            
+
     return datas, tasks
 
 
@@ -358,7 +380,7 @@ def _get_controls(datasets):
                 print(
                     f"Warning: requested end date later than expected for {d.data_id}:{d.band}"
                 )
-        
+
         d.stats = set(d.stats + ["count", "mean"])
 
         if "no_data" in gee_dataset["bands"][d.band]:
