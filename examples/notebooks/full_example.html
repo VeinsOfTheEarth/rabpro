@@ -557,7 +557,7 @@ else:
 </pre></div>
 </div>
 </div>
-<p>Now let’s do the intersection with <code class="docutils literal notranslate"><span class="pre">rabpro.subbasin_stats.main</span></code>, format the results, and join it to our basins GeoDataFrame.</p>
+<p>Now let’s do the intersection with <code class="docutils literal notranslate"><span class="pre">rabpro.subbasin_stats.compute</span></code>, format the results, and join it to our basins GeoDataFrame.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
@@ -571,7 +571,7 @@ else:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>if not os.path.exists(&quot;res.gpkg&quot;):
-    urls, tasks = rabpro.subbasin_stats.main(
+    urls, tasks = rabpro.subbasin_stats.compute(
         dataset_list, gee_feature_path=your_gee_asset, folder=&quot;rabpro&quot;
     )
     tag_list = [&quot;wateroccur&quot;, &quot;temperature_2m&quot;, &quot;precip&quot;]
