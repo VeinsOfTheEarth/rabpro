@@ -16,7 +16,7 @@ from rabpro import merit_utils as mu
 
 
 def main(cl_gdf, verbose=False, nrows=50, ncols=50):
-    """Description
+    """Compute the elevation profile. The profile is computed such that the provided coordinate is the centerpoint (check if this is true).
 
     Parameters
     ----------
@@ -26,9 +26,9 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
     verbose : bool
         Defaults to False.
     nrows : int
-        Desc. Defaults to 50.
+        Number of rows in the neighborhood of the point to search. Defaults to 50.
     ncols : int
-        Desc. Defaults to 50.
+        Number of columns in the neighborhood of the point to search. Defaults to 50.
 
     Returns
     -------
@@ -37,6 +37,14 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
     merit_gdf : GeoDataFrame
         Desc.
 
+    Examples
+    --------
+    .. code-block:: python
+
+        import rabpro
+        coords = (56.22659, -130.87974)
+        rpo = rabpro.profiler(coords, name='basic_test')
+        cl_gdf, merit_gdf = rabpro.elev_profile.main(rpo.gdf)
     """
 
     # cl_gdf should have a column called 'DA' that stores drainage areas
@@ -108,12 +116,12 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
         },
         crs=CRS.from_epsg(4326),
     )
-    merit_gdf["Distance (m)"] = compute_dists(merit_gdf)
+    merit_gdf["Distance (m)"] = _compute_dists(merit_gdf)
 
     return cl_gdf, merit_gdf
 
 
-def compute_dists(gdf):
+def _compute_dists(gdf):
     """Computes cumulative distance in meters between points in gdf.
 
     Parameters

@@ -336,7 +336,7 @@ def get_basin_pixels(start_cr, da_obj, fdr_obj, fdir_map=[32, 64, 128, 16, 1, 8,
     return list(done)
 
 
-def blob_to_polygon_shapely(I, ret_type="coords", buf_amt=0.001):
+def _blob_to_polygon_shapely(I, ret_type="coords", buf_amt=0.001):
     """
     Returns a list of polygons or coords.
 
@@ -436,7 +436,7 @@ def idcs_to_geopolygons(idcs, gdobj, buf_amt=0.001):
         ncols, nrows = maxs[0] - mins[0] + 1, maxs[1] - mins[1] + 1
         I = np.zeros((nrows, ncols), dtype=bool)
         I[cr[1] - mins[1], cr[0] - mins[0]] = True
-        coords = blob_to_polygon_shapely(I, ret_type="coords", buf_amt=0.001)
+        coords = _blob_to_polygon_shapely(I, ret_type="coords", buf_amt=0.001)
         for c in coords:
             coords_trans = ru.xy_to_coords(
                 c[0] + mins[0] - 0.5, c[1] + mins[1] - 0.5, gdobj.GetGeoTransform()
@@ -540,7 +540,7 @@ def map_cl_pt_to_flowline(
     nrows : int
         Number of rows in the neighborhood of the point to search.
     ncols : int
-        Number of rows in the neighborhood of the point to search.
+        Number of columns in the neighborhood of the point to search.
     da : float, optional
         Drainage area of the point/gage if known. Units should correspond to
         those in da_obj, typically km^2. By default None.
