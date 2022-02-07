@@ -200,9 +200,9 @@ def build_vrt(
         "tif" if building from a list of tiffs, or "vrt" if building from a vrt,
         by default "tif"
     separate : bool, optional
-        [description], by default False
+        See separate argument to gdalbuildvrt, by default False
     quiet : bool, optional
-        [description], by default False
+        Set True to print progress, by default False
 
     Returns
     -------
@@ -326,8 +326,21 @@ def build_vrt(
 def raster_extents(raster_path):
     """Output raster extents as [xmin, xmax, ymin, ymax]
 
-    Example:
-        import utils
+    Parameters
+    ----------
+    raster_path : str
+        Path to file
+
+    Returns
+    -------
+    list
+        [xmin, xmax, ymin, ymax] 
+
+    Examples
+    --------
+    .. code-block:: python
+
+        from rabpro import utils
         utils.raster_extents(utils.get_datapaths(rebuild_vrts=False)["DEM_fdr"])
     """
 
@@ -476,7 +489,7 @@ def lonlat_plus_distance(lon, lat, dist, bearing=0):
     return lon_m, lat_m
 
 
-def regionprops(I, props, connectivity=2):
+def _regionprops(I, props, connectivity=2):
     """
     Finds blobs within a binary image and returns requested properties of
     each blob.
@@ -704,7 +717,7 @@ def haversine(lats, lons):
 
 def validify_polygons(polys):
     """
-    Hacky ways to validify a polygon. If can't be validified, returns the
+    Hacky ways to validify a (multi)polygon. If can't be validified, returns the
     original.
 
     Parameters
@@ -780,32 +793,32 @@ def build_gee_vector_asset(basins, out_path="basins.zip"):
 def upload_gee_vector_asset(
     zip_path, gee_user, gcp_bucket, gcp_folder="", gcp_upload=True, gee_upload=True
 ):
-    """[summary]
+    """Upload a zipped shapefile as a GEE vector asset.
 
     Parameters
     ----------
-    zip_path : [type]
-        [description]
-    gee_user : [type]
-        [description]
-    gcp_bucket : [type]
-        [description]
+    zip_path : str
+        Path to zipped shapefile.
+    gee_user : str
+        Google Earth Engine user name.
+    gcp_bucket : str
+        Google Cloud Platform bucket url.
     gcp_folder : str, optional
-        [description], by default ""
+        Google Cloud Platform bucket folder, by default ""
     gcp_upload : bool, optional
-        [description], by default True
+        Set False to skip GCP uploading, by default True
     gee_upload : bool, optional
-        [description], by default True
+        Set False to skip GEE uploading, by default True
 
     Returns
     -------
-    [type]
-        [description]
+    str
+        GEE asset path
 
     Raises
     ------
     RuntimeError
-        [description]
+        Throws error if gsutil is not installed or authenticated.
 
     Examples
     --------
@@ -862,39 +875,39 @@ def upload_gee_tif_asset(
 
     Parameters
     ----------
-    tif_path : [type]
-        [description]
-    gee_user : [type]
-        [description]
-    gcp_bucket : [type]
-        [description]
-    title : [type]
-        [description]
+    tif_path : str
+        Path to GeoTIFF file
+    gee_user : str
+        Google Earth Engine user name
+    gcp_bucket : str
+        Google Cloud Platform bucket url
+    title : str
+        GEE asset title
     gcp_folder : str, optional
-        [description], by default ""
+        Google Cloud Platform bucket folder, by default ""
     gee_folder : str, optional
-        [description], by default ""
+        Google Earth Engine asset folder, by default ""
     time_start : str, optional
-        [description], by default ""
+        YYYY-MM-DD, by default ""
     epsg : str, optional
-        [description], by default "4326"
+        EPSG CRS code, by default "4326"
     description : str, optional
-        [description], by default ""
+        GEE asset description text, by default ""
     citation : str, optional
-        [description], by default ""
+        GEE asset citation text, appended to description, by default ""
     gcp_upload : bool, optional
-        [description], by default True
+        Set False to skip GCP uploading, by default True
     gee_upload : bool, optional
-        [description], by default True
+        Set False to skip GEE uploading, by default True
     dry_run : bool, optional
-        [description], by default False
+        Set True to skip GCP and GEE uploading, by default False
     gee_force : bool, optional
-        [description], by default False
+        Set True to overwrite any existing GEE assets, by default False
 
     Returns
     -------
-    [type]
-        [description]
+    NoneType
+        None
 
     Examples
     --------

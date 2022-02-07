@@ -5,22 +5,19 @@ Subbasin Computation (subbasins.py)
 Functions to calculate subbasin geometries.
 """
 
-import os
-import sys
-from pathlib import Path
-
-import geopandas as gpd
 import numpy as np
 from osgeo import gdal
 from pyproj import CRS
+import geopandas as gpd
+from pathlib import Path
 from shapely.geometry import Point, MultiPolygon
 
-from rabpro import merit_utils as mu
 from rabpro import utils as ru
+from rabpro import merit_utils as mu
 
 
 def main_hb(cl_gdf, verbose=False):
-    """[summary]
+    """Calculates subbasins using Hydrobasins
 
     Parameters
     ----------
@@ -67,12 +64,12 @@ def main_hb(cl_gdf, verbose=False):
     # Map centerline points to chain basins and get drainage areas for each point
     if verbose:
         print("Mapping centerline points to polygons in chain...")
-    idxmap, DA = map_points_to_chain(HB_gdf, cl_gdf, chainids)
+    idxmap, DA = _map_points_to_chain(HB_gdf, cl_gdf, chainids)
 
     # Delineate each of the subbasins
     if verbose:
         print("Delineating subbasins...")
-    subbasins_gdf, sb_inc_gdf = delineate_subbasins(idxmap, HB_gdf)
+    subbasins_gdf, sb_inc_gdf = _delineate_subbasins(idxmap, HB_gdf)
 
     # Map the Basin Length from each cl point to the appropriate basin via idxmap
     basin_dists = HB_gdf.iloc[idxmap].DIST_SINK.values
@@ -282,7 +279,7 @@ def initial_basin_chain(HB_gdf, cl_gdf, buf_wid=0.1):
     return chainids
 
 
-def map_points_to_chain(HB_gdf, cl_gdf, chainids):
+def _map_points_to_chain(HB_gdf, cl_gdf, chainids):
     """
     Maps all centerline points to level-12 drainage basins within chain.
     1. Identify the polygon each point falls into.
@@ -368,7 +365,7 @@ def map_points_to_chain(HB_gdf, cl_gdf, chainids):
     return idxmap, DA
 
 
-def delineate_subbasins(idxmap, HB_gdf):
+def _delineate_subbasins(idxmap, HB_gdf):
     """Finds all the upstream contributing basins for each basin in idxmap.
     This could perhaps be optimized, but the current implementation just solves
     each basin in idxmap independently.
@@ -580,7 +577,7 @@ def main_merit(cl_gdf, da, nrows=51, ncols=51, map_only=False, verbose=False):
 
     # Get all the pixels in the basin
     # cr_start_mapped = (2396, 4775)
-    idcs = mu.get_basin_pixels(cr_start_mapped, da_obj, fdr_obj)
+    idcs = mu._get_basin_pixels(cr_start_mapped, da_obj, fdr_obj)
 
     if verbose:
         print("done.")

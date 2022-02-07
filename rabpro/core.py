@@ -193,7 +193,7 @@ class profiler:
                         self.gdf.geometry.values[-1].coords.xy[1][0],
                     ]
                 )
-                self.nrows, self.ncols = mu.nrows_and_cols_from_search_radius(
+                self.nrows, self.ncols = mu._nrows_and_cols_from_search_radius(
                     ds_lonlat[0],
                     ds_lonlat[1],
                     search_radius,

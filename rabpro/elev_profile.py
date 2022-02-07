@@ -2,7 +2,6 @@
 Elevation Profile Computation (elev_profile.py)
 ===============================================
 
-Description
 """
 
 import numpy as np
@@ -33,9 +32,9 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
     Returns
     -------
     cl_gdf : GeoDataFrame
-        Desc.
+        The original point layer geometry.
     merit_gdf : GeoDataFrame
-        Desc.
+        The elevation profile geometry.
 
     Examples
     --------

@@ -261,7 +261,9 @@ def neighborhood_vals_from_raster(cr, shape, vrt_obj, nodataval=np.nan, wrap=Non
     return Ivals
 
 
-def get_basin_pixels(start_cr, da_obj, fdr_obj, fdir_map=[32, 64, 128, 16, 1, 8, 4, 2]):
+def _get_basin_pixels(
+    start_cr, da_obj, fdr_obj, fdir_map=[32, 64, 128, 16, 1, 8, 4, 2]
+):
     """Returns the indices of all pixels draining to the pixel defined by
     start_cr.
 
@@ -365,7 +367,7 @@ def _blob_to_polygon_shapely(I, ret_type="coords", buf_amt=0.001):
     ret = []
 
     # Get perimeter pixels of the blob
-    rp, _ = ru.regionprops(I, props=["perimeter"])
+    rp, _ = ru._regionprops(I, props=["perimeter"])
 
     for p in rp["perimeter"]:
         # Make slightly-buffered shapely polygons of each pixel's outline
@@ -481,7 +483,7 @@ def idcs_to_geopolygons(idcs, gdobj, buf_amt=0.001):
     return pgons, crossing
 
 
-def nrows_and_cols_from_search_radius(lon, lat, search_radius, gt):
+def _nrows_and_cols_from_search_radius(lon, lat, search_radius, gt):
     """[summary]
 
     Parameters
