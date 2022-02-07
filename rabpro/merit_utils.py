@@ -27,27 +27,27 @@ def trace_flowpath(
 
     Parameters
     ----------
-    fdr_obj : [type]
+    fdr_obj : osgeo.gdal.Dataset
         flow direction object opened with gdal.Open(). Assumes flow direction
         symbology matches MERIT-Hydro:
         32 64 128
         16     1
         8   4  2
-    da_obj : [type]
-        [description]
-    cr_stpt : [type]
+    da_obj : osgeo.gdal.Dataset
+        drainage area object opened with gdal.Open()
+    cr_stpt : numpy.ndarray
         column, row of point to start walk
-    cr_enpt : [type], optional
+    cr_enpt : numpy.ndarray, optional
         column, row of point to end walk. By default None
-    n_steps : [type], optional
+    n_steps : int, optional
         number of steps (pixels) to walk before halting. By default None
     fmap : list, optional
         [NW, N, NE, W, E, SW, S, SE], by default [32, 64, 128, 16, 1, 8, 4, 2]
 
     Returns
     -------
-    [type]
-        [description]
+    tuple
+        A list of pixels from stpt to enpt
     """
     imshape = (fdr_obj.RasterXSize, fdr_obj.RasterYSize)
 
@@ -269,19 +269,19 @@ def _get_basin_pixels(
 
     Parameters
     ----------
-    start_cr : [type]
-        [description]
-    da_obj : [type]
-        [description]
-    fdr_obj : [type]
-        [description]
+    start_cr : 
+        
+    da_obj : 
+        
+    fdr_obj : 
+        
     fdir_map : list, optional
         [NW, N, NE, W, E, SW, S, SE], by default [32, 64, 128, 16, 1, 8, 4, 2]
 
     Returns
     -------
-    [type]
-        [description]
+    
+        
     """
 
     # Make arrays for finding neighboring indices
@@ -484,25 +484,24 @@ def idcs_to_geopolygons(idcs, gdobj, buf_amt=0.001):
 
 
 def _nrows_and_cols_from_search_radius(lon, lat, search_radius, gt):
-    """[summary]
+    """
 
     Parameters
     ----------
-    lon : [type]
-        [description]
-    lat : [type]
-        [description]
+    lon : 
+        
+    lat : 
+        
     search_radius : numeric
         search radius in meters
-    gt : [type]
-        [description]
+    gt : 
 
     Returns
     -------
     nrows : numeric
-        [description]
+        
     ncols : numeric
-        [description]
+        
     """
 
     # Determine the number of rows and columns to search

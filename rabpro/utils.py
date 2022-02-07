@@ -793,7 +793,7 @@ def build_gee_vector_asset(basins, out_path="basins.zip"):
 def upload_gee_vector_asset(
     zip_path, gee_user, gcp_bucket, gcp_folder="", gcp_upload=True, gee_upload=True
 ):
-    """Upload a zipped shapefile as a GEE vector asset.
+    """Upload a zipped shapefile as a GEE vector asset
 
     Parameters
     ----------
@@ -871,7 +871,7 @@ def upload_gee_tif_asset(
     dry_run=False,
     gee_force=False,
 ):
-    """[summary]
+    """Upload a GeoTIFF file as a GEE raster asset
 
     Parameters
     ----------

@@ -31,14 +31,25 @@ def main_hb(cl_gdf, verbose=False):
     subbasins_gdf : GeoDataFrame
         Contains subbasin geometries
     sb_inc_gdf : GeoDataFrame
-        [description]
-    cl_das : [type]
+        Contains the polygons of the incremental catchments. The upstream-most
+        basin will be the largest polygon in most cases, but that depends on the
+        input centerline.
+    cl_das : numpy.ndarray
         Drainage areas
 
     Raises
     ------
     RuntimeWarning
         If cl_gdf has no CRS defined
+
+    Examples
+    --------
+    .. code-block:: python
+
+        import rabpro
+        coords = (56.22659, -130.87974)
+        rpo = rabpro.profiler(coords, name='basic_test')
+        test = rabpro.subbasins.main_hb(rpo.gdf)
     """
     datapaths = ru.get_datapaths(rebuild_vrts=False)
 
@@ -59,7 +70,7 @@ def main_hb(cl_gdf, verbose=False):
     # Find the chain of polygons
     if verbose:
         print("Finding subbasin polygon chain...")
-    chainids = initial_basin_chain(HB_gdf, cl_gdf)
+    chainids = _initial_basin_chain(HB_gdf, cl_gdf)
 
     # Map centerline points to chain basins and get drainage areas for each point
     if verbose:
@@ -106,7 +117,7 @@ def main_hb(cl_gdf, verbose=False):
 
 
 def load_continent_basins(cl_gdf, level_one, level_twelve):
-    """[summary]
+    """Load a HydroBasins continent
 
     Parameters
     ----------
@@ -120,7 +131,7 @@ def load_continent_basins(cl_gdf, level_one, level_twelve):
     Returns
     -------
     GeoDataFrame
-        [description]
+        HydroBasins
 
     Raises
     ------
@@ -163,7 +174,7 @@ def load_continent_basins(cl_gdf, level_one, level_twelve):
     return HB_gdf
 
 
-def initial_basin_chain(HB_gdf, cl_gdf, buf_wid=0.1):
+def _initial_basin_chain(HB_gdf, cl_gdf, buf_wid=0.1):
     """
     Finds the chain of drainage basins from the upstream-most centerline point
     to the sink (e.g. ocean).
@@ -171,16 +182,15 @@ def initial_basin_chain(HB_gdf, cl_gdf, buf_wid=0.1):
     Parameters
     ----------
     HB_gdf : GeoDataFrame
-        [description]
+        
     cl_gdf : GeoDataFrame
         Centerline coordinates
     buf_wid : float, optional
-        [description], by default 0.1
+        by default 0.1
 
     Returns
     -------
     list
-        [description]
 
     Raises
     ------
@@ -291,11 +301,10 @@ def _map_points_to_chain(HB_gdf, cl_gdf, chainids):
     Parameters
     ----------
     HB_gdf : GeoDataFrame
-        [description]
+        
     cl_gdf : GeoDataFrame
         Centerline coordinates
-    chainids : [type]
-        [description]
+    chainids :         
 
     Returns
     -------
@@ -373,9 +382,8 @@ def _delineate_subbasins(idxmap, HB_gdf):
     Parameters
     ----------
     idxmap : list
-        [description]
+    
     HB_gdf : GeoDataFrame
-        [description]
 
     Returns
     -------
@@ -510,9 +518,9 @@ def main_merit(cl_gdf, da, nrows=51, ncols=51, map_only=False, verbose=False):
     da : int
         Drainage area
     nrows : int
-        [desc], by default 51
+        by default 51
     ncols : int
-        [desc], by default 51
+        by default 51
     map_only : bool
         If we only want to map the point and not delineate the basin, by default False
     verbose : bool

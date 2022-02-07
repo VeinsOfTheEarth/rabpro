@@ -20,7 +20,7 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
     Parameters
     ----------
     cl_gdf : GeoDataFrame
-        Desc. Should have a column called 'DA' that stores drainage areas.
+        Starting point geometry. Should have a column called 'DA' that stores drainage areas.
         Should be in EPSG 4326 for use of the Haversine formula
     verbose : bool
         Defaults to False.
@@ -126,12 +126,10 @@ def _compute_dists(gdf):
     Parameters
     ----------
     gdf : GeoDataFrame
-        Desc.
 
     Returns
     -------
     numpy.ndarray
-        Desc.
 
     Raises
     ------
