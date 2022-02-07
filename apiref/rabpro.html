@@ -255,35 +255,9 @@ The default is ‘all’.</p>
 <h2>Elevation Profile Computation (elev_profile.py)<a class="headerlink" href="#elevation-profile-computation-elev-profile-py" title="Permalink to this headline"></a></h2>
 <p>Description</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="rabpro.elev_profile.compute_dists">
-<span class="sig-prename descclassname"><span class="pre">rabpro.elev_profile.</span></span><span class="sig-name descname"><span class="pre">compute_dists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gdf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.elev_profile.compute_dists" title="Permalink to this definition"></a></dt>
-<dd><p>Computes cumulative distance in meters between points in gdf.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>gdf</strong><span class="classifier">GeoDataFrame</span></dt><dd><p>Desc.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>numpy.ndarray</dt><dd><p>Desc.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd">Raises</dt>
-<dd class="field-odd"><dl class="simple">
-<dt>TypeError</dt><dd><p>If gdf does not contain shapely.geometry.Point values.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="rabpro.elev_profile.main">
 <span class="sig-prename descclassname"><span class="pre">rabpro.elev_profile.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cl_gdf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nrows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.elev_profile.main" title="Permalink to this definition"></a></dt>
-<dd><p>Description</p>
+<dd><p>Compute the elevation profile. The profile is computed such that the provided coordinate is the centerpoint (check if this is true).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -292,9 +266,9 @@ Should be in EPSG 4326 for use of the Haversine formula</p>
 </dd>
 <dt><strong>verbose</strong><span class="classifier">bool</span></dt><dd><p>Defaults to False.</p>
 </dd>
-<dt><strong>nrows</strong><span class="classifier">int</span></dt><dd><p>Desc. Defaults to 50.</p>
+<dt><strong>nrows</strong><span class="classifier">int</span></dt><dd><p>Number of rows in the neighborhood of the point to search. Defaults to 50.</p>
 </dd>
-<dt><strong>ncols</strong><span class="classifier">int</span></dt><dd><p>Desc. Defaults to 50.</p>
+<dt><strong>ncols</strong><span class="classifier">int</span></dt><dd><p>Number of columns in the neighborhood of the point to search. Defaults to 50.</p>
 </dd>
 </dl>
 </dd>
@@ -307,43 +281,19 @@ Should be in EPSG 4326 for use of the Haversine formula</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rabpro</span>
+<span class="n">coords</span> <span class="o">=</span> <span class="p">(</span><span class="mf">56.22659</span><span class="p">,</span> <span class="o">-</span><span class="mf">130.87974</span><span class="p">)</span>
+<span class="n">rpo</span> <span class="o">=</span> <span class="n">rabpro</span><span class="o">.</span><span class="n">profiler</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;basic_test&#39;</span><span class="p">)</span>
+<span class="n">cl_gdf</span><span class="p">,</span> <span class="n">merit_gdf</span> <span class="o">=</span> <span class="n">rabpro</span><span class="o">.</span><span class="n">elev_profile</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">rpo</span><span class="o">.</span><span class="n">gdf</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
 <span class="target" id="module-rabpro.merit_utils"></span><section id="merit-utilities-merit-utils-py">
 <h2>MERIT Utilities (merit_utils.py)<a class="headerlink" href="#merit-utilities-merit-utils-py" title="Permalink to this headline"></a></h2>
 <p>Utility functions for dealing with MERIT datasets</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="rabpro.merit_utils.blob_to_polygon_shapely">
-<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">blob_to_polygon_shapely</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">I</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ret_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'coords'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buf_amt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.blob_to_polygon_shapely" title="Permalink to this definition"></a></dt>
-<dd><p>Returns a list of polygons or coords.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>I</strong><span class="classifier">TYPE</span></dt><dd><p>DESCRIPTION.</p>
-</dd>
-<dt><strong>ret_type</strong><span class="classifier">str, optional</span></dt><dd><p>Type of data to return. Either “coords” or “pgon”. The default is
-“coords”.</p>
-</dd>
-<dt><strong>buf_amt</strong><span class="classifier">numeric, optional</span></dt><dd><p>DESCRIPTION. By default 0.001.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>ret</strong><span class="classifier">list of numpy.ndarray or shapely.geometry.Polygon</span></dt><dd><p>DESCRIPTION.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd">Raises</dt>
-<dd class="field-odd"><dl class="simple">
-<dt>ValueError</dt><dd><p>If <cite>ret_type</cite> is not “coords” or “pgon”.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.merit_utils.get_basin_pixels">
 <span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">get_basin_pixels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_cr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">da_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdr_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdir_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[32,</span> <span class="pre">64,</span> <span class="pre">128,</span> <span class="pre">16,</span> <span class="pre">1,</span> <span class="pre">8,</span> <span class="pre">4,</span> <span class="pre">2]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.get_basin_pixels" title="Permalink to this definition"></a></dt>
@@ -424,7 +374,7 @@ flow accumulations.</p>
 </dd>
 <dt><strong>nrows</strong><span class="classifier">int</span></dt><dd><p>Number of rows in the neighborhood of the point to search.</p>
 </dd>
-<dt><strong>ncols</strong><span class="classifier">int</span></dt><dd><p>Number of rows in the neighborhood of the point to search.</p>
+<dt><strong>ncols</strong><span class="classifier">int</span></dt><dd><p>Number of columns in the neighborhood of the point to search.</p>
 </dd>
 <dt><strong>da</strong><span class="classifier">float, optional</span></dt><dd><p>Drainage area of the point/gage if known. Units should correspond to
 those in da_obj, typically km^2. By default None.</p>
@@ -463,7 +413,7 @@ fac_obj.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.merit_utils.neighborhood_vals_from_raster">
-<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vrt_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='139928402996736'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vrt_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='139638567398912'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
 <dd><p>Queries a (virtual) raster object to return an array of neighbors
 surrounding a given point specified by cr (column, row). A shape can be
 provided to return as large of a neighborhood as desired; both dimensions
