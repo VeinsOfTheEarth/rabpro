@@ -27,6 +27,7 @@ Engine <https://developers.google.com/earth-engine/>`_.
       
    examples/notebooks/basic_example.ipynb
    examples/notebooks/full_example.ipynb
+   examples/notebooks/basin_stats.ipynb
 
 .. toctree::
    :maxdepth: 1
