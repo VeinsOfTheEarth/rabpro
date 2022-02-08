@@ -1,6 +1,14 @@
 {
  "cells": [
   {
+   "cell_type": "markdown",
+   "id": "29d0acb0-6cec-480a-aa11-26819ddd8f5e",
+   "metadata": {},
+   "source": [
+    "# Basin stats examples"
+   ]
+  },
+  {
    "cell_type": "code",
    "execution_count": 1,
    "id": "62c76a29-b436-4734-8f38-b02d66a6f8bf",
