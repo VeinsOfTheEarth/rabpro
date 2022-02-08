@@ -5,11 +5,13 @@ Subbasin Statistics (subbasin_stats.py)
 Computes subbasin statistics using Google Earth Engine.
 """
 
+import ee
+import re
 import json
 import pandas as pd
 from datetime import date
+from collections import OrderedDict
 
-import ee
 
 from rabpro import utils as ru
 
@@ -74,21 +76,46 @@ def dataset_to_filename(data_id, band, tag=""):
         return f"{data_id}__{band}".replace("/", "-") + "__" + tag
 
 
+def _str_to_dict(a_string):
+    new_d = re.findall("([0-9]*\.?[0-9]+)", a_string)
+    res = {new_d[i]: float(new_d[i + 1]) for i in range(0, len(new_d), 2)}
+    res = OrderedDict(sorted(res.items()))
+    return res
+
+
+def _format_cols(df, tag, col_drop_list, col_drop_defaults):
+    df = ru.drop_column_if_exists(df, col_drop_list + col_drop_defaults)
+    df.columns = [tag + "_" + x for x in df.columns]
+    return df
+
+
+def _read_url(url):
+    df = pd.read_csv(url)
+
+    if "histogram" in [x for x in df.columns]:
+        histogram = df.histogram
+        df = df.drop(columns=["histogram", "mean"]).copy()
+        _str_to_dict(histogram[0])
+        histogram = [_str_to_dict(x) for x in histogram]
+        histogram = pd.DataFrame(histogram)
+        df = pd.concat([df, histogram], axis=1)
+
+    return df
+
+
 def format_gee(
     url_list,
     tag_list,
     col_drop_list=[],
     col_drop_defaults=["DA", "count", ".geo", "system:index"],
 ):
-    df_list = [pd.read_csv(url) for url in url_list]
 
-    def clean_gee(df, tag, col_drop_list):
-        df = ru.drop_column_if_exists(df, col_drop_list + col_drop_defaults)
-        df.columns = [tag + "_" + x for x in df.columns]
-        return df
+    df_list = [_read_url(url) for url in url_list]
 
     res = [
-        clean_gee(df, tag, col_drop_list=col_drop_list)
+        _format_cols(
+            df, tag, col_drop_list=col_drop_list, col_drop_defaults=col_drop_defaults
+        )
         for df, tag in zip(df_list, tag_list)
     ]
 
@@ -230,7 +257,6 @@ def compute(
         reducer = _parse_reducers(d.stats)
 
         def map_func(img):
-            # TODO: change to reduceRegion or simplify geometries
             return img.reduceRegions(
                 collection=featureCollection, reducer=reducer, scale=d.resolution
             )

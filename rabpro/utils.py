@@ -6,10 +6,12 @@ Utility functions (utils.py)
 
 import os
 import sys
+import copy
 import shutil
 import zipfile
 import platform
 import subprocess
+import pandas as pd
 from pathlib import Path
 
 import cv2
@@ -991,3 +993,16 @@ def drop_column_if_exists(df, col_name_list):
 
     return df
 
+
+def format_freqhist(feature, name_category):
+    feature = copy.deepcopy(feature)
+    res_hist = pd.DataFrame(feature["properties"]["histogram"], index=[0])
+    res_hist.columns = [name_category + "_" + x for x in res_hist.columns]
+
+    del feature["properties"]["histogram"]
+    res = pd.DataFrame(feature["properties"], index=[0])
+    res["id"] = feature["id"]
+
+    res = pd.concat([res, res_hist], axis=1)
+
+    return res
