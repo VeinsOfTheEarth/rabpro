@@ -1,12 +1,11 @@
 import ee
-import copy
 import numpy as np
 import pandas as pd
 import geopandas as gpd
 from shapely.geometry import box
-from rabpro.subbasin_stats import Dataset
 
 import rabpro
+from rabpro.subbasin_stats import Dataset
 
 
 # coords_file = gpd.read_file(r"tests/data/Big Blue River.geojson")
@@ -18,20 +17,6 @@ gdf = gpd.GeoDataFrame({"idx": [1], "geometry": [box(*total_bounds)]}, crs="EPSG
 def clean_res(feature):
     res = pd.DataFrame(feature["properties"], index=[0])
     res["id"] = feature["id"]
-    return res
-
-
-def clean_freqhist(feature, name_category):
-    feature = copy.deepcopy(feature)
-    res_hist = pd.DataFrame(feature["properties"]["histogram"], index=[0])
-    res_hist.columns = [name_category + "_" + x for x in res_hist.columns]
-
-    del feature["properties"]["histogram"]
-    res = pd.DataFrame(feature["properties"], index=[0])
-    res["id"] = feature["id"]
-
-    res = pd.concat([res, res_hist], axis=1)
-
     return res
 
 
@@ -52,28 +37,24 @@ def test_customreducer():
 
 
 def test_categorical_imgcol():
-    data, task = rabpro.subbasin_stats.compute(
-        [Dataset("MODIS/006/MCD12Q1", "LC_Type1", stats=["freqhist"])],
-        basins_gdf=gdf,
-        test=True,
-    )
 
-    res = pd.concat(
-        [clean_freqhist(feature, "LC_Type1") for feature in data[0]["features"]]
+    urls, task = rabpro.subbasin_stats.compute(
+        [Dataset("MODIS/006/MCD12Q1", "LC_Type1", stats=["freqhist"])], basins_gdf=gdf
     )
+    res = rabpro.subbasin_stats.format_gee(urls, ["lulc"])
 
-    assert res.shape[1] > 4
+    assert res.shape[1] > 1
 
 
 def test_timeindexed_imgcol():
 
-    data, task = rabpro.subbasin_stats.compute(
-        [Dataset("JRC/GSW1_3/YearlyHistory", "waterClass",)], basins_gdf=gdf, test=True,
+    urls, tasks = rabpro.subbasin_stats.compute(
+        [Dataset("JRC/GSW1_3/YearlyHistory", "waterClass",)], basins_gdf=gdf
     )
 
-    res = pd.concat([clean_res(feature) for feature in data[0]["features"]])
+    res = rabpro.subbasin_stats.format_gee(urls, ["waterclass"])
 
-    assert res["mean"].iloc[0] > 0
+    assert res["waterclass_mean"].iloc[0] > 0
     assert res.shape[0] > 0
 
 
