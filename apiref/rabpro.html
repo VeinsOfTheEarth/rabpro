@@ -61,10 +61,10 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">rabpro</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#rabpro-core-py">rabpro (core.py)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#data-utility-functions-data-utils-py">Data utility functions (data_utils.py)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#elevation-profile-computation-elev-profile-py">Elevation Profile Computation (elev_profile.py)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#merit-utilities-merit-utils-py">MERIT Utilities (merit_utils.py)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#subbasin-statistics-subbasin-stats-py">Subbasin Statistics (subbasin_stats.py)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#subbasin-computation-subbasins-py">Subbasin Computation (subbasins.py)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#elevation-profile-computation-elev-profile-py">Elevation profile computation (elev_profile.py)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#merit-utilities-merit-utils-py">MERIT utilities (merit_utils.py)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subbasin-statistics-subbasin-stats-py">Subbasin statistics (subbasin_stats.py)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subbasin-delineation-subbasins-py">Subbasin delineation (subbasins.py)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#utility-functions-utils-py">Utility functions (utils.py)</a></li>
 </ul>
 </li>
@@ -253,7 +253,7 @@ The default is ‘all’.</p>
 <h2>Data utility functions (data_utils.py)<a class="headerlink" href="#data-utility-functions-data-utils-py" title="Permalink to this headline"></a></h2>
 </section>
 <span class="target" id="module-rabpro.elev_profile"></span><section id="elevation-profile-computation-elev-profile-py">
-<h2>Elevation Profile Computation (elev_profile.py)<a class="headerlink" href="#elevation-profile-computation-elev-profile-py" title="Permalink to this headline"></a></h2>
+<h2>Elevation profile computation (elev_profile.py)<a class="headerlink" href="#elevation-profile-computation-elev-profile-py" title="Permalink to this headline"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.elev_profile.main">
 <span class="sig-prename descclassname"><span class="pre">rabpro.elev_profile.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cl_gdf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nrows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.elev_profile.main" title="Permalink to this definition"></a></dt>
@@ -292,7 +292,7 @@ Should be in EPSG 4326 for use of the Haversine formula</p>
 
 </section>
 <span class="target" id="module-rabpro.merit_utils"></span><section id="merit-utilities-merit-utils-py">
-<h2>MERIT Utilities (merit_utils.py)<a class="headerlink" href="#merit-utilities-merit-utils-py" title="Permalink to this headline"></a></h2>
+<h2>MERIT utilities (merit_utils.py)<a class="headerlink" href="#merit-utilities-merit-utils-py" title="Permalink to this headline"></a></h2>
 <p>Utility functions for dealing with MERIT datasets</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.merit_utils.idcs_to_geopolygons">
@@ -386,7 +386,7 @@ fac_obj.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.merit_utils.neighborhood_vals_from_raster">
-<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vrt_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='139963301965792'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vrt_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='140000361148480'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
 <dd><p>Queries a (virtual) raster object to return an array of neighbors
 surrounding a given point specified by cr (column, row). A shape can be
 provided to return as large of a neighborhood as desired; both dimensions
@@ -465,7 +465,7 @@ symbology matches MERIT-Hydro:
 
 </section>
 <span class="target" id="module-rabpro.subbasin_stats"></span><section id="subbasin-statistics-subbasin-stats-py">
-<h2>Subbasin Statistics (subbasin_stats.py)<a class="headerlink" href="#subbasin-statistics-subbasin-stats-py" title="Permalink to this headline"></a></h2>
+<h2>Subbasin statistics (subbasin_stats.py)<a class="headerlink" href="#subbasin-statistics-subbasin-stats-py" title="Permalink to this headline"></a></h2>
 <p>Computes subbasin statistics using Google Earth Engine.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="rabpro.subbasin_stats.Dataset">
@@ -570,8 +570,8 @@ feature.set(f.__name__, function(feature))</p>
 </dd></dl>
 
 </section>
-<span class="target" id="module-rabpro.subbasins"></span><section id="subbasin-computation-subbasins-py">
-<h2>Subbasin Computation (subbasins.py)<a class="headerlink" href="#subbasin-computation-subbasins-py" title="Permalink to this headline"></a></h2>
+<span class="target" id="module-rabpro.subbasins"></span><section id="subbasin-delineation-subbasins-py">
+<h2>Subbasin delineation (subbasins.py)<a class="headerlink" href="#subbasin-delineation-subbasins-py" title="Permalink to this headline"></a></h2>
 <p>Functions to calculate subbasin geometries.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.subbasins.find_contributing_basins">
