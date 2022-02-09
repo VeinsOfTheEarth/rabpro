@@ -132,6 +132,27 @@ def download_gee_metadata(datapath=None):
 
 
 def merit_hydro(target, username, password, proxy=None, clean=True, datapath=None):
+    """Download MERIT Hydro
+
+    Parameters
+    ----------
+    target : str
+        MERIT Hydro tile identifier, e.g. "s30e150"
+    username : str        
+    password : str        
+    proxy : str, optional
+        Pass a proxy to requests.get, by default None
+    clean : bool, optional
+        Set False to skip overwrite of existing files, by default True
+    datapath : str, optional
+        Manually specify a location on the local filesystem, by default None
+
+
+    Raises
+    ------
+    ValueError
+        if a url could not be reached, such as with an invalid tile identifier
+    """
     baseurl = "http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/"
 
     if proxy is not None:
@@ -297,8 +318,12 @@ def hydrobasins(proxy=None, clean=True, datapath=None):
     datapath : str, optional
         Manually specify a location on the local filesystem, by default None
 
-    from rabpro import data_utils
-    data_utils.hydrobasins(clean=False)
+    Examples
+    --------
+    .. code-block:: python
+
+        from rabpro import data_utils
+        data_utils.hydrobasins(clean=False)    
     """
 
     [
