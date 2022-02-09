@@ -1,5 +1,0 @@
-.. _background:
-
-==========
-Background
-==========

@@ -1,30 +1,35 @@
 .. _install:
 
-=======
-Install
-=======
+============
+Installation
+============
+
+As `rabpro` relies on a large stack of geospatial dependencies, we recommend using Anaconda to install these in a fresh environment. Otherwise you will need to undertake a manual install of GDAL, which can be quite complex.
+
+::
+
+   $ conda create -n rabpro python=3.9 geopandas -c conda-forge
+   $ conda activate rabpro
+
+Once that base is in place, you can proceed with installing either from Anaconda or pip.
 
 Installation via *conda*
 ------------------------
 
-The latest 'stable' version of *rabpro* can be installed using `conda`. In order
-to avoid dependency conflicts, we recommend installing *rabpro* into a fresh
-`conda` environment. Open Terminal (Mac/Unix) or Anaconda Prompt (Windows) and
-type:
+The latest 'stable' version of *rabpro* can be installed using `conda`.
+
 ::
 
-   $ conda create -n rabpro
-   $ conda activate rabpro
    $ conda install -c jschwenk rabpro
 
-This will install all of rabpro's dependencies as well, as listed in
+This will install rabpro and all of its dependencies, as listed in
 `environment.yml
 <https://github.com/VeinsOfTheEarth/rabpro/blob/master/environment.yml>`_.
 
 Installation from source
 ------------------------
 
-If you would prefer to install *rabpro* from source, do the following:
+If you would prefer to install bleeding edge *rabpro* from source or you are not using conda-installed GDAL, do the following:
 
 1. Clone the repository
 ::
@@ -39,11 +44,10 @@ or, if you would prefer to use an SSH key:
 
 2. Install dependencies
 
-Create a new `conda` environment from `environment.yml
-<https://github.com/VeinsOfTheEarth/rabpro/blob/master/environment.yml>`_:
+Assuming you've activated your fresh `rabpro` environment:
 ::
 
-   $ conda env create --file environment.yml
+   $ conda env update -f environment.yml
 
 3. Local installation using `setuptools`
 
@@ -51,10 +55,4 @@ In the cloned folder, run the following:
 ::
 
    $ pip install -e .
-
-or
-
-::
-
-   $ python setup.py install
 

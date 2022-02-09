@@ -30,6 +30,7 @@ docs/_build
 *.xcf
 */*/*/*/.ipynb_checkpoints
 */*/*/*/temp
+docs/source/_build
 
 # Testing
 .coverage

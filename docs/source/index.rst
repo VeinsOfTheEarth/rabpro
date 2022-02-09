@@ -10,12 +10,11 @@ rabpro provides methods to compute subbasin geometries from coordinate pairs, an
 
 .. toctree::
    :maxdepth: 1
-   :caption: Contents:
+   :caption: Setup:
    :hidden:
    
    install/index
-   background/index
-   data/index
+   configure/index   
 
 .. toctree::
    :maxdepth: 2
@@ -43,23 +42,23 @@ rabpro provides methods to compute subbasin geometries from coordinate pairs, an
         :type: ref
         :text: Installation
         :classes: btn-link stretched-link font-weight-bold
-   ---   
+   ---    
    :card: + text-center bg-secondary
-   .. link-button:: background/index
+   .. link-button:: configure/index
         :type: ref
-        :text: Background
-        :classes: btn-link stretched-link font-weight-bold
-   ---   
-   :card: + text-center bg-secondary
-   .. link-button:: data/index
-        :type: ref
-        :text: GEE and Data
+        :text: Configuration
         :classes: btn-link stretched-link font-weight-bold
    ---
    :card: + text-center bg-secondary
    .. link-button:: examples/notebooks/basic_example
         :type: ref
         :text: Basic example
+        :classes: btn-link stretched-link font-weight-bold
+   ---
+   :card: + text-center bg-secondary
+   .. link-button:: examples/notebooks/full_example
+        :type: ref
+        :text: Full example
         :classes: btn-link stretched-link font-weight-bold
    ---
    :column: col-lg-12 p-2
