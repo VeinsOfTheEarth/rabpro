@@ -7,8 +7,8 @@ Install
 Installation via *conda*
 ------------------------
 
-The latest 'stable' version of *RaBPro* can be installed using `conda`. In order
-to avoid dependency conflicts, we recommend installing *RaBPro* into a fresh
+The latest 'stable' version of *rabpro* can be installed using `conda`. In order
+to avoid dependency conflicts, we recommend installing *rabpro* into a fresh
 `conda` environment. Open Terminal (Mac/Unix) or Anaconda Prompt (Windows) and
 type:
 ::
@@ -24,7 +24,7 @@ This will install all of rabpro's dependencies as well, as listed in
 Installation from source
 ------------------------
 
-If you would prefer to install *RaBPro* from source, do the following:
+If you would prefer to install *rabpro* from source, do the following:
 
 1. Clone the repository
 ::

@@ -4,7 +4,7 @@
 GEE and Data
 ============
 
-RaBPro requires setting up Google Earth Engine and downloading some data files
+rabpro requires setting up Google Earth Engine and downloading some data files
 in order to run. This section describes those requirements, along with some
 additional options.
 
@@ -13,9 +13,9 @@ Google Earth Engine (GEE)
 
 Authentication
 ~~~~~~~~~~~~~~
-In order to use RaBPro, you'll need to sign up for a free GEE account `here
+In order to use rabpro, you'll need to sign up for a free GEE account `here
 <https://signup.earthengine.google.com/#!/>`__. Once you've been approved and
-installed the GEE Python API (typically installed as a RaBPro dependency), you
+installed the GEE Python API (typically installed as a rabpro dependency), you
 can use the GEE CLI to obtain a credential token by running ``earthengine
 authenticate`` and following the instructions. More information can be found at
 the `GEE Python install page
@@ -25,9 +25,9 @@ the `GEE Python install page
 
 Datasets
 ~~~~~~~~
-RaBPro uses a JSON file containing metadata for all datasets available through
+rabpro uses a JSON file containing metadata for all datasets available through
 GEE in order to validate requests to the GEE API and fail fast if they're
-invalid. This JSON file is updated daily server-side. RaBPro caches a local copy
+invalid. This JSON file is updated daily server-side. rabpro caches a local copy
 of this file, and will attempt to retrieve an updated version when run or daily
 (the less frequent of the two). The file can be found `here
 <https://github.com/VeinsOfTheEarth/rabpro/blob/main/Data/gee_datasets.json>`__, and
@@ -51,8 +51,8 @@ User Datasets
 
 You can add custom datasets to GEE by following the instructions `here
 <https://developers.google.com/earth-engine/guides/image_upload>`__. To ensure
-compatibility with RaBPro, upload GeoTIFFs and specify a no-data value if
-applicable. In order to use this dataset with RaBPro follow the instructions in
+compatibility with rabpro, upload GeoTIFFs and specify a no-data value if
+applicable. In order to use this dataset with rabpro follow the instructions in
 `User Dataset Configuration`_.
 
 Local Data
@@ -60,14 +60,14 @@ Local Data
 
 MERIT and HydroBASINS
 ~~~~~~~~~~~~~~~~~~~~~
-RaBPro requires local copies of the `MERIT Hydro
+rabpro requires local copies of the `MERIT Hydro
 <http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/>`_, and `HydroBASINS
 <https://www.hydrosheds.org/downloads>`_ datasets to delineate watersheds and
 compute elevation profiles.
 
-Specifically, RaBPro needs level one and level twelve shapefiles from
+Specifically, rabpro needs level one and level twelve shapefiles from
 HydroBASINS, and all MERIT tif files for a given tile. These can be installed
-manually or programatically through the RaBPro API or CLI.
+manually or programatically through the rabpro API or CLI.
 
 The data files should be located in the following paths:
 

@@ -123,15 +123,15 @@
 </style>
 <section id="gee-and-data">
 <span id="data"></span><h1>GEE and Data<a class="headerlink" href="#gee-and-data" title="Permalink to this headline"></a></h1>
-<p>RaBPro requires setting up Google Earth Engine and downloading some data files
+<p>rabpro requires setting up Google Earth Engine and downloading some data files
 in order to run. This section describes those requirements, along with some
 additional options.</p>
 <section id="google-earth-engine-gee">
 <h2>Google Earth Engine (GEE)<a class="headerlink" href="#google-earth-engine-gee" title="Permalink to this headline"></a></h2>
 <section id="authentication">
 <h3>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline"></a></h3>
-<p>In order to use RaBPro, you’ll need to sign up for a free GEE account <a class="reference external" href="https://signup.earthengine.google.com/#!/">here</a>. Once you’ve been approved and
-installed the GEE Python API (typically installed as a RaBPro dependency), you
+<p>In order to use rabpro, you’ll need to sign up for a free GEE account <a class="reference external" href="https://signup.earthengine.google.com/#!/">here</a>. Once you’ve been approved and
+installed the GEE Python API (typically installed as a rabpro dependency), you
 can use the GEE CLI to obtain a credential token by running <code class="docutils literal notranslate"><span class="pre">earthengine</span>
 <span class="pre">authenticate</span></code> and following the instructions. More information can be found at
 the <a class="reference external" href="https://developers.google.com/earth-engine/guides/python_install">GEE Python install page</a> and the
@@ -139,9 +139,9 @@ the <a class="reference external" href="https://developers.google.com/earth-engi
 </section>
 <section id="datasets">
 <h3>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline"></a></h3>
-<p>RaBPro uses a JSON file containing metadata for all datasets available through
+<p>rabpro uses a JSON file containing metadata for all datasets available through
 GEE in order to validate requests to the GEE API and fail fast if they’re
-invalid. This JSON file is updated daily server-side. RaBPro caches a local copy
+invalid. This JSON file is updated daily server-side. rabpro caches a local copy
 of this file, and will attempt to retrieve an updated version when run or daily
 (the less frequent of the two). The file can be found <a class="reference external" href="https://github.com/VeinsOfTheEarth/rabpro/blob/main/Data/gee_datasets.json">here</a>, and
 will be downloaded to the following locations:</p>
@@ -168,8 +168,8 @@ an updated version is retrieved.</p>
 </tbody>
 </table>
 <p>You can add custom datasets to GEE by following the instructions <a class="reference external" href="https://developers.google.com/earth-engine/guides/image_upload">here</a>. To ensure
-compatibility with RaBPro, upload GeoTIFFs and specify a no-data value if
-applicable. In order to use this dataset with RaBPro follow the instructions in
+compatibility with rabpro, upload GeoTIFFs and specify a no-data value if
+applicable. In order to use this dataset with rabpro follow the instructions in
 <a class="reference internal" href="#user-dataset-configuration">User Dataset Configuration</a>.</p>
 </section>
 </section>
@@ -177,11 +177,11 @@ applicable. In order to use this dataset with RaBPro follow the instructions in
 <h2>Local Data<a class="headerlink" href="#local-data" title="Permalink to this headline"></a></h2>
 <section id="merit-and-hydrobasins">
 <h3>MERIT and HydroBASINS<a class="headerlink" href="#merit-and-hydrobasins" title="Permalink to this headline"></a></h3>
-<p>RaBPro requires local copies of the <a class="reference external" href="http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/">MERIT Hydro</a>, and <a class="reference external" href="https://www.hydrosheds.org/downloads">HydroBASINS</a> datasets to delineate watersheds and
+<p>rabpro requires local copies of the <a class="reference external" href="http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/">MERIT Hydro</a>, and <a class="reference external" href="https://www.hydrosheds.org/downloads">HydroBASINS</a> datasets to delineate watersheds and
 compute elevation profiles.</p>
-<p>Specifically, RaBPro needs level one and level twelve shapefiles from
+<p>Specifically, rabpro needs level one and level twelve shapefiles from
 HydroBASINS, and all MERIT tif files for a given tile. These can be installed
-manually or programatically through the RaBPro API or CLI.</p>
+manually or programatically through the rabpro API or CLI.</p>
 <p>The data files should be located in the following paths:</p>
 <p>Linux: <code class="docutils literal notranslate"><span class="pre">~/.local/share/rabpro/</span></code></p>
 <p>macOS: <code class="docutils literal notranslate"><span class="pre">~/Library/Application</span> <span class="pre">Support/rabpro/</span></code></p>

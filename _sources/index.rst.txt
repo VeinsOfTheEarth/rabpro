@@ -6,9 +6,7 @@
 Welcome to rabpro's documentation!
 ==================================
 
-RaBPro provides methods to compute subbasin geometries from river centerline
-coordinates, and compute statistics over these subbasins using `Google Earth
-Engine <https://developers.google.com/earth-engine/>`_.
+rabpro provides methods to compute subbasin geometries from coordinate pairs, and compute statistics over these subbasins using `Google Earth Engine <https://developers.google.com/earth-engine/>`_.
 
 .. toctree::
    :maxdepth: 1
