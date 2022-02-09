@@ -10,6 +10,7 @@ import copy
 import shutil
 import zipfile
 import platform
+import itertools
 import subprocess
 import pandas as pd
 from pathlib import Path
@@ -37,6 +38,17 @@ def has_internet():
         return False
     finally:
         conn.close()
+
+
+def envvars_rabpro():
+    var_list = ["RABPRO_DATA", "RABPRO_CONFIG"]
+    res_dict = {}
+    for var in var_list:
+        try:
+            res_dict[var] = os.environ[var]
+        except:
+            pass
+    return res_dict
 
 
 def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True, **kwargs):
@@ -140,7 +152,7 @@ def get_exportpaths(name, basepath=None, overwrite=False):
     if not namedresults.exists():
         namedresults.mkdir(parents=True, exist_ok=True)
     elif overwrite:
-        clear_directory(namedresults)
+        _clear_directory(namedresults)
 
     # Results path dictionary
     exportpaths = {
@@ -218,7 +230,7 @@ def build_vrt(
     RuntimeError
         No files found to build raster or raster build fails
     """
-    base, folder, file, ext = parse_path(tilespath)
+    base, folder, file, ext = _parse_path(tilespath)
 
     # Set output names
     if outputfile is None:
@@ -367,7 +379,7 @@ def raster_extents(raster_path):
     return extents
 
 
-def parse_path(path):
+def _parse_path(path):
     """
     Parses a file or folderpath into: base, folder (where folder is the
     outermost subdirectory), filename, and extention. Filename and extension are
@@ -410,7 +422,7 @@ def delete_file(file):
         pass
 
 
-def clear_directory(Path_obj):
+def _clear_directory(Path_obj):
     """
     Given a pathlib Path obj, clears all the contents of the directory. Does
     not remove the directory itself.
@@ -1005,4 +1017,56 @@ def format_freqhist(feature, name_category):
 
     res = pd.concat([res, res_hist], axis=1)
 
+    return res
+
+
+def coords_to_merit_tile(lon, lat):
+    """Identify MERIT "tiles" of interest. See http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/
+
+    Parameters
+    ----------
+    lon : float
+
+    lat : float
+
+    Examples
+    --------
+    .. code-block:: python
+
+        from rabpro import utils        
+        utils.coords_to_merit_tile(178, -17)
+        # > "s30e150"
+        utils.coords_to_merit_tile(-118, 32)
+        # > "n30w120"        
+        utils.coords_to_merit_tile(-97.355, 45.8358)
+        # > "n45w100"
+    """
+
+    def coords_ns_ew(x, less_than_0, gtequal_0):
+        if x < 0:
+            res = less_than_0 + str(abs(x))
+        else:
+            res = gtequal_0 + str(x)
+        return res
+
+    lat_segments = [i for i in range(-60, 61, 30)]
+    lon_segments = [i for i in range(-180, 151, 30)]
+
+    grid = list(itertools.product(lat_segments, lon_segments))
+    grid = pd.DataFrame(grid, columns=("lat", "lon"))
+    grid["lat_format"] = grid["lat"].apply(lambda x: coords_ns_ew(x, "s", "n"))
+    grid["lon_format"] = grid["lon"].apply(lambda x: coords_ns_ew(x, "w", "e"))
+
+    def closest_less_than(x, y_list):
+        res = list(itertools.compress(y_list, [y < x for y in y_list]))
+        return res[len(res) - 1]
+
+    res = grid.loc[
+        (grid["lat"] == closest_less_than(lat, lat_segments))
+        & (grid["lon"] == closest_less_than(lon, lon_segments))
+    ]
+    res = res.reset_index()
+    res = res["lat_format"].to_string(index=False) + res["lon_format"].to_string(
+        index=False
+    )
     return res
