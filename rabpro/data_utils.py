@@ -204,48 +204,110 @@ def download_tar_file(url, filename, username, password, proxy=None, clean=True)
         os.remove(filename)
 
 
-_HYDROBASINS_IDS = {
-    "dbf": "1duRlrrHTciKn7gM4qogumZ4OhqrB0Ggq",
-    "prj": "1fSAUKiFbfYb8-rLqiG1Epo3dMNLBOMHh",
-    "qpj": "1ZMCrzYUJuxORxNwkQjL1qvFHODS64WBu",
-    "shp": "1ev5Md5d2RwzpTRfpJ6SmCkYPf_7821b2",
-    "shx": "15-fa27DPnioY9kDzgKHQdaSxingSGhCJ",
+_HYDROBASINS_1_IDS = {
+    "all": {
+        "dbf": "1duRlrrHTciKn7gM4qogumZ4OhqrB0Ggq",
+        "prj": "1fSAUKiFbfYb8-rLqiG1Epo3dMNLBOMHh",
+        "qpj": "1ZMCrzYUJuxORxNwkQjL1qvFHODS64WBu",
+        "shp": "1ev5Md5d2RwzpTRfpJ6SmCkYPf_7821b2",
+        "shx": "15-fa27DPnioY9kDzgKHQdaSxingSGhCJ",
+    }
+}
+
+_HYDROBASINS_12_IDS = {
+    "ar": {
+        "dbf": "19tHCft5jIDoSAdS_PWVMXN1kUGEdCCIl",
+        "prj": "1WbSigVZ3up7EUsbTGsFjBoi3DsK5r5xg",
+        "shp": "1s-L6YEdDN1-mRStamvs4nE9X8GolMv4q",
+        "shx": "1LCeZpkczJqV1eyCm_ArJdZCAONwCy48I",
+    },
+    "as": {
+        "dbf": "1ZXqPOvs-LTk_PheF0iRj9KTY9WNosADO",
+        "prj": "1Ds4U42MyFz4xioDiBv7erRI3tpn_VmH-",
+        "shp": "12PNAOZrWb3U0xggLH0fku1g3MB7IZiGe",
+        "shx": "1pikNKG5ZUl90gtHACs3M6PksCEZRjmHR",
+    },
 }
 
 
-def hydrobasins(proxy=None, clean=True, datapath=None):
-    filebase = "hybas_all_lev01_v1c."
-    urlbase = "https://drive.google.com/uc?export=download&id="
-    datapath, _ = _path_generator_util(datapath, None)
-    pathbase = datapath / Path(_PATH_CONSTANTS["HydroBasins1"])
+def _get_file(filename, url, proxy=None, clean=True):
 
-    os.makedirs(pathbase, exist_ok=True)
-
-    for ext in _HYDROBASINS_IDS:
-        filename = pathbase / Path(filebase + ext)
-        url = urlbase + _HYDROBASINS_IDS[ext]
-
-        if not clean:
-            if os.path.isfile(filename):
-                return
-
-        print(f"Downloading '{url}' into '{filename}'")
-
-        if proxy is not None:
-            r = requests.get(url, stream=True, proxies={"https": proxy})
-        else:
-            r = requests.get(url, stream=True)
-
-        total_size = int(r.headers.get("content-length", 0))
-
-        if r.status_code != 200:
-            print(f"{url} failed with status code {r.status_code}")
+    if not clean:
+        if os.path.isfile(filename):
             return
 
-        with open(filename, "wb") as f:
-            tqdmbar = tqdm.tqdm(total=total_size, unit="B", unit_scale=True)
-            for chunk in r.iter_content(4 * 1024):
-                if chunk:
-                    tqdmbar.update(len(chunk))
-                    f.write(chunk)
-            tqdmbar.close()
+    print(f"Downloading '{url}' into '{filename}'")
+
+    if proxy is not None:
+        r = requests.get(url, stream=True, proxies={"https": proxy})
+    else:
+        r = requests.get(url, stream=True)
+
+    total_size = int(r.headers.get("content-length", 0))
+
+    if r.status_code != 200:
+        print(f"{url} failed with status code {r.status_code}")
+        return
+
+    with open(filename, "wb") as f:
+        tqdmbar = tqdm.tqdm(total=total_size, unit="B", unit_scale=True)
+        for chunk in r.iter_content(4 * 1024):
+            if chunk:
+                tqdmbar.update(len(chunk))
+                f.write(chunk)
+        tqdmbar.close()
+
+    return None
+
+
+def _get_domain(domain, level, proxy=None, clean=True, datapath=None):
+
+    filebase = "hybas_" + domain + "_lev" + level + "_v1c."
+    urlbase = "https://drive.google.com/uc?export=download&id="
+    datapath, _ = _path_generator_util(datapath, None)
+    pathbase = datapath / Path(_PATH_CONSTANTS["HydroBasins" + level.strip("0")])
+    os.makedirs(pathbase, exist_ok=True)
+
+    if level == "01":
+        id_dict = _HYDROBASINS_1_IDS
+
+    if level == "12":
+        id_dict = _HYDROBASINS_12_IDS
+
+    subdict = id_dict[domain]
+
+    for ext in subdict:
+        filename = pathbase / Path(filebase + ext)
+        url = urlbase + subdict[ext]
+        print((filename, url))
+        _get_file(filename, url, clean=clean, proxy=proxy)
+
+    return None
+
+
+def hydrobasins(proxy=None, clean=True, datapath=None):
+    """Download HydroBASINS
+
+    Parameters
+    ----------
+    proxy : str, optional
+        Pass a proxy to requests.get, by default None
+    clean : bool, optional
+        Set False to skip overwrite of existing files, by default True
+    datapath : str, optional
+        Manually specify a location on the local filesystem, by default None
+
+    from rabpro import data_utils
+    data_utils.hydrobasins(clean=False)
+    """
+
+    [
+        _get_domain(domain, "01", clean=clean, proxy=proxy, datapath=datapath)
+        for domain in _HYDROBASINS_1_IDS
+    ]
+
+    [
+        _get_domain(domain, "12", clean=clean, proxy=proxy, datapath=datapath)
+        for domain in _HYDROBASINS_12_IDS
+    ]
+
