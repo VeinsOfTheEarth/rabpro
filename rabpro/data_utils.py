@@ -56,7 +56,8 @@ def create_datapaths(datapath=None, configpath=None, reset_user_metadata=False):
     user_gee_metadata_path = configpath / "user_gee_datasets.json"
     datapaths["user_gee_metadata"] = str(user_gee_metadata_path)
     if reset_user_metadata:
-        os.remove(datapaths["user_gee_metadata"])
+        if os.path.isfile(datapaths["user_gee_metadata"]):
+            os.remove(datapaths["user_gee_metadata"])
     if not user_gee_metadata_path.is_file():
         try:
             https_proxy = os.environ["HTTPS_PROXY"]
