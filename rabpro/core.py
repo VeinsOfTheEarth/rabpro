@@ -14,6 +14,7 @@ from pyproj import CRS
 
 from rabpro import elev_profile as ep
 from rabpro import merit_utils as mu
+from rabpro import utils as ru
 from rabpro import subbasins as sb
 from rabpro import subbasin_stats as ss
 from rabpro import utils as rpu
@@ -236,18 +237,34 @@ class profiler:
                         f"Check delineated basin. There is a difference of {pct_diff}% between MERIT DA and polygon area."
                     )
 
-    def elev_profile(self):
+    def elev_profile(self, dist_to_walk_km=None):
         """
         Compute the elevation profile. The profile is computed such that the
         provided coordinate is the centerpoint (check if this is true).
+        
+        Parameters
+        ----------
+        dist_to_walk_km : numeric
+            The distance to trace the elevation profile from the provided
+            point. This distance applies to upstream and downstream--i.e. the
+            total profile distance is twice this value. If not specified,
+            will be automatically computed as 10 channel widths from provided 
+            DA value if not specified OR 5 km, whichever is larger.
+       
         """
-
         if not hasattr(self, "nrows"):
             self.nrows = 50
             self.ncols = 50
+            
+        if dist_to_walk_km is None:
+            if 'DA' not in self.gdf.keys():
+                raise KeyError('If the dist_to_walk_km parameter is not specified, a drainage area must be provided when instantiating the profiler.')
+            else:                
+                dist_to_walk_km = ru.dist_from_da(self.gdf['DA'].values[0])
+                dist_to_walk_km = max(dist_to_walk_km, 5) 
 
         self.gdf, self.merit_gdf = ep.main(
-            self.gdf, self.verbose, self.nrows, self.ncols
+            self.gdf, dist_to_walk_km, self.verbose, self.nrows, self.ncols
         )
 
     def basin_stats(self, datasets, reducer_funcs=None, folder=None, test=False):
