@@ -1,7 +1,7 @@
 """
-RaBPro (core.py)
+rabpro (core.py)
 ================
-Class for running RaBPro commands on your data.
+Class for running rabpro commands on your data.
 
 """
 
@@ -20,7 +20,7 @@ from rabpro import utils as rpu
 
 
 class profiler:
-    """The profiler class organizes data and methods for using RaBPro. This is
+    """The profiler class organizes data and methods for using rabpro. This is
     a parent class to the centerline and point classes which inherit profiler
     methods and attributes. You should use `rabpro.profiler` rather than
     `rabpro.core.profiler`.
@@ -34,7 +34,7 @@ class profiler:
         labeled 'latitude' and 'longitude'. If a shapefile path is provided, the
         shapefile may also contain columns for widths and/or along-valley
         distances. These columns should have "width" and "distance" somewhere in
-        their column names, respectively, in order for RaBPro to exploit them.
+        their column names, respectively, in order for rabpro to exploit them.
     da : number
         Represents the drainage area in square kilometers of the downstream-most
         point in the provided coords.

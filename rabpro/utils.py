@@ -41,7 +41,7 @@ def has_internet():
 
 def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True, **kwargs):
     """
-    Returns a dictionary of paths to all data that RaBPro uses. Also builds
+    Returns a dictionary of paths to all data that rabpro uses. Also builds
     virtual rasters for MERIT data.
 
     Parameters
@@ -58,7 +58,7 @@ def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True, **kwargs):
     Returns
     -------
     dict
-        contains paths to all data that RaBPro uses
+        contains paths to all data that rabpro uses
 
     Examples
     --------
@@ -106,7 +106,7 @@ def _build_virtual_rasters(datapaths, force_rebuild=True, quiet=False, **kwargs)
 
 
 def get_exportpaths(name, basepath=None, overwrite=False):
-    """Returns a dictionary of paths for exporting RaBPro results. Also creates
+    """Returns a dictionary of paths for exporting rabpro results. Also creates
     "results" folders when necessary.
 
     Parameters
@@ -122,7 +122,7 @@ def get_exportpaths(name, basepath=None, overwrite=False):
     Returns
     -------
     dict
-        contains paths to all output that RaBPro generates
+        contains paths to all output that rabpro generates
     """
 
     if basepath is None:

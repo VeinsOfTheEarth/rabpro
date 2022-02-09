@@ -84,7 +84,7 @@ if __name__ == "__main__":
 
     # Create file structure subparser
     parser_create = subparsers.add_parser(
-        "create", help="Create RaBPro data and config file structure"
+        "create", help="Create rabpro data and config file structure"
     )
 
     parser_create.add_argument(
@@ -99,7 +99,7 @@ if __name__ == "__main__":
 
     # Delete file structure subparser
     parser_delete = subparsers.add_parser(
-        "delete", help="Delete RaBPro data and config file structure"
+        "delete", help="Delete rabpro data and config file structure"
     )
 
     parser_delete.add_argument(
@@ -114,7 +114,7 @@ if __name__ == "__main__":
 
     # Get paths subparser
     parser_paths = subparsers.add_parser(
-        "paths", help="Get RaBPro file structure paths"
+        "paths", help="Get rabpro file structure paths"
     )
 
     parser_paths.add_argument(
