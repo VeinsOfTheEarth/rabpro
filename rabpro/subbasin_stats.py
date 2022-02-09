@@ -58,6 +58,7 @@ class Dataset:
         stats=None,
         time_stats=None,
         mask=False,
+        mosaic=False
     ):
         self.data_id = data_id
         self.band = band
@@ -67,6 +68,7 @@ class Dataset:
         self.stats = stats if stats is not None else []
         self.time_stats = time_stats if time_stats is not None else []
         self.mask = mask
+        self.mosaic = mosaic
 
 
 def dataset_to_filename(data_id, band, tag=""):
@@ -238,6 +240,9 @@ def compute(
                     )
                 else:
                     imgcol = ee.ImageCollection(d.data_id).select(d.band)
+                    
+        if d.mosaic is True:
+            imgcol = ee.ImageCollection(imgcol.mosaic())
 
         if len(d.time_stats) > 0:
             time_reducer = _parse_reducers(base=getattr(ee.Reducer, d.time_stats[0])())
@@ -247,7 +252,7 @@ def compute(
         # imgcol = imgcol.map(lambda img: img.clipToCollection(featureCollection))
 
         if verbose:
-            print(f"Computing subbasin stats for {d.data_id}...")
+            print(f"Submitting subbasin stats tasks to GEE for {d.data_id}...")
 
         # Add threshold mask to image using GSW occurrence band
         if d.mask:
