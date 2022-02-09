@@ -4,35 +4,138 @@
         "name": "SoilGrids 250: clay fraction",
         "start_date": null,
         "end_date": null,
-        "type": "image_collection",
+        "type": "image",
         "bands": {
             "clay_0-5cm_mean": {
-                "units": "g/kg * 10",
+                "units": "cg/kg",
                 "resolution": 250
             },
             "clay_5-15cm_mean": {
-                "units": "g/kg * 10",
+                "units": "cg/kg",
                 "resolution": 250
             },
             "clay_15-30cm_mean": {
-                "units": "g/kg * 10",
+                "units": "cg/kg",
                 "resolution": 250
             },
             "clay_30-60cm_mean": {
-                "units": "g/kg * 10",
+                "units": "cg/kg",
                 "resolution": 250
             },
             "clay_60-100cm_mean": {
-                "units": "g/kg * 10",
+                "units": "cg/kg",
                 "resolution": 250
             },
             "clay_100-200cm_mean": {
-                "units": "g/kg * 10",
+                "units": "cg/kg",
                 "resolution": 250
             }
         }
     },  
     
+    {
+        "id": "projects/soilgrids-isric/silt_mean",
+        "name": "SoilGrids 250: silt fraction",
+        "start_date": null,
+        "end_date": null,
+        "type": "image",
+        "bands": {
+            "silt_0-5cm_mean": {
+                "units": "cg/kg",
+                "resolution": 250
+            },
+            "silt_5-15cm_mean": {
+                "units": "cg/kg",
+                "resolution": 250
+            },
+            "silt_15-30cm_mean": {
+                "units": "cg/kg",
+                "resolution": 250
+            },
+            "silt_30-60cm_mean": {
+                "units": "cg/kg",
+                "resolution": 250
+            },
+            "silt_60-100cm_mean": {
+                "units": "cg/kg",
+                "resolution": 250
+            },
+            "silt_100-200cm_mean": {
+                "units": "cg/kg",
+                "resolution": 250
+            }
+        }
+    },  
+  
+    {
+        "id": "projects/soilgrids-isric/sand_mean",
+        "name": "SoilGrids 250: sand fraction",
+        "start_date": null,
+        "end_date": null,
+        "type": "image",
+        "bands": {
+            "sand_0-5cm_mean": {
+                "units": "cg/kg",
+                "resolution": 250
+            },
+            "sand_5-15cm_mean": {
+                "units": "cg/kg",
+                "resolution": 250
+            },
+            "sand_15-30cm_mean": {
+                "units": "cg/kg",
+                "resolution": 250
+            },
+            "sand_30-60cm_mean": {
+                "units": "cg/kg",
+                "resolution": 250
+            },
+            "sand_60-100cm_mean": {
+                "units": "cg/kg",
+                "resolution": 250
+            },
+            "sand_100-200cm_mean": {
+                "units": "cg/kg",
+                "resolution": 250
+            }
+        }
+    }, 
+    
+    {
+        "id": "projects/soilgrids-isric/nitrogen_mean",
+        "name": "SoilGrids 250: nitrogen fraction",
+        "start_date": null,
+        "end_date": null,
+        "type": "image",
+        "bands": {
+            "nitrogen_0-5cm_mean": {
+                "units": "cg/kg",
+                "resolution": 250
+            },
+            "nitrogen_5-15cm_mean": {
+                "units": "cg/kg",
+                "resolution": 250
+            },
+            "nitrogen_15-30cm_mean": {
+                "units": "cg/kg",
+                "resolution": 250
+            },
+            "nitrogen_30-60cm_mean": {
+                "units": "cg/kg",
+                "resolution": 250
+            },
+            "nitrogen_60-100cm_mean": {
+                "units": "cg/kg",
+                "resolution": 250
+            },
+            "nitrogen_100-200cm_mean": {
+                "units": "cg/kg",
+                "resolution": 250
+            }
+        }
+    }, 
+
+         
     {
         "id": "projects/sat-io/open-datasets/Geomorpho90m/cti",
         "name": "Geomorpho90m: Topography Index",
