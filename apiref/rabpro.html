@@ -224,9 +224,21 @@ the profiler.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rabpro.core.profiler.elev_profile">
-<span class="sig-name descname"><span class="pre">elev_profile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.core.profiler.elev_profile" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">elev_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dist_to_walk_km</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.core.profiler.elev_profile" title="Permalink to this definition"></a></dt>
 <dd><p>Compute the elevation profile. The profile is computed such that the
 provided coordinate is the centerpoint (check if this is true).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>dist_to_walk_km</strong><span class="classifier">numeric</span></dt><dd><p>The distance to trace the elevation profile from the provided
+point. This distance applies to upstream and downstream–i.e. the
+total profile distance is twice this value. If not specified,
+will be automatically computed as 10 channel widths from provided 
+DA value if not specified OR 5 km, whichever is larger.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -308,13 +320,16 @@ The default is ‘all’.</p>
 <h2>Elevation profile computation (elev_profile.py)<a class="headerlink" href="#elevation-profile-computation-elev-profile-py" title="Permalink to this headline"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.elev_profile.main">
-<span class="sig-prename descclassname"><span class="pre">rabpro.elev_profile.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cl_gdf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nrows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.elev_profile.main" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rabpro.elev_profile.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gdf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist_to_walk_km</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nrows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.elev_profile.main" title="Permalink to this definition"></a></dt>
 <dd><p>Compute the elevation profile. The profile is computed such that the provided coordinate is the centerpoint (check if this is true).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>cl_gdf</strong><span class="classifier">GeoDataFrame</span></dt><dd><p>Starting point geometry. Should have a column called ‘DA’ that stores drainage areas.
+<dt><strong>gdf</strong><span class="classifier">GeoDataFrame</span></dt><dd><p>Starting point geometry. Should have a column called ‘DA’ that stores drainage areas.
 Should be in EPSG 4326 for use of the Haversine formula</p>
+</dd>
+<dt><strong>dist_to_walk_km</strong><span class="classifier">numeric</span></dt><dd><p>Distance in kilometers to walk up- and downstream of the provided,
+mapped point to resolve the flowline</p>
 </dd>
 <dt><strong>verbose</strong><span class="classifier">bool</span></dt><dd><p>Defaults to False.</p>
 </dd>
@@ -386,7 +401,7 @@ By default 0.001.</p>
 grid. Returns the row, col of the mapped-to pixel. User may provide a basin
 polygon (in EPSG:4326) if already known. This polygon will be used to ensure
 the mapped-to-flowline is the correct one. If the basin polygon is provided,
-a flow directors object and its mapping must also be provided as well as the
+a flow directions object and its mapping must also be provided as well as the
 drainage area.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -438,7 +453,7 @@ fac_obj.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.merit_utils.neighborhood_vals_from_raster">
-<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vrt_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='140361857527872'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vrt_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='140417794556112'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
 <dd><p>Queries a (virtual) raster object to return an array of neighbors
 surrounding a given point specified by cr (column, row). A shape can be
 provided to return as large of a neighborhood as desired; both dimensions
@@ -482,9 +497,10 @@ wrapping is desired. If None, no wrapping is performed. By default None.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.merit_utils.trace_flowpath">
-<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">trace_flowpath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fdr_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">da_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cr_stpt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cr_enpt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[32,</span> <span class="pre">64,</span> <span class="pre">128,</span> <span class="pre">16,</span> <span class="pre">1,</span> <span class="pre">8,</span> <span class="pre">4,</span> <span class="pre">2]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.trace_flowpath" title="Permalink to this definition"></a></dt>
-<dd><p>Walks along a flow direction grid from stpt to enpt. Returns a list of
-pixels from stpt to enpt. Walks from downstream to upstream.</p>
+<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">trace_flowpath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fdr_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">da_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cr_stpt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist_to_walk_km</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[32,</span> <span class="pre">64,</span> <span class="pre">128,</span> <span class="pre">16,</span> <span class="pre">1,</span> <span class="pre">8,</span> <span class="pre">4,</span> <span class="pre">2]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.trace_flowpath" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a flowpath of pixels up- and downstream of cr_stpt a distance of
+dist_to_walk_km in each direction (unless the end of the flowpath is 
+reached). Flowpath is returned US-&gt;DS ordered.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -508,7 +524,7 @@ symbology matches MERIT-Hydro:
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>tuple</dt><dd><p>A list of pixels from stpt to enpt</p>
+<dt>tuple</dt><dd><p>(rows, cols) of flowline.</p>
 </dd>
 </dl>
 </dd>
@@ -899,6 +915,31 @@ that define where I should be positioned within the original image.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="rabpro.utils.dist_from_da">
+<span class="sig-prename descclassname"><span class="pre">rabpro.utils.</span></span><span class="sig-name descname"><span class="pre">dist_from_da</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">da</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nwidths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.utils.dist_from_da" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the along-stream distance of a flowline to resolve for a given
+DA. An empirical formula provided by <a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013WR013916">https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013WR013916</a>
+(equation 15) is used to estimate width.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>da</strong><span class="classifier">float or numeric</span></dt><dd><p>drainage area in km^2</p>
+</dd>
+<dt><strong>nwidths</strong><span class="classifier">numeric</span></dt><dd><p>number of channel widths to set distance</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>dist: float</dt><dd><p>Distance in kilometers that represents nwidths*W_bankfull where 
+W_bankfull computed according to Wilkerson et al., 2014.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="rabpro.utils.get_datapaths">
 <span class="sig-prename descclassname"><span class="pre">rabpro.utils.</span></span><span class="sig-name descname"><span class="pre">get_datapaths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datapath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">configpath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rebuild_vrts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.utils.get_datapaths" title="Permalink to this definition"></a></dt>
 <dd><p>Returns a dictionary of paths to all data that rabpro uses. Also builds
@@ -972,7 +1013,7 @@ current working directory.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>numpy.ndarray</dt><dd><p>Distances between each point defined by lats, lons.</p>
+<dt>numpy.ndarray</dt><dd><p>Distance in meters between each point defined by lats, lons.</p>
 </dd>
 </dl>
 </dd>
