@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Install &mdash; rabpro  documentation</title>
+  <title>Installation &mdash; rabpro  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
@@ -22,7 +22,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Background" href="../background/index.html" />
+    <link rel="next" title="Configuration" href="../configure/index.html" />
     <link rel="prev" title="Welcome to rabpro’s documentation!" href="../index.html" /> 
 </head>
 
@@ -42,15 +42,14 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Setup:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Install</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#installation-via-conda">Installation via <em>conda</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installation-from-source">Installation from source</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../background/index.html">Background</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/index.html">GEE and Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configure/index.html">Configuration</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
 <ul>
@@ -79,7 +78,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Install</li>
+      <li>Installation</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -112,25 +111,26 @@
     text-align: unset;
 }
 </style>
-<section id="install">
-<span id="id1"></span><h1>Install<a class="headerlink" href="#install" title="Permalink to this headline"></a></h1>
-<section id="installation-via-conda">
-<h2>Installation via <em>conda</em><a class="headerlink" href="#installation-via-conda" title="Permalink to this headline"></a></h2>
-<p>The latest ‘stable’ version of <em>rabpro</em> can be installed using <cite>conda</cite>. In order
-to avoid dependency conflicts, we recommend installing <em>rabpro</em> into a fresh
-<cite>conda</cite> environment. Open Terminal (Mac/Unix) or Anaconda Prompt (Windows) and
-type:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda create -n rabpro
+<section id="installation">
+<span id="install"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
+<p>As <cite>rabpro</cite> relies on a large stack of geospatial dependencies, we recommend using Anaconda to install these in a fresh environment. Otherwise you will need to undertake a manual install of GDAL, which can be quite complex.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda create -n rabpro python=3.9 geopandas -c conda-forge
 $ conda activate rabpro
-$ conda install -c jschwenk rabpro
 </pre></div>
 </div>
-<p>This will install all of rabpro’s dependencies as well, as listed in
+<p>Once that base is in place, you can proceed with installing either from Anaconda or pip.</p>
+<section id="installation-via-conda">
+<h2>Installation via <em>conda</em><a class="headerlink" href="#installation-via-conda" title="Permalink to this headline"></a></h2>
+<p>The latest ‘stable’ version of <em>rabpro</em> can be installed using <cite>conda</cite>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install -c jschwenk rabpro
+</pre></div>
+</div>
+<p>This will install rabpro and all of its dependencies, as listed in
 <a class="reference external" href="https://github.com/VeinsOfTheEarth/rabpro/blob/master/environment.yml">environment.yml</a>.</p>
 </section>
 <section id="installation-from-source">
 <h2>Installation from source<a class="headerlink" href="#installation-from-source" title="Permalink to this headline"></a></h2>
-<p>If you would prefer to install <em>rabpro</em> from source, do the following:</p>
+<p>If you would prefer to install bleeding edge <em>rabpro</em> from source or you are not using conda-installed GDAL, do the following:</p>
 <p>1. Clone the repository</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/VeinsOfTheEarth/rabpro.git
 </pre></div>
@@ -142,8 +142,8 @@ $ conda install -c jschwenk rabpro
 <ol class="arabic simple" start="2">
 <li><p>Install dependencies</p></li>
 </ol>
-<p>Create a new <cite>conda</cite> environment from <a class="reference external" href="https://github.com/VeinsOfTheEarth/rabpro/blob/master/environment.yml">environment.yml</a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda env create --file environment.yml
+<p>Assuming you’ve activated your fresh <cite>rabpro</cite> environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda env update -f environment.yml
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
@@ -151,10 +151,6 @@ $ conda install -c jschwenk rabpro
 </ol>
 <p>In the cloned folder, run the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install -e .
-</pre></div>
-</div>
-<p>or</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python setup.py install
 </pre></div>
 </div>
 </section>
@@ -165,7 +161,7 @@ $ conda install -c jschwenk rabpro
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to rabpro’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../background/index.html" class="btn btn-neutral float-right" title="Background" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../configure/index.html" class="btn btn-neutral float-right" title="Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
