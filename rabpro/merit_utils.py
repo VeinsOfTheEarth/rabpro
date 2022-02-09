@@ -1,5 +1,5 @@
 """
-MERIT Utilities (merit_utils.py)
+MERIT utilities (merit_utils.py)
 ================================
 
 Utility functions for dealing with MERIT datasets

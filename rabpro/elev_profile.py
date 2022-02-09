@@ -1,5 +1,5 @@
 """
-Elevation Profile Computation (elev_profile.py)
+Elevation profile computation (elev_profile.py)
 ===============================================
 
 """

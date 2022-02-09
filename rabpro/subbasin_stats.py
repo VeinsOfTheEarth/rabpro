@@ -1,5 +1,5 @@
 """
-Subbasin Statistics (subbasin_stats.py)
+Subbasin statistics (subbasin_stats.py)
 =======================================
 
 Computes subbasin statistics using Google Earth Engine.

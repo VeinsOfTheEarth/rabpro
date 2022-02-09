@@ -1,5 +1,5 @@
 """
-Subbasin Computation (subbasins.py)
+Subbasin delineation (subbasins.py)
 ===================================
 
 Functions to calculate subbasin geometries.
