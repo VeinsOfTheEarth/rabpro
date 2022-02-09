@@ -2,83 +2,27 @@
 
 [![PyPI Latest Release](https://img.shields.io/pypi/v/rabpro.svg)](https://pypi.org/project/rabpro/) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) [![Anaconda badge](https://anaconda.org/jschwenk/rabpro/badges/version.svg)](https://anaconda.org/jschwenk/rabpro) [![build](https://github.com/VeinsOfTheEarth/rabpro/actions/workflows/build.yaml/badge.svg)](https://github.com/VeinsOfTheEarth/rabpro/actions/workflows/build.yaml)
 
-> Package to delineate watershed subbasins, compute statistics, and gather attributes
+> Package to delineate watershed subbasins and compute attribute statistics using [Google Earth Engine](https://developers.google.com/earth-engine/).
 
 ## Setup
 
-### Software
+[Software installation](https://veinsoftheearth.github.io/rabpro/install/index.html)
 
-```shell
-conda env create -f environment.yml
-source activate rabpro
+[Data configuration](https://veinsoftheearth.github.io/rabpro/configure/index.html#data)
 
-# set use-feature to silence deprecation warning
-# pip install --use-feature=in-tree-build . 
-```
+[Software configuration](https://veinsoftheearth.github.io/rabpro/configure/index.html#software)
 
-### Data
+## Usage
 
-Locate the MERIT DEM "tile(s)" of interest and run the following command with username and password arguments:
+See Example notebooks:
 
-```shell
-rabpro download merit n30e150 <username> <password>
-```
+* [Basic](https://veinsoftheearth.github.io/rabpro/examples/notebooks/basic_example.html) workflow
+* [Full]((https://veinsoftheearth.github.io/rabpro/examples/notebooks/full_example.html)) workflow
+* [Basin stats]((https://veinsoftheearth.github.io/rabpro/examples/notebooks/basin_stats.html)) examples
 
-Download Hydrobasins levels 1 and 12:
+## Development
 
-```shell
-rabpro download hydrobasins
-```
-
-## Usage ([documentation](https:///VeinsOfTheEarth.github.io/rabpro/))
-
-### command line
-
-```shell
-python rabpro/cli/run_rabpro.py
-```
-
-#### python
-
-```python
-import requests
-import pandas as pd
-import geopandas as gpd
-import matplotlib.pyplot as plt
-
-import rabpro
-from rabpro.subbasin_stats import Dataset
-
-def pull_basin(tag):
-    # tag = "test_coords"
-    coords_file = gpd.read_file(r"tests/data/" + tag + ".shp")
-    rpo = rabpro.profiler(coords_file)
-    rpo.delineate_basins()
-    rpo.basins.to_file(tag + ".gpkg",driver="GPKG")    
-    
-    # pull gee
-    url, task = rpo.basin_stats([Dataset("JRC/GSW1_3/GlobalSurfaceWater", "occurrence")])
-    r = requests.get(url)
-    with open(tag + "_gsw.csv", "wb") as f:
-        f.write(r.content)
-    
-    # merge gee and gdf
-    csv_gsw = pd.read_csv(tag + "_gsw.csv")
-    gdf_gsw = gpd.read_file(tag + ".gpkg")
-    gdf_gsw["mean"] = [float(x) for x in csv_gsw["mean"]]
-    
-    return gdf_gsw
-
-res = [pull_basin(x) for x in ["test_coords", "test_coords2"]]
-res = pd.concat(res)
-res.plot(column = "mean", legend = True)
-plt.legend(title="GSW occurrence %", loc = (0.7, 1), frameon = False)
-plt.show()
-```
-
-![example output image](https://VeinsOfTheEarth.github.io/rabpro/_images/readme.png)
-
-## Testing
+### Testing
 
 ```python
 # file-based testing
@@ -88,7 +32,7 @@ python -m unittest tests/test.py
 python -m pytest
 ```
 
-## Docs
+### Local docs build
 
 ```shell
 cd docs && make html
