@@ -17,8 +17,8 @@
 See Example notebooks:
 
 * [Basic](https://veinsoftheearth.github.io/rabpro/examples/notebooks/basic_example.html) workflow
-* [Full]((https://veinsoftheearth.github.io/rabpro/examples/notebooks/full_example.html)) workflow
-* [Basin stats]((https://veinsoftheearth.github.io/rabpro/examples/notebooks/basin_stats.html)) examples
+* [Full](https://veinsoftheearth.github.io/rabpro/examples/notebooks/full_example.html) workflow
+* [Basin stats](https://veinsoftheearth.github.io/rabpro/examples/notebooks/basin_stats.html) examples
 
 ## Development
 
