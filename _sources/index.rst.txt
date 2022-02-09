@@ -33,7 +33,9 @@ rabpro provides methods to compute subbasin geometries from coordinate pairs, an
 
    contributing/index
    issues/index
+   references/index
    apiref/index
+
 
 .. panels::
 
