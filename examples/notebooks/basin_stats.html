@@ -55,8 +55,11 @@
 <li class="toctree-l1"><a class="reference internal" href="basic_example.html">Basic example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="full_example.html">Full example</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Basin stats examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Categorical-asset">Categorical asset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Specific-window-of-a-time-indexed-asset">Specific window of a time-indexed asset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Categorical-asset---a-single-time-window">Categorical asset - a single time window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Numeric-asset---multiple-time-windows">Numeric asset - multiple time windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Numeric-asset---time-averaging">Numeric asset - time averaging</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -363,10 +366,11 @@ div.rendered_html tbody tr:hover {
 <section id="Basin-stats-examples">
 <h1>Basin stats examples<a class="headerlink" href="#Basin-stats-examples" title="Permalink to this headline"></a></h1>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import geopandas as gpd
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import datetime
+import geopandas as gpd
 
 import rabpro
 from rabpro.subbasin_stats import Dataset
@@ -396,25 +400,24 @@ gdf = rpo.basins
 </pre></div>
 </div>
 </div>
-<section id="Categorical-asset">
-<h2>Categorical asset<a class="headerlink" href="#Categorical-asset" title="Permalink to this headline"></a></h2>
+<section id="Categorical-asset---a-single-time-window">
+<h2>Categorical asset - a single time window<a class="headerlink" href="#Categorical-asset---a-single-time-window" title="Permalink to this headline"></a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>urls, tasks = rabpro.subbasin_stats.compute(
-        [Dataset(&quot;MODIS/006/MCD12Q1&quot;, &quot;LC_Type1&quot;, stats=[&quot;freqhist&quot;], time_stats=[&quot;median&quot;])],
+        [Dataset(&quot;MODIS/006/MCD12Q1&quot;, &quot;LC_Type1&quot;, stats=[&quot;freqhist&quot;], start=&quot;2010-01-01&quot;, end=&quot;2011-01-01&quot;)],
         basins_gdf=gdf
     )
 data = rabpro.subbasin_stats.format_gee(urls, [&quot;lulc&quot;])
 res = gpd.GeoDataFrame(pd.concat([data, gdf], axis=1))
-res = res.set_geometry(&quot;geometry&quot;)
 res.head()
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -436,27 +439,15 @@ res.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>lulc_1.0</th>
-      <th>lulc_10.0</th>
-      <th>lulc_10.5</th>
-      <th>lulc_11.0</th>
-      <th>lulc_12.5</th>
-      <th>lulc_13.0</th>
-      <th>lulc_15.0</th>
-      <th>lulc_15.5</th>
-      <th>lulc_16.0</th>
-      <th>lulc_17.0</th>
-      <th>lulc_2.5</th>
-      <th>lulc_4.0</th>
-      <th>lulc_4.5</th>
-      <th>lulc_5.0</th>
-      <th>lulc_5.5</th>
-      <th>lulc_6.0</th>
-      <th>lulc_7.0</th>
-      <th>lulc_8.0</th>
-      <th>lulc_8.5</th>
-      <th>lulc_9.0</th>
-      <th>lulc_9.5</th>
+      <th>lulc_1</th>
+      <th>lulc_10</th>
+      <th>lulc_11</th>
+      <th>lulc_15</th>
+      <th>lulc_16</th>
+      <th>lulc_17</th>
+      <th>lulc_4</th>
+      <th>lulc_8</th>
+      <th>lulc_9</th>
       <th>geometry</th>
       <th>DA</th>
     </tr>
@@ -464,27 +455,15 @@ res.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>4160.145098</td>
-      <td>5089.54902</td>
-      <td>16.0</td>
-      <td>311.0</td>
-      <td>64.827451</td>
-      <td>6.0</td>
-      <td>5251.65098</td>
-      <td>125.082353</td>
-      <td>2032.007843</td>
-      <td>11.0</td>
-      <td>7.0</td>
-      <td>118.0</td>
-      <td>49.0</td>
-      <td>8.0</td>
-      <td>14.0</td>
-      <td>30.0</td>
-      <td>10.0</td>
-      <td>517.141176</td>
-      <td>7.0</td>
-      <td>74.05098</td>
-      <td>11.0</td>
+      <td>2145.462745</td>
+      <td>2824.396078</td>
+      <td>212.0</td>
+      <td>2965.690196</td>
+      <td>1208.223529</td>
+      <td>9.0</td>
+      <td>58.0</td>
+      <td>454.964706</td>
+      <td>3.0</td>
       <td>POLYGON ((-130.98238 56.13723, -130.98395 56.14799, -130.99105 56.15617, -130.99228 56.16049, -1...</td>
       <td>2121.3</td>
     </tr>
@@ -493,8 +472,149 @@ res.head()
 </div></div>
 </div>
 </section>
-<section id="Specific-window-of-a-time-indexed-asset">
-<h2>Specific window of a time-indexed asset<a class="headerlink" href="#Specific-window-of-a-time-indexed-asset" title="Permalink to this headline"></a></h2>
+<section id="Numeric-asset---multiple-time-windows">
+<h2>Numeric asset - multiple time windows<a class="headerlink" href="#Numeric-asset---multiple-time-windows" title="Permalink to this headline"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>urls, tasks = rabpro.subbasin_stats.compute(
+        [Dataset(&quot;MODIS/006/MOD17A3HGF&quot;, &quot;Npp&quot;)],
+        basins_gdf=gdf
+    )
+data = rabpro.subbasin_stats.format_gee(urls, [&quot;npp&quot;])
+data[&quot;year&quot;] = [x for x in range(2000, int(datetime.date.today().strftime(&quot;%Y&quot;)))]
+res = gpd.GeoDataFrame(pd.concat([data, gdf], axis=1))
+res.geometry[res.geometry.isna()] = res.geometry[0]
+res.head()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>npp_mean</th>
+      <th>year</th>
+      <th>geometry</th>
+      <th>DA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1747.866809</td>
+      <td>2000</td>
+      <td>POLYGON ((-130.98238 56.13723, -130.98395 56.14799, -130.99105 56.15617, -130.99228 56.16049, -1...</td>
+      <td>2121.3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1597.141272</td>
+      <td>2001</td>
+      <td>POLYGON ((-130.98238 56.13723, -130.98395 56.14799, -130.99105 56.15617, -130.99228 56.16049, -1...</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1808.514660</td>
+      <td>2002</td>
+      <td>POLYGON ((-130.98238 56.13723, -130.98395 56.14799, -130.99105 56.15617, -130.99228 56.16049, -1...</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2401.387620</td>
+      <td>2003</td>
+      <td>POLYGON ((-130.98238 56.13723, -130.98395 56.14799, -130.99105 56.15617, -130.99228 56.16049, -1...</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2855.209354</td>
+      <td>2004</td>
+      <td>POLYGON ((-130.98238 56.13723, -130.98395 56.14799, -130.99105 56.15617, -130.99228 56.16049, -1...</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<section id="Numeric-asset---time-averaging">
+<h3>Numeric asset - time averaging<a class="headerlink" href="#Numeric-asset---time-averaging" title="Permalink to this headline"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>urls, tasks = rabpro.subbasin_stats.compute(
+        [Dataset(&quot;MODIS/006/MOD17A3HGF&quot;, &quot;Npp&quot;, time_stats=[&quot;median&quot;])],
+        basins_gdf=gdf
+    )
+data = rabpro.subbasin_stats.format_gee(urls, [&quot;npp&quot;])
+res = gpd.GeoDataFrame(pd.concat([data, gdf], axis=1))
+res.head()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>npp_mean</th>
+      <th>geometry</th>
+      <th>DA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2289.570271</td>
+      <td>POLYGON ((-130.98238 56.13723, -130.98395 56.14799, -130.99105 56.15617, -130.99228 56.16049, -1...</td>
+      <td>2121.3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</section>
 </section>
 </section>
 
