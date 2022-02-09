@@ -1,3 +1,11 @@
+`SoilGrids 250: clay fraction <https://code.earthengine.google.com/?asset=projects/soilgrids-isric/clay_mean>`_
+`SoilGrids 250: silt fraction <https://code.earthengine.google.com/?asset=projects/soilgrids-isric/silt_mean>`_
+`SoilGrids 250: sand fraction <https://code.earthengine.google.com/?asset=projects/soilgrids-isric/sand_mean>`_
+`SoilGrids 250: nitrogen fraction <https://code.earthengine.google.com/?asset=projects/soilgrids-isric/nitrogen_mean>`_
+`Geomorpho90m: Topography Index <https://code.earthengine.google.com/?asset=projects/sat-io/open-datasets/Geomorpho90m/cti>`_
+`Geomorpho90m: Terrian Ruggedness Index <https://code.earthengine.google.com/?asset=projects/sat-io/open-datasets/Geomorpho90m/tri>`_
 `Geomorpho90m: Slope <https://code.earthengine.google.com/?asset=projects/sat-io/open-datasets/Geomorpho90m/slope>`_
 `FLOW1K qma <https://code.earthengine.google.com/?asset=users/jstacompute/FLO1K_qma>`_
 `Northern Hemisphere modeled permafrost probabilities <https://code.earthengine.google.com/?asset=users/jstacompute/UiO_PEX_PERPROB_5p0_20181128_2000_2016_NH>`_
+`Yang et al. 2020 - Nitrogen deposition <https://code.earthengine.google.com/?asset=users/jstacompute/yang2020>`_
+`Pelletier et al. 2016 Soil Thickness <https://code.earthengine.google.com/?asset=users/jonschwenk/pelletier2016>`_
