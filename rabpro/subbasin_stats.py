@@ -8,6 +8,7 @@ Computes subbasin statistics using Google Earth Engine.
 import ee
 import re
 import json
+import numpy as np
 import pandas as pd
 from datetime import date
 from collections import OrderedDict
@@ -58,7 +59,7 @@ class Dataset:
         stats=None,
         time_stats=None,
         mask=False,
-        mosaic=False
+        mosaic=False,
     ):
         self.data_id = data_id
         self.band = band
@@ -85,9 +86,19 @@ def _str_to_dict(a_string):
     return res
 
 
-def _format_cols(df, tag, col_drop_list, col_drop_defaults):
-    df = ru.drop_column_if_exists(df, col_drop_list + col_drop_defaults)
-    df.columns = [tag + "_" + x for x in df.columns]
+def _format_cols(df, tag, col_drop_list, col_drop_defaults, col_protect_list):
+
+    col_drop_list = col_drop_list + col_drop_defaults
+    df = ru.drop_column_if_exists(df, col_drop_list)
+
+    col_names = df.columns.tolist()
+    to_tag = list(
+        np.where([x not in col_protect_list for x in [x for x in col_names]])[0]
+    )
+    for i in to_tag:
+        col_names[i] = tag + "_" + col_names[i]
+    df.columns = col_names
+
     return df
 
 
@@ -109,6 +120,7 @@ def format_gee(
     url_list,
     tag_list,
     col_drop_list=[],
+    col_protect_list=["id_basin", "id_outlet", "idx"],
     col_drop_defaults=["DA", "count", ".geo", "system:index"],
 ):
 
@@ -116,7 +128,11 @@ def format_gee(
 
     res = [
         _format_cols(
-            df, tag, col_drop_list=col_drop_list, col_drop_defaults=col_drop_defaults
+            df,
+            tag,
+            col_drop_list=col_drop_list,
+            col_drop_defaults=col_drop_defaults,
+            col_protect_list=col_protect_list,
         )
         for df, tag in zip(df_list, tag_list)
     ]
@@ -240,7 +256,7 @@ def compute(
                     )
                 else:
                     imgcol = ee.ImageCollection(d.data_id).select(d.band)
-                    
+
         if d.mosaic is True:
             imgcol = ee.ImageCollection(imgcol.mosaic())
 
