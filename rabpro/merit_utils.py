@@ -14,42 +14,21 @@ from scipy.ndimage.morphology import distance_transform_edt
 from rabpro import utils as ru
 
 
-def trace_flowpath(
-    fdr_obj,
-    da_obj,
-    cr_stpt,
-    cr_enpt=None,
-    n_steps=None,
-    fmap=[32, 64, 128, 16, 1, 8, 4, 2],
-):
-    """Walks along a flow direction grid from stpt to enpt. Returns a list of
-    pixels from stpt to enpt. Walks from downstream to upstream.
 
-    Parameters
-    ----------
-    fdr_obj : osgeo.gdal.Dataset
-        flow direction object opened with gdal.Open(). Assumes flow direction
-        symbology matches MERIT-Hydro:
-        32 64 128
-        16     1
-        8   4  2
-    da_obj : osgeo.gdal.Dataset
-        drainage area object opened with gdal.Open()
-    cr_stpt : numpy.ndarray
-        column, row of point to start walk
-    cr_enpt : numpy.ndarray, optional
-        column, row of point to end walk. By default None
-    n_steps : int, optional
-        number of steps (pixels) to walk before halting. By default None
-    fmap : list, optional
-        [NW, N, NE, W, E, SW, S, SE], by default [32, 64, 128, 16, 1, 8, 4, 2]
+def _walk_upstream(cr_stpt, dist_to_walk_km, fdr_obj, da_obj, fmap):
+    """
+    Walks upstream along a raster of flow directions from a given starting
+    coordinate. 
+    
+    Parameters -- see trace_flowpath
 
     Returns
     -------
-    tuple
-        A list of pixels from stpt to enpt
+    walkpts : list
+        Pixel coordinates from cr_stpt to dist_to_walk_km upstream. 
     """
     imshape = (fdr_obj.RasterXSize, fdr_obj.RasterYSize)
+    gt = fdr_obj.GetGeoTransform()
 
     # Make array specifying the fdir values that flow into the center cell
     intodirs = np.array([fv for fv in fmap][::-1], dtype=np.uint8)
@@ -74,17 +53,12 @@ def trace_flowpath(
         else:
             coldict[fd] = -1
 
-    stpti = np.ravel_multi_index(cr_stpt, imshape)
-
-    da = [
-        da_obj.ReadAsArray(
-            xoff=int(cr_stpt[0]), yoff=int(cr_stpt[1]), xsize=1, ysize=1
-        )[0][0]
-    ]
-    do_pt = [stpti]
-    ct = 0
+    start_pixel = np.ravel_multi_index(cr_stpt, imshape)
+    walkpts = [start_pixel]
+    walkdist = 0
+    prev_coord = None
     while 1:
-        cr = np.unravel_index(do_pt[-1], imshape)
+        cr = np.unravel_index(walkpts[-1], imshape)
 
         # First find all the candidate pixels that drain to this one
         nb_fdr = (
@@ -111,28 +85,147 @@ def trace_flowpath(
         row = cr[1] + rowdict[fdr]
         col = cr[0] + coldict[fdr]
 
-        # Handle meridian wrapping
+        # Handle dateline meridian wrapping
         if col < 0:
             col = fdr_obj.RasterXSize + col
         elif col > fdr_obj.RasterXSize - 1:
             col = col - fdr_obj.RasterXSize
 
-        do_pt.append(np.ravel_multi_index((col, row), imshape))
-        da.append(
-            da_obj.ReadAsArray(xoff=int(col), yoff=int(row), xsize=1, ysize=1)[0][0]
-        )
+        # Update pixel, da, and distance
+        walkpts.append(np.ravel_multi_index((col, row), imshape))
 
-        # Halt if we've reached the endpoint
-        if cr == cr_enpt:
+        if prev_coord is None:
+            prev_coord = ru.xy_to_coords(cr_stpt[0], cr_stpt[1], gt)
+        else:
+            prev_coord = this_coord
+        this_coord = ru.xy_to_coords(col, row, gt)
+        this_dist = ru.haversine((prev_coord[1], this_coord[1]),(prev_coord[0], this_coord[0]))[0]/1000
+        walkdist = walkdist + this_dist
+        
+        if walkdist >= dist_to_walk_km:
             break
+        
+    return walkpts
 
-        # Halt if we've reached the requested length
-        ct = ct + 1
-        if ct == n_steps:
+
+def _walk_downstream(cr_stpt, dist_to_walk_km, fdr_obj, fmap):
+    """
+    Walks downstream along a raster of flow directions from a given starting
+    coordinate. Decided not to combine with _walk_upstream because the 
+    methods, while similar, are different enough to merit individual functions.
+    
+    Parameters -- see trace_flowpath
+
+    Returns
+    -------
+    walkpts : list
+        Pixel indexes from cr_stpt to dist_to_walk_km downstream .
+    """
+    imshape = (fdr_obj.RasterXSize, fdr_obj.RasterYSize)
+    gt = fdr_obj.GetGeoTransform()
+
+    # Make dictionaries for rows and columns to add for a given fdr value
+    # These are different from _walk_upstream
+    rowdict = {}
+    coldict = {}
+    for ifd, fd in enumerate(fmap):
+        if ifd < 3:
+            rowdict[fd] = -1
+        elif ifd < 5:
+            rowdict[fd] = 0
+        else:
+            rowdict[fd] = 1
+        if ifd in [0, 3, 5]:
+            coldict[fd] = -1
+        elif ifd in [1, 6]:
+            coldict[fd] = 0
+        else:
+            coldict[fd] = 1
+
+    start_pixel = np.ravel_multi_index(cr_stpt, imshape)
+    walkpts = [start_pixel]
+    walkdist = 0
+    prev_coord = None
+    while 1:
+        cr = np.unravel_index(walkpts[-1], imshape)
+
+        # Get the FDR of this pixel
+        fdr = neighborhood_vals_from_raster(cr, (1, 1), fdr_obj, nodataval=np.nan)[0][0]
+        
+        # Halt if we're at the end of the line
+        if np.isnan(fdr) == True or fdr == 0:
             break
+        
+        # Take the step
+        row = cr[1] + rowdict[fdr]
+        col = cr[0] + coldict[fdr]
 
-    colrow = np.unravel_index(do_pt, imshape)
+        # Handle dateline meridian wrapping
+        if col < 0:
+            col = fdr_obj.RasterXSize + col
+        elif col > fdr_obj.RasterXSize - 1:
+            col = col - fdr_obj.RasterXSize
 
+        # Update pixel, da, and distance
+        walkpts.append(np.ravel_multi_index((col, row), imshape))
+
+        if prev_coord is None:
+            prev_coord = ru.xy_to_coords(cr_stpt[0], cr_stpt[1], gt)
+        else:
+            prev_coord = this_coord
+        this_coord = ru.xy_to_coords(col, row, gt)
+        this_dist = ru.haversine((prev_coord[1], this_coord[1]),(prev_coord[0], this_coord[0]))[0]/1000
+        walkdist = walkdist + this_dist
+        
+        if walkdist >= dist_to_walk_km:
+            break
+        
+    return walkpts
+
+    
+def trace_flowpath(
+    fdr_obj,
+    da_obj,
+    cr_stpt,
+    dist_to_walk_km = 1,
+    fmap=[32, 64, 128, 16, 1, 8, 4, 2],
+):
+    """
+    Returns a flowpath of pixels up- and downstream of cr_stpt a distance of
+    dist_to_walk_km in each direction (unless the end of the flowpath is 
+    reached). Flowpath is returned US->DS ordered.
+
+    Parameters
+    ----------
+    fdr_obj : osgeo.gdal.Dataset
+        flow direction object opened with gdal.Open(). Assumes flow direction
+        symbology matches MERIT-Hydro:
+        32 64 128
+        16     1
+        8   4  2
+    da_obj : osgeo.gdal.Dataset
+        drainage area object opened with gdal.Open()
+    cr_stpt : numpy.ndarray
+        column, row of point to start walk
+    cr_enpt : numpy.ndarray, optional
+        column, row of point to end walk. By default None
+    n_steps : int, optional
+        number of steps (pixels) to walk before halting. By default None
+    fmap : list, optional
+        [NW, N, NE, W, E, SW, S, SE], by default [32, 64, 128, 16, 1, 8, 4, 2]
+
+    Returns
+    -------
+    tuple
+        (rows, cols) of flowline.
+    """
+    imshape = (fdr_obj.RasterXSize, fdr_obj.RasterYSize)
+
+    upstream = _walk_upstream(cr_stpt, dist_to_walk_km, fdr_obj, da_obj, fmap)
+    downstream = _walk_downstream(cr_stpt, dist_to_walk_km, fdr_obj, fmap)
+    trace = upstream[::-1] + downstream[1:]
+    colrow = np.unravel_index(trace, imshape)
+    
     return (colrow[1], colrow[0])
 
 
@@ -527,7 +620,7 @@ def map_cl_pt_to_flowline(
     grid. Returns the row, col of the mapped-to pixel. User may provide a basin
     polygon (in EPSG:4326) if already known. This polygon will be used to ensure
     the mapped-to-flowline is the correct one. If the basin polygon is provided,
-    a flow directors object and its mapping must also be provided as well as the
+    a flow directions object and its mapping must also be provided as well as the
     drainage area.
 
     Parameters

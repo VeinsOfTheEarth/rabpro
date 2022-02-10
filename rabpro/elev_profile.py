@@ -14,14 +14,17 @@ from rabpro import utils as ru
 from rabpro import merit_utils as mu
 
 
-def main(cl_gdf, verbose=False, nrows=50, ncols=50):
+def main(gdf, dist_to_walk_km, verbose=False, nrows=50, ncols=50):
     """Compute the elevation profile. The profile is computed such that the provided coordinate is the centerpoint (check if this is true).
 
     Parameters
     ----------
-    cl_gdf : GeoDataFrame
+    gdf : GeoDataFrame
         Starting point geometry. Should have a column called 'DA' that stores drainage areas.
         Should be in EPSG 4326 for use of the Haversine formula
+    dist_to_walk_km : numeric
+        Distance in kilometers to walk up- and downstream of the provided,
+        mapped point to resolve the flowline
     verbose : bool
         Defaults to False.
     nrows : int
@@ -46,10 +49,6 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
         cl_gdf, merit_gdf = rabpro.elev_profile.main(rpo.gdf)
     """
 
-    # cl_gdf should have a column called 'DA' that stores drainage areas
-    # cl_gdf should be in 4326 for use of the Haversine formula...could add a
-    # check and use other methods, but simpler this way.
-
     # Get data locked and loaded
     dps = ru.get_datapaths(rebuild_vrts=False)
     hdem_obj = gdal.Open(dps["DEM_elev_hp"])
@@ -60,7 +59,7 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
     if verbose:
         print("Extracting flowpath from DEM...")
 
-    if cl_gdf.shape[0] == 1:
+    if gdf.shape[0] == 1:
         intype = "point"
     else:
         intype = "centerline"  # deprecated
@@ -68,7 +67,7 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
             "elev_profile only supports single 'point' coordinate pairs, not multipoint 'centerlines'"
         )
 
-    # Here, we get the MERIT flowline corresponding to the centerline. If we
+    # Here, we get the DEM (MERIT) flowline corresponding to the centerline. If we
     # are provided only a single point, the flowline is delineated to its
     # terminal point. Otherwise, the flowline is delineated to the limits of
     # the provided centerline. Elevation and width profiles are then extracted.
@@ -79,15 +78,15 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
         # Trace the centerline all the way up to the headwaters
         ds_lonlat = np.array(
             [
-                cl_gdf.geometry.values[0].coords.xy[0][0],
-                cl_gdf.geometry.values[0].coords.xy[1][0],
+                gdf.geometry.values[0].coords.xy[0][0],
+                gdf.geometry.values[0].coords.xy[1][0],
             ]
         )
-        if "DA" in cl_gdf.keys():
-            ds_da = cl_gdf.DA.values[0]
+        if "DA" in gdf.keys():
+            ds_da = gdf.DA.values[0]
         else:
             ds_da = None
-        cr_ds_mapped, _ = mu.map_cl_pt_to_flowline(
+        cr_ds_mapped, why = mu.map_cl_pt_to_flowline(
             ds_lonlat, da_obj, nrows, ncols, ds_da
         )
 
@@ -95,11 +94,11 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
         if np.nan in cr_ds_mapped:
             if verbose is True:
                 print(
-                    "Cannot map provided point to a flowline; no way to extract centerline."
+                    "Cannot map provided point to a flowline; unable to extract centerline. Reason #{}".format(why)
                 )
-            return cl_gdf, None
+            return gdf, None
 
-        flowpath = mu.trace_flowpath(fdr_obj, da_obj, cr_ds_mapped)
+        flowpath = mu.trace_flowpath(fdr_obj, da_obj, cr_ds_mapped, dist_to_walk_km)
         es = _get_rc_values(hdem_obj, flowpath, nodata=-9999)
         wids = _get_rc_values(w_obj, flowpath, nodata=-9999)
 
@@ -107,25 +106,32 @@ def main(cl_gdf, verbose=False, nrows=50, ncols=50):
     coords_fp = ru.xy_to_coords(flowpath[1], flowpath[0], da_obj.GetGeoTransform())
     merit_gdf = gpd.GeoDataFrame(
         data={
-            "geometry": [Point(x, y) for x, y in zip(coords_fp[0], coords_fp[1])][::-1],
-            "Elevation (m)": es[::-1],
-            "Width (m)": wids[::-1],
+            "geometry": [Point(x, y) for x, y in zip(coords_fp[0], coords_fp[1])],
+            "Elevation (m)": es,
+            "Width (m)": wids,
             "row": flowpath[0],
             "col": flowpath[1],
         },
         crs=CRS.from_epsg(4326),
     )
-    merit_gdf["Distance (m)"] = _compute_dists(merit_gdf)
+    
+    # Add distances
+    lonlat_mapped = ru.xy_to_coords(cr_ds_mapped[0], cr_ds_mapped[1], da_obj.GetGeoTransform())
+    merit_gdf["Distance (m)"] = _compute_dists(merit_gdf, lonlat_mapped)
 
-    return cl_gdf, merit_gdf
+    return gdf, merit_gdf
 
 
-def _compute_dists(gdf):
-    """Computes cumulative distance in meters between points in gdf.
+def _compute_dists(gdf, lonlat_mapped):
+    """
+    Computes cumulative distance in meters between points in gdf. Distances
+    are with respect to the mapped coordinate (cr_ds_mapped).
 
     Parameters
     ----------
     gdf : GeoDataFrame
+    cr_ds_mapped : tuple
+        (col, row) of mapped pixel
 
     Returns
     -------
@@ -150,6 +156,12 @@ def _compute_dists(gdf):
     ds = ru.haversine(lats, lons)
     ds = np.insert(ds, 0, 0)
     dists = np.cumsum(ds)
+    
+    # Subtract the mapped point distance from all distances
+    m_pt_idx = np.where(np.logical_and(np.array(lats)==lonlat_mapped[1], 
+                              np.array(lons)==lonlat_mapped[0]))[0][0]  
+    
+    dists = dists - dists[m_pt_idx]
 
     return dists
 

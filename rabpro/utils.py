@@ -698,6 +698,43 @@ def union_gdf_polygons(gdf, idcs, buffer=True):
     return polyout
 
 
+def dist_from_da(da, nwidths=20):
+    """
+    Returns the along-stream distance of a flowline to resolve for a given
+    DA. An empirical formula provided by https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013WR013916
+    (equation 15) is used to estimate width.
+    
+    Parameters
+    ----------
+    da : float or numeric
+        drainage area in km^2
+    nwidths : numeric
+        number of channel widths to set distance
+
+    Returns
+    -------
+    dist: float
+        Distance in kilometers that represents nwidths*W_bankfull where 
+        W_bankfull computed according to Wilkerson et al., 2014.
+
+    """
+    logda = np.log(da)
+    if da < 4.95:
+        width = 2.18*(da**.191)
+    elif da > 337:
+        width = 7.18*(da**.183)
+    elif logda < 1.6:
+        width = 2.18*(da**.191)
+    elif logda < 5.820:
+        width = 1.41*(da**.462)
+    else:
+        width = 7.18*(da**.183)
+        
+    dist = width * nwidths / 1000
+    
+    return dist
+
+
 def haversine(lats, lons):
     """
     Computes distances between latitude and longitude pairs of points.
@@ -712,7 +749,7 @@ def haversine(lats, lons):
     Returns
     -------
     numpy.ndarray
-        Distances between each point defined by lats, lons.
+        Distance in meters between each point defined by lats, lons.
     """
 
     R = 6372.8 * 1000
