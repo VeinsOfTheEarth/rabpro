@@ -95,8 +95,9 @@ def _format_cols(df, tag, col_drop_list, col_drop_defaults, col_protect_list):
     to_tag = list(
         np.where([x not in col_protect_list for x in [x for x in col_names]])[0]
     )
-    for i in to_tag:
-        col_names[i] = tag + "_" + col_names[i]
+    if tag is not None:
+        for i in to_tag:
+            col_names[i] = tag + "_" + col_names[i]
     df.columns = col_names
 
     return df
@@ -120,7 +121,7 @@ def format_gee(
     url_list,
     tag_list,
     col_drop_list=[],
-    col_protect_list=["id_basin", "id_outlet", "idx"],
+    col_protect_list=["id_basin", "id_outlet", "idx", "id"],
     col_drop_defaults=["DA", "count", ".geo", "system:index"],
 ):
 
