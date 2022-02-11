@@ -46,6 +46,12 @@ class Dataset:
     mask : bool, optional
         Whether or not to mask out water in the dataset using the Global Surface
         Water occurrence band. By default False.
+    mosaic : bool, optional
+        If True, the imageCollection in data_id will be mosaiced first. Useful
+        when the imageCollection is a set of tiled images. Do not use for
+        time-varying imageCollections.
+    prepend_label : str, optional
+        Text to prepend to the exported statistics file.
 
     """
 
@@ -60,6 +66,7 @@ class Dataset:
         time_stats=None,
         mask=False,
         mosaic=False,
+        prepend_label=''
     ):
         self.data_id = data_id
         self.band = band
@@ -70,13 +77,14 @@ class Dataset:
         self.time_stats = time_stats if time_stats is not None else []
         self.mask = mask
         self.mosaic = mosaic
+        self.prepend = prepend_label
 
 
-def dataset_to_filename(data_id, band, tag=""):
-    if tag == "":
+def dataset_to_filename(prepend, data_id, band):
+    if prepend == "":
         return f"{data_id}__{band}".replace("/", "-")
     else:
-        return f"{data_id}__{band}".replace("/", "-") + "__" + tag
+        return prepend + '__' + f"{data_id}__{band}".replace("/", "-")
 
 
 def _str_to_dict(a_string):
@@ -86,7 +94,7 @@ def _str_to_dict(a_string):
     return res
 
 
-def _format_cols(df, tag, col_drop_list, col_drop_defaults, col_protect_list):
+def _format_cols(df, prepend, col_drop_list, col_drop_defaults, col_protect_list):
 
     col_drop_list = col_drop_list + col_drop_defaults
     df = ru.drop_column_if_exists(df, col_drop_list)
@@ -95,9 +103,9 @@ def _format_cols(df, tag, col_drop_list, col_drop_defaults, col_protect_list):
     to_tag = list(
         np.where([x not in col_protect_list for x in [x for x in col_names]])[0]
     )
-    if tag is not None:
+    if prepend != '':
         for i in to_tag:
-            col_names[i] = tag + "_" + col_names[i]
+            col_names[i] = prepend + "_" + col_names[i]
     df.columns = col_names
 
     return df
@@ -119,7 +127,7 @@ def _read_url(url):
 
 def format_gee(
     url_list,
-    tag_list,
+    prepend_list,
     col_drop_list=[],
     col_protect_list=["id_basin", "id_outlet", "idx", "id"],
     col_drop_defaults=["DA", "count", ".geo", "system:index"],
@@ -130,12 +138,12 @@ def format_gee(
     res = [
         _format_cols(
             df,
-            tag,
+            prepend,
             col_drop_list=col_drop_list,
             col_drop_defaults=col_drop_defaults,
             col_protect_list=col_protect_list,
         )
-        for df, tag in zip(df_list, tag_list)
+        for df, prepend in zip(df_list, prepend_list)
     ]
 
     return pd.concat(res, axis=1)
@@ -149,7 +157,6 @@ def compute(
     folder=None,
     verbose=False,
     test=False,
-    tag="",
 ):
     """
     Compute subbasin statistics for each dataset and band specified.
@@ -171,8 +178,6 @@ def compute(
         By default False.
     folder : str, optional
         Google Drive folder to store results in, by default top-level root.
-    tag : str, optional
-        A string to append to files created on GDrive
     test : bool, optional
         Return results to the active python session in addition to GDrive
 
@@ -316,7 +321,7 @@ def compute(
 
         task = ee.batch.Export.table.toDrive(
             collection=table,
-            description=dataset_to_filename(d.data_id, d.band, tag),
+            description=dataset_to_filename(d.prepend, d.data_id, d.band),
             folder=folder,
             fileFormat="csv",
         )
@@ -329,7 +334,7 @@ def compute(
         else:
             datas.append(
                 table.getDownloadURL(
-                    filetype="csv", filename=dataset_to_filename(d.data_id, d.band, tag)
+                    filetype="csv", filename=dataset_to_filename(d.prepend, d.data_id, d.band)
                 )
             )
             tasks.append(task)
@@ -429,7 +434,7 @@ def _get_controls(datasets):
                     f"Warning: requested end date later than expected for {d.data_id}:{d.band}"
                 )
 
-        d.stats = set(d.stats + ["count", "mean"])
+        d.stats = set(d.stats) | set(["count", "mean"])
 
         if "no_data" in gee_dataset["bands"][d.band]:
             d.no_data = gee_dataset["bands"][d.band]["no_data"]
