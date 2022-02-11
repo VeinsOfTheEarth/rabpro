@@ -9,6 +9,7 @@ import os
 import re
 import shutil
 import tarfile
+import zipfile
 import urllib.parse
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -224,7 +225,6 @@ def download_tar_file(url, filename, username, password, proxy=None, clean=True)
         os.rmdir(tar_dir)
         os.remove(filename)
 
-
 _HYDROBASINS_1_IDS = {
     "all": {
         "dbf": "1duRlrrHTciKn7gM4qogumZ4OhqrB0Ggq",
@@ -335,4 +335,28 @@ def hydrobasins(proxy=None, clean=True, datapath=None):
         _get_domain(domain, "12", clean=clean, proxy=proxy, datapath=datapath)
         for domain in _HYDROBASINS_12_IDS
     ]
+
+
+def hydrobasins_zip(proxy=None, clean=False, datapath=None):
+    
+    # _HYDROBASINS_ZIP = "13ySdVmx2UWKrEsizPUoG72hau3sR3MhX" # test file
+    _HYDROBASINS_ZIP = "1NLJUEWhJ9A4y47rcGYv_jWF1Tx2nLEO9" # full file
+
+    urlbase = "https://drive.google.com/uc?export=download&id="
+    url = urlbase + _HYDROBASINS_ZIP
+    proxy = 'http://proxyout.lanl.gov:8080'
+    datapath, _ = _path_generator_util(None, None)
+    filename = datapath / 'HydroBasins.zip'
+    if os.path.isfile(filename):
+        os.remove(filename)
+    _get_file(filename, url, clean=True, proxy=proxy)
+    
+    path_hb_dir = datapath / 'HydroBasins'
+    if os.path.isdir(path_hb_dir):
+        os.rmdir(path_hb_dir)
+    os.mkdir(path_hb_dir)
+    with zipfile.ZipFile(filename, 'r') as zip_ref:
+        zip_ref.extractall(path_hb_dir)
+
+
 
