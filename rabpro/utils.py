@@ -13,6 +13,7 @@ import platform
 import itertools
 import subprocess
 import pandas as pd
+from pyproj import Geod
 from pathlib import Path
 
 import cv2
@@ -158,8 +159,7 @@ def get_exportpaths(name, basepath=None, overwrite=False):
     exportpaths = {
         "base": str(results),
         "basenamed": str(namedresults),
-        "subbasins": str(namedresults / "subbasins.json"),
-        "subbasins_inc": str(namedresults / "subbasins_inc.json"),
+        "watershed": str(namedresults / "watershed.json"),
         "centerline_results": str(namedresults / "centerline_results.json"),
         "dem_results": str(namedresults / "dem_flowpath.json"),
     }
@@ -675,7 +675,6 @@ def union_gdf_polygons(gdf, idcs, buffer=True):
 
     if buffer:
         from shapely.geometry import JOIN_STYLE
-
         # Buffer distance (tiny)
         eps = 0.0001
 
@@ -697,6 +696,23 @@ def union_gdf_polygons(gdf, idcs, buffer=True):
 
     return polyout
 
+
+def area_4326(pgons_4326):
+    """
+    Given a list of shapely polygons in EPSG:4326, compute the area in km^2.
+    Only returns the area of the perimeter; does not yet account for holes
+    in the polygon.
+    """
+    if type(pgons_4326) is Polygon:
+        pgons_4326 = [pgons_4326]
+
+    # specify a named ellipsoid
+    geod = Geod(ellps="WGS84")
+
+    areas_km2 = []
+    for p in pgons_4326:
+        areas_km2.append(abs(geod.geometry_area_perimeter(p)[0]) / 1e6)
+    return areas_km2
 
 def dist_from_da(da, nwidths=20):
     """

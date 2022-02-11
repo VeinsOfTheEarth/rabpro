@@ -63,7 +63,7 @@ class profiler:
         da=None,
         name="unnamed",
         path_results=None,
-        force_merit=False,
+        # force_merit=False,
         verbose=True,
         rebuild_vrts=True,
     ):
@@ -100,7 +100,7 @@ class profiler:
 
         # Determine the method for delineation
         self.da = da
-        self.method = self._which_method(force_merit)
+        # self.method = self._which_method(force_merit)
 
         # Append drainage area to gdf
         if len(self.gdf) == 1:
@@ -150,26 +150,18 @@ class profiler:
 
         return gdf
 
-    def _which_method(self, force_merit, merit_thresh=500):
-        """Returns the method to use for delineating watersheds."""
 
-        method = "hydrobasins"
-        if force_merit or (self.da is not None and self.da < merit_thresh):
-            method = "merit"
-
-        return method
-
-    def delineate_basins(self, search_radius=None, map_only=False):
+    def delineate_basins(self, search_radius=None, map_only=False, force_merit=False):
         """Computes the watersheds for each lat/lon pair and adds their
         drainage areas to the self.gdf `GeoDataFrame`.
 
-        There are two methods used for delineating basins: HydroBASINS and
-        MERIT. HydroBASINS is appropriate for large basins (500 km^2 and
+        There are two methods available for delineating basins: HydroBASINS and
+        MERIT. HydroBASINS is appropriate for large basins (1000 km^2 and
         larger), and MERIT can provide more detailed basin delineations for
         smaller basins. The method used depends on the size of the basin, which
         is interpreted via the provided drainage area. If no drainage area was
         provided, HydroBASINS will be used. Otherwise, if the provided drainage
-        area is less than 500 km^2, MERIT will be used. MERIT may also be forced
+        area is less than 1000 km^2, MERIT will be used. MERIT may also be forced
         for larger basins using the 'force_merit' argument when instantiating
         the profiler.
 
@@ -179,11 +171,25 @@ class profiler:
             in meters, by default None
         map_only : bool, optional
             If we only want to map the point and not delineate the basin, by default False
+        force_mert : bool, optional
+            Forces the use of MERIT to delineate basins, no matter the drainage
+            area.
         """
+        
+        # Determine method
+        if self.da is None:
+            self.method = 'hydrobasins'
+            print('Warning: no drainage area was provided. HydroBASINS will be used to delineate the basin, but result should be visually verified and coordinate updated if results are not as expected.')
+        elif self.da <= 1000 or force_merit is True:
+            self.method = 'merit'
+        else:
+            self.method = 'hydrobasins'
+            
+        if self.verbose is True:
+            print('Delineating watershed using {}.'.format(self.method))
 
         if self.method == "hydrobasins":
-            self.basins, self.basins_inc, cl_das = sb.main_hb(self.gdf, self.verbose)
-            self.gdf["DA"] = cl_das
+            self.watershed, self.mapped  = sb.main_hb(self.gdf, self.verbose)
 
         elif self.method == "merit":
             if search_radius is not None:
@@ -203,7 +209,7 @@ class profiler:
             else:
                 self.nrows, self.ncols = 50, 50
 
-            self.basins, self.mapped = sb.main_merit(
+            self.watershed, self.mapped = sb.main_merit(
                 self.gdf,
                 self.da,
                 nrows=self.nrows,
@@ -213,25 +219,26 @@ class profiler:
             )
 
             # Ensure the provided coordinate was mappable
-            if self.basins is None:
+            if self.watershed is None:
                 if not map_only:  # pragma: no cover
                     print(
-                        "Could not find a suitable flowline to map given coordinate and DA. No basin can be delineated."
+                        "Could not find a suitable flowline to map given coordinate and DA. No basin can be delineated.",
+                        "You can set da=None to force an attempt with HydroBASINS."
                     )
             else:
                 self.gdf["DA"] = [None for p in range(self.gdf.shape[0])]
-                self.gdf["DA"].values[0] = self.basins["DA"][0]
+                self.gdf["DA"].values[0] = self.watershed["da_km2"][0]
 
                 # Ensure the MERIT-delineated polygon's area is within 10% of the mapped value
                 # If the basin crosses the -180/180 meridian, need to use a projection that splits elsewhere
                 # 2193 for new zealand, seems to work fine for areas though
                 rp_epsg = 2193 if self.mapped["meridian_cross"] else 3410
 
-                reproj_ea_meters = self.basins.to_crs(crs=CRS.from_epsg(rp_epsg))
+                reproj_ea_meters = self.watershed.to_crs(crs=CRS.from_epsg(rp_epsg))
                 pgon_area = (
                     reproj_ea_meters.geometry.values[0].area / 10 ** 6
                 )  # square km
-                pct_diff = abs(pgon_area - self.mapped["da"]) / self.mapped["da"] * 100
+                pct_diff = abs(pgon_area - self.mapped["da_km2"]) / self.mapped["da_km2"] * 100
                 if pct_diff > 10:  # pragma: no cover
                     print(
                         f"Check delineated basin. There is a difference of {pct_diff}% between MERIT DA and polygon area."
@@ -286,7 +293,7 @@ class profiler:
 
         return ss.compute(
             datasets,
-            basins_gdf=self.basins,
+            basins_gdf=self.watershed,
             reducer_funcs=reducer_funcs,
             folder=folder,
             verbose=self.verbose,
@@ -303,12 +310,12 @@ class profiler:
             Which data should be exported? Choose from
             'all' - all computed data
             'elevs' - centerline json is exported with elevation and distance attributes
-            'subbasins' - subbasins and incremental subbasins shapefiles
+            'watershed' - watershed polygon
             The default is 'all'.
 
         """
         if what == "all":
-            what = ["elevs", "subbasins"]
+            what = ["elevs", "watershed"]
         if self.verbose:
             print(f"Exporting {what} to {self.paths['basenamed']}.")
 
@@ -316,17 +323,13 @@ class profiler:
             what = [what]
 
         for w in what:
-            if w not in ["elevs", "subbasins"]:
+            if w not in ["elevs", "watershed"]:
                 raise KeyError(
                     f"Requested export {w} not available. Choose from {['elevs', 'subbasins']}."
                 )
-            elif w == "subbasins":
-                if hasattr(self, "basins"):
-                    self.basins.to_file(self.paths["subbasins"], driver="GeoJSON")
-                    if hasattr(self, "basins_inc"):
-                        self.basins_inc.to_file(
-                            self.paths["subbasins_inc"], driver="GeoJSON"
-                        )
+            elif w == "watershed":
+                if hasattr(self, "watershed"):
+                    self.watershed.to_file(self.paths["watershed"], driver="GeoJSON")
                     if self.verbose:
                         print("Basins geojson written successfully.")
                 else:
