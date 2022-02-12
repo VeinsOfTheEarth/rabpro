@@ -105,7 +105,7 @@ class profiler:
         # Append drainage area to gdf
         if len(self.gdf) == 1:
             if self.da is not None:
-                self.gdf["DA"] = da
+                self.gdf["da_km2"] = da
 
         # Prepare and fetch paths for exporting results
         self.paths = rpu.get_exportpaths(
@@ -151,7 +151,12 @@ class profiler:
         return gdf
 
 
-    def delineate_basins(self, search_radius=None, map_only=False, force_merit=False):
+    def delineate_basin(self, 
+                         search_radius=None, 
+                         map_only=False, 
+                         force_merit=False, 
+                         force_hydrobasins=False
+     ):
         """Computes the watersheds for each lat/lon pair and adds their
         drainage areas to the self.gdf `GeoDataFrame`.
 
@@ -171,13 +176,14 @@ class profiler:
             in meters, by default None
         map_only : bool, optional
             If we only want to map the point and not delineate the basin, by default False
-        force_mert : bool, optional
-            Forces the use of MERIT to delineate basins, no matter the drainage
-            area.
+        force_merit : bool, optional
+            Forces the use of MERIT to delineate basins.
+        force_hydrobasins : bool, optional
+            Forces the use of HydroBASINS to delineate basins.
         """
         
         # Determine method
-        if self.da is None:
+        if self.da is None or force_hydrobasins is True:
             self.method = 'hydrobasins'
             print('Warning: no drainage area was provided. HydroBASINS will be used to delineate the basin, but result should be visually verified and coordinate updated if results are not as expected.')
         elif self.da <= 1000 or force_merit is True:
@@ -185,7 +191,10 @@ class profiler:
         else:
             self.method = 'hydrobasins'
             
-        if self.verbose is True:
+        if map_only is True:
+            self.method = 'merit'
+            
+        if self.verbose is True and map_only is False:
             print('Delineating watershed using {}.'.format(self.method))
 
         if self.method == "hydrobasins":
@@ -226,8 +235,8 @@ class profiler:
                         "You can set da=None to force an attempt with HydroBASINS."
                     )
             else:
-                self.gdf["DA"] = [None for p in range(self.gdf.shape[0])]
-                self.gdf["DA"].values[0] = self.watershed["da_km2"][0]
+                self.gdf["da_km2"] = [None for p in range(self.gdf.shape[0])]
+                self.gdf["da_km2"].values[0] = self.watershed["da_km2"][0]
 
                 # Ensure the MERIT-delineated polygon's area is within 10% of the mapped value
                 # If the basin crosses the -180/180 meridian, need to use a projection that splits elsewhere
@@ -267,7 +276,7 @@ class profiler:
             if 'DA' not in self.gdf.keys():
                 raise KeyError('If the dist_to_walk_km parameter is not specified, a drainage area must be provided when instantiating the profiler.')
             else:                
-                dist_to_walk_km = ru.dist_from_da(self.gdf['DA'].values[0])
+                dist_to_walk_km = ru.dist_from_da(self.gdf['da_km2'].values[0])
                 dist_to_walk_km = max(dist_to_walk_km, 5) 
 
         self.gdf, self.merit_gdf = ep.main(

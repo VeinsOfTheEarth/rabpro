@@ -190,7 +190,7 @@ def main_hb(gdf, verbose=False):
     mapped['successful'] = True
     mapped['da_km2'] = HB_start['UP_AREA']
     mapped['HYBAS_ID'] = HB_start['HYBAS_ID']
-    mapped['da_pct_dif'] = np.abs(mapped['da_km2'] - gdf['DA'].values[0]) / gdf['DA'].values[0] * 100
+    mapped['da_pct_dif'] = np.abs(mapped['da_km2'] - gdf['da_km2'].values[0]) / gdf['da_km2'].values[0] * 100
     
     # Union all HB basins
     basin_pgon = ru.union_gdf_polygons(HB_upstream, range(0, len(HB_upstream)))
@@ -273,8 +273,8 @@ def _map_to_HB_basin(gdf, HB_gdf):
     HB_possibles = gpd.sjoin(HB_gdf, gdf_b, op='intersects')
     
     # Select the HB polygon with the smallest da_dif_pct nearby
-    HB_possibles['da_dif'] = HB_possibles['UP_AREA'].values - gdf['DA'].values[0]
-    HB_possibles['da_dif_pct'] = np.abs(HB_possibles['da_dif'] / gdf['DA'].values[0]) * 100
+    HB_possibles['da_dif'] = HB_possibles['UP_AREA'].values - gdf['da_km2'].values[0]
+    HB_possibles['da_dif_pct'] = np.abs(HB_possibles['da_dif'] / gdf['da_km2'].values[0]) * 100
     HB_possibles = HB_possibles.sort_values(by='da_dif_pct', ascending=True)
     
     # The smallest drainage area difference basin is the one we choose

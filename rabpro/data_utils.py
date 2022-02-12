@@ -339,6 +339,8 @@ def hydrobasins(proxy=None, clean=True, datapath=None):
 
 def hydrobasins_zip(proxy=None, clean=False, datapath=None):
     
+    # os.path.getsize(r"C:\Users\318596\Desktop\HydroBasins.zip")
+    # filesize = 562761977
     # _HYDROBASINS_ZIP = "13ySdVmx2UWKrEsizPUoG72hau3sR3MhX" # test file
     _HYDROBASINS_ZIP = "1NLJUEWhJ9A4y47rcGYv_jWF1Tx2nLEO9" # full file
 
