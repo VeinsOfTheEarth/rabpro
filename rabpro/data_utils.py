@@ -132,15 +132,21 @@ def download_gee_metadata(datapath=None):
             )
 
 
-def merit_hydro(target, username, password, proxy=None, clean=True, datapath=None):
+def merit_hydro(merit_tile, username, password, proxy=None, clean=True, datapath=None):
     """Download MERIT Hydro
 
     Parameters
     ----------
-    target : str
-        MERIT Hydro tile identifier, e.g. "s30e150"
-    username : str        
+    merit_tile : str
+        MERIT Hydro tile identifier, e.g. "s30e150". See all possible tiles
+        at http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/ under
+        "Download"
+    username : str
+        Register at http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/ to
+        access the username.
     password : str        
+        Register at http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/ to
+        access the password.
     proxy : str, optional
         Pass a proxy to requests.get, by default None
     clean : bool, optional
@@ -162,12 +168,12 @@ def merit_hydro(target, username, password, proxy=None, clean=True, datapath=Non
         response = requests.get(baseurl)
     soup = BeautifulSoup(response.text, "html.parser")
     urls = [
-        x["href"][2:] for x in soup.findAll("a", text=re.compile(target), href=True)
+        x["href"][2:] for x in soup.findAll("a", text=re.compile(merit_tile), href=True)
     ]
     # The [2:] gets rid of the "./" in the URL
 
     if len(urls) == 0:
-        raise ValueError(f"No tile matching '{target}' found.")
+        raise ValueError(f"No tile matching '{merit_tile}' found.")
 
     datapath, _ = _path_generator_util(datapath, None)
 
@@ -225,140 +231,120 @@ def download_tar_file(url, filename, username, password, proxy=None, clean=True)
         os.rmdir(tar_dir)
         os.remove(filename)
 
-_HYDROBASINS_1_IDS = {
-    "all": {
-        "dbf": "1duRlrrHTciKn7gM4qogumZ4OhqrB0Ggq",
-        "prj": "1fSAUKiFbfYb8-rLqiG1Epo3dMNLBOMHh",
-        "qpj": "1ZMCrzYUJuxORxNwkQjL1qvFHODS64WBu",
-        "shp": "1ev5Md5d2RwzpTRfpJ6SmCkYPf_7821b2",
-        "shx": "15-fa27DPnioY9kDzgKHQdaSxingSGhCJ",
-    }
-}
+_HYDROBASINS_ZIP = "1NLJUEWhJ9A4y47rcGYv_jWF1Tx2nLEO9"
 
-_HYDROBASINS_12_IDS = {
-    "ar": {
-        "dbf": "19tHCft5jIDoSAdS_PWVMXN1kUGEdCCIl",
-        "prj": "1WbSigVZ3up7EUsbTGsFjBoi3DsK5r5xg",
-        "shp": "1s-L6YEdDN1-mRStamvs4nE9X8GolMv4q",
-        "shx": "1LCeZpkczJqV1eyCm_ArJdZCAONwCy48I",
-    },
-    "as": {
-        "dbf": "1ZXqPOvs-LTk_PheF0iRj9KTY9WNosADO",
-        "prj": "1Ds4U42MyFz4xioDiBv7erRI3tpn_VmH-",
-        "shp": "12PNAOZrWb3U0xggLH0fku1g3MB7IZiGe",
-        "shx": "1pikNKG5ZUl90gtHACs3M6PksCEZRjmHR",
-    },
-}
-
-
-def _get_file(filename, url, proxy=None, clean=True):
-
-    if not clean:
-        if os.path.isfile(filename):
-            return
-
-    print(f"Downloading '{url}' into '{filename}'")
-
-    if proxy is not None:
-        r = requests.get(url, stream=True, proxies={"https": proxy})
-    else:
-        r = requests.get(url, stream=True)
-
-    total_size = int(r.headers.get("content-length", 0))
-
-    if r.status_code != 200:
-        print(f"{url} failed with status code {r.status_code}")
-        return
-
-    with open(filename, "wb") as f:
-        tqdmbar = tqdm.tqdm(total=total_size, unit="B", unit_scale=True)
-        for chunk in r.iter_content(4 * 1024):
-            if chunk:
-                tqdmbar.update(len(chunk))
-                f.write(chunk)
-        tqdmbar.close()
-
-    return None
-
-
-def _get_domain(domain, level, proxy=None, clean=True, datapath=None):
-
-    filebase = "hybas_" + domain + "_lev" + level + "_v1c."
-    urlbase = "https://drive.google.com/uc?export=download&id="
-    datapath, _ = _path_generator_util(datapath, None)
-    pathbase = datapath / Path(_PATH_CONSTANTS["HydroBasins" + level.strip("0")])
-    os.makedirs(pathbase, exist_ok=True)
-
-    if level == "01":
-        id_dict = _HYDROBASINS_1_IDS
-
-    if level == "12":
-        id_dict = _HYDROBASINS_12_IDS
-
-    subdict = id_dict[domain]
-
-    for ext in subdict:
-        filename = pathbase / Path(filebase + ext)
-        url = urlbase + subdict[ext]
-        print((filename, url))
-        _get_file(filename, url, clean=clean, proxy=proxy)
-
-    return None
-
-
-def hydrobasins(proxy=None, clean=True, datapath=None):
+def download_hydrobasins(proxy=None, datapath=None):
     """Download HydroBASINS
 
     Parameters
     ----------
     proxy : str, optional
         Pass a proxy to requests.get, by default None
-    clean : bool, optional
-        Set False to skip overwrite of existing files, by default True
     datapath : str, optional
-        Manually specify a location on the local filesystem, by default None
+        Directory to download and unzip HydroBasins data into; does not include
+        filename. By default None
 
     Examples
     --------
     .. code-block:: python
 
         from rabpro import data_utils
-        data_utils.hydrobasins(clean=False)    
+        data_utils.hydrobasins()    
     """
 
-    [
-        _get_domain(domain, "01", clean=clean, proxy=proxy, datapath=datapath)
-        for domain in _HYDROBASINS_1_IDS
-    ]
-
-    [
-        _get_domain(domain, "12", clean=clean, proxy=proxy, datapath=datapath)
-        for domain in _HYDROBASINS_12_IDS
-    ]
-
-
-def hydrobasins_zip(proxy=None, clean=False, datapath=None):
-    
-    # os.path.getsize(r"C:\Users\318596\Desktop\HydroBasins.zip")
-    # filesize = 562761977
-    # _HYDROBASINS_ZIP = "13ySdVmx2UWKrEsizPUoG72hau3sR3MhX" # test file
-    _HYDROBASINS_ZIP = "1NLJUEWhJ9A4y47rcGYv_jWF1Tx2nLEO9" # full file
-
-    urlbase = "https://drive.google.com/uc?export=download&id="
-    url = urlbase + _HYDROBASINS_ZIP
-    proxy = 'http://proxyout.lanl.gov:8080'
-    datapath, _ = _path_generator_util(None, None)
+    if datapath is None:
+        datapath, _ = _path_generator_util(None, None)
     filename = datapath / 'HydroBasins.zip'
     if os.path.isfile(filename):
         os.remove(filename)
-    _get_file(filename, url, clean=True, proxy=proxy)
+    print('Downloading HydroBasins zip file (562 MB)...')
+    _download_file_from_google_drive(_HYDROBASINS_ZIP, filename, proxy=None)
     
+    # Check that filesize matches expected
+    fsize = os.path.getsize(filename)
+    if fsize != 562761977:
+        print('Full zip file was not successfully downloaded. Check proxy?')
+        os.remove(filename)
+        return
+    
+    # Unzip the file
+    print('Unzipping HydroBasins zip file...')
     path_hb_dir = datapath / 'HydroBasins'
     if os.path.isdir(path_hb_dir):
-        os.rmdir(path_hb_dir)
+        shutil.rmtree(path_hb_dir)
     os.mkdir(path_hb_dir)
     with zipfile.ZipFile(filename, 'r') as zip_ref:
-        zip_ref.extractall(path_hb_dir)
+        zip_ref.extractall(datapath)
+    
+    # Delete zip file
+    os.remove(filename)
+    print('Done.')
 
+
+def _download_file_from_google_drive(id_file, destination, proxy=None):
+    """
+    From https://stackoverflow.com/a/39225272/8195528.
+    """
+
+    def get_confirm_token(response):
+        for key, value in response.cookies.items():
+            if key.startswith('download_warning'):
+                return value
+    
+        return None
+    
+    def save_response_content(response, destination):
+        CHUNK_SIZE = 32768
+    
+        with open(destination, "wb") as f:
+            for chunk in response.iter_content(CHUNK_SIZE):
+                if chunk: # filter out keep-alive new chunks
+                    f.write(chunk)
+                    
+    URL = "https://docs.google.com/uc?export=download"
+
+    session = requests.Session()
+
+    response = session.get(URL, params = { 'id' : id_file }, stream = True)
+    token = get_confirm_token(response)
+
+    if token:
+        params = { 'id' : id_file, 'confirm' : token }
+        if proxy is None:
+            response = session.get(URL, params = params, stream = True)
+        else:
+            response = session.get(URL, params = params, stream = True, proxies={"https": proxy})
+            
+    save_response_content(response, destination)    
+
+
+# def _get_file(filename, url, proxy=None, clean=True):
+
+#     if not clean:
+#         if os.path.isfile(filename):
+#             return
+
+#     print(f"Downloading '{url}' into '{filename}'")
+
+#     if proxy is not None:
+#         r = requests.get(url, stream=True, proxies={"https": proxy})
+#     else:
+#         r = requests.get(url, stream=True)
+
+#     total_size = int(r.headers.get("content-length", 0))
+
+#     if r.status_code != 200:
+#         print(f"{url} failed with status code {r.status_code}")
+#         return
+
+#     with open(filename, "wb") as f:
+#         tqdmbar = tqdm.tqdm(total=total_size, unit="B", unit_scale=True)
+#         for chunk in r.iter_content(4 * 1024):
+#             if chunk:
+#                 tqdmbar.update(len(chunk))
+#                 f.write(chunk)
+#         tqdmbar.close()
+
+#     return None
 
 
