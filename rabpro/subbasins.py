@@ -81,7 +81,7 @@ def main_merit(gdf, da, nrows=51, ncols=51, map_only=False, verbose=False):
                 ysize=1,
             )[0][0]
         )
-        mapped['da_pct_dif'] = np.abs(mapped['da_km2'] - gdf['DA'].values[0]) / gdf['DA'].values[0] * 100 
+        mapped['da_pct_dif'] = np.abs(mapped['da_km2'] - gdf['da_km2'].values[0]) / gdf['da_km2'].values[0] * 100 
         mapped["map_method"] = map_method
         mapped["coords"] = ru.xy_to_coords(
             cr_start_mapped[0], cr_start_mapped[1], da_obj.GetGeoTransform()
