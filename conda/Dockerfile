@@ -9,6 +9,6 @@ RUN apt install -y build-essential libglu1-mesa-dev freeglut3-dev mesa-common-de
 RUN conda install -y anaconda-client conda-build
 
 VOLUME ["/rabpro"]
-WORKDIR /rabpro
+WORKDIR /rabpro/conda
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/bin/bash"]
