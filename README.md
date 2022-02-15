@@ -16,6 +16,12 @@
 |[Basic workflow](https://veinsoftheearth.github.io/rabpro/examples/notebooks/basic_example.html)|[Full workflow](https://veinsoftheearth.github.io/rabpro/examples/notebooks/full_example.html)|[Basin stats examples](https://veinsoftheearth.github.io/rabpro/examples/notebooks/basin_stats.html)|
 |--|--|--|
 
+## Citation
+
+The following text is the current citation for rabpro:
+
+> Zussman, T., J. Schwenk, and J. Rowland. River and Basin Profiler: A Module for Extracting Watershed Boundaries, River Centerlines, and Catchment Statistics. Other. Hydrology, December 30, 2021. <https://doi.org/10.1002/essoar.10509912.1>.
+
 ## Development
 
 ### Testing
