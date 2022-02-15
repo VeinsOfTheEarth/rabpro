@@ -185,7 +185,8 @@ class profiler:
         # Determine method
         if self.da is None or force_hydrobasins is True:
             self.method = 'hydrobasins'
-            print('Warning: no drainage area was provided. HydroBASINS will be used to delineate the basin, but result should be visually verified and coordinate updated if results are not as expected.')
+            if self.da is None:
+                print('Warning: no drainage area was provided. HydroBASINS will be used to delineate the basin, but result should be visually verified and coordinate updated if results are not as expected.')
         elif self.da <= 1000 or force_merit is True:
             self.method = 'merit'
         else:
