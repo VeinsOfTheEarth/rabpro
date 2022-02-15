@@ -6,9 +6,8 @@
 
 ## Setup
 
-||||
-|--|--|--|
 |[Software installation](https://veinsoftheearth.github.io/rabpro/install/index.html)|[Data configuration](https://veinsoftheearth.github.io/rabpro/configure/index.html#data)|[Software configuration](https://veinsoftheearth.github.io/rabpro/configure/index.html#software)|
+|--|--|--|
 
 ## Usage
 
