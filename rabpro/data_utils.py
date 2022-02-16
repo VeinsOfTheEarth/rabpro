@@ -115,6 +115,37 @@ def _path_generator_util(datapath, configpath):
     return datapath, configpath
 
 
+def does_merit_exist(datapaths):
+    """
+    Checks if any MERIT tiles are in the MERIT data directories. Also checks
+    if the vrts have been built. Returns the number of MERIT layers that have
+    data (maximum of 4).
+    """
+    vrts_exist = 0
+    geotiffs_exist = 0
+    dem_files = [k for k in datapaths.keys() if 'DEM' in k]
+    for df in dem_files:
+        geotiffs = [f for f in os.listdir(os.path.dirname(datapaths[df])) if f.split('.')[-1] == 'tif']
+        if len(geotiffs) > 0:
+            geotiffs_exist = geotiffs_exist + 1
+        if os.path.isfile(datapaths[df]) is True:
+            vrts_exist = vrts_exist + 1
+    
+    return geotiffs_exist, vrts_exist 
+
+
+def does_hydrobasins_exist(datapaths):
+    """
+    Checks if level 1 and level 12 HydroBasins data are available.
+    """
+    lev1, lev12 = False, False
+    if os.path.isfile(os.path.join(datapaths['HydroBasins1'], 'hybas_all_lev01_v1c.shp')) is True:
+        lev1 = True
+    if os.path.isfile(os.path.join(datapaths['HydroBasins12'], 'hybas_af_lev12_v1c.shp')) is True:
+        lev12 = True
+    return lev1, lev12 
+
+
 def download_gee_metadata(datapath=None):
     datapath, _ = _path_generator_util(datapath, None)
     gee_metadata_path = datapath / "gee_datasets.json"
@@ -237,12 +268,12 @@ def download_tar_file(url, filename, username, password, proxy=None, clean=True)
         os.remove(filename)
 
 
-def download_hydrobasins(datapath, proxy=None):
+def download_hydrobasins(datapath=None, proxy=None):
     """Download HydroBASINS
 
     Parameters
     ----------
-    datapath : str or Path
+    datapath : str or Path, optional
         Directory to download and unzip HydroBasins data into; does not include
         filename. By default None
     proxy : str, optional
@@ -256,10 +287,10 @@ def download_hydrobasins(datapath, proxy=None):
         data_utils.hydrobasins()    
     """
     _HYDROBASINS_ZIP_ID = "1NLJUEWhJ9A4y47rcGYv_jWF1Tx2nLEO9"
-    datapath = Path(datapath)
 
     if datapath is None:
         datapath, _ = _path_generator_util(None, None)
+    datapath = Path(datapath)
     filename = datapath / 'HydroBasins.zip'
     if os.path.isfile(filename):
         os.remove(filename)

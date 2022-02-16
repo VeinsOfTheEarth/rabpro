@@ -62,7 +62,8 @@ def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True, **kwargs):
     datapath: string, optional
         Path to rabpro data folder. Will read from an environment variable 
         "RABPRO_DATA". If not set, uses appdirs to create a local data
-        directory.
+        directory. This path is the parent directory for the MERIT and
+        HydroBasins data directories.
     configpath: string, optional
         Path to rabpro config folder. Will read from an environment variable 
         "RABPRO_CONFIG". If not set, uses appdirs to create local directory.
@@ -86,32 +87,48 @@ def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True, **kwargs):
         utils.get_datapaths(extents=[-180.00041666666667, 179.99958333333913, 84.99958333333333, -60.000416666669], quiet=True)
     """
 
+    # I'm not sure what this is supposed to do?
     global _DATAPATHS
     if _DATAPATHS is not None:
-        _build_virtual_rasters(_DATAPATHS, force_rebuild=rebuild_vrts, **kwargs)
+        _build_virtual_rasters(_DATAPATHS, **kwargs)
         return _DATAPATHS
 
+    # Ensure data directories are established
     du.create_file_structure(datapath=datapath, configpath=configpath)
     datapaths = du.create_datapaths(datapath=datapath, configpath=configpath)
     if has_internet():
         du.download_gee_metadata()
 
-    _build_virtual_rasters(datapaths, force_rebuild=rebuild_vrts, **kwargs)
+    # ??        
     _DATAPATHS = datapaths
     return datapaths
 
 
-def _build_virtual_rasters(datapaths, force_rebuild=True, quiet=False, **kwargs):
+def _build_virtual_rasters(datapaths, quiet=True, **kwargs):
+    
     msg_dict = {
         "DEM_fdr": "Building flow direction virtual raster DEM from MERIT tiles...",
         "DEM_uda": "Building drainage areas virtual raster DEM from MERIT tiles...",
         "DEM_elev_hp": "Building hydrologically-processed elevations virtual raster DEM from MERIT tiles...",
         "DEM_width": "Building width virtual raster from MERIT tiles...",
     }
-
-    # Ensure that DEM virtual rasters are built
+    
+    missing_dict = {
+        'DEM_fdr' : 'flow directions (FDR)',
+        'DEM_uda' : 'drainage area (UDA)',
+        'DEM_elev_hp' : 'hydrologically adjusted DEM (ELEV_HP)',
+        'DEM_width' : 'width (WTH)'}
+    
+    missing_merit = False
     for key in msg_dict:
-        if not os.path.isfile(datapaths[key]) or force_rebuild:
+        # Check that MERIT data are available before trying to build VRT
+        geotiffs = os.listdir(os.path.dirname(datapaths[key]))
+        if len(geotiffs) == 0:
+            if not quiet:
+                print('No MERIT data found for {}.'.format(missing_dict[key]))
+            missing_merit = True
+            continue
+        else:
             if not quiet:
                 print(msg_dict[key])
             build_vrt(
@@ -120,6 +137,11 @@ def _build_virtual_rasters(datapaths, force_rebuild=True, quiet=False, **kwargs)
                 quiet=quiet,
                 **kwargs,
             )
+            
+    if missing_merit is True:
+        print('One or more MERIT layers have no data. Use rabro.data_utils.download_merit_hydro() to fetch a MERIT tile.')
+
+    return
 
 
 def get_exportpaths(name, basepath=None, overwrite=False):

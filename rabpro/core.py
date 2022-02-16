@@ -17,7 +17,6 @@ from rabpro import merit_utils as mu
 from rabpro import utils as ru
 from rabpro import basins
 from rabpro import basin_stats as bs
-from rabpro import utils as rpu
 from rabpro import data_utils as du
 
 
@@ -64,7 +63,6 @@ class profiler:
         da=None,
         name="unnamed",
         path_results=None,
-        # force_merit=False,
         verbose=True,
         rebuild_vrts=True,
     ):
@@ -109,13 +107,38 @@ class profiler:
                 self.gdf["da_km2"] = da
 
         # Prepare and fetch paths for exporting results
-        self.paths = rpu.get_exportpaths(
+        self.paths = ru.get_exportpaths(
             self.name, basepath=path_results, overwrite=True
         )
 
-        # This line will ensure that all the virtual rasters are built and available.
-        rpu.get_datapaths(quiet=~verbose, rebuild_vrts=rebuild_vrts)
-
+        # Ensure data structure exists
+        self.datapaths = ru.get_datapaths(quiet=True, rebuild_vrts=False)
+        
+        # Flags for data availability
+        self.available_merit = False
+        self.available_hb = False
+        
+        # Check availability MERIT data
+        n_layers_geotiffs, n_vrts = du.does_merit_exist(self.datapaths)
+        if n_layers_geotiffs < 4:
+            print(('{} of 4 MERIT-Hydro layers exist. If basin delineation ' +
+                  'with MERIT-Hydro is desired, MERIT tiles may be downloaded ' +
+                  'via rabpro.data_utils.download_merit_hydro().').format(n_layers_geotiffs))
+        if n_vrts == 4:
+            self.available_merit = True
+        # Build virtual rasters on MERIT data if needed
+        if rebuild_vrts is True and n_layers_geotiffs == 0:
+            print('No MERIT-Hydro layers were found. Cannot build virtual rasters on MERIT tiles.')
+        elif n_layers_geotiffs > 0 and n_vrts < 4:
+            ru._build_virtual_rasters(self.datapaths, quiet=~verbose)
+            
+        # Check availability of HydroBasins data
+        lev1, lev12 = du.does_hydrobasins_exist(self.datapaths)
+        if lev1 + lev12 == 0:
+            print('No HydroBasins data was found. Use rabpro.data_utils.download_hydrobasins() to download.')
+        else:
+            self.available_hb == True                  
+          
 
     def _coordinates_to_gdf(self, coords):
         """
@@ -196,6 +219,11 @@ class profiler:
             
         if map_only is True:
             self.method = 'merit'
+             
+        if self.method == 'merit' and self.available_merit is False:
+            print('MERIT data are not available; no delineation can be done.')
+        elif self.method == 'hydrobasins' and self.available_hb is False:
+            print('HydroBasins data are not available; no delineation can be done.')
             
         if self.verbose is True and map_only is False:
             print('Delineating watershed using {}.'.format(self.method))
@@ -205,7 +233,7 @@ class profiler:
 
         elif self.method == "merit":
             if search_radius is not None:
-                dps = rpu.get_datapaths(rebuild_vrts=False)
+                dps = ru.get_datapaths(rebuild_vrts=False)
                 ds_lonlat = np.array(
                     [
                         self.gdf.geometry.values[-1].coords.xy[0][0],
