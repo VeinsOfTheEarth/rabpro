@@ -300,7 +300,7 @@ def download_hydrobasins(datapath=None, proxy=None):
     # Check that filesize matches expected
     fsize = os.path.getsize(filename)
     if fsize != 562761977:
-        print('Full zip file was not successfully downloaded. Check proxy?')
+        print('HydroBasins zip file was not successfully downloaded. Check proxy?')
         os.remove(filename)
         return
     
@@ -316,6 +316,8 @@ def download_hydrobasins(datapath=None, proxy=None):
     # Delete zip file
     os.remove(filename)
     print('Done.')
+    
+    return
 
 
 def _download_file_from_google_drive(id_file, destination, proxy=None):
