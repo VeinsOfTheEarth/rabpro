@@ -190,7 +190,10 @@ def main_hb(gdf, verbose=False):
     mapped['successful'] = True
     mapped['da_km2'] = HB_start['UP_AREA']
     mapped['HYBAS_ID'] = HB_start['HYBAS_ID']
-    mapped['da_pct_dif'] = np.abs(mapped['da_km2'] - gdf['da_km2'].values[0]) / gdf['da_km2'].values[0] * 100
+    if 'da_km2' in gdf.keys():
+        mapped['da_pct_dif'] = np.abs(mapped['da_km2'] - gdf['da_km2'].values[0]) / gdf['da_km2'].values[0] * 100
+    else:
+        mapped['da_pct_dif'] = np.nan
     
     # Union all HB basins
     basin_pgon = ru.union_gdf_polygons(HB_upstream, range(0, len(HB_upstream)))

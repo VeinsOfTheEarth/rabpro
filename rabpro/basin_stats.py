@@ -274,7 +274,7 @@ def compute(
         # imgcol = imgcol.map(lambda img: img.clipToCollection(featureCollection))
 
         if verbose:
-            print(f"Submitting subbasin stats tasks to GEE for {d.data_id}...")
+            print(f"Submitting basin stats task to GEE for {d.data_id}...")
 
         # Add threshold mask to image using GSW occurrence band
         if d.mask:

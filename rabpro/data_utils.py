@@ -50,6 +50,11 @@ def create_datapaths(datapath=None, configpath=None, reset_user_metadata=False):
     datapath, configpath = _path_generator_util(datapath, configpath)
 
     datapaths = {key: str(datapath / Path(val)) for key, val in _PATH_CONSTANTS.items()}
+    
+    datapaths['HydroBasins_root'] = str(datapath / Path('HydroBasins'))
+    datapaths['MERIT_root'] = str(datapath / Path('MERIT_Hydro'))
+    datapaths['root'] = str(datapath)
+
     gee_metadata_path = datapath / "gee_datasets.json"
     datapaths["gee_metadata"] = str(gee_metadata_path)
 
@@ -231,18 +236,17 @@ def download_tar_file(url, filename, username, password, proxy=None, clean=True)
         os.rmdir(tar_dir)
         os.remove(filename)
 
-_HYDROBASINS_ZIP = "1NLJUEWhJ9A4y47rcGYv_jWF1Tx2nLEO9"
 
-def download_hydrobasins(proxy=None, datapath=None):
+def download_hydrobasins(datapath, proxy=None):
     """Download HydroBASINS
 
     Parameters
     ----------
-    proxy : str, optional
-        Pass a proxy to requests.get, by default None
-    datapath : str, optional
+    datapath : str or Path
         Directory to download and unzip HydroBasins data into; does not include
         filename. By default None
+    proxy : str, optional
+        Pass a proxy to requests.get, by default None
 
     Examples
     --------
@@ -251,6 +255,8 @@ def download_hydrobasins(proxy=None, datapath=None):
         from rabpro import data_utils
         data_utils.hydrobasins()    
     """
+    _HYDROBASINS_ZIP_ID = "1NLJUEWhJ9A4y47rcGYv_jWF1Tx2nLEO9"
+    datapath = Path(datapath)
 
     if datapath is None:
         datapath, _ = _path_generator_util(None, None)
@@ -258,7 +264,7 @@ def download_hydrobasins(proxy=None, datapath=None):
     if os.path.isfile(filename):
         os.remove(filename)
     print('Downloading HydroBasins zip file (562 MB)...')
-    _download_file_from_google_drive(_HYDROBASINS_ZIP, filename, proxy=None)
+    _download_file_from_google_drive(_HYDROBASINS_ZIP_ID, filename, proxy=proxy)
     
     # Check that filesize matches expected
     fsize = os.path.getsize(filename)
@@ -290,7 +296,7 @@ def _download_file_from_google_drive(id_file, destination, proxy=None):
         for key, value in response.cookies.items():
             if key.startswith('download_warning'):
                 return value
-    
+            
         return None
     
     def save_response_content(response, destination):
@@ -304,47 +310,136 @@ def _download_file_from_google_drive(id_file, destination, proxy=None):
     URL = "https://docs.google.com/uc?export=download"
 
     session = requests.Session()
+    
+    if proxy is not None:
+        session.proxies.update({'https':proxy})
+    else:
+        session.proxies = {}
 
-    response = session.get(URL, params = { 'id' : id_file }, stream = True)
+    response = session.get(URL, params = {'id':id_file}, stream = True)
     token = get_confirm_token(response)
 
     if token:
         params = { 'id' : id_file, 'confirm' : token }
-        if proxy is None:
-            response = session.get(URL, params = params, stream = True)
-        else:
-            response = session.get(URL, params = params, stream = True, proxies={"https": proxy})
+        response = session.get(URL, params = params, stream = True)
             
-    save_response_content(response, destination)    
+    save_response_content(response, destination) 
+    
+    return
 
 
-# def _get_file(filename, url, proxy=None, clean=True):
+def download_merit_dem(merit_tile, username, password, datapath=None, proxy=None):
+ 
+    if datapath is None:
+        datapath = Path(create_datapaths()['root'])
+   
+    baseurl = "http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/"
+    filename = f"dem_tif_{merit_tile}.tar"
 
-#     if not clean:
-#         if os.path.isfile(filename):
-#             return
+    session = requests.Session()
+    if proxy is not None:
+        session.proxies.update({'https':proxy})
+    else:
+        session.proxies = {}
 
-#     print(f"Downloading '{url}' into '{filename}'")
+    response = session.get(baseurl)
 
-#     if proxy is not None:
-#         r = requests.get(url, stream=True, proxies={"https": proxy})
-#     else:
-#         r = requests.get(url, stream=True)
+    soup = BeautifulSoup(response.text, "html.parser")
+    url = [
+        x["href"][2:] for x in soup.findAll("a", text=re.compile(filename), href=True)
+    ][0]
+    
+    url = baseurl + url
+    filename = os.path.join(datapath, f"MERIT_Hydro{os.sep}MERIT103", filename)
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
 
-#     total_size = int(r.headers.get("content-length", 0))
-
-#     if r.status_code != 200:
-#         print(f"{url} failed with status code {r.status_code}")
-#         return
-
-#     with open(filename, "wb") as f:
-#         tqdmbar = tqdm.tqdm(total=total_size, unit="B", unit_scale=True)
-#         for chunk in r.iter_content(4 * 1024):
-#             if chunk:
-#                 tqdmbar.update(len(chunk))
-#                 f.write(chunk)
-#         tqdmbar.close()
-
-#     return None
+    download_file(url, filename, username, password, proxy)
+    
+    return
 
 
+def download_merit_hydro(merit_tile, username, password, datapath=None, proxy=None):
+    
+    merit_hydro_paths = {
+        "elv": f"MERIT_Hydro{os.sep}MERIT_ELEV_HP",
+        "dir": f"MERIT_Hydro{os.sep}MERIT_FDR",
+        "upa": f"MERIT_Hydro{os.sep}MERIT_UDA",
+        "wth": f"MERIT_Hydro{os.sep}MERIT_WTH",
+    }
+
+    if datapath is None:
+        datapath = Path(create_datapaths()['root'])
+
+    baseurl = "http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/"
+
+    session = requests.Session()
+    if proxy is not None:
+        session.proxies.update({'https':proxy})
+    else:
+        session.proxies = {}
+    response = session.get(baseurl)
+        
+    soup = BeautifulSoup(response.text, "html.parser")
+    urls = [
+        x["href"][2:] for x in soup.findAll("a", text=re.compile(merit_tile), href=True)
+    ]
+    # The [2:] gets rid of the "./" in the URL
+
+    for urlfile in urls:
+        url = baseurl + urlfile
+        filename = os.path.basename(urllib.parse.urlparse(url).path)
+
+        if filename[:3] not in merit_hydro_paths:
+            continue
+
+        filename = os.path.join(datapath, merit_hydro_paths[filename[:3]], filename)
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
+
+        download_file(url, filename, username, password, proxy)
+        
+    return
+    
+    
+def download_file(url, filename, username, password, proxy=None):
+    
+    # Skip downloading if the file already exists
+    if os.path.isfile(filename):
+        return
+
+    print(f"Downloading '{url}' into '{filename}'")
+
+    session = requests.Session()
+    if proxy is not None:
+        session.proxies.update({'https':proxy})
+    else:
+        session.proxies = {}
+
+    r = session.get(url, auth=(username, password), stream=True)
+
+    total_size = int(r.headers.get("content-length", 0))
+
+    if r.status_code != 200:
+        print(f"{url} failed with status code {r.status_code}")
+        return
+
+    with open(filename, "wb") as f:
+        tqdmbar = tqdm.tqdm(total=total_size, unit="B", unit_scale=True)
+        for chunk in r.iter_content(4 * 1024):
+            if chunk:
+                tqdmbar.update(len(chunk))
+                f.write(chunk)
+        tqdmbar.close()
+
+    # Extract TAR archive and remove artifacts
+    with tarfile.open(filename) as tf:
+        tf.extractall(os.path.dirname(filename))
+
+    tar_dir = filename[:-4]
+    files = os.listdir(tar_dir)
+    for f in files:
+        shutil.move(os.path.join(tar_dir, f), os.path.join(os.path.dirname(tar_dir), f))
+
+    os.rmdir(tar_dir)
+    os.remove(filename)
+    
+    return

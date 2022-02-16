@@ -15,9 +15,10 @@ from pyproj import CRS
 from rabpro import elev_profile as ep
 from rabpro import merit_utils as mu
 from rabpro import utils as ru
-from rabpro import subbasins as sb
-from rabpro import subbasin_stats as ss
+from rabpro import basins
+from rabpro import basin_stats as bs
 from rabpro import utils as rpu
+from rabpro import data_utils as du
 
 
 class profiler:
@@ -115,6 +116,7 @@ class profiler:
         # This line will ensure that all the virtual rasters are built and available.
         rpu.get_datapaths(quiet=~verbose, rebuild_vrts=rebuild_vrts)
 
+
     def _coordinates_to_gdf(self, coords):
         """
         Converts a list of coordinates to a `GeoDataFrame`. Coordinates should
@@ -149,7 +151,7 @@ class profiler:
         gdf.crs = CRS.from_epsg(4326)
 
         return gdf
-
+    
 
     def delineate_basin(self, 
                          search_radius=None, 
@@ -199,7 +201,7 @@ class profiler:
             print('Delineating watershed using {}.'.format(self.method))
 
         if self.method == "hydrobasins":
-            self.watershed, self.mapped  = sb.main_hb(self.gdf, self.verbose)
+            self.watershed, self.mapped  = basins.main_hb(self.gdf, self.verbose)
 
         elif self.method == "merit":
             if search_radius is not None:
@@ -219,7 +221,7 @@ class profiler:
             else:
                 self.nrows, self.ncols = 50, 50
 
-            self.watershed, self.mapped = sb.main_merit(
+            self.watershed, self.mapped = basins.main_merit(
                 self.gdf,
                 self.da,
                 nrows=self.nrows,
@@ -274,13 +276,19 @@ class profiler:
             self.ncols = 50
             
         if dist_to_walk_km is None:
-            if 'DA' not in self.gdf.keys():
+            # Check if the watershed has been delineated; pull drainage area
+            # from that
+            if 'da_km2' in self.gdf.keys():
+                da = self.gdf['da_km2'].values[0]
+            elif hasattr(self, 'watershed'):
+                da = self.watershed['da_km2'].values[0]
+            else:
                 raise KeyError('If the dist_to_walk_km parameter is not specified, a drainage area must be provided when instantiating the profiler.')
-            else:                
-                dist_to_walk_km = ru.dist_from_da(self.gdf['da_km2'].values[0])
-                dist_to_walk_km = max(dist_to_walk_km, 5) 
 
-        self.gdf, self.merit_gdf = ep.main(
+            dist_to_walk_km = ru.dist_from_da(da)
+            dist_to_walk_km = max(dist_to_walk_km, 5) 
+
+        self.gdf, self.flowline = ep.main(
             self.gdf, dist_to_walk_km, self.verbose, self.nrows, self.ncols
         )
 
@@ -301,7 +309,7 @@ class profiler:
             Google Drive folder to store results in
         """
 
-        return ss.compute(
+        return bs.compute(
             datasets,
             basins_gdf=self.watershed,
             reducer_funcs=reducer_funcs,
@@ -319,37 +327,33 @@ class profiler:
         what : list, optional
             Which data should be exported? Choose from
             'all' - all computed data
-            'elevs' - centerline json is exported with elevation and distance attributes
+            'flowline' - flowline json is exported with elevation and distance attributes
             'watershed' - watershed polygon
             The default is 'all'.
 
         """
         if what == "all":
-            what = ["elevs", "watershed"]
-        if self.verbose:
-            print(f"Exporting {what} to {self.paths['basenamed']}.")
+            what = ["flowline", "watershed"]
 
         if type(what) is str:
             what = [what]
 
         for w in what:
-            if w not in ["elevs", "watershed"]:
+            if w not in ["flowline", "watershed"]:
                 raise KeyError(
-                    f"Requested export {w} not available. Choose from {['elevs', 'subbasins']}."
+                    f"Requested export {w} not available. Choose from {['flowline', 'subbasins']}."
                 )
             elif w == "watershed":
                 if hasattr(self, "watershed"):
                     self.watershed.to_file(self.paths["watershed"], driver="GeoJSON")
                     if self.verbose:
-                        print("Basins geojson written successfully.")
+                        print("Watershed written to {}.".format(self.paths['watershed']))
                 else:
                     print("No subbasins found for export.")
-            elif w == "elevs":
-                if "Elevation (m)" in self.gdf.keys():
-                    self.gdf.to_file(self.paths["centerline_results"], driver="GeoJSON")
-                if hasattr(self, "merit_gdf"):
-                    self.merit_gdf.to_file(self.paths["dem_results"], driver="GeoJSON")
+            elif w == "flowline":
+                if hasattr(self, "flowline"):
+                    self.flowline.to_file(self.paths["flowline"], driver="GeoJSON")
                     if self.verbose:
-                        print("Centerline geojsons written successfully.")
+                        print("Flowline written to {}.".format(self.paths['watershed']))
                 else:
-                    print("No elevations found for export.")
+                    print("No flowline found for export.")

@@ -60,13 +60,17 @@ def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True, **kwargs):
     Parameters
     ----------
     datapath: string, optional
-        path to rabpro data folder, will read from an environment variable "RABPRO_DATA", if not set uses appdirs
+        Path to rabpro data folder. Will read from an environment variable 
+        "RABPRO_DATA". If not set, uses appdirs to create a local data
+        directory.
     configpath: string, optional
-        path to rabpro config folder, will read from an environment variable "RABPRO_CONFIG", if not set uses appdirs
+        Path to rabpro config folder. Will read from an environment variable 
+        "RABPRO_CONFIG". If not set, uses appdirs to create local directory.
     rebuild_vrts: boolean, optional
-        rebuild virtual raster files, default is True
+        If True, will rebuild the MERIT-Hydro virtual raster files. Should be 
+        done if new tiles are added to MERIT-Hydro. Default is True.
     kwargs:
-        arguments passed to build_vrt
+        Arguments passed to build_vrt.
 
     Returns
     -------
@@ -160,8 +164,7 @@ def get_exportpaths(name, basepath=None, overwrite=False):
         "base": str(results),
         "basenamed": str(namedresults),
         "watershed": str(namedresults / "watershed.json"),
-        "centerline_results": str(namedresults / "centerline_results.json"),
-        "dem_results": str(namedresults / "dem_flowpath.json"),
+        "flowline": str(namedresults / "flowline.json"),
     }
 
     return exportpaths
