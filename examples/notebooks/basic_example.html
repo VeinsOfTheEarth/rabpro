@@ -361,7 +361,7 @@ div.rendered_html tbody tr:hover {
 <h1>Basic example<a class="headerlink" href="#Basic-example" title="Permalink to this headline"></a></h1>
 <p>This example demonstrates some of the core functionality and export features provided by rabpro.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
@@ -373,7 +373,7 @@ import rabpro
 </div>
 <p>First, we need to specify a point within our test DEM region.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coords = (56.22659, -130.87974)
@@ -383,7 +383,7 @@ import rabpro
 <p>Now we can initialize the profiler. The rabpro profiler is the main entry point into the package - it provides wrapper funcitons for most of the rabpro’s core functionality.</p>
 <p>Note that we can optionally specify a drainage area (<code class="docutils literal notranslate"><span class="pre">da</span></code>) or set <code class="docutils literal notranslate"><span class="pre">force_merit</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code>, to ensure that we use MERIT data rather than HydroBasins to perform basin delineation.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rpo = rabpro.profiler(coords, name=&#39;basic_test&#39;, rebuild_vrts=False)
@@ -393,9 +393,38 @@ import rabpro
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+C:\Users\318596\Anaconda3\envs\erosion\lib\site-packages\geopandas\geodataframe.py:34: ShapelyDeprecationWarning: The array interface is deprecated and will no longer work in Shapely 2.0. Convert the &#39;.coords&#39; to a numpy array instead.
+  out = from_shapely(data)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Supplied path for building vrt: []
+0 of 4 MERIT-Hydro layers exist. If basin delineation with MERIT-Hydro is desired, MERIT tiles may be downloaded via rabpro.data_utils.download_merit_hydro().
+No HydroBasins data was found. Use rabpro.data_utils.download_hydrobasins() to download.
+</pre></div></div>
+</div>
+<p>We have not yet downloaded any data. Let’s grab HydroBasins data to run this example. It only needs to be downloaded once.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from rabpro.data_utils import download_hydrobasins
+download_hydrobasins()
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;HydroBasins1&#39;: &#39;C:\\Users\\318596\\AppData\\Local\\rabpro\\rabpro\\HydroBasins\\level_one&#39;, &#39;HydroBasins12&#39;: &#39;C:\\Users\\318596\\AppData\\Local\\rabpro\\rabpro\\HydroBasins\\level_twelve&#39;, &#39;DEM_fdr&#39;: &#39;C:\\Users\\318596\\AppData\\Local\\rabpro\\rabpro\\MERIT_Hydro\\MERIT_FDR\\MERIT_FDR.vrt&#39;, &#39;DEM_uda&#39;: &#39;C:\\Users\\318596\\AppData\\Local\\rabpro\\rabpro\\MERIT_Hydro\\MERIT_UDA\\MERIT_UDA.vrt&#39;, &#39;DEM_elev_hp&#39;: &#39;C:\\Users\\318596\\AppData\\Local\\rabpro\\rabpro\\MERIT_Hydro\\MERIT_ELEV_HP\\MERIT_ELEV_HP.vrt&#39;, &#39;DEM_width&#39;: &#39;C:\\Users\\318596\\AppData\\Local\\rabpro\\rabpro\\MERIT_Hydro\\MERIT_WTH\\MERIT_WTH.vrt&#39;, &#39;HydroBasins_root&#39;: &#39;C:\\Users\\318596\\AppData\\Local\\rabpro\\rabpro\\HydroBasins&#39;, &#39;MERIT_root&#39;: &#39;C:\\Users\\318596\\AppData\\Local\\rabpro\\rabpro\\MERIT_Hydro&#39;, &#39;root&#39;: &#39;C:\\Users\\318596\\AppData\\Local\\rabpro\\rabpro&#39;, &#39;gee_metadata&#39;: &#39;C:\\Users\\318596\\AppData\\Local\\rabpro\\rabpro\\gee_datasets.json&#39;, &#39;user_gee_metadata&#39;: &#39;C:\\Users\\318596\\AppData\\Local\\rabpro\\rabpro\\user_gee_datasets.json&#39;}
+Downloading HydroBasins zip file (562 MB)...
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -404,39 +433,90 @@ Supplied path for building vrt: []
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 <span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
-<span class="ansi-red-intense-fg ansi-bold">RuntimeError</span>                              Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">~\AppData\Local\Temp/ipykernel_25548/4053216990.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">----&gt; 1</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>rpo <span class="ansi-yellow-intense-fg ansi-bold">=</span> rabpro<span class="ansi-yellow-intense-fg ansi-bold">.</span>profiler<span class="ansi-yellow-intense-fg ansi-bold">(</span>coords<span class="ansi-yellow-intense-fg ansi-bold">,</span> name<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-blue-intense-fg ansi-bold">&#39;basic_test&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> rebuild_vrts<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-green-intense-fg ansi-bold">False</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-red-intense-fg ansi-bold">KeyboardInterrupt</span>                         Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">~\AppData\Local\Temp/ipykernel_23008/3296762390.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">      1</span> <span class="ansi-green-intense-fg ansi-bold">from</span> rabpro<span class="ansi-yellow-intense-fg ansi-bold">.</span>data_utils <span class="ansi-green-intense-fg ansi-bold">import</span> download_hydrobasins
+<span class="ansi-green-fg">      2</span> print<span class="ansi-yellow-intense-fg ansi-bold">(</span>rpo<span class="ansi-yellow-intense-fg ansi-bold">.</span>datapaths<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 3</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>download_hydrobasins<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
 
-<span class="ansi-green-intense-fg ansi-bold">x:\research\rabpro\code\rabpro\core.py</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-intense-fg ansi-bold">(self, coords, da, name, path_results, verbose, rebuild_vrts)</span>
-<span class="ansi-green-fg">    114</span>
-<span class="ansi-green-fg">    115</span>         <span class="ansi-red-intense-fg ansi-bold"># This line will ensure that all the virtual rasters are built and available.</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 116</span><span class="ansi-yellow-intense-fg ansi-bold">         </span>rpu<span class="ansi-yellow-intense-fg ansi-bold">.</span>get_datapaths<span class="ansi-yellow-intense-fg ansi-bold">(</span>quiet<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-yellow-intense-fg ansi-bold">~</span>verbose<span class="ansi-yellow-intense-fg ansi-bold">,</span> rebuild_vrts<span class="ansi-yellow-intense-fg ansi-bold">=</span>rebuild_vrts<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    117</span>
-<span class="ansi-green-fg">    118</span>     <span class="ansi-green-intense-fg ansi-bold">def</span> _coordinates_to_gdf<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">,</span> coords<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">x:\research\rabpro\code\rabpro\data_utils.py</span> in <span class="ansi-cyan-fg">download_hydrobasins</span><span class="ansi-blue-intense-fg ansi-bold">(datapath, proxy)</span>
+<span class="ansi-green-fg">    296</span>         os<span class="ansi-yellow-intense-fg ansi-bold">.</span>remove<span class="ansi-yellow-intense-fg ansi-bold">(</span>filename<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    297</span>     print<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#39;Downloading HydroBasins zip file (562 MB)...&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 298</span><span class="ansi-yellow-intense-fg ansi-bold">     </span>_download_file_from_google_drive<span class="ansi-yellow-intense-fg ansi-bold">(</span>_HYDROBASINS_ZIP_ID<span class="ansi-yellow-intense-fg ansi-bold">,</span> filename<span class="ansi-yellow-intense-fg ansi-bold">,</span> proxy<span class="ansi-yellow-intense-fg ansi-bold">=</span>proxy<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    299</span>
+<span class="ansi-green-fg">    300</span>     <span class="ansi-red-intense-fg ansi-bold"># Check that filesize matches expected</span>
 
-<span class="ansi-green-intense-fg ansi-bold">x:\research\rabpro\code\rabpro\utils.py</span> in <span class="ansi-cyan-fg">get_datapaths</span><span class="ansi-blue-intense-fg ansi-bold">(datapath, configpath, rebuild_vrts, **kwargs)</span>
-<span class="ansi-green-fg">     93</span>         du<span class="ansi-yellow-intense-fg ansi-bold">.</span>download_gee_metadata<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">     94</span>
-<span class="ansi-green-intense-fg ansi-bold">---&gt; 95</span><span class="ansi-yellow-intense-fg ansi-bold">     </span>_build_virtual_rasters<span class="ansi-yellow-intense-fg ansi-bold">(</span>datapaths<span class="ansi-yellow-intense-fg ansi-bold">,</span> force_rebuild<span class="ansi-yellow-intense-fg ansi-bold">=</span>rebuild_vrts<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">     96</span>     _DATAPATHS <span class="ansi-yellow-intense-fg ansi-bold">=</span> datapaths
-<span class="ansi-green-fg">     97</span>     <span class="ansi-green-intense-fg ansi-bold">return</span> datapaths
+<span class="ansi-green-intense-fg ansi-bold">x:\research\rabpro\code\rabpro\data_utils.py</span> in <span class="ansi-cyan-fg">_download_file_from_google_drive</span><span class="ansi-blue-intense-fg ansi-bold">(id_file, destination, proxy)</span>
+<span class="ansi-green-fg">    355</span>     <span class="ansi-green-intense-fg ansi-bold">if</span> token<span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">    356</span>         params <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-yellow-intense-fg ansi-bold">{</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;id&#39;</span> <span class="ansi-yellow-intense-fg ansi-bold">:</span> id_file<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;confirm&#39;</span> <span class="ansi-yellow-intense-fg ansi-bold">:</span> token <span class="ansi-yellow-intense-fg ansi-bold">}</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 357</span><span class="ansi-yellow-intense-fg ansi-bold">         </span>response <span class="ansi-yellow-intense-fg ansi-bold">=</span> session<span class="ansi-yellow-intense-fg ansi-bold">.</span>get<span class="ansi-yellow-intense-fg ansi-bold">(</span>URL<span class="ansi-yellow-intense-fg ansi-bold">,</span> params <span class="ansi-yellow-intense-fg ansi-bold">=</span> params<span class="ansi-yellow-intense-fg ansi-bold">,</span> stream <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-green-intense-fg ansi-bold">True</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    358</span>
+<span class="ansi-green-fg">    359</span>     save_response_content<span class="ansi-yellow-intense-fg ansi-bold">(</span>response<span class="ansi-yellow-intense-fg ansi-bold">,</span> destination<span class="ansi-yellow-intense-fg ansi-bold">)</span>
 
-<span class="ansi-green-intense-fg ansi-bold">x:\research\rabpro\code\rabpro\utils.py</span> in <span class="ansi-cyan-fg">_build_virtual_rasters</span><span class="ansi-blue-intense-fg ansi-bold">(datapaths, force_rebuild, quiet, **kwargs)</span>
-<span class="ansi-green-fg">    111</span>             <span class="ansi-green-intense-fg ansi-bold">if</span> <span class="ansi-green-intense-fg ansi-bold">not</span> quiet<span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    112</span>                 print<span class="ansi-yellow-intense-fg ansi-bold">(</span>msg_dict<span class="ansi-yellow-intense-fg ansi-bold">[</span>key<span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 113</span><span class="ansi-yellow-intense-fg ansi-bold">             build_vrt(
-</span><span class="ansi-green-fg">    114</span>                 os<span class="ansi-yellow-intense-fg ansi-bold">.</span>path<span class="ansi-yellow-intense-fg ansi-bold">.</span>dirname<span class="ansi-yellow-intense-fg ansi-bold">(</span>os<span class="ansi-yellow-intense-fg ansi-bold">.</span>path<span class="ansi-yellow-intense-fg ansi-bold">.</span>realpath<span class="ansi-yellow-intense-fg ansi-bold">(</span>datapaths<span class="ansi-yellow-intense-fg ansi-bold">[</span>key<span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">,</span>
-<span class="ansi-green-fg">    115</span>                 outputfile<span class="ansi-yellow-intense-fg ansi-bold">=</span>datapaths<span class="ansi-yellow-intense-fg ansi-bold">[</span>key<span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">,</span>
+<span class="ansi-green-intense-fg ansi-bold">x:\research\rabpro\code\rabpro\data_utils.py</span> in <span class="ansi-cyan-fg">save_response_content</span><span class="ansi-blue-intense-fg ansi-bold">(response, destination)</span>
+<span class="ansi-green-fg">    335</span>     <span class="ansi-green-intense-fg ansi-bold">def</span> save_response_content<span class="ansi-yellow-intense-fg ansi-bold">(</span>response<span class="ansi-yellow-intense-fg ansi-bold">,</span> destination<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">    336</span>         CHUNK_SIZE <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-cyan-intense-fg ansi-bold">32768</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 337</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>
+<span class="ansi-green-fg">    338</span>         <span class="ansi-green-intense-fg ansi-bold">with</span> open<span class="ansi-yellow-intense-fg ansi-bold">(</span>destination<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-blue-intense-fg ansi-bold">&#34;wb&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-green-intense-fg ansi-bold">as</span> f<span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">    339</span>             <span class="ansi-green-intense-fg ansi-bold">for</span> chunk <span class="ansi-green-intense-fg ansi-bold">in</span> response<span class="ansi-yellow-intense-fg ansi-bold">.</span>iter_content<span class="ansi-yellow-intense-fg ansi-bold">(</span>CHUNK_SIZE<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
 
-<span class="ansi-green-intense-fg ansi-bold">x:\research\rabpro\code\rabpro\utils.py</span> in <span class="ansi-cyan-fg">build_vrt</span><span class="ansi-blue-intense-fg ansi-bold">(tilespath, clipper, extents, outputfile, nodataval, res, sampling, ftype, separate, quiet)</span>
-<span class="ansi-green-fg">    270</span>     <span class="ansi-green-intense-fg ansi-bold">if</span> len<span class="ansi-yellow-intense-fg ansi-bold">(</span>filelist<span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-yellow-intense-fg ansi-bold">&lt;</span> <span class="ansi-cyan-intense-fg ansi-bold">1</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    271</span>         print<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">f&#34;Supplied path for building vrt: {filelist}&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 272</span><span class="ansi-yellow-intense-fg ansi-bold">         </span><span class="ansi-green-intense-fg ansi-bold">raise</span> RuntimeError<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#34;The path you supplied appears empty.&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    273</span>
-<span class="ansi-green-fg">    274</span>     <span class="ansi-red-intense-fg ansi-bold"># Clear out .txt and .vrt files if they already exist</span>
+<span class="ansi-green-intense-fg ansi-bold">~\Anaconda3\envs\erosion\lib\site-packages\requests\models.py</span> in <span class="ansi-cyan-fg">generate</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-fg">    756</span>             <span class="ansi-green-intense-fg ansi-bold">if</span> hasattr<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>raw<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;stream&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">    757</span>                 <span class="ansi-green-intense-fg ansi-bold">try</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 758</span><span class="ansi-yellow-intense-fg ansi-bold">                     </span><span class="ansi-green-intense-fg ansi-bold">for</span> chunk <span class="ansi-green-intense-fg ansi-bold">in</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>raw<span class="ansi-yellow-intense-fg ansi-bold">.</span>stream<span class="ansi-yellow-intense-fg ansi-bold">(</span>chunk_size<span class="ansi-yellow-intense-fg ansi-bold">,</span> decode_content<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-green-intense-fg ansi-bold">True</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">    759</span>                         <span class="ansi-green-intense-fg ansi-bold">yield</span> chunk
+<span class="ansi-green-fg">    760</span>                 <span class="ansi-green-intense-fg ansi-bold">except</span> ProtocolError <span class="ansi-green-intense-fg ansi-bold">as</span> e<span class="ansi-yellow-intense-fg ansi-bold">:</span>
 
-<span class="ansi-red-intense-fg ansi-bold">RuntimeError</span>: The path you supplied appears empty.
+<span class="ansi-green-intense-fg ansi-bold">~\Anaconda3\envs\erosion\lib\site-packages\urllib3\response.py</span> in <span class="ansi-cyan-fg">stream</span><span class="ansi-blue-intense-fg ansi-bold">(self, amt, decode_content)</span>
+<span class="ansi-green-fg">    574</span>         <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">    575</span>             <span class="ansi-green-intense-fg ansi-bold">while</span> <span class="ansi-green-intense-fg ansi-bold">not</span> is_fp_closed<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_fp<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 576</span><span class="ansi-yellow-intense-fg ansi-bold">                 </span>data <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>read<span class="ansi-yellow-intense-fg ansi-bold">(</span>amt<span class="ansi-yellow-intense-fg ansi-bold">=</span>amt<span class="ansi-yellow-intense-fg ansi-bold">,</span> decode_content<span class="ansi-yellow-intense-fg ansi-bold">=</span>decode_content<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    577</span>
+<span class="ansi-green-fg">    578</span>                 <span class="ansi-green-intense-fg ansi-bold">if</span> data<span class="ansi-yellow-intense-fg ansi-bold">:</span>
+
+<span class="ansi-green-intense-fg ansi-bold">~\Anaconda3\envs\erosion\lib\site-packages\urllib3\response.py</span> in <span class="ansi-cyan-fg">read</span><span class="ansi-blue-intense-fg ansi-bold">(self, amt, decode_content, cache_content)</span>
+<span class="ansi-green-fg">    517</span>             <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">    518</span>                 cache_content <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-green-intense-fg ansi-bold">False</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 519</span><span class="ansi-yellow-intense-fg ansi-bold">                 </span>data <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_fp<span class="ansi-yellow-intense-fg ansi-bold">.</span>read<span class="ansi-yellow-intense-fg ansi-bold">(</span>amt<span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-green-intense-fg ansi-bold">if</span> <span class="ansi-green-intense-fg ansi-bold">not</span> fp_closed <span class="ansi-green-intense-fg ansi-bold">else</span> <span class="ansi-blue-intense-fg ansi-bold">b&#34;&#34;</span>
+<span class="ansi-green-fg">    520</span>                 if (
+<span class="ansi-green-fg">    521</span>                     amt <span class="ansi-yellow-intense-fg ansi-bold">!=</span> <span class="ansi-cyan-intense-fg ansi-bold">0</span> <span class="ansi-green-intense-fg ansi-bold">and</span> <span class="ansi-green-intense-fg ansi-bold">not</span> data
+
+<span class="ansi-green-intense-fg ansi-bold">~\Anaconda3\envs\erosion\lib\http\client.py</span> in <span class="ansi-cyan-fg">read</span><span class="ansi-blue-intense-fg ansi-bold">(self, amt)</span>
+<span class="ansi-green-fg">    457</span>             <span class="ansi-red-intense-fg ansi-bold"># Amount is given, implement using readinto</span>
+<span class="ansi-green-fg">    458</span>             b <span class="ansi-yellow-intense-fg ansi-bold">=</span> bytearray<span class="ansi-yellow-intense-fg ansi-bold">(</span>amt<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 459</span><span class="ansi-yellow-intense-fg ansi-bold">             </span>n <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>readinto<span class="ansi-yellow-intense-fg ansi-bold">(</span>b<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    460</span>             <span class="ansi-green-intense-fg ansi-bold">return</span> memoryview<span class="ansi-yellow-intense-fg ansi-bold">(</span>b<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>n<span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>tobytes<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    461</span>         <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+
+<span class="ansi-green-intense-fg ansi-bold">~\Anaconda3\envs\erosion\lib\http\client.py</span> in <span class="ansi-cyan-fg">readinto</span><span class="ansi-blue-intense-fg ansi-bold">(self, b)</span>
+<span class="ansi-green-fg">    501</span>         <span class="ansi-red-intense-fg ansi-bold"># connection, and the user is reading more bytes than will be provided</span>
+<span class="ansi-green-fg">    502</span>         <span class="ansi-red-intense-fg ansi-bold"># (for example, reading in 1k chunks)</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 503</span><span class="ansi-yellow-intense-fg ansi-bold">         </span>n <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>fp<span class="ansi-yellow-intense-fg ansi-bold">.</span>readinto<span class="ansi-yellow-intense-fg ansi-bold">(</span>b<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    504</span>         <span class="ansi-green-intense-fg ansi-bold">if</span> <span class="ansi-green-intense-fg ansi-bold">not</span> n <span class="ansi-green-intense-fg ansi-bold">and</span> b<span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">    505</span>             <span class="ansi-red-intense-fg ansi-bold"># Ideally, we would raise IncompleteRead if the content-length</span>
+
+<span class="ansi-green-intense-fg ansi-bold">~\Anaconda3\envs\erosion\lib\socket.py</span> in <span class="ansi-cyan-fg">readinto</span><span class="ansi-blue-intense-fg ansi-bold">(self, b)</span>
+<span class="ansi-green-fg">    667</span>         <span class="ansi-green-intense-fg ansi-bold">while</span> <span class="ansi-green-intense-fg ansi-bold">True</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">    668</span>             <span class="ansi-green-intense-fg ansi-bold">try</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 669</span><span class="ansi-yellow-intense-fg ansi-bold">                 </span><span class="ansi-green-intense-fg ansi-bold">return</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_sock<span class="ansi-yellow-intense-fg ansi-bold">.</span>recv_into<span class="ansi-yellow-intense-fg ansi-bold">(</span>b<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    670</span>             <span class="ansi-green-intense-fg ansi-bold">except</span> timeout<span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">    671</span>                 self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_timeout_occurred <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-green-intense-fg ansi-bold">True</span>
+
+<span class="ansi-green-intense-fg ansi-bold">~\Anaconda3\envs\erosion\lib\ssl.py</span> in <span class="ansi-cyan-fg">recv_into</span><span class="ansi-blue-intense-fg ansi-bold">(self, buffer, nbytes, flags)</span>
+<span class="ansi-green-fg">   1239</span>                   <span class="ansi-blue-intense-fg ansi-bold">&#34;non-zero flags not allowed in calls to recv_into() on %s&#34;</span> <span class="ansi-yellow-intense-fg ansi-bold">%</span>
+<span class="ansi-green-fg">   1240</span>                   self.__class__)
+<span class="ansi-green-intense-fg ansi-bold">-&gt; 1241</span><span class="ansi-yellow-intense-fg ansi-bold">             </span><span class="ansi-green-intense-fg ansi-bold">return</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>read<span class="ansi-yellow-intense-fg ansi-bold">(</span>nbytes<span class="ansi-yellow-intense-fg ansi-bold">,</span> buffer<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">   1242</span>         <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">   1243</span>             <span class="ansi-green-intense-fg ansi-bold">return</span> super<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>recv_into<span class="ansi-yellow-intense-fg ansi-bold">(</span>buffer<span class="ansi-yellow-intense-fg ansi-bold">,</span> nbytes<span class="ansi-yellow-intense-fg ansi-bold">,</span> flags<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-green-intense-fg ansi-bold">~\Anaconda3\envs\erosion\lib\ssl.py</span> in <span class="ansi-cyan-fg">read</span><span class="ansi-blue-intense-fg ansi-bold">(self, len, buffer)</span>
+<span class="ansi-green-fg">   1097</span>         <span class="ansi-green-intense-fg ansi-bold">try</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">   1098</span>             <span class="ansi-green-intense-fg ansi-bold">if</span> buffer <span class="ansi-green-intense-fg ansi-bold">is</span> <span class="ansi-green-intense-fg ansi-bold">not</span> <span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">-&gt; 1099</span><span class="ansi-yellow-intense-fg ansi-bold">                 </span><span class="ansi-green-intense-fg ansi-bold">return</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_sslobj<span class="ansi-yellow-intense-fg ansi-bold">.</span>read<span class="ansi-yellow-intense-fg ansi-bold">(</span>len<span class="ansi-yellow-intense-fg ansi-bold">,</span> buffer<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">   1100</span>             <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">   1101</span>                 <span class="ansi-green-intense-fg ansi-bold">return</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_sslobj<span class="ansi-yellow-intense-fg ansi-bold">.</span>read<span class="ansi-yellow-intense-fg ansi-bold">(</span>len<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-red-intense-fg ansi-bold">KeyboardInterrupt</span>:
 </pre></div></div>
 </div>
 <p>rabpro can now compute the watershed for this point. This can take a few minutes to run.</p>
