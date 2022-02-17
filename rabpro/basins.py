@@ -192,22 +192,19 @@ def main_hb(gdf, verbose=False):
     HB_start = _map_to_HB_basin(gdf, HB_gdf)
 
     # Get all upstream HB polygons (includes HB_start)
-    HB_upstream = _upstream_HB_basins(HB_start["HYBAS_ID"], HB_gdf)
-    mapped["successful"] = True
-    mapped["da_km2"] = HB_start["UP_AREA"]
-    mapped["HYBAS_ID"] = HB_start["HYBAS_ID"]
-    if "da_km2" in gdf.keys():
-        mapped["da_pct_dif"] = (
-            np.abs(mapped["da_km2"] - gdf["da_km2"].values[0])
-            / gdf["da_km2"].values[0]
-            * 100
-        )
-    else:
-        mapped["da_pct_dif"] = np.nan
+    HB_upstream  = _upstream_HB_basins(HB_start['HYBAS_ID'], HB_gdf)
 
     # Union all HB basins
     basin_pgon = ru.union_gdf_polygons(HB_upstream, range(0, len(HB_upstream)))
-    basin_da = ru.area_4326(basin_pgon)[0]
+    basin_da = sum(ru.area_4326(basin_pgon))
+
+    mapped['successful'] = True
+    mapped['da_km2'] = np.sum(HB_upstream['SUB_AREA'].values) + HB_start['SUB_AREA']
+    mapped['HYBAS_ID'] = HB_start['HYBAS_ID']
+    if 'da_km2' in gdf.keys():
+        mapped['da_pct_dif'] = np.abs(mapped['da_km2'] - gdf['da_km2'].values[0]) / gdf['da_km2'].values[0] * 100
+    else:
+        mapped['da_pct_dif'] = np.nan
 
     # Export upstream basin gdf
     basins = gpd.GeoDataFrame(
