@@ -129,8 +129,8 @@ def format_gee(
     url_list,
     prepend_list,
     col_drop_list=[],
-    col_protect_list=["id_basin", "id_outlet", "idx", "id"],
-    col_drop_defaults=["DA", "count", ".geo", "system:index"],
+    col_protect_list=["id_basin", "id_outlet", "idx", "id", "vote_id"],
+    col_drop_defaults=["DA", "count", ".geo", "system:index", "da_km2"],
 ):
 
     df_list = [_read_url(url) for url in url_list]
@@ -146,7 +146,15 @@ def format_gee(
         for df, prepend in zip(df_list, prepend_list)
     ]
 
-    return pd.concat(res, axis=1)
+    res = pd.concat(res, axis=1)
+
+    # drop duplicate columns and move to front
+    where_duplicated = [x for x in np.where(res.columns.duplicated())[0]]
+    first_column_names = res.columns[where_duplicated][0]
+    first_column = res.pop(res.columns[where_duplicated][0]).iloc[:, 0]
+    res.insert(0, first_column_names, first_column)
+
+    return res
 
 
 def compute(
