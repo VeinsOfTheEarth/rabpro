@@ -2,8 +2,12 @@ import rabpro
 import geopandas as gpd
 import contextlib, io
 
+from rabpro import utils as ru
+
 
 def test_rebuild_vrts():
+    dps = ru.get_datapaths(rebuild_vrts=True)
+
     coords_file = gpd.read_file(r"tests/data/Big Blue River.geojson").rename(
         columns={"DA": "da_km2"}
     )
