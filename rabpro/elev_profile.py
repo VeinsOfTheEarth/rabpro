@@ -46,7 +46,7 @@ def main(gdf, dist_to_walk_km, verbose=False, nrows=50, ncols=50):
         import rabpro
         coords = (56.22659, -130.87974)
         rpo = rabpro.profiler(coords, name='basic_test')
-        cl_gdf, merit_gdf = rabpro.elev_profile.main(rpo.gdf, dist_to_walk_km=5)
+        gdf, flowline = rabpro.elev_profile.main(rpo.gdf, dist_to_walk_km=5)
     """
 
     # Get data locked and loaded
@@ -106,7 +106,7 @@ def main(gdf, dist_to_walk_km, verbose=False, nrows=50, ncols=50):
 
     # Store the elevation profile and distances of the MERIT-derived flowpath
     coords_fp = ru.xy_to_coords(flowpath[1], flowpath[0], da_obj.GetGeoTransform())
-    merit_gdf = gpd.GeoDataFrame(
+    flowline = gpd.GeoDataFrame(
         data={
             "geometry": [Point(x, y) for x, y in zip(coords_fp[0], coords_fp[1])],
             "Elevation (m)": es,
@@ -121,9 +121,9 @@ def main(gdf, dist_to_walk_km, verbose=False, nrows=50, ncols=50):
     lonlat_mapped = ru.xy_to_coords(
         cr_ds_mapped[0], cr_ds_mapped[1], da_obj.GetGeoTransform()
     )
-    merit_gdf["Distance (m)"] = _compute_dists(merit_gdf, lonlat_mapped)
+    flowline["Distance (m)"] = _compute_dists(flowline, lonlat_mapped)
 
-    return gdf, merit_gdf
+    return gdf, flowline
 
 
 def _compute_dists(gdf, lonlat_mapped):
