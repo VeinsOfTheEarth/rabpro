@@ -64,7 +64,6 @@ class profiler:
         name="unnamed",
         path_results=None,
         verbose=True,
-        rebuild_vrts=True,
     ):
 
         self.name = name
@@ -112,7 +111,7 @@ class profiler:
         )
 
         # Ensure data structure exists
-        self.datapaths = ru.get_datapaths(quiet=True, rebuild_vrts=False)
+        self.datapaths = ru.get_datapaths(quiet=True)
         
         # Flags for data availability
         self.available_merit = False
@@ -126,18 +125,13 @@ class profiler:
                   'via rabpro.data_utils.download_merit_hydro().').format(n_layers_geotiffs))
         if n_vrts == 4:
             self.available_merit = True
-        # Build virtual rasters on MERIT data if needed
-        if rebuild_vrts is True and n_layers_geotiffs == 0:
-            print('No MERIT-Hydro layers were found. Cannot build virtual rasters on MERIT tiles.')
-        elif n_layers_geotiffs > 0 and n_vrts < 4:
-            ru._build_virtual_rasters(self.datapaths, quiet=~verbose)
             
         # Check availability of HydroBasins data
         lev1, lev12 = du.does_hydrobasins_exist(self.datapaths)
         if lev1 + lev12 == 0:
             print('No HydroBasins data was found. Use rabpro.data_utils.download_hydrobasins() to download.')
         else:
-            self.available_hb == True                  
+            self.available_hb = True                  
           
 
     def _coordinates_to_gdf(self, coords):

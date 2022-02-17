@@ -52,7 +52,7 @@ def envvars_rabpro():
     return res_dict
 
 
-def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True, **kwargs):
+def get_datapaths(datapath=None, configpath=None, **kwargs):
     """
     Returns a dictionary of paths to all data that rabpro uses. Also builds
     virtual rasters for MERIT data.
@@ -67,9 +67,6 @@ def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True, **kwargs):
     configpath: string, optional
         Path to rabpro config folder. Will read from an environment variable 
         "RABPRO_CONFIG". If not set, uses appdirs to create local directory.
-    rebuild_vrts: boolean, optional
-        If True, will rebuild the MERIT-Hydro virtual raster files. Should be 
-        done if new tiles are added to MERIT-Hydro. Default is True.
     kwargs:
         Arguments passed to build_vrt.
 
@@ -90,7 +87,6 @@ def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True, **kwargs):
     # I'm not sure what this is supposed to do?
     global _DATAPATHS
     if _DATAPATHS is not None:
-        _build_virtual_rasters(_DATAPATHS, **kwargs)
         return _DATAPATHS
 
     # Ensure data directories are established
@@ -101,10 +97,11 @@ def get_datapaths(datapath=None, configpath=None, rebuild_vrts=True, **kwargs):
 
     # ??        
     _DATAPATHS = datapaths
+    
     return datapaths
 
 
-def _build_virtual_rasters(datapaths, quiet=True, **kwargs):
+def build_virtual_rasters(datapaths, quiet=True, **kwargs):
     
     msg_dict = {
         "DEM_fdr": "Building flow direction virtual raster DEM from MERIT tiles...",
