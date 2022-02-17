@@ -68,6 +68,7 @@ jobs:
         run: |
           conda info
           pip install coverage
+          pip install pytest
           pip install .
 
       - name: Set up credentials
