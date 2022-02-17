@@ -46,7 +46,7 @@ class profiler:
 
     Methods
     -------
-    delineate_basins:
+    delineate_basin:
         Computes the watersheds for each lat/lon pair
     elev_profile:
         Compute the elevation profile
