@@ -52,7 +52,9 @@ def envvars_rabpro():
     return res_dict
 
 
-def get_datapaths(datapath=None, configpath=None, rebuild_vrts=False, **kwargs):
+def get_datapaths(
+    datapath=None, configpath=None, force=False, rebuild_vrts=False, **kwargs
+):
     """
     Returns a dictionary of paths to all data that rabpro uses. Also builds
     virtual rasters for MERIT data.
@@ -67,6 +69,8 @@ def get_datapaths(datapath=None, configpath=None, rebuild_vrts=False, **kwargs):
     configpath: string, optional
         Path to rabpro config folder. Will read from an environment variable 
         "RABPRO_CONFIG". If not set, uses appdirs to create local directory.
+    force: boolean, optional
+        Set True to override datapath caching. Otherwise only fetched once per py session.
     rebuild_vrts: boolean, optional        
     kwargs:
         Arguments passed to build_vrt.
@@ -85,9 +89,10 @@ def get_datapaths(datapath=None, configpath=None, rebuild_vrts=False, **kwargs):
         utils.get_datapaths(extents=[-180.00041666666667, 179.99958333333913, 84.99958333333333, -60.000416666669], quiet=True)
     """
 
-    # I'm not sure what this is supposed to do?
+    # This chunk makes sure that folder creation, data downloads, etc. only
+    # happen once per py session
     global _DATAPATHS
-    if _DATAPATHS is not None:
+    if _DATAPATHS is not None and not force:
         return _DATAPATHS
 
     # Ensure data directories are established
@@ -99,7 +104,6 @@ def get_datapaths(datapath=None, configpath=None, rebuild_vrts=False, **kwargs):
     if rebuild_vrts:
         build_virtual_rasters(datapaths, **kwargs)
 
-    # ??
     _DATAPATHS = datapaths
 
     return datapaths
