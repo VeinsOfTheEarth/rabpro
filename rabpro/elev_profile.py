@@ -34,9 +34,9 @@ def main(gdf, dist_to_walk_km, verbose=False, nrows=50, ncols=50):
 
     Returns
     -------
-    cl_gdf : GeoDataFrame
+    gdf : GeoDataFrame
         The original point layer geometry.
-    merit_gdf : GeoDataFrame
+    flowline : GeoDataFrame
         The elevation profile geometry.
 
     Examples
@@ -46,7 +46,7 @@ def main(gdf, dist_to_walk_km, verbose=False, nrows=50, ncols=50):
         import rabpro
         coords = (56.22659, -130.87974)
         rpo = rabpro.profiler(coords, name='basic_test')
-        cl_gdf, merit_gdf = rabpro.elev_profile.main(rpo.gdf)
+        cl_gdf, merit_gdf = rabpro.elev_profile.main(rpo.gdf, dist_to_walk_km=5)
     """
 
     # Get data locked and loaded
