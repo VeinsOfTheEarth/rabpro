@@ -66,7 +66,7 @@ class Dataset:
         time_stats=None,
         mask=False,
         mosaic=False,
-        prepend_label=''
+        prepend_label="",
     ):
         self.data_id = data_id
         self.band = band
@@ -84,7 +84,7 @@ def dataset_to_filename(prepend, data_id, band):
     if prepend == "":
         return f"{data_id}__{band}".replace("/", "-")
     else:
-        return prepend + '__' + f"{data_id}__{band}".replace("/", "-")
+        return prepend + "__" + f"{data_id}__{band}".replace("/", "-")
 
 
 def _str_to_dict(a_string):
@@ -103,7 +103,7 @@ def _format_cols(df, prepend, col_drop_list, col_drop_defaults, col_protect_list
     to_tag = list(
         np.where([x not in col_protect_list for x in [x for x in col_names]])[0]
     )
-    if prepend != '':
+    if prepend != "":
         for i in to_tag:
             col_names[i] = prepend + "_" + col_names[i]
     df.columns = col_names
@@ -334,7 +334,8 @@ def compute(
         else:
             datas.append(
                 table.getDownloadURL(
-                    filetype="csv", filename=dataset_to_filename(d.prepend, d.data_id, d.band)
+                    filetype="csv",
+                    filename=dataset_to_filename(d.prepend, d.data_id, d.band),
                 )
             )
             tasks.append(task)
