@@ -69,7 +69,7 @@ def main_merit(gdf, da, nrows=51, ncols=51, map_only=False, verbose=False):
         mapped["map_method"] = np.nan
         mapped["da_km2"] = np.nan
         mapped["meridian_cross"] = np.nan
-        mapped['da_pct_dif'] = np.nan
+        mapped["da_pct_dif"] = np.nan
         return None, mapped
     else:
         mapped["successful"] = True
@@ -81,7 +81,11 @@ def main_merit(gdf, da, nrows=51, ncols=51, map_only=False, verbose=False):
                 ysize=1,
             )[0][0]
         )
-        mapped['da_pct_dif'] = np.abs(mapped['da_km2'] - gdf['da_km2'].values[0]) / gdf['da_km2'].values[0] * 100 
+        mapped["da_pct_dif"] = (
+            np.abs(mapped["da_km2"] - gdf["da_km2"].values[0])
+            / gdf["da_km2"].values[0]
+            * 100
+        )
         mapped["map_method"] = map_method
         mapped["coords"] = ru.xy_to_coords(
             cr_start_mapped[0], cr_start_mapped[1], da_obj.GetGeoTransform()
@@ -164,47 +168,52 @@ def main_hb(gdf, verbose=False):
         test = rabpro.subbasins.main_hb(rpo.gdf)
     """
     datapaths = ru.get_datapaths(rebuild_vrts=False)
-    mapped = {} 
-    mapped['successful'] = False
+    mapped = {}
+    mapped["successful"] = False
 
     # Convert the gdf to EPSG:4326 if necessary in order to align with HydroSheds
     was_transformed = False
     if gdf.crs is None:
         raise RuntimeWarning("Centerline geodataframe has no defined CRS.")
-    elif gdf.crs.to_authority()[1] !='4326':
+    elif gdf.crs.to_authority()[1] != "4326":
         orig_crs = gdf.crs  # Save the original crs to put it back later
         gdf = gdf.to_crs(epsg=4326)
         was_transformed = True
 
     # Load the appropriate HydroBasins shapefile as a geodataframe
-    HB_gdf = load_continent_basins(gdf, datapaths["HydroBasins1"], datapaths["HydroBasins12"])
-    
+    HB_gdf = load_continent_basins(
+        gdf, datapaths["HydroBasins1"], datapaths["HydroBasins12"]
+    )
+
     if HB_gdf is None:
         return None, mapped
-    
+
     # Find the most-downstream HydroBasins polygon
     HB_start = _map_to_HB_basin(gdf, HB_gdf)
-    
+
     # Get all upstream HB polygons (includes HB_start)
-    HB_upstream  = _upstream_HB_basins(HB_start['HYBAS_ID'], HB_gdf)
-    mapped['successful'] = True
-    mapped['da_km2'] = HB_start['UP_AREA']
-    mapped['HYBAS_ID'] = HB_start['HYBAS_ID']
-    if 'da_km2' in gdf.keys():
-        mapped['da_pct_dif'] = np.abs(mapped['da_km2'] - gdf['da_km2'].values[0]) / gdf['da_km2'].values[0] * 100
+    HB_upstream = _upstream_HB_basins(HB_start["HYBAS_ID"], HB_gdf)
+    mapped["successful"] = True
+    mapped["da_km2"] = HB_start["UP_AREA"]
+    mapped["HYBAS_ID"] = HB_start["HYBAS_ID"]
+    if "da_km2" in gdf.keys():
+        mapped["da_pct_dif"] = (
+            np.abs(mapped["da_km2"] - gdf["da_km2"].values[0])
+            / gdf["da_km2"].values[0]
+            * 100
+        )
     else:
-        mapped['da_pct_dif'] = np.nan
-    
+        mapped["da_pct_dif"] = np.nan
+
     # Union all HB basins
     basin_pgon = ru.union_gdf_polygons(HB_upstream, range(0, len(HB_upstream)))
     basin_da = ru.area_4326(basin_pgon)[0]
-    
+
     # Export upstream basin gdf
     basins = gpd.GeoDataFrame(
-        geometry = [basin_pgon],
-        data = {'da_km2' : [basin_da]},
-        crs = CRS.from_epsg(4326))
-    
+        geometry=[basin_pgon], data={"da_km2": [basin_da]}, crs=CRS.from_epsg(4326)
+    )
+
     # Transform back to original CRS if necessary
     if was_transformed is True:
         basins = basins.to_crs(orig_crs)
@@ -220,12 +229,14 @@ def _upstream_HB_basins(hybas_id, HB_gdf):
     to_visit = set([hybas_id])
     while to_visit:
         this_basin = to_visit.pop()
-        to_visit.update(set(HB_gdf[HB_gdf['NEXT_DOWN']==this_basin]['HYBAS_ID'].values.tolist()))
+        to_visit.update(
+            set(HB_gdf[HB_gdf["NEXT_DOWN"] == this_basin]["HYBAS_ID"].values.tolist())
+        )
         visited_subbasins.update(to_visit)
-    HB_upstream = HB_gdf[HB_gdf['HYBAS_ID'].isin(visited_subbasins)]
-    
+    HB_upstream = HB_gdf[HB_gdf["HYBAS_ID"].isin(visited_subbasins)]
+
     return HB_upstream
-    
+
 
 def _map_to_HB_basin(gdf, HB_gdf):
     """
@@ -248,7 +259,7 @@ def _map_to_HB_basin(gdf, HB_gdf):
         contains the coordinate + DA given in gdf.
 
     """
-    
+
     def which_HB_within(gdf, HB_gdf):
         """
         Returns the HB row containing the coordinate in gdf. Looping seems
@@ -259,27 +270,29 @@ def _map_to_HB_basin(gdf, HB_gdf):
             if geom.contains(gdf.geometry.values[0]):
                 HB_within = HB_gdf.iloc[i]
                 break
-            
+
         return HB_within
-    
+
     # No drainage area provided, just use whichever HydroBasins polygon the
     # point falls within
-    if 'DA' not in gdf.keys():
+    if "DA" not in gdf.keys():
         HB_within = which_HB_within(gdf, HB_gdf)
         return HB_within
 
     # Else look for any HB polygons within a 5 km buffer around the point
     gdf_b = gdf.copy()
     gdf_b = gdf_b.to_crs(CRS.from_epsg(3857))
-    gdf_b['geometry'] = gdf_b.buffer(5000)
+    gdf_b["geometry"] = gdf_b.buffer(5000)
     gdf_b = gdf_b.to_crs(CRS.from_epsg(4326))
-    HB_possibles = gpd.sjoin(HB_gdf, gdf_b, op='intersects')
-    
+    HB_possibles = gpd.sjoin(HB_gdf, gdf_b, op="intersects")
+
     # Select the HB polygon with the smallest da_dif_pct nearby
-    HB_possibles['da_dif'] = HB_possibles['UP_AREA'].values - gdf['da_km2'].values[0]
-    HB_possibles['da_dif_pct'] = np.abs(HB_possibles['da_dif'] / gdf['da_km2'].values[0]) * 100
-    HB_possibles = HB_possibles.sort_values(by='da_dif_pct', ascending=True)
-    
+    HB_possibles["da_dif"] = HB_possibles["UP_AREA"].values - gdf["da_km2"].values[0]
+    HB_possibles["da_dif_pct"] = (
+        np.abs(HB_possibles["da_dif"] / gdf["da_km2"].values[0]) * 100
+    )
+    HB_possibles = HB_possibles.sort_values(by="da_dif_pct", ascending=True)
+
     # The smallest drainage area difference basin is the one we choose
     return HB_possibles.iloc[0]
 
@@ -318,10 +331,11 @@ def load_continent_basins(gdf, level_one, level_twelve):
         print(
             """Provided coordinate ({}) does not lie within HydroBasins polygons.
             Check that lat/lon are not reversed in input. Exiting.""".format(
-                [xy_cl[0][0], xy_cl[1][0]])
+                [xy_cl[0][0], xy_cl[1][0]]
             )
+        )
         return None
-    
+
     id_no = clpt_level_onei.PFAF_ID[0]
 
     # Load the appropriate level 12 dataframe
@@ -401,7 +415,7 @@ centerlines instead of single points """
 #     Parameters
 #     ----------
 #     idxmap : list
-    
+
 #     HB_gdf : GeoDataFrame
 
 #     Returns
@@ -481,7 +495,7 @@ centerlines instead of single points """
 #     Parameters
 #     ----------
 #     HB_gdf : GeoDataFrame
-        
+
 #     cl_gdf : GeoDataFrame
 #         Centerline coordinates
 #     buf_wid : float, optional
@@ -600,10 +614,10 @@ centerlines instead of single points """
 #     Parameters
 #     ----------
 #     HB_gdf : GeoDataFrame
-        
+
 #     cl_gdf : GeoDataFrame
 #         Centerline coordinates
-#     chainids :         
+#     chainids :
 
 #     Returns
 #     -------
@@ -671,5 +685,4 @@ centerlines instead of single points """
 #             idxmap[i] = idxmap[i - 1]
 
 #     return idxmap, DA
-
 
