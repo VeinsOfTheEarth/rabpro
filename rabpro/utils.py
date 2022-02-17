@@ -95,34 +95,35 @@ def get_datapaths(datapath=None, configpath=None, **kwargs):
     if has_internet():
         du.download_gee_metadata()
 
-    # ??        
+    # ??
     _DATAPATHS = datapaths
-    
+
     return datapaths
 
 
 def build_virtual_rasters(datapaths, quiet=True, **kwargs):
-    
+
     msg_dict = {
         "DEM_fdr": "Building flow direction virtual raster DEM from MERIT tiles...",
         "DEM_uda": "Building drainage areas virtual raster DEM from MERIT tiles...",
         "DEM_elev_hp": "Building hydrologically-processed elevations virtual raster DEM from MERIT tiles...",
         "DEM_width": "Building width virtual raster from MERIT tiles...",
     }
-    
+
     missing_dict = {
-        'DEM_fdr' : 'flow directions (FDR)',
-        'DEM_uda' : 'drainage area (UDA)',
-        'DEM_elev_hp' : 'hydrologically adjusted DEM (ELEV_HP)',
-        'DEM_width' : 'width (WTH)'}
-    
+        "DEM_fdr": "flow directions (FDR)",
+        "DEM_uda": "drainage area (UDA)",
+        "DEM_elev_hp": "hydrologically adjusted DEM (ELEV_HP)",
+        "DEM_width": "width (WTH)",
+    }
+
     missing_merit = False
     for key in msg_dict:
         # Check that MERIT data are available before trying to build VRT
         geotiffs = os.listdir(os.path.dirname(datapaths[key]))
         if len(geotiffs) == 0:
             if not quiet:
-                print('No MERIT data found for {}.'.format(missing_dict[key]))
+                print("No MERIT data found for {}.".format(missing_dict[key]))
             missing_merit = True
             continue
         else:
@@ -134,9 +135,11 @@ def build_virtual_rasters(datapaths, quiet=True, **kwargs):
                 quiet=quiet,
                 **kwargs,
             )
-            
+
     if missing_merit is True:
-        print('One or more MERIT layers have no data. Use rabro.data_utils.download_merit_hydro() to fetch a MERIT tile.')
+        print(
+            "One or more MERIT layers have no data. Use rabro.data_utils.download_merit_hydro() to fetch a MERIT tile."
+        )
 
     return
 
@@ -697,6 +700,7 @@ def union_gdf_polygons(gdf, idcs, buffer=True):
 
     if buffer:
         from shapely.geometry import JOIN_STYLE
+
         # Buffer distance (tiny)
         eps = 0.0001
 
@@ -736,6 +740,7 @@ def area_4326(pgons_4326):
         areas_km2.append(abs(geod.geometry_area_perimeter(p)[0]) / 1e6)
     return areas_km2
 
+
 def dist_from_da(da, nwidths=20):
     """
     Returns the along-stream distance of a flowline to resolve for a given
@@ -758,18 +763,18 @@ def dist_from_da(da, nwidths=20):
     """
     logda = np.log(da)
     if da < 4.95:
-        width = 2.18*(da**.191)
+        width = 2.18 * (da ** 0.191)
     elif da > 337:
-        width = 7.18*(da**.183)
+        width = 7.18 * (da ** 0.183)
     elif logda < 1.6:
-        width = 2.18*(da**.191)
+        width = 2.18 * (da ** 0.191)
     elif logda < 5.820:
-        width = 1.41*(da**.462)
+        width = 1.41 * (da ** 0.462)
     else:
-        width = 7.18*(da**.183)
-        
+        width = 7.18 * (da ** 0.183)
+
     dist = width * nwidths / 1000
-    
+
     return dist
 
 
