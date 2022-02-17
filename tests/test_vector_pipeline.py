@@ -2,6 +2,8 @@ import rabpro
 from pyproj import CRS
 import geopandas as gpd
 
+from rabpro import utils as ru
+
 
 def test_profiler():
     shp_path = r"tests/data/test_coords.shp"
@@ -54,6 +56,7 @@ def test_delineate_basin():
 
 
 def test_elev_profile():
+    dps = ru.get_datapaths(rebuild_vrts=True)
     csv_path = r"tests/data/test_coords.csv"
 
     rpo = rabpro.profiler(csv_path)

@@ -52,7 +52,7 @@ def envvars_rabpro():
     return res_dict
 
 
-def get_datapaths(datapath=None, configpath=None, **kwargs):
+def get_datapaths(datapath=None, configpath=None, rebuild_vrts=False, **kwargs):
     """
     Returns a dictionary of paths to all data that rabpro uses. Also builds
     virtual rasters for MERIT data.
@@ -67,6 +67,7 @@ def get_datapaths(datapath=None, configpath=None, **kwargs):
     configpath: string, optional
         Path to rabpro config folder. Will read from an environment variable 
         "RABPRO_CONFIG". If not set, uses appdirs to create local directory.
+    rebuild_vrts: boolean, optional        
     kwargs:
         Arguments passed to build_vrt.
 
@@ -94,6 +95,9 @@ def get_datapaths(datapath=None, configpath=None, **kwargs):
     datapaths = du.create_datapaths(datapath=datapath, configpath=configpath)
     if has_internet():
         du.download_gee_metadata()
+
+    if rebuild_vrts:
+        build_virtual_rasters(datapaths, **kwargs)
 
     # ??
     _DATAPATHS = datapaths
