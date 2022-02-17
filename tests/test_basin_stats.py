@@ -5,7 +5,7 @@ import geopandas as gpd
 from shapely.geometry import box
 
 import rabpro
-from rabpro.subbasin_stats import Dataset
+from rabpro.basin_stats import Dataset
 
 
 # coords_file = gpd.read_file(r"tests/data/Big Blue River.geojson")
@@ -24,7 +24,7 @@ def test_customreducer():
     def asdf(feat):
         return feat.getNumber("max")
 
-    data, task = rabpro.subbasin_stats.compute(
+    data, task = rabpro.basin_stats.compute(
         [Dataset("JRC/GSW1_3/YearlyHistory", "waterClass", stats=["max"])],
         basins_gdf=gdf,
         reducer_funcs=[asdf],
@@ -38,21 +38,21 @@ def test_customreducer():
 
 def test_categorical_imgcol():
 
-    urls, task = rabpro.subbasin_stats.compute(
+    urls, task = rabpro.basin_stats.compute(
         [Dataset("MODIS/006/MCD12Q1", "LC_Type1", stats=["freqhist"])], basins_gdf=gdf
     )
-    res = rabpro.subbasin_stats.format_gee(urls, ["lulc"])
+    res = rabpro.basin_stats.format_gee(urls, ["lulc"])
 
     assert res.shape[1] > 1
 
 
 def test_timeindexed_imgcol():
 
-    urls, tasks = rabpro.subbasin_stats.compute(
+    urls, tasks = rabpro.basin_stats.compute(
         [Dataset("JRC/GSW1_3/YearlyHistory", "waterClass",)], basins_gdf=gdf
     )
 
-    res = rabpro.subbasin_stats.format_gee(urls, ["waterclass"])
+    res = rabpro.basin_stats.format_gee(urls, ["waterclass"])
 
     assert res["waterclass_mean"].iloc[0] > 0
     assert res.shape[0] > 0
@@ -60,7 +60,7 @@ def test_timeindexed_imgcol():
 
 def test_timeindexedspecific_imgcol():
 
-    data, task = rabpro.subbasin_stats.compute(
+    data, task = rabpro.basin_stats.compute(
         [
             Dataset(
                 "JRC/GSW1_3/YearlyHistory",
@@ -80,7 +80,7 @@ def test_timeindexedspecific_imgcol():
 
 def test_nontimeindexed_imgcol():
 
-    data, task = rabpro.subbasin_stats.compute(
+    data, task = rabpro.basin_stats.compute(
         [Dataset("JRC/GSW1_3/MonthlyRecurrence", "monthly_recurrence",)],
         basins_gdf=gdf,
         test=True,
@@ -93,7 +93,7 @@ def test_nontimeindexed_imgcol():
 
 def test_img():
 
-    data, task = rabpro.subbasin_stats.compute(
+    data, task = rabpro.basin_stats.compute(
         [
             Dataset(
                 "JRC/GSW1_3/GlobalSurfaceWater",

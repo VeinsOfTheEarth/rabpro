@@ -149,10 +149,11 @@ def format_gee(
     res = pd.concat(res, axis=1)
 
     # drop duplicate columns and move to front
-    where_duplicated = [x for x in np.where(res.columns.duplicated())[0]]
-    first_column_names = res.columns[where_duplicated][0]
-    first_column = res.pop(res.columns[where_duplicated][0]).iloc[:, 0]
-    res.insert(0, first_column_names, first_column)
+    where_duplicated = [x for x in np.where(res.columns.duplicated())[0]]    
+    if len(where_duplicated) > 0:
+        first_column_names = res.columns[where_duplicated][0]
+        first_column = res.pop(res.columns[where_duplicated][0]).iloc[:, 0]
+        res.insert(0, first_column_names, first_column)
 
     return res
 
