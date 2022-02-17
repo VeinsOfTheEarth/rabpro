@@ -94,7 +94,9 @@ def main(gdf, dist_to_walk_km, verbose=False, nrows=50, ncols=50):
         if np.nan in cr_ds_mapped:
             if verbose is True:
                 print(
-                    "Cannot map provided point to a flowline; unable to extract centerline. Reason #{}".format(why)
+                    "Cannot map provided point to a flowline; unable to extract centerline. Reason #{}".format(
+                        why
+                    )
                 )
             return gdf, None
 
@@ -114,9 +116,11 @@ def main(gdf, dist_to_walk_km, verbose=False, nrows=50, ncols=50):
         },
         crs=CRS.from_epsg(4326),
     )
-    
+
     # Add distances
-    lonlat_mapped = ru.xy_to_coords(cr_ds_mapped[0], cr_ds_mapped[1], da_obj.GetGeoTransform())
+    lonlat_mapped = ru.xy_to_coords(
+        cr_ds_mapped[0], cr_ds_mapped[1], da_obj.GetGeoTransform()
+    )
     merit_gdf["Distance (m)"] = _compute_dists(merit_gdf, lonlat_mapped)
 
     return gdf, merit_gdf
@@ -156,11 +160,14 @@ def _compute_dists(gdf, lonlat_mapped):
     ds = ru.haversine(lats, lons)
     ds = np.insert(ds, 0, 0)
     dists = np.cumsum(ds)
-    
+
     # Subtract the mapped point distance from all distances
-    m_pt_idx = np.where(np.logical_and(np.array(lats)==lonlat_mapped[1], 
-                              np.array(lons)==lonlat_mapped[0]))[0][0]  
-    
+    m_pt_idx = np.where(
+        np.logical_and(
+            np.array(lats) == lonlat_mapped[1], np.array(lons) == lonlat_mapped[0]
+        )
+    )[0][0]
+
     dists = dists - dists[m_pt_idx]
 
     return dists
