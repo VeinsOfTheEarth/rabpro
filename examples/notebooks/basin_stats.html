@@ -26,7 +26,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Contributing" href="../../contributing/index.html" />
-    <link rel="prev" title="Full example" href="full_example.html" /> 
+    <link rel="prev" title="Basic example" href="basic_example.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -53,7 +53,6 @@
 <p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="basic_example.html">Basic example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="full_example.html">Full example</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Basin stats examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Categorical-asset---a-single-time-window">Categorical asset - a single time window</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Numeric-asset---multiple-time-windows">Numeric asset - multiple time windows</a><ul>
@@ -372,14 +371,15 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import datetime
 import geopandas as gpd
+import pandas as pd
 
 import rabpro
-from rabpro.subbasin_stats import Dataset
+from rabpro.basin_stats import Dataset
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># # Authenticate earthengine if necessary
@@ -390,35 +390,35 @@ from rabpro.subbasin_stats import Dataset
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%capture
 coords = (56.22659, -130.87974)
 rpo = rabpro.profiler(coords, name=&#39;basic_test&#39;)
-rpo.delineate_basins()
-gdf = rpo.basins
+rpo.delineate_basin()
+gdf = rpo.watershed
 </pre></div>
 </div>
 </div>
 <section id="Categorical-asset---a-single-time-window">
 <h2>Categorical asset - a single time window<a class="headerlink" href="#Categorical-asset---a-single-time-window" title="Permalink to this headline"></a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>urls, tasks = rabpro.subbasin_stats.compute(
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>urls, tasks = rabpro.basin_stats.compute(
         [Dataset(&quot;MODIS/006/MCD12Q1&quot;, &quot;LC_Type1&quot;, stats=[&quot;freqhist&quot;], start=&quot;2010-01-01&quot;, end=&quot;2011-01-01&quot;)],
         basins_gdf=gdf
     )
-data = rabpro.subbasin_stats.format_gee(urls, [&quot;lulc&quot;])
+data = rabpro.basin_stats.format_gee(urls, [&quot;lulc&quot;])
 res = gpd.GeoDataFrame(pd.concat([data, gdf], axis=1))
 res.head()
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -440,6 +440,7 @@ res.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>lulc_da_km2</th>
       <th>lulc_1</th>
       <th>lulc_10</th>
       <th>lulc_11</th>
@@ -449,13 +450,14 @@ res.head()
       <th>lulc_4</th>
       <th>lulc_8</th>
       <th>lulc_9</th>
+      <th>da_km2</th>
       <th>geometry</th>
-      <th>DA</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
+      <td>2131.577825</td>
       <td>2145.462745</td>
       <td>2824.396078</td>
       <td>212.0</td>
@@ -465,8 +467,8 @@ res.head()
       <td>58.0</td>
       <td>454.964706</td>
       <td>3.0</td>
-      <td>POLYGON ((-130.98238 56.13723, -130.98395 56.14799, -130.99105 56.15617, -130.99228 56.16049, -1...</td>
-      <td>2121.3</td>
+      <td>2131.577825</td>
+      <td>POLYGON ((-130.98238 56.13723, -130.98395 56.1...</td>
     </tr>
   </tbody>
 </table>
@@ -476,14 +478,14 @@ res.head()
 <section id="Numeric-asset---multiple-time-windows">
 <h2>Numeric asset - multiple time windows<a class="headerlink" href="#Numeric-asset---multiple-time-windows" title="Permalink to this headline"></a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>urls, tasks = rabpro.subbasin_stats.compute(
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>urls, tasks = rabpro.basin_stats.compute(
         [Dataset(&quot;MODIS/006/MOD17A3HGF&quot;, &quot;Npp&quot;)],
         basins_gdf=gdf
     )
-data = rabpro.subbasin_stats.format_gee(urls, [&quot;npp&quot;])
+data = rabpro.basin_stats.format_gee(urls, [&quot;npp&quot;])
 data[&quot;year&quot;] = [x for x in range(2000, int(datetime.date.today().strftime(&quot;%Y&quot;)))]
 res = gpd.GeoDataFrame(pd.concat([data, gdf], axis=1))
 res.geometry[res.geometry.isna()] = res.geometry[0]
@@ -492,7 +494,7 @@ res.head()
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -514,47 +516,53 @@ res.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>npp_da_km2</th>
       <th>npp_mean</th>
       <th>year</th>
+      <th>da_km2</th>
       <th>geometry</th>
-      <th>DA</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
+      <td>2131.577825</td>
       <td>1747.866809</td>
       <td>2000</td>
-      <td>POLYGON ((-130.98238 56.13723, -130.98395 56.14799, -130.99105 56.15617, -130.99228 56.16049, -1...</td>
-      <td>2121.3</td>
+      <td>2131.577825</td>
+      <td>POLYGON ((-130.98238 56.13723, -130.98395 56.1...</td>
     </tr>
     <tr>
       <th>1</th>
+      <td>2131.577825</td>
       <td>1597.141272</td>
       <td>2001</td>
-      <td>POLYGON ((-130.98238 56.13723, -130.98395 56.14799, -130.99105 56.15617, -130.99228 56.16049, -1...</td>
       <td>NaN</td>
+      <td>POLYGON ((-130.98238 56.13723, -130.98395 56.1...</td>
     </tr>
     <tr>
       <th>2</th>
+      <td>2131.577825</td>
       <td>1808.514660</td>
       <td>2002</td>
-      <td>POLYGON ((-130.98238 56.13723, -130.98395 56.14799, -130.99105 56.15617, -130.99228 56.16049, -1...</td>
       <td>NaN</td>
+      <td>POLYGON ((-130.98238 56.13723, -130.98395 56.1...</td>
     </tr>
     <tr>
       <th>3</th>
+      <td>2131.577825</td>
       <td>2401.387620</td>
       <td>2003</td>
-      <td>POLYGON ((-130.98238 56.13723, -130.98395 56.14799, -130.99105 56.15617, -130.99228 56.16049, -1...</td>
       <td>NaN</td>
+      <td>POLYGON ((-130.98238 56.13723, -130.98395 56.1...</td>
     </tr>
     <tr>
       <th>4</th>
+      <td>2131.577825</td>
       <td>2855.209354</td>
       <td>2004</td>
-      <td>POLYGON ((-130.98238 56.13723, -130.98395 56.14799, -130.99105 56.15617, -130.99228 56.16049, -1...</td>
       <td>NaN</td>
+      <td>POLYGON ((-130.98238 56.13723, -130.98395 56.1...</td>
     </tr>
   </tbody>
 </table>
@@ -563,21 +571,21 @@ res.head()
 <section id="Numeric-asset---time-averaging">
 <h3>Numeric asset - time averaging<a class="headerlink" href="#Numeric-asset---time-averaging" title="Permalink to this headline"></a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>urls, tasks = rabpro.subbasin_stats.compute(
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>urls, tasks = rabpro.basin_stats.compute(
         [Dataset(&quot;MODIS/006/MOD17A3HGF&quot;, &quot;Npp&quot;, time_stats=[&quot;median&quot;])],
         basins_gdf=gdf
     )
-data = rabpro.subbasin_stats.format_gee(urls, [&quot;npp&quot;])
+data = rabpro.basin_stats.format_gee(urls, [&quot;npp&quot;])
 res = gpd.GeoDataFrame(pd.concat([data, gdf], axis=1))
 res.head()
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -599,17 +607,19 @@ res.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>npp_da_km2</th>
       <th>npp_mean</th>
+      <th>da_km2</th>
       <th>geometry</th>
-      <th>DA</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
+      <td>2131.577825</td>
       <td>2289.570271</td>
-      <td>POLYGON ((-130.98238 56.13723, -130.98395 56.14799, -130.99105 56.15617, -130.99228 56.16049, -1...</td>
-      <td>2121.3</td>
+      <td>2131.577825</td>
+      <td>POLYGON ((-130.98238 56.13723, -130.98395 56.1...</td>
     </tr>
   </tbody>
 </table>
@@ -623,7 +633,7 @@ res.head()
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="full_example.html" class="btn btn-neutral float-left" title="Full example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="basic_example.html" class="btn btn-neutral float-left" title="Basic example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../../contributing/index.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -51,7 +51,6 @@
 <p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="basic_example.html">Basic example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="full_example.html">Full example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basin_stats.html">Basin stats examples</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Miscellanea:</span></p>
@@ -490,16 +489,12 @@ Downloading &#39;http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/distribute/
 </pre></div></div>
 </div>
 <p>rabpro automatically unzips and stores the MERIT-Hydro tiles in the proper locations.</p>
-<p>MERIT-Hydro tiles are collections of 5x5 degree geotiffs. rabpro “stitches” these geotiffs together in virtual rasters. Each time you download a new (batch of) tile(s), you should rebuild the virtual rasters. The easiest way to do this is to simply instantiate a dummy profiler instance–this automatically tries to rebuild the virtual rasters, provided that any geotiffs exist for each of the four layers.</p>
+<p>MERIT-Hydro tiles are collections of 5x5 degree geotiffs. rabpro “stitches” these geotiffs together in virtual rasters. Each time you call <code class="docutils literal notranslate"><span class="pre">download_merit_hydro()</span></code>, rabpro will automatically rebuild the virtual rasters to ensure that the new geotiffs are available. We can check that these virtual rasters have been built.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from rabpro.core import profiler
-dummy_coords = (0,0)
-dummy = profiler(dummy_coords, rebuild_vrts=True, verbose=True)
-
-# We can check that the virtual rasters were built
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># We can check that the virtual rasters were built
 from rabpro import utils
 import os
 datapaths = utils.get_datapaths()
