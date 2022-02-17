@@ -896,7 +896,7 @@ def upload_gee_vector_asset(
     gee_user : str
         Google Earth Engine user name.
     gcp_bucket : str
-        Google Cloud Platform bucket url.
+        Google Cloud Platform bucket url (e.g. gs://my_bucket_name).
     gcp_folder : str, optional
         Google Cloud Platform bucket folder, by default ""
     gcp_upload : bool, optional
