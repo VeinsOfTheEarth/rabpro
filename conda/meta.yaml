@@ -45,7 +45,7 @@ about:
   license: BSD  
   license_family: BSD  
   license_file: LICENSE.txt
-  summary: 'Package to delineate subbasins and compute statistics.'  
+  summary: 'Package to delineate basins and compute statistics.'  
   description: |
     rabpro computes longitudinal river profiles,
     global watershed delineation, watershed stats.    

@@ -9,7 +9,7 @@ setuptools.setup(
     version="0.3.1",
     author="Example Author",
     author_email="author@example.com",
-    description="Package to delineate subbasins and compute statistics.",
+    description="Package to delineate basins and compute statistics.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/VeinsOfTheEarth/rabpro",

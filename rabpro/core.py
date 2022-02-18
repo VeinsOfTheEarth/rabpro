@@ -379,7 +379,7 @@ class profiler:
                             "Watershed written to {}.".format(self.paths["watershed"])
                         )
                 else:
-                    print("No subbasins found for export.")
+                    print("No basins found for export.")
             elif w == "flowline":
                 if hasattr(self, "flowline"):
                     self.flowline.to_file(self.paths["flowline"], driver="GeoJSON")

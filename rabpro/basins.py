@@ -1,8 +1,8 @@
 """
-Subbasin delineation (subbasins.py)
+Basin delineation (basins.py)
 ===================================
 
-Functions to calculate subbasin geometries.
+Functions to calculate basin geometries.
 """
 
 import numpy as np
@@ -17,7 +17,7 @@ from rabpro import merit_utils as mu
 
 
 def main_merit(gdf, da, nrows=51, ncols=51, map_only=False, verbose=False):
-    """Calculates subbasins using MERIT
+    """Calculates basins using MERIT
 
     Parameters
     ----------
@@ -129,7 +129,7 @@ def main_merit(gdf, da, nrows=51, ncols=51, map_only=False, verbose=False):
 
 
 def main_hb(gdf, verbose=False):
-    """Calculates subbasins using Hydrobasins
+    """Calculates basins using HydroBASINS
 
     Parameters
     ----------
@@ -161,7 +161,7 @@ def main_hb(gdf, verbose=False):
         import rabpro
         coords = (56.22659, -130.87974)
         rpo = rabpro.profiler(coords, name='basic_test')
-        test = rabpro.subbasins.main_hb(rpo.gdf)
+        test = rabpro.basins.main_hb(rpo.gdf)
     """
     datapaths = ru.get_datapaths(rebuild_vrts=False)
     mapped = {}
@@ -188,19 +188,23 @@ def main_hb(gdf, verbose=False):
     HB_start = _map_to_HB_basin(gdf, HB_gdf)
 
     # Get all upstream HB polygons (includes HB_start)
-    HB_upstream  = _upstream_HB_basins(HB_start['HYBAS_ID'], HB_gdf)
+    HB_upstream = _upstream_HB_basins(HB_start["HYBAS_ID"], HB_gdf)
 
     # Union all HB basins
     basin_pgon = ru.union_gdf_polygons(HB_upstream, range(0, len(HB_upstream)))
     basin_da = sum(ru.area_4326(basin_pgon))
 
-    mapped['successful'] = True
-    mapped['da_km2'] = np.sum(HB_upstream['SUB_AREA'].values) + HB_start['SUB_AREA']
-    mapped['HYBAS_ID'] = HB_start['HYBAS_ID']
-    if 'da_km2' in gdf.keys():
-        mapped['da_pct_dif'] = np.abs(mapped['da_km2'] - gdf['da_km2'].values[0]) / gdf['da_km2'].values[0] * 100
+    mapped["successful"] = True
+    mapped["da_km2"] = np.sum(HB_upstream["SUB_AREA"].values) + HB_start["SUB_AREA"]
+    mapped["HYBAS_ID"] = HB_start["HYBAS_ID"]
+    if "da_km2" in gdf.keys():
+        mapped["da_pct_dif"] = (
+            np.abs(mapped["da_km2"] - gdf["da_km2"].values[0])
+            / gdf["da_km2"].values[0]
+            * 100
+        )
     else:
-        mapped['da_pct_dif'] = np.nan
+        mapped["da_pct_dif"] = np.nan
 
     # Export upstream basin gdf
     basins = gpd.GeoDataFrame(
