@@ -459,7 +459,7 @@ fac_obj.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.merit_utils.neighborhood_vals_from_raster">
-<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vrt_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='140178992414928'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vrt_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='140408256364752'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
 <dd><p>Queries a (virtual) raster object to return an array of neighbors
 surrounding a given point specified by cr (column, row). A shape can be
 provided to return as large of a neighborhood as desired; both dimensions
@@ -556,11 +556,11 @@ compute statistics.</p>
 <dt><strong>resolution</strong><span class="classifier">int, optional</span></dt><dd><p>Desired resolution in meters of the calculation over the dataset.
 Defaults to native resolution of the dataset.</p>
 </dd>
-<dt><strong>start</strong><span class="classifier">str, optional</span></dt><dd><p>Desired start date of data in ISO format: YYYY-MM-DD. Defaults to
-dataset start.</p>
+<dt><strong>start</strong><span class="classifier">str, optional</span></dt><dd><p>Desired start date of data in ISO format: YYYY-MM-DD. Defaults to None which GEE 
+interprets as the dataset start.</p>
 </dd>
-<dt><strong>end</strong><span class="classifier">str, optional</span></dt><dd><p>Desired end date of data in ISO format: YYYY-MM-DD. Defaults to dataset
-end.</p>
+<dt><strong>end</strong><span class="classifier">str, optional</span></dt><dd><p>Desired end date of data in ISO format: YYYY-MM-DD. Defaults to None which GEE 
+interprets as the dataset end.</p>
 </dd>
 <dt><strong>stats</strong><span class="classifier">list, optional</span></dt><dd><p>List of desired stats to compute: min, max, range, mean, count, std,
 sum, and percentiles in the following format: pct1, pct90, pct100, etc.
