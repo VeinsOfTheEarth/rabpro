@@ -1,6 +1,14 @@
-<a href='https:///VeinsOfTheEarth.github.io/rabpro/'><img src="docs/_static/logo_banner.png" align="center" height=100/></a>
 
-[![PyPI Latest Release](https://img.shields.io/pypi/v/rabpro.svg)](https://pypi.org/project/rabpro/) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) [![Anaconda badge](https://anaconda.org/jschwenk/rabpro/badges/version.svg)](https://anaconda.org/jschwenk/rabpro) [![build](https://github.com/VeinsOfTheEarth/rabpro/actions/workflows/build.yaml/badge.svg)](https://github.com/VeinsOfTheEarth/rabpro/actions/workflows/build.yaml)
+<p align="center">
+<a href='https:///VeinsOfTheEarth.github.io/rabpro/'><img src="docs/_static/logo_banner.png" height=100/></a>
+</p>
+
+<p align="center">
+  <a href=https://pypi.org/project/rabpro/><img src=https://img.shields.io/pypi/v/rabpro.svg></a>
+  <a href=https://github.com/psf/black><img src=https://img.shields.io/badge/code%20style-black-000000.svg></a>
+  <a href=https://anaconda.org/jschwenk/rabpro><img src=https://anaconda.org/jschwenk/rabpro/badges/version.svg></a>
+  <a href=https://github.com/VeinsOfTheEarth/rabpro/actions/workflows/build.yaml><img src=https://github.com/VeinsOfTheEarth/rabpro/actions/workflows/build.yaml/badge.svg></a>
+</p>
 
 > Package to delineate watershed basins and compute attribute statistics using [Google Earth Engine](https://developers.google.com/earth-engine/).
 
