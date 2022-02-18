@@ -52,11 +52,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#downloading-merit">Downloading MERIT</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#subbasin-statistics">Subbasin statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basin-statistics">Basin statistics</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#software">Software</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Subbasin statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Basin statistics</a></li>
 </ul>
 </li>
 </ul>
@@ -134,22 +134,24 @@
 <p>Before initiating either of these downloads, you may want to configure the path where rabpro expects to find this data. Perhaps you want to change the default (set according to the <a class="reference external" href="https://github.com/ActiveState/appdirs">appdirs</a> package) to a particular project folder or disk drive. To do this, set the <code class="docutils literal notranslate"><span class="pre">RABPRO_DATA</span></code> environment variable either in an activate python session with <code class="docutils literal notranslate"><span class="pre">os.environ</span></code> or on a persistent basis through your operating system.</p>
 <section id="downloading-hydrobasins">
 <h4>Downloading HydroBASINS<a class="headerlink" href="#downloading-hydrobasins" title="Permalink to this headline"></a></h4>
-<p>To download level 1 HydroBASINS, execute the following commandline call:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>rabpro download hydrobasins
+<p>To download HydroBASINS, execute the following python code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rabpro</span> <span class="kn">import</span> <span class="n">data_utils</span>
+<span class="n">data_utils</span><span class="o">.</span><span class="n">download_hydrobasins</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
 <section id="downloading-merit">
 <h4>Downloading MERIT<a class="headerlink" href="#downloading-merit" title="Permalink to this headline"></a></h4>
 <p>To download MERIT, you’ll need to request a username and password on the MERIT <a class="reference external" href="http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/">homepage</a>.</p>
-<p>Unless you want to download the full global extent, you’ll probably need to identify specific MERIT “tiles” of interest. You can do this following the logic in the <a class="reference external" href="http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/">MERIT Hydro</a> documentation or use the rabpro function <code class="docutils literal notranslate"><span class="pre">rabpro.utils.coords_to_merit_tile</span></code> to obtain a tile identifier (e.g. n30e150) which gets passed to the commandline <code class="docutils literal notranslate"><span class="pre">rabpro</span> <span class="pre">download</span> <span class="pre">merit</span></code> utility:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>rabpro download merit n30e150 &lt;username&gt; &lt;password&gt;
+<p>Unless you want to download the full global extent, you’ll probably need to identify specific MERIT “tiles” of interest. You can do this following the logic in the <a class="reference external" href="http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/">MERIT Hydro</a> documentation or use the rabpro function <code class="docutils literal notranslate"><span class="pre">rabpro.utils.coords_to_merit_tile</span></code> to obtain a tile identifier (e.g. n30e150) which gets passed to the <code class="docutils literal notranslate"><span class="pre">download_merit_dem</span> <span class="pre">function</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rabpro</span> <span class="kn">import</span> <span class="n">data_utils</span>
+<span class="n">data_utils</span><span class="o">.</span><span class="n">download_merit_dem</span><span class="p">(</span><span class="s2">&quot;n30e150&quot;</span><span class="p">,</span> <span class="n">your_username</span><span class="p">,</span> <span class="n">your_password</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 </section>
-<section id="subbasin-statistics">
-<h3>Subbasin statistics<a class="headerlink" href="#subbasin-statistics" title="Permalink to this headline"></a></h3>
+<section id="basin-statistics">
+<h3>Basin statistics<a class="headerlink" href="#basin-statistics" title="Permalink to this headline"></a></h3>
 <p>By default, rabpro comes enabled to work with all of the raster assets in the <a class="reference external" href="https://developers.google.com/earth-engine/datasets/">public GEE data catalog</a>. It also is enabled to work with select “user” assets listed below:</p>
 <table class="docutils align-center" id="id2">
 <caption><span class="caption-text">Datasets included in the user data catalog:</span><a class="headerlink" href="#id2" title="Permalink to this table"></a></caption>
@@ -187,7 +189,7 @@
 <section id="software">
 <h2>Software<a class="headerlink" href="#software" title="Permalink to this headline"></a></h2>
 <section id="id1">
-<h3>Subbasin statistics<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<h3>Basin statistics<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
 <p>To use rabpro utilities for pulling basin statistics from Google
 Earth Engine (GEE), you’ll need to sign up for a free GEE account <a class="reference external" href="https://signup.earthengine.google.com/#!/">here</a>. Once you’ve been approved and
 installed the GEE Python API (typically installed as a rabpro dependency), you
@@ -195,10 +197,10 @@ can use the GEE CLI to obtain a credential token by running <code class="docutil
 <span class="pre">authenticate</span></code> and following the instructions. More information can be found at
 the <a class="reference external" href="https://developers.google.com/earth-engine/guides/python_install">GEE Python install page</a> and the
 <a class="reference external" href="https://developers.google.com/earth-engine/guides/python_install">GEE CLI page</a>.</p>
-<p>If you are working with complex or large numbers of subbasin polygons (or want to
+<p>If you are working with complex or large numbers of watershed basin polygons (or want to
 upload your own raster assets), you may be interested in the rabpro utilities for
 programmatic GEE asset uploads. These utilities require a writeable Google Cloud
-Platform (GCP) bucket as well as installation and authentication for the gsutil program. We recommend installing from the Python package as described <a class="reference external" href="https://cloud.google.com/storage/docs/gsutil_install#expandable-2">here</a>.</p>
+Platform (GCP) bucket as well as installation and authentication for the <code class="docutils literal notranslate"><span class="pre">gsutil</span></code> program. We recommend installing from the Python package as described <a class="reference external" href="https://cloud.google.com/storage/docs/gsutil_install#expandable-2">here</a>.</p>
 </section>
 </section>
 </section>

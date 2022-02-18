@@ -17,11 +17,12 @@ Before initiating either of these downloads, you may want to configure the path 
 Downloading HydroBASINS
 _______________________
 
-To download level 1 HydroBASINS, execute the following commandline call:
+To download HydroBASINS, execute the following python code:
 
-.. code-block:: shell
+.. code-block:: python
 
-        rabpro download hydrobasins
+        from rabpro import data_utils
+        data_utils.download_hydrobasins()
 
 Downloading MERIT
 _________________
@@ -29,13 +30,14 @@ _________________
 To download MERIT, you'll need to request a username and password on the MERIT `homepage <http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/>`_.
 
 Unless you want to download the full global extent, you'll probably need to identify specific MERIT "tiles" of interest. You can do this following the logic in the `MERIT Hydro
-<http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/>`_ documentation or use the rabpro function ``rabpro.utils.coords_to_merit_tile`` to obtain a tile identifier (e.g. n30e150) which gets passed to the commandline ``rabpro download merit`` utility:
+<http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/>`_ documentation or use the rabpro function ``rabpro.utils.coords_to_merit_tile`` to obtain a tile identifier (e.g. n30e150) which gets passed to the ``download_merit_dem function``:
 
-.. code-block:: shell
+.. code-block:: python
 
-         rabpro download merit n30e150 <username> <password>
+        from rabpro import data_utils
+        data_utils.download_merit_dem("n30e150", your_username, your_password)
 
-Subbasin statistics
+Basin statistics
 ~~~~~~~~~~~~~~~~~~~
 
 By default, rabpro comes enabled to work with all of the raster assets in the `public GEE data catalog <https://developers.google.com/earth-engine/datasets/>`_. It also is enabled to work with select "user" assets listed below:
@@ -49,7 +51,7 @@ You can request that a user asset be added to this list by filing an `issue <htt
 Software
 --------
 
-Subbasin statistics
+Basin statistics
 ~~~~~~~~~~~~~~~~~~~
 
 To use rabpro utilities for pulling basin statistics from Google 
@@ -63,8 +65,8 @@ the `GEE Python install page
 `GEE CLI page
 <https://developers.google.com/earth-engine/guides/python_install>`_.
 
-If you are working with complex or large numbers of subbasin polygons (or want to 
+If you are working with complex or large numbers of watershed basin polygons (or want to 
 upload your own raster assets), you may be interested in the rabpro utilities for
 programmatic GEE asset uploads. These utilities require a writeable Google Cloud 
-Platform (GCP) bucket as well as installation and authentication for the gsutil program. We recommend installing from the Python package as described `here <https://cloud.google.com/storage/docs/gsutil_install#expandable-2>`_.
+Platform (GCP) bucket as well as installation and authentication for the ``gsutil`` program. We recommend installing from the Python package as described `here <https://cloud.google.com/storage/docs/gsutil_install#expandable-2>`_.
 
