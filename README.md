@@ -6,15 +6,15 @@
 
 ## Setup
 
-|||[Software installation](https://veinsoftheearth.github.io/rabpro/install/index.html)|||[Data configuration](https://veinsoftheearth.github.io/rabpro/configure/index.html#data)|||[Software configuration](https://veinsoftheearth.github.io/rabpro/configure/index.html#software)|
-|--|--|--|--|--|--|--|--|--|
+|[Software installation](https://veinsoftheearth.github.io/rabpro/install/index.html)|[Data configuration](https://veinsoftheearth.github.io/rabpro/configure/index.html#data)|[Software configuration](https://veinsoftheearth.github.io/rabpro/configure/index.html#software)|
+|--|--|--|
 
 ## Usage
 
 > See Example notebooks:
 
-|||[Basic workflow](https://veinsoftheearth.github.io/rabpro/examples/notebooks/basic_example.html)|||||[Full workflow](https://veinsoftheearth.github.io/rabpro/examples/notebooks/full_example.html)|||||[Basin stats examples](https://veinsoftheearth.github.io/rabpro/examples/notebooks/basin_stats.html)|
-|--|--|--|--|--|--|--|--|--|--|--|--|--|
+|[Basic workflow](https://veinsoftheearth.github.io/rabpro/examples/notebooks/basic_example.html)|[Full workflow](https://veinsoftheearth.github.io/rabpro/examples/notebooks/full_example.html)|[Basin stats examples](https://veinsoftheearth.github.io/rabpro/examples/notebooks/basin_stats.html)|
+|--|--|--|
 
 ## Citation
 
