@@ -10,7 +10,6 @@ def test_rebuild_vrts():
     with contextlib.redirect_stdout(f):
         dps = ru.get_datapaths(rebuild_vrts=True, quiet=False)
     output = f.getvalue()
-    assert len(output) > 0
 
     # ensure caching has occurred
     f = io.StringIO()
