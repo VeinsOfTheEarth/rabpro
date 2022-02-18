@@ -32,11 +32,11 @@ class Dataset:
         Desired resolution in meters of the calculation over the dataset.
         Defaults to native resolution of the dataset.
     start : str, optional
-        Desired start date of data in ISO format: YYYY-MM-DD. Defaults to
-        dataset start.
+        Desired start date of data in ISO format: YYYY-MM-DD. Defaults to None which GEE 
+        interprets as the dataset start.
     end : str, optional
-        Desired end date of data in ISO format: YYYY-MM-DD. Defaults to dataset
-        end.
+        Desired end date of data in ISO format: YYYY-MM-DD. Defaults to None which GEE 
+        interprets as the dataset end.
     stats : list, optional
         List of desired stats to compute: min, max, range, mean, count, std,
         sum, and percentiles in the following format: pct1, pct90, pct100, etc.
