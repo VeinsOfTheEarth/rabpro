@@ -13,8 +13,8 @@
 
 > See Example notebooks:
 
-|[Basic workflow](https://veinsoftheearth.github.io/rabpro/examples/notebooks/basic_example.html)|[Full workflow](https://veinsoftheearth.github.io/rabpro/examples/notebooks/full_example.html)|[Basin stats examples](https://veinsoftheearth.github.io/rabpro/examples/notebooks/basin_stats.html)|
-|--|--|--|
+|[Data configuration](https://veinsoftheearth.github.io/rabpro/examples/notebooks/downloading_data.html)|[Basic workflow](https://veinsoftheearth.github.io/rabpro/examples/notebooks/basic_example.html)|[Multiple basins workflow](https://veinsoftheearth.github.io/rabpro/examples/notebooks/multiple_basins.html)|[Basin stats examples](https://veinsoftheearth.github.io/rabpro/examples/notebooks/basin_stats.html)|
+|--|--|--|--|
 
 ## Citation
 
