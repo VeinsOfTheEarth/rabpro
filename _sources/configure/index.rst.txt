@@ -10,7 +10,7 @@ Data
 Basin delineation
 ~~~~~~~~~~~~~~~~~
 
-To use the rabpro utilities for delineating subbasins, you'll need to download MERIT tiles (recommended for small basins or high resolution applications) or HydroBASINS (recommended for very large basins or low resolution applications).
+To use the rabpro utilities for delineating basins, you'll need to download MERIT tiles (recommended for small basins or high resolution applications) or HydroBASINS (recommended for very large basins or low resolution applications).
 
 Before initiating either of these downloads, you may want to configure the path where rabpro expects to find this data. Perhaps you want to change the default (set according to the `appdirs <https://github.com/ActiveState/appdirs>`_ package) to a particular project folder or disk drive. To do this, set the ``RABPRO_DATA`` environment variable either in an activate python session with ``os.environ`` or on a persistent basis through your operating system.
 
@@ -52,7 +52,7 @@ Software
 Subbasin statistics
 ~~~~~~~~~~~~~~~~~~~
 
-To use rabpro utilities for pulling subbasins statistics from Google 
+To use rabpro utilities for pulling basin statistics from Google 
 Earth Engine (GEE), you'll need to sign up for a free GEE account `here
 <https://signup.earthengine.google.com/#!/>`__. Once you've been approved and
 installed the GEE Python API (typically installed as a rabpro dependency), you

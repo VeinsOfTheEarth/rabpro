@@ -21,12 +21,12 @@ rabpro
    :members:
    :special-members:
 
-.. automodule:: rabpro.subbasin_stats
+.. automodule:: rabpro.basin_stats
    :members:
    :special-members:
    :exclude-members: __init__, __weakref__
 
-.. automodule:: rabpro.subbasins
+.. automodule:: rabpro.basins
    :members:
    :special-members:
 

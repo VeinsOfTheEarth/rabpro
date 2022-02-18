@@ -6,7 +6,7 @@
 Welcome to rabpro's documentation!
 ==================================
 
-rabpro provides methods to compute subbasin geometries from coordinate pairs, and compute statistics over these subbasins using `Google Earth Engine <https://developers.google.com/earth-engine/>`_.
+rabpro provides methods to compute watershed basin geometries from coordinate pairs, and compute statistics over these basins using `Google Earth Engine <https://developers.google.com/earth-engine/>`_.
 
 .. toctree::
    :maxdepth: 1
