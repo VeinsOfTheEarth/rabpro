@@ -125,13 +125,59 @@ def _read_url(url):
     return df
 
 
-def format_gee(
+def fetch_gee(
     url_list,
     prepend_list,
     col_drop_list=[],
     col_protect_list=["id_basin", "id_outlet", "idx", "id", "vote_id"],
-    col_drop_defaults=["DA", "count", ".geo", "system:index", "da_km2"],
+    col_drop_defaults=["DA", "count", ".geo", "da_km2"],
 ):
+    """Download and format data from GEE urls
+
+    Parameters
+    ----------
+    url_list : list
+        list of urls return from compute
+    prepend_list : list
+        tags to pre-append to corresponding columns, of length url_list
+    col_drop_list : list, optional
+        custom columns to drop, by default []
+    col_protect_list : list, optional
+        columns to avoid tagging, by default ["id_basin", "id_outlet", "idx", "id", "vote_id"]
+    col_drop_defaults : list, optional
+        built-in columns to drop, by default ["DA", "count", ".geo", "system:index", "da_km2"]
+
+    Returns
+    -------
+    DataFrame
+
+    Examples
+    --------
+    .. code-block:: python
+
+        import numpy as np
+        import geopandas as gpd        
+        from shapely.geometry import box
+
+        import rabpro
+        from rabpro.basin_stats import Dataset
+
+        total_bounds = np.array([-85.91331249, 39.42609864, -85.88453019, 39.46429816])
+        basin = gpd.GeoDataFrame({"idx": [0], "geometry": [box(*total_bounds)]}, crs="EPSG:4326")
+
+        dataset_list = [
+            Dataset("ECMWF/ERA5_LAND/MONTHLY", "temperature_2m", stats=["mean"], time_stats = ["median"]),
+            Dataset("NASA/GPM_L3/IMERG_MONTHLY_V06", "precipitation", stats=["mean"], time_stats = ["median"]),
+        ]
+
+        urls, tasks = rabpro.basin_stats.compute(
+            dataset_list, basins_gdf=basin, folder="rabpro"
+        )
+
+        tag_list = ["temperature", "precip"]
+        data = rabpro.basin_stats.fetch_gee(urls, tag_list, col_drop_list = ["system:index"])
+        
+    """
 
     df_list = [_read_url(url) for url in url_list]
 
@@ -149,7 +195,7 @@ def format_gee(
     res = pd.concat(res, axis=1)
 
     # drop duplicate columns and move to front
-    where_duplicated = [x for x in np.where(res.columns.duplicated())[0]]    
+    where_duplicated = [x for x in np.where(res.columns.duplicated())[0]]
     if len(where_duplicated) > 0:
         first_column_names = res.columns[where_duplicated][0]
         first_column = res.pop(res.columns[where_duplicated][0]).iloc[:, 0]

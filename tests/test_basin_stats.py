@@ -41,7 +41,7 @@ def test_categorical_imgcol():
     urls, task = rabpro.basin_stats.compute(
         [Dataset("MODIS/006/MCD12Q1", "LC_Type1", stats=["freqhist"])], basins_gdf=gdf
     )
-    res = rabpro.basin_stats.format_gee(urls, ["lulc"])
+    res = rabpro.basin_stats.fetch_gee(urls, ["lulc"])
 
     assert res.shape[1] > 1
 
@@ -52,7 +52,7 @@ def test_timeindexed_imgcol():
         [Dataset("JRC/GSW1_3/YearlyHistory", "waterClass",)], basins_gdf=gdf
     )
 
-    res = rabpro.basin_stats.format_gee(urls, ["waterclass"])
+    res = rabpro.basin_stats.fetch_gee(urls, ["waterclass"])
 
     assert res["waterclass_mean"].iloc[0] > 0
     assert res.shape[0] > 0
