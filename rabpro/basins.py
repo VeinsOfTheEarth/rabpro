@@ -95,16 +95,12 @@ def main_merit(gdf, da, nrows=51, ncols=51, map_only=False, verbose=False):
     if map_only:
         return None, mapped
 
-    if verbose:
-        print("Delineating basin from MERIT...", end="")
-
     # Get all the pixels in the basin
     # cr_start_mapped = (2396, 4775)
     idcs = mu._get_basin_pixels(cr_start_mapped, da_obj, fdr_obj)
 
     if verbose:
-        print("done.")
-        print("Making basin polygon(s)...", end="")
+        print("Making basin polygon from pixels...", end="")
 
     # Make a polygon with the indices
     polygons, split = mu.idcs_to_geopolygons(idcs, fdr_obj)
