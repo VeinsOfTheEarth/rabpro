@@ -52,15 +52,13 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="downloading_data.html">Downloading Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="downloading_data.html">Downloading data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basic_example.html">Basic example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="multiple_basins.html">Multiple basins</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Basin stats examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Categorical-asset---a-single-time-window">Categorical asset - a single time window</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Numeric-asset---multiple-time-windows">Numeric asset - multiple time windows</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Numeric-asset---time-averaging">Numeric asset - time averaging</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#Numeric-asset---multiple-time-windows">Numeric asset - multiple time windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Numeric-asset---time-averaging">Numeric asset - time averaging</a></li>
 </ul>
 </li>
 </ul>
@@ -368,12 +366,12 @@ div.rendered_html tbody tr:hover {
 <section id="Basin-stats-examples">
 <h1>Basin stats examples<a class="headerlink" href="#Basin-stats-examples" title="Permalink to this headline"></a></h1>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import datetime
-import geopandas as gpd
 import pandas as pd
+import geopandas as gpd
 
 import rabpro
 from rabpro.basin_stats import Dataset
@@ -392,7 +390,7 @@ from rabpro.basin_stats import Dataset
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%capture
@@ -406,7 +404,7 @@ gdf = rpo.watershed
 <section id="Categorical-asset---a-single-time-window">
 <h2>Categorical asset - a single time window<a class="headerlink" href="#Categorical-asset---a-single-time-window" title="Permalink to this headline"></a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>urls, tasks = rabpro.basin_stats.compute(
@@ -420,7 +418,7 @@ res.head()
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -442,7 +440,6 @@ res.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>lulc_da_km2</th>
       <th>lulc_1</th>
       <th>lulc_10</th>
       <th>lulc_11</th>
@@ -459,7 +456,6 @@ res.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>2131.577825</td>
       <td>2145.462745</td>
       <td>2824.396078</td>
       <td>212.0</td>
@@ -470,7 +466,7 @@ res.head()
       <td>454.964706</td>
       <td>3.0</td>
       <td>2131.577825</td>
-      <td>POLYGON ((-130.98238 56.13723, -130.98395 56.1...</td>
+      <td>POLYGON ((-130.98238 56.13723, -130.98395 56.14799, -130.99105 56.15617, -130.99228 56.16049, -1...</td>
     </tr>
   </tbody>
 </table>
@@ -570,8 +566,9 @@ res.head()
 </table>
 </div></div>
 </div>
+</section>
 <section id="Numeric-asset---time-averaging">
-<h3>Numeric asset - time averaging<a class="headerlink" href="#Numeric-asset---time-averaging" title="Permalink to this headline"></a></h3>
+<h2>Numeric asset - time averaging<a class="headerlink" href="#Numeric-asset---time-averaging" title="Permalink to this headline"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
@@ -627,7 +624,6 @@ res.head()
 </table>
 </div></div>
 </div>
-</section>
 </section>
 </section>
 
