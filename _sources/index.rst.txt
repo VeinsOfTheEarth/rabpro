@@ -22,8 +22,9 @@ rabpro provides methods to compute subbasin geometries from coordinate pairs, an
    :hidden:
    :glob:
       
+   examples/notebooks/downloading_data.ipynb
    examples/notebooks/basic_example.ipynb
-   examples/notebooks/full_example.ipynb
+   examples/notebooks/multiple_basins.ipynb
    examples/notebooks/basin_stats.ipynb
 
 .. toctree::
@@ -58,9 +59,9 @@ rabpro provides methods to compute subbasin geometries from coordinate pairs, an
         :classes: btn-link stretched-link font-weight-bold
    ---
    :card: + text-center bg-secondary
-   .. link-button:: examples/notebooks/full_example
+   .. link-button:: examples/notebooks/multiple_basins
         :type: ref
-        :text: Full example
+        :text: Multibasin example
         :classes: btn-link stretched-link font-weight-bold
    ---
    :column: col-lg-12 p-2
