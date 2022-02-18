@@ -9,6 +9,8 @@ from rabpro.core import profiler
 import geopandas as gpd
 import numpy as np
 import os
+from shapely.geometry import Point
+from pyproj import CRS
 
 os.environ['RABPRO_DATA'] = r'X:\Data'
 
@@ -20,8 +22,10 @@ f.delineate_basin(force_merit=True)
 gdf_merit = f.watershed
 f.delineate_basin(force_hydrobasins=True)
 gdf_hb = f.watershed
-f.elev_profile(dist_to_walk_km=10)
+f.elev_profile(dist_to_walk_km=25)
 
 gdf_merit.to_file(r'X:\Research\RaBPro\Code\docs\paper_fig\basin_merit.gpkg', driver='GPKG')
 gdf_hb.to_file(r'X:\Research\RaBPro\Code\docs\paper_fig\basin_hb.gpkg', driver='GPKG')
 f.flowline.to_file(r'X:\Research\RaBPro\Code\docs\paper_fig\flowline.gpkg', driver='GPKG')
+target_pt = gpd.GeoDataFrame(geometry=[Point(coords[::-1])], crs=CRS.from_epsg(4326))
+target_pt.to_file(r'X:\Research\RaBPro\Code\docs\paper_fig\coordinate.gpkg', driver='GPKG')
