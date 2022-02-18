@@ -1,4 +1,4 @@
-<a href='https:///VeinsOfTheEarth.github.io/rabpro/'><img src="docs/_static/logo_banner.png" align="right" height=100/></a>
+<a href='https:///VeinsOfTheEarth.github.io/rabpro/'><img src="docs/_static/logo_banner.png" align="center" height=100/></a>
 
 > Package to delineate watershed subbasins and compute attribute statistics using [Google Earth Engine](https://developers.google.com/earth-engine/).
 
