@@ -1,4 +1,16 @@
 [
+     {
+         "id": "users/jonschwenk/glims_glacier_presence_20210914",
+         "name": "GLIMS Glacier Presence",
+         "start_date": null,
+         "end_date": null,
+         "type": "image",
+         "bands": {
+             "None": {
+                 "resolution": 90
+             }
+         }
+     },  
     {
         "id": "projects/soilgrids-isric/clay_mean",
         "name": "SoilGrids 250: clay fraction",
