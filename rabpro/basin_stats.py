@@ -82,12 +82,12 @@ class Dataset:
 
 def dataset_to_filename(prepend, data_id, band):
     if prepend == "" or prepend is None:
-        if band is None:
+        if band is None or band == "None":
             return f"{data_id}".replace("/", "-")
         else:
             return f"{data_id}__{band}".replace("/", "-")
     else:
-        if band is None:
+        if band is None or band == "None":
             return prepend + "__" + f"{data_id}".replace("/", "-")
         else:
             return prepend + "__" + f"{data_id}__{band}".replace("/", "-")
