@@ -1,8 +1,8 @@
 """
-Subbasin statistics (subbasin_stats.py)
+Basin statistics (basin_stats.py)
 =======================================
 
-Computes subbasin statistics using Google Earth Engine.
+Computes basin statistics using Google Earth Engine.
 """
 
 import ee
@@ -32,10 +32,10 @@ class Dataset:
         Desired resolution in meters of the calculation over the dataset.
         Defaults to native resolution of the dataset.
     start : str, optional
-        Desired start date of data in ISO format: YYYY-MM-DD. Defaults to None which GEE 
+        Desired start date of data in ISO format: YYYY-MM-DD. Defaults to None which GEE
         interprets as the dataset start.
     end : str, optional
-        Desired end date of data in ISO format: YYYY-MM-DD. Defaults to None which GEE 
+        Desired end date of data in ISO format: YYYY-MM-DD. Defaults to None which GEE
         interprets as the dataset end.
     stats : list, optional
         List of desired stats to compute: min, max, range, mean, count, std,
@@ -156,7 +156,7 @@ def fetch_gee(
     .. code-block:: python
 
         import numpy as np
-        import geopandas as gpd        
+        import geopandas as gpd
         from shapely.geometry import box
 
         import rabpro
@@ -176,7 +176,7 @@ def fetch_gee(
 
         tag_list = ["temperature", "precip"]
         data = rabpro.basin_stats.fetch_gee(urls, tag_list, col_drop_list = ["system:index"])
-        
+
     """
 
     df_list = [_read_url(url) for url in url_list]
