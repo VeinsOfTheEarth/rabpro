@@ -81,10 +81,16 @@ class Dataset:
 
 
 def dataset_to_filename(prepend, data_id, band):
-    if prepend == "":
-        return f"{data_id}__{band}".replace("/", "-")
+    if prepend == "" or prepend is None:
+        if band is None:
+            return f"{data_id}".replace("/", "-")
+        else:
+            return f"{data_id}__{band}".replace("/", "-")
     else:
-        return prepend + "__" + f"{data_id}__{band}".replace("/", "-")
+        if band is None:
+            return prepend + "__" + f"{data_id}".replace("/", "-")
+        else:
+            return prepend + "__" + f"{data_id}__{band}".replace("/", "-")
 
 
 def _str_to_dict(a_string):
