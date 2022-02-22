@@ -24,8 +24,10 @@ f.delineate_basin(force_hydrobasins=True)
 gdf_hb = f.watershed
 f.elev_profile(dist_to_walk_km=25)
 
-gdf_merit.to_file(r'X:\Research\RaBPro\Code\docs\paper_fig\basin_merit.gpkg', driver='GPKG')
-gdf_hb.to_file(r'X:\Research\RaBPro\Code\docs\paper_fig\basin_hb.gpkg', driver='GPKG')
-f.flowline.to_file(r'X:\Research\RaBPro\Code\docs\paper_fig\flowline.gpkg', driver='GPKG')
+path_base = "docs/paper_fig/"
+
+gdf_merit.to_file(path_base + 'basin_merit.gpkg', driver='GPKG')
+gdf_hb.to_file(path_base + 'basin_hb.gpkg', driver='GPKG')
+f.flowline.to_file(path_base + 'flowline.gpkg', driver='GPKG')
 target_pt = gpd.GeoDataFrame(geometry=[Point(coords[::-1])], crs=CRS.from_epsg(4326))
-target_pt.to_file(r'X:\Research\RaBPro\Code\docs\paper_fig\coordinate.gpkg', driver='GPKG')
+target_pt.to_file(path_base + 'coordinate.gpkg', driver='GPKG')
