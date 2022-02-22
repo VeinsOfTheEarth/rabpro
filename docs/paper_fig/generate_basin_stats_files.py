@@ -1,10 +1,10 @@
+# ---- pull stats ----
+
 import pandas as pd
 import geopandas as gpd
 
 import rabpro
 from rabpro.basin_stats import Dataset
-
-import seaborn as sns
 
 path_base = "docs/paper_fig/"
 basin = gpd.read_file(path_base + "basin_merit.gpkg")
@@ -47,23 +47,19 @@ data = data.drop(["year", "month", "day"], axis=1).filter(regex="^((?!system).)*
 
 data.to_csv("test.csv", index=False)
 
-# ----
+# ---- plot stats ----
 
 import matplotlib.pyplot as plt
-from matplotlib.dates import DateFormatter
-import matplotlib.dates as mdates
+import seaborn as sns
 
 data = pd.read_csv("test.csv")
+data["date"] = pd.to_datetime(data["date"])
 
 f, axs = plt.subplots(1, 1)
-sns.lineplot(x="date", y="precip_mean", data=data, ax=axs)
-date_form = DateFormatter("%Y-%m")
-axs.xaxis.set_major_formatter(date_form)
-axs.xaxis.set_major_locator(mdates.YearLocator())
+fig_precip = sns.lineplot(x="date", y="precip_mean", data=data, ax=axs)
+fig_precip.set(xlabel="", ylabel="Precipitation (mm/hr)")
 plt.show()
 
+# ---- pull images ----
 
-res = gpd.GeoDataFrame(data.merge(basin, on="id"))
-res = res.set_geometry("geometry")
-res.to_file("res.gpkg", driver="GPKG")
-
+# TODO
