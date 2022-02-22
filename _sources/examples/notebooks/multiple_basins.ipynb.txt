@@ -158,15 +158,7 @@
    "execution_count": 3,
    "id": "d56356e8-a0ed-4974-8ad8-44ba5359a5e2",
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stderr",
-     "output_type": "stream",
-     "text": [
-      "100%|██████████████████████████████████████████████████████████████████████████████████| 68/68 [03:54<00:00,  3.45s/it]\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "if os.path.isfile(\"basins_sl.gpkg\") is False:\n",
     "    basins_sl = []\n",
@@ -252,7 +244,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 6,
+   "execution_count": 5,
    "id": "7600a0c1-0344-4a45-9fbe-dede27ae2d60",
    "metadata": {},
    "outputs": [],
@@ -262,7 +254,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 7,
+   "execution_count": 6,
    "id": "3fa177f6-9037-42e0-946d-44a6c9286d3e",
    "metadata": {},
    "outputs": [
@@ -270,8 +262,8 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "CPU times: total: 1.23 s\n",
-      "Wall time: 2min 12s\n"
+      "CPU times: total: 125 ms\n",
+      "Wall time: 134 ms\n"
      ]
     }
    ],
@@ -283,7 +275,7 @@
     "        dataset_list, gee_feature_path=your_gee_asset, folder=\"rabpro\"\n",
     "    )\n",
     "    tag_list = [\"wateroccur\", \"temperature_2m\", \"precip\"]\n",
-    "    data = rabpro.basin_stats.format_gee(urls, tag_list)\n",
+    "    data = rabpro.basin_stats.fetch_gee(urls, tag_list)\n",
     "    \n",
     "    res = gpd.GeoDataFrame(data.merge(basins_sl, on='vote_id'))\n",
     "    res = res.set_geometry(\"geometry\")\n",
@@ -302,7 +294,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 8,
+   "execution_count": 7,
    "id": "b40c3e25-9029-4461-9191-c0007df0c50e",
    "metadata": {},
    "outputs": [
