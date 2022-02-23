@@ -20,7 +20,7 @@ The latest 'stable' version of *rabpro* can be installed using `conda`.
 
 ::
 
-   $ conda install -c jschwenk rabpro
+   $ conda install rabpro -c conda-forge
 
 This will install rabpro and all of its dependencies, as listed in
 `environment.yml
