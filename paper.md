@@ -1,12 +1,34 @@
-# rabpro: global watershed boundaries, river elevation profiles, and catchment statistics
-
-J. Schwenk, J. Stachelek, T. Zussman
+---
+title: 'rabpro: global watershed boundaries, river elevation profiles, and catchment statistics'
+tags:
+  - watersheds
+  - basins
+  - rivers
+  - DEM
+  - Google Earth Engine
+authors:
+  - name: Jon Schwenk^[Corresponding author]
+    orcid: 0000-0001-5803-9686
+    affiliation: 1
+  - name: Tal Zussman
+    orcid: 0000-0003-3087-8511
+    affiliation: 2
+  - name: Jemma Stachelek
+    orcid: 0000-0002-5924-2464
+    affiliation: 1
+affiliations:
+ - name: Los Alamos National Laboratory
+   index: 1
+ - name: Columbia University of New York
+   index: 2
+date: 22 February 2022
+bibliography: paper.bib
+---
 
 
 ## Summary
 
 The River and Basin Profiler (`rabpro`) is a Python package to delineate watersheds, extract river flowlines and elevation profiles, and compute watershed statistics for any location on the Earth’s surface. As fundamental hydrologically-relevant units of surface area, watersheds are areas of land that drain via aboveground pathways to the same location. Delineations of watershed boundaries are typically performed on DEMs that represent surface elevations as gridded rasters. Depending on the resolution of the DEM and the size of the watershed, delineation may be very computationally expensive. With this in mind, we designed `rabpro` to provide user-friendly workflows to manage the complexity and computational expense of watershed calculations given an arbitrary coordinate pair. In addition to basic watershed delineation, `rabpro` will extract the elevation profile for a watershed’s main-channel flowline. This enables the computation of river slope, which is a critical parameter in many hydrologic and geomorphologic models. Finally, `rabpro` provides a user-friendly wrapper around Google Earth Engine’s (GEE) Python API to enable cloud-computing of zonal watershed statistics and/or time-varying forcing data from hundreds of available datasets. Altogether, `rabpro` provides the ability to automate or semi-automate complex watershed analysis workflows across broad spatial extents.
-
 
 ## Statement of Need
 
