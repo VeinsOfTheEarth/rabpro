@@ -8,6 +8,7 @@ Computes basin statistics using Google Earth Engine.
 import ee
 import re
 import json
+import requests
 import numpy as np
 import pandas as pd
 from datetime import date
@@ -210,6 +211,17 @@ def fetch_gee(
     return res
 
 
+def _gdf_to_features(gdf):
+    features = []
+    for i in range(gdf.shape[0]):
+        geom = gdf.iloc[i : i + 1, :]
+        jsonDict = json.loads(geom.to_json())
+        geojsonDict = jsonDict["features"][0]
+        features.append(ee.Feature(geojsonDict))
+
+    return features
+
+
 def compute(
     dataset_list,
     gee_feature_path=None,
@@ -290,12 +302,7 @@ def compute(
 
     # Convert GeoDataFrame to ee.Feature objects
     if basins_gdf is not None:
-        features = []
-        for i in range(basins_gdf.shape[0]):
-            geom = basins_gdf.iloc[i : i + 1, :]
-            jsonDict = json.loads(geom.to_json())
-            geojsonDict = jsonDict["features"][0]
-            features.append(ee.Feature(geojsonDict))
+        features = _gdf_to_features(basins_gdf)
         featureCollection = ee.FeatureCollection(features)
     else:  # gee_feature_path is specified
         featureCollection = ee.FeatureCollection(gee_feature_path)
@@ -516,3 +523,96 @@ def _get_controls(datasets):
         control.append(d)
 
     return control
+
+
+def image(
+    dataset_list,
+    gee_feature_path=None,
+    basins_gdf=None,
+    categorical=[False],
+    verbose=False,
+):
+    """asdf
+
+    Examples
+    --------
+    .. code-block:: python
+
+        import rabpro
+        from rabpro.basin_stats import Dataset
+
+        import numpy as np
+        from shapely.geometry import box
+        
+        total_bounds = np.array([-85.91331249, 39.2, -85.5, 39.46429816])
+        gdf = gpd.GeoDataFrame({"idx": [1], "geometry": [box(*total_bounds)]}, crs="EPSG:4326")
+
+        dataset_list = [
+            Dataset("ECMWF/ERA5_LAND/MONTHLY", "temperature_2m", time_stats=["median"])
+        ]
+        urls, tasks = rabpro.basin_stats.image(dataset_list, basins_gdf=gdf)
+        basin_stats._fetch_raster(urls[0])
+    """
+
+    # Dictionary for determining which rasters to pull
+    control = _get_controls(dataset_list)
+    ee.Initialize()
+
+    # Convert GeoDataFrame to ee.Feature objects
+    if basins_gdf is not None:
+        features = _gdf_to_features(basins_gdf)
+        featureCollection = ee.FeatureCollection(features)
+    else:  # gee_feature_path is specified
+        featureCollection = ee.FeatureCollection(gee_feature_path)
+
+    # For each raster
+    urls, tasks = [], []
+    for d, is_categorical in zip(control, categorical):
+        # d.band, d.data_id, d.start, d.end
+        if not is_categorical:
+            img = ee.ImageCollection(d.data_id).select(d.band)
+            if d.start is not None and d.end is not None:
+                img = img.filterDate(d.start, d.end)
+            img = img.reduce(ee.Reducer.mean())
+        else:
+            img = (
+                ee.ImageCollection(d.data_id)
+                .select(d.band)
+                .limit(1, "system:time_start", False)
+                .first()
+            )
+
+        if verbose:
+            print(f"Submitting image retrieval task to GEE for {d.data_id}...")
+
+        task = ee.batch.Export.image.toDrive(
+            image=img,
+            scale=30,
+            region=featureCollection.geometry(),
+            description=dataset_to_filename(d.prepend, d.data_id, d.band),
+            crs="EPSG:4326",
+        )
+
+        url = img.getDownloadURL(
+            {
+                "format": "GEO_TIFF",
+                "filename": dataset_to_filename(d.prepend, d.data_id, d.band),
+                "region": featureCollection.geometry(),
+                "scale": 30,
+            }
+        )
+        task.start()
+
+        urls.append(url)
+        tasks.append(task)
+
+    return urls, tasks
+
+
+def _fetch_raster(url, fname="temp.tif", cleanup=True):
+
+    response = requests.get(url)
+    with open(fname, "wb") as fd:
+        fd.write(response.content)
+
+    return fname
