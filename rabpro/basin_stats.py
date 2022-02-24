@@ -532,7 +532,25 @@ def image(
     categorical=[False],
     verbose=False,
 ):
-    """asdf
+    """Download a GEE raster as a GeoTiff clipped to a basins GeoDataFrame    
+
+    Parameters
+    ----------
+    dataset_list : list of Datasets
+        List of Dataset objects to compute statistics over.
+    gee_feature_path : str, optional
+        Path to a GEE feature collection, by default None
+    basins_gdf : GeoDataFrame, optional
+        Table of subbasin geometries, by default None
+    categorical : list, optional
+        By default [False]
+    verbose : bool, optional
+        By default False
+
+    Returns
+    -------
+    list
+        of GeoTiff download urls
 
     Examples
     --------
@@ -565,9 +583,17 @@ def image(
     else:  # gee_feature_path is specified
         featureCollection = ee.FeatureCollection(gee_feature_path)
 
+    # ensure categorical is the proper length
+    categorical_lengthed = []
+    for i in range(0, len(control)):
+        if i < len(categorical):
+            categorical_lengthed.append(categorical[i])
+        else:
+            categorical_lengthed.append(False)
+
     # For each raster
     urls, tasks = [], []
-    for d, is_categorical in zip(control, categorical):
+    for d, is_categorical in zip(control, categorical_lengthed):
         # d.band, d.data_id, d.start, d.end
         if not is_categorical:
             img = ee.ImageCollection(d.data_id).select(d.band)
@@ -610,7 +636,6 @@ def image(
 
 
 def _fetch_raster(url, fname="temp.tif", cleanup=True):
-
     response = requests.get(url)
     with open(fname, "wb") as fd:
         fd.write(response.content)

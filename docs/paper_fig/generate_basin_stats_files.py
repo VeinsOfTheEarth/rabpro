@@ -1,5 +1,5 @@
-# ---- pull stats ----
-
+# ---- setup ----
+import rioxarray
 import pandas as pd
 import geopandas as gpd
 
@@ -27,12 +27,13 @@ dataset_list = [
     ),
 ]
 
+tag_list = ["temperature", "precip"]
 
+# ---- pull stats ----
 urls, tasks = rabpro.basin_stats.compute(
     dataset_list, basins_gdf=basin, folder="rabpro"
 )
 
-tag_list = ["temperature", "precip"]
 data = rabpro.basin_stats.fetch_gee(urls, tag_list)
 
 # format time column
@@ -48,7 +49,6 @@ data = data.drop(["year", "month", "day"], axis=1).filter(regex="^((?!system).)*
 data.to_csv("test.csv", index=False)
 
 # ---- plot stats ----
-
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -62,4 +62,16 @@ plt.show()
 
 # ---- pull images ----
 
-# TODO
+urls, tasks = rabpro.basin_stats.image(dataset_list, basins_gdf=basin)
+fnames = [path_base + tag + ".tif" for tag in tag_list]
+res = [rabpro.basin_stats._fetch_raster(url, fname) for url, fname in zip(urls, fnames)]
+
+# ---- plot images ----
+
+r_reclass_clip = rioxarray.open_rasterio(fnames[0], masked=True)
+# r_reclass_clip.rio.write_crs("epsg:4326", inplace=True)
+# r_reclass_clip = r_reclass_clip.rio.clip(gdf.geometry, gdf.crs, drop=False)
+
+# rasterio.plot.show(res)
+# plt.imshow(res)
+# plt.show()
