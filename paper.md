@@ -17,7 +17,7 @@ authors:
     orcid: 0000-0002-5924-2464
     affiliation: 1
 affiliations:
- - name: Los Alamos National Laboratory
+ - name: Los Alamos National Laboratory, Division of Earth and Environmental Sciences
    index: 1
  - name: Columbia University of New York
    index: 2
