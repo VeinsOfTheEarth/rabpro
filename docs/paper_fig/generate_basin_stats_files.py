@@ -28,6 +28,7 @@ dataset_list = [
 ]
 
 tag_list = ["temperature", "precip"]
+fnames = [path_base + tag + ".tif" for tag in tag_list]
 
 # ---- pull stats ----
 urls, tasks = rabpro.basin_stats.compute(
@@ -63,14 +64,21 @@ plt.show()
 # ---- pull images ----
 
 urls, tasks = rabpro.basin_stats.image(dataset_list, basins_gdf=basin)
-fnames = [path_base + tag + ".tif" for tag in tag_list]
 res = [rabpro.basin_stats._fetch_raster(url, fname) for url, fname in zip(urls, fnames)]
 
-# ---- plot images ----
+# ---- generate clipped images ----
 
-r_reclass_clip = rioxarray.open_rasterio(fnames[0], masked=True)
-# r_reclass_clip.rio.write_crs("epsg:4326", inplace=True)
-# r_reclass_clip = r_reclass_clip.rio.clip(gdf.geometry, gdf.crs, drop=False)
+
+def img_clip(fpath, gdf):
+    r_clip = rioxarray.open_rasterio(fpath, masked=True)
+    r_clip = r_clip.rio.clip(gdf.geometry, gdf.crs, drop=False)
+    r_clip.rio.to_raster(fpath.replace(".tif", "_clip.tif"))
+    return r_clip
+
+
+[img_clip(fpath, basin) for fpath in [fnames[1]]]
+
+# ---- plot images ----
 
 # rasterio.plot.show(res)
 # plt.imshow(res)
