@@ -666,7 +666,6 @@ def map_cl_pt_to_flowline(
         8 - (fail) basin polygon provided; no flowlines were 25% within the provided basin
 
     """
-
     # Check if we have all the required inputs for a basin polygon comparison
     if basin_pgon is not None:
         if fdr_map is None or fdr_obj is None or da is None:
