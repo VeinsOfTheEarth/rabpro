@@ -19,16 +19,20 @@ authors:
 affiliations:
  - name: Los Alamos National Laboratory, Division of Earth and Environmental Sciences
    index: 1
- - name: Columbia University of New York
+ - name: Columbia University, Department of Computer Science
    index: 2
-date: 22 February 2022
+date: 25 February 2022
 bibliography: paper.bib
 ---
 
 
 ## Summary
 
-The River and Basin Profiler (`rabpro`) is a Python package to delineate watersheds, extract river flowlines and elevation profiles, and compute watershed statistics for any location on the Earth’s surface. As fundamental hydrologically-relevant units of surface area, watersheds are areas of land that drain via aboveground pathways to the same location. Delineations of watershed boundaries are typically performed on DEMs that represent surface elevations as gridded rasters. Depending on the resolution of the DEM and the size of the watershed, delineation may be very computationally expensive. With this in mind, we designed `rabpro` to provide user-friendly workflows to manage the complexity and computational expense of watershed calculations given an arbitrary coordinate pair. In addition to basic watershed delineation, `rabpro` will extract the elevation profile for a watershed’s main-channel flowline. This enables the computation of river slope, which is a critical parameter in many hydrologic and geomorphologic models. Finally, `rabpro` provides a user-friendly wrapper around Google Earth Engine’s (GEE) Python API to enable cloud-computing of zonal watershed statistics and/or time-varying forcing data from hundreds of available datasets. Altogether, `rabpro` provides the ability to automate or semi-automate complex watershed analysis workflows across broad spatial extents.
+River and Basin Profiler (`rabpro`) is a Python package to delineate watersheds, extract river flowlines and elevation profiles, and compute watershed statistics for any location on the Earth’s surface. As fundamental hydrologically-relevant units of surface area, watersheds are areas of land that drain via aboveground pathways to the same location. Delineations of watershed boundaries are typically performed on DEMs that represent surface elevations as gridded rasters. Depending on the resolution of the DEM and the size of the watershed, delineation may be very computationally expensive. With this in mind, we designed `rabpro` to provide user-friendly workflows to manage the complexity and computational expense of watershed calculations given an arbitrary coordinate pair. In addition to basic watershed delineation, `rabpro` will extract the elevation profile for a watershed’s main-channel flowline. This enables the computation of river slope, which is a critical parameter in many hydrologic and geomorphologic models. Finally, `rabpro` provides a user-friendly wrapper around Google Earth Engine’s (GEE) Python API to enable cloud-computing of zonal watershed statistics and/or time-varying forcing data from hundreds of available datasets. Altogether, `rabpro` provides the ability to automate or semi-automate complex watershed analysis workflows across broad spatial extents.
+
+```
+![The core functionality of rabpro demonstrated on the Sigatoka River. (A) Study site with both MERIT and HydroBASINS delineations and river flowline extraction for a hypothetical gage station. Bing VirtualEarth base image. (B) MERIT-Hydro delineation with MERIT-Hydro flowlines underneath. (C) HydroBASINS delineation with level-12 HydroBASINS polygons as white outlines. (D) Extracted elevation profile with gage location denoted by white circle at Distance = 0. (E) Examples of time-averaged (where appropriate) basin characteristics retrieved by rabpro from Google Earth Engine. Sources: population [@center_for_international_earth_science_information_network-ciesin-columbia_university_gridded_2017], NDVI [@didan__kamel_mod13a2_2015], topo slope [@amatulli_geomorpho90m_2020], precipitation [precipitation_processing_system_pps_at_nasa_gsfc_gpm_2019], soil moisture [@oneill__peggy_e_smap_2018], and temperature [@copernicus_climate_change_service_era5_2017]. (F, G) Time-series data fetched by rabpro for the temperature and precipitation datasets in (E).  \label{fig:example}](.docs/paper_fig/figure_1.PNG)
+```
 
 ## Statement of Need
 
@@ -68,7 +72,7 @@ Figure 1: Example output from the [Full Example](https://veinsoftheearth.github.
 
 ## Acknowledgements
 
-Jordan Muss, Joel Rowland, and Eiten Shelef envisioned and created a predecessor to `rabpro` and helped guide its early development. `rabpro` was developed with support from the Laboratory Directed Research and Development program of Los Alamos National Laboratory under project number 20210213ER and as part of the Interdisciplinary Research for Arctic Coastal Environments (InteRFACE) project through the Department of Energy, Office of Science, Biological and Environmental Research Earth and Environment Systems Sciences Division RGMA program, awarded under contract grant #9233218CNA000001 to Triad National Security, LLC (“Triad”).
+Jordan Muss, Joel Rowland, and Eiten Shelef envisioned and created a predecessor to `rabpro` and helped guide its early development. `rabpro` was developed with support from the Laboratory Directed Research and Development program of Los Alamos National Laboratory under project number 20210213ER and as part of the Interdisciplinary Research for Arctic Coastal Environments (InteRFACE) project through the Department of Energy, Office of Science, Biological and Environmental Research Earth and Environment Systems Sciences Division RGMA program, awarded under contract grant #9233218CNA000001 to Triad National Security, LLC (“Triad”). TZ was supported by funding from the Columbia Undergraduate Scholars Program Summer Enhancement Fellowship.
 
 
 ## References

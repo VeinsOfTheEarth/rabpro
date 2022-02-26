@@ -596,10 +596,21 @@ def image(
     for d, is_categorical in zip(control, categorical_lengthed):
         # d.band, d.data_id, d.start, d.end
         if not is_categorical:
-            img = ee.ImageCollection(d.data_id).select(d.band)
-            if d.start is not None and d.end is not None:
-                img = img.filterDate(d.start, d.end)
-            img = img.reduce(ee.Reducer.mean())
+            if d.type == 'image':
+                img = ee.Image(d.data_id).select(d.band)
+            elif d.mosaic is True:
+                if d.band is None:
+                    img = ee.ImageCollection(d.data_id).mosaic()
+                else:
+                    img = ee.ImageCollection(d.data_id).select(d.band).mosaic()
+            else:
+                if d.band is None:
+                    img = ee.ImageCollection(d.data_id)
+                else:
+                    img = ee.ImageCollection(d.data_id).select(d.band)
+                if d.start is not None and d.end is not None:
+                    img = img.filterDate(d.start, d.end)
+                img = img.reduce(ee.Reducer.mean())
         else:
             img = (
                 ee.ImageCollection(d.data_id)
