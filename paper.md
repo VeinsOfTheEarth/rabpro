@@ -30,8 +30,8 @@ bibliography: paper.bib
 
 River and Basin Profiler (`rabpro`) is a Python package to delineate watersheds, extract river flowlines and elevation profiles, and compute watershed statistics for any location on the Earth’s surface. As fundamental hydrologically-relevant units of surface area, watersheds are areas of land that drain via aboveground pathways to the same location. Delineations of watershed boundaries are typically performed on DEMs that represent surface elevations as gridded rasters. Depending on the resolution of the DEM and the size of the watershed, delineation may be very computationally expensive. With this in mind, we designed `rabpro` to provide user-friendly workflows to manage the complexity and computational expense of watershed calculations given an arbitrary coordinate pair. In addition to basic watershed delineation, `rabpro` will extract the elevation profile for a watershed’s main-channel flowline. This enables the computation of river slope, which is a critical parameter in many hydrologic and geomorphologic models. Finally, `rabpro` provides a user-friendly wrapper around Google Earth Engine’s (GEE) Python API to enable cloud-computing of zonal watershed statistics and/or time-varying forcing data from hundreds of available datasets. Altogether, `rabpro` provides the ability to automate or semi-automate complex watershed analysis workflows across broad spatial extents.
 
-```
-![blah](https://github.com/VeinsOfTheEarth/rabpro/blob/main/docs/paper_fig/figure_1.PNG?raw=true){width=20%}
+```html
+```![blah](https://github.com/VeinsOfTheEarth/rabpro/blob/main/docs/paper_fig/figure_1.PNG){width=20%}```
 ```
 
 ## Statement of Need
