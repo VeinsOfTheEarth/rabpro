@@ -3,8 +3,7 @@
 <a href='https:///VeinsOfTheEarth.github.io/rabpro/'><img src="docs/_static/logo_banner.png" height=100/></a>
 </p>
 
-<p align="center">
-  <a href=https://pypi.org/project/rabpro/><img src=https://img.shields.io/pypi/v/rabpro.svg></a>
+<p align="center">  
   <a href=https://github.com/psf/black><img src=https://img.shields.io/badge/code%20style-black-000000.svg></a>
   <a href=https://anaconda.org/conda-forge/rabpro><img src=https://anaconda.org/conda-forge/rabpro/badges/version.svg></a>
   <a href=https://github.com/VeinsOfTheEarth/rabpro/actions/workflows/build.yaml><img src=https://github.com/VeinsOfTheEarth/rabpro/actions/workflows/build.yaml/badge.svg></a>
