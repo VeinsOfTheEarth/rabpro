@@ -78,6 +78,30 @@ def img_clip(fpath, gdf):
 
 [img_clip(fpath, basin) for fpath in [fnames[1]]]
 
+# ----
+
+a = rioxarray.open_rasterio(fnames[0].replace(".tif", "_clip.tif")).sel(band=1)
+ds = a.stack(pixel=("x", "y"))
+ds = ds.dropna("pixel", how="all")
+
+# ----
+
+import rasterio.features
+from shapely.geometry import shape
+
+# Mask is a numpy array binary mask loaded however needed
+mypoly = []
+for vec in rasterio.features.shapes(a):
+    mypoly.append(shape(vec))
+
+# ----
+
+from xrspatial.experimental import polygonize
+
+test = polygonize(ds, return_type="geopandas")
+test2 = test[~test.DN.isnull()]
+test2.to_file("testasdf.gpkg", driver="GPKG")
+
 # ---- plot images ----
 
 # rasterio.plot.show(res)
