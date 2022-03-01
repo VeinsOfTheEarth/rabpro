@@ -132,6 +132,53 @@ def _read_url(url):
     return df
 
 
+def format_gee(
+    df_list,
+    prepend_list,
+    col_drop_list=[],
+    col_protect_list=["id_basin", "id_outlet", "idx", "id", "vote_id"],
+    col_drop_defaults=["DA", "count", ".geo", "da_km2"],
+):
+    """Parameters
+    ----------
+    df_list : list
+        list of DataFrames
+    prepend_list : list
+        tags to pre-append to corresponding columns, of length url_list
+    col_drop_list : list, optional
+        custom columns to drop, by default []
+    col_protect_list : list, optional
+        columns to avoid tagging, by default ["id_basin", "id_outlet", "idx", "id", "vote_id"]
+    col_drop_defaults : list, optional
+        built-in columns to drop, by default ["DA", "count", ".geo", "system:index", "da_km2"]
+
+    Returns
+    -------
+    DataFrame
+    """
+    res = [
+        _format_cols(
+            df,
+            prepend,
+            col_drop_list=col_drop_list,
+            col_drop_defaults=col_drop_defaults,
+            col_protect_list=col_protect_list,
+        )
+        for df, prepend in zip(df_list, prepend_list)
+    ]
+
+    res = pd.concat(res, axis=1)
+
+    # drop duplicate columns and move to front
+    where_duplicated = [x for x in np.where(res.columns.duplicated())[0]]
+    if len(where_duplicated) > 0:
+        first_column_names = res.columns[where_duplicated][0]
+        first_column = res.pop(res.columns[where_duplicated][0]).iloc[:, 0]
+        res.insert(0, first_column_names, first_column)
+
+    return res
+
+
 def fetch_gee(
     url_list,
     prepend_list,
@@ -144,7 +191,7 @@ def fetch_gee(
     Parameters
     ----------
     url_list : list
-        list of urls return from compute
+        list of urls returned from compute
     prepend_list : list
         tags to pre-append to corresponding columns, of length url_list
     col_drop_list : list, optional
@@ -188,25 +235,9 @@ def fetch_gee(
 
     df_list = [_read_url(url) for url in url_list]
 
-    res = [
-        _format_cols(
-            df,
-            prepend,
-            col_drop_list=col_drop_list,
-            col_drop_defaults=col_drop_defaults,
-            col_protect_list=col_protect_list,
-        )
-        for df, prepend in zip(df_list, prepend_list)
-    ]
-
-    res = pd.concat(res, axis=1)
-
-    # drop duplicate columns and move to front
-    where_duplicated = [x for x in np.where(res.columns.duplicated())[0]]
-    if len(where_duplicated) > 0:
-        first_column_names = res.columns[where_duplicated][0]
-        first_column = res.pop(res.columns[where_duplicated][0]).iloc[:, 0]
-        res.insert(0, first_column_names, first_column)
+    res = format_gee(
+        df_list, prepend_list, col_drop_list, col_protect_list, col_drop_defaults
+    )
 
     return res
 
@@ -596,7 +627,7 @@ def image(
     for d, is_categorical in zip(control, categorical_lengthed):
         # d.band, d.data_id, d.start, d.end
         if not is_categorical:
-            if d.type == 'image':
+            if d.type == "image":
                 img = ee.Image(d.data_id).select(d.band)
             elif d.mosaic is True:
                 if d.band is None:
