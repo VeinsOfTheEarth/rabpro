@@ -231,7 +231,7 @@
         "name": "Pelletier et al. 2016 Average Soil Thickness",
         "start_date": null,
         "end_date": null,
-        "type": "image_collection",
+        "type": "image",
         "bands": {
             "b1": {
                 "units": null,
