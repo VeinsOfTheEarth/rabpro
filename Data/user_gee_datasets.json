@@ -227,15 +227,15 @@
         }
     },
     {
-        "id": "users/jonschwenk/pelletier2016",
-        "name": "Pelletier et al. 2016 Soil Thickness",
+        "id": "projects/rabpro-datasets/assets/pelletier_average_soil_and_sedimentary_deposit_thickness",
+        "name": "Pelletier et al. 2016 Average Soil Thickness",
         "start_date": null,
         "end_date": null,
         "type": "image_collection",
         "bands": {
             "b1": {
                 "units": null,
-                "resolution": 925
+                "resolution": 927.6624232772772
             }
         }
     }
