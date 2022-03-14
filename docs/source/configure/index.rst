@@ -53,17 +53,17 @@ _______________________
 To download MERIT-Hydro, you'll need to request a username and password on the MERIT-Hydro `homepage <http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/>`_.
 
 Unless you want to download the full global extent, you'll probably need to identify specific MERIT-Hydro "tiles" of interest. You can do this following the logic in the `MERIT Hydro
-<http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/>`_ documentation or use the rabpro function ``rabpro.utils.coords_to_merit_tile`` to obtain a tile identifier (e.g. n30e150) which you can pass to the ``download_merit_hydro function``:
+<http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/>`_ documentation or use the rabpro function ``rabpro.utils.coords_to_merit_tile`` to obtain a tile identifier (e.g. n30e150) which you can pass to the ``download_merit_hydro`` function:
 
 .. code-block:: python
-		# To identify a tile 
+	# To identify a tile 
         from rabpro import utils
         coords = (-97.355, 45.8358) # lon, lat
         utils.coords_to_merit_tile(coords)
         # Should output '"n45w100"'
 
 .. code-block:: python
-		# To download the tile
+	# To download the tile
         from rabpro import data_utils
         data_utils.download_merit_dem("n45w100", your_username, your_password)
 
