@@ -49,7 +49,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#data">Data</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#basin-delineation">Basin delineation</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#downloading-hydrobasins">Downloading HydroBASINS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#downloading-merit">Downloading MERIT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#downloading-merit-hydro">Downloading MERIT-Hydro</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#basin-statistics">Basin statistics</a></li>
@@ -131,7 +131,20 @@
 <section id="basin-delineation">
 <h3>Basin delineation<a class="headerlink" href="#basin-delineation" title="Permalink to this headline"></a></h3>
 <p>To use the rabpro utilities for delineating basins, you’ll need to download MERIT tiles (recommended for small basins or high resolution applications) or HydroBASINS (recommended for very large basins or low resolution applications).</p>
-<p>Before initiating either of these downloads, you may want to configure the path where rabpro expects to find this data. Perhaps you want to change the default (set according to the <a class="reference external" href="https://github.com/ActiveState/appdirs">appdirs</a> package) to a particular project folder or disk drive. To do this, set the <code class="docutils literal notranslate"><span class="pre">RABPRO_DATA</span></code> environment variable either in an activate python session with <code class="docutils literal notranslate"><span class="pre">os.environ</span></code> or on a persistent basis through your operating system.</p>
+<p>Before initiating either of these downloads, you may want to configure the path where rabpro expects to find this data. rabpro uses the <a class="reference external" href="https://github.com/ActiveState/appdirs">appdirs</a> package to specify a default data location. You can identify the locations where rabpro expects data to exist:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rabpro</span> <span class="kn">import</span> <span class="n">utils</span>
+<span class="n">datapaths</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_datapaths</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datapaths</span><span class="p">[</span><span class="s1">&#39;root&#39;</span><span class="p">])</span> <span class="c1"># Highest-level directory rabpro is looking for</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datapaths</span><span class="p">[</span><span class="s1">&#39;MERIT_root&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datapaths</span><span class="p">[</span><span class="s1">&#39;HydroBasins_root&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>If you would like to specify a different <code class="docutils literal notranslate"><span class="pre">root</span></code> location, you may set the <code class="docutils literal notranslate"><span class="pre">RABPRO_DATA</span></code> environment variable either in an active python session:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;RABPRO_DATA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;path/to/rabpro/data&#39;</span>
+</pre></div>
+</div>
+<p>You may also set this environment variable more permanently by adding <code class="docutils literal notranslate"><span class="pre">RABPRO_DATA</span></code> to your operating system’s environment variables, but you may run into issues with your python interpreter not reading the OS environment variables correctly.</p>
 <section id="downloading-hydrobasins">
 <h4>Downloading HydroBASINS<a class="headerlink" href="#downloading-hydrobasins" title="Permalink to this headline"></a></h4>
 <p>To download HydroBASINS, execute the following python code:</p>
@@ -140,14 +153,10 @@
 </pre></div>
 </div>
 </section>
-<section id="downloading-merit">
-<h4>Downloading MERIT<a class="headerlink" href="#downloading-merit" title="Permalink to this headline"></a></h4>
-<p>To download MERIT, you’ll need to request a username and password on the MERIT <a class="reference external" href="http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/">homepage</a>.</p>
-<p>Unless you want to download the full global extent, you’ll probably need to identify specific MERIT “tiles” of interest. You can do this following the logic in the <a class="reference external" href="http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/">MERIT Hydro</a> documentation or use the rabpro function <code class="docutils literal notranslate"><span class="pre">rabpro.utils.coords_to_merit_tile</span></code> to obtain a tile identifier (e.g. n30e150) which gets passed to the <code class="docutils literal notranslate"><span class="pre">download_merit_dem</span> <span class="pre">function</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rabpro</span> <span class="kn">import</span> <span class="n">data_utils</span>
-<span class="n">data_utils</span><span class="o">.</span><span class="n">download_merit_dem</span><span class="p">(</span><span class="s2">&quot;n30e150&quot;</span><span class="p">,</span> <span class="n">your_username</span><span class="p">,</span> <span class="n">your_password</span><span class="p">)</span>
-</pre></div>
-</div>
+<section id="downloading-merit-hydro">
+<h4>Downloading MERIT-Hydro<a class="headerlink" href="#downloading-merit-hydro" title="Permalink to this headline"></a></h4>
+<p>To download MERIT-Hydro, you’ll need to request a username and password on the MERIT-Hydro <a class="reference external" href="http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/">homepage</a>.</p>
+<p>Unless you want to download the full global extent, you’ll probably need to identify specific MERIT-Hydro “tiles” of interest. You can do this following the logic in the <a class="reference external" href="http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/">MERIT Hydro</a> documentation or use the rabpro function <code class="docutils literal notranslate"><span class="pre">rabpro.utils.coords_to_merit_tile</span></code> to obtain a tile identifier (e.g. n30e150) which you can pass to the <code class="docutils literal notranslate"><span class="pre">download_merit_hydro</span> <span class="pre">function</span></code>:</p>
 </section>
 </section>
 <section id="basin-statistics">
