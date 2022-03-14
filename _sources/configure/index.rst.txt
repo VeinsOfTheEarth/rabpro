@@ -23,7 +23,7 @@ Before initiating either of these downloads, you may want to configure the path 
         print(datapaths['HydroBasins_root'])
 
 
-If you would like to specify a different ``root`` location, you may set the ``RABPRO_DATA`` environment variable either in an active python session:
+If you would like to specify a different ``root`` location, you may set the ``RABPRO_DATA`` environment variable in an active python session:
 
 .. code-block:: python
 
@@ -44,6 +44,8 @@ To download HydroBASINS, execute the following python code:
 
         from rabpro import data_utils
         data_utils.download_hydrobasins()
+
+If `rabpro` cannot automatically fetch this data, it will print the URL of the zipped HydroBASINS file and the directory to which you should unzip this file.
 
 Downloading MERIT-Hydro
 _______________________

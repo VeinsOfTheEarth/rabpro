@@ -139,7 +139,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">datapaths</span><span class="p">[</span><span class="s1">&#39;HydroBasins_root&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>If you would like to specify a different <code class="docutils literal notranslate"><span class="pre">root</span></code> location, you may set the <code class="docutils literal notranslate"><span class="pre">RABPRO_DATA</span></code> environment variable either in an active python session:</p>
+<p>If you would like to specify a different <code class="docutils literal notranslate"><span class="pre">root</span></code> location, you may set the <code class="docutils literal notranslate"><span class="pre">RABPRO_DATA</span></code> environment variable in an active python session:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;RABPRO_DATA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;path/to/rabpro/data&#39;</span>
 </pre></div>
@@ -152,6 +152,7 @@
 <span class="n">data_utils</span><span class="o">.</span><span class="n">download_hydrobasins</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>If <cite>rabpro</cite> cannot automatically fetch this data, it will print the URL of the zipped HydroBASINS file and the directory to which you should unzip this file.</p>
 </section>
 <section id="downloading-merit-hydro">
 <h4>Downloading MERIT-Hydro<a class="headerlink" href="#downloading-merit-hydro" title="Permalink to this headline"></a></h4>
