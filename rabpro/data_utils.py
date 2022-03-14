@@ -48,6 +48,41 @@ hydrobasins_paths = {
 }
 
 
+def _path_generator_util(datapath, configpath):
+    if datapath is None:
+        try:
+            datapath = Path(os.environ["RABPRO_DATA"])
+        except:
+            datapath = Path(appdirs.user_data_dir("rabpro", "rabpro"))
+
+    if configpath is None:
+        try:
+            configpath = Path(os.environ["RABPRO_CONFIG"])
+        except:
+            configpath = Path(appdirs.user_config_dir("rabpro", "rabpro"))
+
+    return datapath, configpath
+
+
+def create_file_structure(datapath=None, configpath=None):
+
+    datapath, configpath = _path_generator_util(datapath, configpath)
+
+    os.makedirs(configpath, exist_ok=True)
+    for key in merit_hydro_paths:
+        os.makedirs(os.path.join(datapath, merit_hydro_paths[key]), exist_ok=True)
+
+    for key in hydrobasins_paths:
+        os.makedirs(os.path.join(datapath, hydrobasins_paths[key]), exist_ok=True)
+
+
+def delete_file_structure(datapath=None, configpath=None):
+    datapath, configpath = _path_generator_util(datapath, configpath)
+
+    shutil.rmtree(configpath, ignore_errors=True)
+    shutil.rmtree(datapath, ignore_errors=True)
+
+
 def create_datapaths(datapath=None, configpath=None, reset_user_metadata=False):
     datapath, configpath = _path_generator_util(datapath, configpath)
 
@@ -80,41 +115,6 @@ def create_datapaths(datapath=None, configpath=None, reset_user_metadata=False):
                 json.dump(r, f, indent=4)
 
     return datapaths
-
-
-def create_file_structure(datapath=None, configpath=None):
-
-    datapath, configpath = _path_generator_util(datapath, configpath)
-
-    os.makedirs(configpath, exist_ok=True)
-    for key in merit_hydro_paths:
-        os.makedirs(os.path.join(datapath, merit_hydro_paths[key]), exist_ok=True)
-
-    for key in hydrobasins_paths:
-        os.makedirs(os.path.join(datapath, hydrobasins_paths[key]), exist_ok=True)
-
-
-def delete_file_structure(datapath=None, configpath=None):
-    datapath, configpath = _path_generator_util(datapath, configpath)
-
-    shutil.rmtree(configpath, ignore_errors=True)
-    shutil.rmtree(datapath, ignore_errors=True)
-
-
-def _path_generator_util(datapath, configpath):
-    if datapath is None:
-        try:
-            datapath = Path(os.environ["RABPRO_DATA"])
-        except:
-            datapath = Path(appdirs.user_data_dir("rabpro", "rabpro"))
-
-    if configpath is None:
-        try:
-            configpath = Path(os.environ["RABPRO_CONFIG"])
-        except:
-            configpath = Path(appdirs.user_config_dir("rabpro", "rabpro"))
-
-    return datapath, configpath
 
 
 def does_merit_exist(datapaths):
@@ -192,7 +192,12 @@ def download_hydrobasins(datapath=None, proxy=None):
 
     if datapath is None:
         datapath, _ = _path_generator_util(None, None)
+    else: # Ensure the user-supplied datapath exists, else create
+        if os.path.isdir(datapath) is False:
+            os.path.mkdir(datapath)
+
     datapath = Path(datapath)
+    
     filename = datapath / 'HydroBasins.zip'
     if os.path.isfile(filename):
         os.remove(filename)
@@ -202,7 +207,8 @@ def download_hydrobasins(datapath=None, proxy=None):
     # Check that filesize matches expected
     fsize = os.path.getsize(filename)
     if fsize != 562761977:
-        print('HydroBasins zip file was not successfully downloaded. Check proxy?')
+        hb_url = r'https://drive.google.com/file/d/1NLJUEWhJ9A4y47rcGYv_jWF1Tx2nLEO9/view?usp=sharing'
+        print('HydroBasins zip file was not successfully downloaded. Check proxy? You may also manually download the HydroBasins file from {} and unzip it to {}'.format(hb_url, str(datapath)))
         os.remove(filename)
         return
     
@@ -238,6 +244,9 @@ def download_merit_hydro(merit_tile, username, password, datapath=None, proxy=No
 
     if datapath is None:
         datapath = Path(create_datapaths()['root'])
+    else: # Ensure the user-supplied datapath exists, else create
+        if os.path.isdir(datapath) is False:
+            os.path.mkdir(datapath)
 
     baseurl = "http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/"
 
@@ -269,40 +278,6 @@ def download_merit_hydro(merit_tile, username, password, datapath=None, proxy=No
         
     # Rebuild virtual rasters to include new geotiffs
     _ = ru.get_datapaths(rebuild_vrts=True, quiet=False)
-    
-    return
-
-
-def download_merit_dem(merit_tile, username, password, datapath=None, proxy=None):
-    """This will download MERIT-DEM tiles, but is not needed to run rabpro
-    functions. MERIT-Hydro contains a "hydrologically-adjusted" DEM that rabpro
-    uses for elevations.
-    """
- 
-    if datapath is None:
-        datapath = Path(create_datapaths()['root'])
-   
-    baseurl = "http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/"
-    filename = f"dem_tif_{merit_tile}.tar"
-
-    session = requests.Session()
-    if proxy is not None:
-        session.proxies.update({'https':proxy})
-    else:
-        session.proxies = {}
-
-    response = session.get(baseurl)
-
-    soup = BeautifulSoup(response.text, "html.parser")
-    url = [
-        x["href"][2:] for x in soup.findAll("a", text=re.compile(filename), href=True)
-    ][0]
-    
-    url = baseurl + url
-    filename = os.path.join(datapath, f"MERIT_Hydro{os.sep}MERIT103", filename)
-    os.makedirs(os.path.dirname(filename), exist_ok=True)
-
-    download_file(url, filename, username, password, proxy)
     
     return
 
@@ -433,3 +408,37 @@ def download_file(url, filename, username, password, proxy=None):
     os.remove(filename)
     
     return
+
+
+# def download_merit_dem(merit_tile, username, password, datapath=None, proxy=None):
+#     """This will download MERIT-DEM tiles, but is not needed to run rabpro
+#     functions. MERIT-Hydro contains a "hydrologically-adjusted" DEM that rabpro
+#     uses for elevations.
+#     """
+ 
+#     if datapath is None:
+#         datapath = Path(create_datapaths()['root'])
+   
+#     baseurl = "http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/"
+#     filename = f"dem_tif_{merit_tile}.tar"
+
+#     session = requests.Session()
+#     if proxy is not None:
+#         session.proxies.update({'https':proxy})
+#     else:
+#         session.proxies = {}
+
+#     response = session.get(baseurl)
+
+#     soup = BeautifulSoup(response.text, "html.parser")
+#     url = [
+#         x["href"][2:] for x in soup.findAll("a", text=re.compile(filename), href=True)
+#     ][0]
+    
+#     url = baseurl + url
+#     filename = os.path.join(datapath, f"MERIT_Hydro{os.sep}MERIT103", filename)
+#     os.makedirs(os.path.dirname(filename), exist_ok=True)
+
+#     download_file(url, filename, username, password, proxy)
+    
+#     return

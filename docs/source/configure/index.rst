@@ -12,7 +12,28 @@ Basin delineation
 
 To use the rabpro utilities for delineating basins, you'll need to download MERIT tiles (recommended for small basins or high resolution applications) or HydroBASINS (recommended for very large basins or low resolution applications).
 
-Before initiating either of these downloads, you may want to configure the path where rabpro expects to find this data. Perhaps you want to change the default (set according to the `appdirs <https://github.com/ActiveState/appdirs>`_ package) to a particular project folder or disk drive. To do this, set the ``RABPRO_DATA`` environment variable either in an activate python session with ``os.environ`` or on a persistent basis through your operating system.
+Before initiating either of these downloads, you may want to configure the path where rabpro expects to find this data. rabpro uses the `appdirs <https://github.com/ActiveState/appdirs>`_ package to specify a default data location. You can identify the locations where rabpro expects data to exist:
+
+.. code-block:: python
+
+        from rabpro import utils
+        datapaths = utils.get_datapaths()
+        print(datapaths['root']) # Highest-level directory rabpro is looking for
+        print(datapaths['MERIT_root']) 
+        print(datapaths['HydroBasins_root'])
+
+
+If you would like to specify a different ``root`` location, you may set the ``RABPRO_DATA`` environment variable either in an active python session:
+
+.. code-block:: python
+
+        import os
+        os.environ['RABPRO_DATA'] = 'path/to/rabpro/data'
+
+
+You may also set this environment variable more permanently by adding ``RABPRO_DATA`` to your operating system's environment variables, but you may run into issues with your python interpreter not reading the OS environment variables correctly.
+
+
 
 Downloading HydroBASINS
 _______________________
@@ -24,18 +45,25 @@ To download HydroBASINS, execute the following python code:
         from rabpro import data_utils
         data_utils.download_hydrobasins()
 
-Downloading MERIT
-_________________
+Downloading MERIT-Hydro
+_______________________
 
-To download MERIT, you'll need to request a username and password on the MERIT `homepage <http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/>`_.
+To download MERIT-Hydro, you'll need to request a username and password on the MERIT-Hydro `homepage <http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/>`_.
 
-Unless you want to download the full global extent, you'll probably need to identify specific MERIT "tiles" of interest. You can do this following the logic in the `MERIT Hydro
-<http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/>`_ documentation or use the rabpro function ``rabpro.utils.coords_to_merit_tile`` to obtain a tile identifier (e.g. n30e150) which gets passed to the ``download_merit_dem function``:
+Unless you want to download the full global extent, you'll probably need to identify specific MERIT-Hydro "tiles" of interest. You can do this following the logic in the `MERIT Hydro
+<http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/>`_ documentation or use the rabpro function ``rabpro.utils.coords_to_merit_tile`` to obtain a tile identifier (e.g. n30e150) which you can pass to the ``download_merit_hydro function``:
 
 .. code-block:: python
+		# To identify a tile 
+        from rabpro import utils
+        coords = (-97.355, 45.8358) # lon, lat
+        utils.coords_to_merit_tile(coords)
+        # Should output '"n45w100"'
 
+.. code-block:: python
+		# To download the tile
         from rabpro import data_utils
-        data_utils.download_merit_dem("n30e150", your_username, your_password)
+        data_utils.download_merit_dem("n45w100", your_username, your_password)
 
 Basin statistics
 ~~~~~~~~~~~~~~~~~~~

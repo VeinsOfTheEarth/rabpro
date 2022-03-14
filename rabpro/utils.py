@@ -1109,7 +1109,8 @@ def format_freqhist(feature, name_category):
 
 
 def coords_to_merit_tile(lon, lat):
-    """Identify MERIT "tiles" of interest. See http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/
+    """Identify MERIT-Hydro "tiles" of interest. See 
+    http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/
 
     Parameters
     ----------
