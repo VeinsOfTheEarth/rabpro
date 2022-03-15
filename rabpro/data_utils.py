@@ -17,6 +17,7 @@ from pathlib import Path
 import appdirs
 import requests
 import tqdm
+import gdown
 from bs4 import BeautifulSoup
 
 from rabpro import utils as ru
@@ -34,6 +35,8 @@ CATALOG_URL = "https://raw.githubusercontent.com/VeinsOfTheEarth/rabpro/main/Dat
 CATALOG_URL_USER = "https://raw.githubusercontent.com/VeinsOfTheEarth/rabpro/main/Data/user_gee_datasets.json"
 
 _GEE_CACHE_DAYS = 1
+
+HYDROBASINS_ZIP_ID = "1NLJUEWhJ9A4y47rcGYv_jWF1Tx2nLEO9"
 
 merit_hydro_paths = {
     "elv": f"MERIT_Hydro{os.sep}MERIT_ELEV_HP",
@@ -168,6 +171,17 @@ def download_gee_metadata(datapath=None):
             print(
                 f"{CATALOG_URL} download error. Place manually into {gee_metadata_path}"
             )
+            
+            
+def _download_file_from_google_drive(id_file, destination, proxy=None):
+    """
+    Self-explanatory.
+    """
+    
+    url = 'https://drive.google.com/uc?id={}'.format(id_file)
+    gdown.download(url, output=str(destination), proxy=proxy)
+    
+    return
 
 
 def download_hydrobasins(datapath=None, proxy=None):
@@ -188,7 +202,6 @@ def download_hydrobasins(datapath=None, proxy=None):
         from rabpro import data_utils
         data_utils.hydrobasins()    
     """
-    _HYDROBASINS_ZIP_ID = "1NLJUEWhJ9A4y47rcGYv_jWF1Tx2nLEO9"
 
     if datapath is None:
         datapath, _ = _path_generator_util(None, None)
@@ -202,7 +215,7 @@ def download_hydrobasins(datapath=None, proxy=None):
     if os.path.isfile(filename):
         os.remove(filename)
     print('Downloading HydroBasins zip file (562 MB)...')
-    _download_file_from_google_drive(_HYDROBASINS_ZIP_ID, filename, proxy=proxy)
+    _download_file_from_google_drive(HYDROBASINS_ZIP_ID, filename, proxy=proxy)
     
     # Check that filesize matches expected
     fsize = os.path.getsize(filename)
@@ -213,14 +226,14 @@ def download_hydrobasins(datapath=None, proxy=None):
         return
     
     # Unzip the file
-    print('Unzipping HydroBasins zip file...')
+    print('Unzipping HydroBasins.zip...')
     path_hb_dir = datapath / 'HydroBasins'
     if os.path.isdir(path_hb_dir):
         shutil.rmtree(path_hb_dir)
     os.mkdir(path_hb_dir)
     with zipfile.ZipFile(filename, 'r') as zip_ref:
         zip_ref.extractall(datapath)
-    
+
     # Delete zip file
     os.remove(filename)
     print('Done.')
@@ -322,47 +335,6 @@ def download_tar_file(url, filename, username, password, proxy=None, clean=True)
     if not clean:
         os.rmdir(tar_dir)
         os.remove(filename)
-
-
-def _download_file_from_google_drive(id_file, destination, proxy=None):
-    """
-    From https://stackoverflow.com/a/39225272/8195528.
-    """
-
-    def get_confirm_token(response):
-        for key, value in response.cookies.items():
-            if key.startswith('download_warning'):
-                return value
-            
-        return None
-    
-    def save_response_content(response, destination):
-        CHUNK_SIZE = 32768
-    
-        with open(destination, "wb") as f:
-            for chunk in response.iter_content(CHUNK_SIZE):
-                if chunk: # filter out keep-alive new chunks
-                    f.write(chunk)
-                    
-    URL = "https://docs.google.com/uc?export=download"
-
-    session = requests.Session()
-    
-    if proxy is not None:
-        session.proxies.update({'https':proxy})
-    else:
-        session.proxies = {}
-
-    response = session.get(URL, params = {'id':id_file}, stream = True)
-    token = get_confirm_token(response)
-
-    if token:
-        params = { 'id' : id_file, 'confirm' : token }
-        response = session.get(URL, params = params, stream = True)
-            
-    save_response_content(response, destination) 
-    
-    return
     
     
 def download_file(url, filename, username, password, proxy=None):
@@ -442,3 +414,44 @@ def download_file(url, filename, username, password, proxy=None):
 #     download_file(url, filename, username, password, proxy)
     
 #     return
+
+#def _download_file_from_google_drive(id_file, destination, proxy=None):
+#     """
+#     From https://stackoverflow.com/a/39225272/8195528.
+#     """
+
+#     def get_confirm_token(response):
+#         for key, value in response.cookies.items():
+#             if key.startswith('download_warning'):
+#                 return value
+            
+#         return None
+    
+#     def save_response_content(response, destination):
+#         CHUNK_SIZE = 32768
+    
+#         with open(destination, "wb") as f:
+#             for chunk in response.iter_content(CHUNK_SIZE):
+#                 if chunk: # filter out keep-alive new chunks
+#                     f.write(chunk)
+                    
+#     URL = "https://docs.google.com/uc?export=download"
+
+#     session = requests.Session()
+    
+#     if proxy is not None:
+#         session.proxies.update({'https':proxy})
+#     else:
+#         session.proxies = {}
+
+#     response = session.get(URL, params = {'id':id_file}, stream = True)
+#     token = get_confirm_token(response)
+
+#     if token:
+#         params = { 'id' : id_file, 'confirm' : token }
+#         response = session.get(URL, params = params, stream = True)
+            
+#     save_response_content(response, destination) 
+    
+#     return
+
