@@ -50,7 +50,7 @@ def main(gdf, dist_to_walk_km, verbose=False, nrows=50, ncols=50):
     """
 
     # Get data locked and loaded
-    dps = ru.get_datapaths(rebuild_vrts=False)
+    dps = ru.get_datapaths()
     hdem_obj = gdal.Open(dps["DEM_elev_hp"])
     da_obj = gdal.Open(dps["DEM_uda"])
     fdr_obj = gdal.Open(dps["DEM_fdr"])

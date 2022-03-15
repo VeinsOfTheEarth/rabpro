@@ -106,7 +106,7 @@ class profiler:
         )
 
         # Ensure data structure exists
-        self.datapaths = ru.get_datapaths(quiet=True)
+        self.datapaths = ru.get_datapaths()
 
         # Flags for data availability
         self.available_merit = False
@@ -122,6 +122,11 @@ class profiler:
                     + "via rabpro.data_utils.download_merit_hydro()."
                 ).format(n_layers_geotiffs)
             )
+        # Try to build virtual rasters if not already built
+        if n_vrts < 4:
+            ru.build_virtual_rasters(self.datapaths, skip_if_exists=True, verbose=verbose)
+            n_layers_geotiffs, n_vrts = du.does_merit_exist(self.datapaths)
+
         if n_vrts == 4:
             self.available_merit = True
 
@@ -134,6 +139,7 @@ class profiler:
         else:
             self.available_hb = True
 
+
     def _coordinates_to_gdf(self, coords):
         """
         Converts a list of coordinates to a `GeoDataFrame`. Coordinates should
@@ -145,6 +151,7 @@ class profiler:
         gdf.crs = CRS.from_epsg(4326)
 
         return gdf
+    
 
     def _csv_to_gdf(self, csvpath):
         """
@@ -229,7 +236,7 @@ class profiler:
 
         elif self.method == "merit":
             if search_radius is not None:
-                dps = ru.get_datapaths(rebuild_vrts=False)
+                dps = ru.get_datapaths()
                 ds_lonlat = np.array(
                     [
                         self.gdf.geometry.values[-1].coords.xy[0][0],

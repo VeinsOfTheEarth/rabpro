@@ -48,7 +48,7 @@ def main_merit(gdf, da, nrows=51, ncols=51, map_only=False, verbose=False):
     mapped = {"successful": False}
 
     # Boot up the data
-    dps = ru.get_datapaths(rebuild_vrts=False)
+    dps = ru.get_datapaths()
     da_obj = gdal.Open(dps["DEM_uda"])
     fdr_obj = gdal.Open(dps["DEM_fdr"])
 
@@ -163,7 +163,7 @@ def main_hb(gdf, verbose=False):
         rpo = rabpro.profiler(coords, name='basic_test')
         test = rabpro.basins.main_hb(rpo.gdf)
     """
-    datapaths = ru.get_datapaths(rebuild_vrts=False)
+    datapaths = ru.get_datapaths()
     mapped = {}
     mapped["successful"] = False
 

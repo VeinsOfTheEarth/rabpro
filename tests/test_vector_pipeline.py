@@ -56,7 +56,8 @@ def test_delineate_basin():
 
 
 def test_elev_profile():
-    dps = ru.get_datapaths(rebuild_vrts=True, force=True, quiet=False)
+    dps = ru.get_datapaths(force=True)
+    ru.build_virtual_rasters(dps)
     csv_path = r"tests/data/test_coords.csv"
 
     rpo = rabpro.profiler(csv_path)

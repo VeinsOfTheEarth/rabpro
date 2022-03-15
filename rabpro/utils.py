@@ -52,26 +52,26 @@ def envvars_rabpro():
     return res_dict
 
 
-def get_datapaths(
-    datapath=None, configpath=None, force=False, rebuild_vrts=False, **kwargs
-):
+def get_datapaths(root_path=None, config_path=None, force=False):
     """
     Returns a dictionary of paths to all data that rabpro uses. Also builds
-    virtual rasters for MERIT data.
+    virtual rasters for MERIT data and downloads latest version of GEE catalog.
 
     Parameters
     ----------
-    datapath: string, optional
-        Path to rabpro data folder. Will read from an environment variable 
-        "RABPRO_DATA". If not set, uses appdirs to create a local data
-        directory. This path is the parent directory for the MERIT and
-        HydroBasins data directories.
-    configpath: string, optional
+    root_path: string, optional
+        Path to rabpro Data folder that contains the HydroBASINS, MERIT-Hydro,
+        and/or gee catalog jsons. Will read from an environment variable 
+        "RABPRO_DATA". If this variable is not set, uses appdirs to create a 
+        local data directory. This path is the parent directory for the MERIT 
+        and HydroBasins data directories.
+    config_path: string, optional
         Path to rabpro config folder. Will read from an environment variable 
         "RABPRO_CONFIG". If not set, uses appdirs to create local directory.
     force: boolean, optional
         Set True to override datapath caching. Otherwise only fetched once per py session.
-    rebuild_vrts: boolean, optional        
+    rebuild_vrts: boolean, optional 
+        If True, will rebuild MERIT-Hydro VRTs on all available tiles.       
     kwargs:
         Arguments passed to build_vrt.
 
@@ -92,24 +92,33 @@ def get_datapaths(
     # This chunk makes sure that folder creation, data downloads, etc. only
     # happen once per py session
     global _DATAPATHS
-    if _DATAPATHS is not None and not force:
-        return _DATAPATHS
-
-    # Ensure data directories are established
-    du.create_file_structure(datapath=datapath, configpath=configpath)
-    datapaths = du.create_datapaths(datapath=datapath, configpath=configpath)
+    if _DATAPATHS is None or force is True:
+        # Ensure data directories are established
+        du.create_file_structure(datapath=root_path, configpath=config_path)
+        datapaths = du.create_datapaths(datapath=root_path, configpath=config_path)
+        _DATAPATHS = datapaths
+    
     if has_internet():
         du.download_gee_metadata()
 
-    if rebuild_vrts:
-        build_virtual_rasters(datapaths, **kwargs)
-
-    _DATAPATHS = datapaths
-
-    return datapaths
+    return _DATAPATHS
 
 
-def build_virtual_rasters(datapaths, quiet=True, **kwargs):
+def build_virtual_rasters(datapaths, skip_if_exists=False, verbose=True):
+    """
+    Builds virtual rasters on the four MERIT-Hydro tilesets.
+    
+    Parameters
+    ----------
+    datapaths: dict
+        Contains the paths to the data. Generate with get_datapaths().
+    skip_if_exists: bool, optional
+        If True, will not rebuild the virtual raster if one already exists.
+        The default is False.
+    verbose: bool, optional
+        If True, will provide updates as virtual rasters are built.
+
+    """
 
     msg_dict = {
         "DEM_fdr": "Building flow direction virtual raster DEM from MERIT tiles...",
@@ -125,28 +134,27 @@ def build_virtual_rasters(datapaths, quiet=True, **kwargs):
         "DEM_width": "width (WTH)",
     }
 
-    missing_merit = False
+    missing_merit = []
     for key in msg_dict:
         # Check that MERIT data are available before trying to build VRT
         geotiffs = os.listdir(os.path.dirname(datapaths[key]))
         if len(geotiffs) == 0:
-            if not quiet:
+            if verbose:
                 print("No MERIT data found for {}.".format(missing_dict[key]))
-            missing_merit = True
+            missing_merit.append(key)
             continue
         else:
-            if not quiet:
+            if verbose:
                 print(msg_dict[key])
             build_vrt(
                 os.path.dirname(os.path.realpath(datapaths[key])),
                 outputfile=datapaths[key],
-                quiet=quiet,
-                **kwargs,
+                quiet=~verbose,
             )
 
-    if missing_merit is True:
+    if len(missing_merit) > 0:
         print(
-            "One or more MERIT layers have no data. Use rabro.data_utils.download_merit_hydro() to fetch a MERIT tile."
+            "Virtual rasters could not be built for the following MERIT-Hydro tiles because no data were available: {}. Use rabro.data_utils.download_merit_hydro() to fetch a MERIT tile.".format(missing_merit)
         )
 
     return

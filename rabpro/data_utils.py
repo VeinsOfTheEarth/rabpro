@@ -242,25 +242,32 @@ def download_hydrobasins(datapath=None, proxy=None):
     return
 
 
-def download_merit_hydro(merit_tile, username, password, datapath=None, proxy=None):
+def download_merit_hydro(merit_tile, username, password, proxy=None):
     """Downloads the four required rabpro layers for a given MERIT-Hydro
     30 degree x 30 degree tile. Each tile contains 5 degree x 5 degree geotiffs.
     Data are downloaded and untarred into the location and filestructure rabpro
     expects. Virtual rasters are rebuilt after downloading this data.
+    
+    Parameters
+    ----------
+    merit_tile : str
+        The MERIT-Hydro tile to fetch. e.g. "n45w100"
+    username : str
+        The MERIT-Hydro username (must request from MERIT-Hydro developers).
+    password : str
+        The MERIT-Hydro password (must request from MERIT-Hydro developers).
+    proxy : str, optional
+        A proxy to pass to requests Session.
+
     """
     
+    datapaths = ru.get_datapaths()
     merit_hydro_paths = {
-        "elv": f"MERIT_Hydro{os.sep}MERIT_ELEV_HP",
-        "dir": f"MERIT_Hydro{os.sep}MERIT_FDR",
-        "upa": f"MERIT_Hydro{os.sep}MERIT_UDA",
-        "wth": f"MERIT_Hydro{os.sep}MERIT_WTH",
+        "elv": "MERIT_ELEV_HP",
+        "dir": "MERIT_FDR",
+        "upa": "MERIT_UDA",
+        "wth": "MERIT_WTH",
     }
-
-    if datapath is None:
-        datapath = Path(create_datapaths()['root'])
-    else: # Ensure the user-supplied datapath exists, else create
-        if os.path.isdir(datapath) is False:
-            os.path.mkdir(datapath)
 
     baseurl = "http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/"
 
@@ -285,13 +292,13 @@ def download_merit_hydro(merit_tile, username, password, datapath=None, proxy=No
         if filename[:3] not in merit_hydro_paths:
             continue
 
-        filename = os.path.join(datapath, merit_hydro_paths[filename[:3]], filename)
+        filename = os.path.join(datapaths['MERIT_root'], merit_hydro_paths[filename[:3]], filename)
         os.makedirs(os.path.dirname(filename), exist_ok=True)
 
         download_file(url, filename, username, password, proxy)
         
     # Rebuild virtual rasters to include new geotiffs
-    _ = ru.get_datapaths(rebuild_vrts=True, quiet=False)
+    ru.build_virtual_rasters(datapaths, skip_if_exists=False, verbose=True)
     
     return
 
