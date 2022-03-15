@@ -53,6 +53,7 @@ def parse_url(url, deprecated, verbose):
                 continue
     
             # Ignoring anything that's not an Image or ImageCollection
+            # i.e. skipping featureCollections
             if gee_type == "image_collection":
                 img = ee.ImageCollection(gee_id)
             elif gee_type == "image":
@@ -117,7 +118,8 @@ def parse_url(url, deprecated, verbose):
                 "bands": gee_bands,
             }
             assets.append(asset)
-
+        return assets
+    
     except Exception as e:
         print("Error:", e, gee_id)
         return None
