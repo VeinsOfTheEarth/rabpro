@@ -179,19 +179,20 @@ def _download_file_from_google_drive(id_file, destination, proxy=None):
     """
     
     url = 'https://drive.google.com/uc?id={}'.format(id_file)
-    gdown.download(url, output=str(destination), proxy=proxy)
+    gdown.download(url, output=destination, proxy=proxy)
     
     return
 
 
 def download_hydrobasins(datapath=None, proxy=None):
-    """Download HydroBASINS
+    """Downloads HydroBASINS to the proper location, then unzips and deletes
+    zip file.
 
     Parameters
     ----------
     datapath : str or Path, optional
         Directory to download and unzip HydroBasins data into; does not include
-        filename. By default None
+        filename. If None, will use the rabpro default.
     proxy : str, optional
         Pass a proxy to requests.get, by default None
 
@@ -211,18 +212,18 @@ def download_hydrobasins(datapath=None, proxy=None):
 
     datapath = Path(datapath)
     
-    filename = datapath / 'HydroBasins.zip'
-    if os.path.isfile(filename):
-        os.remove(filename)
+    filepath = datapath / 'HydroBasins.zip'
+    if os.path.isfile(filepath):
+        os.remove(filepath)
     print('Downloading HydroBasins zip file (562 MB)...')
-    _download_file_from_google_drive(HYDROBASINS_ZIP_ID, filename, proxy=proxy)
+    _download_file_from_google_drive(HYDROBASINS_ZIP_ID, str(filepath), proxy=proxy)
     
     # Check that filesize matches expected
-    fsize = os.path.getsize(filename)
+    fsize = os.path.getsize(filepath)
     if fsize != 562761977:
         hb_url = r'https://drive.google.com/file/d/1NLJUEWhJ9A4y47rcGYv_jWF1Tx2nLEO9/view?usp=sharing'
         print('HydroBasins zip file was not successfully downloaded. Check proxy? You may also manually download the HydroBasins file from {} and unzip it to {}'.format(hb_url, str(datapath)))
-        os.remove(filename)
+        os.remove(filepath)
         return
     
     # Unzip the file
@@ -231,11 +232,11 @@ def download_hydrobasins(datapath=None, proxy=None):
     if os.path.isdir(path_hb_dir):
         shutil.rmtree(path_hb_dir)
     os.mkdir(path_hb_dir)
-    with zipfile.ZipFile(filename, 'r') as zip_ref:
+    with zipfile.ZipFile(filepath, 'r') as zip_ref:
         zip_ref.extractall(datapath)
 
     # Delete zip file
-    os.remove(filename)
+    os.remove(filepath)
     print('Done.')
     
     return

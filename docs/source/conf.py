@@ -38,11 +38,12 @@ sys.modules["shapely.geometry"] = Mock()
 sys.modules["shapely.ops"] = Mock()
 sys.modules["tqdm"] = Mock()
 sys.modules["skimage"] = Mock()
+sys.modules["gdown"] = Mock()
 
 # -- Project information -----------------------------------------------------
 
 project = "rabpro"
-copyright = "2021, T. Zussman, J. Schwenk, J. Stachelek, & J. Rowland"
+copyright = "2021, J. Schwenk, J. Stachelek, T. Zussman, & J. Rowland"
 author = "T. Zussman, J. Schwenk, J. Stachelek, & J. Rowland"
 
 
@@ -87,6 +88,7 @@ autodoc_mock_imports = [
     "shapely",
     "skimage",
     "tqdm",
+    "gdown",
 ]
 
 
