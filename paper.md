@@ -16,6 +16,9 @@ authors:
   - name: Jemma Stachelek
     orcid: 0000-0002-5924-2464
     affiliation: 1
+  - name: Joel C. Rowland
+    orcid: 0000-0001-6308-8976
+    affiliation: 1
 affiliations:
  - name: Los Alamos National Laboratory, Division of Earth and Environmental Sciences
    index: 1
