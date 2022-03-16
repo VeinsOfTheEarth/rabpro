@@ -99,7 +99,7 @@ def get_datapaths(root_path=None, config_path=None, force=False):
     return _DATAPATHS
 
 
-def build_virtual_rasters(datapaths, skip_if_exists=False, verbose=True):
+def build_virtual_rasters(datapaths, skip_if_exists=False, verbose=True, **kwargs):
     """
     Builds virtual rasters on the four MERIT-Hydro tilesets.
     
@@ -112,7 +112,16 @@ def build_virtual_rasters(datapaths, skip_if_exists=False, verbose=True):
         The default is False.
     verbose: bool, optional
         If True, will provide updates as virtual rasters are built.
+    **kwargs
+        Arguments passed to the build_vrt function.
 
+    Examples
+    --------
+    .. code-block:: python
+
+        from rabpro import utils
+        d_paths = utils.get_datapaths()
+        utils.build_virtual_rasters(d_paths, extents=[-180.00041666666667, 179.99958333333913, 84.99958333333333, -60.000416666669], verbose=False)
     """
 
     msg_dict = {
@@ -145,6 +154,7 @@ def build_virtual_rasters(datapaths, skip_if_exists=False, verbose=True):
                 os.path.dirname(os.path.realpath(datapaths[key])),
                 outputfile=datapaths[key],
                 quiet=~verbose,
+                **kwargs,
             )
 
     if len(missing_merit) > 0:
@@ -267,13 +277,6 @@ def build_vrt(
         Unsupported file type passed in 'ftype'
     RuntimeError
         No files found to build raster or raster build fails
-
-    Examples
-    --------
-    .. code-block:: python
-
-        from rabpro import utils        
-        utils.build_vrt(extents=[-180.00041666666667, 179.99958333333913, 84.99958333333333, -60.000416666669], quiet=True)
     """
     base, folder, file, ext = _parse_path(tilespath)
 
