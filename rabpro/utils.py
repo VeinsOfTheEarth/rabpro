@@ -70,10 +70,6 @@ def get_datapaths(root_path=None, config_path=None, force=False):
         "RABPRO_CONFIG". If not set, uses appdirs to create local directory.
     force: boolean, optional
         Set True to override datapath caching. Otherwise only fetched once per py session.
-    rebuild_vrts: boolean, optional 
-        If True, will rebuild MERIT-Hydro VRTs on all available tiles.       
-    kwargs:
-        Arguments passed to build_vrt.
 
     Returns
     -------
@@ -85,8 +81,7 @@ def get_datapaths(root_path=None, config_path=None, force=False):
     .. code-block:: python
 
         from rabpro import utils
-        utils.get_datapaths()
-        utils.get_datapaths(extents=[-180.00041666666667, 179.99958333333913, 84.99958333333333, -60.000416666669], quiet=True)
+        utils.get_datapaths()        
     """
 
     # This chunk makes sure that folder creation, data downloads, etc. only
@@ -97,7 +92,7 @@ def get_datapaths(root_path=None, config_path=None, force=False):
         du.create_file_structure(datapath=root_path, configpath=config_path)
         datapaths = du.create_datapaths(datapath=root_path, configpath=config_path)
         _DATAPATHS = datapaths
-    
+
     if has_internet():
         du.download_gee_metadata()
 
@@ -154,7 +149,9 @@ def build_virtual_rasters(datapaths, skip_if_exists=False, verbose=True):
 
     if len(missing_merit) > 0:
         print(
-            "Virtual rasters could not be built for the following MERIT-Hydro tiles because no data were available: {}. Use rabro.data_utils.download_merit_hydro() to fetch a MERIT tile.".format(missing_merit)
+            "Virtual rasters could not be built for the following MERIT-Hydro tiles because no data were available: {}. Use rabro.data_utils.download_merit_hydro() to fetch a MERIT tile.".format(
+                missing_merit
+            )
         )
 
     return
@@ -270,6 +267,13 @@ def build_vrt(
         Unsupported file type passed in 'ftype'
     RuntimeError
         No files found to build raster or raster build fails
+
+    Examples
+    --------
+    .. code-block:: python
+
+        from rabpro import utils        
+        utils.build_vrt(extents=[-180.00041666666667, 179.99958333333913, 84.99958333333333, -60.000416666669], quiet=True)
     """
     base, folder, file, ext = _parse_path(tilespath)
 
