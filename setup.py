@@ -8,7 +8,7 @@ setuptools.setup(
     name="rabpro",
     version="0.4.0",
     author="rabpro contributors",
-    author_email="author@example.com",
+    author_email="rabpro@lanl.gov",
     description="Package to delineate basins and compute statistics.",
     long_description=long_description,
     long_description_content_type="text/markdown",
