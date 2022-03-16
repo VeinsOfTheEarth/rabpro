@@ -466,7 +466,7 @@ fac_obj.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.merit_utils.neighborhood_vals_from_raster">
-<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vrt_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='140408258215312'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vrt_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='140204343475792'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
 <dd><p>Queries a (virtual) raster object to return an array of neighbors
 surrounding a given point specified by cr (column, row). A shape can be
 provided to return as large of a neighborhood as desired; both dimensions
@@ -919,7 +919,7 @@ in the polygon.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.utils.build_virtual_rasters">
-<span class="sig-prename descclassname"><span class="pre">rabpro.utils.</span></span><span class="sig-name descname"><span class="pre">build_virtual_rasters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datapaths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_if_exists</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.utils.build_virtual_rasters" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rabpro.utils.</span></span><span class="sig-name descname"><span class="pre">build_virtual_rasters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datapaths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_if_exists</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.utils.build_virtual_rasters" title="Permalink to this definition"></a></dt>
 <dd><p>Builds virtual rasters on the four MERIT-Hydro tilesets.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -931,9 +931,17 @@ The default is False.</p>
 </dd>
 <dt><strong>verbose: bool, optional</strong></dt><dd><p>If True, will provide updates as virtual rasters are built.</p>
 </dd>
+<dt><strong>**kwargs</strong></dt><dd><p>Arguments passed to the build_vrt function.</p>
+</dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rabpro</span> <span class="kn">import</span> <span class="n">utils</span>
+<span class="n">d_paths</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_datapaths</span><span class="p">()</span>
+<span class="n">utils</span><span class="o">.</span><span class="n">build_virtual_rasters</span><span class="p">(</span><span class="n">d_paths</span><span class="p">,</span> <span class="n">extents</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">180.00041666666667</span><span class="p">,</span> <span class="mf">179.99958333333913</span><span class="p">,</span> <span class="mf">84.99958333333333</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.000416666669</span><span class="p">],</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -994,11 +1002,6 @@ by default “tif”</p>
 </dl>
 </dd>
 </dl>
-<p class="rubric">Examples</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rabpro</span> <span class="kn">import</span> <span class="n">utils</span>        
-<span class="n">utils</span><span class="o">.</span><span class="n">build_vrt</span><span class="p">(</span><span class="n">extents</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">180.00041666666667</span><span class="p">,</span> <span class="mf">179.99958333333913</span><span class="p">,</span> <span class="mf">84.99958333333333</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.000416666669</span><span class="p">],</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
 </dd></dl>
 
 <dl class="py function">
