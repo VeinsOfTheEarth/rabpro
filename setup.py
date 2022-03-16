@@ -6,8 +6,8 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="rabpro",
-    version="0.3.1",
-    author="Example Author",
+    version="0.4.0",
+    author="rabpro contributors",
     author_email="author@example.com",
     description="Package to delineate basins and compute statistics.",
     long_description=long_description,
