@@ -23,8 +23,7 @@ from rabpro import data_utils as du
 class profiler:
     """The profiler class organizes data and methods for using rabpro. This is
     a parent class to the centerline and point classes which inherit profiler
-    methods and attributes. You should use `rabpro.profiler` rather than
-    `rabpro.core.profiler`.
+    methods and attributes.
 
     Attributes
     ----------
@@ -43,6 +42,8 @@ class profiler:
         Name of location/river, used for filename saving purposes only.
     verbose : bool
         If True, will print updates as processing progresses.
+    update_gee_metadata : bool
+        If True, will attempt to download the latest GEE Data Catalog metadata.
 
     Methods
     -------
@@ -59,7 +60,7 @@ class profiler:
 
     def __init__(
         self, coords, da=None, name="unnamed", path_results=None, verbose=True,
-    ):
+        update_gee_metadata=True):
 
         self.name = name
         self.verbose = verbose
@@ -106,7 +107,7 @@ class profiler:
         )
 
         # Ensure data structure exists
-        self.datapaths = ru.get_datapaths()
+        self.datapaths = ru.get_datapaths(update_gee_metadata=update_gee_metadata)
 
         # Flags for data availability
         self.available_merit = False

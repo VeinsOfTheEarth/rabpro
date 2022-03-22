@@ -52,7 +52,7 @@ def envvars_rabpro():
     return res_dict
 
 
-def get_datapaths(root_path=None, config_path=None, force=False):
+def get_datapaths(root_path=None, config_path=None, force=False, update_gee_metadata=False):
     """
     Returns a dictionary of paths to all data that rabpro uses. Also builds
     virtual rasters for MERIT data and downloads latest version of GEE catalog.
@@ -70,6 +70,8 @@ def get_datapaths(root_path=None, config_path=None, force=False):
         "RABPRO_CONFIG". If not set, uses appdirs to create local directory.
     force: boolean, optional
         Set True to override datapath caching. Otherwise only fetched once per py session.
+    update_gee_metadata: boolean, optional
+        If True, will attempt to download the latest GEE dataset metadata.
 
     Returns
     -------
@@ -93,7 +95,7 @@ def get_datapaths(root_path=None, config_path=None, force=False):
         datapaths = du.create_datapaths(datapath=root_path, configpath=config_path)
         _DATAPATHS = datapaths
 
-    if has_internet():
+    if has_internet() and update_gee_metadata:
         du.download_gee_metadata()
 
     return _DATAPATHS
