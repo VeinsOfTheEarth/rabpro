@@ -90,10 +90,10 @@ def create_datapaths(datapath=None, configpath=None, reset_user_metadata=False):
     datapath, configpath = _path_generator_util(datapath, configpath)
 
     datapaths = {key: str(datapath / Path(val)) for key, val in _PATH_CONSTANTS.items()}
-    
-    datapaths['HydroBasins_root'] = str(datapath / Path('HydroBasins'))
-    datapaths['MERIT_root'] = str(datapath / Path('MERIT_Hydro'))
-    datapaths['root'] = str(datapath)
+
+    datapaths["HydroBasins_root"] = str(datapath / Path("HydroBasins"))
+    datapaths["MERIT_root"] = str(datapath / Path("MERIT_Hydro"))
+    datapaths["root"] = str(datapath)
 
     gee_metadata_path = datapath / "gee_datasets.json"
     datapaths["gee_metadata"] = str(gee_metadata_path)
@@ -128,15 +128,19 @@ def does_merit_exist(datapaths):
     """
     vrts_exist = 0
     geotiffs_exist = 0
-    dem_files = [k for k in datapaths.keys() if 'DEM' in k]
+    dem_files = [k for k in datapaths.keys() if "DEM" in k]
     for df in dem_files:
-        geotiffs = [f for f in os.listdir(os.path.dirname(datapaths[df])) if f.split('.')[-1] == 'tif']
+        geotiffs = [
+            f
+            for f in os.listdir(os.path.dirname(datapaths[df]))
+            if f.split(".")[-1] == "tif"
+        ]
         if len(geotiffs) > 0:
             geotiffs_exist = geotiffs_exist + 1
         if os.path.isfile(datapaths[df]) is True:
             vrts_exist = vrts_exist + 1
-    
-    return geotiffs_exist, vrts_exist 
+
+    return geotiffs_exist, vrts_exist
 
 
 def does_hydrobasins_exist(datapaths):
@@ -144,11 +148,21 @@ def does_hydrobasins_exist(datapaths):
     Checks if level 1 and level 12 HydroBasins data are available.
     """
     lev1, lev12 = False, False
-    if os.path.isfile(os.path.join(datapaths['HydroBasins1'], 'hybas_all_lev01_v1c.shp')) is True:
+    if (
+        os.path.isfile(
+            os.path.join(datapaths["HydroBasins1"], "hybas_all_lev01_v1c.shp")
+        )
+        is True
+    ):
         lev1 = True
-    if os.path.isfile(os.path.join(datapaths['HydroBasins12'], 'hybas_af_lev12_v1c.shp')) is True:
+    if (
+        os.path.isfile(
+            os.path.join(datapaths["HydroBasins12"], "hybas_af_lev12_v1c.shp")
+        )
+        is True
+    ):
         lev12 = True
-    return lev1, lev12 
+    return lev1, lev12
 
 
 def download_gee_metadata(datapath=None):
@@ -171,16 +185,16 @@ def download_gee_metadata(datapath=None):
             print(
                 f"{CATALOG_URL} download error. Place manually into {gee_metadata_path}"
             )
-            
-            
+
+
 def _download_file_from_google_drive(id_file, destination, proxy=None):
     """
     Self-explanatory.
     """
-    
-    url = 'https://drive.google.com/uc?id={}'.format(id_file)
+
+    url = "https://drive.google.com/uc?id={}".format(id_file)
     gdown.download(url, output=destination, proxy=proxy)
-    
+
     return
 
 
@@ -206,39 +220,43 @@ def download_hydrobasins(datapath=None, proxy=None):
 
     if datapath is None:
         datapath, _ = _path_generator_util(None, None)
-    else: # Ensure the user-supplied datapath exists, else create
+    else:  # Ensure the user-supplied datapath exists, else create
         if os.path.isdir(datapath) is False:
             os.path.mkdir(datapath)
 
     datapath = Path(datapath)
-    
-    filepath = datapath / 'HydroBasins.zip'
+
+    filepath = datapath / "HydroBasins.zip"
     if os.path.isfile(filepath):
         os.remove(filepath)
-    print('Downloading HydroBasins zip file (562 MB)...')
+    print("Downloading HydroBasins zip file (562 MB)...")
     _download_file_from_google_drive(HYDROBASINS_ZIP_ID, str(filepath), proxy=proxy)
-    
+
     # Check that filesize matches expected
     fsize = os.path.getsize(filepath)
     if fsize != 562761977:
-        hb_url = r'https://drive.google.com/file/d/1NLJUEWhJ9A4y47rcGYv_jWF1Tx2nLEO9/view?usp=sharing'
-        print('HydroBasins zip file was not successfully downloaded. Check proxy? You may also manually download the HydroBasins file from {} and unzip it to {}'.format(hb_url, str(datapath)))
+        hb_url = r"https://drive.google.com/file/d/1NLJUEWhJ9A4y47rcGYv_jWF1Tx2nLEO9/view?usp=sharing"
+        print(
+            "HydroBasins zip file was not successfully downloaded. Check proxy? You may also manually download the HydroBasins file from {} and unzip it to {}".format(
+                hb_url, str(datapath)
+            )
+        )
         os.remove(filepath)
         return
-    
+
     # Unzip the file
-    print('Unzipping HydroBasins.zip...')
-    path_hb_dir = datapath / 'HydroBasins'
+    print("Unzipping HydroBasins.zip...")
+    path_hb_dir = datapath / "HydroBasins"
     if os.path.isdir(path_hb_dir):
         shutil.rmtree(path_hb_dir)
     os.mkdir(path_hb_dir)
-    with zipfile.ZipFile(filepath, 'r') as zip_ref:
+    with zipfile.ZipFile(filepath, "r") as zip_ref:
         zip_ref.extractall(datapath)
 
     # Delete zip file
     os.remove(filepath)
-    print('Done.')
-    
+    print("Done.")
+
     return
 
 
@@ -260,7 +278,7 @@ def download_merit_hydro(merit_tile, username, password, proxy=None):
         A proxy to pass to requests Session.
 
     """
-    
+
     datapaths = ru.get_datapaths()
     merit_hydro_paths = {
         "elv": "MERIT_ELEV_HP",
@@ -273,11 +291,11 @@ def download_merit_hydro(merit_tile, username, password, proxy=None):
 
     session = requests.Session()
     if proxy is not None:
-        session.proxies.update({'https':proxy})
+        session.proxies.update({"https": proxy})
     else:
         session.proxies = {}
     response = session.get(baseurl)
-        
+
     soup = BeautifulSoup(response.text, "html.parser")
     # The [2:] gets rid of the "./" in the URL
     urls = [
@@ -292,14 +310,16 @@ def download_merit_hydro(merit_tile, username, password, proxy=None):
         if filename[:3] not in merit_hydro_paths:
             continue
 
-        filename = os.path.join(datapaths['MERIT_root'], merit_hydro_paths[filename[:3]], filename)
+        filename = os.path.join(
+            datapaths["MERIT_root"], merit_hydro_paths[filename[:3]], filename
+        )
         os.makedirs(os.path.dirname(filename), exist_ok=True)
 
         download_file(url, filename, username, password, proxy)
-        
+
     # Rebuild virtual rasters to include new geotiffs
     ru.build_virtual_rasters(datapaths, skip_if_exists=False, verbose=True)
-    
+
     return
 
 
@@ -343,10 +363,10 @@ def download_tar_file(url, filename, username, password, proxy=None, clean=True)
     if not clean:
         os.rmdir(tar_dir)
         os.remove(filename)
-    
-    
+
+
 def download_file(url, filename, username, password, proxy=None):
-    
+
     # Skip downloading if the file already exists
     if os.path.isfile(filename):
         return
@@ -355,7 +375,7 @@ def download_file(url, filename, username, password, proxy=None):
 
     session = requests.Session()
     if proxy is not None:
-        session.proxies.update({'https':proxy})
+        session.proxies.update({"https": proxy})
     else:
         session.proxies = {}
 
@@ -386,7 +406,7 @@ def download_file(url, filename, username, password, proxy=None):
 
     os.rmdir(tar_dir)
     os.remove(filename)
-    
+
     return
 
 
@@ -395,10 +415,10 @@ def download_file(url, filename, username, password, proxy=None):
 #     functions. MERIT-Hydro contains a "hydrologically-adjusted" DEM that rabpro
 #     uses for elevations.
 #     """
- 
+
 #     if datapath is None:
 #         datapath = Path(create_datapaths()['root'])
-   
+
 #     baseurl = "http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/"
 #     filename = f"dem_tif_{merit_tile}.tar"
 
@@ -414,16 +434,16 @@ def download_file(url, filename, username, password, proxy=None):
 #     url = [
 #         x["href"][2:] for x in soup.findAll("a", text=re.compile(filename), href=True)
 #     ][0]
-    
+
 #     url = baseurl + url
 #     filename = os.path.join(datapath, f"MERIT_Hydro{os.sep}MERIT103", filename)
 #     os.makedirs(os.path.dirname(filename), exist_ok=True)
 
 #     download_file(url, filename, username, password, proxy)
-    
+
 #     return
 
-#def _download_file_from_google_drive(id_file, destination, proxy=None):
+# def _download_file_from_google_drive(id_file, destination, proxy=None):
 #     """
 #     From https://stackoverflow.com/a/39225272/8195528.
 #     """
@@ -432,21 +452,21 @@ def download_file(url, filename, username, password, proxy=None):
 #         for key, value in response.cookies.items():
 #             if key.startswith('download_warning'):
 #                 return value
-            
+
 #         return None
-    
+
 #     def save_response_content(response, destination):
 #         CHUNK_SIZE = 32768
-    
+
 #         with open(destination, "wb") as f:
 #             for chunk in response.iter_content(CHUNK_SIZE):
 #                 if chunk: # filter out keep-alive new chunks
 #                     f.write(chunk)
-                    
+
 #     URL = "https://docs.google.com/uc?export=download"
 
 #     session = requests.Session()
-    
+
 #     if proxy is not None:
 #         session.proxies.update({'https':proxy})
 #     else:
@@ -458,8 +478,8 @@ def download_file(url, filename, username, password, proxy=None):
 #     if token:
 #         params = { 'id' : id_file, 'confirm' : token }
 #         response = session.get(URL, params = params, stream = True)
-            
-#     save_response_content(response, destination) 
-    
+
+#     save_response_content(response, destination)
+
 #     return
 
