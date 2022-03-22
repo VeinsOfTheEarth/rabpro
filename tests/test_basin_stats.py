@@ -5,6 +5,7 @@ import geopandas as gpd
 from shapely.geometry import box
 
 import rabpro
+from rabpro import utils
 from rabpro.basin_stats import Dataset
 
 
@@ -13,6 +14,8 @@ from rabpro.basin_stats import Dataset
 total_bounds = np.array([-85.91331249, 39.42609864, -85.88453019, 39.46429816])
 gdf = gpd.GeoDataFrame({"idx": [1], "geometry": [box(*total_bounds)]}, crs="EPSG:4326")
 
+# Ensure the gee metadata is updated
+_ = utils.get_datapaths(update_gee_metadata=True)
 
 def clean_res(feature):
     res = pd.DataFrame(feature["properties"], index=[0])
