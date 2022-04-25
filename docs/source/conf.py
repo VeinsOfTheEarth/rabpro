@@ -28,8 +28,6 @@ sys.modules["geopandas"] = Mock()
 sys.modules["numpy"] = Mock()
 sys.modules["pandas"] = Mock()
 sys.modules["pyproj"] = Mock()
-sys.modules["rivgraph"] = Mock()
-sys.modules["rivgraph.im_utils"] = Mock()
 sys.modules["scipy"] = Mock()
 sys.modules["scipy.interpolate"] = Mock()
 sys.modules["scipy.ndimage.morphology"] = Mock()
@@ -83,7 +81,6 @@ autodoc_mock_imports = [
     "pandas",
     "pyproj",
     "requests",
-    "rivgraph",
     "scipy",
     "shapely",
     "skimage",
