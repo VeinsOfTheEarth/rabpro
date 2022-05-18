@@ -52,7 +52,9 @@ def envvars_rabpro():
     return res_dict
 
 
-def get_datapaths(root_path=None, config_path=None, force=False, update_gee_metadata=False):
+def get_datapaths(
+    root_path=None, config_path=None, force=False, update_gee_metadata=False
+):
     """
     Returns a dictionary of paths to all data that rabpro uses. Also builds
     virtual rasters for MERIT data and downloads latest version of GEE catalog.
@@ -61,12 +63,12 @@ def get_datapaths(root_path=None, config_path=None, force=False, update_gee_meta
     ----------
     root_path: string, optional
         Path to rabpro Data folder that contains the HydroBASINS, MERIT-Hydro,
-        and/or gee catalog jsons. Will read from an environment variable 
-        "RABPRO_DATA". If this variable is not set, uses appdirs to create a 
-        local data directory. This path is the parent directory for the MERIT 
+        and/or gee catalog jsons. Will read from an environment variable
+        "RABPRO_DATA". If this variable is not set, uses appdirs to create a
+        local data directory. This path is the parent directory for the MERIT
         and HydroBasins data directories.
     config_path: string, optional
-        Path to rabpro config folder. Will read from an environment variable 
+        Path to rabpro config folder. Will read from an environment variable
         "RABPRO_CONFIG". If not set, uses appdirs to create local directory.
     force: boolean, optional
         Set True to override datapath caching. Otherwise only fetched once per py session.
@@ -83,7 +85,7 @@ def get_datapaths(root_path=None, config_path=None, force=False, update_gee_meta
     .. code-block:: python
 
         from rabpro import utils
-        utils.get_datapaths()        
+        utils.get_datapaths()
     """
 
     # This chunk makes sure that folder creation, data downloads, etc. only
@@ -104,7 +106,7 @@ def get_datapaths(root_path=None, config_path=None, force=False, update_gee_meta
 def build_virtual_rasters(datapaths, skip_if_exists=False, verbose=True, **kwargs):
     """
     Builds virtual rasters on the four MERIT-Hydro tilesets.
-    
+
     Parameters
     ----------
     datapaths: dict
@@ -398,7 +400,7 @@ def raster_extents(raster_path):
     Returns
     -------
     list
-        [xmin, xmax, ymin, ymax] 
+        [xmin, xmax, ymin, ymax]
 
     Examples
     --------
@@ -771,7 +773,7 @@ def dist_from_da(da, nwidths=20):
     Returns the along-stream distance of a flowline to resolve for a given
     DA. An empirical formula provided by https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013WR013916
     (equation 15) is used to estimate width.
-    
+
     Parameters
     ----------
     da : float or numeric
@@ -782,21 +784,21 @@ def dist_from_da(da, nwidths=20):
     Returns
     -------
     dist: float
-        Distance in kilometers that represents nwidths*W_bankfull where 
+        Distance in kilometers that represents nwidths*W_bankfull where
         W_bankfull computed according to Wilkerson et al., 2014.
 
     """
     logda = np.log(da)
     if da < 4.95:
-        width = 2.18 * (da ** 0.191)
+        width = 2.18 * (da**0.191)
     elif da > 337:
-        width = 7.18 * (da ** 0.183)
+        width = 7.18 * (da**0.183)
     elif logda < 1.6:
-        width = 2.18 * (da ** 0.191)
+        width = 2.18 * (da**0.191)
     elif logda < 5.820:
-        width = 1.41 * (da ** 0.462)
+        width = 1.41 * (da**0.462)
     else:
-        width = 7.18 * (da ** 0.183)
+        width = 7.18 * (da**0.183)
 
     dist = width * nwidths / 1000
 
@@ -1126,7 +1128,7 @@ def format_freqhist(feature, name_category):
 
 
 def coords_to_merit_tile(lon, lat):
-    """Identify MERIT-Hydro "tiles" of interest. See 
+    """Identify MERIT-Hydro "tiles" of interest. See
     http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/
 
     Parameters
@@ -1139,11 +1141,11 @@ def coords_to_merit_tile(lon, lat):
     --------
     .. code-block:: python
 
-        from rabpro import utils        
+        from rabpro import utils
         utils.coords_to_merit_tile(178, -17)
         # > "s30e150"
         utils.coords_to_merit_tile(-118, 32)
-        # > "n30w120"        
+        # > "n30w120"
         utils.coords_to_merit_tile(-97.355, 45.8358)
         # > "n45w100"
     """
