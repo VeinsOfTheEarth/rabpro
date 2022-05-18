@@ -13,7 +13,7 @@ dependencies:
   - requests
   - appdirs
   - earthengine-api
+  - gdown
   - tqdm
   - beautifulsoup4
   - opencv
-  - gdown
