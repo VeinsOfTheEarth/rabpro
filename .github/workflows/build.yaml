@@ -9,9 +9,12 @@ on:
       - "tests/**"
       - .coveragerc
       - setup.py
+      - environment.yml
   pull_request:
     paths:
       - "rabpro/**"
+  schedule:
+    - cron: '0 0 10 * *'  # run workflow at 12AM on tenth day of every month
 
 jobs:
   build:
