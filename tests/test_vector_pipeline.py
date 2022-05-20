@@ -47,7 +47,7 @@ def test_delineate_basin():
         == "<class 'geopandas.geodataframe.GeoDataFrame'>"
     )
 
-    rpo_merit = rabpro.profiler(csv_path)
+    rpo_merit = rabpro.profiler(csv_path, da=1994)
     rpo_merit.delineate_basin(force_merit=True)
     assert (
         str(type(rpo_merit.watershed))
@@ -60,7 +60,7 @@ def test_elev_profile():
     ru.build_virtual_rasters(dps)
     csv_path = r"tests/data/test_coords.csv"
 
-    rpo = rabpro.profiler(csv_path)
+    rpo = rabpro.profiler(csv_path, da=1994)
     rpo.elev_profile(dist_to_walk_km=5)
     assert str(type(rpo.flowline)) == "<class 'geopandas.geodataframe.GeoDataFrame'>"
 
