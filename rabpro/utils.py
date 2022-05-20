@@ -16,7 +16,6 @@ import pandas as pd
 from pyproj import Geod
 from pathlib import Path
 
-import cv2
 import numpy as np
 from osgeo import gdal, ogr
 from skimage import measure
@@ -628,23 +627,36 @@ def _regionprops(I, props, connectivity=2):
             for blob in coords:
                 # Crop to blob to reduce cv2 computation time and save memory
                 Ip, cropped = crop_binary_coords(blob)
-
+            
                 # Pad cropped image to avoid edge effects
                 Ip = np.pad(Ip, 1, mode="constant")
-
-                # Convert to cv2-ingestable data type
-                Ip = np.array(Ip, dtype="uint8")
-                contours, _ = cv2.findContours(Ip, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
-                # IMPORTANT: findContours returns points as (x,y) rather than (row, col)
-                contours = contours[0]
-                crows = []
-                ccols = []
+                
+                # Get the perimeter using contours
+                contours_init = measure.find_contours(Ip, fully_connected='high',level=.99)
+                
+                # There should be only one contour
+                if len(contours_init) > 1:
+                    raise ValueError('Multiple contours found for blob {}'.format(Ip))
+                
+                # Round the contour to get the pixel coordinates
+                contours_init = [[round(c[0]), round(c[1])] for c in contours_init[0]]
+                
+                # The skimage contour method returns duplicate pixel coordinates at corners
+                # which must be removed
+                contours = []
+                for i in range(len(contours_init)-1):
+                    if contours_init[i] == contours_init[i+1]:
+                        continue
+                    else:
+                        contours.append(contours_init[i])
+                
+                # Adjust the coordinates for padding
+                crows, ccols = [], []
                 for c in contours:
-                    # must add back the cropped rows and columns, as well as the single-pixel pad
-                    crows.append(c[0][1] + cropped[1] - 1)
-                    ccols.append(c[0][0] + cropped[0] - 1)
+                    crows.append(c[0] + cropped[1] - 1)
+                    ccols.append(c[1] + cropped[0] - 1)
                 cont_np = np.transpose(np.array((crows, ccols)))  # format the output
-                perim.append(cont_np)
+                perim.append(cont_np)            
             out[prop] = perim
         elif prop == "convex_area":
             out[prop] = np.array([p.convex_area for p in properties])
