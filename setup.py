@@ -28,7 +28,6 @@ setuptools.setup(
         "appdirs",
         "earthengine-api",
         "tqdm",
-        "opencv-python",
         "beautifulsoup4",
     ],
     extras_require={

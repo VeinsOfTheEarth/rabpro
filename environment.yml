@@ -16,4 +16,3 @@ dependencies:
   - gdown
   - tqdm
   - beautifulsoup4
-  - opencv
