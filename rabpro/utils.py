@@ -560,6 +560,9 @@ def _regionprops(I, props, connectivity=2):
     a wrapper for skimage's regionprops. Not all of skimage's available blob
     properties are available here, but they can easily be added.
     Taken from RivGraph.im_utils
+    
+    Note that 'perimeter' will only return the outer-most perimeter in the
+    case of a region that contains holes.
 
     Parameters
     ----------
@@ -634,12 +637,13 @@ def _regionprops(I, props, connectivity=2):
                 # Get the perimeter using contours
                 contours_init = measure.find_contours(Ip, fully_connected='high',level=.99)
                 
-                # There should be only one contour
-                if len(contours_init) > 1:
-                    raise ValueError('Multiple contours found for blob {}'.format(Ip))
-                
+                # In the cases of holes within the blob, multiple contours
+                # will be returned. We take the longest.
+                ci_lens = [len(ci) for ci in contours_init]
+                contours_init = contours_init[ci_lens.index(max(ci_lens))]
+                    
                 # Round the contour to get the pixel coordinates
-                contours_init = [[round(c[0]), round(c[1])] for c in contours_init[0]]
+                contours_init = [[round(c[0]), round(c[1])] for c in contours_init]
                 
                 # The skimage contour method returns duplicate pixel coordinates at corners
                 # which must be removed
