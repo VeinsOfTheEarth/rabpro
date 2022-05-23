@@ -467,7 +467,7 @@ fac_obj.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.merit_utils.neighborhood_vals_from_raster">
-<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vrt_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='140179855817408'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vrt_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='140626744572560'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
 <dd><p>Queries a (virtual) raster object to return an array of neighbors
 surrounding a given point specified by cr (column, row). A shape can be
 provided to return as large of a neighborhood as desired; both dimensions
@@ -1008,7 +1008,7 @@ by default “tif”</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.utils.coords_to_merit_tile">
 <span class="sig-prename descclassname"><span class="pre">rabpro.utils.</span></span><span class="sig-name descname"><span class="pre">coords_to_merit_tile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.utils.coords_to_merit_tile" title="Permalink to this definition"></a></dt>
-<dd><p>Identify MERIT-Hydro “tiles” of interest. See 
+<dd><p>Identify MERIT-Hydro “tiles” of interest. See
 <a class="reference external" href="http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/">http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1019,13 +1019,13 @@ by default “tif”</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rabpro</span> <span class="kn">import</span> <span class="n">utils</span>        
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rabpro</span> <span class="kn">import</span> <span class="n">utils</span>
 <span class="n">utils</span><span class="o">.</span><span class="n">coords_to_merit_tile</span><span class="p">(</span><span class="mi">178</span><span class="p">,</span> <span class="o">-</span><span class="mi">17</span><span class="p">)</span>
 <span class="c1"># &gt; &quot;s30e150&quot;</span>
 <span class="n">utils</span><span class="o">.</span><span class="n">coords_to_merit_tile</span><span class="p">(</span><span class="o">-</span><span class="mi">118</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
-<span class="c1"># &gt; &quot;n30w120&quot;        </span>
+<span class="c1"># &gt; &quot;n30w120&quot;</span>
 <span class="n">utils</span><span class="o">.</span><span class="n">coords_to_merit_tile</span><span class="p">(</span><span class="o">-</span><span class="mf">97.355</span><span class="p">,</span> <span class="mf">45.8358</span><span class="p">)</span>
-<span class="c1"># &gt; &quot;n45w100&quot;</span>
+<span class="c1"># &gt; &quot;n30w120&quot;</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1073,7 +1073,7 @@ DA. An empirical formula provided by <a class="reference external" href="https:/
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>dist: float</dt><dd><p>Distance in kilometers that represents nwidths*W_bankfull where 
+<dt>dist: float</dt><dd><p>Distance in kilometers that represents nwidths*W_bankfull where
 W_bankfull computed according to Wilkerson et al., 2014.</p>
 </dd>
 </dl>
@@ -1090,12 +1090,12 @@ virtual rasters for MERIT data and downloads latest version of GEE catalog.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>root_path: string, optional</strong></dt><dd><p>Path to rabpro Data folder that contains the HydroBASINS, MERIT-Hydro,
-and/or gee catalog jsons. Will read from an environment variable 
-“RABPRO_DATA”. If this variable is not set, uses appdirs to create a 
-local data directory. This path is the parent directory for the MERIT 
+and/or gee catalog jsons. Will read from an environment variable
+“RABPRO_DATA”. If this variable is not set, uses appdirs to create a
+local data directory. This path is the parent directory for the MERIT
 and HydroBasins data directories.</p>
 </dd>
-<dt><strong>config_path: string, optional</strong></dt><dd><p>Path to rabpro config folder. Will read from an environment variable 
+<dt><strong>config_path: string, optional</strong></dt><dd><p>Path to rabpro config folder. Will read from an environment variable
 “RABPRO_CONFIG”. If not set, uses appdirs to create local directory.</p>
 </dd>
 <dt><strong>force: boolean, optional</strong></dt><dd><p>Set True to override datapath caching. Otherwise only fetched once per py session.</p>
@@ -1113,7 +1113,7 @@ and HydroBasins data directories.</p>
 </dl>
 <p class="rubric">Examples</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rabpro</span> <span class="kn">import</span> <span class="n">utils</span>
-<span class="n">utils</span><span class="o">.</span><span class="n">get_datapaths</span><span class="p">()</span>        
+<span class="n">utils</span><span class="o">.</span><span class="n">get_datapaths</span><span class="p">()</span>
 </pre></div>
 </div>
 </dd></dl>
