@@ -19,6 +19,7 @@ setuptools.setup(
     scripts=["rabpro/cli/rabpro"],
     python_requires=">=3.7",
     install_requires=[
+        "gdal",
         "numpy",
         "geopandas>=0.7.0",
         "scikit-image",
@@ -27,6 +28,7 @@ setuptools.setup(
         "requests",
         "appdirs",
         "earthengine-api",
+        "gdown",
         "tqdm",
         "beautifulsoup4",
     ],
