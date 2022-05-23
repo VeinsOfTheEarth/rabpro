@@ -32,7 +32,6 @@ requirements:
     - appdirs
     - tqdm
     - colorama
-    - py-opencv
     - beautifulsoup4
     - earthengine-api
 

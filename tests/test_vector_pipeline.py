@@ -46,6 +46,7 @@ def test_delineate_basin():
         str(type(rpo_hydrobasins.watershed))
         == "<class 'geopandas.geodataframe.GeoDataFrame'>"
     )
+    assert rpo_hydrobasins.watershed.shape[0] > 0
 
     rpo_merit = rabpro.profiler(csv_path, da=1994)
     rpo_merit.delineate_basin(force_merit=True)
@@ -53,6 +54,7 @@ def test_delineate_basin():
         str(type(rpo_merit.watershed))
         == "<class 'geopandas.geodataframe.GeoDataFrame'>"
     )
+    assert rpo_merit.watershed.shape[0] > 0
 
 
 def test_elev_profile():
@@ -63,4 +65,4 @@ def test_elev_profile():
     rpo = rabpro.profiler(csv_path, da=1994)
     rpo.elev_profile(dist_to_walk_km=5)
     assert str(type(rpo.flowline)) == "<class 'geopandas.geodataframe.GeoDataFrame'>"
-
+    assert rpo.flowline.shape[0] > 0

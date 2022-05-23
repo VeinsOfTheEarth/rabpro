@@ -13,7 +13,9 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/VeinsOfTheEarth/rabpro",
-    project_urls={"Bug Tracker": "https://github.com/VeinsOfTheEarth/rabpro/issues",},
+    project_urls={
+        "Bug Tracker": "https://github.com/VeinsOfTheEarth/rabpro/issues",
+    },
     scripts=["rabpro/cli/rabpro"],
     python_requires=">=3.7",
     install_requires=[
@@ -26,10 +28,11 @@ setuptools.setup(
         "appdirs",
         "earthengine-api",
         "tqdm",
-        "opencv-python",
         "beautifulsoup4",
     ],
-    extras_require={"test": ["pytest>=3"],},
+    extras_require={
+        "test": ["pytest>=3"],
+    },
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: BSD License",
