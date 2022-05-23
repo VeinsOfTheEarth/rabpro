@@ -437,7 +437,18 @@ rpo.elev_profile(dist_to_walk_km=5)
 </pre></div>
 </div>
 </div>
-<p>If you’d like to complete this task, you will need to download the MERIT tile <code class="docutils literal notranslate"><span class="pre">n30w150</span></code>. Detailed instructions, including how to get a username and password for MERIT-Hydro downloads, are <a class="reference external" href="https://github.com/VeinsOfTheEarth/rabpro/blob/main/docs/source/examples/notebooks/downloading_data.ipynb">here</a>. Note that the MERIT tile will consume ~1.6 GB of space when unzipped.</p>
+<p>If you’d like to complete this task, you will need to download the MERIT tile <code class="docutils literal notranslate"><span class="pre">n30w150</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%capture
+# we can use rabpro.utils.coords_to_merit_tile to identify the correct tile name
+rabpro.utils.coords_to_merit_tile(coords[1], coords[0])
+</pre></div>
+</div>
+</div>
+<p>Detailed instructions, including how to get a username and password for MERIT-Hydro downloads, are <a class="reference external" href="https://github.com/VeinsOfTheEarth/rabpro/blob/main/docs/source/examples/notebooks/downloading_data.ipynb">here</a>. Note that the MERIT tile will consume ~1.6 GB of space when unzipped.</p>
 <p><code class="docutils literal notranslate"><span class="pre">download_merit_hydro()</span></code> will automatically rebuild virtual rasters, which are how rabpro interacts with the individual geotiffs, after downloading a tile.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rabpro</span> <span class="kn">import</span> <span class="n">data_utils</span>
 <span class="n">data_utils</span><span class="o">.</span><span class="n">download_merit_hydro</span><span class="p">(</span><span class="s1">&#39;n30w150&#39;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="n">your_merit_username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">your_merit_password</span><span class="p">)</span>
@@ -445,7 +456,7 @@ rpo.elev_profile(dist_to_walk_km=5)
 </div>
 <p>Now we can try again:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rpo.elev_profile(dist_to_walk_km=5)
@@ -456,15 +467,7 @@ plt.ylabel(&#39;Elevation&#39;)
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Extracting flowpath from DEM...
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -476,13 +479,13 @@ Text(0, 0.5, &#39;Elevation&#39;)
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/examples_notebooks_basic_example_15_2.png" src="../../_images/examples_notebooks_basic_example_15_2.png" />
+<img alt="../../_images/examples_notebooks_basic_example_17_1.png" src="../../_images/examples_notebooks_basic_example_17_1.png" />
 </div>
 </div>
 <p>The along-stream distance is with respect to the provided coordinate. You can use the <code class="docutils literal notranslate"><span class="pre">rpo.flowline</span></code> GeoDataFrame to compute slopes.</p>
 <p>You can export the <code class="docutils literal notranslate"><span class="pre">watershed</span></code> GeoDataFrame and/or the <code class="docutils literal notranslate"><span class="pre">flowline</span></code> GeoDataFrame using the <code class="docutils literal notranslate"><span class="pre">.export()</span></code> method.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%capture
@@ -493,7 +496,7 @@ rpo.export(&quot;all&quot;)
 <p>Once the subbasins are delinated, rabpro can use Google Earth Engine (GEE) to compute statistics for each subbasin. Using Google Earth Engine reduces the need to store large datasets locally, and speeds up computation by using GEE’s parallel distributed computing capabilities.</p>
 <p>Note: In order to use rabpro for basin statistics, you’ll need to sign up for a GEE account. See rabpro’s documentation for more information.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Specify which statistics to calculate for the JRC/GSW1_3/GlobalSurfaceWater dataset&#39;s occurrence band
@@ -515,7 +518,7 @@ Submitting basin stats task to GEE for JRC/GSW1_3/GlobalSurfaceWater...
 <p>The output data will be placed in the <code class="docutils literal notranslate"><span class="pre">rabpro</span> <span class="pre">test</span></code> folder in your Google Drive if it already exists. If not, GEE will create a new <code class="docutils literal notranslate"><span class="pre">rabpro</span> <span class="pre">test</span></code> folder at the root level of your Drive.</p>
 <p><code class="docutils literal notranslate"><span class="pre">basin_stats</span></code> returns a url to the resulting csv data which can be read directly with <code class="docutils literal notranslate"><span class="pre">pandas</span></code>:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.read_csv(d[0])
@@ -523,7 +526,7 @@ Submitting basin stats task to GEE for JRC/GSW1_3/GlobalSurfaceWater...
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -568,7 +571,7 @@ Submitting basin stats task to GEE for JRC/GSW1_3/GlobalSurfaceWater...
       <td>80.523354</td>
       <td>0</td>
       <td>22.328632</td>
-      <td>91.636754</td>
+      <td>91.629346</td>
       <td>100</td>
       <td>4.757363e+06</td>
       <td>NaN</td>
