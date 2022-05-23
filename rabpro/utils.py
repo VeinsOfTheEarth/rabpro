@@ -1165,14 +1165,22 @@ def coords_to_merit_tile(lon, lat):
         utils.coords_to_merit_tile(-118, 32)
         # > "n30w120"
         utils.coords_to_merit_tile(-97.355, 45.8358)
-        # > "n45w100"
+        # > "n30w120"
     """
+
+    if abs(lon) > 180 or abs(lat) > 90:
+        raise ValueError("Provided coordinates are invalid.")
+
+    nodata_tiles = ["n00w150", "s60w150", "s60w120"]
 
     def coords_ns_ew(x, less_than_0, gtequal_0):
         if x < 0:
             res = less_than_0 + str(abs(x))
         else:
             res = gtequal_0 + str(x)
+
+        if x == 0:
+            res = "n00"
         return res
 
     lat_segments = [i for i in range(-60, 61, 30)]
@@ -1195,4 +1203,8 @@ def coords_to_merit_tile(lon, lat):
     res = res["lat_format"].to_string(index=False) + res["lon_format"].to_string(
         index=False
     )
+
+    if res in nodata_tiles:
+        raise ValueError("MERIT data does not exist for the provided coordinate.")
+
     return res
