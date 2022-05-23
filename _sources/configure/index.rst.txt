@@ -37,8 +37,18 @@ You may also set this environment variable more permanently by adding ``RABPRO_D
 
 Downloading HydroBASINS
 _______________________
+There are two ways to get the required HydroBASINS datasets. 
 
-To download HydroBASINS, execute the following python code:
+First, you may download the data directly from the provider. HydroBASINS was produced by the `HydroSheds Organization <https://www.hydrosheds.org/>`_ and is downloadable from their `HydroBASINS page <https://www.hydrosheds.org/products/hydrobasins>`_. You will need to download both the level one and level twelve basin datasets for each continent. You will need to place the data into the paths specified by 
+
+.. code-block:: python
+
+        from rabpro import utils
+        datapaths = utils.get_datapaths()
+        print(datapaths['HydroBasins_1']) # path to place level 1 
+        print(datapaths['HydroBasins_12']) # path to place level 12
+
+Second, you may use `rabpro` functionality which grabs the necessary HydroBASINS files from a zipped GDrive file and unzips them to their expected location. This can be done via the following python code:
 
 .. code-block:: python
 

@@ -147,7 +147,15 @@
 <p>You may also set this environment variable more permanently by adding <code class="docutils literal notranslate"><span class="pre">RABPRO_DATA</span></code> to your operating system’s environment variables, but you may run into issues with your python interpreter not reading the OS environment variables correctly.</p>
 <section id="downloading-hydrobasins">
 <h4>Downloading HydroBASINS<a class="headerlink" href="#downloading-hydrobasins" title="Permalink to this headline"></a></h4>
-<p>To download HydroBASINS, execute the following python code:</p>
+<p>There are two ways to get the required HydroBASINS datasets.</p>
+<p>First, you may download the data directly from the provider. HydroBASINS was produced by the <a class="reference external" href="https://www.hydrosheds.org/">HydroSheds Organization</a> and is downloadable from their <a class="reference external" href="https://www.hydrosheds.org/products/hydrobasins">HydroBASINS page</a>. You will need to download both the level one and level twelve basin datasets for each continent. You will need to place the data into the paths specified by</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rabpro</span> <span class="kn">import</span> <span class="n">utils</span>
+<span class="n">datapaths</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_datapaths</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datapaths</span><span class="p">[</span><span class="s1">&#39;HydroBasins_1&#39;</span><span class="p">])</span> <span class="c1"># path to place level 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datapaths</span><span class="p">[</span><span class="s1">&#39;HydroBasins_12&#39;</span><span class="p">])</span> <span class="c1"># path to place level 12</span>
+</pre></div>
+</div>
+<p>Second, you may use <cite>rabpro</cite> functionality which grabs the necessary HydroBASINS files from a zipped GDrive file and unzips them to their expected location. This can be done via the following python code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rabpro</span> <span class="kn">import</span> <span class="n">data_utils</span>
 <span class="n">data_utils</span><span class="o">.</span><span class="n">download_hydrobasins</span><span class="p">()</span>
 </pre></div>
