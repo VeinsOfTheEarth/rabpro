@@ -42,3 +42,9 @@ python -m pytest
 ```shell
 cd docs && make html
 ```
+
+## Contributing
+
+We welcome all forms of user contributions including feature requests, bug reports, code, and documentation requests - simply open an [issue](https://github.com/VeinsOfTheEarth/rabpro/issues).
+
+Note that *rabpro* adheres to [Black code style](https://black.readthedocs.io/en/stable/) and [NumPy-style docstrings](https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard) for documentation. We ask that contributions adhere to these standards as much as possible. For code development contributions, please contact us via email (rabpro at lanl [dot] gov) to be added to our slack channel where we can hash out a plan for your contribution.
