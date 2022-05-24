@@ -29,15 +29,23 @@ The following text is the current citation for rabpro:
 
 > Zussman, T., J. Schwenk, and J. Rowland. River and Basin Profiler: A Module for Extracting Watershed Boundaries, River Centerlines, and Catchment Statistics. Other. Hydrology, December 30, 2021. <https://doi.org/10.1002/essoar.10509912.1>.
 
+If you delineate watersheds, you should cite either or both (depending on your method) of HydroBasins:
+
+> Lehner, B., Grill G. (2013). Global river hydrography and network routing: baseline data and new approaches to study the world’s large river systems. Hydrological Processes, 27(15): 2171–2186. https://doi.org/10.1002/hyp.9740
+
+or MERIT-Hydro:
+
+> Yamazaki, D., Ikeshima, D., Sosa, J., Bates, P. D., Allen, G. H., & Pavelsky, T. M. (2019). MERIT Hydro: A high‐resolution global hydrography map based on latest topography dataset. *Water Resources Research*, *55*(6), 5053-5073. https://doi.org/10.1029/2019WR024873
+
 ## Development
 
-### Testing
+#### Testing
 
 ```python
 python -m pytest
 ```
 
-### Local docs build
+#### Local docs build
 
 ```shell
 cd docs && make html
