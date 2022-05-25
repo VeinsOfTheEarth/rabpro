@@ -380,6 +380,7 @@ def build_vrt(
 
     # Check that vrt built successfully
     if len(stderr) > 3:
+        print(callstring)
         raise RuntimeError(f"Virtual raster did not build sucessfully. Error: {stderr}")
     else:
         if not quiet:
