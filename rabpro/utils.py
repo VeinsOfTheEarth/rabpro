@@ -379,7 +379,7 @@ def build_vrt(
     stdout, stderr = proc.communicate()
 
     # Check that vrt built successfully
-    if len(stderr) > 3:
+    if len(stderr) > 3 and "proj_create_from_database" not in stderr: # second condition ignores proj ci errors
         raise RuntimeError(f"Virtual raster did not build sucessfully. Error: {stderr}")
     else:
         if not quiet:

@@ -76,7 +76,7 @@
         "id": "ASTER/AST_L1T_003",
         "name": "ASTER L1T Radiance",
         "start_date": "2000-03-04",
-        "end_date": "2022-05-16",
+        "end_date": "2022-05-23",
         "type": "image_collection",
         "bands": {
             "B01": {
@@ -191,7 +191,7 @@
     },
     {
         "id": "CAS/IGSNRR/PML/V2",
-        "name": "PML_V2: Coupled Evapotranspiration and Gross Primary Product",
+        "name": "PML_V2 0.1.4: Coupled Evapotranspiration and Gross Primary Product (GPP)",
         "start_date": "2002-07-04",
         "end_date": "2017-12-27",
         "type": "image_collection",
@@ -460,7 +460,7 @@
         "id": "COPERNICUS/S1_GRD",
         "name": "Sentinel-1 SAR GRD: C-band Synthetic Aperture Radar Ground Range Detected, log scaling",
         "start_date": "2014-10-03",
-        "end_date": "2022-05-17",
+        "end_date": "2022-05-24",
         "type": "image_collection",
         "bands": {
             "HH": {
@@ -5395,7 +5395,7 @@
         "id": "IDAHO_EPSCOR/GRIDMET",
         "name": "GRIDMET: University of Idaho Gridded Surface Meteorological Dataset",
         "start_date": "1979-01-01",
-        "end_date": "2022-05-14",
+        "end_date": "2022-05-21",
         "type": "image_collection",
         "bands": {
             "pr": {
@@ -8000,7 +8000,7 @@
         "id": "LANDSAT/LC08/C02/T1",
         "name": "USGS Landsat 8 Collection 2 Tier 1 Raw Scenes",
         "start_date": "2013-03-18",
-        "end_date": "2022-05-18",
+        "end_date": "2022-05-25",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8077,7 +8077,7 @@
         "id": "LANDSAT/LC08/C02/T1_L2",
         "name": "USGS Landsat 8 Level 2, Collection 2, Tier 1",
         "start_date": "2013-04-11",
-        "end_date": "2022-05-08",
+        "end_date": "2022-05-16",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -8162,7 +8162,7 @@
         "id": "LANDSAT/LC08/C02/T1_RT",
         "name": "USGS Landsat 8 Collection 2 Tier 1 and Real-Time data Raw Scenes",
         "start_date": "2013-03-18",
-        "end_date": "2022-05-18",
+        "end_date": "2022-05-25",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8239,7 +8239,7 @@
         "id": "LANDSAT/LC08/C02/T1_RT_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 1 and Real-Time data TOA Reflectance",
         "start_date": "2013-04-11",
-        "end_date": "2022-05-17",
+        "end_date": "2022-05-24",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8316,7 +8316,7 @@
         "id": "LANDSAT/LC08/C02/T1_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "2013-04-11",
-        "end_date": "2022-05-16",
+        "end_date": "2022-05-23",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8393,7 +8393,7 @@
         "id": "LANDSAT/LC08/C02/T2",
         "name": "USGS Landsat 8 Collection 2 Tier 2 Raw Scenes",
         "start_date": "2021-10-28",
-        "end_date": "2022-05-18",
+        "end_date": "2022-05-25",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8470,7 +8470,7 @@
         "id": "LANDSAT/LC08/C02/T2_L2",
         "name": "USGS Landsat 8 Level 2, Collection 2, Tier 2",
         "start_date": "2013-04-11",
-        "end_date": "2022-05-08",
+        "end_date": "2022-05-16",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -8555,7 +8555,7 @@
         "id": "LANDSAT/LC08/C02/T2_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2013-04-11",
-        "end_date": "2022-05-08",
+        "end_date": "2022-05-23",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8632,7 +8632,7 @@
         "id": "LANDSAT/LC09/C02/T1",
         "name": "USGS Landsat 9 Collection 2 Tier 1 Raw Scenes",
         "start_date": "2021-10-31",
-        "end_date": "2022-05-18",
+        "end_date": "2022-05-25",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8709,7 +8709,7 @@
         "id": "LANDSAT/LC09/C02/T1_L2",
         "name": "USGS Landsat 9 Level 2, Collection 2, Tier 1",
         "start_date": "2021-10-31",
-        "end_date": "2022-05-18",
+        "end_date": "2022-05-25",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -8871,7 +8871,7 @@
         "id": "LANDSAT/LC08/C02/T2",
         "name": "USGS Landsat 8 Collection 2 Tier 2 Raw Scenes",
         "start_date": "2021-10-28",
-        "end_date": "2022-05-18",
+        "end_date": "2022-05-25",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -10468,7 +10468,7 @@
         "id": "LANDSAT/LE07/C02/T2_TOA",
         "name": "USGS Landsat 7 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "1999-01-01",
-        "end_date": "2022-03-24",
+        "end_date": "2022-04-06",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -13861,7 +13861,7 @@
         "id": "MODIS/006/MCD43A4",
         "name": "MCD43A4.006 MODIS Nadir BRDF-Adjusted Reflectance Daily 500m",
         "start_date": "2000-02-18",
-        "end_date": "2022-05-01",
+        "end_date": "2022-05-11",
         "type": "image_collection",
         "bands": {
             "Nadir_Reflectance_Band1": {
@@ -14064,7 +14064,7 @@
         "id": "MODIS/006/MOD09A1",
         "name": "MOD09A1.006 Terra Surface Reflectance 8-Day Global 500m",
         "start_date": "2000-03-05",
-        "end_date": "2022-05-09",
+        "end_date": "2022-05-17",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -14865,7 +14865,7 @@
         "id": "MODIS/006/MYD09A1",
         "name": "MYD09A1.006 Aqua Surface Reflectance 8-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2022-05-09",
+        "end_date": "2022-05-17",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -15681,7 +15681,7 @@
         "id": "MODIS/MCD43A4_006_BAI",
         "name": "MODIS Combined 16-Day BAI",
         "start_date": "2000-02-18",
-        "end_date": "2022-05-08",
+        "end_date": "2022-05-15",
         "type": "image_collection",
         "bands": {
             "BAI": {
@@ -15694,7 +15694,7 @@
         "id": "MODIS/MCD43A4_006_EVI",
         "name": "MODIS Combined 16-Day EVI",
         "start_date": "2000-02-18",
-        "end_date": "2022-05-08",
+        "end_date": "2022-05-15",
         "type": "image_collection",
         "bands": {
             "EVI": {
@@ -15707,7 +15707,7 @@
         "id": "MODIS/MCD43A4_006_NDSI",
         "name": "MODIS Combined 16-Day NDSI",
         "start_date": "2000-02-18",
-        "end_date": "2022-05-08",
+        "end_date": "2022-05-15",
         "type": "image_collection",
         "bands": {
             "NDSI": {
@@ -15720,7 +15720,7 @@
         "id": "MODIS/MCD43A4_006_NDVI",
         "name": "MODIS Combined 16-Day NDVI",
         "start_date": "2000-02-18",
-        "end_date": "2022-05-08",
+        "end_date": "2022-05-15",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -15733,7 +15733,7 @@
         "id": "MODIS/MCD43A4_006_NDWI",
         "name": "MODIS Combined 16-Day NDWI",
         "start_date": "2000-02-18",
-        "end_date": "2022-05-08",
+        "end_date": "2022-05-15",
         "type": "image_collection",
         "bands": {
             "NDWI": {
@@ -15746,7 +15746,7 @@
         "id": "MODIS/MOD09GA_006_BAI",
         "name": "MODIS Terra Daily BAI",
         "start_date": "2000-02-24",
-        "end_date": "2022-05-15",
+        "end_date": "2022-05-21",
         "type": "image_collection",
         "bands": {
             "BAI": {
@@ -15759,7 +15759,7 @@
         "id": "MODIS/MOD09GA_006_EVI",
         "name": "MODIS Terra Daily EVI",
         "start_date": "2000-02-24",
-        "end_date": "2022-05-15",
+        "end_date": "2022-05-21",
         "type": "image_collection",
         "bands": {
             "EVI": {
@@ -15772,7 +15772,7 @@
         "id": "MODIS/MOD09GA_006_NDSI",
         "name": "MODIS Terra Daily NDSI",
         "start_date": "2000-02-24",
-        "end_date": "2022-05-15",
+        "end_date": "2022-05-21",
         "type": "image_collection",
         "bands": {
             "NDSI": {
@@ -15785,7 +15785,7 @@
         "id": "MODIS/MOD09GA_006_NDVI",
         "name": "MODIS Terra Daily NDVI",
         "start_date": "2000-02-24",
-        "end_date": "2022-05-15",
+        "end_date": "2022-05-21",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -15798,7 +15798,7 @@
         "id": "MODIS/MOD09GA_006_NDWI",
         "name": "MODIS Terra Daily NDWI",
         "start_date": "2000-02-24",
-        "end_date": "2022-05-15",
+        "end_date": "2022-05-21",
         "type": "image_collection",
         "bands": {
             "NDWI": {
@@ -15828,7 +15828,7 @@
         "id": "MODIS/MYD09GA_006_BAI",
         "name": "MODIS Aqua Daily BAI",
         "start_date": "2002-07-04",
-        "end_date": "2022-05-15",
+        "end_date": "2022-05-21",
         "type": "image_collection",
         "bands": {
             "BAI": {
@@ -15841,7 +15841,7 @@
         "id": "MODIS/MYD09GA_006_EVI",
         "name": "MODIS Aqua Daily EVI",
         "start_date": "2002-07-04",
-        "end_date": "2022-05-15",
+        "end_date": "2022-05-21",
         "type": "image_collection",
         "bands": {
             "EVI": {
@@ -15854,7 +15854,7 @@
         "id": "MODIS/MYD09GA_006_NDSI",
         "name": "MODIS Aqua Daily NDSI",
         "start_date": "2002-07-04",
-        "end_date": "2022-05-15",
+        "end_date": "2022-05-21",
         "type": "image_collection",
         "bands": {
             "NDSI": {
@@ -15867,7 +15867,7 @@
         "id": "MODIS/MYD09GA_006_NDVI",
         "name": "MODIS Aqua Daily NDVI",
         "start_date": "2002-07-04",
-        "end_date": "2022-05-15",
+        "end_date": "2022-05-21",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -15880,7 +15880,7 @@
         "id": "MODIS/MYD09GA_006_NDWI",
         "name": "MODIS Aqua Daily NDWI",
         "start_date": "2002-07-04",
-        "end_date": "2022-05-15",
+        "end_date": "2022-05-21",
         "type": "image_collection",
         "bands": {
             "NDWI": {
@@ -15922,7 +15922,7 @@
         "id": "NASA_USDA/HSL/SMAP10KM_soil_moisture",
         "name": "NASA-USDA Enhanced SMAP Global Soil Moisture Data",
         "start_date": "2015-04-01",
-        "end_date": "2022-05-10",
+        "end_date": "2022-05-16",
         "type": "image_collection",
         "bands": {
             "ssm": {
