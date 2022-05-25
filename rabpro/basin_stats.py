@@ -383,8 +383,9 @@ def compute(
         reducer = _parse_reducers(d.stats)
 
         def map_func(img):
+            # The .limit() here is due to a GEE bug, see: https://gis.stackexchange.com/questions/407965/null-value-after-reduceregions-in-gee?rq=1
             return img.reduceRegions(
-                collection=featureCollection, reducer=reducer, scale=d.resolution
+                collection=featureCollection.limit(1000000000), reducer=reducer, scale=d.resolution
             )
 
         reducedFC = imgcol.map(map_func)
