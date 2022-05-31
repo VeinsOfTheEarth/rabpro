@@ -25,17 +25,5 @@
             "name": "Joel C. Rowland"
         }
     ],
-    "access_right": "open",
-    "related_identifiers": [
-        {
-            "scheme": "url",
-            "identifier": "https://github.com/VeinsOfTheEarth/rabpro/tree/v0.5.1",
-            "relation": "isSupplementTo"
-        },
-        {
-            "scheme": "doi",
-            "identifier": "10.5281/zenodo.6600732",
-            "relation": "isVersionOf"
-        }
-    ]
+    "access_right": "open"
 }
