@@ -1,0 +1,41 @@
+{
+    "description": "<p>JOSS publication release</p>\n\n<ul>\n\t<li>Improvements to workflow setup (hydrobasins downloading, etc.)</li>\n\t<li>Removal of Rivgraph and OpenCV dependencies</li>\n</ul>",
+    "license": "other-open",
+    "title": "rabpro: global watershed boundaries, river elevation profiles, and catchment statistics",
+    "version": "v0.5.1",
+    "upload_type": "software",
+    "publication_date": "2022-05-31",
+    "creators": [
+        {
+            "orcid": "0000-0001-5803-9686",
+            "affiliation": "Los Alamos National Laboratory",
+            "name": "Jon Schwenk"
+        },
+        {
+            "orcid": "0000-0003-3087-8511",
+            "name": "Tal Zussman"
+        },
+        {
+            "orcid": "0000-0002-5924-2464",
+            "affiliation": "@lanl",
+            "name": "Jemma Stachelek"
+        },
+        {
+            "orcid": "0000-0001-6308-8976",
+            "name": "Joel C. Rowland"
+        }
+    ],
+    "access_right": "open",
+    "related_identifiers": [
+        {
+            "scheme": "url",
+            "identifier": "https://github.com/VeinsOfTheEarth/rabpro/tree/v0.5.1",
+            "relation": "isSupplementTo"
+        },
+        {
+            "scheme": "doi",
+            "identifier": "10.5281/zenodo.6600732",
+            "relation": "isVersionOf"
+        }
+    ]
+}
