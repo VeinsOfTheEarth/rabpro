@@ -28,7 +28,7 @@
 
 The following text is the current citation for rabpro:
 
-> Zussman, T., J. Schwenk, and J. Rowland. River and Basin Profiler: A Module for Extracting Watershed Boundaries, River Centerlines, and Catchment Statistics. Other. Hydrology, December 30, 2021. <https://doi.org/10.1002/essoar.10509912.1>.
+> Schwenk, J., T. Zussman, J. Stachelek, and J. Rowland.  rabpro: global watershed boundaries, river elevation profiles, and catchment statistics.  Journal of Open Source Software, 7(73), 4237, https://doi.org/10.21105/joss.04237.
 
 If you delineate watersheds, you should cite either or both (depending on your method) of HydroBasins:
 
