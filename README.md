@@ -7,6 +7,7 @@
   <a href=https://github.com/psf/black><img src=https://img.shields.io/badge/code%20style-black-000000.svg></a>
   <a href=https://anaconda.org/conda-forge/rabpro><img src=https://anaconda.org/conda-forge/rabpro/badges/version.svg></a>
   <a href=https://github.com/VeinsOfTheEarth/rabpro/actions/workflows/build.yaml><img src=https://github.com/VeinsOfTheEarth/rabpro/actions/workflows/build.yaml/badge.svg></a>
+  <a href=https://doi.org/10.5281/zenodo.6600732><img src=https://zenodo.org/badge/DOI/10.5281/zenodo.6600732.svg></a>
 </p>
 
 > Package to delineate watershed basins and compute attribute statistics using [Google Earth Engine](https://developers.google.com/earth-engine/).
@@ -31,11 +32,11 @@ The following text is the current citation for rabpro:
 
 If you delineate watersheds, you should cite either or both (depending on your method) of HydroBasins:
 
-> Lehner, B., Grill G. (2013). Global river hydrography and network routing: baseline data and new approaches to study the world’s large river systems. Hydrological Processes, 27(15): 2171–2186. https://doi.org/10.1002/hyp.9740
+> Lehner, B., Grill G. (2013). Global river hydrography and network routing: baseline data and new approaches to study the world’s large river systems. Hydrological Processes, 27(15): 2171–2186. <https://doi.org/10.1002/hyp.9740>
 
 or MERIT-Hydro:
 
-> Yamazaki, D., Ikeshima, D., Sosa, J., Bates, P. D., Allen, G. H., & Pavelsky, T. M. (2019). MERIT Hydro: A high‐resolution global hydrography map based on latest topography dataset. *Water Resources Research*, *55*(6), 5053-5073. https://doi.org/10.1029/2019WR024873
+> Yamazaki, D., Ikeshima, D., Sosa, J., Bates, P. D., Allen, G. H., & Pavelsky, T. M. (2019). MERIT Hydro: A high‐resolution global hydrography map based on latest topography dataset. *Water Resources Research*, *55*(6), 5053-5073. <https://doi.org/10.1029/2019WR024873>
 
 ## Development
 
