@@ -8,7 +8,11 @@
   <a href=https://anaconda.org/conda-forge/rabpro><img src=https://anaconda.org/conda-forge/rabpro/badges/version.svg></a>
   <a href=https://github.com/VeinsOfTheEarth/rabpro/actions/workflows/build.yaml><img src=https://github.com/VeinsOfTheEarth/rabpro/actions/workflows/build.yaml/badge.svg></a>
   <a href=https://doi.org/10.5281/zenodo.6600732><img src=https://zenodo.org/badge/DOI/10.5281/zenodo.6600732.svg></a>
+  <a style="border-width:0" href="https://doi.org/10.21105/joss.04237">
+  <img src="https://joss.theoj.org/papers/10.21105/joss.04237/status.svg" alt="DOI badge" >
+</a>
 </p>
+
 
 > Package to delineate watershed basins and compute attribute statistics using [Google Earth Engine](https://developers.google.com/earth-engine/).
 
