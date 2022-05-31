@@ -1,10 +1,7 @@
 {
-    "description": "<p>JOSS publication release</p>\n\n<ul>\n\t<li>Improvements to workflow setup (hydrobasins downloading, etc.)</li>\n\t<li>Removal of Rivgraph and OpenCV dependencies</li>\n</ul>",
     "license": "other-open",
     "title": "rabpro: global watershed boundaries, river elevation profiles, and catchment statistics",
-    "version": "v0.5.1",
     "upload_type": "software",
-    "publication_date": "2022-05-31",
     "creators": [
         {
             "orcid": "0000-0001-5803-9686",
