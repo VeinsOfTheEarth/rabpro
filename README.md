@@ -31,7 +31,7 @@
 
 The following text is the current citation for rabpro:
 
-> Schwenk, J., T. Zussman, J. Stachelek, and J. Rowland.  rabpro: global watershed boundaries, river elevation profiles, and catchment statistics.  Journal of Open Source Software, 7(73), 4237, https://doi.org/10.21105/joss.04237.
+> Schwenk, J., T. Zussman, J. Stachelek, and J. Rowland. (2022). rabpro: global watershed boundaries, river elevation profiles, and catchment statistics.  Journal of Open Source Software, 7(73), 4237, <https://doi.org/10.21105/joss.04237>.
 
 If you delineate watersheds, you should cite either or both (depending on your method) of HydroBasins:
 
@@ -43,13 +43,13 @@ or MERIT-Hydro:
 
 ## Development
 
-#### Testing
+### Testing
 
 ```python
 python -m pytest
 ```
 
-#### Local docs build
+### Local docs build
 
 ```shell
 cd docs && make html
