@@ -1,4 +1,42 @@
-[
+[    {
+         "id": "users/rabpro/NIEER_permafrost_probability",
+         "name": "NIEER Permafrost Probability",
+         "start_date": null,
+         "end_date": null,
+         "type": "image",
+         "bands": {
+             "None": {
+                 "units" : "%",
+                 "resolution": 1000
+             }
+         }
+     },       
+     {
+         "id": "users/rabpro/NIEER_mean_annual_ground_temp",
+         "name": "NIEER MAGT",
+         "start_date": null,
+         "end_date": null,
+         "type": "image",
+         "bands": {
+             "None": {
+                 "units" : "degrees C",
+                 "resolution": 1000
+             }
+         }
+     },       
+     {
+         "id": "users/rabpro/NIEER_active_layer_thickness",
+         "name": "NIEER ALT",
+         "start_date": null,
+         "end_date": null,
+         "type": "image",
+         "bands": {
+             "None": {
+                 "units" : "cm",
+                 "resolution": 1000
+             }
+         }
+     },  
      {
          "id": "users/jonschwenk/glims_glacier_presence_20210914",
          "name": "GLIMS Glacier Presence",
