@@ -1,4 +1,17 @@
 [    {
+         "id": "users/rabpro/Pastick_AK_permafrost_prob",
+         "name": "Pastick 2015 Alaska Permafrost Probability",
+         "start_date": null,
+         "end_date": null,
+         "type": "image",
+         "bands": {
+             "None": {
+                 "units" : "%",
+                 "resolution": 30
+             }
+         }
+     },       
+     {
          "id": "users/rabpro/NIEER_permafrost_probability",
          "name": "NIEER Permafrost Probability",
          "start_date": null,
