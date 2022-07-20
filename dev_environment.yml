@@ -13,9 +13,11 @@ dependencies:
   - requests
   - appdirs
   - earthengine-api
+  - gdown
   - tqdm
   - beautifulsoup4
   - coverage
+  - pytest
   - sphinx
   - numpydoc
   - sphinx_rtd_theme
