@@ -147,21 +147,13 @@ def does_hydrobasins_exist(datapaths):
     """
     Checks if level 1 and level 12 HydroBasins data are available.
     """
-    lev1, lev12 = False, False
-    if (
-        os.path.isfile(
-            os.path.join(datapaths["HydroBasins1"], "hybas_all_lev01_v1c.shp")
-        )
-        is True
-    ):
-        lev1 = True
-    if (
-        os.path.isfile(
-            os.path.join(datapaths["HydroBasins12"], "hybas_af_lev12_v1c.shp")
-        )
-        is True
-    ):
-        lev12 = True
+    lev1 = os.path.isfile(
+        os.path.join(datapaths["HydroBasins1"], "hybas_all_lev01_v1c.shp")
+    )
+    lev12 = os.path.isfile(
+        os.path.join(datapaths["HydroBasins12"], "hybas_af_lev12_v1c.shp")
+    )
+
     return lev1, lev12
 
 
