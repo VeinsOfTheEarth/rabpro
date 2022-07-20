@@ -23,4 +23,3 @@ dependencies:
   - setuptools
   - twine
   - sphinx-panels
-
