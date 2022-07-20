@@ -195,8 +195,6 @@ def _download_file_from_google_drive(id_file, destination, proxy=None):
     url = "https://drive.google.com/uc?id={}".format(id_file)
     gdown.download(url, output=destination, proxy=proxy)
 
-    return
-
 
 def download_hydrobasins(datapath=None, proxy=None):
     """Downloads HydroBASINS to the proper location, then unzips and deletes
@@ -256,8 +254,6 @@ def download_hydrobasins(datapath=None, proxy=None):
     # Delete zip file
     os.remove(filepath)
     print("Done.")
-
-    return
 
 
 def download_merit_hydro(merit_tile, username, password, proxy=None):
@@ -319,8 +315,6 @@ def download_merit_hydro(merit_tile, username, password, proxy=None):
 
     # Rebuild virtual rasters to include new geotiffs
     ru.build_virtual_rasters(datapaths, skip_if_exists=False, verbose=True)
-
-    return
 
 
 def download_tar_file(url, filename, username, password, proxy=None, clean=True):
@@ -406,5 +400,3 @@ def download_file(url, filename, username, password, proxy=None):
 
     os.rmdir(tar_dir)
     os.remove(filename)
-
-    return
