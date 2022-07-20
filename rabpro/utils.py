@@ -437,9 +437,8 @@ def _parse_path(path):
     empty if a directory is passed.
     """
 
-    if (
-        path[0] != os.sep and platform.system() != "Windows"
-    ):  # This is for non-windows...
+    # This is for non-windows...
+    if path[0] != os.sep and platform.system() != "Windows":
         path = os.sep + path
 
     # Pull out extension and filename, if exist
@@ -492,8 +491,6 @@ def lonlat_to_xy(lons, lats, gt):
 
     xs = ((lons - gt[0]) / gt[1]).astype(int)
     ys = ((lats - gt[3]) / gt[5]).astype(int)
-    # xs = round((lons - gt[0]) / gt[1])
-    # ys = round((lats - gt[3]) / gt[5])
 
     return np.column_stack((xs, ys))
 
@@ -780,9 +777,7 @@ def area_4326(pgons_4326):
     # specify a named ellipsoid
     geod = Geod(ellps="WGS84")
 
-    areas_km2 = []
-    for p in pgons_4326:
-        areas_km2.append(abs(geod.geometry_area_perimeter(p)[0]) / 1e6)
+    areas_km2 = [abs(geod.geometry_area_perimeter(p)[0]) / 1e6 for p in pgons_4326]
     return areas_km2
 
 
