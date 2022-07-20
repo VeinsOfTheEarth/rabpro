@@ -59,8 +59,14 @@ class profiler:
     """
 
     def __init__(
-        self, coords, da=None, name="unnamed", path_results=None, verbose=True,
-        update_gee_metadata=True):
+        self,
+        coords,
+        da=None,
+        name="unnamed",
+        path_results=None,
+        verbose=True,
+        update_gee_metadata=True,
+    ):
 
         self.name = name
         self.verbose = verbose
@@ -68,9 +74,8 @@ class profiler:
         # Parse the provided coordinates into a GeoDataFrame (if not already)
         if type(coords) is tuple:  # A single point was provided
             self.gdf = self._coordinates_to_gdf([coords])
-        elif (
-            type(coords) is list
-        ):  # A list of tuples was provided (centerline) # pragma: no cover
+        elif type(coords) is list:
+            # A list of tuples was provided (centerline) # pragma: no cover
             self.gdf = self._coordinates_to_gdf(coords)
             raise DeprecationWarning(
                 "elev_profile only supports single 'point' coordinate pairs, not multipoint 'centerlines'"
@@ -81,9 +86,8 @@ class profiler:
                 self.gdf = self._csv_to_gdf(coords)
             elif ext == "shp" or ext == "json" or ext == "geojson":
                 self.gdf = gpd.read_file(coords)
-        elif (
-            type(coords) is gpd.geodataframe.GeoDataFrame
-        ):  # A GeoDataFrame was provided.
+        elif type(coords) is gpd.geodataframe.GeoDataFrame:
+            # A GeoDataFrame was provided.
             # Convert it to EPSG:4326
             self.gdf = coords
             if self.gdf.crs.to_epsg() != 4326:
@@ -125,7 +129,9 @@ class profiler:
             )
         # Try to build virtual rasters if not already built
         if n_vrts < 4:
-            ru.build_virtual_rasters(self.datapaths, skip_if_exists=True, verbose=verbose)
+            ru.build_virtual_rasters(
+                self.datapaths, skip_if_exists=True, verbose=verbose
+            )
             n_layers_geotiffs, n_vrts = du.does_merit_exist(self.datapaths)
 
         if n_vrts == 4:
@@ -140,7 +146,6 @@ class profiler:
         else:
             self.available_hb = True
 
-
     def _coordinates_to_gdf(self, coords):
         """
         Converts a list of coordinates to a `GeoDataFrame`. Coordinates should
@@ -152,7 +157,6 @@ class profiler:
         gdf.crs = CRS.from_epsg(4326)
 
         return gdf
-    
 
     def _csv_to_gdf(self, csvpath):
         """
@@ -280,7 +284,7 @@ class profiler:
 
                 reproj_ea_meters = self.watershed.to_crs(crs=CRS.from_epsg(rp_epsg))
                 pgon_area = (
-                    reproj_ea_meters.geometry.values[0].area / 10 ** 6
+                    reproj_ea_meters.geometry.values[0].area / 10**6
                 )  # square km
                 pct_diff = (
                     abs(pgon_area - self.mapped["da_km2"]) / self.mapped["da_km2"] * 100
@@ -294,16 +298,16 @@ class profiler:
         """
         Compute the elevation profile. The profile is computed such that the
         provided coordinate is the centerpoint (check if this is true).
-        
+
         Parameters
         ----------
         dist_to_walk_km : numeric
             The distance to trace the elevation profile from the provided
             point. This distance applies to upstream and downstream--i.e. the
             total profile distance is twice this value. If not specified,
-            will be automatically computed as 10 channel widths from provided 
+            will be automatically computed as 10 channel widths from provided
             DA value if not specified OR 5 km, whichever is larger.
-       
+
         """
         if not hasattr(self, "nrows"):
             self.nrows = 50
