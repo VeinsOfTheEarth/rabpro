@@ -215,7 +215,7 @@ def download_hydrobasins(datapath=None, proxy=None):
     .. code-block:: python
 
         from rabpro import data_utils
-        data_utils.hydrobasins()    
+        data_utils.hydrobasins()
     """
 
     if datapath is None:
@@ -265,7 +265,7 @@ def download_merit_hydro(merit_tile, username, password, proxy=None):
     30 degree x 30 degree tile. Each tile contains 5 degree x 5 degree geotiffs.
     Data are downloaded and untarred into the location and filestructure rabpro
     expects. Virtual rasters are rebuilt after downloading this data.
-    
+
     Parameters
     ----------
     merit_tile : str
@@ -408,78 +408,3 @@ def download_file(url, filename, username, password, proxy=None):
     os.remove(filename)
 
     return
-
-
-# def download_merit_dem(merit_tile, username, password, datapath=None, proxy=None):
-#     """This will download MERIT-DEM tiles, but is not needed to run rabpro
-#     functions. MERIT-Hydro contains a "hydrologically-adjusted" DEM that rabpro
-#     uses for elevations.
-#     """
-
-#     if datapath is None:
-#         datapath = Path(create_datapaths()['root'])
-
-#     baseurl = "http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/"
-#     filename = f"dem_tif_{merit_tile}.tar"
-
-#     session = requests.Session()
-#     if proxy is not None:
-#         session.proxies.update({'https':proxy})
-#     else:
-#         session.proxies = {}
-
-#     response = session.get(baseurl)
-
-#     soup = BeautifulSoup(response.text, "html.parser")
-#     url = [
-#         x["href"][2:] for x in soup.findAll("a", text=re.compile(filename), href=True)
-#     ][0]
-
-#     url = baseurl + url
-#     filename = os.path.join(datapath, f"MERIT_Hydro{os.sep}MERIT103", filename)
-#     os.makedirs(os.path.dirname(filename), exist_ok=True)
-
-#     download_file(url, filename, username, password, proxy)
-
-#     return
-
-# def _download_file_from_google_drive(id_file, destination, proxy=None):
-#     """
-#     From https://stackoverflow.com/a/39225272/8195528.
-#     """
-
-#     def get_confirm_token(response):
-#         for key, value in response.cookies.items():
-#             if key.startswith('download_warning'):
-#                 return value
-
-#         return None
-
-#     def save_response_content(response, destination):
-#         CHUNK_SIZE = 32768
-
-#         with open(destination, "wb") as f:
-#             for chunk in response.iter_content(CHUNK_SIZE):
-#                 if chunk: # filter out keep-alive new chunks
-#                     f.write(chunk)
-
-#     URL = "https://docs.google.com/uc?export=download"
-
-#     session = requests.Session()
-
-#     if proxy is not None:
-#         session.proxies.update({'https':proxy})
-#     else:
-#         session.proxies = {}
-
-#     response = session.get(URL, params = {'id':id_file}, stream = True)
-#     token = get_confirm_token(response)
-
-#     if token:
-#         params = { 'id' : id_file, 'confirm' : token }
-#         response = session.get(URL, params = params, stream = True)
-
-#     save_response_content(response, destination)
-
-#     return
-
