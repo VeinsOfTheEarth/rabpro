@@ -76,12 +76,6 @@ if __name__ == "__main__":
         help="Enable beautifulsoup to navigate a proxy, optional",
     )
 
-    parser_dl.add_argument(
-        "--preserve",
-        action="store_false",
-        help="Preserve artifacts and don't overwrite files",
-    )
-
     # Create file structure subparser
     parser_create = subparsers.add_parser(
         "create", help="Create rabpro data and config file structure"
