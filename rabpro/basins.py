@@ -30,7 +30,7 @@ def main_merit(gdf, da, nrows=51, ncols=51, map_only=False, verbose=False):
     ncols : int
         by default 51
     map_only : bool
-        If True, will map the coordinate to a MERIT flowline but not delineate 
+        If True, will map the coordinate to a MERIT flowline but not delineate
         the basin. The default is False.
     verbose : bool
         by default False
@@ -237,8 +237,8 @@ def _upstream_HB_basins(hybas_id, HB_gdf):
 
 def _map_to_HB_basin(gdf, HB_gdf):
     """
-    Maps a coordinate in gdf to the nearest HB_gdf while also considering 
-    drainage area. If no drainage area is available, simply finds the 
+    Maps a coordinate in gdf to the nearest HB_gdf while also considering
+    drainage area. If no drainage area is available, simply finds the
     HB polygon wherin the coordinate lies.
 
     Parameters
@@ -252,7 +252,7 @@ def _map_to_HB_basin(gdf, HB_gdf):
     Returns
     -------
     HB_within : GeoDataFrame
-        A one-row GeoDataFrame containing the HB polygon that most likely 
+        A one-row GeoDataFrame containing the HB polygon that most likely
         contains the coordinate + DA given in gdf.
 
     """
