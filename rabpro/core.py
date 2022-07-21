@@ -78,7 +78,8 @@ class profiler:
             # A list of tuples was provided (centerline) # pragma: no cover
             self.gdf = self._coordinates_to_gdf(coords)
             raise DeprecationWarning(
-                "elev_profile only supports single 'point' coordinate pairs, not multipoint 'centerlines'"
+                "elev_profile only supports single 'point' coordinate pairs, not"
+                " multipoint 'centerlines'"
             )
         elif type(coords) is str:  # A path to .csv or .shp file was provided
             ext = coords.split(".")[-1]
@@ -121,11 +122,9 @@ class profiler:
         n_layers_geotiffs, n_vrts = du.does_merit_exist(self.datapaths)
         if n_layers_geotiffs < 4:
             print(
-                (
-                    "{} of 4 MERIT-Hydro layers exist. If basin delineation "
-                    + "with MERIT-Hydro is desired, MERIT tiles may be downloaded "
-                    + "via rabpro.data_utils.download_merit_hydro()."
-                ).format(n_layers_geotiffs)
+                f"{n_layers_geotiffs} of 4 MERIT-Hydro layers exist. If basin "
+                + "delineation with MERIT-Hydro is desired, MERIT tiles may be "
+                + "downloaded via rabpro.data_utils.download_merit_hydro()."
             )
         # Try to build virtual rasters if not already built
         if n_vrts < 4:
@@ -141,7 +140,8 @@ class profiler:
         lev1, lev12 = du.does_hydrobasins_exist(self.datapaths)
         if lev1 + lev12 == 0:
             print(
-                "No HydroBasins data was found. Use rabpro.data_utils.download_hydrobasins() to download."
+                "No HydroBasins data was found. Use rabpro.data_utils."
+                "download_hydrobasins() to download."
             )
         else:
             self.available_hb = True
@@ -206,7 +206,8 @@ class profiler:
         search_radius : numeric, optional
             in meters, by default None
         map_only : bool, optional
-            If we only want to map the point and not delineate the basin, by default False
+            If we only want to map the point and not delineate the basin, by
+            default False
         force_merit : bool, optional
             Forces the use of MERIT to delineate basins.
         force_hydrobasins : bool, optional
@@ -218,7 +219,9 @@ class profiler:
             self.method = "hydrobasins"
             if self.da is None:
                 print(
-                    "Warning: no drainage area was provided. HydroBASINS will be used to delineate the basin, but result should be visually verified and coordinate updated if results are not as expected."
+                    "Warning: no drainage area was provided. HydroBASINS will be used"
+                    " to delineate the basin, but result should be visually verified"
+                    " and coordinate updated if results are not as expected."
                 )
         elif self.da <= 1000 or force_merit is True:
             self.method = "merit"
@@ -234,7 +237,7 @@ class profiler:
             print("HydroBasins data are not available; no delineation can be done.")
 
         if self.verbose is True and map_only is False:
-            print("Delineating watershed using {}.".format(self.method))
+            print(f"Delineating watershed using {self.method}.")
 
         if self.method == "hydrobasins":
             self.watershed, self.mapped = basins.main_hb(self.gdf, self.verbose)
@@ -270,15 +273,18 @@ class profiler:
             if self.watershed is None:
                 if not map_only:  # pragma: no cover
                     print(
-                        "Could not find a suitable flowline to map given coordinate and DA. No basin can be delineated.",
+                        "Could not find a suitable flowline to map given coordinate"
+                        " and DA. No basin can be delineated.",
                         "You can set da=None to force an attempt with HydroBASINS.",
                     )
             else:
                 self.gdf["da_km2"] = [None for p in range(self.gdf.shape[0])]
                 self.gdf["da_km2"].values[0] = self.watershed["da_km2"][0]
 
-                # Ensure the MERIT-delineated polygon's area is within 10% of the mapped value
-                # If the basin crosses the -180/180 meridian, need to use a projection that splits elsewhere
+                # Ensure the MERIT-delineated polygon's area is within 10% of the
+                # mapped value
+                # If the basin crosses the -180/180 meridian, need to use a projection
+                # that splits elsewhere
                 # 2193 for new zealand, seems to work fine for areas though
                 rp_epsg = 2193 if self.mapped["meridian_cross"] else 3410
 
@@ -291,7 +297,8 @@ class profiler:
                 )
                 if pct_diff > 10:  # pragma: no cover
                     print(
-                        f"Check delineated basin. There is a difference of {pct_diff}% between MERIT DA and polygon area."
+                        f"Check delineated basin. There is a difference of {pct_diff}%"
+                        " between MERIT DA and polygon area."
                     )
 
     def elev_profile(self, dist_to_walk_km=None):
@@ -321,7 +328,8 @@ class profiler:
                 da = self.watershed["da_km2"].values[0]
             else:
                 raise KeyError(
-                    "If the dist_to_walk_km parameter is not specified, a drainage area must be provided when instantiating the profiler."
+                    "If the dist_to_walk_km parameter is not specified, a drainage"
+                    " area must be provided when instantiating the profiler."
                 )
 
             dist_to_walk_km = ru.dist_from_da(da)
@@ -380,21 +388,20 @@ class profiler:
         for w in what:
             if w not in ["flowline", "watershed"]:
                 raise KeyError(
-                    f"Requested export {w} not available. Choose from {['flowline', 'subbasins']}."
+                    f"Requested export {w} not available. Choose from"
+                    f" {['flowline', 'subbasins']}."
                 )
             elif w == "watershed":
                 if hasattr(self, "watershed"):
                     self.watershed.to_file(self.paths["watershed"], driver="GeoJSON")
                     if self.verbose:
-                        print(
-                            "Watershed written to {}.".format(self.paths["watershed"])
-                        )
+                        print(f"Watershed written to {self.paths['watershed']}.")
                 else:
                     print("No basins found for export.")
             elif w == "flowline":
                 if hasattr(self, "flowline"):
                     self.flowline.to_file(self.paths["flowline"], driver="GeoJSON")
                     if self.verbose:
-                        print("Flowline written to {}.".format(self.paths["watershed"]))
+                        print(f"Flowline written to {self.paths['watershed']}.")
                 else:
                     print("No flowline found for export.")

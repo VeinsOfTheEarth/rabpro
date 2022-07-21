@@ -32,8 +32,8 @@ class Dataset:
         Desired resolution in meters of the calculation over the dataset.
         Defaults to native resolution of the dataset.
     start : str, optional
-        Desired start date of data in ISO format: YYYY-MM-DD. Defaults to None which GEE
-        interprets as the dataset start.
+        Desired start date of data in ISO format: YYYY-MM-DD. Defaults to None which
+        GEE interprets as the dataset start.
     end : str, optional
         Desired end date of data in ISO format: YYYY-MM-DD. Defaults to None which GEE
         interprets as the dataset end.
@@ -147,9 +147,11 @@ def format_gee(
     col_drop_list : list, optional
         custom columns to drop, by default []
     col_protect_list : list, optional
-        columns to avoid tagging, by default ["id_basin", "id_outlet", "idx", "id", "vote_id"]
+        columns to avoid tagging, by default ["id_basin", "id_outlet", "idx", "id",
+        "vote_id"]
     col_drop_defaults : list, optional
-        built-in columns to drop, by default ["DA", "count", ".geo", "system:index", "da_km2"]
+        built-in columns to drop, by default ["DA", "count", ".geo", "system:index",
+        "da_km2"]
 
     Returns
     -------
@@ -196,9 +198,11 @@ def fetch_gee(
     col_drop_list : list, optional
         custom columns to drop, by default []
     col_protect_list : list, optional
-        columns to avoid tagging, by default ["id_basin", "id_outlet", "idx", "id", "vote_id"]
+        columns to avoid tagging, by default ["id_basin", "id_outlet", "idx", "id",
+        "vote_id"]
     col_drop_defaults : list, optional
-        built-in columns to drop, by default ["DA", "count", ".geo", "system:index", "da_km2"]
+        built-in columns to drop, by default ["DA", "count", ".geo", "system:index",
+        "da_km2"]
 
     Returns
     -------
@@ -382,7 +386,8 @@ def compute(
         reducer = _parse_reducers(d.stats)
 
         def map_func(img):
-            # The .limit() here is due to a GEE bug, see: https://gis.stackexchange.com/questions/407965/null-value-after-reduceregions-in-gee?rq=1
+            # The .limit() here is due to a GEE bug, see:
+            # https://gis.stackexchange.com/questions/407965/null-value-after-reduceregions-in-gee?rq=1
             return img.reduceRegions(
                 collection=featureCollection.limit(1000000000),
                 reducer=reducer,
@@ -527,13 +532,15 @@ def _get_controls(datasets):
                 gee_dataset["start_date"]
             ):
                 print(
-                    f"Warning: requested start date earlier than expected for {d.data_id}:{d.band}"
+                    "Warning: requested start date earlier than expected for"
+                    f" {d.data_id}:{d.band}"
                 )
 
         if d.end is not None:
             if date.fromisoformat(d.end) > date.fromisoformat(gee_dataset["end_date"]):
                 print(
-                    f"Warning: requested end date later than expected for {d.data_id}:{d.band}"
+                    "Warning: requested end date later than expected for"
+                    f" {d.data_id}:{d.band}"
                 )
 
         d.stats = set(d.stats) | set(["count", "mean"])
@@ -548,7 +555,8 @@ def _get_controls(datasets):
             d.resolution = resolution
         if d.resolution and resolution and d.resolution < resolution:
             print(
-                "Warning: requested resolution is less than the native raster resolution"
+                "Warning: requested resolution is less than the native raster"
+                " resolution"
             )
 
         d.type = gee_dataset["type"]

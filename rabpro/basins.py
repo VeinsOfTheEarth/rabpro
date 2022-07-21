@@ -326,10 +326,9 @@ def load_continent_basins(gdf, level_one, level_twelve):
     clpt_level_onei = gpd.sjoin(cl_us_pt, level_one_df, op="intersects")
     if len(clpt_level_onei) == 0:
         print(
-            """Provided coordinate ({}) does not lie within HydroBasins polygons.
-            Check that lat/lon are not reversed in input. Exiting.""".format(
-                [xy_cl[0][0], xy_cl[1][0]]
-            )
+            f"Provided coordinate ({[xy_cl[0][0], xy_cl[1][0]]}) does not lie within"
+            " HydroBasins polygons. Check that lat/lon are not reversed in input."
+            " Exiting."
         )
         return None
 

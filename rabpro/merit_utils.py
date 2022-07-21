@@ -482,7 +482,8 @@ def _blob_to_polygon_shapely(I, ret_type="coords", buf_amt=0.001):
 
         # Union the polygons and extract the boundary
         unioned = ops.unary_union(pix_pgons).buffer(-buf_amt)
-        # I think unioned should always be a polygon and thus not throw errors, but not sure--could make MultiPolygons
+        # I think unioned should always be a polygon and thus not throw errors,
+        # but not sure--could make MultiPolygons
         perimx, perimy = unioned.exterior.xy
 
         if ret_type == "coords":
@@ -660,21 +661,26 @@ def map_cl_pt_to_flowline(
         fac_obj.
     solve_method : int
         Indicates the reason why mapping succeeded/failed:
-        1 - (success) DA provided; a nearby flowline pixel was found within 15% of the provided DA
-        2 - (success) DA provided; match was found on a nearby flowline that is within our DA certainty bounds
+        1 - (success) DA provided; a nearby flowline pixel was found within 15%
+                      of the provided DA
+        2 - (success) DA provided; match was found on a nearby flowline that is
+                      within our DA certainty bounds
         3 - (success) basin polygon provided; a mappable flowline was found
         4 - (success) DA not provided; mapped to the nearest flowline (>1km^2)
         5 - (fail) DA not provided; no nearby flowlines exist
         6 - (fail) DA provided; but no nearby DAs were close enough to map to
-        7 - (fail) basin polygon provided; but no nearby DAs were within the allowable range
-        8 - (fail) basin polygon provided; no flowlines were 25% within the provided basin
+        7 - (fail) basin polygon provided; but no nearby DAs were within the allowable
+                   range
+        8 - (fail) basin polygon provided; no flowlines were 25% within the provided
+                   basin
 
     """
     # Check if we have all the required inputs for a basin polygon comparison
     if basin_pgon is not None:
         if fdr_map is None or fdr_obj is None or da is None:
             print(
-                "You provided a basin polygon but not the drainage area, flow directions, or flow directions map. Cannot use polygon."
+                "You provided a basin polygon but not the drainage area, flow"
+                " directions, or flow directions map. Cannot use polygon."
             )
             basin_compare = False
         else:
@@ -881,7 +887,9 @@ def map_cl_pt_to_flowline(
             wt_dist = 1
             Ierr = ((Iabs_err / da) * wt_da) + (Idist * wt_dist)
             Ierr[~Irn] = np.nan
-            solve_method = 2  # A DA was provided and a match was found on a nearby flowline that is within our certainty bounds
+            # A DA was provided and a match was found on a nearby flowline that
+            # is within our certainty bounds
+            solve_method = 2
 
     # If no useful DA is provided, the nearest point along the stream network is
     # chosen to map to.

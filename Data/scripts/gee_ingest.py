@@ -38,11 +38,9 @@ gee_folder = config.gee_folder
 def get_layer(filename, out_folder, layer, out_path=None, dry_run=False):
     """get_layer(filename, out_folder, 1)"""
     if out_path is None:
-        out_path = "{}{}_{}.tif".format(out_folder, os.path.basename(filename), layer)
+        out_path = f"{out_folder}{os.path.basename(filename)}_{layer}.tif"
 
-    shell_cmd = "gdal_translate -of GTiff -ot Float32 -co COMPRESS=DEFLATE -co TILED=YES -b {} {} {}".format(
-        layer, filename, out_path
-    )
+    shell_cmd = f"gdal_translate -of GTiff -ot Float32 -co COMPRESS=DEFLATE -co TILED=YES -b {layer} {filename} {out_path}"
 
     print(shell_cmd)
     if not os.path.exists(out_path):
@@ -60,8 +58,7 @@ def pull_tifs_from_nc(
         year_start = int(time_start[0:4])
         year_end = year_start + nlayers
         out_paths = [
-            "{}{}.tif".format(out_folder, str(path))
-            for path in list(range(year_start, year_end + 1))
+            f"{out_folder}{path}.tif" for path in list(range(year_start, year_end + 1))
         ]
 
     if time_frequency == "months":
@@ -75,7 +72,7 @@ def pull_tifs_from_nc(
             month_stamps.append(month_stamp)
             i = i + 1
 
-        out_paths = ["{}/{}.tif".format(out_folder, str(path)) for path in month_stamps]
+        out_paths = [f"{out_folder}/{path}.tif" for path in month_stamps]
 
     for i, opath in zip(range(0, nlayers), out_paths):
         get_layer(filename, out_folder, i + 1, opath, dry_run=dry_run)

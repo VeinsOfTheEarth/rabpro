@@ -184,7 +184,7 @@ def _download_file_from_google_drive(id_file, destination, proxy=None):
     Self-explanatory.
     """
 
-    url = "https://drive.google.com/uc?id={}".format(id_file)
+    url = f"https://drive.google.com/uc?id={id_file}"
     gdown.download(url, output=destination, proxy=proxy)
 
 
@@ -227,9 +227,9 @@ def download_hydrobasins(datapath=None, proxy=None):
     if fsize != 562761977:
         hb_url = r"https://drive.google.com/file/d/1NLJUEWhJ9A4y47rcGYv_jWF1Tx2nLEO9/view?usp=sharing"
         print(
-            "HydroBasins zip file was not successfully downloaded. Check proxy? You may also manually download the HydroBasins file from {} and unzip it to {}".format(
-                hb_url, str(datapath)
-            )
+            "HydroBasins zip file was not successfully downloaded. Check proxy?"
+            f" You may also manually download the HydroBasins file from {hb_url} and"
+            f" unzip it to {str(datapath)}"
         )
         os.remove(filepath)
         return
