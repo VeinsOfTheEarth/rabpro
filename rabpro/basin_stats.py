@@ -5,14 +5,15 @@ Basin statistics (basin_stats.py)
 Computes basin statistics using Google Earth Engine.
 """
 
-import ee
 import json
 import re
-import requests
-import numpy as np
-import pandas as pd
 from collections import OrderedDict
 from datetime import date
+
+import ee
+import numpy as np
+import pandas as pd
+import requests
 
 from rabpro import utils as ru
 
