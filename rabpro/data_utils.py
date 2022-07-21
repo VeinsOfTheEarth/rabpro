@@ -113,7 +113,6 @@ def create_datapaths(datapath=None, configpath=None, reset_user_metadata=False):
 
         if response.status_code == 200:
             r = response.json()
-            print(datapaths["user_gee_metadata"])
             with open(datapaths["user_gee_metadata"], "w") as f:
                 json.dump(r, f, indent=4)
 
