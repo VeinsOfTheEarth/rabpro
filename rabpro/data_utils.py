@@ -9,15 +9,15 @@ import os
 import re
 import shutil
 import tarfile
-import zipfile
 import urllib.parse
+import zipfile
 from datetime import datetime, timedelta
 from pathlib import Path
 
 import appdirs
+import gdown
 import requests
 import tqdm
-import gdown
 from bs4 import BeautifulSoup
 
 from rabpro import utils as ru

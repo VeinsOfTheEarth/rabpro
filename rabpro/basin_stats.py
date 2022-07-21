@@ -6,13 +6,13 @@ Computes basin statistics using Google Earth Engine.
 """
 
 import ee
-import re
 import json
+import re
 import requests
 import numpy as np
 import pandas as pd
-from datetime import date
 from collections import OrderedDict
+from datetime import date
 
 from rabpro import utils as ru
 

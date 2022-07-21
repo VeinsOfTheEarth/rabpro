@@ -5,11 +5,11 @@ Basin delineation (basins.py)
 Functions to calculate basin geometries.
 """
 
+import geopandas as gpd
 import numpy as np
 from osgeo import gdal
-from pyproj import CRS
-import geopandas as gpd
 from pathlib import Path
+from pyproj import CRS
 from shapely.geometry import Point, MultiPolygon
 
 from rabpro import utils as ru

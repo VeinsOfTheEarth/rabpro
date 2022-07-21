@@ -4,10 +4,10 @@ Elevation profile computation (elev_profile.py)
 
 """
 
+import geopandas as gpd
 import numpy as np
 from osgeo import gdal
 from pyproj import CRS
-import geopandas as gpd
 from shapely.geometry import Point
 
 from rabpro import utils as ru

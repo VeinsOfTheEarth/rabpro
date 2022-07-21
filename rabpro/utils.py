@@ -4,22 +4,22 @@ Utility functions (utils.py)
 
 """
 
-import os
-import sys
 import copy
-import shutil
-import zipfile
-import platform
+import http.client as httplib
 import itertools
+import os
+import platform
+import shutil
 import subprocess
-import pandas as pd
-from pyproj import Geod
+import sys
+import zipfile
 from pathlib import Path
 
+import pandas as pd
 import numpy as np
 from osgeo import gdal, ogr
+from pyproj import Geod
 from skimage import measure
-import http.client as httplib
 from shapely.ops import unary_union
 from shapely.geometry import Polygon, MultiPolygon
 
