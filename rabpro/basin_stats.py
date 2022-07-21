@@ -14,7 +14,6 @@ import pandas as pd
 from datetime import date
 from collections import OrderedDict
 
-
 from rabpro import utils as ru
 
 
@@ -385,7 +384,9 @@ def compute(
         def map_func(img):
             # The .limit() here is due to a GEE bug, see: https://gis.stackexchange.com/questions/407965/null-value-after-reduceregions-in-gee?rq=1
             return img.reduceRegions(
-                collection=featureCollection.limit(1000000000), reducer=reducer, scale=d.resolution
+                collection=featureCollection.limit(1000000000),
+                reducer=reducer,
+                scale=d.resolution,
             )
 
         reducedFC = imgcol.map(map_func)
@@ -564,7 +565,7 @@ def image(
     categorical=[False],
     verbose=False,
 ):
-    """Download a GEE raster as a GeoTiff clipped to a basins GeoDataFrame    
+    """Download a GEE raster as a GeoTiff clipped to a basins GeoDataFrame
 
     Parameters
     ----------
@@ -593,7 +594,7 @@ def image(
 
         import numpy as np
         from shapely.geometry import box
-        
+
         total_bounds = np.array([-85.91331249, 39.2, -85.5, 39.46429816])
         gdf = gpd.GeoDataFrame({"idx": [1], "geometry": [box(*total_bounds)]}, crs="EPSG:4326")
 
