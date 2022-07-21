@@ -314,8 +314,7 @@ class profiler:
             self.ncols = 50
 
         if dist_to_walk_km is None:
-            # Check if the watershed has been delineated; pull drainage area
-            # from that
+            # Check if the watershed has been delineated; pull drainage area from that
             if "da_km2" in self.gdf.keys():
                 da = self.gdf["da_km2"].values[0]
             elif hasattr(self, "watershed"):

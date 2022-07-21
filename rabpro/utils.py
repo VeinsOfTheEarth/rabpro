@@ -336,10 +336,7 @@ def build_vrt(
         extents = raster_extents(clipper)
 
     # Build the vrt with input options
-    callstring = [
-        "gdalbuildvrt",
-        "-overwrite",
-    ]
+    callstring = ["gdalbuildvrt", "-overwrite"]
 
     if np.size(extents) == 4:
         stringadd = [
