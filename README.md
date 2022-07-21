@@ -13,7 +13,7 @@
     <a href=https://doi.org/10.5281/zenodo.6600732><img src=https://zenodo.org/badge/DOI/10.5281/zenodo.6600732.svg></a>
 </p>
 
-> Package to delineate watershed basins and compute attribute statistics using [Google Earth Engine](https://developers.google.com/earth-engine/).
+Package to delineate watershed basins and compute attribute statistics using [Google Earth Engine](https://developers.google.com/earth-engine/).
 
 ## Setup
 
@@ -22,7 +22,7 @@
 
 ## Usage
 
-> See Example notebooks:
+See Example notebooks:
 
 |[Data configuration](https://veinsoftheearth.github.io/rabpro/examples/notebooks/downloading_data.html)|[Basic workflow](https://veinsoftheearth.github.io/rabpro/examples/notebooks/basic_example.html)|[Multiple basins workflow](https://veinsoftheearth.github.io/rabpro/examples/notebooks/multiple_basins.html)|[Basin stats examples](https://veinsoftheearth.github.io/rabpro/examples/notebooks/basin_stats.html)|
 |--|--|--|--|
