@@ -7,25 +7,24 @@ Utility functions for dealing with MERIT datasets
 
 import numpy as np
 import pandas as pd
+from scipy.ndimage import distance_transform_edt
 from shapely import ops
 from shapely.geometry import Polygon, LineString
-from scipy.ndimage.morphology import distance_transform_edt
 
 from rabpro import utils as ru
-
 
 
 def _walk_upstream(cr_stpt, dist_to_walk_km, fdr_obj, da_obj, fmap):
     """
     Walks upstream along a raster of flow directions from a given starting
-    coordinate. 
-    
+    coordinate.
+
     Parameters -- see trace_flowpath
 
     Returns
     -------
     walkpts : list
-        Pixel coordinates from cr_stpt to dist_to_walk_km upstream. 
+        Pixel coordinates from cr_stpt to dist_to_walk_km upstream.
     """
     imshape = (fdr_obj.RasterXSize, fdr_obj.RasterYSize)
     gt = fdr_obj.GetGeoTransform()
@@ -99,21 +98,26 @@ def _walk_upstream(cr_stpt, dist_to_walk_km, fdr_obj, da_obj, fmap):
         else:
             prev_coord = this_coord
         this_coord = ru.xy_to_coords(col, row, gt)
-        this_dist = ru.haversine((prev_coord[1], this_coord[1]),(prev_coord[0], this_coord[0]))[0]/1000
+        this_dist = (
+            ru.haversine(
+                (prev_coord[1], this_coord[1]), (prev_coord[0], this_coord[0])
+            )[0]
+            / 1000
+        )
         walkdist = walkdist + this_dist
-        
+
         if walkdist >= dist_to_walk_km:
             break
-        
+
     return walkpts
 
 
 def _walk_downstream(cr_stpt, dist_to_walk_km, fdr_obj, fmap):
     """
     Walks downstream along a raster of flow directions from a given starting
-    coordinate. Decided not to combine with _walk_upstream because the 
+    coordinate. Decided not to combine with _walk_upstream because the
     methods, while similar, are different enough to merit individual functions.
-    
+
     Parameters -- see trace_flowpath
 
     Returns
@@ -146,16 +150,16 @@ def _walk_downstream(cr_stpt, dist_to_walk_km, fdr_obj, fmap):
     walkpts = [start_pixel]
     walkdist = 0
     prev_coord = None
-    while 1:
+    while True:
         cr = np.unravel_index(walkpts[-1], imshape)
 
         # Get the FDR of this pixel
         fdr = neighborhood_vals_from_raster(cr, (1, 1), fdr_obj, nodataval=np.nan)[0][0]
-        
+
         # Halt if we're at the end of the line
         if np.isnan(fdr) == True or fdr == 0:
             break
-        
+
         # Take the step
         row = cr[1] + rowdict[fdr]
         col = cr[0] + coldict[fdr]
@@ -174,25 +178,30 @@ def _walk_downstream(cr_stpt, dist_to_walk_km, fdr_obj, fmap):
         else:
             prev_coord = this_coord
         this_coord = ru.xy_to_coords(col, row, gt)
-        this_dist = ru.haversine((prev_coord[1], this_coord[1]),(prev_coord[0], this_coord[0]))[0]/1000
+        this_dist = (
+            ru.haversine(
+                (prev_coord[1], this_coord[1]), (prev_coord[0], this_coord[0])
+            )[0]
+            / 1000
+        )
         walkdist = walkdist + this_dist
-        
+
         if walkdist >= dist_to_walk_km:
             break
-        
+
     return walkpts
 
-    
+
 def trace_flowpath(
     fdr_obj,
     da_obj,
     cr_stpt,
-    dist_to_walk_km = 1,
+    dist_to_walk_km=1,
     fmap=[32, 64, 128, 16, 1, 8, 4, 2],
 ):
     """
     Returns a flowpath of pixels up- and downstream of cr_stpt a distance of
-    dist_to_walk_km in each direction (unless the end of the flowpath is 
+    dist_to_walk_km in each direction (unless the end of the flowpath is
     reached). Flowpath is returned US->DS ordered.
 
     Parameters
@@ -225,7 +234,7 @@ def trace_flowpath(
     downstream = _walk_downstream(cr_stpt, dist_to_walk_km, fdr_obj, fmap)
     trace = upstream[::-1] + downstream[1:]
     colrow = np.unravel_index(trace, imshape)
-    
+
     return (colrow[1], colrow[0])
 
 
@@ -269,9 +278,8 @@ def neighborhood_vals_from_raster(cr, shape, vrt_obj, nodataval=np.nan, wrap=Non
         Array of same dimensions as shape containing the neighborhood values.
 
     """
-    nan_int = (
-        -9999
-    )  # denotes nan in an integer array since np.nan can't be stored as an integer
+    # denotes nan in an integer array since np.nan can't be stored as an integer
+    nan_int = -9999
 
     if wrap is None:
         wrap = ""
@@ -362,19 +370,19 @@ def _get_basin_pixels(
 
     Parameters
     ----------
-    start_cr : 
-        
-    da_obj : 
-        
-    fdr_obj : 
-        
+    start_cr :
+
+    da_obj :
+
+    fdr_obj :
+
     fdir_map : list, optional
         [NW, N, NE, W, E, SW, S, SE], by default [32, 64, 128, 16, 1, 8, 4, 2]
 
     Returns
     -------
-    
-        
+
+
     """
 
     # Make arrays for finding neighboring indices
@@ -474,12 +482,9 @@ def _blob_to_polygon_shapely(I, ret_type="coords", buf_amt=0.001):
 
         # Union the polygons and extract the boundary
         unioned = ops.unary_union(pix_pgons).buffer(-buf_amt)
-        (
-            perimx,
-            perimy,
-        ) = (
-            unioned.exterior.xy
-        )  # I think unioned should always be a polygon and thus not throw errors, but not sure--could make MultiPolygons
+        # I think unioned should always be a polygon and thus not throw errors,
+        # but not sure--could make MultiPolygons
+        perimx, perimy = unioned.exterior.xy
 
         if ret_type == "coords":
             ret.append(np.vstack((perimx, perimy)))
@@ -581,20 +586,20 @@ def _nrows_and_cols_from_search_radius(lon, lat, search_radius, gt):
 
     Parameters
     ----------
-    lon : 
-        
-    lat : 
-        
+    lon :
+
+    lat :
+
     search_radius : numeric
         search radius in meters
-    gt : 
+    gt :
 
     Returns
     -------
     nrows : numeric
-        
+
     ncols : numeric
-        
+
     """
 
     # Determine the number of rows and columns to search
@@ -656,21 +661,26 @@ def map_cl_pt_to_flowline(
         fac_obj.
     solve_method : int
         Indicates the reason why mapping succeeded/failed:
-        1 - (success) DA provided; a nearby flowline pixel was found within 15% of the provided DA
-        2 - (success) DA provided; match was found on a nearby flowline that is within our DA certainty bounds
+        1 - (success) DA provided; a nearby flowline pixel was found within 15%
+                      of the provided DA
+        2 - (success) DA provided; match was found on a nearby flowline that is
+                      within our DA certainty bounds
         3 - (success) basin polygon provided; a mappable flowline was found
         4 - (success) DA not provided; mapped to the nearest flowline (>1km^2)
         5 - (fail) DA not provided; no nearby flowlines exist
         6 - (fail) DA provided; but no nearby DAs were close enough to map to
-        7 - (fail) basin polygon provided; but no nearby DAs were within the allowable range
-        8 - (fail) basin polygon provided; no flowlines were 25% within the provided basin
+        7 - (fail) basin polygon provided; but no nearby DAs were within the allowable
+                   range
+        8 - (fail) basin polygon provided; no flowlines were 25% within the provided
+                   basin
 
     """
     # Check if we have all the required inputs for a basin polygon comparison
     if basin_pgon is not None:
         if fdr_map is None or fdr_obj is None or da is None:
             print(
-                "You provided a basin polygon but not the drainage area, flow directions, or flow directions map. Cannot use polygon."
+                "You provided a basin polygon but not the drainage area, flow"
+                " directions, or flow directions map. Cannot use polygon."
             )
             basin_compare = False
         else:
@@ -802,10 +812,6 @@ def map_cl_pt_to_flowline(
             ls.intersection(basin_pgon).length / ls.length for ls in cl_trace_ls
         ]
 
-        # import geopandas as gpd
-        # gdf = gpd.GeoDataFrame(geometry=cl_trace_ls, crs=CRS.from_epsg(4326))
-        # gdf.to_file(r'C:\Users\Jon\Desktop\temp\lstest.shp')
-
         # The highest fraction is the correct flowline
         if max(fraction_in) > 0.25:
             fl_idx = fraction_in.index(max(fraction_in))
@@ -838,20 +844,21 @@ def map_cl_pt_to_flowline(
     # the get_DA_error_bounds function.
     if da is not None:
         lower, upper = get_DA_error_bounds(da)
-        Irn = np.logical_and(
-            Idas >= lower, Idas <= upper
-        )  # Threshold to get the flowlines
-        if (
-            Irn.sum() == 0
-        ):  # If no valid flowlines are found, no mapping can be performed
-            solve_method = (
-                6  # A DA was provided but no nearby DAs were close enough to map to
-            )
+
+        # Threshold to get the flowlines
+        Irn = np.logical_and(Idas >= lower, Idas <= upper)
+
+        # If no valid flowlines are found, no mapping can be performed
+        if Irn.sum() == 0:
+            # A DA was provided but no nearby DAs were close enough to map to
+            solve_method = 6
             return (np.nan, np.nan), solve_method
     else:  # If no DA was provided, use all local flowlines (assumes DA > 1km^2)
         Irn = Idas > 1
+
+        # No DA was provided, and no nearby flowlines exist
         if Irn.sum() == 0:
-            solve_method = 5  # No DA was provided, and no nearby flowlines exist
+            solve_method = 5
             return (np.nan, np.nan), solve_method
 
     # Compute errors based on distance away from provided coordinates
@@ -880,23 +887,23 @@ def map_cl_pt_to_flowline(
             wt_dist = 1
             Ierr = ((Iabs_err / da) * wt_da) + (Idist * wt_dist)
             Ierr[~Irn] = np.nan
-            solve_method = 2  # A DA was provided and a match was found on a nearby flowline that is within our certainty bounds
+            # A DA was provided and a match was found on a nearby flowline that
+            # is within our certainty bounds
+            solve_method = 2
 
     # If no useful DA is provided, the nearest point along the stream network is
     # chosen to map to.
     if da is None:
         Ierr = Idist
         Ierr[~Irn] = np.nan
-        solve_method = (
-            4  # A DA was not provided; we map to the nearest flowline (>1km^2)
-        )
+        # A DA was not provided; we map to the nearest flowline (>1km^2)
+        solve_method = 4
 
     # Select the pixel in the drainage network that has the lowest error
     min_err = np.nanmin(Ierr)
     me_idx = np.where(Ierr == min_err)
-    if (
-        len(me_idx[0]) > 1
-    ):  # In the case of ties, choose the one that has the lower Idist error
+    if len(me_idx[0]) > 1:
+        # In the case of ties, choose the one that has the lower Idist error
         use_me_idx = np.argmin(Idist[me_idx[0], me_idx[1]])
         me_idx = np.array([[me_idx[0][use_me_idx]], [me_idx[1][use_me_idx]]])
 

@@ -4,22 +4,22 @@ Utility functions (utils.py)
 
 """
 
-import os
-import sys
 import copy
-import shutil
-import zipfile
-import platform
+import http.client as httplib
 import itertools
+import os
+import platform
+import shutil
 import subprocess
-import pandas as pd
-from pyproj import Geod
+import sys
+import zipfile
 from pathlib import Path
 
+import pandas as pd
 import numpy as np
 from osgeo import gdal, ogr
+from pyproj import Geod
 from skimage import measure
-import http.client as httplib
 from shapely.ops import unary_union
 from shapely.geometry import Polygon, MultiPolygon
 
@@ -70,7 +70,8 @@ def get_datapaths(
         Path to rabpro config folder. Will read from an environment variable
         "RABPRO_CONFIG". If not set, uses appdirs to create local directory.
     force: boolean, optional
-        Set True to override datapath caching. Otherwise only fetched once per py session.
+        Set True to override datapath caching. Otherwise only fetched once per py
+        session.
     update_gee_metadata: boolean, optional
         If True, will attempt to download the latest GEE dataset metadata.
 
@@ -147,7 +148,7 @@ def build_virtual_rasters(datapaths, skip_if_exists=False, verbose=True, **kwarg
         geotiffs = os.listdir(os.path.dirname(datapaths[key]))
         if len(geotiffs) == 0:
             if verbose:
-                print("No MERIT data found for {}.".format(missing_dict[key]))
+                print(f"No MERIT data found for {missing_dict[key]}.")
             missing_merit.append(key)
             continue
         else:
@@ -162,9 +163,9 @@ def build_virtual_rasters(datapaths, skip_if_exists=False, verbose=True, **kwarg
 
     if len(missing_merit) > 0:
         print(
-            "Virtual rasters could not be built for the following MERIT-Hydro tiles because no data were available: {}. Use rabro.data_utils.download_merit_hydro() to fetch a MERIT tile.".format(
-                missing_merit
-            )
+            "Virtual rasters could not be built for the following MERIT-Hydro tiles"
+            f" because no data were available: {missing_merit}. Use rabro.data_utils."
+            "download_merit_hydro() to fetch a MERIT tile."
         )
 
     return
@@ -329,17 +330,14 @@ def build_vrt(
 
     with open(vrttxtname, "w") as tempfilelist:
         for f in filelist:
-            tempfilelist.writelines("%s\n" % f)
+            tempfilelist.writelines(f"{f}\n")
 
     # Get extents of clipping raster
     if clipper:
         extents = raster_extents(clipper)
 
     # Build the vrt with input options
-    callstring = [
-        "gdalbuildvrt",
-        "-overwrite",
-    ]
+    callstring = ["gdalbuildvrt", "-overwrite"]
 
     if np.size(extents) == 4:
         stringadd = [
@@ -437,9 +435,8 @@ def _parse_path(path):
     empty if a directory is passed.
     """
 
-    if (
-        path[0] != os.sep and platform.system() != "Windows"
-    ):  # This is for non-windows...
+    # This is for non-windows...
+    if path[0] != os.sep and platform.system() != "Windows":
         path = os.sep + path
 
     # Pull out extension and filename, if exist
@@ -492,8 +489,6 @@ def lonlat_to_xy(lons, lats, gt):
 
     xs = ((lons - gt[0]) / gt[1]).astype(int)
     ys = ((lats - gt[3]) / gt[5]).astype(int)
-    # xs = round((lons - gt[0]) / gt[1])
-    # ys = round((lats - gt[3]) / gt[5])
 
     return np.column_stack((xs, ys))
 
@@ -510,7 +505,8 @@ def xy_to_coords(xs, ys, gt):
     ys : numpy.ndarray
         y coordinates to transform
     gt : tuple
-        6-element tuple gdal GeoTransform. (uL_x, x_res, rotation, ul_y, rotation, y_res).
+        6-element tuple gdal GeoTransform. (uL_x, x_res, rotation, ul_y, rotation,
+        y_res).
         Automatically created by gdal's GetGeoTransform() method.
 
     Returns
@@ -606,7 +602,7 @@ def _regionprops(I, props, connectivity=2):
     props_do = [p for p in props if p in available_props]
     cant_do = set(props) - set(props_do)
     if len(cant_do) > 0:
-        print("Cannot compute the following properties: {}".format(cant_do))
+        print(f"Cannot compute the following properties: {cant_do}")
 
     Ilabeled = measure.label(I, background=0, connectivity=connectivity)
     properties = measure.regionprops(Ilabeled, intensity_image=I)
@@ -649,8 +645,8 @@ def _regionprops(I, props, connectivity=2):
                 # Round the contour to get the pixel coordinates
                 contours_init = [[round(c[0]), round(c[1])] for c in contours_init]
 
-                # The skimage contour method returns duplicate pixel coordinates at corners
-                # which must be removed
+                # The skimage contour method returns duplicate pixel coordinates
+                # at corners which must be removed
                 contours = []
                 for i in range(len(contours_init) - 1):
                     if contours_init[i] == contours_init[i + 1]:
@@ -679,7 +675,7 @@ def _regionprops(I, props, connectivity=2):
         elif prop == "label":
             out[prop] = np.array([p.label for p in properties])
         else:
-            print("{} is not a valid property.".format(prop))
+            print(f"{prop} is not a valid property.")
 
     return out, Ilabeled
 
@@ -780,16 +776,15 @@ def area_4326(pgons_4326):
     # specify a named ellipsoid
     geod = Geod(ellps="WGS84")
 
-    areas_km2 = []
-    for p in pgons_4326:
-        areas_km2.append(abs(geod.geometry_area_perimeter(p)[0]) / 1e6)
+    areas_km2 = [abs(geod.geometry_area_perimeter(p)[0]) / 1e6 for p in pgons_4326]
     return areas_km2
 
 
 def dist_from_da(da, nwidths=20):
     """
     Returns the along-stream distance of a flowline to resolve for a given
-    DA. An empirical formula provided by https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013WR013916
+    DA. An empirical formula provided by
+    https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013WR013916
     (equation 15) is used to estimate width.
 
     Parameters
@@ -1084,8 +1079,9 @@ def upload_gee_tif_asset(
         if gee_force:
             force = "--force "
 
-        shell_cmd = "earthengine upload image --time_start={} --asset_id={} --crs EPSG:{} {}{}".format(
-            time_start, gee_path, epsg, force, out_path
+        shell_cmd = (
+            "earthengine upload image --time_start={time_start} --asset_id={gee_path}"
+            " --crs EPSG:{epsg} {force}{out_path}"
         )
 
         print(shell_cmd)
@@ -1094,29 +1090,26 @@ def upload_gee_tif_asset(
                 subprocess.call(shell_cmd)
             except:
                 print(
-                    r"Are you on Windows? Try installing this fork of the earthengine-api package to enable timestamp handling: \n https://github.com/jsta/earthengine-api"
+                    "Are you on Windows? Try installing this fork of the earthengine"
+                    "-api package to enable timestamp handling:\n"
+                    "https://github.com/jsta/earthengine-api"
                 )
                 if sys.platform == "win32" and int(time_start[0:4]) < 1970:
                     raise Exception(
-                        "Can't upload GEE assets on Windows with time stamps before 1970 \n https://issuetracker.google.com/issues/191997926"
+                        "Can't upload GEE assets on Windows with time stamps before"
+                        " 1970\nhttps://issuetracker.google.com/issues/191997926"
                     )
 
         if gee_folder != "":
             gee_path = "users/" + gee_user + "/" + gee_folder
         shell_cmd = (
-            'earthengine asset set -p description="'
-            + description
-            + r" Suggested citation(s) "
-            + citation
-            + '" '
-            + gee_path
+            f'earthengine asset set -p description="{description} Suggested '
+            f'citation(s) {citation}" {gee_path}'
         )
-        # print(shell_cmd)
         if not dry_run:
             subprocess.call(shell_cmd)
 
         shell_cmd = 'earthengine asset set -p title="' + title + '" ' + gee_path
-        # print(shell_cmd)
         if not dry_run:
             subprocess.call(shell_cmd)
 
