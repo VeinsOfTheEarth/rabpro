@@ -216,7 +216,8 @@ the profiler.</p>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>search_radius</strong><span class="classifier">numeric, optional</span></dt><dd><p>in meters, by default None</p>
 </dd>
-<dt><strong>map_only</strong><span class="classifier">bool, optional</span></dt><dd><p>If we only want to map the point and not delineate the basin, by default False</p>
+<dt><strong>map_only</strong><span class="classifier">bool, optional</span></dt><dd><p>If we only want to map the point and not delineate the basin, by
+default False</p>
 </dd>
 <dt><strong>force_merit</strong><span class="classifier">bool, optional</span></dt><dd><p>Forces the use of MERIT to delineate basins.</p>
 </dd>
@@ -238,7 +239,7 @@ provided coordinate is the centerpoint (check if this is true).</p>
 <dt><strong>dist_to_walk_km</strong><span class="classifier">numeric</span></dt><dd><p>The distance to trace the elevation profile from the provided
 point. This distance applies to upstream and downstream–i.e. the
 total profile distance is twice this value. If not specified,
-will be automatically computed as 10 channel widths from provided 
+will be automatically computed as 10 channel widths from provided
 DA value if not specified OR 5 km, whichever is larger.</p>
 </dd>
 </dl>
@@ -301,7 +302,7 @@ filename. If None, will use the rabpro default.</p>
 </dl>
 <p class="rubric">Examples</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rabpro</span> <span class="kn">import</span> <span class="n">data_utils</span>
-<span class="n">data_utils</span><span class="o">.</span><span class="n">hydrobasins</span><span class="p">()</span>    
+<span class="n">data_utils</span><span class="o">.</span><span class="n">hydrobasins</span><span class="p">()</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -335,11 +336,13 @@ expects. Virtual rasters are rebuilt after downloading this data.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.elev_profile.main">
 <span class="sig-prename descclassname"><span class="pre">rabpro.elev_profile.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gdf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist_to_walk_km</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nrows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.elev_profile.main" title="Permalink to this definition"></a></dt>
-<dd><p>Compute the elevation profile. The profile is computed such that the provided coordinate is the centerpoint (check if this is true).</p>
+<dd><p>Compute the elevation profile. The profile is computed such that the provided
+coordinate is the centerpoint (check if this is true).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>gdf</strong><span class="classifier">GeoDataFrame</span></dt><dd><p>Starting point geometry. Should have a column called ‘DA’ that stores drainage areas.
+<dt><strong>gdf</strong><span class="classifier">GeoDataFrame</span></dt><dd><p>Starting point geometry. Should have a column called ‘DA’ that stores drainage
+areas.
 Should be in EPSG 4326 for use of the Haversine formula</p>
 </dd>
 <dt><strong>dist_to_walk_km</strong><span class="classifier">numeric</span></dt><dd><p>Distance in kilometers to walk up- and downstream of the provided,
@@ -417,7 +420,7 @@ polygon (in EPSG:4326) if already known. This polygon will be used to ensure
 the mapped-to-flowline is the correct one. If the basin polygon is provided,
 a flow directions object and its mapping must also be provided as well as the
 drainage area.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>lonlat</strong><span class="classifier">list or tuple</span></dt><dd><p>Two-element list/tuple containing (longitude, latitude) coordinates of
@@ -445,20 +448,32 @@ list should take the form [NW, N, NE, W, E, SW, S, SE]. By default None.</p>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
+<dd class="field-even"><dl>
 <dt><strong>(c_mapped, r_mapped)</strong><span class="classifier">tuple or None</span></dt><dd><p>x and y coordinates of the mapped points. If no mapping is possible,
 None is returned. The x and y coordinates are with respect to the
 fac_obj.</p>
 </dd>
 <dt><strong>solve_method</strong><span class="classifier">int</span></dt><dd><p>Indicates the reason why mapping succeeded/failed:
-1 - (success) DA provided; a nearby flowline pixel was found within 15% of the provided DA
-2 - (success) DA provided; match was found on a nearby flowline that is within our DA certainty bounds
-3 - (success) basin polygon provided; a mappable flowline was found
+1 - (success) DA provided; a nearby flowline pixel was found within 15%</p>
+<blockquote>
+<div><p>of the provided DA</p>
+</div></blockquote>
+<dl class="simple">
+<dt>2 - (success) DA provided; match was found on a nearby flowline that is</dt><dd><p>within our DA certainty bounds</p>
+</dd>
+</dl>
+<p>3 - (success) basin polygon provided; a mappable flowline was found
 4 - (success) DA not provided; mapped to the nearest flowline (&gt;1km^2)
 5 - (fail) DA not provided; no nearby flowlines exist
 6 - (fail) DA provided; but no nearby DAs were close enough to map to
-7 - (fail) basin polygon provided; but no nearby DAs were within the allowable range
-8 - (fail) basin polygon provided; no flowlines were 25% within the provided basin</p>
+7 - (fail) basin polygon provided; but no nearby DAs were within the allowable</p>
+<blockquote>
+<div><p>range</p>
+</div></blockquote>
+<dl class="simple">
+<dt>8 - (fail) basin polygon provided; no flowlines were 25% within the provided</dt><dd><p>basin</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd>
@@ -467,7 +482,7 @@ fac_obj.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.merit_utils.neighborhood_vals_from_raster">
-<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vrt_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='140579534405840'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vrt_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='140059965079760'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
 <dd><p>Queries a (virtual) raster object to return an array of neighbors
 surrounding a given point specified by cr (column, row). A shape can be
 provided to return as large of a neighborhood as desired; both dimensions
@@ -513,7 +528,7 @@ wrapping is desired. If None, no wrapping is performed. By default None.</p>
 <dt class="sig sig-object py" id="rabpro.merit_utils.trace_flowpath">
 <span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">trace_flowpath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fdr_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">da_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cr_stpt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist_to_walk_km</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[32,</span> <span class="pre">64,</span> <span class="pre">128,</span> <span class="pre">16,</span> <span class="pre">1,</span> <span class="pre">8,</span> <span class="pre">4,</span> <span class="pre">2]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.trace_flowpath" title="Permalink to this definition"></a></dt>
 <dd><p>Returns a flowpath of pixels up- and downstream of cr_stpt a distance of
-dist_to_walk_km in each direction (unless the end of the flowpath is 
+dist_to_walk_km in each direction (unless the end of the flowpath is
 reached). Flowpath is returned US-&gt;DS ordered.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -564,8 +579,8 @@ compute statistics.</p>
 <dt><strong>resolution</strong><span class="classifier">int, optional</span></dt><dd><p>Desired resolution in meters of the calculation over the dataset.
 Defaults to native resolution of the dataset.</p>
 </dd>
-<dt><strong>start</strong><span class="classifier">str, optional</span></dt><dd><p>Desired start date of data in ISO format: YYYY-MM-DD. Defaults to None which GEE
-interprets as the dataset start.</p>
+<dt><strong>start</strong><span class="classifier">str, optional</span></dt><dd><p>Desired start date of data in ISO format: YYYY-MM-DD. Defaults to None which
+GEE interprets as the dataset start.</p>
 </dd>
 <dt><strong>end</strong><span class="classifier">str, optional</span></dt><dd><p>Desired end date of data in ISO format: YYYY-MM-DD. Defaults to None which GEE
 interprets as the dataset end.</p>
@@ -668,9 +683,11 @@ feature.set(f.__name__, function(feature))</p>
 </dd>
 <dt><strong>col_drop_list</strong><span class="classifier">list, optional</span></dt><dd><p>custom columns to drop, by default []</p>
 </dd>
-<dt><strong>col_protect_list</strong><span class="classifier">list, optional</span></dt><dd><p>columns to avoid tagging, by default [“id_basin”, “id_outlet”, “idx”, “id”, “vote_id”]</p>
+<dt><strong>col_protect_list</strong><span class="classifier">list, optional</span></dt><dd><p>columns to avoid tagging, by default [“id_basin”, “id_outlet”, “idx”, “id”,
+“vote_id”]</p>
 </dd>
-<dt><strong>col_drop_defaults</strong><span class="classifier">list, optional</span></dt><dd><p>built-in columns to drop, by default [“DA”, “count”, “.geo”, “system:index”, “da_km2”]</p>
+<dt><strong>col_drop_defaults</strong><span class="classifier">list, optional</span></dt><dd><p>built-in columns to drop, by default [“DA”, “count”, “.geo”, “system:index”,
+“da_km2”]</p>
 </dd>
 </dl>
 </dd>
@@ -718,9 +735,11 @@ feature.set(f.__name__, function(feature))</p>
 </dd>
 <dt><strong>col_drop_list</strong><span class="classifier">list, optional</span></dt><dd><p>custom columns to drop, by default []</p>
 </dd>
-<dt><strong>col_protect_list</strong><span class="classifier">list, optional</span></dt><dd><p>columns to avoid tagging, by default [“id_basin”, “id_outlet”, “idx”, “id”, “vote_id”]</p>
+<dt><strong>col_protect_list</strong><span class="classifier">list, optional</span></dt><dd><p>columns to avoid tagging, by default [“id_basin”, “id_outlet”, “idx”, “id”,
+“vote_id”]</p>
 </dd>
-<dt><strong>col_drop_defaults</strong><span class="classifier">list, optional</span></dt><dd><p>built-in columns to drop, by default [“DA”, “count”, “.geo”, “system:index”, “da_km2”]</p>
+<dt><strong>col_drop_defaults</strong><span class="classifier">list, optional</span></dt><dd><p>built-in columns to drop, by default [“DA”, “count”, “.geo”, “system:index”,
+“da_km2”]</p>
 </dd>
 </dl>
 </dd>
@@ -861,7 +880,7 @@ input centerline.</p>
 </dd>
 <dt><strong>ncols</strong><span class="classifier">int</span></dt><dd><p>by default 51</p>
 </dd>
-<dt><strong>map_only</strong><span class="classifier">bool</span></dt><dd><p>If True, will map the coordinate to a MERIT flowline but not delineate 
+<dt><strong>map_only</strong><span class="classifier">bool</span></dt><dd><p>If True, will map the coordinate to a MERIT flowline but not delineate
 the basin. The default is False.</p>
 </dd>
 <dt><strong>verbose</strong><span class="classifier">bool</span></dt><dd><p>by default False</p>
@@ -1060,7 +1079,8 @@ that define where I should be positioned within the original image.</p>
 <dt class="sig sig-object py" id="rabpro.utils.dist_from_da">
 <span class="sig-prename descclassname"><span class="pre">rabpro.utils.</span></span><span class="sig-name descname"><span class="pre">dist_from_da</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">da</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nwidths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.utils.dist_from_da" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the along-stream distance of a flowline to resolve for a given
-DA. An empirical formula provided by <a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013WR013916">https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013WR013916</a>
+DA. An empirical formula provided by
+<a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013WR013916">https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013WR013916</a>
 (equation 15) is used to estimate width.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1098,7 +1118,8 @@ and HydroBasins data directories.</p>
 <dt><strong>config_path: string, optional</strong></dt><dd><p>Path to rabpro config folder. Will read from an environment variable
 “RABPRO_CONFIG”. If not set, uses appdirs to create local directory.</p>
 </dd>
-<dt><strong>force: boolean, optional</strong></dt><dd><p>Set True to override datapath caching. Otherwise only fetched once per py session.</p>
+<dt><strong>force: boolean, optional</strong></dt><dd><p>Set True to override datapath caching. Otherwise only fetched once per py
+session.</p>
 </dd>
 <dt><strong>update_gee_metadata: boolean, optional</strong></dt><dd><p>If True, will attempt to download the latest GEE dataset metadata.</p>
 </dd>
@@ -1354,7 +1375,8 @@ within a geotiff image.</p>
 </dd>
 <dt><strong>ys</strong><span class="classifier">numpy.ndarray</span></dt><dd><p>y coordinates to transform</p>
 </dd>
-<dt><strong>gt</strong><span class="classifier">tuple</span></dt><dd><p>6-element tuple gdal GeoTransform. (uL_x, x_res, rotation, ul_y, rotation, y_res).
+<dt><strong>gt</strong><span class="classifier">tuple</span></dt><dd><p>6-element tuple gdal GeoTransform. (uL_x, x_res, rotation, ul_y, rotation,
+y_res).
 Automatically created by gdal’s GetGeoTransform() method.</p>
 </dd>
 </dl>
