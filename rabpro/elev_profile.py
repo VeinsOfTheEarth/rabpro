@@ -4,10 +4,10 @@ Elevation profile computation (elev_profile.py)
 
 """
 
+import geopandas as gpd
 import numpy as np
 from osgeo import gdal
 from pyproj import CRS
-import geopandas as gpd
 from shapely.geometry import Point
 
 from rabpro import utils as ru
@@ -15,12 +15,14 @@ from rabpro import merit_utils as mu
 
 
 def main(gdf, dist_to_walk_km, verbose=False, nrows=50, ncols=50):
-    """Compute the elevation profile. The profile is computed such that the provided coordinate is the centerpoint (check if this is true).
+    """Compute the elevation profile. The profile is computed such that the provided
+    coordinate is the centerpoint (check if this is true).
 
     Parameters
     ----------
     gdf : GeoDataFrame
-        Starting point geometry. Should have a column called 'DA' that stores drainage areas.
+        Starting point geometry. Should have a column called 'DA' that stores drainage
+        areas.
         Should be in EPSG 4326 for use of the Haversine formula
     dist_to_walk_km : numeric
         Distance in kilometers to walk up- and downstream of the provided,
@@ -64,7 +66,8 @@ def main(gdf, dist_to_walk_km, verbose=False, nrows=50, ncols=50):
     else:
         intype = "centerline"  # deprecated
         raise DeprecationWarning(
-            "elev_profile only supports single 'point' coordinate pairs, not multipoint 'centerlines'"
+            "elev_profile only supports single 'point' coordinate pairs, not "
+            "multipoint 'centerlines'"
         )
 
     # Here, we get the DEM (MERIT) flowline corresponding to the centerline. If we
@@ -94,9 +97,8 @@ def main(gdf, dist_to_walk_km, verbose=False, nrows=50, ncols=50):
         if np.nan in cr_ds_mapped:
             if verbose is True:
                 print(
-                    "Cannot map provided point to a flowline; unable to extract centerline. Reason #{}".format(
-                        why
-                    )
+                    "Cannot map provided point to a flowline; unable to extract"
+                    f" centerline. Reason #{why}"
                 )
             return gdf, None
 

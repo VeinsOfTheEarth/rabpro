@@ -8,11 +8,11 @@ def download(args):
     if args.source == "merit":
         if args.username is None or args.password is None or args.target is None:
             raise ValueError("MERIT data requires a target, username, and password.")
-        du.merit_hydro(
-            args.target, args.username, args.password, args.proxy, args.preserve
+        du.download_merit_hydro(
+            args.target, args.username, args.password, proxy=args.proxy
         )
     elif args.source == "hydrobasins":
-        du.hydrobasins(args.proxy, args.preserve)
+        du.download_hydrobasins(proxy=args.proxy)
     elif args.source == "gee":
         du.download_gee_metadata()
 
@@ -74,12 +74,6 @@ if __name__ == "__main__":
         nargs="?",
         default=None,
         help="Enable beautifulsoup to navigate a proxy, optional",
-    )
-
-    parser_dl.add_argument(
-        "--preserve",
-        action="store_false",
-        help="Preserve artifacts and don't overwrite files",
     )
 
     # Create file structure subparser
