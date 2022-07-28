@@ -5,6 +5,7 @@ Basin delineation (basins.py)
 Functions to calculate basin geometries.
 """
 
+import warnings
 from pathlib import Path
 
 import geopandas as gpd
@@ -150,8 +151,8 @@ def main_hb(gdf, verbose=False):
     cl_das : numpy.ndarray
         Drainage areas
 
-    Raises
-    ------
+    Warns
+    -----
     RuntimeWarning
         If gdf has no CRS defined
 
@@ -171,7 +172,10 @@ def main_hb(gdf, verbose=False):
     # Convert the gdf to EPSG:4326 if necessary in order to align with HydroSheds
     was_transformed = False
     if gdf.crs is None:
-        raise RuntimeWarning("Centerline geodataframe has no defined CRS.")
+        warnings.warn(
+            "Centerline geodataframe has no defined CRS. Assuming EPSG:4326",
+            RuntimeWarning,
+        )
     elif gdf.crs.to_authority()[1] != "4326":
         orig_crs = gdf.crs  # Save the original crs to put it back later
         gdf = gdf.to_crs(epsg=4326)
@@ -312,6 +316,11 @@ def load_continent_basins(gdf, level_one, level_twelve):
     GeoDataFrame
         HydroBasins
 
+    Warns
+    -----
+    UserWarning
+        If coordinate does not lie in the HydroBasins polygons
+
     """
 
     # Prepare load level 1 dataframe
@@ -326,12 +335,12 @@ def load_continent_basins(gdf, level_one, level_twelve):
     # Intersect with level-1 HydroBasins to figure out which continent we're in
     clpt_level_onei = gpd.sjoin(cl_us_pt, level_one_df, op="intersects")
     if len(clpt_level_onei) == 0:
-        print(
+        warnings.warn(
             f"Provided coordinate ({[xy_cl[0][0], xy_cl[1][0]]}) does not lie within"
             " HydroBasins polygons. Check that lat/lon are not reversed in input."
-            " Exiting."
+            " Exiting.",
+            UserWarning,
         )
-        return None
 
     id_no = clpt_level_onei.PFAF_ID[0]
 

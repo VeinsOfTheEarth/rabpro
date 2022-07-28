@@ -7,6 +7,7 @@ Computes basin statistics using Google Earth Engine.
 
 import json
 import re
+import warnings
 from collections import OrderedDict
 from datetime import date
 
@@ -519,29 +520,36 @@ def _get_controls(datasets):
     for d in datasets:
         # TODO Use actual warnings module?
         if d.data_id not in datadict:
-            print(f"Warning: invalid data ID provided: {d.data_id}")
+            warnings.warn(
+                f"Warning: invalid data ID provided: {d.data_id}", UserWarning
+            )
             continue
 
         gee_dataset = datadict[d.data_id]
 
         if d.band not in gee_dataset["bands"]:
-            print(f"Warning: invalid data band provided: {d.data_id}:{d.band}")
+            warnings.warn(
+                f"Warning: invalid data band provided: {d.data_id}:{d.band}",
+                UserWarning,
+            )
             continue
 
         if d.start is not None:
             if date.fromisoformat(d.start) < date.fromisoformat(
                 gee_dataset["start_date"]
             ):
-                print(
+                warnings.warn(
                     "Warning: requested start date earlier than expected for"
-                    f" {d.data_id}:{d.band}"
+                    f" {d.data_id}:{d.band}",
+                    UserWarning,
                 )
 
         if d.end is not None:
             if date.fromisoformat(d.end) > date.fromisoformat(gee_dataset["end_date"]):
-                print(
+                warnings.warn(
                     "Warning: requested end date later than expected for"
-                    f" {d.data_id}:{d.band}"
+                    f" {d.data_id}:{d.band}",
+                    UserWarning,
                 )
 
         d.stats = set(d.stats) | set(["count", "mean"])
@@ -555,9 +563,10 @@ def _get_controls(datasets):
         if d.resolution is None:
             d.resolution = resolution
         if d.resolution and resolution and d.resolution < resolution:
-            print(
+            warnings.warn(
                 "Warning: requested resolution is less than the native raster"
-                " resolution"
+                " resolution",
+                UserWarning,
             )
 
         d.type = gee_dataset["type"]
