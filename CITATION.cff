@@ -4,34 +4,57 @@ title: >-
   elevation profiles, and catchment statistics
 message: 'If you use this software, please cite it as below.'
 
-references:
-  - type: article
-    authors:
-      - given-names: Jon
-        family-names: Schwenk
-        affiliation: Los Alamos National Laboratory
-        orcid: 'https://orcid.org/0000-0001-5803-9686'
-      - given-names: Tal
-        family-names: Zussman
-        affiliation: Columbia University
-        orcid: 'https://orcid.org/0000-0003-3087-8511'
-      - given-names: Jemma
-        family-names: Stachelek
-        affiliation: '@lanl'
-        orcid: 'https://orcid.org/0000-0002-5924-2464'
-      - given-names: Joel C.
-        family-names: Rowland
-        orcid: 'https://orcid.org/0000-0001-6308-8976'
-    title: >-
-      rabpro: global watershed boundaries, river
-      elevation profiles, and catchment statistics
-    journal: Journal of Open Source Software
-    year: 2022
-    doi: 10.21105/joss.04237
-    url: https://doi.org/10.21105/joss.04237
-    
+authors:
+- given-names: Jon
+  family-names: Schwenk
+  affiliation: Los Alamos National Laboratory
+  orcid: 'https://orcid.org/0000-0001-5803-9686'
+- given-names: Tal
+  family-names: Zussman
+  affiliation: Columbia University
+  orcid: 'https://orcid.org/0000-0003-3087-8511'
+- given-names: Jemma
+  family-names: Stachelek
+  affiliation: '@lanl'
+  orcid: 'https://orcid.org/0000-0002-5924-2464'
+- given-names: Joel C.
+  family-names: Rowland
+  orcid: 'https://orcid.org/0000-0001-6308-8976'
+
+version: 0.5.2
+url: "https://github.com/VeinsOfTheEarth/rabpro"
+
+preferred-citation:
+  type: article
+  authors:
+  - given-names: Jon
+    family-names: Schwenk
+    affiliation: Los Alamos National Laboratory
+    orcid: 'https://orcid.org/0000-0001-5803-9686'
+  - given-names: Tal
+    family-names: Zussman
+    affiliation: Columbia University
+    orcid: 'https://orcid.org/0000-0003-3087-8511'
+  - given-names: Jemma
+    family-names: Stachelek
+    affiliation: '@lanl'
+    orcid: 'https://orcid.org/0000-0002-5924-2464'
+  - given-names: Joel C.
+    family-names: Rowland
+    orcid: 'https://orcid.org/0000-0001-6308-8976'
+  title: >-
+    rabpro: global watershed boundaries, river
+    elevation profiles, and catchment statistics
+  journal: Journal of Open Source Software
+  year: 2022
+  volume: 7
+  issue: 73
+  start: 4237
+  doi: 10.21105/joss.04237
+  url: https://doi.org/10.21105/joss.04237
+  publisher:
+    name: The Open Journal
+
 license: BSD-3-Clause
 license-url: "https://github.com/VeinsOfTheEarth/rabpro/blob/main/LICENSE.txt"
 repository-code: "https://github.com/VeinsOfTheEarth/rabpro"
-type: software
-url: "https://github.com/VeinsOfTheEarth/rabpro"
