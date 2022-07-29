@@ -121,10 +121,9 @@ def _format_cols(df, prepend, col_drop_list, col_drop_defaults, col_protect_list
 def _read_url(url):
     df = pd.read_csv(url)
 
-    if "histogram" in [x for x in df.columns]:
+    if "histogram" in df.columns:
         histogram = df.histogram
-        df = df.drop(columns=["histogram", "mean"]).copy()
-        _str_to_dict(histogram[0])
+        df = df.drop(columns=["histogram", "mean"])
         histogram = [_str_to_dict(x) for x in histogram]
         histogram = pd.DataFrame(histogram)
         df = pd.concat([df, histogram], axis=1)
