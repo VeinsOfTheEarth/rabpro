@@ -6,9 +6,9 @@ dependencies:
   - python>=3.7,<3.10
   - gdal
   - numpy
-  - geopandas>=0.7.0
+  - geopandas
   - scikit-image  
-  - pyproj
+  - pyproj>2.2.0
   - shapely
   - requests
   - appdirs
