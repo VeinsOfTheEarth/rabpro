@@ -95,7 +95,7 @@ def dataset_to_filename(prepend, data_id, band):
 
 
 def _str_to_dict(a_string):
-    new_d = re.findall("([0-9]*\.?[0-9]+)", a_string)
+    new_d = re.findall(r"([0-9]*\.?[0-9]+)", a_string)
     res = {new_d[i]: float(new_d[i + 1]) for i in range(0, len(new_d), 2)}
     res = OrderedDict(sorted(res.items()))
     return res
