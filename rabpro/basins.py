@@ -282,7 +282,7 @@ def _map_to_HB_basin(gdf, HB_gdf):
     gdf_b = gdf_b.to_crs(CRS.from_epsg(3857))
     gdf_b["geometry"] = gdf_b.buffer(5000)
     gdf_b = gdf_b.to_crs(CRS.from_epsg(4326))
-    HB_possibles = gpd.sjoin(HB_gdf, gdf_b, op="intersects")
+    HB_possibles = gpd.sjoin(HB_gdf, gdf_b, predicate="intersects")
 
     # Select the HB polygon with the smallest da_dif_pct nearby
     HB_possibles["da_dif"] = HB_possibles["UP_AREA"].values - gdf["da_km2"].values[0]
@@ -324,7 +324,7 @@ def load_continent_basins(gdf, level_one, level_twelve):
     cl_us_pt.crs = gdf.crs
 
     # Intersect with level-1 HydroBasins to figure out which continent we're in
-    clpt_level_onei = gpd.sjoin(cl_us_pt, level_one_df, op="intersects")
+    clpt_level_onei = gpd.sjoin(cl_us_pt, level_one_df, predicate="intersects")
     if len(clpt_level_onei) == 0:
         print(
             f"Provided coordinate ({[xy_cl[0][0], xy_cl[1][0]]}) does not lie within"
