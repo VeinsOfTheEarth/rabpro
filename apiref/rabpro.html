@@ -225,6 +225,14 @@ default False</p>
 </dd>
 </dl>
 </dd>
+<dt class="field-even">Warns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>UserWarning</dt><dd><p>If no drainage area provided</p>
+</dd>
+<dt>RuntimeWarning</dt><dd><p>If MERIT or HydroBasins data is not available, or other issues</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </dd></dl>
 
@@ -364,6 +372,12 @@ mapped point to resolve the flowline</p>
 </dd>
 </dl>
 </dd>
+<dt class="field-odd">Warns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>DeprecationWarning</dt><dd><p>If a list of coordinates is passed</p>
+</dd>
+</dl>
+</dd>
 </dl>
 <p class="rubric">Examples</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rabpro</span>
@@ -477,12 +491,18 @@ fac_obj.</p>
 </dd>
 </dl>
 </dd>
+<dt class="field-odd">Warns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>UserWarning</dt><dd><p>No drainage area, flow, directions, or flow directions map provided</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="rabpro.merit_utils.neighborhood_vals_from_raster">
-<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vrt_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='139721686581456'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rabpro.merit_utils.</span></span><span class="sig-name descname"><span class="pre">neighborhood_vals_from_raster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vrt_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodataval=&lt;Mock</span> <span class="pre">name='mock.nan'</span> <span class="pre">id='140555604754640'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrap=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rabpro.merit_utils.neighborhood_vals_from_raster" title="Permalink to this definition"></a></dt>
 <dd><p>Queries a (virtual) raster object to return an array of neighbors
 surrounding a given point specified by cr (column, row). A shape can be
 provided to return as large of a neighborhood as desired; both dimensions
@@ -821,6 +841,12 @@ feature.set(f.__name__, function(feature))</p>
 </dd>
 </dl>
 </dd>
+<dt class="field-odd">Warns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>UserWarning</dt><dd><p>If coordinate does not lie in the HydroBasins polygons</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </dd></dl>
 
@@ -849,7 +875,7 @@ input centerline.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Warns</dt>
 <dd class="field-odd"><dl class="simple">
 <dt>RuntimeWarning</dt><dd><p>If gdf has no CRS defined</p>
 </dd>
@@ -952,6 +978,12 @@ The default is False.</p>
 <dt><strong>verbose: bool, optional</strong></dt><dd><p>If True, will provide updates as virtual rasters are built.</p>
 </dd>
 <dt><strong>**kwargs</strong></dt><dd><p>Arguments passed to the build_vrt function.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Warns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>RuntimeWarning</dt><dd><p>Missing data</p>
 </dd>
 </dl>
 </dd>
@@ -1291,6 +1323,11 @@ floating-point round-off; see here:
 <dd class="field-even"><dl class="simple">
 <dt>NoneType</dt><dd><p>None</p>
 </dd>
+</dl>
+</dd>
+<dt class="field-odd">Warns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>RuntimeWarning</dt><dd></dd>
 </dl>
 </dd>
 </dl>
