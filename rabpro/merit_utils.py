@@ -5,6 +5,8 @@ MERIT utilities (merit_utils.py)
 Utility functions for dealing with MERIT datasets
 """
 
+import warnings
+
 import numpy as np
 import pandas as pd
 from scipy.ndimage import distance_transform_edt
@@ -674,13 +676,18 @@ def map_cl_pt_to_flowline(
         8 - (fail) basin polygon provided; no flowlines were 25% within the provided
                    basin
 
+    Warns
+    -----
+    UserWarning
+        No drainage area, flow, directions, or flow directions map provided
     """
     # Check if we have all the required inputs for a basin polygon comparison
     if basin_pgon is not None:
         if fdr_map is None or fdr_obj is None or da is None:
-            print(
+            warnings.warn(
                 "You provided a basin polygon but not the drainage area, flow"
-                " directions, or flow directions map. Cannot use polygon."
+                " directions, or flow directions map. Cannot use polygon.",
+                UserWarning,
             )
             basin_compare = False
         else:

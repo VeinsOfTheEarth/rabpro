@@ -4,6 +4,8 @@ Elevation profile computation (elev_profile.py)
 
 """
 
+import warnings
+
 import geopandas as gpd
 import numpy as np
 from osgeo import gdal
@@ -41,6 +43,11 @@ def main(gdf, dist_to_walk_km, verbose=False, nrows=50, ncols=50):
     flowline : GeoDataFrame
         The elevation profile geometry.
 
+    Warns
+    -----
+    DeprecationWarning
+        If a list of coordinates is passed
+
     Examples
     --------
     .. code-block:: python
@@ -65,9 +72,10 @@ def main(gdf, dist_to_walk_km, verbose=False, nrows=50, ncols=50):
         intype = "point"
     else:
         intype = "centerline"  # deprecated
-        raise DeprecationWarning(
+        warnings.warn(
             "elev_profile only supports single 'point' coordinate pairs, not "
-            "multipoint 'centerlines'"
+            "multipoint 'centerlines'",
+            DeprecationWarning,
         )
 
     # Here, we get the DEM (MERIT) flowline corresponding to the centerline. If we

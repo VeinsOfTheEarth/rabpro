@@ -12,6 +12,7 @@ import platform
 import shutil
 import subprocess
 import sys
+import warnings
 import zipfile
 from pathlib import Path
 
@@ -119,6 +120,11 @@ def build_virtual_rasters(datapaths, skip_if_exists=False, verbose=True, **kwarg
     **kwargs
         Arguments passed to the build_vrt function.
 
+    Warns
+    -----
+    RuntimeWarning
+        Missing data
+
     Examples
     --------
     .. code-block:: python
@@ -162,10 +168,11 @@ def build_virtual_rasters(datapaths, skip_if_exists=False, verbose=True, **kwarg
             )
 
     if len(missing_merit) > 0:
-        print(
+        warnings.warn(
             "Virtual rasters could not be built for the following MERIT-Hydro tiles"
             f" because no data were available: {missing_merit}. Use rabro.data_utils."
-            "download_merit_hydro() to fetch a MERIT tile."
+            "download_merit_hydro() to fetch a MERIT tile.",
+            RuntimeWarning,
         )
 
     return
@@ -602,7 +609,9 @@ def _regionprops(I, props, connectivity=2):
     props_do = [p for p in props if p in available_props]
     cant_do = set(props) - set(props_do)
     if len(cant_do) > 0:
-        print(f"Cannot compute the following properties: {cant_do}")
+        warnings.warn(
+            f"Cannot compute the following properties: {cant_do}", RuntimeWarning
+        )
 
     Ilabeled = measure.label(I, background=0, connectivity=connectivity)
     properties = measure.regionprops(Ilabeled, intensity_image=I)
@@ -675,7 +684,7 @@ def _regionprops(I, props, connectivity=2):
         elif prop == "label":
             out[prop] = np.array([p.label for p in properties])
         else:
-            print(f"{prop} is not a valid property.")
+            warnings.warn(f"{prop} is not a valid property.", UserWarning)
 
     return out, Ilabeled
 
@@ -1043,6 +1052,10 @@ def upload_gee_tif_asset(
     NoneType
         None
 
+    Warns
+    -----
+    RuntimeWarning
+
     Examples
     --------
     .. code-block:: python
@@ -1089,10 +1102,11 @@ def upload_gee_tif_asset(
             try:
                 subprocess.call(shell_cmd)
             except:
-                print(
+                warnings.warn(
                     "Are you on Windows? Try installing this fork of the earthengine"
                     "-api package to enable timestamp handling:\n"
-                    "https://github.com/jsta/earthengine-api"
+                    "https://github.com/jsta/earthengine-api",
+                    RuntimeWarning,
                 )
                 if sys.platform == "win32" and int(time_start[0:4]) < 1970:
                     raise Exception(

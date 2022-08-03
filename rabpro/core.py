@@ -5,6 +5,8 @@ Class for running rabpro commands on your data.
 
 """
 
+import warnings
+
 import geopandas as gpd
 import numpy as np
 import pandas as pd
@@ -67,6 +69,12 @@ class profiler:
         verbose=True,
         update_gee_metadata=True,
     ):
+        """
+        Warns
+        -----
+        DeprecationWarning
+            If a list of coordinates is passed in
+        """
 
         self.name = name
         self.verbose = verbose
@@ -77,9 +85,10 @@ class profiler:
         elif type(coords) is list:
             # A list of tuples was provided (centerline) # pragma: no cover
             self.gdf = self._coordinates_to_gdf(coords)
-            raise DeprecationWarning(
+            warnings.warn(
                 "elev_profile only supports single 'point' coordinate pairs, not"
-                " multipoint 'centerlines'"
+                " multipoint 'centerlines'",
+                DeprecationWarning,
             )
         elif type(coords) is str:  # A path to .csv or .shp file was provided
             ext = coords.split(".")[-1]
@@ -139,9 +148,10 @@ class profiler:
         # Check availability of HydroBasins data
         lev1, lev12 = du.does_hydrobasins_exist(self.datapaths)
         if lev1 + lev12 == 0:
-            print(
+            warnings.warn(
                 "No HydroBasins data was found. Use rabpro.data_utils."
-                "download_hydrobasins() to download."
+                "download_hydrobasins() to download.",
+                RuntimeWarning,
             )
         else:
             self.available_hb = True
@@ -212,16 +222,24 @@ class profiler:
             Forces the use of MERIT to delineate basins.
         force_hydrobasins : bool, optional
             Forces the use of HydroBASINS to delineate basins.
+
+        Warns
+        -----
+        UserWarning
+            If no drainage area provided
+        RuntimeWarning
+            If MERIT or HydroBasins data is not available, or other issues
         """
 
         # Determine method
         if self.da is None or force_hydrobasins is True:
             self.method = "hydrobasins"
             if self.da is None:
-                print(
-                    "Warning: no drainage area was provided. HydroBASINS will be used"
+                warnings.warn(
+                    "No drainage area was provided. HydroBASINS will be used"
                     " to delineate the basin, but result should be visually verified"
-                    " and coordinate updated if results are not as expected."
+                    " and coordinate updated if results are not as expected.",
+                    UserWarning,
                 )
         elif self.da <= 1000 or force_merit is True:
             self.method = "merit"
@@ -232,9 +250,15 @@ class profiler:
             self.method = "merit"
 
         if self.method == "merit" and self.available_merit is False:
-            print("MERIT data are not available; no delineation can be done.")
+            warnings.warn(
+                "MERIT data are not available; no delineation can be done.",
+                RuntimeWarning,
+            )
         elif self.method == "hydrobasins" and self.available_hb is False:
-            print("HydroBasins data are not available; no delineation can be done.")
+            warnings.warn(
+                "HydroBasins data are not available; no delineation can be done.",
+                RuntimeWarning,
+            )
 
         if self.verbose is True and map_only is False:
             print(f"Delineating watershed using {self.method}.")
@@ -272,10 +296,11 @@ class profiler:
             # Ensure the provided coordinate was mappable
             if self.watershed is None:
                 if not map_only:  # pragma: no cover
-                    print(
+                    warnings.warn(
                         "Could not find a suitable flowline to map given coordinate"
                         " and DA. No basin can be delineated.",
                         "You can set da=None to force an attempt with HydroBASINS.",
+                        RuntimeWarning,
                     )
             else:
                 self.gdf["da_km2"] = [None for p in range(self.gdf.shape[0])]
@@ -296,9 +321,10 @@ class profiler:
                     abs(pgon_area - self.mapped["da_km2"]) / self.mapped["da_km2"] * 100
                 )
                 if pct_diff > 10:  # pragma: no cover
-                    print(
+                    warnings.warn(
                         f"Check delineated basin. There is a difference of {pct_diff}%"
-                        " between MERIT DA and polygon area."
+                        " between MERIT DA and polygon area.",
+                        RuntimeWarning,
                     )
 
     def elev_profile(self, dist_to_walk_km=None):
