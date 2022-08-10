@@ -1,4 +1,37 @@
 [    {
+     "id": "projects/soilgrids-isric/soc_mean",
+     "name": "SoilGrids 250: Mean Soil Organic Carbon",
+     "start_date": null,
+     "end_date": null,
+     "type": "image",
+     "bands": {
+         "soc_0-5cm_mean": {
+             "units": "dg/kg",
+             "resolution": 250
+         },
+         "soc_5-15cm_mean": {
+             "units": "dg/kg",
+             "resolution": 250
+         },
+         "soc_15-30cm_mean": {
+             "units": "dg/kg",
+             "resolution": 250
+         },
+         "soc_30-60cm_mean": {
+             "units": "dg/kg",
+             "resolution": 250
+         },
+         "soc_60-100cm_mean": {
+             "units": "dg/kg",
+             "resolution": 250
+         },
+         "soc_100-200cm_mean": {
+             "units": "dg/kg",
+             "resolution": 250
+         }
+     }
+    },   
+    {
          "id": "users/rabpro/Pastick_AK_permafrost_prob",
          "name": "Pastick 2015 Alaska Permafrost Probability",
          "start_date": null,
