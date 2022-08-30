@@ -110,4 +110,4 @@ def test_img():
     res = pd.DataFrame(data[0]["features"][0]["properties"], index=[0])
 
     assert float(res["mean"]) > 0
-    assert res.shape[1] == 9
+    assert res.shape[1] == 10
