@@ -1,4 +1,18 @@
-[    {
+[    
+    {
+     "id": "users/rabpro/permafrost_zonation_index",
+     "name": "Permafrost Zonation Index, Gruber et al.",
+     "start_date": null,
+     "end_date": null,
+     "type": "image",
+     "bands": {
+         "None": {
+             "units" : "fraction",
+             "resolution": 1000
+         }
+     }
+     },       
+    {
      "id": "projects/soilgrids-isric/soc_mean",
      "name": "SoilGrids 250: Mean Soil Organic Carbon",
      "start_date": null,
