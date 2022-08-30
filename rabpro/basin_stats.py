@@ -479,7 +479,7 @@ def _parse_reducers(stats=None, base=None):
     elif "max" in stats:
         reducer = reducer.combine(reducer2=ee.Reducer.max(), sharedInputs=True)
 
-    if "stdDev" in stats:
+    if "stdDev" in stats or "std" in stats:
         reducer = reducer.combine(reducer2=ee.Reducer.stdDev(), sharedInputs=True)
     if "sum" in stats:
         reducer = reducer.combine(reducer2=ee.Reducer.sum(), sharedInputs=True)
