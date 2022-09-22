@@ -777,7 +777,7 @@ def area_4326(pgons_4326):
     """
     Given a list of shapely polygons in EPSG:4326, compute the area in km^2.
     Only returns the area of the perimeter; does not yet account for holes
-    in the polygon.
+    in the polygon. Mutlipolygons are supported.
     """
     if type(pgons_4326) is Polygon:
         pgons_4326 = [pgons_4326]
@@ -786,6 +786,7 @@ def area_4326(pgons_4326):
     geod = Geod(ellps="WGS84")
 
     areas_km2 = [abs(geod.geometry_area_perimeter(p)[0]) / 1e6 for p in pgons_4326]
+    
     return areas_km2
 
 
