@@ -272,7 +272,7 @@ def compute(
     Parameters
     ----------
     dataset_list : list of Datasets
-        List of Dataset objects to compute statistics over.
+        List of rabpro Dataset objects to compute statistics over.
     basins_gdf : GeoDataFrame
         Table of subbasin geometries.
     gee_feature_path : string
