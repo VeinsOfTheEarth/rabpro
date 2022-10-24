@@ -1,4 +1,56 @@
-[    
+[ 
+    {
+        "id": "users/rabpro/VIC_GAM_mean_v_1_1",
+        "name": "Mean GAM Volumetric Ice Content,  Olli et al. 2022",
+        "start_date": null,
+        "end_date": null,
+        "type": "image",
+        "bands": {
+            "b1": {
+                "units" : "percent",
+                "resolution": 1000
+            }
+        }
+    },                
+    {
+        "id": "users/rabpro/VIC_GAM_std_v_1_1",
+        "name": "STD GAM Volumetric Ice Content,  Olli et al. 2022",
+        "start_date": null,
+        "end_date": null,
+        "type": "image",
+        "bands": {
+            "b1": {
+                "units" : "percent",
+                "resolution": 1000
+            }
+        }
+    },                
+    {
+        "id": "users/rabpro/VIC_GBM_mean_v_1_1",
+        "name": "Mean GBM Volumetric Ice Content,  Olli et al. 2022",
+        "start_date": null,
+        "end_date": null,
+        "type": "image",
+        "bands": {
+            "b1": {
+                "units" : "percent",
+                "resolution": 1000
+            }
+        }
+    },                
+    {
+        "id": "users/rabpro/VIC_GBM_mean_v_1_1",
+        "name": "STD GBM Volumetric Ice Content,  Olli et al. 2022",
+        "start_date": null,
+        "end_date": null,
+        "type": "image",
+        "bands": {
+            "b1": {
+                "units" : "percent",
+                "resolution": 1000
+            }
+        }
+    },                          
     {
      "id": "users/rabpro/permafrost_zonation_index",
      "name": "Permafrost Zonation Index, Gruber et al.",
