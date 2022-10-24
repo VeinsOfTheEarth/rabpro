@@ -1,7 +1,7 @@
 [ 
     {
         "id": "users/rabpro/VIC_GAM_mean_v_1_1",
-        "name": "Mean GAM Volumetric Ice Content,  Olli et al. 2022",
+        "name": "Mean GAM Volumetric Ice Content,  Karjalainen et al. 2022",
         "start_date": null,
         "end_date": null,
         "type": "image",
@@ -14,7 +14,7 @@
     },                
     {
         "id": "users/rabpro/VIC_GAM_std_v_1_1",
-        "name": "STD GAM Volumetric Ice Content,  Olli et al. 2022",
+        "name": "STD GAM Volumetric Ice Content,  Karjalainen et al. 2022",
         "start_date": null,
         "end_date": null,
         "type": "image",
@@ -27,7 +27,7 @@
     },                
     {
         "id": "users/rabpro/VIC_GBM_mean_v_1_1",
-        "name": "Mean GBM Volumetric Ice Content,  Olli et al. 2022",
+        "name": "Mean GBM Volumetric Ice Content,  Karjalainen et al. 2022",
         "start_date": null,
         "end_date": null,
         "type": "image",
@@ -40,7 +40,7 @@
     },                
     {
         "id": "users/rabpro/VIC_GBM_mean_v_1_1",
-        "name": "STD GBM Volumetric Ice Content,  Olli et al. 2022",
+        "name": "STD GBM Volumetric Ice Content,  Karjalainen et al. 2022",
         "start_date": null,
         "end_date": null,
         "type": "image",
