@@ -29,7 +29,7 @@ def test_customreducer():
 
     data, task = rabpro.basin_stats.compute(
         [Dataset("JRC/GSW1_3/YearlyHistory", "waterClass", stats=["max"])],
-        basins_gdf=gdf,
+        gee_feature_path="users/jstacompute/basins",
         reducer_funcs=[asdf],
         test=True,
     )
@@ -43,7 +43,7 @@ def test_categorical_imgcol():
 
     urls, task = rabpro.basin_stats.compute(
         [Dataset("MODIS/006/MCD12Q1", "LC_Type1", stats=["freqhist"])],
-        basins_gdf=gdf,
+        gee_feature_path="users/jstacompute/basins",
     )
     res = rabpro.basin_stats.fetch_gee(urls, ["lulc"])
 
@@ -59,7 +59,7 @@ def test_timeindexed_imgcol():
                 "waterClass",
             )
         ],
-        basins_gdf=gdf,
+        gee_feature_path="users/jstacompute/basins",
     )
 
     res = rabpro.basin_stats.fetch_gee(urls, ["waterclass"])
@@ -79,7 +79,7 @@ def test_timeindexedspecific_imgcol():
                 end="2019-01-01",
             )
         ],
-        basins_gdf=gdf,
+        gee_feature_path="users/jstacompute/basins",
         test=True,
     )
 
@@ -97,7 +97,7 @@ def test_nontimeindexed_imgcol():
                 "monthly_recurrence",
             )
         ],
-        basins_gdf=gdf,
+        gee_feature_path="users/jstacompute/basins",
         test=True,
     )
 
@@ -116,11 +116,11 @@ def test_img():
                 stats=["min", "max", "range", "std", "sum", "pct50", "pct3"],
             )
         ],
-        basins_gdf=gdf,
+        gee_feature_path="users/jstacompute/basins",
         test=True,
     )
 
     res = pd.DataFrame(data[0]["features"][0]["properties"], index=[0])
 
     assert float(res["mean"]) > 0
-    assert res.shape[1] == 10
+    assert res.shape[1] == 11
