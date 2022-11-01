@@ -238,7 +238,6 @@ def fetch_gee(
         data = rabpro.basin_stats.fetch_gee(urls, tag_list, col_drop_list = ["system:index"])
 
     """
-    print(url_list)
 
     df_list = [_read_url(url) for url in url_list]
 

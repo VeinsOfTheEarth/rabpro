@@ -1,3 +1,4 @@
+import time
 import numpy as np
 import pandas as pd
 import geopandas as gpd
@@ -32,6 +33,8 @@ def test_customreducer():
         gee_feature_path="users/jstacompute/basins",
         reducer_funcs=[asdf],
     )
+    time.sleep(20)
+    print(urls)
     res = rabpro.basin_stats.fetch_gee(urls, ["waterclass"])
 
     assert all(res["waterclass_asdf"] == res["waterclass_max"])
@@ -68,7 +71,7 @@ def test_timeindexed_imgcol():
 
 def test_timeindexedspecific_imgcol():
 
-    data, task = rabpro.basin_stats.compute(
+    urls, task = rabpro.basin_stats.compute(
         [
             Dataset(
                 "JRC/GSW1_3/YearlyHistory",
@@ -78,10 +81,9 @@ def test_timeindexedspecific_imgcol():
             )
         ],
         gee_feature_path="users/jstacompute/basins",
-        test=True,
     )
 
-    res = pd.concat([clean_res(feature) for feature in data[0]["features"]])
+    res = rabpro.basin_stats.fetch_gee(urls, ["waterclass"])
 
     assert res.shape[0] == 2
 

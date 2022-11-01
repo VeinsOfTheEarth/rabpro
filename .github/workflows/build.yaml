@@ -94,7 +94,3 @@ jobs:
           python -m pytest
           # coverage run -m pytest
           # coverage report -m
-
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-        timeout-minutes: 15
