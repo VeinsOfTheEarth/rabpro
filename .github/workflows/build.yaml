@@ -90,5 +90,6 @@ jobs:
 
       - name: Run unit tests
         run: |
-          coverage run -m pytest
-          coverage report -m
+          python -m pytest
+          # coverage run -m pytest
+          # coverage report -m
