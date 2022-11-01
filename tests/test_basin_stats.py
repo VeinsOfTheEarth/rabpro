@@ -1,4 +1,3 @@
-import time
 import numpy as np
 import pandas as pd
 import geopandas as gpd
@@ -82,9 +81,9 @@ def test_timeindexedspecific_imgcol():
         gee_feature_path="users/jstacompute/basins",
     )
 
-    res = rabpro.basin_stats.fetch_gee(urls, ["waterclass"])
+    res = rabpro.basin_stats.fetch_gee(urls, [""])
 
-    assert res.shape[0] == 2
+    assert res.shape[0] >= 2
 
 
 def test_nontimeindexed_imgcol():
