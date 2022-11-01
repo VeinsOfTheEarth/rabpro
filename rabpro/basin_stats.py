@@ -332,6 +332,7 @@ def compute(
 
     # Dictionary for determining which rasters and statistics to compute
     control = _get_controls(dataset_list)
+    print(control)
     ee.Initialize()
 
     # Create water occurence mask
