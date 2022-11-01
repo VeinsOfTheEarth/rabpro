@@ -169,8 +169,6 @@ def format_gee(
         for df, prepend in zip(df_list, prepend_list)
     ]
 
-    print(res)
-
     res = pd.concat(res, axis=1)
 
     # drop duplicate columns and move to front
@@ -308,7 +306,7 @@ def compute(
         data, task = rabpro.basin_stats.compute(
             [
                 Dataset(
-                    "JRC/GSW1_3/MonthlyRecurrence",
+                    "JRC/GSW1_4/MonthlyRecurrence",
                     "monthly_recurrence",
                 )
             ],
@@ -320,7 +318,7 @@ def compute(
         data, task = rabpro.basin_stats.compute(
             [
                 Dataset(
-                    "JRC/GSW1_3/MonthlyRecurrence",
+                    "JRC/GSW1_4/MonthlyRecurrence",
                     "monthly_recurrence",
                     time_stats = ["median"]
                 )
@@ -332,12 +330,10 @@ def compute(
 
     # Dictionary for determining which rasters and statistics to compute
     control = _get_controls(dataset_list)
-    print(control)
-    print(dataset_list)
     ee.Initialize()
 
     # Create water occurence mask
-    occ_mask = ee.Image("JRC/GSW1_3/GlobalSurfaceWater").select("occurrence").lt(90)
+    occ_mask = ee.Image("JRC/GSW1_4/GlobalSurfaceWater").select("occurrence").lt(90)
 
     # Convert GeoDataFrame to ee.Feature objects
     if basins_gdf is not None:
@@ -518,10 +514,6 @@ def _get_controls(datasets):
 
         # TODO switch to x | y notation in Python 3.9. Add try/except for this section?
         datadict = {**datadict, **user_datadict}  # merge dictionaries
-
-    # print(datapaths)
-    # print(datasets)
-    # print(datadict)
 
     control = []
     for d in datasets:

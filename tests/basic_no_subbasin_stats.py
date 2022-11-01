@@ -38,7 +38,7 @@ basins = rpo.basins
 rpo.basins.to_file(rpo.paths["subbasins"], driver="GeoJSON")
 
 data = rabpro.subbasin_stats.Dataset(
-    "JRC/GSW1_3/GlobalSurfaceWater",
+    "JRC/GSW1_4/GlobalSurfaceWater",
     "occurrence",
     stats=["min", "max", "range", "std", "sum", "pct50", "pct3"],
 )

@@ -28,7 +28,7 @@ dataset_list = [
         end="2021-09-01",
     ),
     Dataset(
-        "JRC/GSW1_3/GlobalSurfaceWater",
+        "JRC/GSW1_4/GlobalSurfaceWater",
         "occurrence",
         stats=["mean"],
     ),
