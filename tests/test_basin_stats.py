@@ -27,18 +27,14 @@ def test_customreducer():
     def asdf(feat):
         return feat.getNumber("max")
 
-    data, task = rabpro.basin_stats.compute(
+    urls, task = rabpro.basin_stats.compute(
         [Dataset("JRC/GSW1_3/YearlyHistory", "waterClass", stats=["max"])],
         gee_feature_path="users/jstacompute/basins",
         reducer_funcs=[asdf],
-        test=True,
     )
+    res = rabpro.basin_stats.fetch_gee(urls, ["waterclass"])
 
-    print(data)
-    print(len(data))
-    res = pd.concat([clean_res(feature) for feature in data[0]["features"]])
-
-    assert all(res["asdf"] == res["max"])
+    assert all(res["waterclass_asdf"] == res["waterclass_max"])
 
 
 def test_categorical_imgcol():
