@@ -32,6 +32,7 @@ def test_customreducer():
         [Dataset("JRC/GSW1_3/YearlyHistory", "waterClass", stats=["max"])],
         gee_feature_path="users/jstacompute/basins",
         reducer_funcs=[asdf],
+        verbose=True,
     )
     time.sleep(20)
     print(urls)
