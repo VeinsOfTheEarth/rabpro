@@ -16,6 +16,7 @@ gdf = gpd.GeoDataFrame({"idx": [1], "geometry": [box(*total_bounds)]}, crs="EPSG
 # Ensure the gee metadata is updated
 _ = utils.get_datapaths(update_gee_metadata=True)
 
+
 def clean_res(feature):
     res = pd.DataFrame(feature["properties"], index=[0])
     res["id"] = feature["id"]
@@ -41,7 +42,8 @@ def test_customreducer():
 def test_categorical_imgcol():
 
     urls, task = rabpro.basin_stats.compute(
-        [Dataset("MODIS/006/MCD12Q1", "LC_Type1", stats=["freqhist"])], basins_gdf=gdf
+        [Dataset("MODIS/006/MCD12Q1", "LC_Type1", stats=["freqhist"])],
+        basins_gdf=gdf,
     )
     res = rabpro.basin_stats.fetch_gee(urls, ["lulc"])
 
@@ -51,7 +53,13 @@ def test_categorical_imgcol():
 def test_timeindexed_imgcol():
 
     urls, tasks = rabpro.basin_stats.compute(
-        [Dataset("JRC/GSW1_3/YearlyHistory", "waterClass",)], basins_gdf=gdf
+        [
+            Dataset(
+                "JRC/GSW1_3/YearlyHistory",
+                "waterClass",
+            )
+        ],
+        basins_gdf=gdf,
     )
 
     res = rabpro.basin_stats.fetch_gee(urls, ["waterclass"])
@@ -83,7 +91,12 @@ def test_timeindexedspecific_imgcol():
 def test_nontimeindexed_imgcol():
 
     data, task = rabpro.basin_stats.compute(
-        [Dataset("JRC/GSW1_3/MonthlyRecurrence", "monthly_recurrence",)],
+        [
+            Dataset(
+                "JRC/GSW1_3/MonthlyRecurrence",
+                "monthly_recurrence",
+            )
+        ],
         basins_gdf=gdf,
         test=True,
     )
