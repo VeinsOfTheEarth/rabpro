@@ -296,7 +296,7 @@ def compute(
     .. code-block:: python
 
         import rabpro
-        from rabpro.subbasin_stats import Dataset
+        from rabpro.basin_stats import Dataset
         import numpy as np
         import geopandas as gpd
         from shapely.geometry import box
@@ -305,7 +305,7 @@ def compute(
         gdf = gpd.GeoDataFrame({"idx": [1], "geometry": [box(*total_bounds)]}, crs="EPSG:4326")
 
         # defaults
-        data, task = rabpro.subbasin_stats.compute(
+        data, task = rabpro.basin_stats.compute(
             [
                 Dataset(
                     "JRC/GSW1_3/MonthlyRecurrence",
@@ -317,7 +317,7 @@ def compute(
         )
 
         # with time_stats specified
-        data, task = rabpro.subbasin_stats.compute(
+        data, task = rabpro.basin_stats.compute(
             [
                 Dataset(
                     "JRC/GSW1_3/MonthlyRecurrence",
