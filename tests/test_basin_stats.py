@@ -34,6 +34,8 @@ def test_customreducer():
         test=True,
     )
 
+    print(data)
+    print(len(data))
     res = pd.concat([clean_res(feature) for feature in data[0]["features"]])
 
     assert all(res["asdf"] == res["max"])
