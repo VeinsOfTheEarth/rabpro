@@ -333,6 +333,7 @@ def compute(
     # Dictionary for determining which rasters and statistics to compute
     control = _get_controls(dataset_list)
     print(control)
+    print(dataset_list)
     ee.Initialize()
 
     # Create water occurence mask
@@ -517,6 +518,10 @@ def _get_controls(datasets):
 
         # TODO switch to x | y notation in Python 3.9. Add try/except for this section?
         datadict = {**datadict, **user_datadict}  # merge dictionaries
+
+    print(datapaths)
+    print(datasets)
+    print(datadict)
 
     control = []
     for d in datasets:
