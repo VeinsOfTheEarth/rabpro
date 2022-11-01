@@ -8,7 +8,7 @@ import rabpro
 from rabpro.basin_stats import Dataset
 
 path_base = "docs/paper_fig/"
-path_base = r'X:\Research\RaBPro\Code\docs\paper_fig'
+path_base = r"X:\Research\RaBPro\Code\docs\paper_fig"
 basin = gpd.read_file(os.path.join(path_base, "basin_merit.gpkg"))
 basin["id"] = 0
 
@@ -33,9 +33,7 @@ dataset_list = [
         stats=["mean"],
     ),
     Dataset(
-        "projects/sat-io/open-datasets/Geomorpho90m/slope",
-        stats=["mean"],
-        mosaic=True
+        "projects/sat-io/open-datasets/Geomorpho90m/slope", stats=["mean"], mosaic=True
     ),
     Dataset(
         "MODIS/006/MOD13A2",
@@ -46,17 +44,21 @@ dataset_list = [
     ),
     Dataset(
         "CIESIN/GPWv411/GPW_UNWPP-Adjusted_Population_Density",
-        'unwpp-adjusted_population_density'
+        "unwpp-adjusted_population_density",
     ),
-    Dataset(
-        "NASA_USDA/HSL/SMAP10KM_soil_moisture",
-        'ssm'
-    ),
-
+    Dataset("NASA_USDA/HSL/SMAP10KM_soil_moisture", "ssm"),
 ]
 
 
-tag_list = ["temperature", "precip", 'occurrence', 'slope', 'ndvi', 'pop_density', 'soil_moisture']
+tag_list = [
+    "temperature",
+    "precip",
+    "occurrence",
+    "slope",
+    "ndvi",
+    "pop_density",
+    "soil_moisture",
+]
 fnames = [path_base + tag + ".tif" for tag in tag_list]
 
 # ---- pull stats ----
@@ -82,23 +84,23 @@ data.to_csv(os.path.join(path_base, "test.csv"), index=False)
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-data = pd.read_csv(os.path.join(path_base,"test.csv"))
+data = pd.read_csv(os.path.join(path_base, "test.csv"))
 data["date"] = pd.to_datetime(data["date"])
 
 
 plt.close()
 sf = 1.3
-sns.set(rc={'figure.figsize':(3.3*sf,1.59 * sf)})
-sns.set_style('darkgrid')
-ax = sns.lineplot(data['date'], data['precip_mean'])
-ax.set(xlabel='', ylabel='Precipitation (mm/hr)')
+sns.set(rc={"figure.figsize": (3.3 * sf, 1.59 * sf)})
+sns.set_style("darkgrid")
+ax = sns.lineplot(data["date"], data["precip_mean"])
+ax.set(xlabel="", ylabel="Precipitation (mm/hr)")
 plt.tight_layout()
 
 plt.close()
-sns.set(rc={'figure.figsize':(3.3*sf,1.59 * sf)})
-sns.set_style('darkgrid')
-ax = sns.lineplot(data['date'], data['temperature_mean']-273, color='lightcoral')
-ax.set(xlabel='', ylabel='Temperature (C)')
+sns.set(rc={"figure.figsize": (3.3 * sf, 1.59 * sf)})
+sns.set_style("darkgrid")
+ax = sns.lineplot(data["date"], data["temperature_mean"] - 273, color="lightcoral")
+ax.set(xlabel="", ylabel="Temperature (C)")
 plt.tight_layout()
 
 
