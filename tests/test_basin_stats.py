@@ -29,13 +29,11 @@ def test_customreducer():
         return feat.getNumber("max")
 
     urls, task = rabpro.basin_stats.compute(
-        [Dataset("JRC/GSW1_3/YearlyHistory", "waterClass", stats=["max"])],
+        [Dataset("JRC/GSW1_4/YearlyHistory", "waterClass", stats=["max"])],
         gee_feature_path="users/jstacompute/basins",
         reducer_funcs=[asdf],
         verbose=True,
-    )
-    time.sleep(20)
-    print(urls)
+    )    
     res = rabpro.basin_stats.fetch_gee(urls, ["waterclass"])
 
     assert all(res["waterclass_asdf"] == res["waterclass_max"])
@@ -57,7 +55,7 @@ def test_timeindexed_imgcol():
     urls, tasks = rabpro.basin_stats.compute(
         [
             Dataset(
-                "JRC/GSW1_3/YearlyHistory",
+                "JRC/GSW1_4/YearlyHistory",
                 "waterClass",
             )
         ],
@@ -75,7 +73,7 @@ def test_timeindexedspecific_imgcol():
     urls, task = rabpro.basin_stats.compute(
         [
             Dataset(
-                "JRC/GSW1_3/YearlyHistory",
+                "JRC/GSW1_4/YearlyHistory",
                 "waterClass",
                 start="2017-01-01",
                 end="2019-01-01",
@@ -94,7 +92,7 @@ def test_nontimeindexed_imgcol():
     data, task = rabpro.basin_stats.compute(
         [
             Dataset(
-                "JRC/GSW1_3/MonthlyRecurrence",
+                "JRC/GSW1_4/MonthlyRecurrence",
                 "monthly_recurrence",
             )
         ],
@@ -112,7 +110,7 @@ def test_img():
     data, task = rabpro.basin_stats.compute(
         [
             Dataset(
-                "JRC/GSW1_3/GlobalSurfaceWater",
+                "JRC/GSW1_4/GlobalSurfaceWater",
                 "occurrence",
                 stats=["min", "max", "range", "std", "sum", "pct50", "pct3"],
             )

@@ -519,9 +519,9 @@ def _get_controls(datasets):
         # TODO switch to x | y notation in Python 3.9. Add try/except for this section?
         datadict = {**datadict, **user_datadict}  # merge dictionaries
 
-    print(datapaths)
-    print(datasets)
-    print(datadict)
+    # print(datapaths)
+    # print(datasets)
+    # print(datadict)
 
     control = []
     for d in datasets:
