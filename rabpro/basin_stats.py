@@ -169,6 +169,8 @@ def format_gee(
         for df, prepend in zip(df_list, prepend_list)
     ]
 
+    print(res)
+
     res = pd.concat(res, axis=1)
 
     # drop duplicate columns and move to front
