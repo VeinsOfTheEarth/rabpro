@@ -76,7 +76,7 @@
         "id": "ASTER/AST_L1T_003",
         "name": "ASTER L1T Radiance",
         "start_date": "2000-03-04",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B01": {
@@ -206,7 +206,7 @@
         "id": "CAS/IGSNRR/PML/V2_v017",
         "name": "PML_V2 0.1.7: Coupled Evapotranspiration and Gross Primary Product (GPP)",
         "start_date": "2000-02-26",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "GPP": {
@@ -473,7 +473,7 @@
         "id": "COPERNICUS/S1_GRD",
         "name": "Sentinel-1 SAR GRD: C-band Synthetic Aperture Radar Ground Range Detected, log scaling",
         "start_date": "2014-10-03",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "HH": {
@@ -4425,7 +4425,7 @@
         "id": "FAO/SOFO/1/FPP",
         "name": "Forest proximate people (FPP)",
         "start_date": "2019-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "FPP_1km": {
@@ -4442,7 +4442,7 @@
         "id": "FAO/SOFO/1/TPP",
         "name": "Tree proximate people (TPP)",
         "start_date": "2019-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "TPP_1km": {
@@ -4687,7 +4687,7 @@
         "id": "GOOGLE/DYNAMICWORLD/V1",
         "name": "Dynamic World V1",
         "start_date": "2015-06-23",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "water": {
@@ -6384,7 +6384,7 @@
         "id": "JAXA/ALOS/PALSAR-2/Level2_2/ScanSAR",
         "name": "PALSAR-2 Level 2.2",
         "start_date": "2014-08-04",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "HH": {
@@ -7231,7 +7231,7 @@
         "id": "LANDSAT/LC08/C01/T1_32DAY_BAI",
         "name": "Landsat 8 Collection 1 Tier 1 32-Day BAI Composite",
         "start_date": "2013-04-07",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "BAI": {
@@ -7244,7 +7244,7 @@
         "id": "LANDSAT/LC08/C01/T1_32DAY_EVI",
         "name": "Landsat 8 Collection 1 Tier 1 32-Day EVI Composite",
         "start_date": "2013-04-07",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "EVI": {
@@ -7257,7 +7257,7 @@
         "id": "LANDSAT/LC08/C01/T1_32DAY_NBRT",
         "name": "Landsat 8 Collection 1 Tier 1 32-Day NBRT Composite",
         "start_date": "2013-04-07",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NBRT": {
@@ -7270,7 +7270,7 @@
         "id": "LANDSAT/LC08/C01/T1_32DAY_NDSI",
         "name": "Landsat 8 Collection 1 Tier 1 32-Day NDSI Composite",
         "start_date": "2013-04-07",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDSI": {
@@ -7283,7 +7283,7 @@
         "id": "LANDSAT/LC08/C01/T1_32DAY_NDVI",
         "name": "Landsat 8 Collection 1 Tier 1 32-Day NDVI Composite",
         "start_date": "2013-04-07",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -7296,7 +7296,7 @@
         "id": "LANDSAT/LC08/C01/T1_32DAY_NDWI",
         "name": "Landsat 8 Collection 1 Tier 1 32-Day NDWI Composite",
         "start_date": "2013-04-07",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDWI": {
@@ -7309,7 +7309,7 @@
         "id": "LANDSAT/LC08/C01/T1_32DAY_RAW",
         "name": "Landsat 8 Collection 1 Tier 1 32-Day Raw Composite",
         "start_date": "2013-04-07",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -7366,7 +7366,7 @@
         "id": "LANDSAT/LC08/C01/T1_32DAY_TOA",
         "name": "Landsat 8 Collection 1 Tier 1 32-Day TOA Reflectance Composite",
         "start_date": "2013-04-07",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -7423,7 +7423,7 @@
         "id": "LANDSAT/LC08/C01/T1_8DAY_BAI",
         "name": "Landsat 8 Collection 1 Tier 1 8-Day BAI Composite",
         "start_date": "2013-04-07",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "BAI": {
@@ -7436,7 +7436,7 @@
         "id": "LANDSAT/LC08/C01/T1_8DAY_EVI",
         "name": "Landsat 8 Collection 1 Tier 1 8-Day EVI Composite",
         "start_date": "2013-04-07",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "EVI": {
@@ -7449,7 +7449,7 @@
         "id": "LANDSAT/LC08/C01/T1_8DAY_NBRT",
         "name": "Landsat 8 Collection 1 Tier 1 8-Day NBRT Composite",
         "start_date": "2013-04-07",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NBRT": {
@@ -7462,7 +7462,7 @@
         "id": "LANDSAT/LC08/C01/T1_8DAY_NDSI",
         "name": "Landsat 8 Collection 1 Tier 1 8-Day NDSI Composite",
         "start_date": "2013-04-07",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDSI": {
@@ -7475,7 +7475,7 @@
         "id": "LANDSAT/LC08/C01/T1_8DAY_NDVI",
         "name": "Landsat 8 Collection 1 Tier 1 8-Day NDVI Composite",
         "start_date": "2013-04-07",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -7488,7 +7488,7 @@
         "id": "LANDSAT/LC08/C01/T1_8DAY_NDWI",
         "name": "Landsat 8 Collection 1 Tier 1 8-Day NDWI Composite",
         "start_date": "2013-04-07",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDWI": {
@@ -7501,7 +7501,7 @@
         "id": "LANDSAT/LC08/C01/T1_8DAY_RAW",
         "name": "Landsat 8 Collection 1 Tier 1 8-Day Raw Composite",
         "start_date": "2013-04-07",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -7558,7 +7558,7 @@
         "id": "LANDSAT/LC08/C01/T1_8DAY_TOA",
         "name": "Landsat 8 Collection 1 Tier 1 8-Day TOA Reflectance Composite",
         "start_date": "2013-04-07",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -7615,7 +7615,7 @@
         "id": "LANDSAT/LC08/C01/T1_ANNUAL_BAI",
         "name": "Landsat 8 Collection 1 Tier 1 Annual BAI Composite",
         "start_date": "2013-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "BAI": {
@@ -7628,7 +7628,7 @@
         "id": "LANDSAT/LC08/C01/T1_ANNUAL_EVI",
         "name": "Landsat 8 Collection 1 Tier 1 Annual EVI Composite",
         "start_date": "2013-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "EVI": {
@@ -7641,7 +7641,7 @@
         "id": "LANDSAT/LC08/C01/T1_ANNUAL_GREENEST_TOA",
         "name": "Landsat 8 Collection 1 Tier 1 Landsat 8 Collection 1 Tier 1 Annual Greenest-Pixel TOA Reflectance Composite",
         "start_date": "2013-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -7702,7 +7702,7 @@
         "id": "LANDSAT/LC08/C01/T1_ANNUAL_NBRT",
         "name": "Landsat 8 Collection 1 Tier 1 Annual NBRT Composite",
         "start_date": "2013-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NBRT": {
@@ -7715,7 +7715,7 @@
         "id": "LANDSAT/LC08/C01/T1_ANNUAL_NDSI",
         "name": "Landsat 8 Collection 1 Tier 1 Annual NDSI Composite",
         "start_date": "2013-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDSI": {
@@ -7728,7 +7728,7 @@
         "id": "LANDSAT/LC08/C01/T1_ANNUAL_NDVI",
         "name": "Landsat 8 Collection 1 Tier 1 Annual NDVI Composite",
         "start_date": "2013-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -7741,7 +7741,7 @@
         "id": "LANDSAT/LC08/C01/T1_ANNUAL_NDWI",
         "name": "Landsat 8 Collection 1 Tier 1 Annual NDWI Composite",
         "start_date": "2013-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDWI": {
@@ -7754,7 +7754,7 @@
         "id": "LANDSAT/LC08/C01/T1_ANNUAL_RAW",
         "name": "Landsat 8 Collection 1 Tier 1 Annual Raw Composite",
         "start_date": "2013-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -7811,7 +7811,7 @@
         "id": "LANDSAT/LC08/C01/T1_ANNUAL_TOA",
         "name": "Landsat 8 Collection 1 Tier 1 Annual TOA Reflectance Composite",
         "start_date": "2013-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -7868,7 +7868,7 @@
         "id": "LANDSAT/LC08/C02/T1",
         "name": "USGS Landsat 8 Collection 2 Tier 1 Raw Scenes",
         "start_date": "2013-03-18",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8030,7 +8030,7 @@
         "id": "LANDSAT/LC08/C02/T1_RT",
         "name": "USGS Landsat 8 Collection 2 Tier 1 and Real-Time data Raw Scenes",
         "start_date": "2013-03-18",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8107,7 +8107,7 @@
         "id": "LANDSAT/LC08/C02/T1_RT_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 1 and Real-Time data TOA Reflectance",
         "start_date": "2013-03-18",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8184,7 +8184,7 @@
         "id": "LANDSAT/LC08/C02/T1_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "2013-03-18",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8261,7 +8261,7 @@
         "id": "LANDSAT/LC08/C02/T2",
         "name": "USGS Landsat 8 Collection 2 Tier 2 Raw Scenes",
         "start_date": "2021-10-28",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8423,7 +8423,7 @@
         "id": "LANDSAT/LC08/C02/T2_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2021-10-28",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8500,7 +8500,7 @@
         "id": "LANDSAT/LC09/C02/T1",
         "name": "USGS Landsat 9 Collection 2 Tier 1 Raw Scenes",
         "start_date": "2021-10-31",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8577,7 +8577,7 @@
         "id": "LANDSAT/LC09/C02/T1_L2",
         "name": "USGS Landsat 9 Level 2, Collection 2, Tier 1",
         "start_date": "2021-10-31",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -8662,7 +8662,7 @@
         "id": "LANDSAT/LC09/C02/T1_TOA",
         "name": "USGS Landsat 9 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "2021-10-31",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8739,7 +8739,7 @@
         "id": "LANDSAT/LC09/C02/T2",
         "name": "USGS Landsat 9 Collection 2 Tier 2 Raw Scenes",
         "start_date": "2021-11-02",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8816,7 +8816,7 @@
         "id": "LANDSAT/LC09/C02/T2_L2",
         "name": "USGS Landsat 9 Level 2, Collection 2, Tier 2",
         "start_date": "2021-10-31",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -8901,7 +8901,7 @@
         "id": "LANDSAT/LC09/C02/T2_TOA",
         "name": "USGS Landsat 9 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2021-11-02",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8978,7 +8978,7 @@
         "id": "LANDSAT/LE07/C01/T1_32DAY_BAI",
         "name": "Landsat 7 Collection 1 Tier 1 32-Day BAI Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "BAI": {
@@ -8991,7 +8991,7 @@
         "id": "LANDSAT/LE07/C01/T1_32DAY_EVI",
         "name": "Landsat 7 Collection 1 Tier 1 32-Day EVI Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "EVI": {
@@ -9004,7 +9004,7 @@
         "id": "LANDSAT/LE07/C01/T1_32DAY_NBRT",
         "name": "Landsat 7 Collection 1 Tier 1 32-Day NBRT Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NBRT": {
@@ -9017,7 +9017,7 @@
         "id": "LANDSAT/LE07/C01/T1_32DAY_NDSI",
         "name": "Landsat 7 Collection 1 Tier 1 32-Day NDSI Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDSI": {
@@ -9030,7 +9030,7 @@
         "id": "LANDSAT/LE07/C01/T1_32DAY_NDVI",
         "name": "Landsat 7 Collection 1 Tier 1 32-Day NDVI Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -9043,7 +9043,7 @@
         "id": "LANDSAT/LE07/C01/T1_32DAY_NDWI",
         "name": "Landsat 7 Collection 1 Tier 1 32-Day NDWI Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDWI": {
@@ -9056,7 +9056,7 @@
         "id": "LANDSAT/LE07/C01/T1_32DAY_RAW",
         "name": "Landsat 7 Collection 1 Tier 1 32-Day Raw Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9105,7 +9105,7 @@
         "id": "LANDSAT/LE07/C01/T1_32DAY_TOA",
         "name": "Landsat 7 Collection 1 Tier 1 32-Day TOA Reflectance Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9154,7 +9154,7 @@
         "id": "LANDSAT/LE07/C01/T1_8DAY_BAI",
         "name": "Landsat 7 Collection 1 Tier 1 8-Day BAI Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "BAI": {
@@ -9167,7 +9167,7 @@
         "id": "LANDSAT/LE07/C01/T1_8DAY_EVI",
         "name": "Landsat 7 Collection 1 Tier 1 8-Day EVI Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "EVI": {
@@ -9180,7 +9180,7 @@
         "id": "LANDSAT/LE07/C01/T1_8DAY_NBRT",
         "name": "Landsat 7 Collection 1 Tier 1 8-Day NBRT Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NBRT": {
@@ -9193,7 +9193,7 @@
         "id": "LANDSAT/LE07/C01/T1_8DAY_NDSI",
         "name": "Landsat 7 Collection 1 Tier 1 8-Day NDSI Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDSI": {
@@ -9206,7 +9206,7 @@
         "id": "LANDSAT/LE07/C01/T1_8DAY_NDVI",
         "name": "Landsat 7 Collection 1 Tier 1 8-Day NDVI Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -9219,7 +9219,7 @@
         "id": "LANDSAT/LE07/C01/T1_8DAY_NDWI",
         "name": "Landsat 7 Collection 1 Tier 1 8-Day NDWI Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDWI": {
@@ -9232,7 +9232,7 @@
         "id": "LANDSAT/LE07/C01/T1_8DAY_RAW",
         "name": "Landsat 7 Collection 1 Tier 1 8-Day Raw Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9281,7 +9281,7 @@
         "id": "LANDSAT/LE07/C01/T1_8DAY_TOA",
         "name": "Landsat 7 Collection 1 Tier 1 8-Day TOA Reflectance Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9330,7 +9330,7 @@
         "id": "LANDSAT/LE07/C01/T1_ANNUAL_BAI",
         "name": "Landsat 7 Collection 1 Tier 1 Annual BAI Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "BAI": {
@@ -9343,7 +9343,7 @@
         "id": "LANDSAT/LE07/C01/T1_ANNUAL_EVI",
         "name": "Landsat 7 Collection 1 Tier 1 Annual EVI Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "EVI": {
@@ -9356,7 +9356,7 @@
         "id": "LANDSAT/LE07/C01/T1_ANNUAL_GREENEST_TOA",
         "name": "Landsat 7 Collection 1 Tier 1 Landsat 7 Collection 1 Tier 1 Annual Greenest-Pixel TOA Reflectance Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9409,7 +9409,7 @@
         "id": "LANDSAT/LE07/C01/T1_ANNUAL_NBRT",
         "name": "Landsat 7 Collection 1 Tier 1 Annual NBRT Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NBRT": {
@@ -9422,7 +9422,7 @@
         "id": "LANDSAT/LE07/C01/T1_ANNUAL_NDSI",
         "name": "Landsat 7 Collection 1 Tier 1 Annual NDSI Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDSI": {
@@ -9435,7 +9435,7 @@
         "id": "LANDSAT/LE07/C01/T1_ANNUAL_NDVI",
         "name": "Landsat 7 Collection 1 Tier 1 Annual NDVI Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -9448,7 +9448,7 @@
         "id": "LANDSAT/LE07/C01/T1_ANNUAL_NDWI",
         "name": "Landsat 7 Collection 1 Tier 1 Annual NDWI Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDWI": {
@@ -9461,7 +9461,7 @@
         "id": "LANDSAT/LE07/C01/T1_ANNUAL_RAW",
         "name": "Landsat 7 Collection 1 Tier 1 Annual Raw Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9510,7 +9510,7 @@
         "id": "LANDSAT/LE07/C01/T1_ANNUAL_TOA",
         "name": "Landsat 7 Collection 1 Tier 1 Annual TOA Reflectance Composite",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9559,7 +9559,7 @@
         "id": "LANDSAT/LE07/C02/T1",
         "name": "USGS Landsat 7 Collection 2 Tier 1 Raw Scenes",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9713,7 +9713,7 @@
         "id": "LANDSAT/LE07/C02/T1_RT",
         "name": "USGS Landsat 7 Collection 2 Tier 1 and Real-Time data Raw Scenes",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9782,7 +9782,7 @@
         "id": "LANDSAT/LE07/C02/T1_RT_TOA",
         "name": "USGS Landsat 7 Collection 2 Tier 1 and Real-Time data TOA Reflectance",
         "start_date": "1999-06-29",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9851,7 +9851,7 @@
         "id": "LANDSAT/LE07/C02/T1_TOA",
         "name": "USGS Landsat 7 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "1999-06-29",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9920,7 +9920,7 @@
         "id": "LANDSAT/LE07/C02/T2",
         "name": "USGS Landsat 7 Collection 2 Tier 2 Raw Scenes",
         "start_date": "1999-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -10074,7 +10074,7 @@
         "id": "LANDSAT/LE07/C02/T2_TOA",
         "name": "USGS Landsat 7 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2003-12-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -12475,7 +12475,7 @@
         "id": "LARSE/GEDI/GEDI02_A_002_MONTHLY",
         "name": "GEDI L2A Raster Canopy Top Height (Version 2)",
         "start_date": "2019-03-25",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "beam": {
@@ -13044,7 +13044,7 @@
         "id": "LARSE/GEDI/GEDI02_B_002_MONTHLY",
         "name": "GEDI L2B Raster Canopy Cover Vertical Profile Metrics (Version 2)",
         "start_date": "2019-03-25",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "algorithmrun_flag": {
@@ -14476,7 +14476,7 @@
         "id": "MODIS/061/MCD15A3H",
         "name": "MCD15A3H.061 MODIS Leaf Area Index/FPAR 4-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "Fpar": {
@@ -14509,7 +14509,7 @@
         "id": "MODIS/061/MCD43A1",
         "name": "MCD43A1.061 MODIS BRDF-Albedo Model Parameters Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "BRDF_Albedo_Parameters_Band1_iso": {
@@ -14678,7 +14678,7 @@
         "id": "MODIS/061/MCD64A1",
         "name": "MCD64A1.061 MODIS Burned Area Monthly Global 500m",
         "start_date": "2000-11-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "BurnDate": {
@@ -14756,7 +14756,7 @@
         "id": "MODIS/061/MOD09A1",
         "name": "MOD09A1.061 Terra Surface Reflectance 8-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -14817,7 +14817,7 @@
         "id": "MODIS/061/MOD09GA",
         "name": "MOD09GA.061 Terra Surface Reflectance Daily Global 1km and 500m",
         "start_date": "2000-02-24",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "num_observations_1km": {
@@ -14914,7 +14914,7 @@
         "id": "MODIS/061/MOD09GQ",
         "name": "MOD09GQ.061 Terra Surface Reflectance Daily Global 250m",
         "start_date": "2000-02-24",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "num_observations": {
@@ -14955,7 +14955,7 @@
         "id": "MODIS/061/MOD09Q1",
         "name": "MOD09Q1.061 Terra Surface Reflectance 8-Day Global 250m",
         "start_date": "2000-02-18",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -14980,7 +14980,7 @@
         "id": "MODIS/061/MOD11A1",
         "name": "MOD11A1.061 Terra Land Surface Temperature and Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -15037,7 +15037,7 @@
         "id": "MODIS/061/MOD11A2",
         "name": "MOD11A2.061 Terra Land Surface Temperature and Emissivity 8-Day Global 1km",
         "start_date": "2000-02-18",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -15094,7 +15094,7 @@
         "id": "MODIS/061/MOD13A1",
         "name": "MOD13A1.061 Terra Vegetation Indices 16-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -15151,7 +15151,7 @@
         "id": "MODIS/061/MOD13A2",
         "name": "MOD13A2.061 Terra Vegetation Indices 16-Day Global 1km",
         "start_date": "2000-02-18",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -15208,7 +15208,7 @@
         "id": "MODIS/061/MOD13Q1",
         "name": "MOD13Q1.061 Terra Vegetation Indices 16-Day Global 250m",
         "start_date": "2000-02-18",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -15265,7 +15265,7 @@
         "id": "MODIS/061/MOD14A1",
         "name": "MOD14A1.061: Terra Thermal Anomalies & Fire Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -15290,7 +15290,7 @@
         "id": "MODIS/061/MOD14A2",
         "name": "MOD14A2.061: Terra Thermal Anomalies & Fire 8-Day Global 1km",
         "start_date": "2000-02-18",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -15307,7 +15307,7 @@
         "id": "MODIS/061/MOD15A2H",
         "name": "MOD15A2H.061: Terra Leaf Area Index/FPAR 8-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "Fpar_500m": {
@@ -15389,7 +15389,7 @@
         "id": "MODIS/061/MYD09A1",
         "name": "MYD09A1.061 Aqua Surface Reflectance 8-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -15450,7 +15450,7 @@
         "id": "MODIS/061/MYD09GA",
         "name": "MYD09GA.061 Aqua Surface Reflectance Daily Global 1km and 500m",
         "start_date": "2002-07-04",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "num_observations_1km": {
@@ -15547,7 +15547,7 @@
         "id": "MODIS/061/MYD09GQ",
         "name": "MYD09GQ.061 Aqua Surface Reflectance Daily Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "num_observations": {
@@ -15588,7 +15588,7 @@
         "id": "MODIS/061/MYD09Q1",
         "name": "MYD09Q1.061 Aqua Surface Reflectance 8-Day Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -15613,7 +15613,7 @@
         "id": "MODIS/061/MYD11A1",
         "name": "MYD11A1.061 Aqua Land Surface Temperature and Emissivity Daily Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -15670,7 +15670,7 @@
         "id": "MODIS/061/MYD11A2",
         "name": "MYD11A2.061 Aqua Land Surface Temperature and Emissivity 8-Day Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -15727,7 +15727,7 @@
         "id": "MODIS/061/MYD13A1",
         "name": "MYD13A1.061 Aqua Vegetation Indices 16-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -15784,7 +15784,7 @@
         "id": "MODIS/061/MYD13A2",
         "name": "MYD13A2.061 Aqua Vegetation Indices 16-Day Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -15841,7 +15841,7 @@
         "id": "MODIS/061/MYD13Q1",
         "name": "MYD13Q1.061 Aqua Vegetation Indices 16-Day Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -15898,7 +15898,7 @@
         "id": "MODIS/061/MYD14A1",
         "name": "MYD14A1.061: Aqua Thermal Anomalies & Fire Daily Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -15923,7 +15923,7 @@
         "id": "MODIS/061/MYD14A2",
         "name": "MYD14A2.061: Aqua Thermal Anomalies & Fire 8-Day Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -15940,7 +15940,7 @@
         "id": "MODIS/061/MYD15A2H",
         "name": "MYD15A2H.061: Aqua Leaf Area Index/FPAR 8-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "Fpar_500m": {
@@ -16406,7 +16406,7 @@
         "id": "ORTHO/Switzerland/SWISSIMAGE/10cm",
         "name": "SWISSIMAGE 10 cm RGB imagery",
         "start_date": "2017-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "R": {
@@ -17394,7 +17394,7 @@
         "id": "TERN/AET/CMRSET_LANDSAT_V2_2",
         "name": "Actual Evapotranspiration for Australia (CMRSET Landsat V2.2)",
         "start_date": "2000-02-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "ETa": {
@@ -18316,7 +18316,7 @@
         "id": "WHBU/NBAR_1YEAR",
         "name": "MODIS 1-year Nadir BRDF-Adjusted Reflectance (NBAR) Mosaic",
         "start_date": "2000-02-18",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "Nadir_Reflectance_Band1": {
@@ -18353,7 +18353,7 @@
         "id": "WHBU/NBAR_2YEAR",
         "name": "MODIS 2-year Nadir BRDF-Adjusted Reflectance (NBAR) Mosaic",
         "start_date": "2001-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "Nadir_Reflectance_Band1": {
@@ -18390,7 +18390,7 @@
         "id": "WHBU/NBAR_3YEAR",
         "name": "MODIS 3-year Nadir BRDF-Adjusted Reflectance (NBAR) Mosaic",
         "start_date": "2002-01-01",
-        "end_date": "2022-10-26",
+        "end_date": "2022-11-02",
         "type": "image_collection",
         "bands": {
             "Nadir_Reflectance_Band1": {
