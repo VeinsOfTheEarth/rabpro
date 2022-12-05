@@ -983,7 +983,7 @@ def upload_gee_vector_asset(
         shell_cmd = "gsutil cp " + zip_path + " " + out_path
         print(shell_cmd)
         try:
-            subprocess.call(shell_cmd)
+            subprocess.call(shell_cmd, shell=True)
         except:
             raise RuntimeError(
                 "Errors here could indicate that gsutil is not installed."
