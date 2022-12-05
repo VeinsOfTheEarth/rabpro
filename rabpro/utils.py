@@ -786,7 +786,7 @@ def area_4326(pgons_4326):
     geod = Geod(ellps="WGS84")
 
     areas_km2 = [abs(geod.geometry_area_perimeter(p)[0]) / 1e6 for p in pgons_4326]
-    
+
     return areas_km2
 
 
