@@ -69,6 +69,7 @@ class Dataset:
         mask=False,
         mosaic=False,
         prepend_label="",
+        gee_type=None,
     ):
         self.data_id = data_id
         self.band = band
@@ -80,6 +81,7 @@ class Dataset:
         self.mask = mask
         self.mosaic = mosaic
         self.prepend = prepend_label
+        self.type = gee_type
 
 
 def dataset_to_filename(prepend, data_id, band):
@@ -265,6 +267,7 @@ def compute(
     folder=None,
     verbose=False,
     test=False,
+    validate_dataset_list=True,
 ):
     """
     Compute subbasin statistics for each dataset and band specified.
@@ -288,6 +291,8 @@ def compute(
         Google Drive folder to store results in, by default top-level root.
     test : bool, optional
         Return results to the active python session in addition to GDrive
+    validate_dataset_list: bool, optional
+        Validate the dataset_list against a scraped version of the GEE catalog?
 
     Examples
     --------
@@ -329,13 +334,10 @@ def compute(
     """
 
     # Dictionary for determining which rasters and statistics to compute
-    control = _get_controls(dataset_list)
-
-    # throw an error if dataset_list is empty
-    if len(control) < 1:
-        raise Exception(
-            "Unable to parse Dataset list. Does it exist in the GEE catalog?"
-        )
+    if validate_dataset_list:
+        control = _get_controls(dataset_list)
+    else:  # override validation, probably need to manually set gee_type and resolution in Dataset call
+        control = dataset_list
 
     ee.Initialize()
 
@@ -506,7 +508,9 @@ def _parse_reducers(stats=None, base=None):
 
 def _validate_dataset(d, datadict):
     if d.data_id not in datadict:
-        warnings.warn(f"Warning: invalid data ID provided: {d.data_id}", UserWarning)
+        raise Exception(
+            "Unable to validate Dataset list. Does it exist in the GEE catalog?"
+        )
 
     gee_dataset = datadict[d.data_id]
 

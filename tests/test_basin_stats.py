@@ -22,6 +22,24 @@ def clean_res(feature):
     res["id"] = feature["id"]
     return res
 
+def test_unvalidated_dataset():
+    urls, tasks = rabpro.basin_stats.compute(
+    [
+        Dataset(
+            "NASA/ORNL/DAYMET_V4",
+            "prcp",
+            resolution=300,
+            time_stats=["median"],
+            stats=["mean"],
+            gee_type="image_collection",
+        )
+    ],
+    gee_feature_path="users/jstacompute/planet_bounds",
+    validate_dataset_list=False,
+)
+
+    res = rabpro.basin_stats.fetch_gee(urls, ["w"])
+    assert res.shape[0] == 1
 
 def test_customreducer():
     def asdf(feat):
