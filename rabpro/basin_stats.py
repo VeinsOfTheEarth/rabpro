@@ -294,10 +294,10 @@ def compute(
     .. code-block:: python
 
         import rabpro
-        from rabpro.basin_stats import Dataset
         import numpy as np
         import geopandas as gpd
         from shapely.geometry import box
+        from rabpro.basin_stats import Dataset
 
         total_bounds = np.array([-85.91331249, 39.42609864, -85.88453019, 39.46429816])
         gdf = gpd.GeoDataFrame({"idx": [1], "geometry": [box(*total_bounds)]}, crs="EPSG:4326")
@@ -330,6 +330,13 @@ def compute(
 
     # Dictionary for determining which rasters and statistics to compute
     control = _get_controls(dataset_list)
+
+    # throw an error if dataset_list is empty
+    if len(control) < 1:
+        raise Exception(
+            "Unable to parse Dataset list. Does it exist in the GEE catalog?"
+        )
+
     ee.Initialize()
 
     # Create water occurence mask
@@ -497,6 +504,55 @@ def _parse_reducers(stats=None, base=None):
     return reducer
 
 
+def _validate_dataset(d, datadict):
+    if d.data_id not in datadict:
+        warnings.warn(f"Warning: invalid data ID provided: {d.data_id}", UserWarning)
+
+    gee_dataset = datadict[d.data_id]
+
+    if d.band not in gee_dataset["bands"]:
+        warnings.warn(
+            f"Warning: invalid data band provided: {d.data_id}:{d.band}",
+            UserWarning,
+        )
+
+    if d.start is not None:
+        if date.fromisoformat(d.start) < date.fromisoformat(gee_dataset["start_date"]):
+            warnings.warn(
+                "Warning: requested start date earlier than expected for"
+                f" {d.data_id}:{d.band}",
+                UserWarning,
+            )
+
+    if d.end is not None:
+        if date.fromisoformat(d.end) > date.fromisoformat(gee_dataset["end_date"]):
+            warnings.warn(
+                "Warning: requested end date later than expected for"
+                f" {d.data_id}:{d.band}",
+                UserWarning,
+            )
+
+    d.stats = set(d.stats) | set(["count", "mean"])
+
+    if "no_data" in gee_dataset["bands"][d.band]:
+        d.no_data = gee_dataset["bands"][d.band]["no_data"]
+
+    resolution = None
+    if "resolution" in gee_dataset["bands"][d.band]:
+        resolution = gee_dataset["bands"][d.band]["resolution"]
+    if d.resolution is None:
+        d.resolution = resolution
+    if d.resolution and resolution and d.resolution < resolution:
+        warnings.warn(
+            "Warning: requested resolution is less than the native raster"
+            " resolution",
+            UserWarning,
+        )
+
+    d.type = gee_dataset["type"]
+    return d
+
+
 def _get_controls(datasets):
     """
     Prepare paths and parameters for computing subbasin raster stats. Takes in
@@ -517,59 +573,7 @@ def _get_controls(datasets):
 
     control = []
     for d in datasets:
-        # TODO Use actual warnings module?
-        if d.data_id not in datadict:
-            warnings.warn(
-                f"Warning: invalid data ID provided: {d.data_id}", UserWarning
-            )
-            continue
-
-        gee_dataset = datadict[d.data_id]
-
-        if d.band not in gee_dataset["bands"]:
-            warnings.warn(
-                f"Warning: invalid data band provided: {d.data_id}:{d.band}",
-                UserWarning,
-            )
-            continue
-
-        if d.start is not None:
-            if date.fromisoformat(d.start) < date.fromisoformat(
-                gee_dataset["start_date"]
-            ):
-                warnings.warn(
-                    "Warning: requested start date earlier than expected for"
-                    f" {d.data_id}:{d.band}",
-                    UserWarning,
-                )
-
-        if d.end is not None:
-            if date.fromisoformat(d.end) > date.fromisoformat(gee_dataset["end_date"]):
-                warnings.warn(
-                    "Warning: requested end date later than expected for"
-                    f" {d.data_id}:{d.band}",
-                    UserWarning,
-                )
-
-        d.stats = set(d.stats) | set(["count", "mean"])
-
-        if "no_data" in gee_dataset["bands"][d.band]:
-            d.no_data = gee_dataset["bands"][d.band]["no_data"]
-
-        resolution = None
-        if "resolution" in gee_dataset["bands"][d.band]:
-            resolution = gee_dataset["bands"][d.band]["resolution"]
-        if d.resolution is None:
-            d.resolution = resolution
-        if d.resolution and resolution and d.resolution < resolution:
-            warnings.warn(
-                "Warning: requested resolution is less than the native raster"
-                " resolution",
-                UserWarning,
-            )
-
-        d.type = gee_dataset["type"]
-
+        d = _validate_dataset(d, datadict)
         control.append(d)
 
     return control
