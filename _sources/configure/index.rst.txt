@@ -66,6 +66,7 @@ Unless you want to download the full global extent, you'll probably need to iden
 <http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/>`_ documentation or use the rabpro function ``rabpro.utils.coords_to_merit_tile`` to obtain a tile identifier (e.g. n30e150) which you can pass to the ``download_merit_hydro`` function:
 
 .. code-block:: python
+
 	# To identify a tile 
         from rabpro import utils
         coords = (-97.355, 45.8358) # lon, lat
@@ -73,6 +74,7 @@ Unless you want to download the full global extent, you'll probably need to iden
         # Should output '"n45w100"'
 
 .. code-block:: python
+        
 	# To download the tile
         from rabpro import data_utils
         data_utils.download_merit_dem("n45w100", your_username, your_password)

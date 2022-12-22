@@ -166,6 +166,18 @@
 <h4>Downloading MERIT-Hydro<a class="headerlink" href="#downloading-merit-hydro" title="Permalink to this headline"></a></h4>
 <p>To download MERIT-Hydro, you’ll need to request a username and password on the MERIT-Hydro <a class="reference external" href="http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/">homepage</a>.</p>
 <p>Unless you want to download the full global extent, you’ll probably need to identify specific MERIT-Hydro “tiles” of interest. You can do this following the logic in the <a class="reference external" href="http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/">MERIT Hydro</a> documentation or use the rabpro function <code class="docutils literal notranslate"><span class="pre">rabpro.utils.coords_to_merit_tile</span></code> to obtain a tile identifier (e.g. n30e150) which you can pass to the <code class="docutils literal notranslate"><span class="pre">download_merit_hydro</span></code> function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># To identify a tile</span>
+<span class="kn">from</span> <span class="nn">rabpro</span> <span class="kn">import</span> <span class="n">utils</span>
+<span class="n">coords</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">97.355</span><span class="p">,</span> <span class="mf">45.8358</span><span class="p">)</span> <span class="c1"># lon, lat</span>
+<span class="n">utils</span><span class="o">.</span><span class="n">coords_to_merit_tile</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
+<span class="c1"># Should output &#39;&quot;n45w100&quot;&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># To download the tile</span>
+<span class="kn">from</span> <span class="nn">rabpro</span> <span class="kn">import</span> <span class="n">data_utils</span>
+<span class="n">data_utils</span><span class="o">.</span><span class="n">download_merit_dem</span><span class="p">(</span><span class="s2">&quot;n45w100&quot;</span><span class="p">,</span> <span class="n">your_username</span><span class="p">,</span> <span class="n">your_password</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="basin-statistics">
