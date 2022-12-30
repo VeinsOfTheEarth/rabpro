@@ -262,6 +262,7 @@ def _gdf_to_features(gdf):
 def compute(
     dataset_list,
     gee_feature_path=None,
+    gee_featureCollection=None,
     basins_gdf=None,
     reducer_funcs=None,
     folder=None,
@@ -270,7 +271,8 @@ def compute(
     validate_dataset_list=True,
 ):
     """
-    Compute subbasin statistics for each dataset and band specified.
+    Compute subbasin statistics for each dataset and band specified. One of
+    gee_feature_path, gee_featureCollection, or basins_gdf must be specified.
 
     Parameters
     ----------
@@ -280,6 +282,8 @@ def compute(
         Table of subbasin geometries.
     gee_feature_path : string
         Path to a GEE feature collection
+    gee_featureCollection : ee.FeatureCollection object
+        FeatureCollection object.
     reducer_funcs : list of functions, optional
         List of functions to apply to each feature over each dataset. Each
         function should take in an ee.Feature() object. For example, this is how
@@ -332,6 +336,16 @@ def compute(
             test = True,
         )
     """
+    # Prepare the featureCollection
+    if basins_gdf is not None:
+        features = _gdf_to_features(basins_gdf)
+        featureCollection = ee.FeatureCollection(features)
+    elif gee_featureCollection is not None:
+        featureCollection = gee_featureCollection
+    elif gee_feature_path is not None:  # gee_feature_path is specified
+        featureCollection = ee.FeatureCollection(gee_feature_path)
+    else:
+        raise KeyError('A featurecollection must be provided by specifying one of gee_feature_path, gee_featureCollection, or basins_gdf.') 
 
     # Dictionary for determining which rasters and statistics to compute
     if validate_dataset_list:
@@ -343,13 +357,6 @@ def compute(
 
     # Create water occurence mask
     occ_mask = ee.Image("JRC/GSW1_4/GlobalSurfaceWater").select("occurrence").lt(90)
-
-    # Convert GeoDataFrame to ee.Feature objects
-    if basins_gdf is not None:
-        features = _gdf_to_features(basins_gdf)
-        featureCollection = ee.FeatureCollection(features)
-    else:  # gee_feature_path is specified
-        featureCollection = ee.FeatureCollection(gee_feature_path)
 
     # For each raster
     datas, tasks = [], []
