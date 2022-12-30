@@ -266,6 +266,7 @@ def compute(
     basins_gdf=None,
     reducer_funcs=None,
     folder=None,
+    filename=None,
     verbose=False,
     test=False,
     validate_dataset_list=True,
@@ -293,6 +294,8 @@ def compute(
         By default False.
     folder : str, optional
         Google Drive folder to store results in, by default top-level root.
+    filename : str, optional
+        Name of the GEE export file.
     test : bool, optional
         Return results to the active python session in addition to GDrive
     validate_dataset_list: bool, optional
@@ -438,13 +441,13 @@ def compute(
             return feat.select([".*"], None, False)
 
         table = table.map(remove_geometry)
-
-        if test:
-            data = table.getInfo()
+       
+        if filename is None:
+            filename = dataset_to_filename(d.prepend, d.data_id, d.band)
 
         task = ee.batch.Export.table.toDrive(
             collection=table,
-            description=dataset_to_filename(d.prepend, d.data_id, d.band),
+            description=filename,
             folder=folder,
             fileFormat="csv",
         )
@@ -452,13 +455,13 @@ def compute(
         task.start()
 
         if test:
-            datas.append(data)
+            datas.append(table.getInfo())
             tasks.append(task)
         else:
             datas.append(
                 table.getDownloadURL(
                     filetype="csv",
-                    filename=dataset_to_filename(d.prepend, d.data_id, d.band),
+                    filename=filename,
                 )
             )
             tasks.append(task)
