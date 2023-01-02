@@ -1,3 +1,4 @@
+import ee
 import numpy as np
 import pandas as pd
 import geopandas as gpd
@@ -7,6 +8,7 @@ import rabpro
 from rabpro import utils
 from rabpro.basin_stats import Dataset
 
+ee.Initialize()
 
 # coords_file = gpd.read_file(r"tests/data/Big Blue River.geojson")
 # total_bounds = coords_file.total_bounds
