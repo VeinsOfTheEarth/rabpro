@@ -473,7 +473,7 @@
         "id": "COPERNICUS/S1_GRD",
         "name": "Sentinel-1 SAR GRD: C-band Synthetic Aperture Radar Ground Range Detected, log scaling",
         "start_date": "2014-10-03",
-        "end_date": "2022-12-27",
+        "end_date": "2023-01-03",
         "type": "image_collection",
         "bands": {
             "HH": {
@@ -4700,7 +4700,7 @@
         "id": "GOOGLE/DYNAMICWORLD/V1",
         "name": "Dynamic World V1",
         "start_date": "2015-06-23",
-        "end_date": "2022-12-27",
+        "end_date": "2023-01-03",
         "type": "image_collection",
         "bands": {
             "water": {
@@ -7881,7 +7881,7 @@
         "id": "LANDSAT/LC08/C02/T1",
         "name": "USGS Landsat 8 Collection 2 Tier 1 Raw Scenes",
         "start_date": "2013-03-18",
-        "end_date": "2022-12-22",
+        "end_date": "2022-12-29",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8043,7 +8043,7 @@
         "id": "LANDSAT/LC08/C02/T1_RT",
         "name": "USGS Landsat 8 Collection 2 Tier 1 and Real-Time data Raw Scenes",
         "start_date": "2013-03-18",
-        "end_date": "2022-12-27",
+        "end_date": "2023-01-03",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8120,7 +8120,7 @@
         "id": "LANDSAT/LC08/C02/T1_RT_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 1 and Real-Time data TOA Reflectance",
         "start_date": "2013-03-18",
-        "end_date": "2022-12-27",
+        "end_date": "2023-01-03",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8197,7 +8197,7 @@
         "id": "LANDSAT/LC08/C02/T1_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "2013-03-18",
-        "end_date": "2022-12-22",
+        "end_date": "2022-12-29",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8274,7 +8274,7 @@
         "id": "LANDSAT/LC08/C02/T2",
         "name": "USGS Landsat 8 Collection 2 Tier 2 Raw Scenes",
         "start_date": "2021-10-28",
-        "end_date": "2022-12-22",
+        "end_date": "2022-12-29",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8436,7 +8436,7 @@
         "id": "LANDSAT/LC08/C02/T2_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2021-10-28",
-        "end_date": "2022-12-22",
+        "end_date": "2022-12-29",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8513,7 +8513,7 @@
         "id": "LANDSAT/LC09/C02/T1",
         "name": "USGS Landsat 9 Collection 2 Tier 1 Raw Scenes",
         "start_date": "2021-10-31",
-        "end_date": "2022-12-27",
+        "end_date": "2023-01-03",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8590,7 +8590,7 @@
         "id": "LANDSAT/LC09/C02/T1_L2",
         "name": "USGS Landsat 9 Level 2, Collection 2, Tier 1",
         "start_date": "2021-10-31",
-        "end_date": "2022-12-24",
+        "end_date": "2023-01-01",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -8675,7 +8675,7 @@
         "id": "LANDSAT/LC09/C02/T1_TOA",
         "name": "USGS Landsat 9 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "2021-10-31",
-        "end_date": "2022-12-27",
+        "end_date": "2023-01-03",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8752,7 +8752,7 @@
         "id": "LANDSAT/LC09/C02/T2",
         "name": "USGS Landsat 9 Collection 2 Tier 2 Raw Scenes",
         "start_date": "2021-11-02",
-        "end_date": "2022-12-26",
+        "end_date": "2023-01-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -8829,7 +8829,7 @@
         "id": "LANDSAT/LC09/C02/T2_L2",
         "name": "USGS Landsat 9 Level 2, Collection 2, Tier 2",
         "start_date": "2021-10-31",
-        "end_date": "2022-12-24",
+        "end_date": "2022-12-31",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -8914,7 +8914,7 @@
         "id": "LANDSAT/LC09/C02/T2_TOA",
         "name": "USGS Landsat 9 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2021-11-02",
-        "end_date": "2022-12-26",
+        "end_date": "2023-01-02",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9572,7 +9572,7 @@
         "id": "LANDSAT/LE07/C02/T1",
         "name": "USGS Landsat 7 Collection 2 Tier 1 Raw Scenes",
         "start_date": "1999-01-01",
-        "end_date": "2022-12-01",
+        "end_date": "2022-12-08",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9726,7 +9726,7 @@
         "id": "LANDSAT/LE07/C02/T1_RT",
         "name": "USGS Landsat 7 Collection 2 Tier 1 and Real-Time data Raw Scenes",
         "start_date": "1999-01-01",
-        "end_date": "2022-12-27",
+        "end_date": "2023-01-03",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9795,7 +9795,7 @@
         "id": "LANDSAT/LE07/C02/T1_RT_TOA",
         "name": "USGS Landsat 7 Collection 2 Tier 1 and Real-Time data TOA Reflectance",
         "start_date": "1999-06-29",
-        "end_date": "2022-12-27",
+        "end_date": "2023-01-03",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9864,7 +9864,7 @@
         "id": "LANDSAT/LE07/C02/T1_TOA",
         "name": "USGS Landsat 7 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "1999-06-29",
-        "end_date": "2022-12-01",
+        "end_date": "2022-12-08",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9933,7 +9933,7 @@
         "id": "LANDSAT/LE07/C02/T2",
         "name": "USGS Landsat 7 Collection 2 Tier 2 Raw Scenes",
         "start_date": "1999-01-01",
-        "end_date": "2022-11-29",
+        "end_date": "2022-12-06",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -10087,7 +10087,7 @@
         "id": "LANDSAT/LE07/C02/T2_TOA",
         "name": "USGS Landsat 7 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2003-12-01",
-        "end_date": "2022-11-29",
+        "end_date": "2022-12-06",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -13445,6 +13445,192 @@
         }
     },
     {
+        "id": "LARSE/GEDI/GEDI04_A_002_MONTHLY",
+        "name": "GEDI L4A Raster Aboveground Biomass Density, Version 2.1",
+        "start_date": "2019-03-25",
+        "end_date": "2022-06-01",
+        "type": "image_collection",
+        "bands": {
+            "agbd": {
+                "units": null
+            },
+            "agbd_pi_lower": {
+                "units": null
+            },
+            "agbd_pi_upper": {
+                "units": null
+            },
+            "agbd_se": {
+                "units": null
+            },
+            "agbd_t": {
+                "units": null
+            },
+            "agbd_t_se": {
+                "units": null
+            },
+            "algorithm_run_flag": {
+                "units": null
+            },
+            "beam": {
+                "units": null
+            },
+            "channel": {
+                "units": null
+            },
+            "degrade_flag": {
+                "units": null
+            },
+            "delta_time": {
+                "units": null
+            },
+            "elev_lowestmode": {
+                "units": null
+            },
+            "l2_quality_flag": {
+                "units": null
+            },
+            "l4_quality_flag": {
+                "units": null
+            },
+            "lat_lowestmode": {
+                "units": null
+            },
+            "lon_lowestmode": {
+                "units": null
+            },
+            "master_frac": {
+                "units": null
+            },
+            "master_int": {
+                "units": null
+            },
+            "predict_stratum": {
+                "units": null
+            },
+            "predictor_limit_flag": {
+                "units": null
+            },
+            "response_limit_flag": {
+                "units": null
+            },
+            "selected_algorithm": {
+                "units": null
+            },
+            "selected_mode": {
+                "units": null
+            },
+            "selected_mode_flag": {
+                "units": null
+            },
+            "sensitivity": {
+                "units": null
+            },
+            "solar_elevation": {
+                "units": null
+            },
+            "surface_flag": {
+                "units": null
+            },
+            "shot_number": {
+                "units": null
+            },
+            "shot_number_within_beam": {
+                "units": null
+            },
+            "agbd_aN": {
+                "units": null
+            },
+            "agbd_pi_lower_aN": {
+                "units": null
+            },
+            "agbd_pi_upper_aN": {
+                "units": null
+            },
+            "agbd_se_aN": {
+                "units": null
+            },
+            "agbd_t_aN": {
+                "units": null
+            },
+            "agbd_t_pi_lower_aN": {
+                "units": null
+            },
+            "agbd_t_pi_upper_aN": {
+                "units": null
+            },
+            "agbd_t_se_aN": {
+                "units": null
+            },
+            "algorithm_run_flag_aN": {
+                "units": null
+            },
+            "l2_quality_flag_aN": {
+                "units": null
+            },
+            "l4_quality_flag_aN": {
+                "units": null
+            },
+            "predictor_limit_flag_aN": {
+                "units": null
+            },
+            "response_limit_flag_aN": {
+                "units": null
+            },
+            "selected_mode_aN": {
+                "units": null
+            },
+            "selected_mode_flag_aN": {
+                "units": null
+            },
+            "elev_lowestmode_aN": {
+                "units": null
+            },
+            "lat_lowestmode_aN": {
+                "units": null
+            },
+            "lon_lowestmode_aN": {
+                "units": null
+            },
+            "sensitivity_aN": {
+                "units": null
+            },
+            "stale_return_flag": {
+                "units": null
+            },
+            "landsat_treecover": {
+                "units": null
+            },
+            "landsat_water_persistence": {
+                "units": null
+            },
+            "leaf_off_doy": {
+                "units": null
+            },
+            "leaf_off_flag": {
+                "units": null
+            },
+            "leaf_on_cycle": {
+                "units": null
+            },
+            "leaf_on_doy": {
+                "units": null
+            },
+            "pft_class": {
+                "units": null
+            },
+            "region_class": {
+                "units": null
+            },
+            "urban_focal_window_size": {
+                "units": null
+            },
+            "urban_proportion": {
+                "units": null
+            }
+        }
+    },
+    {
         "id": "MERIT/DEM/v1_0_3",
         "name": "MERIT DEM: Multi-Error-Removed Improved-Terrain DEM",
         "start_date": "1987-01-01",
@@ -13516,176 +13702,6 @@
         }
     },
     {
-        "id": "MODIS/006/MCD12Q1",
-        "name": "MCD12Q1.006 MODIS Land Cover Type Yearly Global 500m",
-        "start_date": "2001-01-01",
-        "end_date": "2020-01-01",
-        "type": "image_collection",
-        "bands": {
-            "LC_Type1": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "LC_Type2": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "LC_Type3": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "LC_Type4": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "LC_Type5": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "LC_Prop1_Assessment": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "LC_Prop2_Assessment": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "LC_Prop3_Assessment": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "LC_Prop1": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "LC_Prop2": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "LC_Prop3": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "QC": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "LW": {
-                "units": null,
-                "resolution": 463.3127165275
-            }
-        }
-    },
-    {
-        "id": "MODIS/006/MCD12Q2",
-        "name": "MCD12Q2.006 Land Cover Dynamics Yearly Global 500m",
-        "start_date": "2001-01-01",
-        "end_date": "2019-01-01",
-        "type": "image_collection",
-        "bands": {
-            "NumCycles": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Greenup_1": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Greenup_2": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "MidGreenup_1": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "MidGreenup_2": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Peak_1": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Peak_2": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Maturity_1": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Maturity_2": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "MidGreendown_1": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "MidGreendown_2": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Senescence_1": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Senescence_2": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Dormancy_1": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Dormancy_2": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "EVI_Minimum_1": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "EVI_Minimum_2": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "EVI_Amplitude_1": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "EVI_Amplitude_2": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "EVI_Area_1": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "EVI_Area_2": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "QA_Overall_1": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "QA_Overall_2": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "QA_Detailed_1": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "QA_Detailed_2": {
-                "units": null,
-                "resolution": 463.3127165275
-            }
-        }
-    },
-    {
         "id": "MODIS/006/MCD19A2_GRANULES",
         "name": "MCD19A2.006: Terra & Aqua MAIAC Land Aerosol Optical Depth Daily 1km",
         "start_date": "2000-02-01",
@@ -13743,394 +13759,6 @@
             "Glint_Angle": {
                 "units": null,
                 "resolution": 4633.127165279166
-            }
-        }
-    },
-    {
-        "id": "MODIS/006/MCD43A2",
-        "name": "MCD43A2.006 MODIS BRDF-Albedo Quality Daily 500m",
-        "start_date": "2000-02-18",
-        "end_date": "2022-03-12",
-        "type": "image_collection",
-        "bands": {
-            "Snow_BRDF_Albedo": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Platform": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_LandWaterType": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_LocalSolarNoon": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_ValidObs_Band1": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_ValidObs_Band2": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_ValidObs_Band3": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_ValidObs_Band4": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_ValidObs_Band5": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_ValidObs_Band6": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_ValidObs_Band7": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Quality_Band1": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Quality_Band2": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Quality_Band3": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Quality_Band4": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Quality_Band5": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Quality_Band6": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Quality_Band7": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Uncertainty": {
-                "units": null,
-                "resolution": 463.3127165275
-            }
-        }
-    },
-    {
-        "id": "MODIS/006/MCD43A3",
-        "name": "MCD43A3.006 MODIS Albedo Daily 500m",
-        "start_date": "2000-02-18",
-        "end_date": "2022-03-12",
-        "type": "image_collection",
-        "bands": {
-            "Albedo_BSA_Band1": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Albedo_BSA_Band2": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Albedo_BSA_Band3": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Albedo_BSA_Band4": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Albedo_BSA_Band5": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Albedo_BSA_Band6": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Albedo_BSA_Band7": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Albedo_BSA_vis": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Albedo_BSA_nir": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Albedo_BSA_shortwave": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Albedo_WSA_Band1": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Albedo_WSA_Band2": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Albedo_WSA_Band3": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Albedo_WSA_Band4": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Albedo_WSA_Band5": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Albedo_WSA_Band6": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Albedo_WSA_Band7": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Albedo_WSA_vis": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Albedo_WSA_nir": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Albedo_WSA_shortwave": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Mandatory_Quality_Band1": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Mandatory_Quality_Band2": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Mandatory_Quality_Band3": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Mandatory_Quality_Band4": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Mandatory_Quality_Band5": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Mandatory_Quality_Band6": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Mandatory_Quality_Band7": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Mandatory_Quality_vis": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Mandatory_Quality_nir": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Mandatory_Quality_shortwave": {
-                "units": null,
-                "resolution": 463.3127165275
-            }
-        }
-    },
-    {
-        "id": "MODIS/006/MCD43A4",
-        "name": "MCD43A4.006 MODIS Nadir BRDF-Adjusted Reflectance Daily 500m",
-        "start_date": "2000-02-18",
-        "end_date": "2022-05-30",
-        "type": "image_collection",
-        "bands": {
-            "Nadir_Reflectance_Band1": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Nadir_Reflectance_Band2": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Nadir_Reflectance_Band3": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Nadir_Reflectance_Band4": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Nadir_Reflectance_Band5": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Nadir_Reflectance_Band6": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "Nadir_Reflectance_Band7": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Mandatory_Quality_Band1": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Mandatory_Quality_Band2": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Mandatory_Quality_Band3": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Mandatory_Quality_Band4": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Mandatory_Quality_Band5": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Mandatory_Quality_Band6": {
-                "units": null,
-                "resolution": 463.3127165275
-            },
-            "BRDF_Albedo_Band_Mandatory_Quality_Band7": {
-                "units": null,
-                "resolution": 463.3127165275
-            }
-        }
-    },
-    {
-        "id": "MODIS/006/MCD43C3",
-        "name": "MCD43C3.00C BRDF/Albedo Daily L3 0.05 Deg CMG",
-        "start_date": "2000-02-24",
-        "end_date": "2022-03-12",
-        "type": "image_collection",
-        "bands": {
-            "Albedo_BSA_Band1": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "Albedo_BSA_Band2": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "Albedo_BSA_Band3": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "Albedo_BSA_Band4": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "Albedo_BSA_Band5": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "Albedo_BSA_Band6": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "Albedo_BSA_Band7": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "Albedo_BSA_vis": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "Albedo_BSA_nir": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "Albedo_BSA_shortwave": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "Albedo_WSA_Band1": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "Albedo_WSA_Band2": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "Albedo_WSA_Band3": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "Albedo_WSA_Band4": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "Albedo_WSA_Band5": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "Albedo_WSA_Band6": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "Albedo_WSA_Band7": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "Albedo_WSA_vis": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "Albedo_WSA_nir": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "Albedo_WSA_shortwave": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "BRDF_Quality": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "Local_Solar_Noon": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "Percent_Inputs": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "Percent_Snow": {
-                "units": null,
-                "resolution": 5565.974539663679
-            },
-            "BRDF_Albedo_Uncertainty": {
-                "units": null,
-                "resolution": 5565.974539663679
             }
         }
     },
@@ -14224,23 +13852,6 @@
                 "resolution": 463.31271652770823
             },
             "Psn_QC": {
-                "units": null,
-                "resolution": 463.31271652770823
-            }
-        }
-    },
-    {
-        "id": "MODIS/006/MOD17A3HGF",
-        "name": "MOD17A3HGF.006: Terra Net Primary Production  Gap-Filled Yearly Global 500m",
-        "start_date": "2001-01-01",
-        "end_date": "2021-01-01",
-        "type": "image_collection",
-        "bands": {
-            "Npp": {
-                "units": null,
-                "resolution": 463.31271652770823
-            },
-            "Npp_QC": {
                 "units": null,
                 "resolution": 463.31271652770823
             }
@@ -14486,10 +14097,180 @@
         }
     },
     {
+        "id": "MODIS/061/MCD12Q1",
+        "name": "MCD12Q1.061 MODIS Land Cover Type Yearly Global 500m",
+        "start_date": "2001-01-01",
+        "end_date": "2021-01-01",
+        "type": "image_collection",
+        "bands": {
+            "LC_Type1": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "LC_Type2": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "LC_Type3": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "LC_Type4": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "LC_Type5": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "LC_Prop1_Assessment": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "LC_Prop2_Assessment": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "LC_Prop3_Assessment": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "LC_Prop1": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "LC_Prop2": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "LC_Prop3": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "QC": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "LW": {
+                "units": null,
+                "resolution": 463.31271652791656
+            }
+        }
+    },
+    {
+        "id": "MODIS/061/MCD12Q2",
+        "name": "MCD12Q2.006 Land Cover Dynamics Yearly Global 500m",
+        "start_date": "2001-01-01",
+        "end_date": "2021-01-01",
+        "type": "image_collection",
+        "bands": {
+            "NumCycles": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Greenup_1": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Greenup_2": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "MidGreenup_1": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "MidGreenup_2": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Peak_1": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Peak_2": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Maturity_1": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Maturity_2": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "MidGreendown_1": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "MidGreendown_2": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Senescence_1": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Senescence_2": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Dormancy_1": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Dormancy_2": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "EVI_Minimum_1": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "EVI_Minimum_2": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "EVI_Amplitude_1": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "EVI_Amplitude_2": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "EVI_Area_1": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "EVI_Area_2": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "QA_Overall_1": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "QA_Overall_2": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "QA_Detailed_1": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "QA_Detailed_2": {
+                "units": null,
+                "resolution": 463.31271652791656
+            }
+        }
+    },
+    {
         "id": "MODIS/061/MCD15A3H",
         "name": "MCD15A3H.061 MODIS Leaf Area Index/FPAR 4-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2022-12-11",
+        "end_date": "2022-12-23",
         "type": "image_collection",
         "bands": {
             "Fpar": {
@@ -14519,10 +14300,51 @@
         }
     },
     {
+        "id": "MODIS/061/MCD18C2",
+        "name": "MCD18C2.061 Photosynthetically Active Radiation Daily 3-Hour",
+        "start_date": "2002-02-24",
+        "end_date": "2022-11-30",
+        "type": "image_collection",
+        "bands": {
+            "GMT_0000_PAR": {
+                "units": null,
+                "resolution": 5565.974539663679
+            },
+            "GMT_0300_PAR": {
+                "units": null,
+                "resolution": 5565.974539663679
+            },
+            "GMT_0600_PAR": {
+                "units": null,
+                "resolution": 5565.974539663679
+            },
+            "GMT_0900_PAR": {
+                "units": null,
+                "resolution": 5565.974539663679
+            },
+            "GMT_1200_PAR": {
+                "units": null,
+                "resolution": 5565.974539663679
+            },
+            "GMT_1500_PAR": {
+                "units": null,
+                "resolution": 5565.974539663679
+            },
+            "GMT_1800_PAR": {
+                "units": null,
+                "resolution": 5565.974539663679
+            },
+            "GMT_2100_PAR": {
+                "units": null,
+                "resolution": 5565.974539663679
+            }
+        }
+    },
+    {
         "id": "MODIS/061/MCD43A1",
         "name": "MCD43A1.061 MODIS BRDF-Albedo Model Parameters Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2022-12-07",
+        "end_date": "2022-12-19",
         "type": "image_collection",
         "bands": {
             "BRDF_Albedo_Parameters_Band1_iso": {
@@ -14688,6 +14510,369 @@
         }
     },
     {
+        "id": "MODIS/061/MCD43A2",
+        "name": "MCD43A2.061 MODIS BRDF-Albedo Quality Daily 500m",
+        "start_date": "2000-02-24",
+        "end_date": "2022-12-19",
+        "type": "image_collection",
+        "bands": {
+            "Snow_BRDF_Albedo": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Platform": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_LandWaterType": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_LocalSolarNoon": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_ValidObs_Band1": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_ValidObs_Band2": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_ValidObs_Band3": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_ValidObs_Band4": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_ValidObs_Band5": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_ValidObs_Band6": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_ValidObs_Band7": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Quality_Band1": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Quality_Band2": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Quality_Band3": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Quality_Band4": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Quality_Band5": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Quality_Band6": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Quality_Band7": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Uncertainty": {
+                "units": null,
+                "resolution": 463.31271652791656
+            }
+        }
+    },
+    {
+        "id": "MODIS/061/MCD43A3",
+        "name": "MCD43A3.061 MODIS Albedo Daily 500m",
+        "start_date": "2000-02-24",
+        "end_date": "2022-12-19",
+        "type": "image_collection",
+        "bands": {
+            "Albedo_BSA_Band1": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Albedo_BSA_Band2": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Albedo_BSA_Band3": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Albedo_BSA_Band4": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Albedo_BSA_Band5": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Albedo_BSA_Band6": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Albedo_BSA_Band7": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Albedo_BSA_vis": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Albedo_BSA_nir": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Albedo_BSA_shortwave": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Albedo_WSA_Band1": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Albedo_WSA_Band2": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Albedo_WSA_Band3": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Albedo_WSA_Band4": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Albedo_WSA_Band5": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Albedo_WSA_Band6": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Albedo_WSA_Band7": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Albedo_WSA_vis": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Albedo_WSA_nir": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Albedo_WSA_shortwave": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Mandatory_Quality_Band1": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Mandatory_Quality_Band2": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Mandatory_Quality_Band3": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Mandatory_Quality_Band4": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Mandatory_Quality_Band5": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Mandatory_Quality_Band6": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Mandatory_Quality_Band7": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Mandatory_Quality_vis": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Mandatory_Quality_nir": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Mandatory_Quality_shortwave": {
+                "units": null,
+                "resolution": 463.31271652791656
+            }
+        }
+    },
+    {
+        "id": "MODIS/061/MCD43A4",
+        "name": "MCD43A4.061 MODIS Nadir BRDF-Adjusted Reflectance Daily 500m",
+        "start_date": "2000-02-24",
+        "end_date": "2022-12-19",
+        "type": "image_collection",
+        "bands": {
+            "Nadir_Reflectance_Band1": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Nadir_Reflectance_Band2": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Nadir_Reflectance_Band3": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Nadir_Reflectance_Band4": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Nadir_Reflectance_Band5": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Nadir_Reflectance_Band6": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Nadir_Reflectance_Band7": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Mandatory_Quality_Band1": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Mandatory_Quality_Band2": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Mandatory_Quality_Band3": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Mandatory_Quality_Band4": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Mandatory_Quality_Band5": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Mandatory_Quality_Band6": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "BRDF_Albedo_Band_Mandatory_Quality_Band7": {
+                "units": null,
+                "resolution": 463.31271652791656
+            }
+        }
+    },
+    {
+        "id": "MODIS/061/MCD43C3",
+        "name": "MCD43C3.061 BRDF/Albedo Daily L3 0.05 Deg CMG",
+        "start_date": "2000-02-24",
+        "end_date": "2022-12-18",
+        "type": "image_collection",
+        "bands": {
+            "Albedo_BSA_Band1": {
+                "units": null
+            },
+            "Albedo_BSA_Band2": {
+                "units": null
+            },
+            "Albedo_BSA_Band3": {
+                "units": null
+            },
+            "Albedo_BSA_Band4": {
+                "units": null
+            },
+            "Albedo_BSA_Band5": {
+                "units": null
+            },
+            "Albedo_BSA_Band6": {
+                "units": null
+            },
+            "Albedo_BSA_Band7": {
+                "units": null
+            },
+            "Albedo_BSA_vis": {
+                "units": null
+            },
+            "Albedo_BSA_nir": {
+                "units": null
+            },
+            "Albedo_BSA_shortwave": {
+                "units": null
+            },
+            "Albedo_WSA_Band1": {
+                "units": null
+            },
+            "Albedo_WSA_Band2": {
+                "units": null
+            },
+            "Albedo_WSA_Band3": {
+                "units": null
+            },
+            "Albedo_WSA_Band4": {
+                "units": null
+            },
+            "Albedo_WSA_Band5": {
+                "units": null
+            },
+            "Albedo_WSA_Band6": {
+                "units": null
+            },
+            "Albedo_WSA_Band7": {
+                "units": null
+            },
+            "Albedo_WSA_vis": {
+                "units": null
+            },
+            "Albedo_WSA_nir": {
+                "units": null
+            },
+            "Albedo_WSA_shortwave": {
+                "units": null
+            },
+            "BRDF_Quality": {
+                "units": null
+            },
+            "Local_Solar_Noon": {
+                "units": null
+            },
+            "Percent_Inputs": {
+                "units": null
+            },
+            "Percent_Snow": {
+                "units": null
+            },
+            "BRDF_Albedo_Uncertainty": {
+                "units": null
+            }
+        }
+    },
+    {
         "id": "MODIS/061/MCD64A1",
         "name": "MCD64A1.061 MODIS Burned Area Monthly Global 500m",
         "start_date": "2000-11-01",
@@ -14769,7 +14954,7 @@
         "id": "MODIS/061/MOD09A1",
         "name": "MOD09A1.061 Terra Surface Reflectance 8-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2022-12-03",
+        "end_date": "2022-12-11",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -14827,10 +15012,94 @@
         }
     },
     {
+        "id": "MODIS/061/MOD09CMG",
+        "name": "MOD09CMG.061 Surface Reflectance Daily L3 Global 0.05 Deg CMG",
+        "start_date": "2000-02-24",
+        "end_date": "2022-12-26",
+        "type": "image_collection",
+        "bands": {
+            "Coarse_Resolution_Surface_Reflectance_Band_1": {
+                "units": null
+            },
+            "Coarse_Resolution_Surface_Reflectance_Band_2": {
+                "units": null
+            },
+            "Coarse_Resolution_Surface_Reflectance_Band_3": {
+                "units": null
+            },
+            "Coarse_Resolution_Surface_Reflectance_Band_4": {
+                "units": null
+            },
+            "Coarse_Resolution_Surface_Reflectance_Band_5": {
+                "units": null
+            },
+            "Coarse_Resolution_Surface_Reflectance_Band_6": {
+                "units": null
+            },
+            "Coarse_Resolution_Surface_Reflectance_Band_7": {
+                "units": null
+            },
+            "Coarse_Resolution_Solar_Zenith_Angle": {
+                "units": null
+            },
+            "Coarse_Resolution_View_Zenith_Angle": {
+                "units": null
+            },
+            "Coarse_Resolution_Relative_Azimuth_Angle": {
+                "units": null
+            },
+            "Coarse_Resolution_Ozone": {
+                "units": null
+            },
+            "Coarse_Resolution_Brightness_Temperature_Band_20": {
+                "units": null
+            },
+            "Coarse_Resolution_Brightness_Temperature_Band_21": {
+                "units": null
+            },
+            "Coarse_Resolution_Brightness_Temperature_Band_31": {
+                "units": null
+            },
+            "Coarse_Resolution_Brightness_Temperature_Band_32": {
+                "units": null
+            },
+            "Coarse_Resolution_Granule_Time": {
+                "units": null
+            },
+            "Coarse_Resolution_Band_3_Path_Radiance": {
+                "units": null
+            },
+            "Coarse_Resolution_QA": {
+                "units": null
+            },
+            "Coarse_Resolution_Internal_CM": {
+                "units": null
+            },
+            "Coarse_Resolution_State_QA": {
+                "units": null
+            },
+            "Coarse_Resolution_Number_Mapping": {
+                "units": null
+            },
+            "number_of_500m_pixels_averaged_b3": {
+                "units": null
+            },
+            "number_of_500m_rej_detector": {
+                "units": null
+            },
+            "number_of_250m_pixels_averaged_b1-2": {
+                "units": null
+            },
+            "n_pixels_averaged": {
+                "units": null
+            }
+        }
+    },
+    {
         "id": "MODIS/061/MOD09GA",
         "name": "MOD09GA.061 Terra Surface Reflectance Daily Global 1km and 500m",
         "start_date": "2000-02-24",
-        "end_date": "2022-12-20",
+        "end_date": "2022-12-26",
         "type": "image_collection",
         "bands": {
             "num_observations_1km": {
@@ -14927,7 +15196,7 @@
         "id": "MODIS/061/MOD09GQ",
         "name": "MOD09GQ.061 Terra Surface Reflectance Daily Global 250m",
         "start_date": "2000-02-24",
-        "end_date": "2022-12-20",
+        "end_date": "2022-12-26",
         "type": "image_collection",
         "bands": {
             "num_observations": {
@@ -14968,7 +15237,7 @@
         "id": "MODIS/061/MOD09Q1",
         "name": "MOD09Q1.061 Terra Surface Reflectance 8-Day Global 250m",
         "start_date": "2000-02-18",
-        "end_date": "2022-12-03",
+        "end_date": "2022-12-11",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -14993,7 +15262,7 @@
         "id": "MODIS/061/MOD11A1",
         "name": "MOD11A1.061 Terra Land Surface Temperature and Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2022-12-22",
+        "end_date": "2022-12-26",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -15050,7 +15319,7 @@
         "id": "MODIS/061/MOD11A2",
         "name": "MOD11A2.061 Terra Land Surface Temperature and Emissivity 8-Day Global 1km",
         "start_date": "2000-02-18",
-        "end_date": "2022-12-03",
+        "end_date": "2022-12-11",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -15107,7 +15376,7 @@
         "id": "MODIS/061/MOD13A1",
         "name": "MOD13A1.061 Terra Vegetation Indices 16-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2022-11-17",
+        "end_date": "2022-12-03",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -15164,7 +15433,7 @@
         "id": "MODIS/061/MOD13A2",
         "name": "MOD13A2.061 Terra Vegetation Indices 16-Day Global 1km",
         "start_date": "2000-02-18",
-        "end_date": "2022-11-17",
+        "end_date": "2022-12-03",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -15221,7 +15490,7 @@
         "id": "MODIS/061/MOD13Q1",
         "name": "MOD13Q1.061 Terra Vegetation Indices 16-Day Global 250m",
         "start_date": "2000-02-18",
-        "end_date": "2022-11-17",
+        "end_date": "2022-12-03",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -15278,7 +15547,7 @@
         "id": "MODIS/061/MOD14A1",
         "name": "MOD14A1.061: Terra Thermal Anomalies & Fire Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2022-12-10",
+        "end_date": "2022-12-26",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -15303,7 +15572,7 @@
         "id": "MODIS/061/MOD14A2",
         "name": "MOD14A2.061: Terra Thermal Anomalies & Fire 8-Day Global 1km",
         "start_date": "2000-02-18",
-        "end_date": "2022-12-03",
+        "end_date": "2022-12-19",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -15320,7 +15589,7 @@
         "id": "MODIS/061/MOD15A2H",
         "name": "MOD15A2H.061: Terra Leaf Area Index/FPAR 8-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2022-12-03",
+        "end_date": "2022-12-11",
         "type": "image_collection",
         "bands": {
             "Fpar_500m": {
@@ -15346,6 +15615,101 @@
             "LaiStdDev_500m": {
                 "units": null,
                 "resolution": 463.31271652791656
+            }
+        }
+    },
+    {
+        "id": "MODIS/061/MOD17A3HGF",
+        "name": "MOD17A3HGF.061: Terra Net Primary Production  Gap-Filled Yearly Global 500m",
+        "start_date": "2001-01-01",
+        "end_date": "2021-01-01",
+        "type": "image_collection",
+        "bands": {
+            "Gpp": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Npp": {
+                "units": null,
+                "resolution": 463.31271652791656
+            },
+            "Npp_QC": {
+                "units": null,
+                "resolution": 463.31271652791656
+            }
+        }
+    },
+    {
+        "id": "MODIS/061/MOD21A1D",
+        "name": "MOD21A1D.061 Terra Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
+        "start_date": "2000-02-24",
+        "end_date": "2022-12-29",
+        "type": "image_collection",
+        "bands": {
+            "LST_1KM": {
+                "units": null,
+                "resolution": 926.6254330558331
+            },
+            "QC": {
+                "units": null,
+                "resolution": 926.6254330558331
+            },
+            "Emis_29": {
+                "units": null,
+                "resolution": 926.6254330558331
+            },
+            "Emis_31": {
+                "units": null,
+                "resolution": 926.6254330558331
+            },
+            "Emis_32": {
+                "units": null,
+                "resolution": 926.6254330558331
+            },
+            "View_Angle": {
+                "units": null,
+                "resolution": 926.6254330558331
+            },
+            "View_Time": {
+                "units": null,
+                "resolution": 926.6254330558331
+            }
+        }
+    },
+    {
+        "id": "MODIS/061/MOD21A1N",
+        "name": "MOD21A1N.061 Terra Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
+        "start_date": "2000-02-24",
+        "end_date": "2022-12-29",
+        "type": "image_collection",
+        "bands": {
+            "LST_1KM": {
+                "units": null,
+                "resolution": 926.6254330554165
+            },
+            "QC": {
+                "units": null,
+                "resolution": 926.6254330554165
+            },
+            "Emis_29": {
+                "units": null,
+                "resolution": 926.6254330554165
+            },
+            "Emis_31": {
+                "units": null,
+                "resolution": 926.6254330554165
+            },
+            "Emis_32": {
+                "units": null,
+                "resolution": 926.6254330554165
+            },
+            "View_Angle": {
+                "units": null,
+                "resolution": 926.6254330554165
+            },
+            "View_Time": {
+                "units": null,
+                "resolution": 926.6254330554165
             }
         }
     },
@@ -15402,7 +15766,7 @@
         "id": "MODIS/061/MYD09A1",
         "name": "MYD09A1.061 Aqua Surface Reflectance 8-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2022-12-03",
+        "end_date": "2022-12-19",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -15463,7 +15827,7 @@
         "id": "MODIS/061/MYD09GA",
         "name": "MYD09GA.061 Aqua Surface Reflectance Daily Global 1km and 500m",
         "start_date": "2002-07-04",
-        "end_date": "2022-12-22",
+        "end_date": "2022-12-26",
         "type": "image_collection",
         "bands": {
             "num_observations_1km": {
@@ -15560,7 +15924,7 @@
         "id": "MODIS/061/MYD09GQ",
         "name": "MYD09GQ.061 Aqua Surface Reflectance Daily Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2022-12-22",
+        "end_date": "2022-12-26",
         "type": "image_collection",
         "bands": {
             "num_observations": {
@@ -15601,7 +15965,7 @@
         "id": "MODIS/061/MYD09Q1",
         "name": "MYD09Q1.061 Aqua Surface Reflectance 8-Day Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2022-12-03",
+        "end_date": "2022-12-19",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -15626,7 +15990,7 @@
         "id": "MODIS/061/MYD11A1",
         "name": "MYD11A1.061 Aqua Land Surface Temperature and Emissivity Daily Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2022-12-21",
+        "end_date": "2022-12-26",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -15683,7 +16047,7 @@
         "id": "MODIS/061/MYD11A2",
         "name": "MYD11A2.061 Aqua Land Surface Temperature and Emissivity 8-Day Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2022-12-03",
+        "end_date": "2022-12-19",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -15911,7 +16275,7 @@
         "id": "MODIS/061/MYD14A1",
         "name": "MYD14A1.061: Aqua Thermal Anomalies & Fire Daily Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2022-12-10",
+        "end_date": "2022-12-26",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -15936,7 +16300,7 @@
         "id": "MODIS/061/MYD14A2",
         "name": "MYD14A2.061: Aqua Thermal Anomalies & Fire 8-Day Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2022-12-03",
+        "end_date": "2022-12-19",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -15953,7 +16317,7 @@
         "id": "MODIS/061/MYD15A2H",
         "name": "MYD15A2H.061: Aqua Leaf Area Index/FPAR 8-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2022-12-03",
+        "end_date": "2022-12-19",
         "type": "image_collection",
         "bands": {
             "Fpar_500m": {
@@ -15979,6 +16343,80 @@
             "LaiStdDev_500m": {
                 "units": null,
                 "resolution": 463.31271652791656
+            }
+        }
+    },
+    {
+        "id": "MODIS/061/MYD21A1D",
+        "name": "MYD21A1D.061 Aqua Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
+        "start_date": "2000-02-24",
+        "end_date": "2022-12-26",
+        "type": "image_collection",
+        "bands": {
+            "LST_1KM": {
+                "units": null,
+                "resolution": 926.6254330558331
+            },
+            "QC": {
+                "units": null,
+                "resolution": 926.6254330558331
+            },
+            "Emis_29": {
+                "units": null,
+                "resolution": 926.6254330558331
+            },
+            "Emis_31": {
+                "units": null,
+                "resolution": 926.6254330558331
+            },
+            "Emis_32": {
+                "units": null,
+                "resolution": 926.6254330558331
+            },
+            "View_Angle": {
+                "units": null,
+                "resolution": 926.6254330558331
+            },
+            "View_Time": {
+                "units": null,
+                "resolution": 926.6254330558331
+            }
+        }
+    },
+    {
+        "id": "MODIS/061/MYD21A1N",
+        "name": "MYD21A1N.061 Aqua Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
+        "start_date": "2000-02-24",
+        "end_date": "2022-12-26",
+        "type": "image_collection",
+        "bands": {
+            "LST_1KM": {
+                "units": null,
+                "resolution": 926.6254330558331
+            },
+            "QC": {
+                "units": null,
+                "resolution": 926.6254330558331
+            },
+            "Emis_29": {
+                "units": null,
+                "resolution": 926.6254330558331
+            },
+            "Emis_31": {
+                "units": null,
+                "resolution": 926.6254330558331
+            },
+            "Emis_32": {
+                "units": null,
+                "resolution": 926.6254330558331
+            },
+            "View_Angle": {
+                "units": null,
+                "resolution": 926.6254330558331
+            },
+            "View_Time": {
+                "units": null,
+                "resolution": 926.6254330558331
             }
         }
     },
