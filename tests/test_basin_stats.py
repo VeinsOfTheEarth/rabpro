@@ -63,7 +63,7 @@ def test_customreducer():
 def test_categorical_imgcol():
 
     urls, task = rabpro.basin_stats.compute(
-        [Dataset("MODIS/006/MCD12Q1", "LC_Type1", stats=["freqhist"])],
+        [Dataset("MODIS/061/MCD12Q1", "LC_Type1", stats=["freqhist"])],
         gee_feature_path="users/jstacompute/basins",
     )
     res = rabpro.basin_stats.fetch_gee(urls, ["lulc"])
