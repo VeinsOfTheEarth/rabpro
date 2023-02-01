@@ -9,7 +9,7 @@ dependencies:
   - geopandas
   - scikit-image  
   - pyproj>2.2.0
-  - shapely>=2.0.0
+  - shapely=2
   - requests
   - appdirs
   - earthengine-api
