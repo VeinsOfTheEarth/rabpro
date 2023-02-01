@@ -69,7 +69,6 @@ jobs:
           use-mamba: true
           activate-environment: rabpro
           environment-file: ${{ matrix.env }}
-          auto-activate-base: false
           use-only-tar-bz2: true # needs to be set for caching to work
 
       - name: Install dependencies and rabpro
