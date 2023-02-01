@@ -71,6 +71,7 @@ jobs:
       - name: Install dependencies and rabpro
         run: |
           conda info
+          conda list
           pip install coverage
           pip install pytest
           pip install .
