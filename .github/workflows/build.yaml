@@ -27,7 +27,7 @@ jobs:
         os: [ubuntu-latest , macos-latest] # windows-latest
         python-version: [3.9]
         env:
-          - environment.yml
+          # - environment.yml
           - ci/envs/environment_shapely_gte_v2.yml
         include:
           # All paths are relative to $HOME
