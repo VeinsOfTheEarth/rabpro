@@ -61,7 +61,7 @@ jobs:
         uses: conda-incubator/setup-miniconda@v2
         with:
           python-version: ${{ matrix.python-version }}
-          mamba-version: "*"
+          miniforge-variant: Mambaforge
           activate-environment: rabpro
           environment-file: environment.yml
           channels: conda-forge
