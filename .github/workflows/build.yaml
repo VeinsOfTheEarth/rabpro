@@ -66,9 +66,10 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           miniforge-variant: Mambaforge
+          miniforge-version: latest
+          use-mamba: true
           activate-environment: rabpro
           environment-file: ${{ matrix.env }}
-          channels: conda-forge
           auto-activate-base: false
           use-only-tar-bz2: true # needs to be set for caching to work
 
