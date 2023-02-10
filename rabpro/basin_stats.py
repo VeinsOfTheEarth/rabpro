@@ -84,7 +84,7 @@ class Dataset:
         self.type = gee_type
 
 
-def dataset_to_filename(prepend, data_id, band):
+def dataset_to_filename(prepend, data_id, band=None):
     if prepend == "" or prepend is None:
         if band is None or band == "None":
             return f"{data_id}".replace("/", "-")
