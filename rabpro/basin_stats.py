@@ -105,8 +105,8 @@ def dataset_to_filename(prepend, data_id, band=None):
         else:
             res = prepend + "__" + f"{data_id}__{band}"
 
-        res = res.replace("/", "-")
-        return res
+    res = res.replace("/", "-")
+    return res
 
 
 def _str_to_dict(a_string):
