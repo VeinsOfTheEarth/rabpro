@@ -339,7 +339,7 @@ def compute(
             test = True,
         )
     """
-            
+
     # Prepare the featureCollection
     if basins_gdf is not None:
         features = _gdf_to_features(basins_gdf)
@@ -349,7 +349,9 @@ def compute(
     elif gee_feature_path is not None:  # gee_feature_path is specified
         featureCollection = ee.FeatureCollection(gee_feature_path)
     else:
-        raise KeyError('A featurecollection must be provided by specifying one of gee_feature_path, gee_featureCollection, or basins_gdf.') 
+        raise KeyError(
+            "A featurecollection must be provided by specifying one of gee_feature_path, gee_featureCollection, or basins_gdf."
+        )
 
     # Dictionary for determining which rasters and statistics to compute
     if validate_dataset_list:
@@ -442,7 +444,7 @@ def compute(
             return feat.select([".*"], None, False)
 
         table = table.map(remove_geometry)
-       
+
         if filename is None:
             filename = dataset_to_filename(d.prepend, d.data_id, d.band)
 
