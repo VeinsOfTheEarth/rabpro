@@ -85,16 +85,28 @@ class Dataset:
 
 
 def dataset_to_filename(prepend, data_id, band=None):
+    """
+    Examples
+    --------
+    .. code-block:: python
+
+        import rabpro
+        rabpro.basin_stats.dataset_to_filename("ECMWF/ERA5_LAND/MONTHLY", "temperature_2m")
+
+    """
     if prepend == "" or prepend is None:
         if band is None or band == "None":
-            return f"{data_id}".replace("/", "-")
+            res = f"{data_id}"
         else:
-            return f"{data_id}__{band}".replace("/", "-")
+            res = f"{data_id}__{band}"
     else:
         if band is None or band == "None":
-            return prepend + "__" + f"{data_id}".replace("/", "-")
+            res = prepend + "__" + f"{data_id}"
         else:
-            return prepend + "__" + f"{data_id}__{band}".replace("/", "-")
+            res = prepend + "__" + f"{data_id}__{band}"
+
+        res = res.replace("/", "-")
+        return res
 
 
 def _str_to_dict(a_string):
