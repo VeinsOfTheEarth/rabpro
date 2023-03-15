@@ -98,6 +98,39 @@
      }
     },   
     {
+        "id": "projects/soilgrids-isric/bdod_mean",
+        "name": "SoilGrids 250: Mean Bulk Density",
+        "start_date": null,
+        "end_date": null,
+        "type": "image",
+        "bands": {
+            "bdod_0-5cm_mean": {
+                "units": "cg/cm³",
+                "resolution": 250
+            },
+            "bdod_5-15cm_mean": {
+                "units": "cg/cm³",
+                "resolution": 250
+            },
+            "bdod_15-30cm_mean": {
+                "units": "cg/cm³",
+                "resolution": 250
+            },
+            "bdod_30-60cm_mean": {
+                "units": "cg/cm³",
+                "resolution": 250
+            },
+            "bdod_60-100cm_mean": {
+                "units": "cg/cm³",
+                "resolution": 250
+            },
+            "bdod_100-200cm_mean": {
+                "units": "cg/cm³",
+                "resolution": 250
+            }
+        }
+       },   
+    {
          "id": "users/rabpro/Pastick_AK_permafrost_prob",
          "name": "Pastick 2015 Alaska Permafrost Probability",
          "start_date": null,
