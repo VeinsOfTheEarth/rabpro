@@ -6,7 +6,7 @@ dependencies:
   - gdal
   - numpy
   - geopandas
-  - scikit-image  
+  - scikit-image
   - pyproj>2.2.0
   - shapely
   - requests
