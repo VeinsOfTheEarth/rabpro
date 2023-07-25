@@ -401,8 +401,9 @@ def compute(
                 else:
                     imgcol = ee.ImageCollection(d.data_id).select(d.band)
 
-        if d.mosaic is True:
+        if d.mosaic == True: # Don't use 'is' because numpy booleans aren't the same object type, == bypasses this
             imgcol = ee.ImageCollection(imgcol.mosaic())
+
 
         if len(d.time_stats) > 0:
             time_reducer = _parse_reducers(base=getattr(ee.Reducer, d.time_stats[0])())
