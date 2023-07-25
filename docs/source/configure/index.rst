@@ -45,8 +45,8 @@ First, you may download the data directly from the provider. HydroBASINS was pro
 
         from rabpro import utils
         datapaths = utils.get_datapaths()
-        print(datapaths['HydroBasins_1']) # path to place level 1 
-        print(datapaths['HydroBasins_12']) # path to place level 12
+        print(datapaths['HydroBasins1']) # path to place level 1 
+        print(datapaths['HydroBasins12']) # path to place level 12
 
 Second, you may use `rabpro` functionality which grabs the necessary HydroBASINS files from a zipped GDrive file and unzips them to their expected location. This can be done via the following python code:
 
