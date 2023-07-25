@@ -390,7 +390,9 @@ def compute(
         else:
             if d.type == "image":
                 imgcol = ee.ImageCollection(ee.Image(d.data_id).select(d.band))
-                d.time_stats = ["median"]                
+                # Arbitrarily subject image assets to a time reducer which
+                # should have no effect other than avoiding the error # 147
+                d.time_stats = ["median"]
             else:
                 if d.start is not None and d.end is not None:
                     imgcol = (
