@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Configuration &mdash; rabpro  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/sphinx-dropdown.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/panels-bootstrap.min.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -103,36 +104,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="configuration">
-<span id="configure"></span><h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading"></a></h1>
+  <section id="configuration">
+<span id="configure"></span><h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline"></a></h1>
 <section id="data">
-<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading"></a></h2>
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline"></a></h2>
 <section id="basin-delineation">
-<h3>Basin delineation<a class="headerlink" href="#basin-delineation" title="Permalink to this heading"></a></h3>
+<h3>Basin delineation<a class="headerlink" href="#basin-delineation" title="Permalink to this headline"></a></h3>
 <p>To use the rabpro utilities for delineating basins, you’ll need to download MERIT tiles (recommended for small basins or high resolution applications) or HydroBASINS (recommended for very large basins or low resolution applications).</p>
 <p>Before initiating either of these downloads, you may want to configure the path where rabpro expects to find this data. rabpro uses the <a class="reference external" href="https://github.com/ActiveState/appdirs">appdirs</a> package to specify a default data location. You can identify the locations where rabpro expects data to exist:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rabpro</span> <span class="kn">import</span> <span class="n">utils</span>
@@ -149,13 +126,13 @@
 </div>
 <p>You may also set this environment variable more permanently by adding <code class="docutils literal notranslate"><span class="pre">RABPRO_DATA</span></code> to your operating system’s environment variables, but you may run into issues with your python interpreter not reading the OS environment variables correctly.</p>
 <section id="downloading-hydrobasins">
-<h4>Downloading HydroBASINS<a class="headerlink" href="#downloading-hydrobasins" title="Permalink to this heading"></a></h4>
+<h4>Downloading HydroBASINS<a class="headerlink" href="#downloading-hydrobasins" title="Permalink to this headline"></a></h4>
 <p>There are two ways to get the required HydroBASINS datasets.</p>
 <p>First, you may download the data directly from the provider. HydroBASINS was produced by the <a class="reference external" href="https://www.hydrosheds.org/">HydroSheds Organization</a> and is downloadable from their <a class="reference external" href="https://www.hydrosheds.org/products/hydrobasins">HydroBASINS page</a>. You will need to download both the level one and level twelve basin datasets for each continent. You will need to place the data into the paths specified by</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rabpro</span> <span class="kn">import</span> <span class="n">utils</span>
 <span class="n">datapaths</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_datapaths</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">datapaths</span><span class="p">[</span><span class="s1">&#39;HydroBasins_1&#39;</span><span class="p">])</span> <span class="c1"># path to place level 1</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">datapaths</span><span class="p">[</span><span class="s1">&#39;HydroBasins_12&#39;</span><span class="p">])</span> <span class="c1"># path to place level 12</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datapaths</span><span class="p">[</span><span class="s1">&#39;HydroBasins1&#39;</span><span class="p">])</span> <span class="c1"># path to place level 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datapaths</span><span class="p">[</span><span class="s1">&#39;HydroBasins12&#39;</span><span class="p">])</span> <span class="c1"># path to place level 12</span>
 </pre></div>
 </div>
 <p>Second, you may use <cite>rabpro</cite> functionality which grabs the necessary HydroBASINS files from a zipped GDrive file and unzips them to their expected location. This can be done via the following python code:</p>
@@ -166,7 +143,7 @@
 <p>If <cite>rabpro</cite> cannot automatically fetch this data, it will print the URL of the zipped HydroBASINS file and the directory to which you should unzip this file.</p>
 </section>
 <section id="downloading-merit-hydro">
-<h4>Downloading MERIT-Hydro<a class="headerlink" href="#downloading-merit-hydro" title="Permalink to this heading"></a></h4>
+<h4>Downloading MERIT-Hydro<a class="headerlink" href="#downloading-merit-hydro" title="Permalink to this headline"></a></h4>
 <p>To download MERIT-Hydro, you’ll need to request a username and password on the MERIT-Hydro <a class="reference external" href="http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/">homepage</a>.</p>
 <p>Unless you want to download the full global extent, you’ll probably need to identify specific MERIT-Hydro “tiles” of interest. You can do this following the logic in the <a class="reference external" href="http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/">MERIT Hydro</a> documentation or use the rabpro function <code class="docutils literal notranslate"><span class="pre">rabpro.utils.coords_to_merit_tile</span></code> to obtain a tile identifier (e.g. n30e150) which you can pass to the <code class="docutils literal notranslate"><span class="pre">download_merit_hydro</span></code> function:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># To identify a tile</span>
@@ -184,10 +161,13 @@
 </section>
 </section>
 <section id="basin-statistics">
-<h3>Basin statistics<a class="headerlink" href="#basin-statistics" title="Permalink to this heading"></a></h3>
+<h3>Basin statistics<a class="headerlink" href="#basin-statistics" title="Permalink to this headline"></a></h3>
 <p>By default, rabpro comes enabled to work with all of the raster assets in the <a class="reference external" href="https://developers.google.com/earth-engine/datasets/">public GEE data catalog</a>. It also is enabled to work with select “user” assets listed below:</p>
 <table class="docutils align-center" id="id2">
 <caption><span class="caption-text">Datasets included in the user data catalog:</span><a class="headerlink" href="#id2" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference external" href="https://code.earthengine.google.com/?asset=projects/soilgrids-isric/clay_mean">SoilGrids 250: clay fraction</a></p></td>
 </tr>
@@ -231,9 +211,9 @@
 </section>
 </section>
 <section id="software">
-<h2>Software<a class="headerlink" href="#software" title="Permalink to this heading"></a></h2>
+<h2>Software<a class="headerlink" href="#software" title="Permalink to this headline"></a></h2>
 <section id="id1">
-<h3>Basin statistics<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<h3>Basin statistics<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
 <p>To use rabpro utilities for pulling basin statistics from Google
 Earth Engine (GEE), you’ll need to sign up for a free GEE account <a class="reference external" href="https://signup.earthengine.google.com/#!/">here</a>. Once you’ve been approved and
 installed the GEE Python API (typically installed as a rabpro dependency), you
