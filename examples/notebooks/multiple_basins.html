@@ -96,7 +96,7 @@
 <h1>Multiple basins<a class="headerlink" href="#Multiple-basins" title="Permalink to this headline"></a></h1>
 <p>This example demonstrates the power of the <code class="docutils literal notranslate"><span class="pre">rapbro</span></code> interface to Google Earth Engine (GEE) to collect many subbasin attributes associated with multiple coordinate pairs.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import os
@@ -120,7 +120,7 @@ from rabpro.basin_stats import Dataset
 </div>
 <p>First let’s create a list of coordinate pairs that we’ll use to delineate our basins of interest. For this example, we’ll retrieve the subbasins associated with dams in Sri Lanka. Data are from <a class="reference external" href="https://data.ess-dive.lbl.gov/view/doi:10.15485/1843541">VotE-Dams</a>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dam_coords = [(9.299352, 80.324096), (6.9159649, 81.0100197), (8.1709424, 80.223766), (8.3519444, 80.3852778), (6.8577186, 80.5855038), (6.3098805, 80.8557684), (7.3017445, 80.700303), (7.8666667, 80.6166667), (5.9907437, 80.654368), (7.29212186, 80.63798077), (6.1064653, 80.6434438), (7.8002358, 80.5507896), (7.1644604, 81.6172083), (6.0966667, 80.5980556), (7.9926439, 80.9124781), (7.7713804, 80.4618547), (6.6663889, 81.1519444), (8.2166667, 80.7166667), (7.21031, 81.534525), (9.342165, 80.447647), (6.8531681, 80.1937833), (8.0116232, 80.5577336), (7.8749822, 80.7075809), (8.166120326, 80.92907567), (5.97662322, 80.59436068), (7.060356, 80.598767), (6.58, 80.326944), (6.8356819, 80.1798343), (8.5977778, 80.9497222), (8.3951818, 80.5521785), (8.4649153, 80.1930859), (7.276247, 81.0395821), (6.4406287, 80.9580932), (8.027173, 80.89291), (8.5850794, 81.0064442), (6.9811916, 81.5020328), (8.251949, 80.469926), (7.2667672, 81.1002985), (7.6801531, 80.6139585), (7.296071, 81.5130095), (7.4583255, 81.6007655), (6.913889, 80.521667), (8.347577, 80.419759), (8.8077739, 80.7574688), (7.9448769, 80.292059), (7.0793219, 81.6281681), (7.895393, 80.988042), (8.6907253, 80.4298704), (7.7185503, 81.1885293), (7.3219103, 80.645308), (6.9190503, 80.4894399), (8.1325, 80.2458333), (7.201942, 80.922261), (7.1996059, 80.9496288), (7.5082139, 81.0558007), (6.2057327, 80.9843446), (7.6461111, 81.4808333), (6.675005, 80.7865558), (8.0727324, 79.9556424), (6.428509, 80.838542), (7.618288, 81.5488207), (6.946745731, 80.65814325), (8.0608333, 80.3175), (9.090326112, 80.33821621), (7.241352, 80.783926), (8.7224936, 80.8350109), (6.5474919, 81.260143), (7.647458, 81.213197)]
@@ -132,7 +132,7 @@ vdams_srilanka.head()
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -196,7 +196,7 @@ vdams_srilanka.head()
 </div>
 <p>We loop through each coordinate pair and delineate its watershed using MERIT (this is only possible if an estimated drainage area is known, which is the case here, else <code class="docutils literal notranslate"><span class="pre">rabpro</span></code> would use HydroBasins), then combine all watershed polygons into a GeoDataFrame. If you want to use MERIT, download tile ‘n00e060’ following the MERIT download <a class="reference external" href="https://github.com/VeinsOfTheEarth/rabpro/blob/main/docs/source/examples/notebooks/downloading_data.ipynb">example</a>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>if os.path.isfile(&quot;basins_sl.gpkg&quot;) is False:
@@ -227,7 +227,7 @@ respectively.</p>
 </div>
 <p>We’d like to get zonal statistics over each of our delineated basins. We need to first define a list of Google Earth Engine (GEE) datasets we’d like to sample.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dataset_list = [
@@ -252,7 +252,7 @@ respectively.</p>
 </div>
 <p>Now let’s do the sampling with <code class="docutils literal notranslate"><span class="pre">rabpro.basin_stats.compute()</span></code>, format the results, and join it to our basins GeoDataFrame.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>your_gee_asset = &#39;users/jstacompute/basins_sl&#39;
@@ -260,7 +260,7 @@ respectively.</p>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%time
@@ -285,12 +285,12 @@ else:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Wall time: 147 ms
+Wall time: 956 ms
 </pre></div></div>
 </div>
 <p>Finally, we can visualize our results!</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def build_panel(col_name, col_label, axis):

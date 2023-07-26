@@ -100,9 +100,7 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
-import geopandas as gpd
-from matplotlib import pyplot as plt
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from matplotlib import pyplot as plt
 
 import rabpro
 </pre></div>
@@ -113,19 +111,27 @@ import rabpro
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coords = (56.22659, -130.87974)
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coords = (44.9331, -69.4996)
 </pre></div>
 </div>
 </div>
 <p>Now we can initialize the profiler. The rabpro profiler is the main entry point into the package - it provides wrapper funcitons for most of the rabpro’s core functionality.</p>
 <p>Note that we can optionally specify a drainage area (<code class="docutils literal notranslate"><span class="pre">da</span></code>) or set <code class="docutils literal notranslate"><span class="pre">force_merit</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code>, to ensure that we use MERIT data rather than HydroBasins to perform basin delineation.</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rpo = rabpro.profiler(coords, name=&#39;basic_test&#39;)
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+https://raw.githubusercontent.com/VeinsOfTheEarth/rabpro/main/Data/gee_datasets.json download error. Place manually into D:\merit_data\Data\gee_datasets.json
+</pre></div></div>
 </div>
 <p>rabpro can now compute the watershed for this point. Since we are not providing a pre-known drainage area to the profiler or specifying <code class="docutils literal notranslate"><span class="pre">force_merit=True</span></code>, rabpro will use HydroBasins to delineate the watershed. Delineation may take a minute or two as rabpro has to identify the correct level-12 HydroBasins shapefile and load it into memory (these files are &gt;100MB).</p>
 <div class="nbinput nblast docutils container">
@@ -152,7 +158,7 @@ rpo.delineate_basin()
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;AxesSubplot:&gt;
+&lt;Axes: &gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -173,25 +179,33 @@ rpo.elev_profile(dist_to_walk_km=5)
 </div>
 </div>
 <p>If you’d like to complete this task, you will need to download the MERIT tile <code class="docutils literal notranslate"><span class="pre">n30w150</span></code>.</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%capture
-# we can use rabpro.utils.coords_to_merit_tile to identify the correct tile name
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># we can use rabpro.utils.coords_to_merit_tile to identify the correct tile name
 rabpro.utils.coords_to_merit_tile(coords[1], coords[0])
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;n30w90&#39;
+</pre></div></div>
+</div>
 <p>Detailed instructions, including how to get a username and password for MERIT-Hydro downloads, are <a class="reference external" href="https://github.com/VeinsOfTheEarth/rabpro/blob/main/docs/source/examples/notebooks/downloading_data.ipynb">here</a>. Note that the MERIT tile will consume ~1.6 GB of space when unzipped.</p>
 <p><code class="docutils literal notranslate"><span class="pre">download_merit_hydro()</span></code> will automatically rebuild virtual rasters, which are how rabpro interacts with the individual geotiffs, after downloading a tile.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rabpro</span> <span class="kn">import</span> <span class="n">data_utils</span>
-<span class="n">data_utils</span><span class="o">.</span><span class="n">download_merit_hydro</span><span class="p">(</span><span class="s1">&#39;n30w150&#39;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="n">your_merit_username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">your_merit_password</span><span class="p">)</span>
+<span class="n">data_utils</span><span class="o">.</span><span class="n">download_merit_hydro</span><span class="p">(</span><span class="s1">&#39;n30w90&#39;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="n">your_merit_username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">your_merit_password</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now we can try again:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rpo.elev_profile(dist_to_walk_km=5)
@@ -202,7 +216,15 @@ plt.ylabel(&#39;Elevation&#39;)
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Extracting flowpath from DEM...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -214,7 +236,7 @@ Text(0, 0.5, &#39;Elevation&#39;)
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/examples_notebooks_basic_example_17_1.png" src="../../_images/examples_notebooks_basic_example_17_1.png" />
+<img alt="../../_images/examples_notebooks_basic_example_17_2.png" src="../../_images/examples_notebooks_basic_example_17_2.png" />
 </div>
 </div>
 <p>The along-stream distance is with respect to the provided coordinate. You can use the <code class="docutils literal notranslate"><span class="pre">rpo.flowline</span></code> GeoDataFrame to compute slopes.</p>
@@ -224,21 +246,36 @@ Text(0, 0.5, &#39;Elevation&#39;)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%capture
+rpo.paths
 rpo.export(&quot;all&quot;)
 </pre></div>
 </div>
 </div>
 <p>Once the subbasins are delinated, rabpro can use Google Earth Engine (GEE) to compute statistics for each subbasin. Using Google Earth Engine reduces the need to store large datasets locally, and speeds up computation by using GEE’s parallel distributed computing capabilities.</p>
 <p>Note: In order to use rabpro for basin statistics, you’ll need to sign up for a GEE account. See rabpro’s documentation for more information.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<p>Before we compute basin statistics, we’ll need to “build” our vector asset and upload it to GEE. This can be done either (1) manually through the GEE code editor, but you must first export as a shapefile, or (2) via <code class="docutils literal notranslate"><span class="pre">rabpro</span></code> automation. This automation requires that you have a writeable Google Cloud Platform (GCP) bucket and that you are authenticated via the command-line to call the <code class="docutils literal notranslate"><span class="pre">gsutil</span></code> and <code class="docutils literal notranslate"><span class="pre">earthengine</span></code> programs. These programs enable sending files to GCP and onward to GEE
+respectively.</p>
+<p>For now, you can skip this step as we’ve uploaded a demonstration file as a public asset. However, for instructions on uploading your shapefile as a GEE asset, see <a class="reference external" href="https://developers.google.com/earth-engine/cloud/assets#uploading-assets">this page</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gcp_bucket</span> <span class="o">=</span> <span class="s2">&quot;your_gcp_bucket&quot;</span>
+<span class="n">gee_user</span> <span class="o">=</span> <span class="s2">&quot;your_gee_username&quot;</span>
+<span class="n">zip_path</span> <span class="o">=</span> <span class="n">rabpro</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">build_gee_vector_asset</span><span class="p">(</span><span class="n">rpo</span><span class="o">.</span><span class="n">watershed</span><span class="p">,</span> <span class="s2">&quot;rpo_basic.zip&quot;</span><span class="p">)</span>
+<span class="n">your_gee_asset</span> <span class="o">=</span> <span class="n">rabpro</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">upload_gee_vector_asset</span><span class="p">(</span>
+    <span class="n">zip_path</span><span class="p">,</span> <span class="n">gee_user</span><span class="p">,</span> <span class="n">gcp_bucket</span><span class="p">,</span> <span class="n">gcp_folder</span><span class="o">=</span><span class="s2">&quot;rabpro&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Specify which statistics to calculate for the JRC/GSW1_3/GlobalSurfaceWater dataset&#39;s occurrence band
-statlist = [&#39;min&#39;, &#39;max&#39;, &#39;range&#39;, &#39;std&#39;, &#39;sum&#39;, &#39;pct50&#39;, &#39;pct3&#39;]
-data = rabpro.basin_stats.Dataset(&quot;JRC/GSW1_3/GlobalSurfaceWater&quot;, &quot;occurrence&quot;, stats=statlist)
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import ee
+ee.Initialize()
 
-d, t = rpo.basin_stats([data], folder=&quot;rabpro test&quot;)
+# Specify which statistics to calculate for the JRC/GSW1_4/GlobalSurfaceWater dataset&#39;s occurrence band
+statlist = [&#39;min&#39;]
+data = rabpro.basin_stats.Dataset(&quot;JRC/GSW1_4/GlobalSurfaceWater&quot;, &quot;occurrence&quot;, stats=statlist)
+
+d, t = rpo.basin_stats([data], gee_feature_path=&quot;users/jstacompute/rpo_basic&quot;, folder=&quot;rabpro test&quot;)
 </pre></div>
 </div>
 </div>
@@ -247,21 +284,30 @@ d, t = rpo.basin_stats([data], folder=&quot;rabpro test&quot;)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Submitting basin stats task to GEE for JRC/GSW1_3/GlobalSurfaceWater...
+Submitting basin stats task to GEE for JRC/GSW1_4/GlobalSurfaceWater...
 </pre></div></div>
 </div>
 <p>The output data will be placed in the <code class="docutils literal notranslate"><span class="pre">rabpro</span> <span class="pre">test</span></code> folder in your Google Drive if it already exists. If not, GEE will create a new <code class="docutils literal notranslate"><span class="pre">rabpro</span> <span class="pre">test</span></code> folder at the root level of your Drive.</p>
 <p><code class="docutils literal notranslate"><span class="pre">basin_stats</span></code> returns a url to the resulting csv data which can be read directly with <code class="docutils literal notranslate"><span class="pre">pandas</span></code>:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.read_csv(d[0])
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(d)
+rabpro.basin_stats.fetch_gee(d, prepend_list=[&quot;basic&quot;]).head()
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/tables/54699a14f7de869132ae860e0ec897b6-2228eb5923743f5c93511c0327985ddb:getFeatures&#39;]
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -283,33 +329,17 @@ Submitting basin stats task to GEE for JRC/GSW1_3/GlobalSurfaceWater...
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>system:index</th>
-      <th>count</th>
-      <th>da_km2</th>
-      <th>max</th>
-      <th>mean</th>
-      <th>min</th>
-      <th>p3</th>
-      <th>p50</th>
-      <th>range</th>
-      <th>sum</th>
-      <th>.geo</th>
+      <th>basic_system:index</th>
+      <th>basic_mean</th>
+      <th>basic_min</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0_0</td>
-      <td>91173</td>
-      <td>2131.577825</td>
-      <td>100</td>
-      <td>80.523354</td>
+      <td>0_00000000000000000000</td>
+      <td>83.323821</td>
       <td>0</td>
-      <td>22.328632</td>
-      <td>91.629346</td>
-      <td>100</td>
-      <td>4.757363e+06</td>
-      <td>NaN</td>
     </tr>
   </tbody>
 </table>
