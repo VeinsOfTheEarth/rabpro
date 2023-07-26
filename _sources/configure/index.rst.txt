@@ -72,14 +72,14 @@ Unless you want to download the full global extent, you'll probably need to iden
 	# To identify a tile 
         from rabpro import utils
         coords = (-97.355, 45.8358) # lon, lat
-        utils.coords_to_merit_tile(coords)
-        # Should output '"n45w100"'
+        utils.coords_to_merit_tile(coords[0], coords[1])
+        # Should output '"n30w120"'
 
 .. code-block:: python
         
 	# To download the tile
         from rabpro import data_utils
-        data_utils.download_merit_dem("n45w100", your_username, your_password)
+        data_utils.download_merit_dem("n30w120", your_username, your_password)
 
 Basin statistics
 ~~~~~~~~~~~~~~~~~~~
