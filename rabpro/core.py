@@ -365,7 +365,7 @@ class profiler:
             self.gdf, dist_to_walk_km, self.verbose, self.nrows, self.ncols
         )
 
-    def basin_stats(self, datasets, reducer_funcs=None, folder=None, test=False):
+    def basin_stats(self, datasets, gee_feature_path=None, reducer_funcs=None, folder=None, test=False):
         """
         Computes watershed statistics.
 
@@ -384,7 +384,7 @@ class profiler:
 
         return bs.compute(
             datasets,
-            basins_gdf=self.watershed,
+            gee_feature_path=gee_feature_path,
             reducer_funcs=reducer_funcs,
             folder=folder,
             verbose=self.verbose,
