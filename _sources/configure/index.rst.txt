@@ -12,6 +12,8 @@ Basin delineation
 
 To use the rabpro utilities for delineating basins, you'll need to download MERIT tiles (recommended for small basins or high resolution applications) or HydroBASINS (recommended for very large basins or low resolution applications).
 
+        Note: You do not need to configure/download BOTH MERIT and HydroBASINS. Most likely you will only need to do this for one data source (MERIT for high resolution and small basins, HydroBASINS for low resolution and large basins).
+
 Before initiating either of these downloads, you may want to configure the path where rabpro expects to find this data. rabpro uses the `appdirs <https://github.com/ActiveState/appdirs>`_ package to specify a default data location. You can identify the locations where rabpro expects data to exist:
 
 .. code-block:: python
