@@ -64,6 +64,12 @@ rabpro provides methods to compute watershed basin geometries from coordinate pa
         :text: Multibasin example
         :classes: btn-link stretched-link font-weight-bold
    ---
+   :card: + text-center bg-secondary
+   .. link-button:: examples/notebooks/basin_stats
+        :type: ref
+        :text: Basin stats examples
+        :classes: btn-link stretched-link font-weight-bold
+   ---
    :column: col-lg-12 p-2
    :card: + text-center bg-info
    .. link-button:: apiref/index
