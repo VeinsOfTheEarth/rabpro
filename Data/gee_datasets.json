@@ -473,7 +473,7 @@
         "id": "COPERNICUS/S1_GRD",
         "name": "Sentinel-1 SAR GRD: C-band Synthetic Aperture Radar Ground Range Detected, log scaling",
         "start_date": "2014-10-03",
-        "end_date": "2023-08-08",
+        "end_date": "2023-08-15",
         "type": "image_collection",
         "bands": {
             "HH": {
@@ -2933,7 +2933,7 @@
         "id": "ECMWF/ERA5_LAND/DAILY_AGGR",
         "name": "ERA5-Land Daily Aggregated - ECMWF Climate Reanalysis",
         "start_date": "1950-01-02",
-        "end_date": "2023-07-26",
+        "end_date": "2023-08-06",
         "type": "image_collection",
         "bands": {
             "dewpoint_temperature_2m": {
@@ -3827,7 +3827,7 @@
         "id": "ECMWF/ERA5_LAND/MONTHLY_AGGR",
         "name": "ERA5-Land Monthly Aggregated - ECMWF Climate Reanalysis",
         "start_date": "1950-02-01",
-        "end_date": "2023-06-01",
+        "end_date": "2023-07-01",
         "type": "image_collection",
         "bands": {
             "dewpoint_temperature_2m": {
@@ -6066,7 +6066,7 @@
         "id": "GOOGLE/DYNAMICWORLD/V1",
         "name": "Dynamic World V1",
         "start_date": "2015-06-23",
-        "end_date": "2023-08-08",
+        "end_date": "2023-08-09",
         "type": "image_collection",
         "bands": {
             "water": {
@@ -8148,6 +8148,32 @@
         }
     },
     {
+        "id": "JRC/GHSL/P2023A/GHS_BUILT_H",
+        "name": "GHSL: Global Human Settlement Layers, Built-Up Height 2018 (P2023A)",
+        "start_date": "2018-01-01",
+        "end_date": "2018-12-31",
+        "type": "image_collection",
+        "bands": {
+            "built_height": {
+                "units": null,
+                "resolution": 100
+            }
+        }
+    },
+    {
+        "id": "JRC/GHSL/P2023A/GHS_BUILT_S",
+        "name": "GHSL: Global Human Settlement Layers, Built-Up Surface Grid 1975-2030 (P2023A)",
+        "start_date": "1975-01-01",
+        "end_date": "2030-12-31",
+        "type": "image_collection",
+        "bands": {
+            "built_surface": {
+                "units": null,
+                "resolution": 100
+            }
+        }
+    },
+    {
         "id": "JRC/GSW1_4/GlobalSurfaceWater",
         "name": "JRC Global Surface Water Mapping Layers, v1.4",
         "start_date": "1984-03-16",
@@ -9247,7 +9273,7 @@
         "id": "LANDSAT/LC08/C02/T1",
         "name": "USGS Landsat 8 Collection 2 Tier 1 Raw Scenes",
         "start_date": "2013-03-18",
-        "end_date": "2023-08-02",
+        "end_date": "2023-08-10",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9409,7 +9435,7 @@
         "id": "LANDSAT/LC08/C02/T1_RT",
         "name": "USGS Landsat 8 Collection 2 Tier 1 and Real-Time data Raw Scenes",
         "start_date": "2013-03-18",
-        "end_date": "2023-08-08",
+        "end_date": "2023-08-15",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9486,7 +9512,7 @@
         "id": "LANDSAT/LC08/C02/T1_RT_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 1 and Real-Time data TOA Reflectance",
         "start_date": "2013-03-18",
-        "end_date": "2023-08-08",
+        "end_date": "2023-08-15",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9563,7 +9589,7 @@
         "id": "LANDSAT/LC08/C02/T1_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "2013-03-18",
-        "end_date": "2023-08-02",
+        "end_date": "2023-08-10",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9640,7 +9666,7 @@
         "id": "LANDSAT/LC08/C02/T2",
         "name": "USGS Landsat 8 Collection 2 Tier 2 Raw Scenes",
         "start_date": "2021-10-28",
-        "end_date": "2023-08-02",
+        "end_date": "2023-08-10",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9802,7 +9828,7 @@
         "id": "LANDSAT/LC08/C02/T2_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2021-10-28",
-        "end_date": "2023-08-02",
+        "end_date": "2023-08-10",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9879,7 +9905,7 @@
         "id": "LANDSAT/LC09/C02/T1",
         "name": "USGS Landsat 9 Collection 2 Tier 1 Raw Scenes",
         "start_date": "2021-10-31",
-        "end_date": "2023-08-08",
+        "end_date": "2023-08-15",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9956,7 +9982,7 @@
         "id": "LANDSAT/LC09/C02/T1_L2",
         "name": "USGS Landsat 9 Level 2, Collection 2, Tier 1",
         "start_date": "2021-10-31",
-        "end_date": "2023-08-04",
+        "end_date": "2023-08-13",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -10041,7 +10067,7 @@
         "id": "LANDSAT/LC09/C02/T1_TOA",
         "name": "USGS Landsat 9 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "2021-10-31",
-        "end_date": "2023-08-08",
+        "end_date": "2023-08-15",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -10118,7 +10144,7 @@
         "id": "LANDSAT/LC09/C02/T2",
         "name": "USGS Landsat 9 Collection 2 Tier 2 Raw Scenes",
         "start_date": "2021-11-02",
-        "end_date": "2023-08-08",
+        "end_date": "2023-08-15",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -10195,7 +10221,7 @@
         "id": "LANDSAT/LC09/C02/T2_L2",
         "name": "USGS Landsat 9 Level 2, Collection 2, Tier 2",
         "start_date": "2021-10-31",
-        "end_date": "2023-08-04",
+        "end_date": "2023-08-13",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -10280,7 +10306,7 @@
         "id": "LANDSAT/LC09/C02/T2_TOA",
         "name": "USGS Landsat 9 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2021-11-02",
-        "end_date": "2023-08-08",
+        "end_date": "2023-08-15",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -10938,7 +10964,7 @@
         "id": "LANDSAT/LE07/C02/T1",
         "name": "USGS Landsat 7 Collection 2 Tier 1 Raw Scenes",
         "start_date": "1999-05-28",
-        "end_date": "2023-07-13",
+        "end_date": "2023-07-19",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -11092,7 +11118,7 @@
         "id": "LANDSAT/LE07/C02/T1_RT",
         "name": "USGS Landsat 7 Collection 2 Tier 1 and Real-Time data Raw Scenes",
         "start_date": "1999-05-28",
-        "end_date": "2023-08-08",
+        "end_date": "2023-08-15",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -11161,7 +11187,7 @@
         "id": "LANDSAT/LE07/C02/T1_RT_TOA",
         "name": "USGS Landsat 7 Collection 2 Tier 1 and Real-Time data TOA Reflectance",
         "start_date": "1999-05-28",
-        "end_date": "2023-08-08",
+        "end_date": "2023-08-15",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -11230,7 +11256,7 @@
         "id": "LANDSAT/LE07/C02/T1_TOA",
         "name": "USGS Landsat 7 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "1999-05-28",
-        "end_date": "2023-07-13",
+        "end_date": "2023-07-19",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -11299,7 +11325,7 @@
         "id": "LANDSAT/LE07/C02/T2",
         "name": "USGS Landsat 7 Collection 2 Tier 2 Raw Scenes",
         "start_date": "1999-05-28",
-        "end_date": "2023-07-13",
+        "end_date": "2023-07-19",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -11453,7 +11479,7 @@
         "id": "LANDSAT/LE07/C02/T2_TOA",
         "name": "USGS Landsat 7 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2003-12-01",
-        "end_date": "2023-07-13",
+        "end_date": "2023-07-19",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15439,7 +15465,7 @@
         "id": "MODIS/061/MCD15A3H",
         "name": "MCD15A3H.061 MODIS Leaf Area Index/FPAR 4-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2023-08-01",
+        "end_date": "2023-08-05",
         "type": "image_collection",
         "bands": {
             "Fpar": {
@@ -15513,7 +15539,7 @@
         "id": "MODIS/061/MCD19A2_GRANULES",
         "name": "MCD19A2.061: Terra & Aqua MAIAC Land Aerosol Optical Depth Daily 1km",
         "start_date": "2000-02-24",
-        "end_date": "2023-07-29",
+        "end_date": "2023-08-10",
         "type": "image_collection",
         "bands": {
             "Optical_Depth_047": {
@@ -15574,7 +15600,7 @@
         "id": "MODIS/061/MCD43A1",
         "name": "MCD43A1.061 MODIS BRDF-Albedo Model Parameters Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2023-07-27",
+        "end_date": "2023-08-04",
         "type": "image_collection",
         "bands": {
             "BRDF_Albedo_Parameters_Band1_iso": {
@@ -15743,7 +15769,7 @@
         "id": "MODIS/061/MCD43A2",
         "name": "MCD43A2.061 MODIS BRDF-Albedo Quality Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2023-07-27",
+        "end_date": "2023-08-04",
         "type": "image_collection",
         "bands": {
             "Snow_BRDF_Albedo": {
@@ -15828,7 +15854,7 @@
         "id": "MODIS/061/MCD43A3",
         "name": "MCD43A3.061 MODIS Albedo Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2023-07-27",
+        "end_date": "2023-08-04",
         "type": "image_collection",
         "bands": {
             "Albedo_BSA_Band1": {
@@ -15957,7 +15983,7 @@
         "id": "MODIS/061/MCD43A4",
         "name": "MCD43A4.061 MODIS Nadir BRDF-Adjusted Reflectance Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2023-07-27",
+        "end_date": "2023-07-31",
         "type": "image_collection",
         "bands": {
             "Nadir_Reflectance_Band1": {
@@ -16022,7 +16048,7 @@
         "id": "MODIS/061/MCD43C3",
         "name": "MCD43C3.061 BRDF/Albedo Daily L3 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2023-07-28",
+        "end_date": "2023-08-03",
         "type": "image_collection",
         "bands": {
             "Albedo_BSA_Band1": {
@@ -16106,7 +16132,7 @@
         "id": "MODIS/061/MCD64A1",
         "name": "MCD64A1.061 MODIS Burned Area Monthly Global 500m",
         "start_date": "2000-11-01",
-        "end_date": "2023-05-01",
+        "end_date": "2023-06-01",
         "type": "image_collection",
         "bands": {
             "BurnDate": {
@@ -16184,7 +16210,7 @@
         "id": "MODIS/061/MOD09A1",
         "name": "MOD09A1.061 Terra Surface Reflectance 8-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2023-07-20",
+        "end_date": "2023-08-05",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -16245,7 +16271,7 @@
         "id": "MODIS/061/MOD09CMG",
         "name": "MOD09CMG.061 Surface Reflectance Daily L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-03",
+        "end_date": "2023-08-12",
         "type": "image_collection",
         "bands": {
             "Coarse_Resolution_Surface_Reflectance_Band_1": {
@@ -16329,7 +16355,7 @@
         "id": "MODIS/061/MOD09GA",
         "name": "MOD09GA.061 Terra Surface Reflectance Daily Global 1km and 500m",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-03",
+        "end_date": "2023-08-12",
         "type": "image_collection",
         "bands": {
             "num_observations_1km": {
@@ -16426,7 +16452,7 @@
         "id": "MODIS/061/MOD09GQ",
         "name": "MOD09GQ.061 Terra Surface Reflectance Daily Global 250m",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-03",
+        "end_date": "2023-08-12",
         "type": "image_collection",
         "bands": {
             "num_observations": {
@@ -16467,7 +16493,7 @@
         "id": "MODIS/061/MOD09Q1",
         "name": "MOD09Q1.061 Terra Surface Reflectance 8-Day Global 250m",
         "start_date": "2000-02-18",
-        "end_date": "2023-07-20",
+        "end_date": "2023-08-05",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -16492,7 +16518,7 @@
         "id": "MODIS/061/MOD10A1",
         "name": "MOD10A1.061 Terra Snow Cover Daily Global 500m",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-02",
+        "end_date": "2023-08-12",
         "type": "image_collection",
         "bands": {
             "NDSI_Snow_Cover": {
@@ -16537,7 +16563,7 @@
         "id": "MODIS/061/MOD11A1",
         "name": "MOD11A1.061 Terra Land Surface Temperature and Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-04",
+        "end_date": "2023-08-08",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -16651,7 +16677,7 @@
         "id": "MODIS/061/MOD13A1",
         "name": "MOD13A1.061 Terra Vegetation Indices 16-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2023-07-12",
+        "end_date": "2023-07-28",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -16708,7 +16734,7 @@
         "id": "MODIS/061/MOD13A2",
         "name": "MOD13A2.061 Terra Vegetation Indices 16-Day Global 1km",
         "start_date": "2000-02-18",
-        "end_date": "2023-07-12",
+        "end_date": "2023-07-28",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -16822,7 +16848,7 @@
         "id": "MODIS/061/MOD14A1",
         "name": "MOD14A1.061: Terra Thermal Anomalies & Fire Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2023-07-27",
+        "end_date": "2023-08-12",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -16847,7 +16873,7 @@
         "id": "MODIS/061/MOD14A2",
         "name": "MOD14A2.061: Terra Thermal Anomalies & Fire 8-Day Global 1km",
         "start_date": "2000-02-18",
-        "end_date": "2023-07-28",
+        "end_date": "2023-08-05",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -16926,7 +16952,7 @@
         "id": "MODIS/061/MOD17A2H",
         "name": "MOD17A2H.061: Terra Gross Primary Productivity 8-Day Global 500m",
         "start_date": "2021-01-01",
-        "end_date": "2023-07-28",
+        "end_date": "2023-08-05",
         "type": "image_collection",
         "bands": {
             "Gpp": {
@@ -16968,7 +16994,7 @@
         "id": "MODIS/061/MOD21A1D",
         "name": "MOD21A1D.061 Terra Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-03",
+        "end_date": "2023-08-12",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -17005,7 +17031,7 @@
         "id": "MODIS/061/MOD21A1N",
         "name": "MOD21A1N.061 Terra Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2023-07-18",
+        "end_date": "2023-08-13",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -17042,7 +17068,7 @@
         "id": "MODIS/061/MOD21C1",
         "name": "MOD21C1.061 Terra Land Surface Temperature and 3-Band Emissivity Daily L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-05",
+        "end_date": "2023-08-13",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -17129,7 +17155,7 @@
         "id": "MODIS/061/MOD21C2",
         "name": "MOD21C2.061 Terra Land Surface Temperature and 3-Band Emissivity 8-Day L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2023-07-12",
+        "end_date": "2023-08-05",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -17222,7 +17248,7 @@
         "id": "MODIS/061/MOD21C3",
         "name": "MOD21C3.061 Terra Land Surface Temperature and 3-Band Emissivity Monthly L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2023-06-01",
+        "end_date": "2023-07-01",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -17364,7 +17390,7 @@
         "id": "MODIS/061/MYD09A1",
         "name": "MYD09A1.061 Aqua Surface Reflectance 8-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2023-07-04",
+        "end_date": "2023-07-28",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -17425,7 +17451,7 @@
         "id": "MODIS/061/MYD09GA",
         "name": "MYD09GA.061 Aqua Surface Reflectance Daily Global 1km and 500m",
         "start_date": "2002-07-04",
-        "end_date": "2023-08-04",
+        "end_date": "2023-08-07",
         "type": "image_collection",
         "bands": {
             "num_observations_1km": {
@@ -17522,7 +17548,7 @@
         "id": "MODIS/061/MYD09GQ",
         "name": "MYD09GQ.061 Aqua Surface Reflectance Daily Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2023-08-04",
+        "end_date": "2023-08-12",
         "type": "image_collection",
         "bands": {
             "num_observations": {
@@ -17563,7 +17589,7 @@
         "id": "MODIS/061/MYD09Q1",
         "name": "MYD09Q1.061 Aqua Surface Reflectance 8-Day Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2023-07-04",
+        "end_date": "2023-07-28",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -17588,7 +17614,7 @@
         "id": "MODIS/061/MYD10A1",
         "name": "MYD10A1.061 Aqua Snow Cover Daily Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2023-08-01",
+        "end_date": "2023-08-12",
         "type": "image_collection",
         "bands": {
             "NDSI_Snow_Cover": {
@@ -17633,7 +17659,7 @@
         "id": "MODIS/061/MYD11A1",
         "name": "MYD11A1.061 Aqua Land Surface Temperature and Emissivity Daily Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2023-08-03",
+        "end_date": "2023-08-07",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -17690,7 +17716,7 @@
         "id": "MODIS/061/MYD11A2",
         "name": "MYD11A2.061 Aqua Land Surface Temperature and Emissivity 8-Day Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2023-07-12",
+        "end_date": "2023-07-28",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -17747,7 +17773,7 @@
         "id": "MODIS/061/MYD13A1",
         "name": "MYD13A1.061 Aqua Vegetation Indices 16-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2023-07-04",
+        "end_date": "2023-07-20",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -17861,7 +17887,7 @@
         "id": "MODIS/061/MYD13Q1",
         "name": "MYD13Q1.061 Aqua Vegetation Indices 16-Day Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2023-06-18",
+        "end_date": "2023-07-20",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -17960,7 +17986,7 @@
         "id": "MODIS/061/MYD15A2H",
         "name": "MYD15A2H.061: Aqua Leaf Area Index/FPAR 8-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2023-07-04",
+        "end_date": "2023-07-28",
         "type": "image_collection",
         "bands": {
             "Fpar_500m": {
@@ -18866,7 +18892,7 @@
         "id": "NASA/GEOS-CF/v1/fcst/htf",
         "name": "GEOS-CF fcst htf v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2022-10-01",
-        "end_date": "2023-08-06",
+        "end_date": "2023-08-13",
         "type": "image_collection",
         "bands": {
             "CO": {
@@ -18920,10 +18946,563 @@
         }
     },
     {
+        "id": "NASA/GEOS-CF/v1/fcst/tavg1hr",
+        "name": "GEOS-CF fcst tavg1hr v1: Goddard Earth Observing System Composition Forecast",
+        "start_date": "2022-10-01",
+        "end_date": "2023-08-13",
+        "type": "image_collection",
+        "bands": {
+            "ACET": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "ALD2": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "ALK4": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "AOD550_BC": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "AOD550_CLOUD": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "AOD550_DST1": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "AOD550_DST2": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "AOD550_DST3": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "AOD550_DST4": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "AOD550_DST5": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "AOD550_DST6": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "AOD550_DST7": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "AOD550_DUST": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "AOD550_OC": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "AOD550_SALA": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "AOD550_SALC": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "AOD550_SULFATE": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "BCPI": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "BCPO": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "BENZ": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "C2H6": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "C3H8": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "CH4": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "CLDTT": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "CO": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "DRYDEPFLX_BCPI": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "DRYDEPFLX_BCPO": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "DRYDEPFLX_DST1": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "DRYDEPFLX_DST2": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "DRYDEPFLX_DST3": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "DRYDEPFLX_DST4": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "DRYDEPFLX_HCHO": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "DRYDEPFLX_HNO3": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "DRYDEPFLX_NH3": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "DRYDEPFLX_NH4": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "DRYDEPFLX_NIT": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "DRYDEPFLX_NO2": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "DRYDEPFLX_O3": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "DRYDEPFLX_OCPI": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "DRYDEPFLX_OCPO": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "DRYDEPFLX_SALA": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "DRYDEPFLX_SALC": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "DST1": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "DST2": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "DST3": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "DST4": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "EOH": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "H2O2": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "HCHO": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "HNO3": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "HNO4": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "ISOP": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "MACR": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "MEK": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "MVK": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "N2O5": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "NH3": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "NH4": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "NIT": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "NO": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "NO2": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "NOy": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "O3": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "OCPI": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "OCPO": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "PAN": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "PHIS": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "PM25_RH35_GCC": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "PM25_RH35_GOCART": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "PM25bc_RH35_GCC": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "PM25du_RH35_GCC": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "PM25ni_RH35_GCC": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "PM25oc_RH35_GCC": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "PM25soa_RH35_GCC": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "PM25ss_RH35_GCC": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "PM25su_RH35_GCC": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "PRPE": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "PS": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "Q": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "Q10M": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "Q2M": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "RCHO": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "RH": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "SALA": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "SALC": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "SLP": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "SO2": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "SOAP": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "SOAS": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "T": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "T10M": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "T2M": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "TOLU": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "TOTCOL_BrO": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "TOTCOL_CO": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "TOTCOL_HCHO": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "TOTCOL_IO": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "TOTCOL_NO2": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "TOTCOL_O3": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "TOTCOL_SO2": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "TPREC": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "TROPCOL_BrO": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "TROPCOL_CO": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "TROPCOL_HCHO": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "TROPCOL_IO": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "TROPCOL_NO2": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "TROPCOL_O3": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "TROPCOL_SO2": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "TROPPB": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "TS": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "U": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "U10M": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "U2M": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "V": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "V10M": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "V2M": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "WETDEPFLX_BCPI": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "WETDEPFLX_BCPO": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "WETDEPFLX_DST1": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "WETDEPFLX_DST2": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "WETDEPFLX_DST3": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "WETDEPFLX_DST4": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "WETDEPFLX_HCHO": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "WETDEPFLX_HNO3": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "WETDEPFLX_NH3": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "WETDEPFLX_NH4": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "WETDEPFLX_NIT": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "WETDEPFLX_OCPI": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "WETDEPFLX_OCPO": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "WETDEPFLX_SALA": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "WETDEPFLX_SALC": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "WETDEPFLX_SO2": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "WETDEPFLX_SO4": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "XYLE": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "ZL": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "ZPBL": {
+                "units": null,
+                "resolution": 27829.87269831839
+            }
+        }
+    },
+    {
         "id": "NASA/GEOS-CF/v1/rpl/htf",
         "name": "GEOS-CF rpl htf v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2018-01-01",
-        "end_date": "2023-08-06",
+        "end_date": "2023-08-13",
         "type": "image_collection",
         "bands": {
             "CO": {
@@ -18980,7 +19559,7 @@
         "id": "NASA/GEOS-CF/v1/rpl/tavg1hr",
         "name": "GEOS-CF rpl tavg1hr v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2018-01-01",
-        "end_date": "2023-08-06",
+        "end_date": "2023-08-13",
         "type": "image_collection",
         "bands": {
             "ACET": {
@@ -21533,7 +22112,7 @@
         "id": "NASA/SMAP/SPL4SMGP/007",
         "name": "SPL4SMGP.007 SMAP L4 Global 3-hourly 9-km Surface and Root Zone Soil Moisture",
         "start_date": "2015-03-31",
-        "end_date": "2023-08-04",
+        "end_date": "2023-08-12",
         "type": "image_collection",
         "bands": {
             "sm_surface": {
@@ -21726,7 +22305,7 @@
         "id": "NASA/SMAP/SPL3SMP_E/005",
         "name": "SPL3SMP_E.005 SMAP L3 Radiometer Global Daily 9 km Soil Moisture",
         "start_date": "2015-03-31",
-        "end_date": "2023-08-05",
+        "end_date": "2023-08-13",
         "type": "image_collection",
         "bands": {
             "soil_moisture_am": {
@@ -21860,6 +22439,27 @@
             "pr_wtr": {
                 "units": null,
                 "resolution": 278298.72698318394
+            }
+        }
+    },
+    {
+        "id": "Netherlands/Beeldmateriaal/LUCHTFOTO_RGB",
+        "name": "Netherlands orthophotos",
+        "start_date": "2021-01-01",
+        "end_date": "2022-12-31",
+        "type": "image_collection",
+        "bands": {
+            "R": {
+                "units": null,
+                "resolution": 0.08
+            },
+            "G": {
+                "units": null,
+                "resolution": 0.08
+            },
+            "B": {
+                "units": null,
+                "resolution": 0.08
             }
         }
     },
@@ -23817,7 +24417,7 @@
         "id": "NOAA/GOES/18/FDCC",
         "name": "GOES-18 FDCC Series ABI Level 2 Fire/Hot Spot Characterization CONUS",
         "start_date": "2022-10-13",
-        "end_date": "2023-08-08",
+        "end_date": "2023-08-15",
         "type": "image_collection",
         "bands": {
             "Area": {
@@ -23846,7 +24446,7 @@
         "id": "NOAA/GOES/18/FDCF",
         "name": "GOES-18 FDCF Series ABI Level 2 Fire/Hot Spot Characterization Full Disk",
         "start_date": "2022-10-13",
-        "end_date": "2023-08-08",
+        "end_date": "2023-08-15",
         "type": "image_collection",
         "bands": {
             "Area": {
@@ -23875,7 +24475,7 @@
         "id": "NOAA/GOES/18/MCMIPC",
         "name": "GOES-18 MCMIPC Series ABI Level 2 Cloud and Moisture Imagery CONUS",
         "start_date": "2018-12-04",
-        "end_date": "2023-08-08",
+        "end_date": "2023-08-15",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -24012,7 +24612,7 @@
         "id": "NOAA/GOES/18/MCMIPF",
         "name": "GOES-18 MCMIPF Series ABI Level 2 Cloud and Moisture Imagery Full Disk",
         "start_date": "2018-12-04",
-        "end_date": "2023-08-08",
+        "end_date": "2023-08-15",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -24149,7 +24749,7 @@
         "id": "NOAA/GOES/18/MCMIPM",
         "name": "GOES-18 MCMIPM Series ABI Level 2 Cloud and Moisture Imagery Full Disk",
         "start_date": "2018-12-04",
-        "end_date": "2023-08-08",
+        "end_date": "2023-08-15",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -24587,7 +25187,7 @@
         "id": "NOAA/VIIRS/001/VNP14A1",
         "name": "VNP14A1: Thermal Anomalies/Fire Daily L3 Global 1km SIN Grid",
         "start_date": "2012-01-19",
-        "end_date": "2023-08-05",
+        "end_date": "2023-08-14",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -24880,7 +25480,7 @@
         "id": "NOAA/VIIRS/001/VNP43IA1",
         "name": "VNP43IA1: BRDF/Albedo Model Parameters Daily L3 Global 500m SIN Grid",
         "start_date": "2012-01-17",
-        "end_date": "2023-07-30",
+        "end_date": "2023-08-07",
         "type": "image_collection",
         "bands": {
             "BRDF_Albedo_Band_Mandatory_Quality_I1": {
@@ -24937,7 +25537,7 @@
         "id": "NOAA/VIIRS/001/VNP43IA2",
         "name": "VNP43IA2: BRDF/Albedo Quality Daily L3 Global 500m SIN Grid",
         "start_date": "2012-01-17",
-        "end_date": "2023-07-29",
+        "end_date": "2023-08-07",
         "type": "image_collection",
         "bands": {
             "BRDF_Albedo_Band_Quality_I1": {
@@ -26870,6 +27470,19 @@
             "matchtag": {
                 "units": null,
                 "resolution": 8
+            }
+        }
+    },
+    {
+        "id": "UMT/Climate/IrrMapper_RF/v1_1",
+        "name": "IrrMapper Irrigated Lands",
+        "start_date": "1986-01-01",
+        "end_date": "2018-01-01",
+        "type": "image_collection",
+        "bands": {
+            "classification": {
+                "units": null,
+                "resolution": 30.000000000000004
             }
         }
     },
