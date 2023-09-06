@@ -330,7 +330,7 @@
         "id": "COPERNICUS/S1_GRD",
         "name": "Sentinel-1 SAR GRD: C-band Synthetic Aperture Radar Ground Range Detected, log scaling",
         "start_date": "2014-10-03",
-        "end_date": "2023-08-29",
+        "end_date": "2023-09-05",
         "type": "image_collection",
         "bands": {
             "HH": {
@@ -2790,7 +2790,7 @@
         "id": "ECMWF/ERA5_LAND/DAILY_AGGR",
         "name": "ERA5-Land Daily Aggregated - ECMWF Climate Reanalysis",
         "start_date": "1950-01-02",
-        "end_date": "2023-08-20",
+        "end_date": "2023-08-27",
         "type": "image_collection",
         "bands": {
             "dewpoint_temperature_2m": {
@@ -5923,7 +5923,7 @@
         "id": "GOOGLE/DYNAMICWORLD/V1",
         "name": "Dynamic World V1",
         "start_date": "2015-06-23",
-        "end_date": "2023-08-29",
+        "end_date": "2023-09-05",
         "type": "image_collection",
         "bands": {
             "water": {
@@ -9160,7 +9160,7 @@
         "id": "LANDSAT/LC08/C02/T1",
         "name": "USGS Landsat 8 Collection 2 Tier 1 Raw Scenes",
         "start_date": "2013-03-18",
-        "end_date": "2023-08-24",
+        "end_date": "2023-08-31",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9322,7 +9322,7 @@
         "id": "LANDSAT/LC08/C02/T1_RT",
         "name": "USGS Landsat 8 Collection 2 Tier 1 and Real-Time data Raw Scenes",
         "start_date": "2013-03-18",
-        "end_date": "2023-08-29",
+        "end_date": "2023-09-05",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9399,7 +9399,7 @@
         "id": "LANDSAT/LC08/C02/T1_RT_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 1 and Real-Time data TOA Reflectance",
         "start_date": "2013-03-18",
-        "end_date": "2023-08-29",
+        "end_date": "2023-09-05",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9476,7 +9476,7 @@
         "id": "LANDSAT/LC08/C02/T1_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "2013-03-18",
-        "end_date": "2023-08-24",
+        "end_date": "2023-08-31",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9553,7 +9553,7 @@
         "id": "LANDSAT/LC08/C02/T2",
         "name": "USGS Landsat 8 Collection 2 Tier 2 Raw Scenes",
         "start_date": "2021-10-28",
-        "end_date": "2023-08-24",
+        "end_date": "2023-08-31",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9715,7 +9715,7 @@
         "id": "LANDSAT/LC08/C02/T2_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2021-10-28",
-        "end_date": "2023-08-24",
+        "end_date": "2023-08-31",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9792,7 +9792,7 @@
         "id": "LANDSAT/LC09/C02/T1",
         "name": "USGS Landsat 9 Collection 2 Tier 1 Raw Scenes",
         "start_date": "2021-10-31",
-        "end_date": "2023-08-29",
+        "end_date": "2023-09-05",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9869,7 +9869,7 @@
         "id": "LANDSAT/LC09/C02/T1_L2",
         "name": "USGS Landsat 9 Level 2, Collection 2, Tier 1",
         "start_date": "2021-10-31",
-        "end_date": "2023-08-27",
+        "end_date": "2023-09-03",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -9954,7 +9954,7 @@
         "id": "LANDSAT/LC09/C02/T1_TOA",
         "name": "USGS Landsat 9 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "2021-10-31",
-        "end_date": "2023-08-29",
+        "end_date": "2023-09-05",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -10031,7 +10031,7 @@
         "id": "LANDSAT/LC09/C02/T2",
         "name": "USGS Landsat 9 Collection 2 Tier 2 Raw Scenes",
         "start_date": "2021-11-02",
-        "end_date": "2023-08-29",
+        "end_date": "2023-09-05",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -10108,7 +10108,7 @@
         "id": "LANDSAT/LC09/C02/T2_L2",
         "name": "USGS Landsat 9 Level 2, Collection 2, Tier 2",
         "start_date": "2021-10-31",
-        "end_date": "2023-08-27",
+        "end_date": "2023-09-03",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -10193,7 +10193,7 @@
         "id": "LANDSAT/LC09/C02/T2_TOA",
         "name": "USGS Landsat 9 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2021-11-02",
-        "end_date": "2023-08-28",
+        "end_date": "2023-09-05",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -10851,7 +10851,7 @@
         "id": "LANDSAT/LE07/C02/T1",
         "name": "USGS Landsat 7 Collection 2 Tier 1 Raw Scenes",
         "start_date": "1999-05-28",
-        "end_date": "2023-08-01",
+        "end_date": "2023-08-10",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -11005,7 +11005,7 @@
         "id": "LANDSAT/LE07/C02/T1_RT",
         "name": "USGS Landsat 7 Collection 2 Tier 1 and Real-Time data Raw Scenes",
         "start_date": "1999-05-28",
-        "end_date": "2023-08-29",
+        "end_date": "2023-09-05",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -11074,7 +11074,7 @@
         "id": "LANDSAT/LE07/C02/T1_RT_TOA",
         "name": "USGS Landsat 7 Collection 2 Tier 1 and Real-Time data TOA Reflectance",
         "start_date": "1999-05-28",
-        "end_date": "2023-08-29",
+        "end_date": "2023-09-05",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -11143,7 +11143,7 @@
         "id": "LANDSAT/LE07/C02/T1_TOA",
         "name": "USGS Landsat 7 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "1999-05-28",
-        "end_date": "2023-08-01",
+        "end_date": "2023-08-10",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -11212,7 +11212,7 @@
         "id": "LANDSAT/LE07/C02/T2",
         "name": "USGS Landsat 7 Collection 2 Tier 2 Raw Scenes",
         "start_date": "1999-05-28",
-        "end_date": "2023-08-01",
+        "end_date": "2023-08-10",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -11366,7 +11366,7 @@
         "id": "LANDSAT/LE07/C02/T2_TOA",
         "name": "USGS Landsat 7 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2003-12-01",
-        "end_date": "2023-08-01",
+        "end_date": "2023-08-10",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15352,7 +15352,7 @@
         "id": "MODIS/061/MCD15A3H",
         "name": "MCD15A3H.061 MODIS Leaf Area Index/FPAR 4-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2023-08-21",
+        "end_date": "2023-08-25",
         "type": "image_collection",
         "bands": {
             "Fpar": {
@@ -15426,7 +15426,7 @@
         "id": "MODIS/061/MCD19A2_GRANULES",
         "name": "MCD19A2.061: Terra & Aqua MAIAC Land Aerosol Optical Depth Daily 1km",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-27",
+        "end_date": "2023-09-02",
         "type": "image_collection",
         "bands": {
             "Optical_Depth_047": {
@@ -15487,7 +15487,7 @@
         "id": "MODIS/061/MCD43A1",
         "name": "MCD43A1.061 MODIS BRDF-Albedo Model Parameters Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-19",
+        "end_date": "2023-08-26",
         "type": "image_collection",
         "bands": {
             "BRDF_Albedo_Parameters_Band1_iso": {
@@ -15656,7 +15656,7 @@
         "id": "MODIS/061/MCD43A2",
         "name": "MCD43A2.061 MODIS BRDF-Albedo Quality Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-16",
+        "end_date": "2023-08-26",
         "type": "image_collection",
         "bands": {
             "Snow_BRDF_Albedo": {
@@ -15741,7 +15741,7 @@
         "id": "MODIS/061/MCD43A3",
         "name": "MCD43A3.061 MODIS Albedo Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-16",
+        "end_date": "2023-08-26",
         "type": "image_collection",
         "bands": {
             "Albedo_BSA_Band1": {
@@ -15870,7 +15870,7 @@
         "id": "MODIS/061/MCD43A4",
         "name": "MCD43A4.061 MODIS Nadir BRDF-Adjusted Reflectance Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-16",
+        "end_date": "2023-08-26",
         "type": "image_collection",
         "bands": {
             "Nadir_Reflectance_Band1": {
@@ -15935,7 +15935,7 @@
         "id": "MODIS/061/MCD43C3",
         "name": "MCD43C3.061 BRDF/Albedo Daily L3 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-19",
+        "end_date": "2023-08-26",
         "type": "image_collection",
         "bands": {
             "Albedo_BSA_Band1": {
@@ -16097,7 +16097,7 @@
         "id": "MODIS/061/MOD09A1",
         "name": "MOD09A1.061 Terra Surface Reflectance 8-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2023-08-13",
+        "end_date": "2023-08-21",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -16158,7 +16158,7 @@
         "id": "MODIS/061/MOD09CMG",
         "name": "MOD09CMG.061 Surface Reflectance Daily L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-26",
+        "end_date": "2023-09-02",
         "type": "image_collection",
         "bands": {
             "Coarse_Resolution_Surface_Reflectance_Band_1": {
@@ -16242,7 +16242,7 @@
         "id": "MODIS/061/MOD09GA",
         "name": "MOD09GA.061 Terra Surface Reflectance Daily Global 1km and 500m",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-23",
+        "end_date": "2023-09-02",
         "type": "image_collection",
         "bands": {
             "num_observations_1km": {
@@ -16339,7 +16339,7 @@
         "id": "MODIS/061/MOD09GQ",
         "name": "MOD09GQ.061 Terra Surface Reflectance Daily Global 250m",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-25",
+        "end_date": "2023-09-02",
         "type": "image_collection",
         "bands": {
             "num_observations": {
@@ -16380,7 +16380,7 @@
         "id": "MODIS/061/MOD09Q1",
         "name": "MOD09Q1.061 Terra Surface Reflectance 8-Day Global 250m",
         "start_date": "2000-02-18",
-        "end_date": "2023-08-13",
+        "end_date": "2023-08-21",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -16405,7 +16405,7 @@
         "id": "MODIS/061/MOD10A1",
         "name": "MOD10A1.061 Terra Snow Cover Daily Global 500m",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-23",
+        "end_date": "2023-09-02",
         "type": "image_collection",
         "bands": {
             "NDSI_Snow_Cover": {
@@ -16450,7 +16450,7 @@
         "id": "MODIS/061/MOD11A1",
         "name": "MOD11A1.061 Terra Land Surface Temperature and Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-21",
+        "end_date": "2023-09-02",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -16507,7 +16507,7 @@
         "id": "MODIS/061/MOD11A2",
         "name": "MOD11A2.061 Terra Land Surface Temperature and Emissivity 8-Day Global 1km",
         "start_date": "2000-02-18",
-        "end_date": "2023-08-13",
+        "end_date": "2023-08-21",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -16564,7 +16564,7 @@
         "id": "MODIS/061/MOD13A1",
         "name": "MOD13A1.061 Terra Vegetation Indices 16-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2023-07-28",
+        "end_date": "2023-08-13",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -16621,7 +16621,7 @@
         "id": "MODIS/061/MOD13A2",
         "name": "MOD13A2.061 Terra Vegetation Indices 16-Day Global 1km",
         "start_date": "2000-02-18",
-        "end_date": "2023-07-28",
+        "end_date": "2023-08-13",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -16678,7 +16678,7 @@
         "id": "MODIS/061/MOD13Q1",
         "name": "MOD13Q1.061 Terra Vegetation Indices 16-Day Global 250m",
         "start_date": "2000-02-18",
-        "end_date": "2023-07-28",
+        "end_date": "2023-08-13",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -16735,7 +16735,7 @@
         "id": "MODIS/061/MOD14A1",
         "name": "MOD14A1.061: Terra Thermal Anomalies & Fire Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-20",
+        "end_date": "2023-08-28",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -16760,7 +16760,7 @@
         "id": "MODIS/061/MOD14A2",
         "name": "MOD14A2.061: Terra Thermal Anomalies & Fire 8-Day Global 1km",
         "start_date": "2000-02-18",
-        "end_date": "2023-08-13",
+        "end_date": "2023-08-21",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -16777,7 +16777,7 @@
         "id": "MODIS/061/MOD15A2H",
         "name": "MOD15A2H.061: Terra Leaf Area Index/FPAR 8-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2023-08-13",
+        "end_date": "2023-08-21",
         "type": "image_collection",
         "bands": {
             "Fpar_500m": {
@@ -16810,7 +16810,7 @@
         "id": "MODIS/061/MOD16A2",
         "name": "MOD16A2.061: Terra Net Evapotranspiration 8-Day Global 500m",
         "start_date": "2001-01-01",
-        "end_date": "2023-08-05",
+        "end_date": "2023-08-13",
         "type": "image_collection",
         "bands": {
             "ET": {
@@ -16839,7 +16839,7 @@
         "id": "MODIS/061/MOD17A2H",
         "name": "MOD17A2H.061: Terra Gross Primary Productivity 8-Day Global 500m",
         "start_date": "2021-01-01",
-        "end_date": "2023-08-13",
+        "end_date": "2023-08-21",
         "type": "image_collection",
         "bands": {
             "Gpp": {
@@ -16881,7 +16881,7 @@
         "id": "MODIS/061/MOD21A1D",
         "name": "MOD21A1D.061 Terra Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-25",
+        "end_date": "2023-09-01",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -16918,7 +16918,7 @@
         "id": "MODIS/061/MOD21A1N",
         "name": "MOD21A1N.061 Terra Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-25",
+        "end_date": "2023-09-02",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -16955,7 +16955,7 @@
         "id": "MODIS/061/MOD21C1",
         "name": "MOD21C1.061 Terra Land Surface Temperature and 3-Band Emissivity Daily L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-27",
+        "end_date": "2023-09-02",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -17042,7 +17042,7 @@
         "id": "MODIS/061/MOD21C2",
         "name": "MOD21C2.061 Terra Land Surface Temperature and 3-Band Emissivity 8-Day L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-13",
+        "end_date": "2023-08-21",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -17277,7 +17277,7 @@
         "id": "MODIS/061/MYD09A1",
         "name": "MYD09A1.061 Aqua Surface Reflectance 8-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2023-08-13",
+        "end_date": "2023-08-21",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -17338,7 +17338,7 @@
         "id": "MODIS/061/MYD09GA",
         "name": "MYD09GA.061 Aqua Surface Reflectance Daily Global 1km and 500m",
         "start_date": "2002-07-04",
-        "end_date": "2023-08-21",
+        "end_date": "2023-09-02",
         "type": "image_collection",
         "bands": {
             "num_observations_1km": {
@@ -17435,7 +17435,7 @@
         "id": "MODIS/061/MYD09GQ",
         "name": "MYD09GQ.061 Aqua Surface Reflectance Daily Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2023-08-26",
+        "end_date": "2023-09-02",
         "type": "image_collection",
         "bands": {
             "num_observations": {
@@ -17476,7 +17476,7 @@
         "id": "MODIS/061/MYD09Q1",
         "name": "MYD09Q1.061 Aqua Surface Reflectance 8-Day Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2023-08-13",
+        "end_date": "2023-08-21",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -17501,7 +17501,7 @@
         "id": "MODIS/061/MYD10A1",
         "name": "MYD10A1.061 Aqua Snow Cover Daily Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2023-08-25",
+        "end_date": "2023-09-02",
         "type": "image_collection",
         "bands": {
             "NDSI_Snow_Cover": {
@@ -17546,7 +17546,7 @@
         "id": "MODIS/061/MYD11A1",
         "name": "MYD11A1.061 Aqua Land Surface Temperature and Emissivity Daily Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2023-08-21",
+        "end_date": "2023-09-02",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -17603,7 +17603,7 @@
         "id": "MODIS/061/MYD11A2",
         "name": "MYD11A2.061 Aqua Land Surface Temperature and Emissivity 8-Day Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2023-08-13",
+        "end_date": "2023-08-21",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -17831,7 +17831,7 @@
         "id": "MODIS/061/MYD14A1",
         "name": "MYD14A1.061: Aqua Thermal Anomalies & Fire Daily Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2023-08-20",
+        "end_date": "2023-08-28",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -17856,7 +17856,7 @@
         "id": "MODIS/061/MYD14A2",
         "name": "MYD14A2.061: Aqua Thermal Anomalies & Fire 8-Day Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2023-08-13",
+        "end_date": "2023-08-21",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -17873,7 +17873,7 @@
         "id": "MODIS/061/MYD15A2H",
         "name": "MYD15A2H.061: Aqua Leaf Area Index/FPAR 8-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2023-08-13",
+        "end_date": "2023-08-21",
         "type": "image_collection",
         "bands": {
             "Fpar_500m": {
@@ -17906,7 +17906,7 @@
         "id": "MODIS/061/MYD17A2H",
         "name": "MYD17A2H.061: Aqua Gross Primary Productivity 8-Day Global 500m",
         "start_date": "2021-01-01",
-        "end_date": "2023-08-13",
+        "end_date": "2023-08-21",
         "type": "image_collection",
         "bands": {
             "Gpp": {
@@ -17948,7 +17948,7 @@
         "id": "MODIS/061/MYD21A1D",
         "name": "MYD21A1D.061 Aqua Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-23",
+        "end_date": "2023-09-02",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -17985,7 +17985,7 @@
         "id": "MODIS/061/MYD21A1N",
         "name": "MYD21A1N.061 Aqua Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-23",
+        "end_date": "2023-09-02",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -18022,7 +18022,7 @@
         "id": "MODIS/061/MYD21C1",
         "name": "MYD21C1.061 Aqua Land Surface Temperature and 3-Band Emissivity Daily L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-26",
+        "end_date": "2023-09-03",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -18109,7 +18109,7 @@
         "id": "MODIS/061/MYD21C2",
         "name": "MYD21C2.061 Aqua Land Surface Temperature and 3-Band Emissivity 8-Day L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2023-08-13",
+        "end_date": "2023-08-21",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -18779,7 +18779,7 @@
         "id": "NASA/GEOS-CF/v1/fcst/htf",
         "name": "GEOS-CF fcst htf v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2022-10-01",
-        "end_date": "2023-08-27",
+        "end_date": "2023-09-03",
         "type": "image_collection",
         "bands": {
             "CO": {
@@ -18836,7 +18836,7 @@
         "id": "NASA/GEOS-CF/v1/fcst/tavg1hr",
         "name": "GEOS-CF fcst tavg1hr v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2022-10-01",
-        "end_date": "2023-08-27",
+        "end_date": "2023-09-03",
         "type": "image_collection",
         "bands": {
             "ACET": {
@@ -19389,7 +19389,7 @@
         "id": "NASA/GEOS-CF/v1/rpl/htf",
         "name": "GEOS-CF rpl htf v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2018-01-01",
-        "end_date": "2023-08-27",
+        "end_date": "2023-09-03",
         "type": "image_collection",
         "bands": {
             "CO": {
@@ -19446,7 +19446,7 @@
         "id": "NASA/GEOS-CF/v1/rpl/tavg1hr",
         "name": "GEOS-CF rpl tavg1hr v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2018-01-01",
-        "end_date": "2023-08-27",
+        "end_date": "2023-09-03",
         "type": "image_collection",
         "bands": {
             "ACET": {
@@ -21999,7 +21999,7 @@
         "id": "NASA/SMAP/SPL4SMGP/007",
         "name": "SPL4SMGP.007 SMAP L4 Global 3-hourly 9-km Surface and Root Zone Soil Moisture",
         "start_date": "2015-03-31",
-        "end_date": "2023-08-25",
+        "end_date": "2023-09-03",
         "type": "image_collection",
         "bands": {
             "sm_surface": {
@@ -22192,7 +22192,7 @@
         "id": "NASA/SMAP/SPL3SMP_E/005",
         "name": "SPL3SMP_E.005 SMAP L3 Radiometer Global Daily 9 km Soil Moisture",
         "start_date": "2015-03-31",
-        "end_date": "2023-08-26",
+        "end_date": "2023-09-01",
         "type": "image_collection",
         "bands": {
             "soil_moisture_am": {
@@ -22650,39 +22650,39 @@
         "bands": {
             "temperature_2m_above_ground": {
                 "units": null,
-                "resolution": 27829.87269831839
+                "resolution": 27799.73086213645
             },
             "specific_humidity_2m_above_ground": {
                 "units": null,
-                "resolution": 27829.87269831839
+                "resolution": 27799.73086213645
             },
             "relative_humidity_2m_above_ground": {
                 "units": null,
-                "resolution": 27829.87269831839
+                "resolution": 27799.73086213645
             },
             "u_component_of_wind_10m_above_ground": {
                 "units": null,
-                "resolution": 27829.87269831839
+                "resolution": 27799.73086213645
             },
             "v_component_of_wind_10m_above_ground": {
                 "units": null,
-                "resolution": 27829.87269831839
+                "resolution": 27799.73086213645
             },
             "total_precipitation_surface": {
                 "units": null,
-                "resolution": 27829.87269831839
+                "resolution": 27799.73086213645
             },
             "precipitable_water_entire_atmosphere": {
                 "units": null,
-                "resolution": 27829.87269831839
+                "resolution": 27799.73086213645
             },
             "total_cloud_cover_entire_atmosphere": {
                 "units": null,
-                "resolution": 27829.87269831839
+                "resolution": 27799.73086213645
             },
             "downward_shortwave_radiation_flux": {
                 "units": null,
-                "resolution": 27829.87269831839
+                "resolution": 27799.73086213645
             }
         }
     },
@@ -24304,7 +24304,7 @@
         "id": "NOAA/GOES/18/FDCC",
         "name": "GOES-18 FDCC Series ABI Level 2 Fire/Hot Spot Characterization CONUS",
         "start_date": "2022-10-13",
-        "end_date": "2023-08-29",
+        "end_date": "2023-09-05",
         "type": "image_collection",
         "bands": {
             "Area": {
@@ -24333,7 +24333,7 @@
         "id": "NOAA/GOES/18/FDCF",
         "name": "GOES-18 FDCF Series ABI Level 2 Fire/Hot Spot Characterization Full Disk",
         "start_date": "2022-10-13",
-        "end_date": "2023-08-29",
+        "end_date": "2023-09-05",
         "type": "image_collection",
         "bands": {
             "Area": {
@@ -24362,7 +24362,7 @@
         "id": "NOAA/GOES/18/MCMIPC",
         "name": "GOES-18 MCMIPC Series ABI Level 2 Cloud and Moisture Imagery CONUS",
         "start_date": "2018-12-04",
-        "end_date": "2023-08-29",
+        "end_date": "2023-09-05",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -24499,7 +24499,7 @@
         "id": "NOAA/GOES/18/MCMIPF",
         "name": "GOES-18 MCMIPF Series ABI Level 2 Cloud and Moisture Imagery Full Disk",
         "start_date": "2018-12-04",
-        "end_date": "2023-08-29",
+        "end_date": "2023-09-05",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -24636,7 +24636,7 @@
         "id": "NOAA/GOES/18/MCMIPM",
         "name": "GOES-18 MCMIPM Series ABI Level 2 Cloud and Moisture Imagery Full Disk",
         "start_date": "2018-12-04",
-        "end_date": "2023-08-29",
+        "end_date": "2023-09-05",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -24972,7 +24972,7 @@
         "id": "NOAA/VIIRS/001/VNP09H1",
         "name": "VNP09H1: VIIRS Surface Reflectance 8-Day L3 Global 500m",
         "start_date": "2012-01-19",
-        "end_date": "2023-08-13",
+        "end_date": "2023-08-21",
         "type": "image_collection",
         "bands": {
             "SurfReflect_I1": {
@@ -25074,7 +25074,7 @@
         "id": "NOAA/VIIRS/001/VNP14A1",
         "name": "VNP14A1: Thermal Anomalies/Fire Daily L3 Global 1km SIN Grid",
         "start_date": "2012-01-19",
-        "end_date": "2023-08-28",
+        "end_date": "2023-09-03",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -25099,7 +25099,7 @@
         "id": "NOAA/VIIRS/001/VNP15A2H",
         "name": "VNP15A2H: LAI/FPAR 8-Day L4 Global 500m SIN Grid",
         "start_date": "2012-01-17",
-        "end_date": "2023-08-13",
+        "end_date": "2023-08-21",
         "type": "image_collection",
         "bands": {
             "Fpar": {
@@ -25367,7 +25367,7 @@
         "id": "NOAA/VIIRS/001/VNP43IA1",
         "name": "VNP43IA1: BRDF/Albedo Model Parameters Daily L3 Global 500m SIN Grid",
         "start_date": "2012-01-17",
-        "end_date": "2023-08-16",
+        "end_date": "2023-08-25",
         "type": "image_collection",
         "bands": {
             "BRDF_Albedo_Band_Mandatory_Quality_I1": {
@@ -25424,7 +25424,7 @@
         "id": "NOAA/VIIRS/001/VNP43IA2",
         "name": "VNP43IA2: BRDF/Albedo Quality Daily L3 Global 500m SIN Grid",
         "start_date": "2012-01-17",
-        "end_date": "2023-08-16",
+        "end_date": "2023-08-25",
         "type": "image_collection",
         "bands": {
             "BRDF_Albedo_Band_Quality_I1": {
@@ -27029,7 +27029,7 @@
         "id": "TERN/AET/CMRSET_LANDSAT_V2_2",
         "name": "Actual Evapotranspiration for Australia (CMRSET Landsat V2.2)",
         "start_date": "2000-02-01",
-        "end_date": "2023-02-01",
+        "end_date": "2023-05-01",
         "type": "image_collection",
         "bands": {
             "ETa": {
