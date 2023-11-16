@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>API Reference &mdash; rabpro  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-dropdown.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/panels-bootstrap.min.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -93,18 +93,60 @@
            <div itemprop="articleBody">
              
   <section id="api-reference">
-<span id="apiref"></span><h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline"></a></h1>
+<span id="apiref"></span><h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Module Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="rabpro.html">rabpro</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro-core-py">rabpro (core.py)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.core.profiler"><code class="docutils literal notranslate"><span class="pre">profiler</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rabpro.html#rabpro.core.profiler.basin_stats"><code class="docutils literal notranslate"><span class="pre">profiler.basin_stats()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="rabpro.html#rabpro.core.profiler.delineate_basin"><code class="docutils literal notranslate"><span class="pre">profiler.delineate_basin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="rabpro.html#rabpro.core.profiler.elev_profile"><code class="docutils literal notranslate"><span class="pre">profiler.elev_profile()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="rabpro.html#rabpro.core.profiler.export"><code class="docutils literal notranslate"><span class="pre">profiler.export()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="rabpro.html#data-utility-functions-data-utils-py">Data utility functions (data_utils.py)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.data_utils.does_hydrobasins_exist"><code class="docutils literal notranslate"><span class="pre">does_hydrobasins_exist()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.data_utils.does_merit_exist"><code class="docutils literal notranslate"><span class="pre">does_merit_exist()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.data_utils.download_hydrobasins"><code class="docutils literal notranslate"><span class="pre">download_hydrobasins()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.data_utils.download_merit_hydro"><code class="docutils literal notranslate"><span class="pre">download_merit_hydro()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="rabpro.html#elevation-profile-computation-elev-profile-py">Elevation profile computation (elev_profile.py)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.elev_profile.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="rabpro.html#merit-utilities-merit-utils-py">MERIT utilities (merit_utils.py)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.merit_utils.idcs_to_geopolygons"><code class="docutils literal notranslate"><span class="pre">idcs_to_geopolygons()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.merit_utils.map_cl_pt_to_flowline"><code class="docutils literal notranslate"><span class="pre">map_cl_pt_to_flowline()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.merit_utils.neighborhood_vals_from_raster"><code class="docutils literal notranslate"><span class="pre">neighborhood_vals_from_raster()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.merit_utils.trace_flowpath"><code class="docutils literal notranslate"><span class="pre">trace_flowpath()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="rabpro.html#basin-statistics-basin-stats-py">Basin statistics (basin_stats.py)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.basin_stats.Dataset"><code class="docutils literal notranslate"><span class="pre">Dataset</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.basin_stats.compute"><code class="docutils literal notranslate"><span class="pre">compute()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.basin_stats.dataset_to_filename"><code class="docutils literal notranslate"><span class="pre">dataset_to_filename()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.basin_stats.fetch_gee"><code class="docutils literal notranslate"><span class="pre">fetch_gee()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.basin_stats.format_gee"><code class="docutils literal notranslate"><span class="pre">format_gee()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.basin_stats.image"><code class="docutils literal notranslate"><span class="pre">image()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="rabpro.html#basin-delineation-basins-py">Basin delineation (basins.py)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.basins.load_continent_basins"><code class="docutils literal notranslate"><span class="pre">load_continent_basins()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.basins.main_hb"><code class="docutils literal notranslate"><span class="pre">main_hb()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.basins.main_merit"><code class="docutils literal notranslate"><span class="pre">main_merit()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="rabpro.html#utility-functions-utils-py">Utility functions (utils.py)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.utils.area_4326"><code class="docutils literal notranslate"><span class="pre">area_4326()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.utils.build_gee_vector_asset"><code class="docutils literal notranslate"><span class="pre">build_gee_vector_asset()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.utils.build_virtual_rasters"><code class="docutils literal notranslate"><span class="pre">build_virtual_rasters()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.utils.build_vrt"><code class="docutils literal notranslate"><span class="pre">build_vrt()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.utils.coords_to_merit_tile"><code class="docutils literal notranslate"><span class="pre">coords_to_merit_tile()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.utils.crop_binary_coords"><code class="docutils literal notranslate"><span class="pre">crop_binary_coords()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.utils.dist_from_da"><code class="docutils literal notranslate"><span class="pre">dist_from_da()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.utils.get_datapaths"><code class="docutils literal notranslate"><span class="pre">get_datapaths()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.utils.get_exportpaths"><code class="docutils literal notranslate"><span class="pre">get_exportpaths()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.utils.haversine"><code class="docutils literal notranslate"><span class="pre">haversine()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.utils.lonlat_plus_distance"><code class="docutils literal notranslate"><span class="pre">lonlat_plus_distance()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.utils.raster_extents"><code class="docutils literal notranslate"><span class="pre">raster_extents()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.utils.union_gdf_polygons"><code class="docutils literal notranslate"><span class="pre">union_gdf_polygons()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.utils.upload_gee_tif_asset"><code class="docutils literal notranslate"><span class="pre">upload_gee_tif_asset()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.utils.upload_gee_vector_asset"><code class="docutils literal notranslate"><span class="pre">upload_gee_vector_asset()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.utils.validify_polygons"><code class="docutils literal notranslate"><span class="pre">validify_polygons()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabpro.html#rabpro.utils.xy_to_coords"><code class="docutils literal notranslate"><span class="pre">xy_to_coords()</span></code></a></li>
 </ul>
 </li>
 </ul>

@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Basin stats examples &mdash; rabpro  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-dropdown.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/panels-bootstrap.min.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/nbsphinx-code-cells.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -98,7 +98,7 @@
            <div itemprop="articleBody">
              
   <section id="Basin-stats-examples">
-<h1>Basin stats examples<a class="headerlink" href="#Basin-stats-examples" title="Permalink to this headline"></a></h1>
+<h1>Basin stats examples<a class="headerlink" href="#Basin-stats-examples" title="Link to this heading"></a></h1>
 <p>Generating basin stats from Earth Engine imagery is challenged by the many different ways in which image assets are stored and organized on the platform. As such, we have tried to strike a balance with <code class="docutils literal notranslate"><span class="pre">rabpro</span></code> between ease of use (abstracting away unncessary details) and flexibility. Before we begin pulling basin stats, lets create a basin polygon asset:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -137,7 +137,7 @@ gdf = rpo.watershed
 </div>
 <p>The next several examples pull from imagery assets that are within the standard GEE data catalog (<a class="reference external" href="https://developers.google.com/earth-engine/datasets/">https://developers.google.com/earth-engine/datasets/</a>). This simplifies their queries as we (typically) do not need to specify projection or resolution information. These are read directly from the catalog:</p>
 <section id="Categorical-asset---a-single-time-window">
-<h2>Categorical asset - a single time window<a class="headerlink" href="#Categorical-asset---a-single-time-window" title="Permalink to this headline"></a></h2>
+<h2>Categorical asset - a single time window<a class="headerlink" href="#Categorical-asset---a-single-time-window" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -202,7 +202,7 @@ res.head()
 </div>
 </section>
 <section id="Numeric-asset---multiple-time-windows">
-<h2>Numeric asset - multiple time windows<a class="headerlink" href="#Numeric-asset---multiple-time-windows" title="Permalink to this headline"></a></h2>
+<h2>Numeric asset - multiple time windows<a class="headerlink" href="#Numeric-asset---multiple-time-windows" title="Link to this heading"></a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
@@ -304,7 +304,7 @@ res.head()
 </div>
 </section>
 <section id="Numeric-asset---time-averaging">
-<h2>Numeric asset - time averaging<a class="headerlink" href="#Numeric-asset---time-averaging" title="Permalink to this headline"></a></h2>
+<h2>Numeric asset - time averaging<a class="headerlink" href="#Numeric-asset---time-averaging" title="Link to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
