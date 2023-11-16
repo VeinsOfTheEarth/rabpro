@@ -54,6 +54,8 @@ class Dataset:
         time-varying imageCollections.
     prepend_label : str, optional
         Text to prepend to the exported statistics file.
+    gee_type : str, optional
+        Either 'image' or 'imagecollection'.
 
     """
 
@@ -379,7 +381,7 @@ def compute(
     # For each raster
     datas, tasks = [], []
     for d in control:
-        if d.band is None or d.band == "None":
+        if d.band in ["None", None]:
             if d.type == "image":
                 imgcol = ee.ImageCollection(ee.Image(d.data_id))
             else:
@@ -685,7 +687,7 @@ def image(
         if not is_categorical:
             if d.type == "image":
                 img = ee.Image(d.data_id).select(d.band)
-            elif d.mosaic is True:
+            elif d.mosaic == True:
                 if d.band is None:
                     img = ee.ImageCollection(d.data_id).mosaic()
                 else:

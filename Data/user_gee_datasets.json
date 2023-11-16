@@ -1,5 +1,18 @@
 [ 
     {
+        "id": "projects/sat-io/open-datasets/LCMAP/LCPRI",
+        "name": "Land Change Monitoring, Assessment, and Projection (LCMAP) v1.3",
+        "start_date": "1985-01-01",
+        "end_date": "2021-01-01",
+        "type": "imagecollection",
+        "bands": {
+            "b1": {
+                "units" : "categorical",
+                "resolution": 30
+            }
+        }
+    },
+    {
         "id": "users/rabpro/VIC_GAM_mean_v_1_1",
         "name": "Mean GAM Volumetric Ice Content,  Karjalainen et al. 2022",
         "start_date": null,
