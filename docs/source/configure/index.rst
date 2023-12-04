@@ -79,7 +79,7 @@ Unless you want to download the full global extent, you'll probably need to iden
         
 	# To download the tile
         from rabpro import data_utils
-        data_utils.download_merit_dem("n30w120", your_username, your_password)
+        data_utils.download_merit_hydro("n30w120", your_username, your_password)
 
 Basin statistics
 ~~~~~~~~~~~~~~~~~~~
