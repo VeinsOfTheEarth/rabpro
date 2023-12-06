@@ -473,7 +473,7 @@
         "id": "COPERNICUS/S1_GRD",
         "name": "Sentinel-1 SAR GRD: C-band Synthetic Aperture Radar Ground Range Detected, log scaling",
         "start_date": "2014-10-03",
-        "end_date": "2023-11-28",
+        "end_date": "2023-12-05",
         "type": "image_collection",
         "bands": {
             "HH": {
@@ -2933,7 +2933,7 @@
         "id": "ECMWF/ERA5_LAND/DAILY_AGGR",
         "name": "ERA5-Land Daily Aggregated - ECMWF Climate Reanalysis",
         "start_date": "1950-01-02",
-        "end_date": "2023-11-19",
+        "end_date": "2023-11-26",
         "type": "image_collection",
         "bands": {
             "dewpoint_temperature_2m": {
@@ -6065,8 +6065,8 @@
     {
         "id": "GOOGLE/CLOUD_SCORE_PLUS/V1/S2_HARMONIZED",
         "name": "Cloud Score+ S2_HARMONIZED V1",
-        "start_date": "2020-01-01",
-        "end_date": "2023-11-27",
+        "start_date": "2019-01-01",
+        "end_date": "2023-12-04",
         "type": "image_collection",
         "bands": {
             "cs": {
@@ -6083,7 +6083,7 @@
         "id": "GOOGLE/DYNAMICWORLD/V1",
         "name": "Dynamic World V1",
         "start_date": "2015-06-23",
-        "end_date": "2023-11-28",
+        "end_date": "2023-12-05",
         "type": "image_collection",
         "bands": {
             "water": {
@@ -7780,7 +7780,7 @@
         "id": "JAXA/ALOS/PALSAR-2/Level2_2/ScanSAR",
         "name": "PALSAR-2 ScanSAR Level 2.2",
         "start_date": "2014-08-04",
-        "end_date": "2023-09-30",
+        "end_date": "2023-10-31",
         "type": "image_collection",
         "bands": {
             "HH": {
@@ -8067,7 +8067,7 @@
         "id": "JAXA/GPM_L3/GSMaP/v7/operational",
         "name": "GSMaP Operational: Global Satellite Mapping of Precipitation - V7",
         "start_date": "2014-03-01",
-        "end_date": "2023-11-27",
+        "end_date": "2023-12-04",
         "type": "image_collection",
         "bands": {
             "hourlyPrecipRate": {
@@ -8096,7 +8096,7 @@
         "id": "JAXA/GPM_L3/GSMaP/v8/operational",
         "name": "GSMaP Operational: Global Satellite Mapping of Precipitation - V8",
         "start_date": "1998-01-01",
-        "end_date": "2023-11-27",
+        "end_date": "2023-12-04",
         "type": "image_collection",
         "bands": {
             "hourlyPrecipRate": {
@@ -9540,7 +9540,7 @@
         "id": "LANDSAT/LC08/C02/T1_RT",
         "name": "USGS Landsat 8 Collection 2 Tier 1 and Real-Time data Raw Scenes",
         "start_date": "2013-03-18",
-        "end_date": "2023-11-28",
+        "end_date": "2023-12-05",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -9617,7 +9617,7 @@
         "id": "LANDSAT/LC08/C02/T1_RT_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 1 and Real-Time data TOA Reflectance",
         "start_date": "2013-03-18",
-        "end_date": "2023-11-28",
+        "end_date": "2023-12-05",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -10010,7 +10010,7 @@
         "id": "LANDSAT/LC09/C02/T1",
         "name": "USGS Landsat 9 Collection 2 Tier 1 Raw Scenes",
         "start_date": "2021-10-31",
-        "end_date": "2023-11-28",
+        "end_date": "2023-12-05",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -10087,7 +10087,7 @@
         "id": "LANDSAT/LC09/C02/T1_L2",
         "name": "USGS Landsat 9 Level 2, Collection 2, Tier 1",
         "start_date": "2021-10-31",
-        "end_date": "2023-11-27",
+        "end_date": "2023-12-03",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -10172,7 +10172,7 @@
         "id": "LANDSAT/LC09/C02/T1_TOA",
         "name": "USGS Landsat 9 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "2021-10-31",
-        "end_date": "2023-11-28",
+        "end_date": "2023-12-05",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -10249,7 +10249,7 @@
         "id": "LANDSAT/LC09/C02/T2",
         "name": "USGS Landsat 9 Collection 2 Tier 2 Raw Scenes",
         "start_date": "2021-11-02",
-        "end_date": "2023-11-28",
+        "end_date": "2023-12-05",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -10326,7 +10326,7 @@
         "id": "LANDSAT/LC09/C02/T2_L2",
         "name": "USGS Landsat 9 Level 2, Collection 2, Tier 2",
         "start_date": "2021-10-31",
-        "end_date": "2023-11-27",
+        "end_date": "2023-12-03",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -10411,7 +10411,7 @@
         "id": "LANDSAT/LC09/C02/T2_TOA",
         "name": "USGS Landsat 9 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2021-11-02",
-        "end_date": "2023-11-28",
+        "end_date": "2023-12-05",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -11069,7 +11069,7 @@
         "id": "LANDSAT/LE07/C02/T1",
         "name": "USGS Landsat 7 Collection 2 Tier 1 Raw Scenes",
         "start_date": "1999-05-28",
-        "end_date": "2023-11-02",
+        "end_date": "2023-11-09",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -11223,7 +11223,7 @@
         "id": "LANDSAT/LE07/C02/T1_RT",
         "name": "USGS Landsat 7 Collection 2 Tier 1 and Real-Time data Raw Scenes",
         "start_date": "1999-05-28",
-        "end_date": "2023-11-28",
+        "end_date": "2023-12-05",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -11292,7 +11292,7 @@
         "id": "LANDSAT/LE07/C02/T1_RT_TOA",
         "name": "USGS Landsat 7 Collection 2 Tier 1 and Real-Time data TOA Reflectance",
         "start_date": "1999-05-28",
-        "end_date": "2023-11-28",
+        "end_date": "2023-12-05",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -11361,7 +11361,7 @@
         "id": "LANDSAT/LE07/C02/T1_TOA",
         "name": "USGS Landsat 7 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "1999-05-28",
-        "end_date": "2023-11-02",
+        "end_date": "2023-11-09",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -11430,7 +11430,7 @@
         "id": "LANDSAT/LE07/C02/T2",
         "name": "USGS Landsat 7 Collection 2 Tier 2 Raw Scenes",
         "start_date": "1999-05-28",
-        "end_date": "2023-11-02",
+        "end_date": "2023-11-09",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -11584,7 +11584,7 @@
         "id": "LANDSAT/LE07/C02/T2_TOA",
         "name": "USGS Landsat 7 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2003-12-01",
-        "end_date": "2023-11-01",
+        "end_date": "2023-11-07",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15606,7 +15606,7 @@
         "id": "MODIS/061/MCD15A3H",
         "name": "MCD15A3H.061 MODIS Leaf Area Index/FPAR 4-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2023-11-13",
+        "end_date": "2023-11-25",
         "type": "image_collection",
         "bands": {
             "Fpar": {
@@ -15639,7 +15639,7 @@
         "id": "MODIS/061/MCD18A1",
         "name": "MCD18A1.061 Surface Radiation Daily/3-Hour",
         "start_date": "2000-02-24",
-        "end_date": "2023-10-01",
+        "end_date": "2023-11-01",
         "type": "image_collection",
         "bands": {
             "DSR": {
@@ -15696,7 +15696,7 @@
         "id": "MODIS/061/MCD18C2",
         "name": "MCD18C2.061 Photosynthetically Active Radiation Daily 3-Hour",
         "start_date": "2002-02-24",
-        "end_date": "2023-10-01",
+        "end_date": "2023-11-01",
         "type": "image_collection",
         "bands": {
             "GMT_0000_PAR": {
@@ -15737,7 +15737,7 @@
         "id": "MODIS/061/MCD19A1_GRANULES",
         "name": "MCD19A1.061: Land Surface BRF Daily L2G Global 500m and 1km",
         "start_date": "2000-12-21",
-        "end_date": "2013-10-26",
+        "end_date": "2014-08-08",
         "type": "image_collection",
         "bands": {
             "Sur_refl1": {
@@ -15842,7 +15842,7 @@
         "id": "MODIS/061/MCD19A2_GRANULES",
         "name": "MCD19A2.061: Terra & Aqua MAIAC Land Aerosol Optical Depth Daily 1km",
         "start_date": "2000-02-24",
-        "end_date": "2023-11-20",
+        "end_date": "2023-11-30",
         "type": "image_collection",
         "bands": {
             "Optical_Depth_047": {
@@ -15903,7 +15903,7 @@
         "id": "MODIS/061/MCD43A1",
         "name": "MCD43A1.061 MODIS BRDF-Albedo Model Parameters Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2023-11-13",
+        "end_date": "2023-11-23",
         "type": "image_collection",
         "bands": {
             "BRDF_Albedo_Parameters_Band1_iso": {
@@ -16072,7 +16072,7 @@
         "id": "MODIS/061/MCD43A2",
         "name": "MCD43A2.061 MODIS BRDF-Albedo Quality Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2023-11-13",
+        "end_date": "2023-11-23",
         "type": "image_collection",
         "bands": {
             "Snow_BRDF_Albedo": {
@@ -16157,7 +16157,7 @@
         "id": "MODIS/061/MCD43A3",
         "name": "MCD43A3.061 MODIS Albedo Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2023-11-13",
+        "end_date": "2023-11-23",
         "type": "image_collection",
         "bands": {
             "Albedo_BSA_Band1": {
@@ -16286,7 +16286,7 @@
         "id": "MODIS/061/MCD43A4",
         "name": "MCD43A4.061 MODIS Nadir BRDF-Adjusted Reflectance Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2023-11-13",
+        "end_date": "2023-11-23",
         "type": "image_collection",
         "bands": {
             "Nadir_Reflectance_Band1": {
@@ -16351,7 +16351,7 @@
         "id": "MODIS/061/MCD43C3",
         "name": "MCD43C3.061 BRDF/Albedo Daily L3 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2023-11-13",
+        "end_date": "2023-11-23",
         "type": "image_collection",
         "bands": {
             "Albedo_BSA_Band1": {
@@ -16513,7 +16513,7 @@
         "id": "MODIS/061/MOD09A1",
         "name": "MOD09A1.061 Terra Surface Reflectance 8-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2023-11-09",
+        "end_date": "2023-11-17",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -16574,7 +16574,7 @@
         "id": "MODIS/061/MOD09CMG",
         "name": "MOD09CMG.061 Surface Reflectance Daily L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2023-11-20",
+        "end_date": "2023-12-03",
         "type": "image_collection",
         "bands": {
             "Coarse_Resolution_Surface_Reflectance_Band_1": {
@@ -16658,7 +16658,7 @@
         "id": "MODIS/061/MOD09GA",
         "name": "MOD09GA.061 Terra Surface Reflectance Daily Global 1km and 500m",
         "start_date": "2000-02-24",
-        "end_date": "2023-11-20",
+        "end_date": "2023-12-02",
         "type": "image_collection",
         "bands": {
             "num_observations_1km": {
@@ -16755,7 +16755,7 @@
         "id": "MODIS/061/MOD09GQ",
         "name": "MOD09GQ.061 Terra Surface Reflectance Daily Global 250m",
         "start_date": "2000-02-24",
-        "end_date": "2023-11-20",
+        "end_date": "2023-12-02",
         "type": "image_collection",
         "bands": {
             "num_observations": {
@@ -16796,7 +16796,7 @@
         "id": "MODIS/061/MOD09Q1",
         "name": "MOD09Q1.061 Terra Surface Reflectance 8-Day Global 250m",
         "start_date": "2000-02-18",
-        "end_date": "2023-11-09",
+        "end_date": "2023-11-17",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -16821,7 +16821,7 @@
         "id": "MODIS/061/MOD10A1",
         "name": "MOD10A1.061 Terra Snow Cover Daily Global 500m",
         "start_date": "2000-02-24",
-        "end_date": "2023-11-25",
+        "end_date": "2023-12-03",
         "type": "image_collection",
         "bands": {
             "NDSI_Snow_Cover": {
@@ -16866,7 +16866,7 @@
         "id": "MODIS/061/MOD11A1",
         "name": "MOD11A1.061 Terra Land Surface Temperature and Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2023-11-20",
+        "end_date": "2023-11-30",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -16923,7 +16923,7 @@
         "id": "MODIS/061/MOD11A2",
         "name": "MOD11A2.061 Terra Land Surface Temperature and Emissivity 8-Day Global 1km",
         "start_date": "2000-02-18",
-        "end_date": "2023-11-09",
+        "end_date": "2023-11-17",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -17229,7 +17229,7 @@
         "id": "MODIS/061/MOD14A2",
         "name": "MOD14A2.061: Terra Thermal Anomalies & Fire 8-Day Global 1km",
         "start_date": "2000-02-18",
-        "end_date": "2023-11-09",
+        "end_date": "2023-11-17",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -17246,7 +17246,7 @@
         "id": "MODIS/061/MOD15A2H",
         "name": "MOD15A2H.061: Terra Leaf Area Index/FPAR 8-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2023-11-09",
+        "end_date": "2023-11-17",
         "type": "image_collection",
         "bands": {
             "Fpar_500m": {
@@ -17279,7 +17279,7 @@
         "id": "MODIS/061/MOD16A2",
         "name": "MOD16A2.061: Terra Net Evapotranspiration 8-Day Global 500m",
         "start_date": "2001-01-01",
-        "end_date": "2023-11-01",
+        "end_date": "2023-11-09",
         "type": "image_collection",
         "bands": {
             "ET": {
@@ -17337,7 +17337,7 @@
         "id": "MODIS/061/MOD17A2H",
         "name": "MOD17A2H.061: Terra Gross Primary Productivity 8-Day Global 500m",
         "start_date": "2021-01-01",
-        "end_date": "2023-11-09",
+        "end_date": "2023-11-17",
         "type": "image_collection",
         "bands": {
             "Gpp": {
@@ -17379,7 +17379,7 @@
         "id": "MODIS/061/MOD21A1D",
         "name": "MOD21A1D.061 Terra Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2023-11-20",
+        "end_date": "2023-12-03",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -17416,7 +17416,7 @@
         "id": "MODIS/061/MOD21A1N",
         "name": "MOD21A1N.061 Terra Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2023-11-20",
+        "end_date": "2023-12-04",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -17453,7 +17453,7 @@
         "id": "MODIS/061/MOD21C1",
         "name": "MOD21C1.061 Terra Land Surface Temperature and 3-Band Emissivity Daily L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2023-11-20",
+        "end_date": "2023-12-04",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -17540,7 +17540,7 @@
         "id": "MODIS/061/MOD21C2",
         "name": "MOD21C2.061 Terra Land Surface Temperature and 3-Band Emissivity 8-Day L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2023-11-09",
+        "end_date": "2023-11-17",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -17633,7 +17633,7 @@
         "id": "MODIS/061/MOD21C3",
         "name": "MOD21C3.061 Terra Land Surface Temperature and 3-Band Emissivity Monthly L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2023-10-01",
+        "end_date": "2023-11-01",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -17775,7 +17775,7 @@
         "id": "MODIS/061/MYD09A1",
         "name": "MYD09A1.061 Aqua Surface Reflectance 8-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2023-11-09",
+        "end_date": "2023-11-17",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -17836,7 +17836,7 @@
         "id": "MODIS/061/MYD09GA",
         "name": "MYD09GA.061 Aqua Surface Reflectance Daily Global 1km and 500m",
         "start_date": "2002-07-04",
-        "end_date": "2023-11-20",
+        "end_date": "2023-12-01",
         "type": "image_collection",
         "bands": {
             "num_observations_1km": {
@@ -17933,7 +17933,7 @@
         "id": "MODIS/061/MYD09GQ",
         "name": "MYD09GQ.061 Aqua Surface Reflectance Daily Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2023-11-20",
+        "end_date": "2023-12-01",
         "type": "image_collection",
         "bands": {
             "num_observations": {
@@ -17974,7 +17974,7 @@
         "id": "MODIS/061/MYD09Q1",
         "name": "MYD09Q1.061 Aqua Surface Reflectance 8-Day Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2023-11-09",
+        "end_date": "2023-11-17",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -17999,7 +17999,7 @@
         "id": "MODIS/061/MYD10A1",
         "name": "MYD10A1.061 Aqua Snow Cover Daily Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2023-11-25",
+        "end_date": "2023-12-03",
         "type": "image_collection",
         "bands": {
             "NDSI_Snow_Cover": {
@@ -18044,7 +18044,7 @@
         "id": "MODIS/061/MYD11A1",
         "name": "MYD11A1.061 Aqua Land Surface Temperature and Emissivity Daily Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2023-11-20",
+        "end_date": "2023-11-30",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -18101,7 +18101,7 @@
         "id": "MODIS/061/MYD11A2",
         "name": "MYD11A2.061 Aqua Land Surface Temperature and Emissivity 8-Day Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2023-11-09",
+        "end_date": "2023-11-17",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -18158,7 +18158,7 @@
         "id": "MODIS/061/MYD13A1",
         "name": "MYD13A1.061 Aqua Vegetation Indices 16-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2023-10-24",
+        "end_date": "2023-11-09",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -18215,7 +18215,7 @@
         "id": "MODIS/061/MYD13A2",
         "name": "MYD13A2.061 Aqua Vegetation Indices 16-Day Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2023-10-24",
+        "end_date": "2023-11-09",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -18325,7 +18325,7 @@
         "id": "MODIS/061/MYD13Q1",
         "name": "MYD13Q1.061 Aqua Vegetation Indices 16-Day Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2023-10-24",
+        "end_date": "2023-11-09",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -18407,7 +18407,7 @@
         "id": "MODIS/061/MYD14A2",
         "name": "MYD14A2.061: Aqua Thermal Anomalies & Fire 8-Day Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2023-11-09",
+        "end_date": "2023-11-25",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -18424,7 +18424,7 @@
         "id": "MODIS/061/MYD15A2H",
         "name": "MYD15A2H.061: Aqua Leaf Area Index/FPAR 8-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2023-11-09",
+        "end_date": "2023-11-17",
         "type": "image_collection",
         "bands": {
             "Fpar_500m": {
@@ -18457,7 +18457,7 @@
         "id": "MODIS/061/MYD17A2H",
         "name": "MYD17A2H.061: Aqua Gross Primary Productivity 8-Day Global 500m",
         "start_date": "2021-01-01",
-        "end_date": "2023-11-09",
+        "end_date": "2023-11-17",
         "type": "image_collection",
         "bands": {
             "Gpp": {
@@ -18499,7 +18499,7 @@
         "id": "MODIS/061/MYD21A1D",
         "name": "MYD21A1D.061 Aqua Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2023-11-20",
+        "end_date": "2023-12-03",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -18536,7 +18536,7 @@
         "id": "MODIS/061/MYD21A1N",
         "name": "MYD21A1N.061 Aqua Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2023-11-20",
+        "end_date": "2023-12-03",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -18573,7 +18573,7 @@
         "id": "MODIS/061/MYD21C1",
         "name": "MYD21C1.061 Aqua Land Surface Temperature and 3-Band Emissivity Daily L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2023-11-20",
+        "end_date": "2023-12-03",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -18660,7 +18660,7 @@
         "id": "MODIS/061/MYD21C2",
         "name": "MYD21C2.061 Aqua Land Surface Temperature and 3-Band Emissivity 8-Day L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2023-11-09",
+        "end_date": "2023-11-25",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -18753,7 +18753,7 @@
         "id": "MODIS/061/MYD21C3",
         "name": "MYD21C3.061 Aqua Land Surface Temperature and 3-Band Emissivity Monthly L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2023-10-01",
+        "end_date": "2023-11-01",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -19330,7 +19330,7 @@
         "id": "NASA/GEOS-CF/v1/fcst/htf",
         "name": "GEOS-CF fcst htf v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2022-10-01",
-        "end_date": "2023-11-26",
+        "end_date": "2023-12-03",
         "type": "image_collection",
         "bands": {
             "CO": {
@@ -19387,7 +19387,7 @@
         "id": "NASA/GEOS-CF/v1/fcst/tavg1hr",
         "name": "GEOS-CF fcst tavg1hr v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2022-10-01",
-        "end_date": "2023-11-26",
+        "end_date": "2023-12-03",
         "type": "image_collection",
         "bands": {
             "ACET": {
@@ -19940,7 +19940,7 @@
         "id": "NASA/GEOS-CF/v1/rpl/htf",
         "name": "GEOS-CF rpl htf v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2018-01-01",
-        "end_date": "2023-11-26",
+        "end_date": "2023-12-03",
         "type": "image_collection",
         "bands": {
             "CO": {
@@ -19997,7 +19997,7 @@
         "id": "NASA/GEOS-CF/v1/rpl/tavg1hr",
         "name": "GEOS-CF rpl tavg1hr v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2018-01-01",
-        "end_date": "2023-11-26",
+        "end_date": "2023-12-03",
         "type": "image_collection",
         "bands": {
             "ACET": {
@@ -21355,6 +21355,4557 @@
         }
     },
     {
+        "id": "NASA/GSFC/MERRA/aer_nv/2",
+        "name": "MERRA-2 M2I3NVAER: Aerosol Mixing Ratio V5.12.4",
+        "start_date": "1980-01-01",
+        "end_date": "2010-07-29",
+        "type": "image_collection",
+        "bands": {
+            "AIRDENS_1": {
+                "units": null
+            },
+            "SO2_1": {
+                "units": null
+            },
+            "DELP_1": {
+                "units": null
+            },
+            "SS004_1": {
+                "units": null
+            },
+            "DU005_1": {
+                "units": null
+            },
+            "DU004_1": {
+                "units": null
+            },
+            "SS005_1": {
+                "units": null
+            },
+            "OCPHILIC_1": {
+                "units": null
+            },
+            "BCPHOBIC_1": {
+                "units": null
+            },
+            "SS002_1": {
+                "units": null
+            },
+            "DU003_1": {
+                "units": null
+            },
+            "DMS_1": {
+                "units": null
+            },
+            "SO4_1": {
+                "units": null
+            },
+            "DU002_1": {
+                "units": null
+            },
+            "PS_1": {
+                "units": null
+            },
+            "SS003_1": {
+                "units": null
+            },
+            "DU001_1": {
+                "units": null
+            },
+            "OCPHOBIC_1": {
+                "units": null
+            },
+            "BCPHILIC_1": {
+                "units": null
+            },
+            "MSA_1": {
+                "units": null
+            },
+            "SS001_1": {
+                "units": null
+            },
+            "AIRDENS_2": {
+                "units": null
+            },
+            "SO2_2": {
+                "units": null
+            },
+            "DELP_2": {
+                "units": null
+            },
+            "SS004_2": {
+                "units": null
+            },
+            "DU005_2": {
+                "units": null
+            },
+            "DU004_2": {
+                "units": null
+            },
+            "SS005_2": {
+                "units": null
+            },
+            "OCPHILIC_2": {
+                "units": null
+            },
+            "BCPHOBIC_2": {
+                "units": null
+            },
+            "SS002_2": {
+                "units": null
+            },
+            "DU003_2": {
+                "units": null
+            },
+            "DMS_2": {
+                "units": null
+            },
+            "SO4_2": {
+                "units": null
+            },
+            "DU002_2": {
+                "units": null
+            },
+            "PS_2": {
+                "units": null
+            },
+            "SS003_2": {
+                "units": null
+            },
+            "DU001_2": {
+                "units": null
+            },
+            "OCPHOBIC_2": {
+                "units": null
+            },
+            "BCPHILIC_2": {
+                "units": null
+            },
+            "MSA_2": {
+                "units": null
+            },
+            "SS001_2": {
+                "units": null
+            },
+            "AIRDENS_3": {
+                "units": null
+            },
+            "SO2_3": {
+                "units": null
+            },
+            "DELP_3": {
+                "units": null
+            },
+            "SS004_3": {
+                "units": null
+            },
+            "DU005_3": {
+                "units": null
+            },
+            "DU004_3": {
+                "units": null
+            },
+            "SS005_3": {
+                "units": null
+            },
+            "OCPHILIC_3": {
+                "units": null
+            },
+            "BCPHOBIC_3": {
+                "units": null
+            },
+            "SS002_3": {
+                "units": null
+            },
+            "DU003_3": {
+                "units": null
+            },
+            "DMS_3": {
+                "units": null
+            },
+            "SO4_3": {
+                "units": null
+            },
+            "DU002_3": {
+                "units": null
+            },
+            "PS_3": {
+                "units": null
+            },
+            "SS003_3": {
+                "units": null
+            },
+            "DU001_3": {
+                "units": null
+            },
+            "OCPHOBIC_3": {
+                "units": null
+            },
+            "BCPHILIC_3": {
+                "units": null
+            },
+            "MSA_3": {
+                "units": null
+            },
+            "SS001_3": {
+                "units": null
+            },
+            "AIRDENS_4": {
+                "units": null
+            },
+            "SO2_4": {
+                "units": null
+            },
+            "DELP_4": {
+                "units": null
+            },
+            "SS004_4": {
+                "units": null
+            },
+            "DU005_4": {
+                "units": null
+            },
+            "DU004_4": {
+                "units": null
+            },
+            "SS005_4": {
+                "units": null
+            },
+            "OCPHILIC_4": {
+                "units": null
+            },
+            "BCPHOBIC_4": {
+                "units": null
+            },
+            "SS002_4": {
+                "units": null
+            },
+            "DU003_4": {
+                "units": null
+            },
+            "DMS_4": {
+                "units": null
+            },
+            "SO4_4": {
+                "units": null
+            },
+            "DU002_4": {
+                "units": null
+            },
+            "PS_4": {
+                "units": null
+            },
+            "SS003_4": {
+                "units": null
+            },
+            "DU001_4": {
+                "units": null
+            },
+            "OCPHOBIC_4": {
+                "units": null
+            },
+            "BCPHILIC_4": {
+                "units": null
+            },
+            "MSA_4": {
+                "units": null
+            },
+            "SS001_4": {
+                "units": null
+            },
+            "AIRDENS_5": {
+                "units": null
+            },
+            "SO2_5": {
+                "units": null
+            },
+            "DELP_5": {
+                "units": null
+            },
+            "SS004_5": {
+                "units": null
+            },
+            "DU005_5": {
+                "units": null
+            },
+            "DU004_5": {
+                "units": null
+            },
+            "SS005_5": {
+                "units": null
+            },
+            "OCPHILIC_5": {
+                "units": null
+            },
+            "BCPHOBIC_5": {
+                "units": null
+            },
+            "SS002_5": {
+                "units": null
+            },
+            "DU003_5": {
+                "units": null
+            },
+            "DMS_5": {
+                "units": null
+            },
+            "SO4_5": {
+                "units": null
+            },
+            "DU002_5": {
+                "units": null
+            },
+            "PS_5": {
+                "units": null
+            },
+            "SS003_5": {
+                "units": null
+            },
+            "DU001_5": {
+                "units": null
+            },
+            "OCPHOBIC_5": {
+                "units": null
+            },
+            "BCPHILIC_5": {
+                "units": null
+            },
+            "MSA_5": {
+                "units": null
+            },
+            "SS001_5": {
+                "units": null
+            },
+            "AIRDENS_6": {
+                "units": null
+            },
+            "SO2_6": {
+                "units": null
+            },
+            "DELP_6": {
+                "units": null
+            },
+            "SS004_6": {
+                "units": null
+            },
+            "DU005_6": {
+                "units": null
+            },
+            "DU004_6": {
+                "units": null
+            },
+            "SS005_6": {
+                "units": null
+            },
+            "OCPHILIC_6": {
+                "units": null
+            },
+            "BCPHOBIC_6": {
+                "units": null
+            },
+            "SS002_6": {
+                "units": null
+            },
+            "DU003_6": {
+                "units": null
+            },
+            "DMS_6": {
+                "units": null
+            },
+            "SO4_6": {
+                "units": null
+            },
+            "DU002_6": {
+                "units": null
+            },
+            "PS_6": {
+                "units": null
+            },
+            "SS003_6": {
+                "units": null
+            },
+            "DU001_6": {
+                "units": null
+            },
+            "OCPHOBIC_6": {
+                "units": null
+            },
+            "BCPHILIC_6": {
+                "units": null
+            },
+            "MSA_6": {
+                "units": null
+            },
+            "SS001_6": {
+                "units": null
+            },
+            "AIRDENS_7": {
+                "units": null
+            },
+            "SO2_7": {
+                "units": null
+            },
+            "DELP_7": {
+                "units": null
+            },
+            "SS004_7": {
+                "units": null
+            },
+            "DU005_7": {
+                "units": null
+            },
+            "DU004_7": {
+                "units": null
+            },
+            "SS005_7": {
+                "units": null
+            },
+            "OCPHILIC_7": {
+                "units": null
+            },
+            "BCPHOBIC_7": {
+                "units": null
+            },
+            "SS002_7": {
+                "units": null
+            },
+            "DU003_7": {
+                "units": null
+            },
+            "DMS_7": {
+                "units": null
+            },
+            "SO4_7": {
+                "units": null
+            },
+            "DU002_7": {
+                "units": null
+            },
+            "PS_7": {
+                "units": null
+            },
+            "SS003_7": {
+                "units": null
+            },
+            "DU001_7": {
+                "units": null
+            },
+            "OCPHOBIC_7": {
+                "units": null
+            },
+            "BCPHILIC_7": {
+                "units": null
+            },
+            "MSA_7": {
+                "units": null
+            },
+            "SS001_7": {
+                "units": null
+            },
+            "AIRDENS_8": {
+                "units": null
+            },
+            "SO2_8": {
+                "units": null
+            },
+            "DELP_8": {
+                "units": null
+            },
+            "SS004_8": {
+                "units": null
+            },
+            "DU005_8": {
+                "units": null
+            },
+            "DU004_8": {
+                "units": null
+            },
+            "SS005_8": {
+                "units": null
+            },
+            "OCPHILIC_8": {
+                "units": null
+            },
+            "BCPHOBIC_8": {
+                "units": null
+            },
+            "SS002_8": {
+                "units": null
+            },
+            "DU003_8": {
+                "units": null
+            },
+            "DMS_8": {
+                "units": null
+            },
+            "SO4_8": {
+                "units": null
+            },
+            "DU002_8": {
+                "units": null
+            },
+            "PS_8": {
+                "units": null
+            },
+            "SS003_8": {
+                "units": null
+            },
+            "DU001_8": {
+                "units": null
+            },
+            "OCPHOBIC_8": {
+                "units": null
+            },
+            "BCPHILIC_8": {
+                "units": null
+            },
+            "MSA_8": {
+                "units": null
+            },
+            "SS001_8": {
+                "units": null
+            },
+            "AIRDENS_9": {
+                "units": null
+            },
+            "SO2_9": {
+                "units": null
+            },
+            "DELP_9": {
+                "units": null
+            },
+            "SS004_9": {
+                "units": null
+            },
+            "DU005_9": {
+                "units": null
+            },
+            "DU004_9": {
+                "units": null
+            },
+            "SS005_9": {
+                "units": null
+            },
+            "OCPHILIC_9": {
+                "units": null
+            },
+            "BCPHOBIC_9": {
+                "units": null
+            },
+            "SS002_9": {
+                "units": null
+            },
+            "DU003_9": {
+                "units": null
+            },
+            "DMS_9": {
+                "units": null
+            },
+            "SO4_9": {
+                "units": null
+            },
+            "DU002_9": {
+                "units": null
+            },
+            "PS_9": {
+                "units": null
+            },
+            "SS003_9": {
+                "units": null
+            },
+            "DU001_9": {
+                "units": null
+            },
+            "OCPHOBIC_9": {
+                "units": null
+            },
+            "BCPHILIC_9": {
+                "units": null
+            },
+            "MSA_9": {
+                "units": null
+            },
+            "SS001_9": {
+                "units": null
+            },
+            "AIRDENS_10": {
+                "units": null
+            },
+            "SO2_10": {
+                "units": null
+            },
+            "DELP_10": {
+                "units": null
+            },
+            "SS004_10": {
+                "units": null
+            },
+            "DU005_10": {
+                "units": null
+            },
+            "DU004_10": {
+                "units": null
+            },
+            "SS005_10": {
+                "units": null
+            },
+            "OCPHILIC_10": {
+                "units": null
+            },
+            "BCPHOBIC_10": {
+                "units": null
+            },
+            "SS002_10": {
+                "units": null
+            },
+            "DU003_10": {
+                "units": null
+            },
+            "DMS_10": {
+                "units": null
+            },
+            "SO4_10": {
+                "units": null
+            },
+            "DU002_10": {
+                "units": null
+            },
+            "PS_10": {
+                "units": null
+            },
+            "SS003_10": {
+                "units": null
+            },
+            "DU001_10": {
+                "units": null
+            },
+            "OCPHOBIC_10": {
+                "units": null
+            },
+            "BCPHILIC_10": {
+                "units": null
+            },
+            "MSA_10": {
+                "units": null
+            },
+            "SS001_10": {
+                "units": null
+            },
+            "AIRDENS_11": {
+                "units": null
+            },
+            "SO2_11": {
+                "units": null
+            },
+            "DELP_11": {
+                "units": null
+            },
+            "SS004_11": {
+                "units": null
+            },
+            "DU005_11": {
+                "units": null
+            },
+            "DU004_11": {
+                "units": null
+            },
+            "SS005_11": {
+                "units": null
+            },
+            "OCPHILIC_11": {
+                "units": null
+            },
+            "BCPHOBIC_11": {
+                "units": null
+            },
+            "SS002_11": {
+                "units": null
+            },
+            "DU003_11": {
+                "units": null
+            },
+            "DMS_11": {
+                "units": null
+            },
+            "SO4_11": {
+                "units": null
+            },
+            "DU002_11": {
+                "units": null
+            },
+            "PS_11": {
+                "units": null
+            },
+            "SS003_11": {
+                "units": null
+            },
+            "DU001_11": {
+                "units": null
+            },
+            "OCPHOBIC_11": {
+                "units": null
+            },
+            "BCPHILIC_11": {
+                "units": null
+            },
+            "MSA_11": {
+                "units": null
+            },
+            "SS001_11": {
+                "units": null
+            },
+            "AIRDENS_12": {
+                "units": null
+            },
+            "SO2_12": {
+                "units": null
+            },
+            "DELP_12": {
+                "units": null
+            },
+            "SS004_12": {
+                "units": null
+            },
+            "DU005_12": {
+                "units": null
+            },
+            "DU004_12": {
+                "units": null
+            },
+            "SS005_12": {
+                "units": null
+            },
+            "OCPHILIC_12": {
+                "units": null
+            },
+            "BCPHOBIC_12": {
+                "units": null
+            },
+            "SS002_12": {
+                "units": null
+            },
+            "DU003_12": {
+                "units": null
+            },
+            "DMS_12": {
+                "units": null
+            },
+            "SO4_12": {
+                "units": null
+            },
+            "DU002_12": {
+                "units": null
+            },
+            "PS_12": {
+                "units": null
+            },
+            "SS003_12": {
+                "units": null
+            },
+            "DU001_12": {
+                "units": null
+            },
+            "OCPHOBIC_12": {
+                "units": null
+            },
+            "BCPHILIC_12": {
+                "units": null
+            },
+            "MSA_12": {
+                "units": null
+            },
+            "SS001_12": {
+                "units": null
+            },
+            "AIRDENS_13": {
+                "units": null
+            },
+            "SO2_13": {
+                "units": null
+            },
+            "DELP_13": {
+                "units": null
+            },
+            "SS004_13": {
+                "units": null
+            },
+            "DU005_13": {
+                "units": null
+            },
+            "DU004_13": {
+                "units": null
+            },
+            "SS005_13": {
+                "units": null
+            },
+            "OCPHILIC_13": {
+                "units": null
+            },
+            "BCPHOBIC_13": {
+                "units": null
+            },
+            "SS002_13": {
+                "units": null
+            },
+            "DU003_13": {
+                "units": null
+            },
+            "DMS_13": {
+                "units": null
+            },
+            "SO4_13": {
+                "units": null
+            },
+            "DU002_13": {
+                "units": null
+            },
+            "PS_13": {
+                "units": null
+            },
+            "SS003_13": {
+                "units": null
+            },
+            "DU001_13": {
+                "units": null
+            },
+            "OCPHOBIC_13": {
+                "units": null
+            },
+            "BCPHILIC_13": {
+                "units": null
+            },
+            "MSA_13": {
+                "units": null
+            },
+            "SS001_13": {
+                "units": null
+            },
+            "AIRDENS_14": {
+                "units": null
+            },
+            "SO2_14": {
+                "units": null
+            },
+            "DELP_14": {
+                "units": null
+            },
+            "SS004_14": {
+                "units": null
+            },
+            "DU005_14": {
+                "units": null
+            },
+            "DU004_14": {
+                "units": null
+            },
+            "SS005_14": {
+                "units": null
+            },
+            "OCPHILIC_14": {
+                "units": null
+            },
+            "BCPHOBIC_14": {
+                "units": null
+            },
+            "SS002_14": {
+                "units": null
+            },
+            "DU003_14": {
+                "units": null
+            },
+            "DMS_14": {
+                "units": null
+            },
+            "SO4_14": {
+                "units": null
+            },
+            "DU002_14": {
+                "units": null
+            },
+            "PS_14": {
+                "units": null
+            },
+            "SS003_14": {
+                "units": null
+            },
+            "DU001_14": {
+                "units": null
+            },
+            "OCPHOBIC_14": {
+                "units": null
+            },
+            "BCPHILIC_14": {
+                "units": null
+            },
+            "MSA_14": {
+                "units": null
+            },
+            "SS001_14": {
+                "units": null
+            },
+            "AIRDENS_15": {
+                "units": null
+            },
+            "SO2_15": {
+                "units": null
+            },
+            "DELP_15": {
+                "units": null
+            },
+            "SS004_15": {
+                "units": null
+            },
+            "DU005_15": {
+                "units": null
+            },
+            "DU004_15": {
+                "units": null
+            },
+            "SS005_15": {
+                "units": null
+            },
+            "OCPHILIC_15": {
+                "units": null
+            },
+            "BCPHOBIC_15": {
+                "units": null
+            },
+            "SS002_15": {
+                "units": null
+            },
+            "DU003_15": {
+                "units": null
+            },
+            "DMS_15": {
+                "units": null
+            },
+            "SO4_15": {
+                "units": null
+            },
+            "DU002_15": {
+                "units": null
+            },
+            "PS_15": {
+                "units": null
+            },
+            "SS003_15": {
+                "units": null
+            },
+            "DU001_15": {
+                "units": null
+            },
+            "OCPHOBIC_15": {
+                "units": null
+            },
+            "BCPHILIC_15": {
+                "units": null
+            },
+            "MSA_15": {
+                "units": null
+            },
+            "SS001_15": {
+                "units": null
+            },
+            "AIRDENS_16": {
+                "units": null
+            },
+            "SO2_16": {
+                "units": null
+            },
+            "DELP_16": {
+                "units": null
+            },
+            "SS004_16": {
+                "units": null
+            },
+            "DU005_16": {
+                "units": null
+            },
+            "DU004_16": {
+                "units": null
+            },
+            "SS005_16": {
+                "units": null
+            },
+            "OCPHILIC_16": {
+                "units": null
+            },
+            "BCPHOBIC_16": {
+                "units": null
+            },
+            "SS002_16": {
+                "units": null
+            },
+            "DU003_16": {
+                "units": null
+            },
+            "DMS_16": {
+                "units": null
+            },
+            "SO4_16": {
+                "units": null
+            },
+            "DU002_16": {
+                "units": null
+            },
+            "PS_16": {
+                "units": null
+            },
+            "SS003_16": {
+                "units": null
+            },
+            "DU001_16": {
+                "units": null
+            },
+            "OCPHOBIC_16": {
+                "units": null
+            },
+            "BCPHILIC_16": {
+                "units": null
+            },
+            "MSA_16": {
+                "units": null
+            },
+            "SS001_16": {
+                "units": null
+            },
+            "AIRDENS_17": {
+                "units": null
+            },
+            "SO2_17": {
+                "units": null
+            },
+            "DELP_17": {
+                "units": null
+            },
+            "SS004_17": {
+                "units": null
+            },
+            "DU005_17": {
+                "units": null
+            },
+            "DU004_17": {
+                "units": null
+            },
+            "SS005_17": {
+                "units": null
+            },
+            "OCPHILIC_17": {
+                "units": null
+            },
+            "BCPHOBIC_17": {
+                "units": null
+            },
+            "SS002_17": {
+                "units": null
+            },
+            "DU003_17": {
+                "units": null
+            },
+            "DMS_17": {
+                "units": null
+            },
+            "SO4_17": {
+                "units": null
+            },
+            "DU002_17": {
+                "units": null
+            },
+            "PS_17": {
+                "units": null
+            },
+            "SS003_17": {
+                "units": null
+            },
+            "DU001_17": {
+                "units": null
+            },
+            "OCPHOBIC_17": {
+                "units": null
+            },
+            "BCPHILIC_17": {
+                "units": null
+            },
+            "MSA_17": {
+                "units": null
+            },
+            "SS001_17": {
+                "units": null
+            },
+            "AIRDENS_18": {
+                "units": null
+            },
+            "SO2_18": {
+                "units": null
+            },
+            "DELP_18": {
+                "units": null
+            },
+            "SS004_18": {
+                "units": null
+            },
+            "DU005_18": {
+                "units": null
+            },
+            "DU004_18": {
+                "units": null
+            },
+            "SS005_18": {
+                "units": null
+            },
+            "OCPHILIC_18": {
+                "units": null
+            },
+            "BCPHOBIC_18": {
+                "units": null
+            },
+            "SS002_18": {
+                "units": null
+            },
+            "DU003_18": {
+                "units": null
+            },
+            "DMS_18": {
+                "units": null
+            },
+            "SO4_18": {
+                "units": null
+            },
+            "DU002_18": {
+                "units": null
+            },
+            "PS_18": {
+                "units": null
+            },
+            "SS003_18": {
+                "units": null
+            },
+            "DU001_18": {
+                "units": null
+            },
+            "OCPHOBIC_18": {
+                "units": null
+            },
+            "BCPHILIC_18": {
+                "units": null
+            },
+            "MSA_18": {
+                "units": null
+            },
+            "SS001_18": {
+                "units": null
+            },
+            "AIRDENS_19": {
+                "units": null
+            },
+            "SO2_19": {
+                "units": null
+            },
+            "DELP_19": {
+                "units": null
+            },
+            "SS004_19": {
+                "units": null
+            },
+            "DU005_19": {
+                "units": null
+            },
+            "DU004_19": {
+                "units": null
+            },
+            "SS005_19": {
+                "units": null
+            },
+            "OCPHILIC_19": {
+                "units": null
+            },
+            "BCPHOBIC_19": {
+                "units": null
+            },
+            "SS002_19": {
+                "units": null
+            },
+            "DU003_19": {
+                "units": null
+            },
+            "DMS_19": {
+                "units": null
+            },
+            "SO4_19": {
+                "units": null
+            },
+            "DU002_19": {
+                "units": null
+            },
+            "PS_19": {
+                "units": null
+            },
+            "SS003_19": {
+                "units": null
+            },
+            "DU001_19": {
+                "units": null
+            },
+            "OCPHOBIC_19": {
+                "units": null
+            },
+            "BCPHILIC_19": {
+                "units": null
+            },
+            "MSA_19": {
+                "units": null
+            },
+            "SS001_19": {
+                "units": null
+            },
+            "AIRDENS_20": {
+                "units": null
+            },
+            "SO2_20": {
+                "units": null
+            },
+            "DELP_20": {
+                "units": null
+            },
+            "SS004_20": {
+                "units": null
+            },
+            "DU005_20": {
+                "units": null
+            },
+            "DU004_20": {
+                "units": null
+            },
+            "SS005_20": {
+                "units": null
+            },
+            "OCPHILIC_20": {
+                "units": null
+            },
+            "BCPHOBIC_20": {
+                "units": null
+            },
+            "SS002_20": {
+                "units": null
+            },
+            "DU003_20": {
+                "units": null
+            },
+            "DMS_20": {
+                "units": null
+            },
+            "SO4_20": {
+                "units": null
+            },
+            "DU002_20": {
+                "units": null
+            },
+            "PS_20": {
+                "units": null
+            },
+            "SS003_20": {
+                "units": null
+            },
+            "DU001_20": {
+                "units": null
+            },
+            "OCPHOBIC_20": {
+                "units": null
+            },
+            "BCPHILIC_20": {
+                "units": null
+            },
+            "MSA_20": {
+                "units": null
+            },
+            "SS001_20": {
+                "units": null
+            },
+            "AIRDENS_21": {
+                "units": null
+            },
+            "SO2_21": {
+                "units": null
+            },
+            "DELP_21": {
+                "units": null
+            },
+            "SS004_21": {
+                "units": null
+            },
+            "DU005_21": {
+                "units": null
+            },
+            "DU004_21": {
+                "units": null
+            },
+            "SS005_21": {
+                "units": null
+            },
+            "OCPHILIC_21": {
+                "units": null
+            },
+            "BCPHOBIC_21": {
+                "units": null
+            },
+            "SS002_21": {
+                "units": null
+            },
+            "DU003_21": {
+                "units": null
+            },
+            "DMS_21": {
+                "units": null
+            },
+            "SO4_21": {
+                "units": null
+            },
+            "DU002_21": {
+                "units": null
+            },
+            "PS_21": {
+                "units": null
+            },
+            "SS003_21": {
+                "units": null
+            },
+            "DU001_21": {
+                "units": null
+            },
+            "OCPHOBIC_21": {
+                "units": null
+            },
+            "BCPHILIC_21": {
+                "units": null
+            },
+            "MSA_21": {
+                "units": null
+            },
+            "SS001_21": {
+                "units": null
+            },
+            "AIRDENS_22": {
+                "units": null
+            },
+            "SO2_22": {
+                "units": null
+            },
+            "DELP_22": {
+                "units": null
+            },
+            "SS004_22": {
+                "units": null
+            },
+            "DU005_22": {
+                "units": null
+            },
+            "DU004_22": {
+                "units": null
+            },
+            "SS005_22": {
+                "units": null
+            },
+            "OCPHILIC_22": {
+                "units": null
+            },
+            "BCPHOBIC_22": {
+                "units": null
+            },
+            "SS002_22": {
+                "units": null
+            },
+            "DU003_22": {
+                "units": null
+            },
+            "DMS_22": {
+                "units": null
+            },
+            "SO4_22": {
+                "units": null
+            },
+            "DU002_22": {
+                "units": null
+            },
+            "PS_22": {
+                "units": null
+            },
+            "SS003_22": {
+                "units": null
+            },
+            "DU001_22": {
+                "units": null
+            },
+            "OCPHOBIC_22": {
+                "units": null
+            },
+            "BCPHILIC_22": {
+                "units": null
+            },
+            "MSA_22": {
+                "units": null
+            },
+            "SS001_22": {
+                "units": null
+            },
+            "AIRDENS_23": {
+                "units": null
+            },
+            "SO2_23": {
+                "units": null
+            },
+            "DELP_23": {
+                "units": null
+            },
+            "SS004_23": {
+                "units": null
+            },
+            "DU005_23": {
+                "units": null
+            },
+            "DU004_23": {
+                "units": null
+            },
+            "SS005_23": {
+                "units": null
+            },
+            "OCPHILIC_23": {
+                "units": null
+            },
+            "BCPHOBIC_23": {
+                "units": null
+            },
+            "SS002_23": {
+                "units": null
+            },
+            "DU003_23": {
+                "units": null
+            },
+            "DMS_23": {
+                "units": null
+            },
+            "SO4_23": {
+                "units": null
+            },
+            "DU002_23": {
+                "units": null
+            },
+            "PS_23": {
+                "units": null
+            },
+            "SS003_23": {
+                "units": null
+            },
+            "DU001_23": {
+                "units": null
+            },
+            "OCPHOBIC_23": {
+                "units": null
+            },
+            "BCPHILIC_23": {
+                "units": null
+            },
+            "MSA_23": {
+                "units": null
+            },
+            "SS001_23": {
+                "units": null
+            },
+            "AIRDENS_24": {
+                "units": null
+            },
+            "SO2_24": {
+                "units": null
+            },
+            "DELP_24": {
+                "units": null
+            },
+            "SS004_24": {
+                "units": null
+            },
+            "DU005_24": {
+                "units": null
+            },
+            "DU004_24": {
+                "units": null
+            },
+            "SS005_24": {
+                "units": null
+            },
+            "OCPHILIC_24": {
+                "units": null
+            },
+            "BCPHOBIC_24": {
+                "units": null
+            },
+            "SS002_24": {
+                "units": null
+            },
+            "DU003_24": {
+                "units": null
+            },
+            "DMS_24": {
+                "units": null
+            },
+            "SO4_24": {
+                "units": null
+            },
+            "DU002_24": {
+                "units": null
+            },
+            "PS_24": {
+                "units": null
+            },
+            "SS003_24": {
+                "units": null
+            },
+            "DU001_24": {
+                "units": null
+            },
+            "OCPHOBIC_24": {
+                "units": null
+            },
+            "BCPHILIC_24": {
+                "units": null
+            },
+            "MSA_24": {
+                "units": null
+            },
+            "SS001_24": {
+                "units": null
+            },
+            "AIRDENS_25": {
+                "units": null
+            },
+            "SO2_25": {
+                "units": null
+            },
+            "DELP_25": {
+                "units": null
+            },
+            "SS004_25": {
+                "units": null
+            },
+            "DU005_25": {
+                "units": null
+            },
+            "DU004_25": {
+                "units": null
+            },
+            "SS005_25": {
+                "units": null
+            },
+            "OCPHILIC_25": {
+                "units": null
+            },
+            "BCPHOBIC_25": {
+                "units": null
+            },
+            "SS002_25": {
+                "units": null
+            },
+            "DU003_25": {
+                "units": null
+            },
+            "DMS_25": {
+                "units": null
+            },
+            "SO4_25": {
+                "units": null
+            },
+            "DU002_25": {
+                "units": null
+            },
+            "PS_25": {
+                "units": null
+            },
+            "SS003_25": {
+                "units": null
+            },
+            "DU001_25": {
+                "units": null
+            },
+            "OCPHOBIC_25": {
+                "units": null
+            },
+            "BCPHILIC_25": {
+                "units": null
+            },
+            "MSA_25": {
+                "units": null
+            },
+            "SS001_25": {
+                "units": null
+            },
+            "AIRDENS_26": {
+                "units": null
+            },
+            "SO2_26": {
+                "units": null
+            },
+            "DELP_26": {
+                "units": null
+            },
+            "SS004_26": {
+                "units": null
+            },
+            "DU005_26": {
+                "units": null
+            },
+            "DU004_26": {
+                "units": null
+            },
+            "SS005_26": {
+                "units": null
+            },
+            "OCPHILIC_26": {
+                "units": null
+            },
+            "BCPHOBIC_26": {
+                "units": null
+            },
+            "SS002_26": {
+                "units": null
+            },
+            "DU003_26": {
+                "units": null
+            },
+            "DMS_26": {
+                "units": null
+            },
+            "SO4_26": {
+                "units": null
+            },
+            "DU002_26": {
+                "units": null
+            },
+            "PS_26": {
+                "units": null
+            },
+            "SS003_26": {
+                "units": null
+            },
+            "DU001_26": {
+                "units": null
+            },
+            "OCPHOBIC_26": {
+                "units": null
+            },
+            "BCPHILIC_26": {
+                "units": null
+            },
+            "MSA_26": {
+                "units": null
+            },
+            "SS001_26": {
+                "units": null
+            },
+            "AIRDENS_27": {
+                "units": null
+            },
+            "SO2_27": {
+                "units": null
+            },
+            "DELP_27": {
+                "units": null
+            },
+            "SS004_27": {
+                "units": null
+            },
+            "DU005_27": {
+                "units": null
+            },
+            "DU004_27": {
+                "units": null
+            },
+            "SS005_27": {
+                "units": null
+            },
+            "OCPHILIC_27": {
+                "units": null
+            },
+            "BCPHOBIC_27": {
+                "units": null
+            },
+            "SS002_27": {
+                "units": null
+            },
+            "DU003_27": {
+                "units": null
+            },
+            "DMS_27": {
+                "units": null
+            },
+            "SO4_27": {
+                "units": null
+            },
+            "DU002_27": {
+                "units": null
+            },
+            "PS_27": {
+                "units": null
+            },
+            "SS003_27": {
+                "units": null
+            },
+            "DU001_27": {
+                "units": null
+            },
+            "OCPHOBIC_27": {
+                "units": null
+            },
+            "BCPHILIC_27": {
+                "units": null
+            },
+            "MSA_27": {
+                "units": null
+            },
+            "SS001_27": {
+                "units": null
+            },
+            "AIRDENS_28": {
+                "units": null
+            },
+            "SO2_28": {
+                "units": null
+            },
+            "DELP_28": {
+                "units": null
+            },
+            "SS004_28": {
+                "units": null
+            },
+            "DU005_28": {
+                "units": null
+            },
+            "DU004_28": {
+                "units": null
+            },
+            "SS005_28": {
+                "units": null
+            },
+            "OCPHILIC_28": {
+                "units": null
+            },
+            "BCPHOBIC_28": {
+                "units": null
+            },
+            "SS002_28": {
+                "units": null
+            },
+            "DU003_28": {
+                "units": null
+            },
+            "DMS_28": {
+                "units": null
+            },
+            "SO4_28": {
+                "units": null
+            },
+            "DU002_28": {
+                "units": null
+            },
+            "PS_28": {
+                "units": null
+            },
+            "SS003_28": {
+                "units": null
+            },
+            "DU001_28": {
+                "units": null
+            },
+            "OCPHOBIC_28": {
+                "units": null
+            },
+            "BCPHILIC_28": {
+                "units": null
+            },
+            "MSA_28": {
+                "units": null
+            },
+            "SS001_28": {
+                "units": null
+            },
+            "AIRDENS_29": {
+                "units": null
+            },
+            "SO2_29": {
+                "units": null
+            },
+            "DELP_29": {
+                "units": null
+            },
+            "SS004_29": {
+                "units": null
+            },
+            "DU005_29": {
+                "units": null
+            },
+            "DU004_29": {
+                "units": null
+            },
+            "SS005_29": {
+                "units": null
+            },
+            "OCPHILIC_29": {
+                "units": null
+            },
+            "BCPHOBIC_29": {
+                "units": null
+            },
+            "SS002_29": {
+                "units": null
+            },
+            "DU003_29": {
+                "units": null
+            },
+            "DMS_29": {
+                "units": null
+            },
+            "SO4_29": {
+                "units": null
+            },
+            "DU002_29": {
+                "units": null
+            },
+            "PS_29": {
+                "units": null
+            },
+            "SS003_29": {
+                "units": null
+            },
+            "DU001_29": {
+                "units": null
+            },
+            "OCPHOBIC_29": {
+                "units": null
+            },
+            "BCPHILIC_29": {
+                "units": null
+            },
+            "MSA_29": {
+                "units": null
+            },
+            "SS001_29": {
+                "units": null
+            },
+            "AIRDENS_30": {
+                "units": null
+            },
+            "SO2_30": {
+                "units": null
+            },
+            "DELP_30": {
+                "units": null
+            },
+            "SS004_30": {
+                "units": null
+            },
+            "DU005_30": {
+                "units": null
+            },
+            "DU004_30": {
+                "units": null
+            },
+            "SS005_30": {
+                "units": null
+            },
+            "OCPHILIC_30": {
+                "units": null
+            },
+            "BCPHOBIC_30": {
+                "units": null
+            },
+            "SS002_30": {
+                "units": null
+            },
+            "DU003_30": {
+                "units": null
+            },
+            "DMS_30": {
+                "units": null
+            },
+            "SO4_30": {
+                "units": null
+            },
+            "DU002_30": {
+                "units": null
+            },
+            "PS_30": {
+                "units": null
+            },
+            "SS003_30": {
+                "units": null
+            },
+            "DU001_30": {
+                "units": null
+            },
+            "OCPHOBIC_30": {
+                "units": null
+            },
+            "BCPHILIC_30": {
+                "units": null
+            },
+            "MSA_30": {
+                "units": null
+            },
+            "SS001_30": {
+                "units": null
+            },
+            "AIRDENS_31": {
+                "units": null
+            },
+            "SO2_31": {
+                "units": null
+            },
+            "DELP_31": {
+                "units": null
+            },
+            "SS004_31": {
+                "units": null
+            },
+            "DU005_31": {
+                "units": null
+            },
+            "DU004_31": {
+                "units": null
+            },
+            "SS005_31": {
+                "units": null
+            },
+            "OCPHILIC_31": {
+                "units": null
+            },
+            "BCPHOBIC_31": {
+                "units": null
+            },
+            "SS002_31": {
+                "units": null
+            },
+            "DU003_31": {
+                "units": null
+            },
+            "DMS_31": {
+                "units": null
+            },
+            "SO4_31": {
+                "units": null
+            },
+            "DU002_31": {
+                "units": null
+            },
+            "PS_31": {
+                "units": null
+            },
+            "SS003_31": {
+                "units": null
+            },
+            "DU001_31": {
+                "units": null
+            },
+            "OCPHOBIC_31": {
+                "units": null
+            },
+            "BCPHILIC_31": {
+                "units": null
+            },
+            "MSA_31": {
+                "units": null
+            },
+            "SS001_31": {
+                "units": null
+            },
+            "AIRDENS_32": {
+                "units": null
+            },
+            "SO2_32": {
+                "units": null
+            },
+            "DELP_32": {
+                "units": null
+            },
+            "SS004_32": {
+                "units": null
+            },
+            "DU005_32": {
+                "units": null
+            },
+            "DU004_32": {
+                "units": null
+            },
+            "SS005_32": {
+                "units": null
+            },
+            "OCPHILIC_32": {
+                "units": null
+            },
+            "BCPHOBIC_32": {
+                "units": null
+            },
+            "SS002_32": {
+                "units": null
+            },
+            "DU003_32": {
+                "units": null
+            },
+            "DMS_32": {
+                "units": null
+            },
+            "SO4_32": {
+                "units": null
+            },
+            "DU002_32": {
+                "units": null
+            },
+            "PS_32": {
+                "units": null
+            },
+            "SS003_32": {
+                "units": null
+            },
+            "DU001_32": {
+                "units": null
+            },
+            "OCPHOBIC_32": {
+                "units": null
+            },
+            "BCPHILIC_32": {
+                "units": null
+            },
+            "MSA_32": {
+                "units": null
+            },
+            "SS001_32": {
+                "units": null
+            },
+            "AIRDENS_33": {
+                "units": null
+            },
+            "SO2_33": {
+                "units": null
+            },
+            "DELP_33": {
+                "units": null
+            },
+            "SS004_33": {
+                "units": null
+            },
+            "DU005_33": {
+                "units": null
+            },
+            "DU004_33": {
+                "units": null
+            },
+            "SS005_33": {
+                "units": null
+            },
+            "OCPHILIC_33": {
+                "units": null
+            },
+            "BCPHOBIC_33": {
+                "units": null
+            },
+            "SS002_33": {
+                "units": null
+            },
+            "DU003_33": {
+                "units": null
+            },
+            "DMS_33": {
+                "units": null
+            },
+            "SO4_33": {
+                "units": null
+            },
+            "DU002_33": {
+                "units": null
+            },
+            "PS_33": {
+                "units": null
+            },
+            "SS003_33": {
+                "units": null
+            },
+            "DU001_33": {
+                "units": null
+            },
+            "OCPHOBIC_33": {
+                "units": null
+            },
+            "BCPHILIC_33": {
+                "units": null
+            },
+            "MSA_33": {
+                "units": null
+            },
+            "SS001_33": {
+                "units": null
+            },
+            "AIRDENS_34": {
+                "units": null
+            },
+            "SO2_34": {
+                "units": null
+            },
+            "DELP_34": {
+                "units": null
+            },
+            "SS004_34": {
+                "units": null
+            },
+            "DU005_34": {
+                "units": null
+            },
+            "DU004_34": {
+                "units": null
+            },
+            "SS005_34": {
+                "units": null
+            },
+            "OCPHILIC_34": {
+                "units": null
+            },
+            "BCPHOBIC_34": {
+                "units": null
+            },
+            "SS002_34": {
+                "units": null
+            },
+            "DU003_34": {
+                "units": null
+            },
+            "DMS_34": {
+                "units": null
+            },
+            "SO4_34": {
+                "units": null
+            },
+            "DU002_34": {
+                "units": null
+            },
+            "PS_34": {
+                "units": null
+            },
+            "SS003_34": {
+                "units": null
+            },
+            "DU001_34": {
+                "units": null
+            },
+            "OCPHOBIC_34": {
+                "units": null
+            },
+            "BCPHILIC_34": {
+                "units": null
+            },
+            "MSA_34": {
+                "units": null
+            },
+            "SS001_34": {
+                "units": null
+            },
+            "AIRDENS_35": {
+                "units": null
+            },
+            "SO2_35": {
+                "units": null
+            },
+            "DELP_35": {
+                "units": null
+            },
+            "SS004_35": {
+                "units": null
+            },
+            "DU005_35": {
+                "units": null
+            },
+            "DU004_35": {
+                "units": null
+            },
+            "SS005_35": {
+                "units": null
+            },
+            "OCPHILIC_35": {
+                "units": null
+            },
+            "BCPHOBIC_35": {
+                "units": null
+            },
+            "SS002_35": {
+                "units": null
+            },
+            "DU003_35": {
+                "units": null
+            },
+            "DMS_35": {
+                "units": null
+            },
+            "SO4_35": {
+                "units": null
+            },
+            "DU002_35": {
+                "units": null
+            },
+            "PS_35": {
+                "units": null
+            },
+            "SS003_35": {
+                "units": null
+            },
+            "DU001_35": {
+                "units": null
+            },
+            "OCPHOBIC_35": {
+                "units": null
+            },
+            "BCPHILIC_35": {
+                "units": null
+            },
+            "MSA_35": {
+                "units": null
+            },
+            "SS001_35": {
+                "units": null
+            },
+            "AIRDENS_36": {
+                "units": null
+            },
+            "SO2_36": {
+                "units": null
+            },
+            "DELP_36": {
+                "units": null
+            },
+            "SS004_36": {
+                "units": null
+            },
+            "DU005_36": {
+                "units": null
+            },
+            "DU004_36": {
+                "units": null
+            },
+            "SS005_36": {
+                "units": null
+            },
+            "OCPHILIC_36": {
+                "units": null
+            },
+            "BCPHOBIC_36": {
+                "units": null
+            },
+            "SS002_36": {
+                "units": null
+            },
+            "DU003_36": {
+                "units": null
+            },
+            "DMS_36": {
+                "units": null
+            },
+            "SO4_36": {
+                "units": null
+            },
+            "DU002_36": {
+                "units": null
+            },
+            "PS_36": {
+                "units": null
+            },
+            "SS003_36": {
+                "units": null
+            },
+            "DU001_36": {
+                "units": null
+            },
+            "OCPHOBIC_36": {
+                "units": null
+            },
+            "BCPHILIC_36": {
+                "units": null
+            },
+            "MSA_36": {
+                "units": null
+            },
+            "SS001_36": {
+                "units": null
+            },
+            "AIRDENS_37": {
+                "units": null
+            },
+            "SO2_37": {
+                "units": null
+            },
+            "DELP_37": {
+                "units": null
+            },
+            "SS004_37": {
+                "units": null
+            },
+            "DU005_37": {
+                "units": null
+            },
+            "DU004_37": {
+                "units": null
+            },
+            "SS005_37": {
+                "units": null
+            },
+            "OCPHILIC_37": {
+                "units": null
+            },
+            "BCPHOBIC_37": {
+                "units": null
+            },
+            "SS002_37": {
+                "units": null
+            },
+            "DU003_37": {
+                "units": null
+            },
+            "DMS_37": {
+                "units": null
+            },
+            "SO4_37": {
+                "units": null
+            },
+            "DU002_37": {
+                "units": null
+            },
+            "PS_37": {
+                "units": null
+            },
+            "SS003_37": {
+                "units": null
+            },
+            "DU001_37": {
+                "units": null
+            },
+            "OCPHOBIC_37": {
+                "units": null
+            },
+            "BCPHILIC_37": {
+                "units": null
+            },
+            "MSA_37": {
+                "units": null
+            },
+            "SS001_37": {
+                "units": null
+            },
+            "AIRDENS_38": {
+                "units": null
+            },
+            "SO2_38": {
+                "units": null
+            },
+            "DELP_38": {
+                "units": null
+            },
+            "SS004_38": {
+                "units": null
+            },
+            "DU005_38": {
+                "units": null
+            },
+            "DU004_38": {
+                "units": null
+            },
+            "SS005_38": {
+                "units": null
+            },
+            "OCPHILIC_38": {
+                "units": null
+            },
+            "BCPHOBIC_38": {
+                "units": null
+            },
+            "SS002_38": {
+                "units": null
+            },
+            "DU003_38": {
+                "units": null
+            },
+            "DMS_38": {
+                "units": null
+            },
+            "SO4_38": {
+                "units": null
+            },
+            "DU002_38": {
+                "units": null
+            },
+            "PS_38": {
+                "units": null
+            },
+            "SS003_38": {
+                "units": null
+            },
+            "DU001_38": {
+                "units": null
+            },
+            "OCPHOBIC_38": {
+                "units": null
+            },
+            "BCPHILIC_38": {
+                "units": null
+            },
+            "MSA_38": {
+                "units": null
+            },
+            "SS001_38": {
+                "units": null
+            },
+            "AIRDENS_39": {
+                "units": null
+            },
+            "SO2_39": {
+                "units": null
+            },
+            "DELP_39": {
+                "units": null
+            },
+            "SS004_39": {
+                "units": null
+            },
+            "DU005_39": {
+                "units": null
+            },
+            "DU004_39": {
+                "units": null
+            },
+            "SS005_39": {
+                "units": null
+            },
+            "OCPHILIC_39": {
+                "units": null
+            },
+            "BCPHOBIC_39": {
+                "units": null
+            },
+            "SS002_39": {
+                "units": null
+            },
+            "DU003_39": {
+                "units": null
+            },
+            "DMS_39": {
+                "units": null
+            },
+            "SO4_39": {
+                "units": null
+            },
+            "DU002_39": {
+                "units": null
+            },
+            "PS_39": {
+                "units": null
+            },
+            "SS003_39": {
+                "units": null
+            },
+            "DU001_39": {
+                "units": null
+            },
+            "OCPHOBIC_39": {
+                "units": null
+            },
+            "BCPHILIC_39": {
+                "units": null
+            },
+            "MSA_39": {
+                "units": null
+            },
+            "SS001_39": {
+                "units": null
+            },
+            "AIRDENS_40": {
+                "units": null
+            },
+            "SO2_40": {
+                "units": null
+            },
+            "DELP_40": {
+                "units": null
+            },
+            "SS004_40": {
+                "units": null
+            },
+            "DU005_40": {
+                "units": null
+            },
+            "DU004_40": {
+                "units": null
+            },
+            "SS005_40": {
+                "units": null
+            },
+            "OCPHILIC_40": {
+                "units": null
+            },
+            "BCPHOBIC_40": {
+                "units": null
+            },
+            "SS002_40": {
+                "units": null
+            },
+            "DU003_40": {
+                "units": null
+            },
+            "DMS_40": {
+                "units": null
+            },
+            "SO4_40": {
+                "units": null
+            },
+            "DU002_40": {
+                "units": null
+            },
+            "PS_40": {
+                "units": null
+            },
+            "SS003_40": {
+                "units": null
+            },
+            "DU001_40": {
+                "units": null
+            },
+            "OCPHOBIC_40": {
+                "units": null
+            },
+            "BCPHILIC_40": {
+                "units": null
+            },
+            "MSA_40": {
+                "units": null
+            },
+            "SS001_40": {
+                "units": null
+            },
+            "AIRDENS_41": {
+                "units": null
+            },
+            "SO2_41": {
+                "units": null
+            },
+            "DELP_41": {
+                "units": null
+            },
+            "SS004_41": {
+                "units": null
+            },
+            "DU005_41": {
+                "units": null
+            },
+            "DU004_41": {
+                "units": null
+            },
+            "SS005_41": {
+                "units": null
+            },
+            "OCPHILIC_41": {
+                "units": null
+            },
+            "BCPHOBIC_41": {
+                "units": null
+            },
+            "SS002_41": {
+                "units": null
+            },
+            "DU003_41": {
+                "units": null
+            },
+            "DMS_41": {
+                "units": null
+            },
+            "SO4_41": {
+                "units": null
+            },
+            "DU002_41": {
+                "units": null
+            },
+            "PS_41": {
+                "units": null
+            },
+            "SS003_41": {
+                "units": null
+            },
+            "DU001_41": {
+                "units": null
+            },
+            "OCPHOBIC_41": {
+                "units": null
+            },
+            "BCPHILIC_41": {
+                "units": null
+            },
+            "MSA_41": {
+                "units": null
+            },
+            "SS001_41": {
+                "units": null
+            },
+            "AIRDENS_42": {
+                "units": null
+            },
+            "SO2_42": {
+                "units": null
+            },
+            "DELP_42": {
+                "units": null
+            },
+            "SS004_42": {
+                "units": null
+            },
+            "DU005_42": {
+                "units": null
+            },
+            "DU004_42": {
+                "units": null
+            },
+            "SS005_42": {
+                "units": null
+            },
+            "OCPHILIC_42": {
+                "units": null
+            },
+            "BCPHOBIC_42": {
+                "units": null
+            },
+            "SS002_42": {
+                "units": null
+            },
+            "DU003_42": {
+                "units": null
+            },
+            "DMS_42": {
+                "units": null
+            },
+            "SO4_42": {
+                "units": null
+            },
+            "DU002_42": {
+                "units": null
+            },
+            "PS_42": {
+                "units": null
+            },
+            "SS003_42": {
+                "units": null
+            },
+            "DU001_42": {
+                "units": null
+            },
+            "OCPHOBIC_42": {
+                "units": null
+            },
+            "BCPHILIC_42": {
+                "units": null
+            },
+            "MSA_42": {
+                "units": null
+            },
+            "SS001_42": {
+                "units": null
+            },
+            "AIRDENS_43": {
+                "units": null
+            },
+            "SO2_43": {
+                "units": null
+            },
+            "DELP_43": {
+                "units": null
+            },
+            "SS004_43": {
+                "units": null
+            },
+            "DU005_43": {
+                "units": null
+            },
+            "DU004_43": {
+                "units": null
+            },
+            "SS005_43": {
+                "units": null
+            },
+            "OCPHILIC_43": {
+                "units": null
+            },
+            "BCPHOBIC_43": {
+                "units": null
+            },
+            "SS002_43": {
+                "units": null
+            },
+            "DU003_43": {
+                "units": null
+            },
+            "DMS_43": {
+                "units": null
+            },
+            "SO4_43": {
+                "units": null
+            },
+            "DU002_43": {
+                "units": null
+            },
+            "PS_43": {
+                "units": null
+            },
+            "SS003_43": {
+                "units": null
+            },
+            "DU001_43": {
+                "units": null
+            },
+            "OCPHOBIC_43": {
+                "units": null
+            },
+            "BCPHILIC_43": {
+                "units": null
+            },
+            "MSA_43": {
+                "units": null
+            },
+            "SS001_43": {
+                "units": null
+            },
+            "AIRDENS_44": {
+                "units": null
+            },
+            "SO2_44": {
+                "units": null
+            },
+            "DELP_44": {
+                "units": null
+            },
+            "SS004_44": {
+                "units": null
+            },
+            "DU005_44": {
+                "units": null
+            },
+            "DU004_44": {
+                "units": null
+            },
+            "SS005_44": {
+                "units": null
+            },
+            "OCPHILIC_44": {
+                "units": null
+            },
+            "BCPHOBIC_44": {
+                "units": null
+            },
+            "SS002_44": {
+                "units": null
+            },
+            "DU003_44": {
+                "units": null
+            },
+            "DMS_44": {
+                "units": null
+            },
+            "SO4_44": {
+                "units": null
+            },
+            "DU002_44": {
+                "units": null
+            },
+            "PS_44": {
+                "units": null
+            },
+            "SS003_44": {
+                "units": null
+            },
+            "DU001_44": {
+                "units": null
+            },
+            "OCPHOBIC_44": {
+                "units": null
+            },
+            "BCPHILIC_44": {
+                "units": null
+            },
+            "MSA_44": {
+                "units": null
+            },
+            "SS001_44": {
+                "units": null
+            },
+            "AIRDENS_45": {
+                "units": null
+            },
+            "SO2_45": {
+                "units": null
+            },
+            "DELP_45": {
+                "units": null
+            },
+            "SS004_45": {
+                "units": null
+            },
+            "DU005_45": {
+                "units": null
+            },
+            "DU004_45": {
+                "units": null
+            },
+            "SS005_45": {
+                "units": null
+            },
+            "OCPHILIC_45": {
+                "units": null
+            },
+            "BCPHOBIC_45": {
+                "units": null
+            },
+            "SS002_45": {
+                "units": null
+            },
+            "DU003_45": {
+                "units": null
+            },
+            "DMS_45": {
+                "units": null
+            },
+            "SO4_45": {
+                "units": null
+            },
+            "DU002_45": {
+                "units": null
+            },
+            "PS_45": {
+                "units": null
+            },
+            "SS003_45": {
+                "units": null
+            },
+            "DU001_45": {
+                "units": null
+            },
+            "OCPHOBIC_45": {
+                "units": null
+            },
+            "BCPHILIC_45": {
+                "units": null
+            },
+            "MSA_45": {
+                "units": null
+            },
+            "SS001_45": {
+                "units": null
+            },
+            "AIRDENS_46": {
+                "units": null
+            },
+            "SO2_46": {
+                "units": null
+            },
+            "DELP_46": {
+                "units": null
+            },
+            "SS004_46": {
+                "units": null
+            },
+            "DU005_46": {
+                "units": null
+            },
+            "DU004_46": {
+                "units": null
+            },
+            "SS005_46": {
+                "units": null
+            },
+            "OCPHILIC_46": {
+                "units": null
+            },
+            "BCPHOBIC_46": {
+                "units": null
+            },
+            "SS002_46": {
+                "units": null
+            },
+            "DU003_46": {
+                "units": null
+            },
+            "DMS_46": {
+                "units": null
+            },
+            "SO4_46": {
+                "units": null
+            },
+            "DU002_46": {
+                "units": null
+            },
+            "PS_46": {
+                "units": null
+            },
+            "SS003_46": {
+                "units": null
+            },
+            "DU001_46": {
+                "units": null
+            },
+            "OCPHOBIC_46": {
+                "units": null
+            },
+            "BCPHILIC_46": {
+                "units": null
+            },
+            "MSA_46": {
+                "units": null
+            },
+            "SS001_46": {
+                "units": null
+            },
+            "AIRDENS_47": {
+                "units": null
+            },
+            "SO2_47": {
+                "units": null
+            },
+            "DELP_47": {
+                "units": null
+            },
+            "SS004_47": {
+                "units": null
+            },
+            "DU005_47": {
+                "units": null
+            },
+            "DU004_47": {
+                "units": null
+            },
+            "SS005_47": {
+                "units": null
+            },
+            "OCPHILIC_47": {
+                "units": null
+            },
+            "BCPHOBIC_47": {
+                "units": null
+            },
+            "SS002_47": {
+                "units": null
+            },
+            "DU003_47": {
+                "units": null
+            },
+            "DMS_47": {
+                "units": null
+            },
+            "SO4_47": {
+                "units": null
+            },
+            "DU002_47": {
+                "units": null
+            },
+            "PS_47": {
+                "units": null
+            },
+            "SS003_47": {
+                "units": null
+            },
+            "DU001_47": {
+                "units": null
+            },
+            "OCPHOBIC_47": {
+                "units": null
+            },
+            "BCPHILIC_47": {
+                "units": null
+            },
+            "MSA_47": {
+                "units": null
+            },
+            "SS001_47": {
+                "units": null
+            },
+            "AIRDENS_48": {
+                "units": null
+            },
+            "SO2_48": {
+                "units": null
+            },
+            "DELP_48": {
+                "units": null
+            },
+            "SS004_48": {
+                "units": null
+            },
+            "DU005_48": {
+                "units": null
+            },
+            "DU004_48": {
+                "units": null
+            },
+            "SS005_48": {
+                "units": null
+            },
+            "OCPHILIC_48": {
+                "units": null
+            },
+            "BCPHOBIC_48": {
+                "units": null
+            },
+            "SS002_48": {
+                "units": null
+            },
+            "DU003_48": {
+                "units": null
+            },
+            "DMS_48": {
+                "units": null
+            },
+            "SO4_48": {
+                "units": null
+            },
+            "DU002_48": {
+                "units": null
+            },
+            "PS_48": {
+                "units": null
+            },
+            "SS003_48": {
+                "units": null
+            },
+            "DU001_48": {
+                "units": null
+            },
+            "OCPHOBIC_48": {
+                "units": null
+            },
+            "BCPHILIC_48": {
+                "units": null
+            },
+            "MSA_48": {
+                "units": null
+            },
+            "SS001_48": {
+                "units": null
+            },
+            "AIRDENS_49": {
+                "units": null
+            },
+            "SO2_49": {
+                "units": null
+            },
+            "DELP_49": {
+                "units": null
+            },
+            "SS004_49": {
+                "units": null
+            },
+            "DU005_49": {
+                "units": null
+            },
+            "DU004_49": {
+                "units": null
+            },
+            "SS005_49": {
+                "units": null
+            },
+            "OCPHILIC_49": {
+                "units": null
+            },
+            "BCPHOBIC_49": {
+                "units": null
+            },
+            "SS002_49": {
+                "units": null
+            },
+            "DU003_49": {
+                "units": null
+            },
+            "DMS_49": {
+                "units": null
+            },
+            "SO4_49": {
+                "units": null
+            },
+            "DU002_49": {
+                "units": null
+            },
+            "PS_49": {
+                "units": null
+            },
+            "SS003_49": {
+                "units": null
+            },
+            "DU001_49": {
+                "units": null
+            },
+            "OCPHOBIC_49": {
+                "units": null
+            },
+            "BCPHILIC_49": {
+                "units": null
+            },
+            "MSA_49": {
+                "units": null
+            },
+            "SS001_49": {
+                "units": null
+            },
+            "AIRDENS_50": {
+                "units": null
+            },
+            "SO2_50": {
+                "units": null
+            },
+            "DELP_50": {
+                "units": null
+            },
+            "SS004_50": {
+                "units": null
+            },
+            "DU005_50": {
+                "units": null
+            },
+            "DU004_50": {
+                "units": null
+            },
+            "SS005_50": {
+                "units": null
+            },
+            "OCPHILIC_50": {
+                "units": null
+            },
+            "BCPHOBIC_50": {
+                "units": null
+            },
+            "SS002_50": {
+                "units": null
+            },
+            "DU003_50": {
+                "units": null
+            },
+            "DMS_50": {
+                "units": null
+            },
+            "SO4_50": {
+                "units": null
+            },
+            "DU002_50": {
+                "units": null
+            },
+            "PS_50": {
+                "units": null
+            },
+            "SS003_50": {
+                "units": null
+            },
+            "DU001_50": {
+                "units": null
+            },
+            "OCPHOBIC_50": {
+                "units": null
+            },
+            "BCPHILIC_50": {
+                "units": null
+            },
+            "MSA_50": {
+                "units": null
+            },
+            "SS001_50": {
+                "units": null
+            },
+            "AIRDENS_51": {
+                "units": null
+            },
+            "SO2_51": {
+                "units": null
+            },
+            "DELP_51": {
+                "units": null
+            },
+            "SS004_51": {
+                "units": null
+            },
+            "DU005_51": {
+                "units": null
+            },
+            "DU004_51": {
+                "units": null
+            },
+            "SS005_51": {
+                "units": null
+            },
+            "OCPHILIC_51": {
+                "units": null
+            },
+            "BCPHOBIC_51": {
+                "units": null
+            },
+            "SS002_51": {
+                "units": null
+            },
+            "DU003_51": {
+                "units": null
+            },
+            "DMS_51": {
+                "units": null
+            },
+            "SO4_51": {
+                "units": null
+            },
+            "DU002_51": {
+                "units": null
+            },
+            "PS_51": {
+                "units": null
+            },
+            "SS003_51": {
+                "units": null
+            },
+            "DU001_51": {
+                "units": null
+            },
+            "OCPHOBIC_51": {
+                "units": null
+            },
+            "BCPHILIC_51": {
+                "units": null
+            },
+            "MSA_51": {
+                "units": null
+            },
+            "SS001_51": {
+                "units": null
+            },
+            "AIRDENS_52": {
+                "units": null
+            },
+            "SO2_52": {
+                "units": null
+            },
+            "DELP_52": {
+                "units": null
+            },
+            "SS004_52": {
+                "units": null
+            },
+            "DU005_52": {
+                "units": null
+            },
+            "DU004_52": {
+                "units": null
+            },
+            "SS005_52": {
+                "units": null
+            },
+            "OCPHILIC_52": {
+                "units": null
+            },
+            "BCPHOBIC_52": {
+                "units": null
+            },
+            "SS002_52": {
+                "units": null
+            },
+            "DU003_52": {
+                "units": null
+            },
+            "DMS_52": {
+                "units": null
+            },
+            "SO4_52": {
+                "units": null
+            },
+            "DU002_52": {
+                "units": null
+            },
+            "PS_52": {
+                "units": null
+            },
+            "SS003_52": {
+                "units": null
+            },
+            "DU001_52": {
+                "units": null
+            },
+            "OCPHOBIC_52": {
+                "units": null
+            },
+            "BCPHILIC_52": {
+                "units": null
+            },
+            "MSA_52": {
+                "units": null
+            },
+            "SS001_52": {
+                "units": null
+            },
+            "AIRDENS_53": {
+                "units": null
+            },
+            "SO2_53": {
+                "units": null
+            },
+            "DELP_53": {
+                "units": null
+            },
+            "SS004_53": {
+                "units": null
+            },
+            "DU005_53": {
+                "units": null
+            },
+            "DU004_53": {
+                "units": null
+            },
+            "SS005_53": {
+                "units": null
+            },
+            "OCPHILIC_53": {
+                "units": null
+            },
+            "BCPHOBIC_53": {
+                "units": null
+            },
+            "SS002_53": {
+                "units": null
+            },
+            "DU003_53": {
+                "units": null
+            },
+            "DMS_53": {
+                "units": null
+            },
+            "SO4_53": {
+                "units": null
+            },
+            "DU002_53": {
+                "units": null
+            },
+            "PS_53": {
+                "units": null
+            },
+            "SS003_53": {
+                "units": null
+            },
+            "DU001_53": {
+                "units": null
+            },
+            "OCPHOBIC_53": {
+                "units": null
+            },
+            "BCPHILIC_53": {
+                "units": null
+            },
+            "MSA_53": {
+                "units": null
+            },
+            "SS001_53": {
+                "units": null
+            },
+            "AIRDENS_54": {
+                "units": null
+            },
+            "SO2_54": {
+                "units": null
+            },
+            "DELP_54": {
+                "units": null
+            },
+            "SS004_54": {
+                "units": null
+            },
+            "DU005_54": {
+                "units": null
+            },
+            "DU004_54": {
+                "units": null
+            },
+            "SS005_54": {
+                "units": null
+            },
+            "OCPHILIC_54": {
+                "units": null
+            },
+            "BCPHOBIC_54": {
+                "units": null
+            },
+            "SS002_54": {
+                "units": null
+            },
+            "DU003_54": {
+                "units": null
+            },
+            "DMS_54": {
+                "units": null
+            },
+            "SO4_54": {
+                "units": null
+            },
+            "DU002_54": {
+                "units": null
+            },
+            "PS_54": {
+                "units": null
+            },
+            "SS003_54": {
+                "units": null
+            },
+            "DU001_54": {
+                "units": null
+            },
+            "OCPHOBIC_54": {
+                "units": null
+            },
+            "BCPHILIC_54": {
+                "units": null
+            },
+            "MSA_54": {
+                "units": null
+            },
+            "SS001_54": {
+                "units": null
+            },
+            "AIRDENS_55": {
+                "units": null
+            },
+            "SO2_55": {
+                "units": null
+            },
+            "DELP_55": {
+                "units": null
+            },
+            "SS004_55": {
+                "units": null
+            },
+            "DU005_55": {
+                "units": null
+            },
+            "DU004_55": {
+                "units": null
+            },
+            "SS005_55": {
+                "units": null
+            },
+            "OCPHILIC_55": {
+                "units": null
+            },
+            "BCPHOBIC_55": {
+                "units": null
+            },
+            "SS002_55": {
+                "units": null
+            },
+            "DU003_55": {
+                "units": null
+            },
+            "DMS_55": {
+                "units": null
+            },
+            "SO4_55": {
+                "units": null
+            },
+            "DU002_55": {
+                "units": null
+            },
+            "PS_55": {
+                "units": null
+            },
+            "SS003_55": {
+                "units": null
+            },
+            "DU001_55": {
+                "units": null
+            },
+            "OCPHOBIC_55": {
+                "units": null
+            },
+            "BCPHILIC_55": {
+                "units": null
+            },
+            "MSA_55": {
+                "units": null
+            },
+            "SS001_55": {
+                "units": null
+            },
+            "AIRDENS_56": {
+                "units": null
+            },
+            "SO2_56": {
+                "units": null
+            },
+            "DELP_56": {
+                "units": null
+            },
+            "SS004_56": {
+                "units": null
+            },
+            "DU005_56": {
+                "units": null
+            },
+            "DU004_56": {
+                "units": null
+            },
+            "SS005_56": {
+                "units": null
+            },
+            "OCPHILIC_56": {
+                "units": null
+            },
+            "BCPHOBIC_56": {
+                "units": null
+            },
+            "SS002_56": {
+                "units": null
+            },
+            "DU003_56": {
+                "units": null
+            },
+            "DMS_56": {
+                "units": null
+            },
+            "SO4_56": {
+                "units": null
+            },
+            "DU002_56": {
+                "units": null
+            },
+            "PS_56": {
+                "units": null
+            },
+            "SS003_56": {
+                "units": null
+            },
+            "DU001_56": {
+                "units": null
+            },
+            "OCPHOBIC_56": {
+                "units": null
+            },
+            "BCPHILIC_56": {
+                "units": null
+            },
+            "MSA_56": {
+                "units": null
+            },
+            "SS001_56": {
+                "units": null
+            },
+            "AIRDENS_57": {
+                "units": null
+            },
+            "SO2_57": {
+                "units": null
+            },
+            "DELP_57": {
+                "units": null
+            },
+            "SS004_57": {
+                "units": null
+            },
+            "DU005_57": {
+                "units": null
+            },
+            "DU004_57": {
+                "units": null
+            },
+            "SS005_57": {
+                "units": null
+            },
+            "OCPHILIC_57": {
+                "units": null
+            },
+            "BCPHOBIC_57": {
+                "units": null
+            },
+            "SS002_57": {
+                "units": null
+            },
+            "DU003_57": {
+                "units": null
+            },
+            "DMS_57": {
+                "units": null
+            },
+            "SO4_57": {
+                "units": null
+            },
+            "DU002_57": {
+                "units": null
+            },
+            "PS_57": {
+                "units": null
+            },
+            "SS003_57": {
+                "units": null
+            },
+            "DU001_57": {
+                "units": null
+            },
+            "OCPHOBIC_57": {
+                "units": null
+            },
+            "BCPHILIC_57": {
+                "units": null
+            },
+            "MSA_57": {
+                "units": null
+            },
+            "SS001_57": {
+                "units": null
+            },
+            "AIRDENS_58": {
+                "units": null
+            },
+            "SO2_58": {
+                "units": null
+            },
+            "DELP_58": {
+                "units": null
+            },
+            "SS004_58": {
+                "units": null
+            },
+            "DU005_58": {
+                "units": null
+            },
+            "DU004_58": {
+                "units": null
+            },
+            "SS005_58": {
+                "units": null
+            },
+            "OCPHILIC_58": {
+                "units": null
+            },
+            "BCPHOBIC_58": {
+                "units": null
+            },
+            "SS002_58": {
+                "units": null
+            },
+            "DU003_58": {
+                "units": null
+            },
+            "DMS_58": {
+                "units": null
+            },
+            "SO4_58": {
+                "units": null
+            },
+            "DU002_58": {
+                "units": null
+            },
+            "PS_58": {
+                "units": null
+            },
+            "SS003_58": {
+                "units": null
+            },
+            "DU001_58": {
+                "units": null
+            },
+            "OCPHOBIC_58": {
+                "units": null
+            },
+            "BCPHILIC_58": {
+                "units": null
+            },
+            "MSA_58": {
+                "units": null
+            },
+            "SS001_58": {
+                "units": null
+            },
+            "AIRDENS_59": {
+                "units": null
+            },
+            "SO2_59": {
+                "units": null
+            },
+            "DELP_59": {
+                "units": null
+            },
+            "SS004_59": {
+                "units": null
+            },
+            "DU005_59": {
+                "units": null
+            },
+            "DU004_59": {
+                "units": null
+            },
+            "SS005_59": {
+                "units": null
+            },
+            "OCPHILIC_59": {
+                "units": null
+            },
+            "BCPHOBIC_59": {
+                "units": null
+            },
+            "SS002_59": {
+                "units": null
+            },
+            "DU003_59": {
+                "units": null
+            },
+            "DMS_59": {
+                "units": null
+            },
+            "SO4_59": {
+                "units": null
+            },
+            "DU002_59": {
+                "units": null
+            },
+            "PS_59": {
+                "units": null
+            },
+            "SS003_59": {
+                "units": null
+            },
+            "DU001_59": {
+                "units": null
+            },
+            "OCPHOBIC_59": {
+                "units": null
+            },
+            "BCPHILIC_59": {
+                "units": null
+            },
+            "MSA_59": {
+                "units": null
+            },
+            "SS001_59": {
+                "units": null
+            },
+            "AIRDENS_60": {
+                "units": null
+            },
+            "SO2_60": {
+                "units": null
+            },
+            "DELP_60": {
+                "units": null
+            },
+            "SS004_60": {
+                "units": null
+            },
+            "DU005_60": {
+                "units": null
+            },
+            "DU004_60": {
+                "units": null
+            },
+            "SS005_60": {
+                "units": null
+            },
+            "OCPHILIC_60": {
+                "units": null
+            },
+            "BCPHOBIC_60": {
+                "units": null
+            },
+            "SS002_60": {
+                "units": null
+            },
+            "DU003_60": {
+                "units": null
+            },
+            "DMS_60": {
+                "units": null
+            },
+            "SO4_60": {
+                "units": null
+            },
+            "DU002_60": {
+                "units": null
+            },
+            "PS_60": {
+                "units": null
+            },
+            "SS003_60": {
+                "units": null
+            },
+            "DU001_60": {
+                "units": null
+            },
+            "OCPHOBIC_60": {
+                "units": null
+            },
+            "BCPHILIC_60": {
+                "units": null
+            },
+            "MSA_60": {
+                "units": null
+            },
+            "SS001_60": {
+                "units": null
+            },
+            "AIRDENS_61": {
+                "units": null
+            },
+            "SO2_61": {
+                "units": null
+            },
+            "DELP_61": {
+                "units": null
+            },
+            "SS004_61": {
+                "units": null
+            },
+            "DU005_61": {
+                "units": null
+            },
+            "DU004_61": {
+                "units": null
+            },
+            "SS005_61": {
+                "units": null
+            },
+            "OCPHILIC_61": {
+                "units": null
+            },
+            "BCPHOBIC_61": {
+                "units": null
+            },
+            "SS002_61": {
+                "units": null
+            },
+            "DU003_61": {
+                "units": null
+            },
+            "DMS_61": {
+                "units": null
+            },
+            "SO4_61": {
+                "units": null
+            },
+            "DU002_61": {
+                "units": null
+            },
+            "PS_61": {
+                "units": null
+            },
+            "SS003_61": {
+                "units": null
+            },
+            "DU001_61": {
+                "units": null
+            },
+            "OCPHOBIC_61": {
+                "units": null
+            },
+            "BCPHILIC_61": {
+                "units": null
+            },
+            "MSA_61": {
+                "units": null
+            },
+            "SS001_61": {
+                "units": null
+            },
+            "AIRDENS_62": {
+                "units": null
+            },
+            "SO2_62": {
+                "units": null
+            },
+            "DELP_62": {
+                "units": null
+            },
+            "SS004_62": {
+                "units": null
+            },
+            "DU005_62": {
+                "units": null
+            },
+            "DU004_62": {
+                "units": null
+            },
+            "SS005_62": {
+                "units": null
+            },
+            "OCPHILIC_62": {
+                "units": null
+            },
+            "BCPHOBIC_62": {
+                "units": null
+            },
+            "SS002_62": {
+                "units": null
+            },
+            "DU003_62": {
+                "units": null
+            },
+            "DMS_62": {
+                "units": null
+            },
+            "SO4_62": {
+                "units": null
+            },
+            "DU002_62": {
+                "units": null
+            },
+            "PS_62": {
+                "units": null
+            },
+            "SS003_62": {
+                "units": null
+            },
+            "DU001_62": {
+                "units": null
+            },
+            "OCPHOBIC_62": {
+                "units": null
+            },
+            "BCPHILIC_62": {
+                "units": null
+            },
+            "MSA_62": {
+                "units": null
+            },
+            "SS001_62": {
+                "units": null
+            },
+            "AIRDENS_63": {
+                "units": null
+            },
+            "SO2_63": {
+                "units": null
+            },
+            "DELP_63": {
+                "units": null
+            },
+            "SS004_63": {
+                "units": null
+            },
+            "DU005_63": {
+                "units": null
+            },
+            "DU004_63": {
+                "units": null
+            },
+            "SS005_63": {
+                "units": null
+            },
+            "OCPHILIC_63": {
+                "units": null
+            },
+            "BCPHOBIC_63": {
+                "units": null
+            },
+            "SS002_63": {
+                "units": null
+            },
+            "DU003_63": {
+                "units": null
+            },
+            "DMS_63": {
+                "units": null
+            },
+            "SO4_63": {
+                "units": null
+            },
+            "DU002_63": {
+                "units": null
+            },
+            "PS_63": {
+                "units": null
+            },
+            "SS003_63": {
+                "units": null
+            },
+            "DU001_63": {
+                "units": null
+            },
+            "OCPHOBIC_63": {
+                "units": null
+            },
+            "BCPHILIC_63": {
+                "units": null
+            },
+            "MSA_63": {
+                "units": null
+            },
+            "SS001_63": {
+                "units": null
+            },
+            "AIRDENS_64": {
+                "units": null
+            },
+            "SO2_64": {
+                "units": null
+            },
+            "DELP_64": {
+                "units": null
+            },
+            "SS004_64": {
+                "units": null
+            },
+            "DU005_64": {
+                "units": null
+            },
+            "DU004_64": {
+                "units": null
+            },
+            "SS005_64": {
+                "units": null
+            },
+            "OCPHILIC_64": {
+                "units": null
+            },
+            "BCPHOBIC_64": {
+                "units": null
+            },
+            "SS002_64": {
+                "units": null
+            },
+            "DU003_64": {
+                "units": null
+            },
+            "DMS_64": {
+                "units": null
+            },
+            "SO4_64": {
+                "units": null
+            },
+            "DU002_64": {
+                "units": null
+            },
+            "PS_64": {
+                "units": null
+            },
+            "SS003_64": {
+                "units": null
+            },
+            "DU001_64": {
+                "units": null
+            },
+            "OCPHOBIC_64": {
+                "units": null
+            },
+            "BCPHILIC_64": {
+                "units": null
+            },
+            "MSA_64": {
+                "units": null
+            },
+            "SS001_64": {
+                "units": null
+            },
+            "AIRDENS_65": {
+                "units": null
+            },
+            "SO2_65": {
+                "units": null
+            },
+            "DELP_65": {
+                "units": null
+            },
+            "SS004_65": {
+                "units": null
+            },
+            "DU005_65": {
+                "units": null
+            },
+            "DU004_65": {
+                "units": null
+            },
+            "SS005_65": {
+                "units": null
+            },
+            "OCPHILIC_65": {
+                "units": null
+            },
+            "BCPHOBIC_65": {
+                "units": null
+            },
+            "SS002_65": {
+                "units": null
+            },
+            "DU003_65": {
+                "units": null
+            },
+            "DMS_65": {
+                "units": null
+            },
+            "SO4_65": {
+                "units": null
+            },
+            "DU002_65": {
+                "units": null
+            },
+            "PS_65": {
+                "units": null
+            },
+            "SS003_65": {
+                "units": null
+            },
+            "DU001_65": {
+                "units": null
+            },
+            "OCPHOBIC_65": {
+                "units": null
+            },
+            "BCPHILIC_65": {
+                "units": null
+            },
+            "MSA_65": {
+                "units": null
+            },
+            "SS001_65": {
+                "units": null
+            },
+            "AIRDENS_66": {
+                "units": null
+            },
+            "SO2_66": {
+                "units": null
+            },
+            "DELP_66": {
+                "units": null
+            },
+            "SS004_66": {
+                "units": null
+            },
+            "DU005_66": {
+                "units": null
+            },
+            "DU004_66": {
+                "units": null
+            },
+            "SS005_66": {
+                "units": null
+            },
+            "OCPHILIC_66": {
+                "units": null
+            },
+            "BCPHOBIC_66": {
+                "units": null
+            },
+            "SS002_66": {
+                "units": null
+            },
+            "DU003_66": {
+                "units": null
+            },
+            "DMS_66": {
+                "units": null
+            },
+            "SO4_66": {
+                "units": null
+            },
+            "DU002_66": {
+                "units": null
+            },
+            "PS_66": {
+                "units": null
+            },
+            "SS003_66": {
+                "units": null
+            },
+            "DU001_66": {
+                "units": null
+            },
+            "OCPHOBIC_66": {
+                "units": null
+            },
+            "BCPHILIC_66": {
+                "units": null
+            },
+            "MSA_66": {
+                "units": null
+            },
+            "SS001_66": {
+                "units": null
+            },
+            "AIRDENS_67": {
+                "units": null
+            },
+            "SO2_67": {
+                "units": null
+            },
+            "DELP_67": {
+                "units": null
+            },
+            "SS004_67": {
+                "units": null
+            },
+            "DU005_67": {
+                "units": null
+            },
+            "DU004_67": {
+                "units": null
+            },
+            "SS005_67": {
+                "units": null
+            },
+            "OCPHILIC_67": {
+                "units": null
+            },
+            "BCPHOBIC_67": {
+                "units": null
+            },
+            "SS002_67": {
+                "units": null
+            },
+            "DU003_67": {
+                "units": null
+            },
+            "DMS_67": {
+                "units": null
+            },
+            "SO4_67": {
+                "units": null
+            },
+            "DU002_67": {
+                "units": null
+            },
+            "PS_67": {
+                "units": null
+            },
+            "SS003_67": {
+                "units": null
+            },
+            "DU001_67": {
+                "units": null
+            },
+            "OCPHOBIC_67": {
+                "units": null
+            },
+            "BCPHILIC_67": {
+                "units": null
+            },
+            "MSA_67": {
+                "units": null
+            },
+            "SS001_67": {
+                "units": null
+            },
+            "AIRDENS_68": {
+                "units": null
+            },
+            "SO2_68": {
+                "units": null
+            },
+            "DELP_68": {
+                "units": null
+            },
+            "SS004_68": {
+                "units": null
+            },
+            "DU005_68": {
+                "units": null
+            },
+            "DU004_68": {
+                "units": null
+            },
+            "SS005_68": {
+                "units": null
+            },
+            "OCPHILIC_68": {
+                "units": null
+            },
+            "BCPHOBIC_68": {
+                "units": null
+            },
+            "SS002_68": {
+                "units": null
+            },
+            "DU003_68": {
+                "units": null
+            },
+            "DMS_68": {
+                "units": null
+            },
+            "SO4_68": {
+                "units": null
+            },
+            "DU002_68": {
+                "units": null
+            },
+            "PS_68": {
+                "units": null
+            },
+            "SS003_68": {
+                "units": null
+            },
+            "DU001_68": {
+                "units": null
+            },
+            "OCPHOBIC_68": {
+                "units": null
+            },
+            "BCPHILIC_68": {
+                "units": null
+            },
+            "MSA_68": {
+                "units": null
+            },
+            "SS001_68": {
+                "units": null
+            },
+            "AIRDENS_69": {
+                "units": null
+            },
+            "SO2_69": {
+                "units": null
+            },
+            "DELP_69": {
+                "units": null
+            },
+            "SS004_69": {
+                "units": null
+            },
+            "DU005_69": {
+                "units": null
+            },
+            "DU004_69": {
+                "units": null
+            },
+            "SS005_69": {
+                "units": null
+            },
+            "OCPHILIC_69": {
+                "units": null
+            },
+            "BCPHOBIC_69": {
+                "units": null
+            },
+            "SS002_69": {
+                "units": null
+            },
+            "DU003_69": {
+                "units": null
+            },
+            "DMS_69": {
+                "units": null
+            },
+            "SO4_69": {
+                "units": null
+            },
+            "DU002_69": {
+                "units": null
+            },
+            "PS_69": {
+                "units": null
+            },
+            "SS003_69": {
+                "units": null
+            },
+            "DU001_69": {
+                "units": null
+            },
+            "OCPHOBIC_69": {
+                "units": null
+            },
+            "BCPHILIC_69": {
+                "units": null
+            },
+            "MSA_69": {
+                "units": null
+            },
+            "SS001_69": {
+                "units": null
+            },
+            "AIRDENS_70": {
+                "units": null
+            },
+            "SO2_70": {
+                "units": null
+            },
+            "DELP_70": {
+                "units": null
+            },
+            "SS004_70": {
+                "units": null
+            },
+            "DU005_70": {
+                "units": null
+            },
+            "DU004_70": {
+                "units": null
+            },
+            "SS005_70": {
+                "units": null
+            },
+            "OCPHILIC_70": {
+                "units": null
+            },
+            "BCPHOBIC_70": {
+                "units": null
+            },
+            "SS002_70": {
+                "units": null
+            },
+            "DU003_70": {
+                "units": null
+            },
+            "DMS_70": {
+                "units": null
+            },
+            "SO4_70": {
+                "units": null
+            },
+            "DU002_70": {
+                "units": null
+            },
+            "PS_70": {
+                "units": null
+            },
+            "SS003_70": {
+                "units": null
+            },
+            "DU001_70": {
+                "units": null
+            },
+            "OCPHOBIC_70": {
+                "units": null
+            },
+            "BCPHILIC_70": {
+                "units": null
+            },
+            "MSA_70": {
+                "units": null
+            },
+            "SS001_70": {
+                "units": null
+            },
+            "AIRDENS_71": {
+                "units": null
+            },
+            "SO2_71": {
+                "units": null
+            },
+            "DELP_71": {
+                "units": null
+            },
+            "SS004_71": {
+                "units": null
+            },
+            "DU005_71": {
+                "units": null
+            },
+            "DU004_71": {
+                "units": null
+            },
+            "SS005_71": {
+                "units": null
+            },
+            "OCPHILIC_71": {
+                "units": null
+            },
+            "BCPHOBIC_71": {
+                "units": null
+            },
+            "SS002_71": {
+                "units": null
+            },
+            "DU003_71": {
+                "units": null
+            },
+            "DMS_71": {
+                "units": null
+            },
+            "SO4_71": {
+                "units": null
+            },
+            "DU002_71": {
+                "units": null
+            },
+            "PS_71": {
+                "units": null
+            },
+            "SS003_71": {
+                "units": null
+            },
+            "DU001_71": {
+                "units": null
+            },
+            "OCPHOBIC_71": {
+                "units": null
+            },
+            "BCPHILIC_71": {
+                "units": null
+            },
+            "MSA_71": {
+                "units": null
+            },
+            "SS001_71": {
+                "units": null
+            },
+            "AIRDENS_72": {
+                "units": null
+            },
+            "SO2_72": {
+                "units": null
+            },
+            "DELP_72": {
+                "units": null
+            },
+            "SS004_72": {
+                "units": null
+            },
+            "DU005_72": {
+                "units": null
+            },
+            "DU004_72": {
+                "units": null
+            },
+            "SS005_72": {
+                "units": null
+            },
+            "OCPHILIC_72": {
+                "units": null
+            },
+            "BCPHOBIC_72": {
+                "units": null
+            },
+            "SS002_72": {
+                "units": null
+            },
+            "DU003_72": {
+                "units": null
+            },
+            "DMS_72": {
+                "units": null
+            },
+            "SO4_72": {
+                "units": null
+            },
+            "DU002_72": {
+                "units": null
+            },
+            "PS_72": {
+                "units": null
+            },
+            "SS003_72": {
+                "units": null
+            },
+            "DU001_72": {
+                "units": null
+            },
+            "OCPHOBIC_72": {
+                "units": null
+            },
+            "BCPHILIC_72": {
+                "units": null
+            },
+            "MSA_72": {
+                "units": null
+            },
+            "SS001_72": {
+                "units": null
+            },
+            "LWI": {
+                "units": null
+            },
+            "RH": {
+                "units": null
+            }
+        }
+    },
+    {
         "id": "NASA/GSFC/MERRA/flx/2",
         "name": "MERRA-2 M2T1NXFLX: Surface Flux Diagnostics V5.12.4",
         "start_date": "1980-01-01",
@@ -22110,7 +26661,7 @@
         "id": "NASA/HLS/HLSL30/v002",
         "name": "HLSL30: HLS-2 Landsat Operational Land Imager Surface Reflectance and TOA Brightness Daily Global 30m",
         "start_date": "2013-04-11",
-        "end_date": "2023-11-26",
+        "end_date": "2023-12-03",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -22604,7 +27155,7 @@
         "id": "NASA/SMAP/SPL4SMGP/007",
         "name": "SPL4SMGP.007 SMAP L4 Global 3-hourly 9-km Surface and Root Zone Soil Moisture",
         "start_date": "2015-03-31",
-        "end_date": "2023-11-22",
+        "end_date": "2023-12-01",
         "type": "image_collection",
         "bands": {
             "sm_surface": {
@@ -22797,7 +27348,7 @@
         "id": "NASA/SMAP/SPL3SMP_E/005",
         "name": "SPL3SMP_E.005 SMAP L3 Radiometer Global Daily 9 km Soil Moisture",
         "start_date": "2015-03-31",
-        "end_date": "2023-11-25",
+        "end_date": "2023-12-02",
         "type": "image_collection",
         "bands": {
             "soil_moisture_am": {
@@ -24909,7 +29460,7 @@
         "id": "NOAA/GOES/18/FDCC",
         "name": "GOES-18 FDCC Series ABI Level 2 Fire/Hot Spot Characterization CONUS",
         "start_date": "2022-10-13",
-        "end_date": "2023-11-28",
+        "end_date": "2023-12-05",
         "type": "image_collection",
         "bands": {
             "Area": {
@@ -24938,7 +29489,7 @@
         "id": "NOAA/GOES/18/FDCF",
         "name": "GOES-18 FDCF Series ABI Level 2 Fire/Hot Spot Characterization Full Disk",
         "start_date": "2022-10-13",
-        "end_date": "2023-11-28",
+        "end_date": "2023-12-05",
         "type": "image_collection",
         "bands": {
             "Area": {
@@ -24967,7 +29518,7 @@
         "id": "NOAA/GOES/18/MCMIPC",
         "name": "GOES-18 MCMIPC Series ABI Level 2 Cloud and Moisture Imagery CONUS",
         "start_date": "2018-12-04",
-        "end_date": "2023-11-28",
+        "end_date": "2023-12-05",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -25104,7 +29655,7 @@
         "id": "NOAA/GOES/18/MCMIPF",
         "name": "GOES-18 MCMIPF Series ABI Level 2 Cloud and Moisture Imagery Full Disk",
         "start_date": "2018-12-04",
-        "end_date": "2023-11-28",
+        "end_date": "2023-12-05",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -25241,7 +29792,7 @@
         "id": "NOAA/GOES/18/MCMIPM",
         "name": "GOES-18 MCMIPM Series ABI Level 2 Cloud and Moisture Imagery Full Disk",
         "start_date": "2018-12-04",
-        "end_date": "2023-11-28",
+        "end_date": "2023-12-05",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -25577,7 +30128,7 @@
         "id": "NOAA/VIIRS/001/VNP09H1",
         "name": "VNP09H1: VIIRS Surface Reflectance 8-Day L3 Global 500m",
         "start_date": "2012-01-19",
-        "end_date": "2023-11-01",
+        "end_date": "2023-11-25",
         "type": "image_collection",
         "bands": {
             "SurfReflect_I1": {
@@ -25679,7 +30230,7 @@
         "id": "NOAA/VIIRS/001/VNP14A1",
         "name": "VNP14A1: Thermal Anomalies/Fire Daily L3 Global 1km SIN Grid",
         "start_date": "2012-01-19",
-        "end_date": "2023-11-26",
+        "end_date": "2023-12-02",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -25704,7 +30255,7 @@
         "id": "NOAA/VIIRS/001/VNP15A2H",
         "name": "VNP15A2H: LAI/FPAR 8-Day L4 Global 500m SIN Grid",
         "start_date": "2012-01-17",
-        "end_date": "2023-11-01",
+        "end_date": "2023-11-25",
         "type": "image_collection",
         "bands": {
             "Fpar": {
@@ -25972,7 +30523,7 @@
         "id": "NOAA/VIIRS/001/VNP43IA1",
         "name": "VNP43IA1: BRDF/Albedo Model Parameters Daily L3 Global 500m SIN Grid",
         "start_date": "2012-01-17",
-        "end_date": "2023-11-16",
+        "end_date": "2023-11-25",
         "type": "image_collection",
         "bands": {
             "BRDF_Albedo_Band_Mandatory_Quality_I1": {
@@ -26029,7 +30580,7 @@
         "id": "NOAA/VIIRS/001/VNP43IA2",
         "name": "VNP43IA2: BRDF/Albedo Quality Daily L3 Global 500m SIN Grid",
         "start_date": "2012-01-17",
-        "end_date": "2023-11-16",
+        "end_date": "2023-11-25",
         "type": "image_collection",
         "bands": {
             "BRDF_Albedo_Band_Quality_I1": {
@@ -26082,7 +30633,7 @@
         "id": "NOAA/VIIRS/001/VNP46A1",
         "name": "VNP46A1: VIIRS Daily Gridded Day Night Band 500m Linear Lat Lon Grid Night",
         "start_date": "2012-01-19",
-        "end_date": "2023-11-26",
+        "end_date": "2023-12-01",
         "type": "image_collection",
         "bands": {
             "BrightnessTemperature_M12": {
@@ -26195,7 +30746,7 @@
         "id": "NOAA/VIIRS/001/VNP46A2",
         "name": "VNP46A2: VIIRS Lunar Gap-Filled BRDF Nighttime Lights Daily L3 Global 500m",
         "start_date": "2012-01-19",
-        "end_date": "2023-11-14",
+        "end_date": "2023-11-16",
         "type": "image_collection",
         "bands": {
             "DNB_BRDF_Corrected_NTL": {
@@ -30290,7 +34841,7 @@
         "id": "projects/sat-io/open-datasets/us-drought-monitor",
         "name": "United States Drought Monitor",
         "start_date": "2000-01-04",
-        "end_date": "2023-11-14",
+        "end_date": "2023-11-21",
         "type": "image_collection",
         "bands": {
             "b1": {
