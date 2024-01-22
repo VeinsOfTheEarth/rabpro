@@ -11,6 +11,10 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - uses: 'google-github-actions/auth@v2'
+        with:          
+          credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
