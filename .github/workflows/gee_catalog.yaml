@@ -30,9 +30,12 @@ jobs:
           export EARTH_ENGINE_PROJECT="$EARTH_ENGINE_PROJECT"
         env:
           EARTH_ENGINE_KEY: ${{ secrets.EARTH_ENGINE_SECRET }}
+          EARTH_ENGINE_PROJECT: ${{ secrets.EARTH_ENGINE_PROJECT }}
 
       - name: Run catalog parser
         run: python3 ./Data/webparser.py
+        env:
+          EARTH_ENGINE_PROJECT: ${{ secrets.EARTH_ENGINE_PROJECT }}
 
       - name: Commit JSON file
         run: |
