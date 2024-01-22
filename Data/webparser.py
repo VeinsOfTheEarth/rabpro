@@ -160,7 +160,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    ee.Initialize()
+    ee.Initialize(project=os.environ["EARTH_ENGINE_PROJECT"])
     print("Parsing assets...")
     ee_catalog(args.deprecated, args.verbose)
     print("Parsing completed.")
