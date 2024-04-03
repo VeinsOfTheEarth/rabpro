@@ -1,3 +1,7 @@
+# Requires a HydroBasins and MERIT data:
+# export DATA_PATH="Library/Application Support/rabpro/"
+# mkdir -p "$HOME/$DATA_PATH"
+# cp -r ./tests/data/MERIT_Hydro ./tests/data/HydroBasins "$HOME/$DATA_PATH"
 import rabpro
 from pyproj import CRS
 import geopandas as gpd
