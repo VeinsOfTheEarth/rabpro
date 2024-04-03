@@ -1,5 +1,4 @@
 import setuptools
-from rabpro import __version__
 
 
 with open("README.md", "r", encoding="utf-8") as fh:
@@ -7,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="rabpro",
-    version=__version__,
+    version="0.5.3",
     author="rabpro contributors",
     author_email="rabpro@lanl.gov",
     description="Package to delineate basins and compute statistics.",
