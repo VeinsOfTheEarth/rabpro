@@ -19,14 +19,14 @@ gdf = gpd.GeoDataFrame({"idx": [1], "geometry": [box(*total_bounds)]}, crs="EPSG
 _ = utils.get_datapaths(update_gee_metadata=True)
 
 
-def clean_res(feature):
+def _clean_res(feature):
     res = pd.DataFrame(feature["properties"], index=[0])
     res["id"] = feature["id"]
     return res
 
 
 def test_unvalidated_dataset():
-    urls, tasks = rabpro.basin_stats.compute(
+    urls, _ = rabpro.basin_stats.compute(
         [
             Dataset(
                 "NASA/ORNL/DAYMET_V4",
@@ -49,7 +49,7 @@ def test_customreducer():
     def asdf(feat):
         return feat.getNumber("max")
 
-    urls, task = rabpro.basin_stats.compute(
+    urls, _ = rabpro.basin_stats.compute(
         [Dataset("JRC/GSW1_4/YearlyHistory", "waterClass", stats=["max"])],
         gee_feature_path="users/jstacompute/basins",
         reducer_funcs=[asdf],
@@ -62,7 +62,7 @@ def test_customreducer():
 
 def test_categorical_imgcol():
 
-    urls, task = rabpro.basin_stats.compute(
+    urls, _ = rabpro.basin_stats.compute(
         [Dataset("MODIS/061/MCD12Q1", "LC_Type1", stats=["freqhist"])],
         gee_feature_path="users/jstacompute/basins",
     )
@@ -73,7 +73,7 @@ def test_categorical_imgcol():
 
 def test_timeindexed_imgcol():
 
-    urls, tasks = rabpro.basin_stats.compute(
+    urls, _ = rabpro.basin_stats.compute(
         [
             Dataset(
                 "JRC/GSW1_4/YearlyHistory",
@@ -91,7 +91,7 @@ def test_timeindexed_imgcol():
 
 def test_timeindexedspecific_imgcol():
 
-    urls, task = rabpro.basin_stats.compute(
+    urls, _ = rabpro.basin_stats.compute(
         [
             Dataset(
                 "JRC/GSW1_4/YearlyHistory",
@@ -110,7 +110,7 @@ def test_timeindexedspecific_imgcol():
 
 def test_nontimeindexed_imgcol():
 
-    data, task = rabpro.basin_stats.compute(
+    data, _ = rabpro.basin_stats.compute(
         [
             Dataset(
                 "JRC/GSW1_4/MonthlyRecurrence",
@@ -121,14 +121,14 @@ def test_nontimeindexed_imgcol():
         test=True,
     )
 
-    res = pd.concat([clean_res(feature) for feature in data[0]["features"]])
+    res = pd.concat([_clean_res(feature) for feature in data[0]["features"]])
 
     assert res.shape[0] > 0
 
 
 def test_img():
 
-    data, task = rabpro.basin_stats.compute(
+    data, _ = rabpro.basin_stats.compute(
         [
             Dataset(
                 "JRC/GSW1_4/GlobalSurfaceWater",
