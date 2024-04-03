@@ -35,6 +35,12 @@ If you would like to specify a different ``root`` location, you may set the ``RA
 
 You may also set this environment variable more permanently by adding ``RABPRO_DATA`` to your operating system's environment variables, but you may run into issues with your python interpreter not reading the OS environment variables correctly.
 
+Check your data pathing with the following command:
+
+.. code-block:: python
+
+        import rabpro
+        rabpro.utils.get_datapaths()
 
 
 Downloading HydroBASINS
