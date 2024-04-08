@@ -383,52 +383,52 @@ def compute(
 
     # For each raster
     datas, tasks = [], []
-    for d in control:
-        if d.band in ["None", None]:
-            if d.type == "image":
-                imgcol = ee.ImageCollection(ee.Image(d.data_id))
+    for dt in control:
+        if dt.band in ["None", None]:
+            if dt.type == "image":
+                imgcol = ee.ImageCollection(ee.Image(dt.data_id))
             else:
-                if d.start is not None and d.end is not None:
-                    imgcol = ee.ImageCollection(d.data_id).filterDate(d.start, d.end)
+                if dt.start is not None and dt.end is not None:
+                    imgcol = ee.ImageCollection(dt.data_id).filterDate(dt.start, dt.end)
                 else:
-                    imgcol = ee.ImageCollection(d.data_id)
+                    imgcol = ee.ImageCollection(dt.data_id)
         else:
-            if d.type == "image":
-                imgcol = ee.ImageCollection(ee.Image(d.data_id).select(d.band))
+            if dt.type == "image":
+                imgcol = ee.ImageCollection(ee.Image(dt.data_id).select(dt.band))
                 # Arbitrarily subject image assets to a time reducer which
                 # should have no effect other than avoiding the error # 147
-                # d.time_stats = ["median"]
+                # dt.time_stats = ["median"]
             else:
-                if d.start is not None and d.end is not None:
+                if dt.start is not None and dt.end is not None:
                     imgcol = (
-                        ee.ImageCollection(d.data_id)
-                        .select(d.band)
-                        .filterDate(d.start, d.end)
+                        ee.ImageCollection(dt.data_id)
+                        .select(dt.band)
+                        .filterDate(dt.start, dt.end)
                     )
                 else:
-                    imgcol = ee.ImageCollection(d.data_id).select(d.band)
+                    imgcol = ee.ImageCollection(dt.data_id).select(dt.band)
 
         if (
-            d.mosaic == True
+            dt.mosaic == True
         ):  # Don't use 'is' because numpy booleans aren't the same object type, == bypasses this
             imgcol = ee.ImageCollection(imgcol.mosaic())
 
-        if len(d.time_stats) > 0:
-            time_reducer = _parse_reducers(base=getattr(ee.Reducer, d.time_stats[0])())
+        if len(dt.time_stats) > 0:
+            time_reducer = _parse_reducers(base=getattr(ee.Reducer, dt.time_stats[0])())
             imgcol = imgcol.reduce(time_reducer)
             imgcol = ee.ImageCollection(imgcol)
 
         # imgcol = imgcol.map(lambda img: img.clipToCollection(featureCollection))
 
         if verbose:
-            print(f"Submitting basin stats task to GEE for {d.data_id}...")
+            print(f"Submitting basin stats task to GEE for {dt.data_id}...")
 
         # Add threshold mask to image using GSW occurrence band
-        if d.mask:
+        if dt.mask:
             imgcol = imgcol.map(lambda img: img.updateMask(occ_mask))
 
         # Generate reducer - mean and count always computed
-        reducer = _parse_reducers(d.stats)
+        reducer = _parse_reducers(dt.stats)
 
         def map_func(img):
             # The .limit() here is due to a GEE bug, see:
@@ -436,7 +436,7 @@ def compute(
             return img.reduceRegions(
                 collection=featureCollection.limit(1000000000),
                 reducer=reducer,
-                scale=d.resolution,
+                scale=dt.resolution,
             )
 
         reducedFC = imgcol.map(map_func)
@@ -449,7 +449,7 @@ def compute(
             )
 
         # Map across feature collection and use min and max to compute range
-        if "range" in d.stats:
+        if "range" in dt.stats:
             table = table.map(range_func)
 
         # Apply reducer functions
@@ -468,7 +468,8 @@ def compute(
         table = table.map(remove_geometry)
 
         if filename is None:
-            filename = dataset_to_filename(d.prepend, d.data_id, d.band)
+            filename = dataset_to_filename(dt.prepend, dt.data_id, dt.band)
+            print(filename)
 
         task = ee.batch.Export.table.toDrive(
             collection=table,
@@ -541,55 +542,55 @@ def _parse_reducers(stats=None, base=None):
     return reducer
 
 
-def _validate_dataset(d, datadict):
-    if d.data_id not in datadict:
+def _validate_dataset(dt, datadict):
+    if dt.data_id not in datadict:
         raise Exception(
             "Unable to validate Dataset list. Does it exist in the GEE catalog?"
         )
 
-    gee_dataset = datadict[d.data_id]
+    gee_dataset = datadict[dt.data_id]
 
-    if d.band not in gee_dataset["bands"]:
+    if dt.band not in gee_dataset["bands"]:
         warnings.warn(
-            f"Warning: invalid data band provided: {d.data_id}:{d.band}",
+            f"Warning: invalid data band provided: {dt.data_id}:{dt.band}",
             UserWarning,
         )
 
-    if d.start is not None:
-        if date.fromisoformat(d.start) < date.fromisoformat(gee_dataset["start_date"]):
+    if dt.start is not None:
+        if date.fromisoformat(dt.start) < date.fromisoformat(gee_dataset["start_date"]):
             warnings.warn(
                 "Warning: requested start date earlier than expected for"
-                f" {d.data_id}:{d.band}",
+                f" {dt.data_id}:{dt.band}",
                 UserWarning,
             )
 
-    if d.end is not None:
-        if date.fromisoformat(d.end) > date.fromisoformat(gee_dataset["end_date"]):
+    if dt.end is not None:
+        if date.fromisoformat(dt.end) > date.fromisoformat(gee_dataset["end_date"]):
             warnings.warn(
                 "Warning: requested end date later than expected for"
-                f" {d.data_id}:{d.band}",
+                f" {dt.data_id}:{dt.band}",
                 UserWarning,
             )
 
-    d.stats = set(d.stats) | set(["count", "mean"])
+    dt.stats = set(dt.stats) | set(["count", "mean"])
 
-    if "no_data" in gee_dataset["bands"][d.band]:
-        d.no_data = gee_dataset["bands"][d.band]["no_data"]
+    if "no_data" in gee_dataset["bands"][dt.band]:
+        dt.no_data = gee_dataset["bands"][dt.band]["no_data"]
 
     resolution = None
-    if "resolution" in gee_dataset["bands"][d.band]:
-        resolution = gee_dataset["bands"][d.band]["resolution"]
-    if d.resolution is None:
-        d.resolution = resolution
-    if d.resolution and resolution and d.resolution < resolution:
+    if "resolution" in gee_dataset["bands"][dt.band]:
+        resolution = gee_dataset["bands"][dt.band]["resolution"]
+    if dt.resolution is None:
+        dt.resolution = resolution
+    if dt.resolution and resolution and dt.resolution < resolution:
         warnings.warn(
             "Warning: requested resolution is less than the native raster"
             " resolution",
             UserWarning,
         )
 
-    d.type = gee_dataset["type"]
-    return d
+    dt.type = gee_dataset["type"]
+    return dt
 
 
 def _get_controls(datasets):
@@ -611,9 +612,9 @@ def _get_controls(datasets):
         datadict = {**datadict, **user_datadict}  # merge dictionaries
 
     control = []
-    for d in datasets:
-        d = _validate_dataset(d, datadict)
-        control.append(d)
+    for dt in datasets:
+        dt = _validate_dataset(dt, datadict)
+        control.append(dt)
 
     return control
 
@@ -686,47 +687,47 @@ def image(
 
     # For each raster
     urls, tasks = [], []
-    for d, is_categorical in zip(control, categorical_lengthed):
-        # d.band, d.data_id, d.start, d.end
+    for dt, is_categorical in zip(control, categorical_lengthed):
+        # dt.band, dt.data_id, dt.start, dt.end
         if not is_categorical:
-            if d.type == "image":
-                img = ee.Image(d.data_id).select(d.band)
-            elif d.mosaic == True:
-                if d.band is None:
-                    img = ee.ImageCollection(d.data_id).mosaic()
+            if dt.type == "image":
+                img = ee.Image(dt.data_id).select(dt.band)
+            elif dt.mosaic == True:
+                if dt.band is None:
+                    img = ee.ImageCollection(dt.data_id).mosaic()
                 else:
-                    img = ee.ImageCollection(d.data_id).select(d.band).mosaic()
+                    img = ee.ImageCollection(dt.data_id).select(dt.band).mosaic()
             else:
-                if d.band is None:
-                    img = ee.ImageCollection(d.data_id)
+                if dt.band is None:
+                    img = ee.ImageCollection(dt.data_id)
                 else:
-                    img = ee.ImageCollection(d.data_id).select(d.band)
-                if d.start is not None and d.end is not None:
-                    img = img.filterDate(d.start, d.end)
+                    img = ee.ImageCollection(dt.data_id).select(dt.band)
+                if dt.start is not None and dt.end is not None:
+                    img = img.filterDate(dt.start, dt.end)
                 img = img.reduce(ee.Reducer.mean())
         else:
             img = (
-                ee.ImageCollection(d.data_id)
-                .select(d.band)
+                ee.ImageCollection(dt.data_id)
+                .select(dt.band)
                 .limit(1, "system:time_start", False)
                 .first()
             )
 
         if verbose:
-            print(f"Submitting image retrieval task to GEE for {d.data_id}...")
+            print(f"Submitting image retrieval task to GEE for {dt.data_id}...")
 
         task = ee.batch.Export.image.toDrive(
             image=img,
             scale=30,
             region=featureCollection.geometry(),
-            description=dataset_to_filename(d.prepend, d.data_id, d.band),
+            description=dataset_to_filename(dt.prepend, dt.data_id, dt.band),
             crs="EPSG:4326",
         )
 
         url = img.getDownloadURL(
             {
                 "format": "GEO_TIFF",
-                "filename": dataset_to_filename(d.prepend, d.data_id, d.band),
+                "filename": dataset_to_filename(dt.prepend, dt.data_id, dt.band),
                 "region": featureCollection.geometry(),
                 "scale": 30,
             }
