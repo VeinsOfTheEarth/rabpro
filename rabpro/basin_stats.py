@@ -382,7 +382,7 @@ def compute(
     occ_mask = ee.Image("JRC/GSW1_4/GlobalSurfaceWater").select("occurrence").lt(90)
 
     # For each raster
-    datas, tasks = [], []
+    datas, tasks, filenames = [], [], []
     for dt in control:
         if dt.band in ["None", None]:
             if dt.type == "image":
@@ -471,6 +471,8 @@ def compute(
             filename = dataset_to_filename(dt.prepend, dt.data_id, dt.band)
             print(filename)
 
+        filenames.append(filename)
+
         task = ee.batch.Export.table.toDrive(
             collection=table,
             description=filename,
@@ -491,8 +493,10 @@ def compute(
                 )
             )
             tasks.append(task)
+        # reset filename so it doesn't carry over to subsequent Dataset(s)
+        filename = None
 
-    return datas, tasks
+    return datas, tasks, filenames
 
 
 def _parse_reducers(stats=None, base=None):

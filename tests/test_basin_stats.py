@@ -26,7 +26,7 @@ def _clean_res(feature):
 
 
 def test_unvalidated_dataset():
-    urls, _ = rabpro.basin_stats.compute(
+    urls, _, _ = rabpro.basin_stats.compute(
         [
             Dataset(
                 "NASA/ORNL/DAYMET_V4",
@@ -49,7 +49,7 @@ def test_customreducer():
     def asdf(feat):
         return feat.getNumber("max")
 
-    urls, _ = rabpro.basin_stats.compute(
+    urls, _, _ = rabpro.basin_stats.compute(
         [Dataset("JRC/GSW1_4/YearlyHistory", "waterClass", stats=["max"])],
         gee_feature_path="users/jstacompute/basins",
         reducer_funcs=[asdf],
@@ -62,7 +62,7 @@ def test_customreducer():
 
 def test_categorical_imgcol():
 
-    urls, _ = rabpro.basin_stats.compute(
+    urls, _, _ = rabpro.basin_stats.compute(
         [Dataset("MODIS/061/MCD12Q1", "LC_Type1", stats=["freqhist"])],
         gee_feature_path="users/jstacompute/basins",
     )
@@ -73,7 +73,7 @@ def test_categorical_imgcol():
 
 def test_timeindexed_imgcol():
 
-    urls, _ = rabpro.basin_stats.compute(
+    urls, _, _ = rabpro.basin_stats.compute(
         [
             Dataset(
                 "JRC/GSW1_4/YearlyHistory",
@@ -91,7 +91,7 @@ def test_timeindexed_imgcol():
 
 def test_timeindexedspecific_imgcol():
 
-    urls, _ = rabpro.basin_stats.compute(
+    urls, _, _ = rabpro.basin_stats.compute(
         [
             Dataset(
                 "JRC/GSW1_4/YearlyHistory",
@@ -110,7 +110,7 @@ def test_timeindexedspecific_imgcol():
 
 def test_nontimeindexed_imgcol():
 
-    data, _ = rabpro.basin_stats.compute(
+    data, _, _ = rabpro.basin_stats.compute(
         [
             Dataset(
                 "JRC/GSW1_4/MonthlyRecurrence",
@@ -129,7 +129,7 @@ def test_nontimeindexed_imgcol():
 def test_img():
 
     stat_list = ["min", "max", "range", "std", "sum", "pct50", "pct3"]
-    data, _ = rabpro.basin_stats.compute(
+    data, _, _ = rabpro.basin_stats.compute(
         [
             Dataset(
                 "JRC/GSW1_4/GlobalSurfaceWater",
@@ -146,3 +146,22 @@ def test_img():
     assert float(res["mean"]) > 0
     # mean, count, id, and id_outlet are automatically returned
     assert res.shape[1] == len(stat_list) + 4
+
+
+def test_filenames():
+    stat_list = ["mean", "std"]
+    _, _, filenames = rabpro.basin_stats.compute(
+        [
+            Dataset("MERIT/DEM/v1_0_3", "dem", stats=stat_list, gee_type="image"),
+            Dataset(
+                "JRC/GSW1_4/GlobalSurfaceWater",
+                "occurrence",
+                stats=stat_list,
+                gee_type="image",
+            ),
+        ],
+        gee_feature_path="users/jstacompute/basins",
+    )
+
+    # make sure we're getting unique filenames
+    assert filenames.count(filenames[0]) == 1
