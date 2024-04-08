@@ -128,12 +128,13 @@ def test_nontimeindexed_imgcol():
 
 def test_img():
 
+    stat_list = ["min", "max", "range", "std", "sum", "pct50", "pct3"]
     data, _ = rabpro.basin_stats.compute(
         [
             Dataset(
                 "JRC/GSW1_4/GlobalSurfaceWater",
                 "occurrence",
-                stats=["min", "max", "range", "std", "sum", "pct50", "pct3"],
+                stats=stat_list,
             )
         ],
         gee_feature_path="users/jstacompute/basins",
@@ -143,4 +144,5 @@ def test_img():
     res = pd.DataFrame(data[0]["features"][0]["properties"], index=[0])
 
     assert float(res["mean"]) > 0
-    assert res.shape[1] == 11
+    # mean, count, id, and id_outlet are automatically returned
+    assert res.shape[1] == len(stat_list) + 4

@@ -85,6 +85,9 @@ class Dataset:
         self.prepend = prepend_label
         self.type = gee_type
 
+    def __str__(self):
+        return str(self.__class__) + ": " + str(self.__dict__)
+
 
 def dataset_to_filename(prepend, data_id, band=None):
     """
@@ -405,9 +408,10 @@ def compute(
                 else:
                     imgcol = ee.ImageCollection(d.data_id).select(d.band)
 
-        if d.mosaic == True: # Don't use 'is' because numpy booleans aren't the same object type, == bypasses this
+        if (
+            d.mosaic == True
+        ):  # Don't use 'is' because numpy booleans aren't the same object type, == bypasses this
             imgcol = ee.ImageCollection(imgcol.mosaic())
-
 
         if len(d.time_stats) > 0:
             time_reducer = _parse_reducers(base=getattr(ee.Reducer, d.time_stats[0])())

@@ -47,6 +47,7 @@ or MERIT-Hydro:
 
 ```python
 python -m pytest
+python -m pytest -k "test_img"
 ```
 
 ### Local docs build
