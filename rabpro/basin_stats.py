@@ -469,7 +469,8 @@ def compute(
 
         if filename is None:
             filename = dataset_to_filename(dt.prepend, dt.data_id, dt.band)
-            print(filename)
+            if verbose:
+                print(filename)
 
         filenames.append(filename)
 
