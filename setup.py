@@ -40,5 +40,8 @@ setuptools.setup(
         "License :: OSI Approved :: BSD License",
         "Operating System :: OS Independent",
     ],
-    packages=setuptools.find_packages(),
+    packages=setuptools.find_packages(where="rabpro"),
+    package_dir={"": "rabpro"},
+    include_package_data=True,
+    exclude_package_data={"": ["config.py"]},
 )
