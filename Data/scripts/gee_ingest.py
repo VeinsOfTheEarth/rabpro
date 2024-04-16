@@ -1,11 +1,11 @@
 import os
 import glob
-import config
 import datetime
 import dateutil
 import subprocess
 
 import rabpro
+from rabpro import config
 
 dry_run = config.dry_run
 gcp_upload = config.gcp_upload
