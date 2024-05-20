@@ -95,6 +95,7 @@ By default, rabpro comes enabled to work with all of the raster assets in the `p
 .. csv-table:: Datasets included in the user data catalog:
    :file: ../user_gee_datasets.csv
    :align: center
+   :width: 90%
 
 You can request that a user asset be added to this list by filing an `issue <https://github.com/VeinsOfTheEarth/rabpro/issues/new?assignees=&labels=data+request&template=data-request.yml>`_.
 
