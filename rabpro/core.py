@@ -68,6 +68,7 @@ class profiler:
         path_results=None,
         verbose=True,
         update_gee_metadata=True,
+        epsg=4326
     ):
         """
         Warns
@@ -81,7 +82,7 @@ class profiler:
 
         # Parse the provided coordinates into a GeoDataFrame (if not already)
         if type(coords) is tuple:  # A single point was provided
-            self.gdf = self._coordinates_to_gdf([coords])
+            self.gdf = self._coordinates_to_gdf([coords, epsg])
         elif type(coords) is list:
             # A list of tuples was provided (centerline) # pragma: no cover
             self.gdf = self._coordinates_to_gdf(coords)
@@ -156,7 +157,7 @@ class profiler:
         else:
             self.available_hb = True
 
-    def _coordinates_to_gdf(self, coords):
+    def _coordinates_to_gdf(self, coords, epsg=4326):
         """
         Converts a list of coordinates to a `GeoDataFrame`. Coordinates should
         be (lat, lon) pairs with EPSG==4326.
@@ -164,7 +165,7 @@ class profiler:
         geoms = [shapely.geometry.Point((xy[1], xy[0])) for xy in coords]
 
         gdf = gpd.GeoDataFrame(geometry=geoms)
-        gdf.crs = CRS.from_epsg(4326)
+        gdf.crs = CRS.from_epsg(epsg)
 
         return gdf
 
