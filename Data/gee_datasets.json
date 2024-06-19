@@ -76,7 +76,7 @@
         "id": "ASTER/AST_L1T_003",
         "name": "ASTER L1T Radiance",
         "start_date": "2000-03-04",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-16",
         "type": "image_collection",
         "bands": {
             "B01": {
@@ -473,7 +473,7 @@
         "id": "COPERNICUS/S1_GRD",
         "name": "Sentinel-1 SAR GRD: C-band Synthetic Aperture Radar Ground Range Detected, log scaling",
         "start_date": "2014-10-03",
-        "end_date": "2024-06-11",
+        "end_date": "2024-06-18",
         "type": "image_collection",
         "bands": {
             "HH": {
@@ -2759,7 +2759,7 @@
         "id": "ECMWF/ERA5_LAND/DAILY_AGGR",
         "name": "ERA5-Land Daily Aggregated - ECMWF Climate Reanalysis",
         "start_date": "1950-01-02",
-        "end_date": "2024-05-23",
+        "end_date": "2024-06-09",
         "type": "image_collection",
         "bands": {
             "dewpoint_temperature_2m": {
@@ -3653,7 +3653,7 @@
         "id": "ECMWF/ERA5_LAND/MONTHLY_AGGR",
         "name": "ERA5-Land Monthly Aggregated - ECMWF Climate Reanalysis",
         "start_date": "1950-02-01",
-        "end_date": "2024-04-01",
+        "end_date": "2024-05-01",
         "type": "image_collection",
         "bands": {
             "dewpoint_temperature_2m": {
@@ -5905,7 +5905,7 @@
         "id": "GOOGLE/CLOUD_SCORE_PLUS/V1/S2_HARMONIZED",
         "name": "Cloud Score+ S2_HARMONIZED V1",
         "start_date": "2015-06-27",
-        "end_date": "2024-06-11",
+        "end_date": "2024-06-18",
         "type": "image_collection",
         "bands": {
             "cs": {
@@ -5922,7 +5922,7 @@
         "id": "GOOGLE/DYNAMICWORLD/V1",
         "name": "Dynamic World V1",
         "start_date": "2015-06-27",
-        "end_date": "2024-06-11",
+        "end_date": "2024-06-18",
         "type": "image_collection",
         "bands": {
             "water": {
@@ -14033,7 +14033,7 @@
         "id": "JAXA/GPM_L3/GSMaP/v7/operational",
         "name": "GSMaP Operational: Global Satellite Mapping of Precipitation - V7",
         "start_date": "2014-03-01",
-        "end_date": "2024-06-10",
+        "end_date": "2024-06-17",
         "type": "image_collection",
         "bands": {
             "hourlyPrecipRate": {
@@ -14062,7 +14062,7 @@
         "id": "JAXA/GPM_L3/GSMaP/v8/operational",
         "name": "GSMaP Operational: Global Satellite Mapping of Precipitation - V8",
         "start_date": "1998-01-01",
-        "end_date": "2024-06-10",
+        "end_date": "2024-06-17",
         "type": "image_collection",
         "bands": {
             "hourlyPrecipRate": {
@@ -14570,7 +14570,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_BAI",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day BAI Composite",
         "start_date": "2013-04-07",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-17",
         "type": "image_collection",
         "bands": {
             "BAI": {
@@ -14583,7 +14583,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_EVI",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day EVI Composite",
         "start_date": "2013-04-07",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-17",
         "type": "image_collection",
         "bands": {
             "EVI": {
@@ -14596,7 +14596,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_NBR",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day NBR Composite",
         "start_date": "2013-04-07",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-17",
         "type": "image_collection",
         "bands": {
             "NBRT": {
@@ -14608,7 +14608,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_NDVI",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day NDVI Composite",
         "start_date": "2013-04-07",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-17",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -14621,7 +14621,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_NDWI",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day NDWI Composite",
         "start_date": "2013-04-07",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-17",
         "type": "image_collection",
         "bands": {
             "NDWI": {
@@ -15356,7 +15356,7 @@
         "id": "LANDSAT/LC08/C02/T1",
         "name": "USGS Landsat 8 Collection 2 Tier 1 Raw Scenes",
         "start_date": "2013-03-18",
-        "end_date": "2024-06-08",
+        "end_date": "2024-06-15",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15518,7 +15518,7 @@
         "id": "LANDSAT/LC08/C02/T1_RT",
         "name": "USGS Landsat 8 Collection 2 Tier 1 and Real-Time data Raw Scenes",
         "start_date": "2013-03-18",
-        "end_date": "2024-06-11",
+        "end_date": "2024-06-18",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15595,7 +15595,7 @@
         "id": "LANDSAT/LC08/C02/T1_RT_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 1 and Real-Time data TOA Reflectance",
         "start_date": "2013-03-18",
-        "end_date": "2024-06-11",
+        "end_date": "2024-06-18",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15672,7 +15672,7 @@
         "id": "LANDSAT/LC08/C02/T1_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "2013-03-18",
-        "end_date": "2024-06-08",
+        "end_date": "2024-06-15",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15749,7 +15749,7 @@
         "id": "LANDSAT/LC08/C02/T2",
         "name": "USGS Landsat 8 Collection 2 Tier 2 Raw Scenes",
         "start_date": "2021-10-28",
-        "end_date": "2024-06-08",
+        "end_date": "2024-06-15",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15911,7 +15911,7 @@
         "id": "LANDSAT/LC08/C02/T2_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2021-10-28",
-        "end_date": "2024-06-08",
+        "end_date": "2024-06-15",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15988,7 +15988,7 @@
         "id": "LANDSAT/LC09/C02/T1",
         "name": "USGS Landsat 9 Collection 2 Tier 1 Raw Scenes",
         "start_date": "2021-10-31",
-        "end_date": "2024-06-11",
+        "end_date": "2024-06-18",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -16065,7 +16065,7 @@
         "id": "LANDSAT/LC09/C02/T1_L2",
         "name": "USGS Landsat 9 Level 2, Collection 2, Tier 1",
         "start_date": "2021-10-31",
-        "end_date": "2024-06-04",
+        "end_date": "2024-06-16",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -16150,7 +16150,7 @@
         "id": "LANDSAT/LC09/C02/T1_TOA",
         "name": "USGS Landsat 9 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "2021-10-31",
-        "end_date": "2024-06-11",
+        "end_date": "2024-06-18",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -16227,7 +16227,7 @@
         "id": "LANDSAT/LC09/C02/T2",
         "name": "USGS Landsat 9 Collection 2 Tier 2 Raw Scenes",
         "start_date": "2021-11-02",
-        "end_date": "2024-06-11",
+        "end_date": "2024-06-18",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -16304,7 +16304,7 @@
         "id": "LANDSAT/LC09/C02/T2_L2",
         "name": "USGS Landsat 9 Level 2, Collection 2, Tier 2",
         "start_date": "2021-10-31",
-        "end_date": "2024-06-04",
+        "end_date": "2024-06-16",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -16389,7 +16389,7 @@
         "id": "LANDSAT/LC09/C02/T2_TOA",
         "name": "USGS Landsat 9 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2021-11-02",
-        "end_date": "2024-06-11",
+        "end_date": "2024-06-18",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -16639,45 +16639,6 @@
         }
     },
     {
-        "id": "LANDSAT/LE07/C01/T1_8DAY_BAI",
-        "name": "Landsat 7 Collection 1 Tier 1 8-Day BAI Composite",
-        "start_date": "1999-01-01",
-        "end_date": "2021-12-27",
-        "type": "image_collection",
-        "bands": {
-            "BAI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LE07/C01/T1_8DAY_EVI",
-        "name": "Landsat 7 Collection 1 Tier 1 8-Day EVI Composite",
-        "start_date": "1999-01-01",
-        "end_date": "2021-12-27",
-        "type": "image_collection",
-        "bands": {
-            "EVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LE07/C01/T1_8DAY_NBRT",
-        "name": "Landsat 7 Collection 1 Tier 1 8-Day NBRT Composite",
-        "start_date": "1999-01-01",
-        "end_date": "2021-12-27",
-        "type": "image_collection",
-        "bands": {
-            "NBRT": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
         "id": "LANDSAT/LE07/C01/T1_8DAY_NDSI",
         "name": "Landsat 7 Collection 1 Tier 1 8-Day NDSI Composite",
         "start_date": "1999-01-01",
@@ -16685,32 +16646,6 @@
         "type": "image_collection",
         "bands": {
             "NDSI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LE07/C01/T1_8DAY_NDVI",
-        "name": "Landsat 7 Collection 1 Tier 1 8-Day NDVI Composite",
-        "start_date": "1999-01-01",
-        "end_date": "2021-12-27",
-        "type": "image_collection",
-        "bands": {
-            "NDVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LE07/C01/T1_8DAY_NDWI",
-        "name": "Landsat 7 Collection 1 Tier 1 8-Day NDWI Composite",
-        "start_date": "1999-01-01",
-        "end_date": "2021-12-27",
-        "type": "image_collection",
-        "bands": {
-            "NDWI": {
                 "units": null,
                 "resolution": 111319.49079327357
             }
@@ -18229,45 +18164,6 @@
         }
     },
     {
-        "id": "LANDSAT/LT04/C01/T1_8DAY_BAI",
-        "name": "Landsat 4 TM Collection 1 Tier 1 8-Day BAI Composite",
-        "start_date": "1982-08-21",
-        "end_date": "1993-12-11",
-        "type": "image_collection",
-        "bands": {
-            "BAI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT04/C01/T1_8DAY_EVI",
-        "name": "Landsat 4 TM Collection 1 Tier 1 8-Day EVI Composite",
-        "start_date": "1982-08-21",
-        "end_date": "1993-12-11",
-        "type": "image_collection",
-        "bands": {
-            "EVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT04/C01/T1_8DAY_NBRT",
-        "name": "Landsat 4 TM Collection 1 Tier 1 8-Day NBRT Composite",
-        "start_date": "1982-08-21",
-        "end_date": "1993-12-11",
-        "type": "image_collection",
-        "bands": {
-            "NBRT": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
         "id": "LANDSAT/LT04/C01/T1_8DAY_NDSI",
         "name": "Landsat 4 TM Collection 1 Tier 1 8-Day NDSI Composite",
         "start_date": "1982-08-21",
@@ -18275,32 +18171,6 @@
         "type": "image_collection",
         "bands": {
             "NDSI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT04/C01/T1_8DAY_NDVI",
-        "name": "Landsat 4 TM Collection 1 Tier 1 8-Day NDVI Composite",
-        "start_date": "1982-08-21",
-        "end_date": "1993-12-11",
-        "type": "image_collection",
-        "bands": {
-            "NDVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT04/C01/T1_8DAY_NDWI",
-        "name": "Landsat 4 TM Collection 1 Tier 1 8-Day NDWI Composite",
-        "start_date": "1982-08-21",
-        "end_date": "1993-12-11",
-        "type": "image_collection",
-        "bands": {
-            "NDWI": {
                 "units": null,
                 "resolution": 111319.49079327357
             }
@@ -19168,45 +19038,6 @@
         }
     },
     {
-        "id": "LANDSAT/LT05/C01/T1_8DAY_BAI",
-        "name": "Landsat 5 TM Collection 1 Tier 1 8-Day BAI Composite",
-        "start_date": "1984-01-01",
-        "end_date": "2012-04-30",
-        "type": "image_collection",
-        "bands": {
-            "BAI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT05/C01/T1_8DAY_EVI",
-        "name": "Landsat 5 TM Collection 1 Tier 1 8-Day EVI Composite",
-        "start_date": "1984-01-01",
-        "end_date": "2012-04-30",
-        "type": "image_collection",
-        "bands": {
-            "EVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT05/C01/T1_8DAY_NBRT",
-        "name": "Landsat 5 TM Collection 1 Tier 1 8-Day NBRT Composite",
-        "start_date": "1984-01-01",
-        "end_date": "2012-04-30",
-        "type": "image_collection",
-        "bands": {
-            "NBRT": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
         "id": "LANDSAT/LT05/C01/T1_8DAY_NDSI",
         "name": "Landsat 5 TM Collection 1 Tier 1 8-Day NDSI Composite",
         "start_date": "1984-01-01",
@@ -19214,32 +19045,6 @@
         "type": "image_collection",
         "bands": {
             "NDSI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT05/C01/T1_8DAY_NDVI",
-        "name": "Landsat 5 TM Collection 1 Tier 1 8-Day NDVI Composite",
-        "start_date": "1984-01-01",
-        "end_date": "2012-04-30",
-        "type": "image_collection",
-        "bands": {
-            "NDVI": {
-                "units": null,
-                "resolution": 111319.49079327357
-            }
-        }
-    },
-    {
-        "id": "LANDSAT/LT05/C01/T1_8DAY_NDWI",
-        "name": "Landsat 5 TM Collection 1 Tier 1 8-Day NDWI Composite",
-        "start_date": "1984-01-01",
-        "end_date": "2012-04-30",
-        "type": "image_collection",
-        "bands": {
-            "NDWI": {
                 "units": null,
                 "resolution": 111319.49079327357
             }
@@ -21749,7 +21554,7 @@
         "id": "MODIS/061/MCD15A3H",
         "name": "MCD15A3H.061 MODIS Leaf Area Index/FPAR 4-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2024-06-05",
+        "end_date": "2024-06-09",
         "type": "image_collection",
         "bands": {
             "Fpar": {
@@ -21880,7 +21685,7 @@
         "id": "MODIS/061/MCD19A1_GRANULES",
         "name": "MCD19A1.061: Land Surface BRF Daily L2G Global 500m and 1km",
         "start_date": "2000-12-21",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-14",
         "type": "image_collection",
         "bands": {
             "Sur_refl1": {
@@ -21985,7 +21790,7 @@
         "id": "MODIS/061/MCD19A2_GRANULES",
         "name": "MCD19A2.061: Terra & Aqua MAIAC Land Aerosol Optical Depth Daily 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-14",
         "type": "image_collection",
         "bands": {
             "Optical_Depth_047": {
@@ -22046,7 +21851,7 @@
         "id": "MODIS/061/MCD43A1",
         "name": "MCD43A1.061 MODIS BRDF-Albedo Model Parameters Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-06-01",
+        "end_date": "2024-06-08",
         "type": "image_collection",
         "bands": {
             "BRDF_Albedo_Parameters_Band1_iso": {
@@ -22215,7 +22020,7 @@
         "id": "MODIS/061/MCD43A2",
         "name": "MCD43A2.061 MODIS BRDF-Albedo Quality Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-06-02",
+        "end_date": "2024-06-08",
         "type": "image_collection",
         "bands": {
             "Snow_BRDF_Albedo": {
@@ -22300,7 +22105,7 @@
         "id": "MODIS/061/MCD43A3",
         "name": "MCD43A3.061 MODIS Albedo Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-06-02",
+        "end_date": "2024-06-08",
         "type": "image_collection",
         "bands": {
             "Albedo_BSA_Band1": {
@@ -22429,7 +22234,7 @@
         "id": "MODIS/061/MCD43A4",
         "name": "MCD43A4.061 MODIS Nadir BRDF-Adjusted Reflectance Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-06-02",
+        "end_date": "2024-06-08",
         "type": "image_collection",
         "bands": {
             "Nadir_Reflectance_Band1": {
@@ -22494,7 +22299,7 @@
         "id": "MODIS/061/MCD43C3",
         "name": "MCD43C3.061 BRDF/Albedo Daily L3 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2024-06-02",
+        "end_date": "2024-06-08",
         "type": "image_collection",
         "bands": {
             "Albedo_BSA_Band1": {
@@ -22656,7 +22461,7 @@
         "id": "MODIS/061/MOD09A1",
         "name": "MOD09A1.061 Terra Surface Reflectance 8-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2024-05-24",
+        "end_date": "2024-06-01",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -22717,7 +22522,7 @@
         "id": "MODIS/061/MOD09CMG",
         "name": "MOD09CMG.061 Terra Surface Reflectance Daily L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-15",
         "type": "image_collection",
         "bands": {
             "Coarse_Resolution_Surface_Reflectance_Band_1": {
@@ -22801,7 +22606,7 @@
         "id": "MODIS/061/MOD09GA",
         "name": "MOD09GA.061 Terra Surface Reflectance Daily Global 1km and 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-15",
         "type": "image_collection",
         "bands": {
             "num_observations_1km": {
@@ -22898,7 +22703,7 @@
         "id": "MODIS/061/MOD09GQ",
         "name": "MOD09GQ.061 Terra Surface Reflectance Daily Global 250m",
         "start_date": "2000-02-24",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-15",
         "type": "image_collection",
         "bands": {
             "num_observations": {
@@ -22964,7 +22769,7 @@
         "id": "MODIS/061/MOD10A1",
         "name": "MOD10A1.061 Terra Snow Cover Daily Global 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-06-07",
+        "end_date": "2024-06-15",
         "type": "image_collection",
         "bands": {
             "NDSI_Snow_Cover": {
@@ -23009,7 +22814,7 @@
         "id": "MODIS/061/MOD11A1",
         "name": "MOD11A1.061 Terra Land Surface Temperature and Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-06-10",
+        "end_date": "2024-06-15",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -23408,7 +23213,7 @@
         "id": "MODIS/061/MOD14A1",
         "name": "MOD14A1.061: Terra Thermal Anomalies & Fire Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-05-31",
+        "end_date": "2024-06-08",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -23483,7 +23288,7 @@
         "id": "MODIS/061/MOD16A2",
         "name": "MOD16A2.061: Terra Net Evapotranspiration 8-Day Global 500m",
         "start_date": "2001-01-01",
-        "end_date": "2024-05-24",
+        "end_date": "2024-06-01",
         "type": "image_collection",
         "bands": {
             "ET": {
@@ -23583,7 +23388,7 @@
         "id": "MODIS/061/MOD21A1D",
         "name": "MOD21A1D.061 Terra Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-15",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -23620,7 +23425,7 @@
         "id": "MODIS/061/MOD21A1N",
         "name": "MOD21A1N.061 Terra Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-06-10",
+        "end_date": "2024-06-15",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -23657,7 +23462,7 @@
         "id": "MODIS/061/MOD21C1",
         "name": "MOD21C1.061 Terra Land Surface Temperature and 3-Band Emissivity Daily L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2024-06-10",
+        "end_date": "2024-06-15",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -24040,7 +23845,7 @@
         "id": "MODIS/061/MYD09CMG",
         "name": "MYD09CMG.061 Aqua Surface Reflectance Daily L3 Global 0.05 Deg CMG",
         "start_date": "2002-07-04",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-15",
         "type": "image_collection",
         "bands": {
             "Coarse_Resolution_Surface_Reflectance_Band_1": {
@@ -24124,7 +23929,7 @@
         "id": "MODIS/061/MYD09GA",
         "name": "MYD09GA.061 Aqua Surface Reflectance Daily Global 1km and 500m",
         "start_date": "2002-07-04",
-        "end_date": "2024-06-08",
+        "end_date": "2024-06-15",
         "type": "image_collection",
         "bands": {
             "num_observations_1km": {
@@ -24221,7 +24026,7 @@
         "id": "MODIS/061/MYD09GQ",
         "name": "MYD09GQ.061 Aqua Surface Reflectance Daily Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-16",
         "type": "image_collection",
         "bands": {
             "num_observations": {
@@ -24287,7 +24092,7 @@
         "id": "MODIS/061/MYD10A1",
         "name": "MYD10A1.061 Aqua Snow Cover Daily Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2024-06-08",
+        "end_date": "2024-06-16",
         "type": "image_collection",
         "bands": {
             "NDSI_Snow_Cover": {
@@ -24332,7 +24137,7 @@
         "id": "MODIS/061/MYD11A1",
         "name": "MYD11A1.061 Aqua Land Surface Temperature and Emissivity Daily Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-16",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -24731,7 +24536,7 @@
         "id": "MODIS/061/MYD14A1",
         "name": "MYD14A1.061: Aqua Thermal Anomalies & Fire Daily Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2024-05-31",
+        "end_date": "2024-06-08",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -24848,7 +24653,7 @@
         "id": "MODIS/061/MYD21A1D",
         "name": "MYD21A1D.061 Aqua Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-16",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -24885,7 +24690,7 @@
         "id": "MODIS/061/MYD21A1N",
         "name": "MYD21A1N.061 Aqua Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-15",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -24922,7 +24727,7 @@
         "id": "MODIS/061/MYD21C1",
         "name": "MYD21C1.061 Aqua Land Surface Temperature and 3-Band Emissivity Daily L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-15",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -25705,7 +25510,7 @@
         "id": "NASA/GEOS-CF/v1/fcst/htf",
         "name": "GEOS-CF fcst htf v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2022-10-01",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-16",
         "type": "image_collection",
         "bands": {
             "CO": {
@@ -25762,7 +25567,7 @@
         "id": "NASA/GEOS-CF/v1/fcst/tavg1hr",
         "name": "GEOS-CF fcst tavg1hr v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2022-10-01",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-16",
         "type": "image_collection",
         "bands": {
             "ACET": {
@@ -26315,7 +26120,7 @@
         "id": "NASA/GEOS-CF/v1/rpl/htf",
         "name": "GEOS-CF rpl htf v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2018-01-01",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-16",
         "type": "image_collection",
         "bands": {
             "CO": {
@@ -26372,7 +26177,7 @@
         "id": "NASA/GEOS-CF/v1/rpl/tavg1hr",
         "name": "GEOS-CF rpl tavg1hr v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2018-01-01",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-16",
         "type": "image_collection",
         "bands": {
             "ACET": {
@@ -27382,7 +27187,7 @@
         "id": "NASA/GPM_L3/IMERG_MONTHLY_V07",
         "name": "GPM: Monthly Global Precipitation Measurement (GPM) vRelease 07",
         "start_date": "2000-06-01",
-        "end_date": "2023-12-01",
+        "end_date": "2024-01-01",
         "type": "image_collection",
         "bands": {
             "gaugeRelativeWeighting": {
@@ -33077,7 +32882,7 @@
         "id": "NASA/HLS/HLSL30/v002",
         "name": "HLSL30: HLS-2 Landsat Operational Land Imager Surface Reflectance and TOA Brightness Daily Global 30m",
         "start_date": "2013-04-11",
-        "end_date": "2024-06-05",
+        "end_date": "2024-06-16",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -33144,7 +32949,7 @@
         "id": "NASA/LANCE/NOAA20_VIIRS/C2",
         "name": "VJ114IMGTDL_NRT Daily Raster: VIIRS (NOAA-20) Band 375m Active Fire",
         "start_date": "2023-10-08",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-16",
         "type": "image_collection",
         "bands": {
             "Bright_ti4": {
@@ -33185,7 +32990,7 @@
         "id": "NASA/LANCE/SNPP_VIIRS/C2",
         "name": "VNP14IMGTDL_NRT Daily Raster: VIIRS (S-NPP) Band 375m Active Fire",
         "start_date": "2023-09-03",
-        "end_date": "2024-06-09",
+        "end_date": "2024-06-16",
         "type": "image_collection",
         "bands": {
             "Bright_ti4": {
@@ -33653,7 +33458,7 @@
         "id": "NASA/SMAP/SPL4SMGP/007",
         "name": "SPL4SMGP.007 SMAP L4 Global 3-hourly 9-km Surface and Root Zone Soil Moisture",
         "start_date": "2015-03-31",
-        "end_date": "2024-06-08",
+        "end_date": "2024-06-15",
         "type": "image_collection",
         "bands": {
             "sm_surface": {
@@ -33919,7 +33724,7 @@
         "id": "NASA/SMAP/SPL3SMP_E/006",
         "name": "SPL3SMP_E.006 SMAP L3 Radiometer Global Daily 9 km Soil Moisture",
         "start_date": "2023-12-04",
-        "end_date": "2024-06-08",
+        "end_date": "2024-06-16",
         "type": "image_collection",
         "bands": {
             "soil_moisture_am": {
@@ -33985,6 +33790,135 @@
             "soil_moisture_pm_anomaly": {
                 "units": null,
                 "resolution": 8905.559263461886
+            }
+        }
+    },
+    {
+        "id": "NASA/VIIRS/002/VNP09GA",
+        "name": "VNP09GA: VIIRS Surface Reflectance Daily 500m and 1km",
+        "start_date": "2012-01-19",
+        "end_date": "2024-06-15",
+        "type": "image_collection",
+        "bands": {
+            "M1": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "M2": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "M3": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "M4": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "M5": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "M7": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "M8": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "M10": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "M11": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "I1": {
+                "units": null,
+                "resolution": 463.3127165279165
+            },
+            "I2": {
+                "units": null,
+                "resolution": 463.3127165279165
+            },
+            "I3": {
+                "units": null,
+                "resolution": 463.3127165279165
+            },
+            "SensorAzimuth": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "SensorZenith": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "SolarAzimuth": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "SolarZenith": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "iobs_res": {
+                "units": null,
+                "resolution": 463.3127165279165
+            },
+            "num_observations_1km": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "num_observations_500m": {
+                "units": null,
+                "resolution": 463.3127165279165
+            },
+            "obscov_1km": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "obscov_500m": {
+                "units": null,
+                "resolution": 463.3127165279165
+            },
+            "orbit_pnt": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "QF1": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "QF2": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "QF3": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "QF4": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "QF5": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "QF6": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "QF7": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "land_water_mask": {
+                "units": null,
+                "resolution": 926.625433055833
             }
         }
     },
@@ -36002,7 +35936,7 @@
         "id": "NOAA/GOES/18/FDCC",
         "name": "GOES-18 FDCC Series ABI Level 2 Fire/Hot Spot Characterization CONUS",
         "start_date": "2022-10-13",
-        "end_date": "2024-06-11",
+        "end_date": "2024-06-18",
         "type": "image_collection",
         "bands": {
             "Area": {
@@ -36031,7 +35965,7 @@
         "id": "NOAA/GOES/18/FDCF",
         "name": "GOES-18 FDCF Series ABI Level 2 Fire/Hot Spot Characterization Full Disk",
         "start_date": "2022-10-13",
-        "end_date": "2024-06-11",
+        "end_date": "2024-06-18",
         "type": "image_collection",
         "bands": {
             "Area": {
@@ -36060,7 +35994,7 @@
         "id": "NOAA/GOES/18/MCMIPC",
         "name": "GOES-18 MCMIPC Series ABI Level 2 Cloud and Moisture Imagery CONUS",
         "start_date": "2018-12-04",
-        "end_date": "2024-06-11",
+        "end_date": "2024-06-18",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -36197,7 +36131,7 @@
         "id": "NOAA/GOES/18/MCMIPF",
         "name": "GOES-18 MCMIPF Series ABI Level 2 Cloud and Moisture Imagery Full Disk",
         "start_date": "2018-12-04",
-        "end_date": "2024-06-11",
+        "end_date": "2024-06-18",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -36334,7 +36268,7 @@
         "id": "NOAA/GOES/18/MCMIPM",
         "name": "GOES-18 MCMIPM Series ABI Level 2 Cloud and Moisture Imagery Full Disk",
         "start_date": "2018-12-04",
-        "end_date": "2024-06-11",
+        "end_date": "2024-06-18",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -36542,135 +36476,10 @@
         }
     },
     {
-        "id": "NOAA/VIIRS/001/VNP09GA",
-        "name": "VNP09GA: VIIRS Surface Reflectance Daily 500m and 1km",
-        "start_date": "2012-01-19",
-        "end_date": "2022-03-21",
-        "type": "image_collection",
-        "bands": {
-            "M1": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "M2": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "M3": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "M4": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "M5": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "M7": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "M8": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "M10": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "M11": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "I1": {
-                "units": null,
-                "resolution": 463.3127165279165
-            },
-            "I2": {
-                "units": null,
-                "resolution": 463.3127165279165
-            },
-            "I3": {
-                "units": null,
-                "resolution": 463.3127165279165
-            },
-            "SensorAzimuth": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "SensorZenith": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "SolarAzimuth": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "SolarZenith": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "iobs_res": {
-                "units": null,
-                "resolution": 463.3127165279165
-            },
-            "num_observations_1km": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "num_observations_500m": {
-                "units": null,
-                "resolution": 463.3127165279165
-            },
-            "obscov_1km": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "obscov_500m": {
-                "units": null,
-                "resolution": 463.3127165279165
-            },
-            "orbit_pnt": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "QF1": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "QF2": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "QF3": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "QF4": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "QF5": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "QF6": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "QF7": {
-                "units": null,
-                "resolution": 926.625433055833
-            }
-        }
-    },
-    {
         "id": "NOAA/VIIRS/001/VNP09H1",
         "name": "VNP09H1: VIIRS Surface Reflectance 8-Day L3 Global 500m",
         "start_date": "2012-01-19",
-        "end_date": "2024-05-16",
+        "end_date": "2024-06-09",
         "type": "image_collection",
         "bands": {
             "SurfReflect_I1": {
@@ -36772,7 +36581,7 @@
         "id": "NOAA/VIIRS/001/VNP14A1",
         "name": "VNP14A1: Thermal Anomalies/Fire Daily L3 Global 1km SIN Grid",
         "start_date": "2012-01-19",
-        "end_date": "2024-05-27",
+        "end_date": "2024-06-16",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -36797,7 +36606,7 @@
         "id": "NOAA/VIIRS/001/VNP15A2H",
         "name": "VNP15A2H: LAI/FPAR 8-Day L4 Global 500m SIN Grid",
         "start_date": "2012-01-17",
-        "end_date": "2024-05-16",
+        "end_date": "2024-06-09",
         "type": "image_collection",
         "bands": {
             "Fpar": {
@@ -37065,7 +36874,7 @@
         "id": "NOAA/VIIRS/001/VNP43IA1",
         "name": "VNP43IA1: BRDF/Albedo Model Parameters Daily L3 Global 500m SIN Grid",
         "start_date": "2012-01-17",
-        "end_date": "2024-05-20",
+        "end_date": "2024-06-04",
         "type": "image_collection",
         "bands": {
             "BRDF_Albedo_Band_Mandatory_Quality_I1": {
@@ -37122,7 +36931,7 @@
         "id": "NOAA/VIIRS/001/VNP43IA2",
         "name": "VNP43IA2: BRDF/Albedo Quality Daily L3 Global 500m SIN Grid",
         "start_date": "2012-01-17",
-        "end_date": "2024-05-20",
+        "end_date": "2024-06-04",
         "type": "image_collection",
         "bands": {
             "BRDF_Albedo_Band_Quality_I1": {
@@ -37175,7 +36984,7 @@
         "id": "NOAA/VIIRS/001/VNP46A1",
         "name": "VNP46A1: VIIRS Daily Gridded Day Night Band 500m Linear Lat Lon Grid Night",
         "start_date": "2012-01-19",
-        "end_date": "2024-05-27",
+        "end_date": "2024-06-16",
         "type": "image_collection",
         "bands": {
             "BrightnessTemperature_M12": {
@@ -37288,7 +37097,7 @@
         "id": "NOAA/VIIRS/001/VNP46A2",
         "name": "VNP46A2: VIIRS Lunar Gap-Filled BRDF Nighttime Lights Daily L3 Global 500m",
         "start_date": "2012-01-19",
-        "end_date": "2024-05-20",
+        "end_date": "2024-05-25",
         "type": "image_collection",
         "bands": {
             "DNB_BRDF_Corrected_NTL": {
@@ -37713,7 +37522,7 @@
     {
         "id": "OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0",
         "name": "OpenET CONUS Ensemble Monthly Evapotranspiration v2.0",
-        "start_date": "2016-01-01",
+        "start_date": "2013-01-01",
         "end_date": "2023-12-01",
         "type": "image_collection",
         "bands": {
@@ -37746,7 +37555,7 @@
     {
         "id": "OpenET/DISALEXI/CONUS/GRIDMET/MONTHLY/v2_0",
         "name": "OpenET CONUS DisALEXI Monthly Evapotranspiration v2.0",
-        "start_date": "2016-01-01",
+        "start_date": "2013-01-01",
         "end_date": "2023-12-01",
         "type": "image_collection",
         "bands": {
@@ -37763,7 +37572,7 @@
     {
         "id": "OpenET/EEMETRIC/CONUS/GRIDMET/MONTHLY/v2_0",
         "name": "OpenET CONUS eeMETRIC Monthly Evapotranspiration v2.0",
-        "start_date": "2016-01-01",
+        "start_date": "2013-01-01",
         "end_date": "2023-12-01",
         "type": "image_collection",
         "bands": {
@@ -37780,7 +37589,7 @@
     {
         "id": "OpenET/GEESEBAL/CONUS/GRIDMET/MONTHLY/v2_0",
         "name": "OpenET CONUS geeSEBAL Monthly Evapotranspiration v2.0",
-        "start_date": "2016-01-01",
+        "start_date": "2013-01-01",
         "end_date": "2023-12-01",
         "type": "image_collection",
         "bands": {
@@ -37797,7 +37606,7 @@
     {
         "id": "OpenET/PTJPL/CONUS/GRIDMET/MONTHLY/v2_0",
         "name": "OpenET CONUS PT-JPL Monthly Evapotranspiration v2.0",
-        "start_date": "2016-01-01",
+        "start_date": "2013-01-01",
         "end_date": "2023-12-01",
         "type": "image_collection",
         "bands": {
@@ -37814,7 +37623,7 @@
     {
         "id": "OpenET/SIMS/CONUS/GRIDMET/MONTHLY/v2_0",
         "name": "OpenET CONUS SIMS Monthly Evapotranspiration v2.0",
-        "start_date": "2016-01-01",
+        "start_date": "2013-01-01",
         "end_date": "2023-12-01",
         "type": "image_collection",
         "bands": {
@@ -37831,7 +37640,7 @@
     {
         "id": "OpenET/SSEBOP/CONUS/GRIDMET/MONTHLY/v2_0",
         "name": "OpenET CONUS SSEBop Monthly Evapotranspiration v2.0",
-        "start_date": "2016-01-01",
+        "start_date": "2013-01-01",
         "end_date": "2023-12-01",
         "type": "image_collection",
         "bands": {
@@ -41607,7 +41416,7 @@
         "id": "projects/sat-io/open-datasets/us-drought-monitor",
         "name": "United States Drought Monitor",
         "start_date": "2000-01-04",
-        "end_date": "2024-05-28",
+        "end_date": "2024-06-04",
         "type": "image_collection",
         "bands": {
             "b1": {
