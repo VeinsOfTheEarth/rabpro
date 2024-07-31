@@ -76,7 +76,7 @@
         "id": "ASTER/AST_L1T_003",
         "name": "ASTER L1T Radiance",
         "start_date": "2000-03-04",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-26",
         "type": "image_collection",
         "bands": {
             "B01": {
@@ -486,7 +486,7 @@
         "id": "COPERNICUS/S1_GRD",
         "name": "Sentinel-1 SAR GRD: C-band Synthetic Aperture Radar Ground Range Detected, log scaling",
         "start_date": "2014-10-03",
-        "end_date": "2024-07-23",
+        "end_date": "2024-07-30",
         "type": "image_collection",
         "bands": {
             "HH": {
@@ -576,6 +576,18 @@
             "QA60": {
                 "units": null,
                 "resolution": 60
+            },
+            "MSK_CLASSI_OPAQUE": {
+                "units": null,
+                "resolution": 111319.49079327357
+            },
+            "MSK_CLASSI_CIRRUS": {
+                "units": null,
+                "resolution": 111319.49079327357
+            },
+            "MSK_CLASSI_SNOW_ICE": {
+                "units": null,
+                "resolution": 111319.49079327357
             }
         }
     },
@@ -690,6 +702,18 @@
             "QA60": {
                 "units": null,
                 "resolution": 60
+            },
+            "MSK_CLASSI_OPAQUE": {
+                "units": null,
+                "resolution": 111319.49079327357
+            },
+            "MSK_CLASSI_CIRRUS": {
+                "units": null,
+                "resolution": 111319.49079327357
+            },
+            "MSK_CLASSI_SNOW_ICE": {
+                "units": null,
+                "resolution": 111319.49079327357
             }
         }
     },
@@ -2772,7 +2796,7 @@
         "id": "ECMWF/ERA5_LAND/DAILY_AGGR",
         "name": "ERA5-Land Daily Aggregated - ECMWF Climate Reanalysis",
         "start_date": "1950-01-02",
-        "end_date": "2024-07-14",
+        "end_date": "2024-07-20",
         "type": "image_collection",
         "bands": {
             "dewpoint_temperature_2m": {
@@ -5918,7 +5942,7 @@
         "id": "GOOGLE/CLOUD_SCORE_PLUS/V1/S2_HARMONIZED",
         "name": "Cloud Score+ S2_HARMONIZED V1",
         "start_date": "2015-06-27",
-        "end_date": "2024-07-23",
+        "end_date": "2024-07-30",
         "type": "image_collection",
         "bands": {
             "cs": {
@@ -5935,7 +5959,7 @@
         "id": "GOOGLE/DYNAMICWORLD/V1",
         "name": "Dynamic World V1",
         "start_date": "2015-06-27",
-        "end_date": "2024-07-23",
+        "end_date": "2024-07-30",
         "type": "image_collection",
         "bands": {
             "water": {
@@ -14046,7 +14070,7 @@
         "id": "JAXA/GPM_L3/GSMaP/v7/operational",
         "name": "GSMaP Operational: Global Satellite Mapping of Precipitation - V7",
         "start_date": "2014-03-01",
-        "end_date": "2024-07-22",
+        "end_date": "2024-07-29",
         "type": "image_collection",
         "bands": {
             "hourlyPrecipRate": {
@@ -14075,7 +14099,7 @@
         "id": "JAXA/GPM_L3/GSMaP/v8/operational",
         "name": "GSMaP Operational: Global Satellite Mapping of Precipitation - V8",
         "start_date": "1998-01-01",
-        "end_date": "2024-07-22",
+        "end_date": "2024-07-29",
         "type": "image_collection",
         "bands": {
             "hourlyPrecipRate": {
@@ -14647,7 +14671,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_BAI",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day BAI Composite",
         "start_date": "1984-01-01",
-        "end_date": "2024-07-19",
+        "end_date": "2024-07-27",
         "type": "image_collection",
         "bands": {
             "BAI": {
@@ -14660,7 +14684,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_EVI",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day EVI Composite",
         "start_date": "1984-01-01",
-        "end_date": "2024-07-19",
+        "end_date": "2024-07-27",
         "type": "image_collection",
         "bands": {
             "EVI": {
@@ -14673,7 +14697,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_NBR",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day NBR Composite",
         "start_date": "1984-01-01",
-        "end_date": "2024-07-19",
+        "end_date": "2024-07-27",
         "type": "image_collection",
         "bands": {
             "NBRT": {
@@ -14685,7 +14709,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_NDVI",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day NDVI Composite",
         "start_date": "1984-01-01",
-        "end_date": "2024-07-19",
+        "end_date": "2024-07-27",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -14698,7 +14722,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_NDWI",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day NDWI Composite",
         "start_date": "1984-01-01",
-        "end_date": "2024-07-19",
+        "end_date": "2024-07-27",
         "type": "image_collection",
         "bands": {
             "NDWI": {
@@ -15087,7 +15111,7 @@
         "id": "LANDSAT/LC08/C02/T1_RT",
         "name": "USGS Landsat 8 Collection 2 Tier 1 and Real-Time data Raw Scenes",
         "start_date": "2013-03-18",
-        "end_date": "2024-07-23",
+        "end_date": "2024-07-30",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15164,7 +15188,7 @@
         "id": "LANDSAT/LC08/C02/T1_RT_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 1 and Real-Time data TOA Reflectance",
         "start_date": "2013-03-18",
-        "end_date": "2024-07-23",
+        "end_date": "2024-07-30",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15557,7 +15581,7 @@
         "id": "LANDSAT/LC09/C02/T1",
         "name": "USGS Landsat 9 Collection 2 Tier 1 Raw Scenes",
         "start_date": "2021-10-31",
-        "end_date": "2024-07-23",
+        "end_date": "2024-07-30",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15634,7 +15658,7 @@
         "id": "LANDSAT/LC09/C02/T1_L2",
         "name": "USGS Landsat 9 Level 2, Collection 2, Tier 1",
         "start_date": "2021-10-31",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-28",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -15719,7 +15743,7 @@
         "id": "LANDSAT/LC09/C02/T1_TOA",
         "name": "USGS Landsat 9 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "2021-10-31",
-        "end_date": "2024-07-23",
+        "end_date": "2024-07-30",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15796,7 +15820,7 @@
         "id": "LANDSAT/LC09/C02/T2",
         "name": "USGS Landsat 9 Collection 2 Tier 2 Raw Scenes",
         "start_date": "2021-11-02",
-        "end_date": "2024-07-22",
+        "end_date": "2024-07-30",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15873,7 +15897,7 @@
         "id": "LANDSAT/LC09/C02/T2_L2",
         "name": "USGS Landsat 9 Level 2, Collection 2, Tier 2",
         "start_date": "2021-10-31",
-        "end_date": "2024-07-20",
+        "end_date": "2024-07-28",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -15958,7 +15982,7 @@
         "id": "LANDSAT/LC09/C02/T2_TOA",
         "name": "USGS Landsat 9 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2021-11-02",
-        "end_date": "2024-07-22",
+        "end_date": "2024-07-29",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -19467,7 +19491,7 @@
         "id": "MODIS/061/MCD12Q2",
         "name": "MCD12Q2.006 Land Cover Dynamics Yearly Global 500m",
         "start_date": "2001-01-01",
-        "end_date": "2022-01-01",
+        "end_date": "2023-01-01",
         "type": "image_collection",
         "bands": {
             "NumCycles": {
@@ -19576,7 +19600,7 @@
         "id": "MODIS/061/MCD15A3H",
         "name": "MCD15A3H.061 MODIS Leaf Area Index/FPAR 4-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2024-07-15",
+        "end_date": "2024-07-23",
         "type": "image_collection",
         "bands": {
             "Fpar": {
@@ -19707,7 +19731,7 @@
         "id": "MODIS/061/MCD19A1_GRANULES",
         "name": "MCD19A1.061: Land Surface BRF Daily L2G Global 500m and 1km",
         "start_date": "2000-12-21",
-        "end_date": "2024-07-17",
+        "end_date": "2024-07-27",
         "type": "image_collection",
         "bands": {
             "Sur_refl1": {
@@ -19812,7 +19836,7 @@
         "id": "MODIS/061/MCD19A2_GRANULES",
         "name": "MCD19A2.061: Terra & Aqua MAIAC Land Aerosol Optical Depth Daily 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-17",
+        "end_date": "2024-07-27",
         "type": "image_collection",
         "bands": {
             "Optical_Depth_047": {
@@ -19873,7 +19897,7 @@
         "id": "MODIS/061/MCD43A1",
         "name": "MCD43A1.061 MODIS BRDF-Albedo Model Parameters Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-14",
+        "end_date": "2024-07-21",
         "type": "image_collection",
         "bands": {
             "BRDF_Albedo_Parameters_Band1_iso": {
@@ -20042,7 +20066,7 @@
         "id": "MODIS/061/MCD43A2",
         "name": "MCD43A2.061 MODIS BRDF-Albedo Quality Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-14",
+        "end_date": "2024-07-21",
         "type": "image_collection",
         "bands": {
             "Snow_BRDF_Albedo": {
@@ -20127,7 +20151,7 @@
         "id": "MODIS/061/MCD43A3",
         "name": "MCD43A3.061 MODIS Albedo Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-14",
+        "end_date": "2024-07-21",
         "type": "image_collection",
         "bands": {
             "Albedo_BSA_Band1": {
@@ -20256,7 +20280,7 @@
         "id": "MODIS/061/MCD43A4",
         "name": "MCD43A4.061 MODIS Nadir BRDF-Adjusted Reflectance Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-14",
+        "end_date": "2024-07-21",
         "type": "image_collection",
         "bands": {
             "Nadir_Reflectance_Band1": {
@@ -20321,7 +20345,7 @@
         "id": "MODIS/061/MCD43C3",
         "name": "MCD43C3.061 BRDF/Albedo Daily L3 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-14",
+        "end_date": "2024-07-21",
         "type": "image_collection",
         "bands": {
             "Albedo_BSA_Band1": {
@@ -20483,7 +20507,7 @@
         "id": "MODIS/061/MOD09A1",
         "name": "MOD09A1.061 Terra Surface Reflectance 8-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2024-07-11",
+        "end_date": "2024-07-19",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -20544,7 +20568,7 @@
         "id": "MODIS/061/MOD09CMG",
         "name": "MOD09CMG.061 Terra Surface Reflectance Daily L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-28",
         "type": "image_collection",
         "bands": {
             "Coarse_Resolution_Surface_Reflectance_Band_1": {
@@ -20628,7 +20652,7 @@
         "id": "MODIS/061/MOD09GA",
         "name": "MOD09GA.061 Terra Surface Reflectance Daily Global 1km and 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-28",
         "type": "image_collection",
         "bands": {
             "num_observations_1km": {
@@ -20725,7 +20749,7 @@
         "id": "MODIS/061/MOD09GQ",
         "name": "MOD09GQ.061 Terra Surface Reflectance Daily Global 250m",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-28",
         "type": "image_collection",
         "bands": {
             "num_observations": {
@@ -20766,7 +20790,7 @@
         "id": "MODIS/061/MOD09Q1",
         "name": "MOD09Q1.061 Terra Surface Reflectance 8-Day Global 250m",
         "start_date": "2000-02-18",
-        "end_date": "2024-07-11",
+        "end_date": "2024-07-19",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -20791,7 +20815,7 @@
         "id": "MODIS/061/MOD10A1",
         "name": "MOD10A1.061 Terra Snow Cover Daily Global 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-28",
         "type": "image_collection",
         "bands": {
             "NDSI_Snow_Cover": {
@@ -20836,7 +20860,7 @@
         "id": "MODIS/061/MOD11A1",
         "name": "MOD11A1.061 Terra Land Surface Temperature and Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-22",
+        "end_date": "2024-07-29",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -20893,7 +20917,7 @@
         "id": "MODIS/061/MOD11A2",
         "name": "MOD11A2.061 Terra Land Surface Temperature and Emissivity 8-Day Global 1km",
         "start_date": "2000-02-18",
-        "end_date": "2024-07-11",
+        "end_date": "2024-07-19",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -21235,7 +21259,7 @@
         "id": "MODIS/061/MOD14A1",
         "name": "MOD14A1.061: Terra Thermal Anomalies & Fire Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-17",
+        "end_date": "2024-07-25",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -21260,7 +21284,7 @@
         "id": "MODIS/061/MOD14A2",
         "name": "MOD14A2.061: Terra Thermal Anomalies & Fire 8-Day Global 1km",
         "start_date": "2000-02-18",
-        "end_date": "2024-07-11",
+        "end_date": "2024-07-19",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -21277,7 +21301,7 @@
         "id": "MODIS/061/MOD15A2H",
         "name": "MOD15A2H.061: Terra Leaf Area Index/FPAR 8-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2024-07-11",
+        "end_date": "2024-07-19",
         "type": "image_collection",
         "bands": {
             "Fpar_500m": {
@@ -21310,7 +21334,7 @@
         "id": "MODIS/061/MOD16A2",
         "name": "MOD16A2.061: Terra Net Evapotranspiration 8-Day Global 500m",
         "start_date": "2001-01-01",
-        "end_date": "2024-07-03",
+        "end_date": "2024-07-11",
         "type": "image_collection",
         "bands": {
             "ET": {
@@ -21368,7 +21392,7 @@
         "id": "MODIS/061/MOD17A2H",
         "name": "MOD17A2H.061: Terra Gross Primary Productivity 8-Day Global 500m",
         "start_date": "2021-01-01",
-        "end_date": "2024-07-11",
+        "end_date": "2024-07-19",
         "type": "image_collection",
         "bands": {
             "Gpp": {
@@ -21431,7 +21455,7 @@
         "id": "MODIS/061/MOD21A1D",
         "name": "MOD21A1D.061 Terra Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-28",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -21468,7 +21492,7 @@
         "id": "MODIS/061/MOD21A1N",
         "name": "MOD21A1N.061 Terra Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-22",
+        "end_date": "2024-07-29",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -21505,7 +21529,7 @@
         "id": "MODIS/061/MOD21C1",
         "name": "MOD21C1.061 Terra Land Surface Temperature and 3-Band Emissivity Daily L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-22",
+        "end_date": "2024-07-29",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -21592,7 +21616,7 @@
         "id": "MODIS/061/MOD21C2",
         "name": "MOD21C2.061 Terra Land Surface Temperature and 3-Band Emissivity 8-Day L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-11",
+        "end_date": "2024-07-19",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -21827,7 +21851,7 @@
         "id": "MODIS/061/MYD09A1",
         "name": "MYD09A1.061 Aqua Surface Reflectance 8-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2024-07-11",
+        "end_date": "2024-07-19",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -21888,7 +21912,7 @@
         "id": "MODIS/061/MYD09CMG",
         "name": "MYD09CMG.061 Aqua Surface Reflectance Daily L3 Global 0.05 Deg CMG",
         "start_date": "2002-07-04",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-28",
         "type": "image_collection",
         "bands": {
             "Coarse_Resolution_Surface_Reflectance_Band_1": {
@@ -21972,7 +21996,7 @@
         "id": "MODIS/061/MYD09GA",
         "name": "MYD09GA.061 Aqua Surface Reflectance Daily Global 1km and 500m",
         "start_date": "2002-07-04",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-28",
         "type": "image_collection",
         "bands": {
             "num_observations_1km": {
@@ -22069,7 +22093,7 @@
         "id": "MODIS/061/MYD09GQ",
         "name": "MYD09GQ.061 Aqua Surface Reflectance Daily Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-28",
         "type": "image_collection",
         "bands": {
             "num_observations": {
@@ -22110,7 +22134,7 @@
         "id": "MODIS/061/MYD09Q1",
         "name": "MYD09Q1.061 Aqua Surface Reflectance 8-Day Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2024-07-11",
+        "end_date": "2024-07-19",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -22135,7 +22159,7 @@
         "id": "MODIS/061/MYD10A1",
         "name": "MYD10A1.061 Aqua Snow Cover Daily Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-28",
         "type": "image_collection",
         "bands": {
             "NDSI_Snow_Cover": {
@@ -22180,7 +22204,7 @@
         "id": "MODIS/061/MYD11A1",
         "name": "MYD11A1.061 Aqua Land Surface Temperature and Emissivity Daily Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-28",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -22237,7 +22261,7 @@
         "id": "MODIS/061/MYD11A2",
         "name": "MYD11A2.061 Aqua Land Surface Temperature and Emissivity 8-Day Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2024-07-11",
+        "end_date": "2024-07-19",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -22294,7 +22318,7 @@
         "id": "MODIS/061/MYD13A1",
         "name": "MYD13A1.061 Aqua Vegetation Indices 16-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2024-06-17",
+        "end_date": "2024-07-03",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -22351,7 +22375,7 @@
         "id": "MODIS/061/MYD13C1",
         "name": "MYD13C1.061: Aqua Vegetation Indices 16-Day L3 Global 0.05 Deg CMG",
         "start_date": "2002-07-04",
-        "end_date": "2024-06-17",
+        "end_date": "2024-07-03",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -22412,7 +22436,7 @@
         "id": "MODIS/061/MYD13A2",
         "name": "MYD13A2.061 Aqua Vegetation Indices 16-Day Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2024-06-17",
+        "end_date": "2024-07-03",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -22522,7 +22546,7 @@
         "id": "MODIS/061/MYD13Q1",
         "name": "MYD13Q1.061 Aqua Vegetation Indices 16-Day Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2024-06-17",
+        "end_date": "2024-07-03",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -22579,7 +22603,7 @@
         "id": "MODIS/061/MYD14A1",
         "name": "MYD14A1.061: Aqua Thermal Anomalies & Fire Daily Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2024-07-18",
+        "end_date": "2024-07-26",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -22604,7 +22628,7 @@
         "id": "MODIS/061/MYD14A2",
         "name": "MYD14A2.061: Aqua Thermal Anomalies & Fire 8-Day Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2024-07-11",
+        "end_date": "2024-07-19",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -22621,7 +22645,7 @@
         "id": "MODIS/061/MYD15A2H",
         "name": "MYD15A2H.061: Aqua Leaf Area Index/FPAR 8-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2024-07-11",
+        "end_date": "2024-07-19",
         "type": "image_collection",
         "bands": {
             "Fpar_500m": {
@@ -22654,7 +22678,7 @@
         "id": "MODIS/061/MYD17A2H",
         "name": "MYD17A2H.061: Aqua Gross Primary Productivity 8-Day Global 500m",
         "start_date": "2021-01-01",
-        "end_date": "2024-07-11",
+        "end_date": "2024-07-19",
         "type": "image_collection",
         "bands": {
             "Gpp": {
@@ -22696,7 +22720,7 @@
         "id": "MODIS/061/MYD21A1D",
         "name": "MYD21A1D.061 Aqua Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-28",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -22733,7 +22757,7 @@
         "id": "MODIS/061/MYD21A1N",
         "name": "MYD21A1N.061 Aqua Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-28",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -22770,7 +22794,7 @@
         "id": "MODIS/061/MYD21C1",
         "name": "MYD21C1.061 Aqua Land Surface Temperature and 3-Band Emissivity Daily L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-28",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -23384,6 +23408,1203 @@
         }
     },
     {
+        "id": "NASA/EMIT/L1B/RAD",
+        "name": "EMIT L1B At-Sensor Calibrated Radiance and Geolocation Data 60 m",
+        "start_date": "2022-08-09",
+        "end_date": "2024-07-29",
+        "type": "image_collection",
+        "bands": {
+            "radiance_0": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_1": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_2": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_3": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_4": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_5": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_6": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_7": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_8": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_9": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_10": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_11": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_12": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_13": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_14": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_15": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_16": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_17": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_18": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_19": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_20": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_21": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_22": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_23": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_24": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_25": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_26": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_27": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_28": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_29": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_30": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_31": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_32": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_33": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_34": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_35": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_36": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_37": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_38": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_39": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_40": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_41": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_42": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_43": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_44": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_45": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_46": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_47": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_48": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_49": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_50": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_51": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_52": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_53": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_54": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_55": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_56": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_57": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_58": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_59": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_60": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_61": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_62": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_63": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_64": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_65": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_66": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_67": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_68": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_69": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_70": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_71": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_72": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_73": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_74": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_75": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_76": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_77": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_78": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_79": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_80": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_81": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_82": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_83": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_84": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_85": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_86": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_87": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_88": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_89": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_90": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_91": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_92": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_93": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_94": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_95": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_96": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_97": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_98": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_99": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_100": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_101": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_102": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_103": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_104": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_105": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_106": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_107": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_108": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_109": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_110": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_111": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_112": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_113": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_114": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_115": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_116": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_117": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_118": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_119": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_120": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_121": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_122": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_123": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_124": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_125": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_126": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_127": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_128": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_129": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_130": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_131": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_132": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_133": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_134": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_135": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_136": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_137": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_138": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_139": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_140": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_141": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_142": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_143": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_144": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_145": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_146": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_147": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_148": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_149": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_150": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_151": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_152": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_153": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_154": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_155": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_156": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_157": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_158": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_159": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_160": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_161": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_162": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_163": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_164": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_165": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_166": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_167": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_168": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_169": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_170": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_171": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_172": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_173": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_174": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_175": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_176": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_177": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_178": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_179": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_180": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_181": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_182": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_183": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_184": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_185": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_186": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_187": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_188": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_189": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_190": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_191": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_192": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_193": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_194": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_195": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_196": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_197": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_198": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_199": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_200": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_201": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_202": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_203": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_204": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_205": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_206": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_207": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_208": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_209": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_210": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_211": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_212": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_213": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_214": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_215": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_216": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_217": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_218": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_219": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_220": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_221": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_222": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_223": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_224": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_225": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_226": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_227": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_228": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_229": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_230": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_231": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_232": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_233": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_234": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_235": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_236": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_237": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_238": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_239": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_240": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_241": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_242": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_243": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_244": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_245": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_246": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_247": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_248": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_249": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_250": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_251": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_252": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_253": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_254": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_255": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_256": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_257": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_258": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_259": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_260": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_261": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_262": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_263": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_264": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_265": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_266": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_267": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_268": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_269": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_270": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_271": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_272": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_273": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_274": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_275": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_276": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_277": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_278": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_279": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_280": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_281": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_282": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_283": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "radiance_284": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "elev": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "path_length": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "to_sensor_azimuth": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "to_sensor_zenith": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "to_sun_azimuth": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "to_sun_zenith": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "solar_phase": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "slope": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "aspect": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "cosine_i": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "utc_time": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "earth_sun_distance": {
+                "units": null,
+                "resolution": 60.361048046492165
+            }
+        }
+    },
+    {
         "id": "NASA/FLDAS/NOAH01/C/GL/M/V001",
         "name": "FLDAS: Famine Early Warning Systems Network (FEWS NET) Land Data Assimilation System",
         "start_date": "1982-01-01",
@@ -23553,7 +24774,7 @@
         "id": "NASA/GEOS-CF/v1/fcst/htf",
         "name": "GEOS-CF fcst htf v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2022-10-01",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-28",
         "type": "image_collection",
         "bands": {
             "CO": {
@@ -23610,7 +24831,7 @@
         "id": "NASA/GEOS-CF/v1/fcst/tavg1hr",
         "name": "GEOS-CF fcst tavg1hr v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2022-10-01",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-27",
         "type": "image_collection",
         "bands": {
             "ACET": {
@@ -24163,7 +25384,7 @@
         "id": "NASA/GEOS-CF/v1/rpl/htf",
         "name": "GEOS-CF rpl htf v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2018-01-01",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-28",
         "type": "image_collection",
         "bands": {
             "CO": {
@@ -24220,7 +25441,7 @@
         "id": "NASA/GEOS-CF/v1/rpl/tavg1hr",
         "name": "GEOS-CF rpl tavg1hr v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2018-01-01",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-27",
         "type": "image_collection",
         "bands": {
             "ACET": {
@@ -25413,7 +26634,7 @@
         "id": "NASA/GSFC/MERRA/aer/2",
         "name": "MERRA-2 M2T1NXAER: Aerosol Diagnostics V5.12.4",
         "start_date": "1980-01-01",
-        "end_date": "2024-06-01",
+        "end_date": "2024-07-01",
         "type": "image_collection",
         "bands": {
             "BCANGSTR": {
@@ -25622,7 +26843,7 @@
         "id": "NASA/GSFC/MERRA/aer_nv/2",
         "name": "MERRA-2 M2I3NVAER: Aerosol Mixing Ratio V5.12.4",
         "start_date": "1980-01-01",
-        "end_date": "2024-06-01",
+        "end_date": "2024-07-01",
         "type": "image_collection",
         "bands": {
             "AIRDENS_1": {
@@ -30173,7 +31394,7 @@
         "id": "NASA/GSFC/MERRA/flx/2",
         "name": "MERRA-2 M2T1NXFLX: Surface Flux Diagnostics V5.12.4",
         "start_date": "1980-01-01",
-        "end_date": "2024-06-01",
+        "end_date": "2024-07-01",
         "type": "image_collection",
         "bands": {
             "BSTAR": {
@@ -30366,7 +31587,7 @@
         "id": "NASA/GSFC/MERRA/lnd/2",
         "name": "MERRA-2 M2T1NXLND: Land Surface Diagnostics V5.12.4",
         "start_date": "1980-01-01",
-        "end_date": "2024-06-01",
+        "end_date": "2024-07-01",
         "type": "image_collection",
         "bands": {
             "BASEFLOW": {
@@ -30575,7 +31796,7 @@
         "id": "NASA/GSFC/MERRA/rad/2",
         "name": "MERRA-2 M2T1NXRAD: Radiation Diagnostics V5.12.4",
         "start_date": "1980-01-01",
-        "end_date": "2024-06-01",
+        "end_date": "2024-07-01",
         "type": "image_collection",
         "bands": {
             "ALBEDO": {
@@ -30728,7 +31949,7 @@
         "id": "NASA/GSFC/MERRA/slv/2",
         "name": "MERRA-2 M2T1NXSLV: Single-Level Diagnostics V5.12.4",
         "start_date": "1980-01-01",
-        "end_date": "2024-06-01",
+        "end_date": "2024-07-01",
         "type": "image_collection",
         "bands": {
             "CLDPRS": {
@@ -30925,7 +32146,7 @@
         "id": "NASA/HLS/HLSL30/v002",
         "name": "HLSL30: HLS-2 Landsat Operational Land Imager Surface Reflectance and TOA Brightness Daily Global 30m",
         "start_date": "2013-04-11",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-28",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -30992,7 +32213,7 @@
         "id": "NASA/LANCE/NOAA20_VIIRS/C2",
         "name": "VJ114IMGTDL_NRT Daily Raster: VIIRS (NOAA-20) Band 375m Active Fire",
         "start_date": "2023-10-08",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-27",
         "type": "image_collection",
         "bands": {
             "Bright_ti4": {
@@ -31033,7 +32254,7 @@
         "id": "NASA/LANCE/SNPP_VIIRS/C2",
         "name": "VNP14IMGTDL_NRT Daily Raster: VIIRS (S-NPP) Band 375m Active Fire",
         "start_date": "2023-09-03",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-23",
         "type": "image_collection",
         "bands": {
             "Bright_ti4": {
@@ -31501,7 +32722,7 @@
         "id": "NASA/SMAP/SPL4SMGP/007",
         "name": "SPL4SMGP.007 SMAP L4 Global 3-hourly 9-km Surface and Root Zone Soil Moisture",
         "start_date": "2015-03-31",
-        "end_date": "2024-07-21",
+        "end_date": "2024-07-28",
         "type": "image_collection",
         "bands": {
             "sm_surface": {
@@ -31767,7 +32988,7 @@
         "id": "NASA/SMAP/SPL3SMP_E/006",
         "name": "SPL3SMP_E.006 SMAP L3 Radiometer Global Daily 9 km Soil Moisture",
         "start_date": "2023-12-04",
-        "end_date": "2024-07-20",
+        "end_date": "2024-07-28",
         "type": "image_collection",
         "bands": {
             "soil_moisture_am": {
@@ -31840,7 +33061,7 @@
         "id": "NASA/VIIRS/002/VNP09GA",
         "name": "VNP09GA: VIIRS Surface Reflectance Daily 500m and 1km",
         "start_date": "2012-01-19",
-        "end_date": "2024-07-22",
+        "end_date": "2024-07-23",
         "type": "image_collection",
         "bands": {
             "M1": {
@@ -33979,7 +35200,7 @@
         "id": "NOAA/GOES/18/FDCC",
         "name": "GOES-18 FDCC Series ABI Level 2 Fire/Hot Spot Characterization CONUS",
         "start_date": "2022-10-13",
-        "end_date": "2024-07-23",
+        "end_date": "2024-07-30",
         "type": "image_collection",
         "bands": {
             "Area": {
@@ -34008,7 +35229,7 @@
         "id": "NOAA/GOES/18/FDCF",
         "name": "GOES-18 FDCF Series ABI Level 2 Fire/Hot Spot Characterization Full Disk",
         "start_date": "2022-10-13",
-        "end_date": "2024-07-23",
+        "end_date": "2024-07-30",
         "type": "image_collection",
         "bands": {
             "Area": {
@@ -34037,7 +35258,7 @@
         "id": "NOAA/GOES/18/MCMIPC",
         "name": "GOES-18 MCMIPC Series ABI Level 2 Cloud and Moisture Imagery CONUS",
         "start_date": "2018-12-04",
-        "end_date": "2024-07-23",
+        "end_date": "2024-07-30",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -34174,7 +35395,7 @@
         "id": "NOAA/GOES/18/MCMIPF",
         "name": "GOES-18 MCMIPF Series ABI Level 2 Cloud and Moisture Imagery Full Disk",
         "start_date": "2018-12-04",
-        "end_date": "2024-07-23",
+        "end_date": "2024-07-30",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -34311,7 +35532,7 @@
         "id": "NOAA/GOES/18/MCMIPM",
         "name": "GOES-18 MCMIPM Series ABI Level 2 Cloud and Moisture Imagery Full Disk",
         "start_date": "2018-12-04",
-        "end_date": "2024-07-23",
+        "end_date": "2024-07-30",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -35027,7 +36248,7 @@
         "id": "NOAA/VIIRS/001/VNP46A1",
         "name": "VNP46A1: VIIRS Daily Gridded Day Night Band 500m Linear Lat Lon Grid Night",
         "start_date": "2012-01-19",
-        "end_date": "2024-06-25",
+        "end_date": "2024-07-23",
         "type": "image_collection",
         "bands": {
             "BrightnessTemperature_M12": {
@@ -35140,7 +36361,7 @@
         "id": "NOAA/VIIRS/001/VNP46A2",
         "name": "VNP46A2: VIIRS Lunar Gap-Filled BRDF Nighttime Lights Daily L3 Global 500m",
         "start_date": "2012-01-19",
-        "end_date": "2024-05-25",
+        "end_date": "2024-07-02",
         "type": "image_collection",
         "bands": {
             "DNB_BRDF_Corrected_NTL": {
@@ -36796,7 +38017,7 @@
     },
     {
         "id": "UCSB-CHG/CHIRPS/DAILY",
-        "name": "CHIRPS Daily: Climate Hazards Group InfraRed Precipitation With Station Data (Version 2.0 Final)",
+        "name": "CHIRPS Daily: Climate Hazards Center InfraRed Precipitation With Station Data (Version 2.0 Final)",
         "start_date": "1981-01-01",
         "end_date": "2022-02-28",
         "type": "image_collection",
@@ -36809,7 +38030,7 @@
     },
     {
         "id": "UCSB-CHG/CHIRPS/PENTAD",
-        "name": "CHIRPS Pentad: Climate Hazards Group InfraRed Precipitation With Station Data (Version 2.0 Final)",
+        "name": "CHIRPS Pentad: Climate Hazards Center InfraRed Precipitation With Station Data (Version 2.0 Final)",
         "start_date": "1981-01-01",
         "end_date": "2022-02-26",
         "type": "image_collection",
@@ -39495,7 +40716,7 @@
         "id": "projects/sat-io/open-datasets/us-drought-monitor",
         "name": "United States Drought Monitor",
         "start_date": "2000-01-04",
-        "end_date": "2024-07-09",
+        "end_date": "2024-07-16",
         "type": "image_collection",
         "bands": {
             "b1": {
