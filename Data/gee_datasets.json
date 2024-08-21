@@ -76,7 +76,7 @@
         "id": "ASTER/AST_L1T_003",
         "name": "ASTER L1T Radiance",
         "start_date": "2000-03-04",
-        "end_date": "2024-08-11",
+        "end_date": "2024-08-15",
         "type": "image_collection",
         "bands": {
             "B01": {
@@ -486,7 +486,7 @@
         "id": "COPERNICUS/S1_GRD",
         "name": "Sentinel-1 SAR GRD: C-band Synthetic Aperture Radar Ground Range Detected, log scaling",
         "start_date": "2014-10-03",
-        "end_date": "2024-08-13",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "HH": {
@@ -2796,7 +2796,7 @@
         "id": "ECMWF/ERA5_LAND/DAILY_AGGR",
         "name": "ERA5-Land Daily Aggregated - ECMWF Climate Reanalysis",
         "start_date": "1950-01-02",
-        "end_date": "2024-08-05",
+        "end_date": "2024-08-13",
         "type": "image_collection",
         "bands": {
             "dewpoint_temperature_2m": {
@@ -5567,7 +5567,7 @@
         "bands": {
             "mono": {
                 "units": null,
-                "resolution": 0.20004000800160032
+                "resolution": 1.2703252032520325
             }
         }
     },
@@ -5942,7 +5942,7 @@
         "id": "GOOGLE/CLOUD_SCORE_PLUS/V1/S2_HARMONIZED",
         "name": "Cloud Score+ S2_HARMONIZED V1",
         "start_date": "2015-06-27",
-        "end_date": "2024-08-13",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "cs": {
@@ -5959,7 +5959,7 @@
         "id": "GOOGLE/DYNAMICWORLD/V1",
         "name": "Dynamic World V1",
         "start_date": "2015-06-27",
-        "end_date": "2024-08-13",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "water": {
@@ -14070,7 +14070,7 @@
         "id": "JAXA/GPM_L3/GSMaP/v7/operational",
         "name": "GSMaP Operational: Global Satellite Mapping of Precipitation - V7",
         "start_date": "2014-03-01",
-        "end_date": "2024-08-12",
+        "end_date": "2024-08-19",
         "type": "image_collection",
         "bands": {
             "hourlyPrecipRate": {
@@ -14099,7 +14099,7 @@
         "id": "JAXA/GPM_L3/GSMaP/v8/operational",
         "name": "GSMaP Operational: Global Satellite Mapping of Precipitation - V8",
         "start_date": "1998-01-01",
-        "end_date": "2024-08-12",
+        "end_date": "2024-08-19",
         "type": "image_collection",
         "bands": {
             "hourlyPrecipRate": {
@@ -14671,7 +14671,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_BAI",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day BAI Composite",
         "start_date": "1984-01-01",
-        "end_date": "2024-08-12",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "BAI": {
@@ -14684,7 +14684,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_EVI",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day EVI Composite",
         "start_date": "1984-01-01",
-        "end_date": "2024-08-12",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "EVI": {
@@ -14697,7 +14697,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_NBR",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day NBR Composite",
         "start_date": "1984-01-01",
-        "end_date": "2024-08-12",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "NBRT": {
@@ -14709,7 +14709,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_NDVI",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day NDVI Composite",
         "start_date": "1984-01-01",
-        "end_date": "2024-08-12",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -14722,7 +14722,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_NDWI",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day NDWI Composite",
         "start_date": "1984-01-01",
-        "end_date": "2024-08-12",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "NDWI": {
@@ -14949,7 +14949,7 @@
         "id": "LANDSAT/LC08/C02/T1",
         "name": "USGS Landsat 8 Collection 2 Tier 1 Raw Scenes",
         "start_date": "2013-03-18",
-        "end_date": "2024-08-12",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15111,7 +15111,7 @@
         "id": "LANDSAT/LC08/C02/T1_RT",
         "name": "USGS Landsat 8 Collection 2 Tier 1 and Real-Time data Raw Scenes",
         "start_date": "2013-03-18",
-        "end_date": "2024-08-13",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15188,7 +15188,7 @@
         "id": "LANDSAT/LC08/C02/T1_RT_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 1 and Real-Time data TOA Reflectance",
         "start_date": "2013-03-18",
-        "end_date": "2024-08-13",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15265,7 +15265,7 @@
         "id": "LANDSAT/LC08/C02/T1_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "2013-03-18",
-        "end_date": "2024-08-12",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15581,7 +15581,7 @@
         "id": "LANDSAT/LC09/C02/T1",
         "name": "USGS Landsat 9 Collection 2 Tier 1 Raw Scenes",
         "start_date": "2021-10-31",
-        "end_date": "2024-08-13",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15658,7 +15658,7 @@
         "id": "LANDSAT/LC09/C02/T1_L2",
         "name": "USGS Landsat 9 Level 2, Collection 2, Tier 1",
         "start_date": "2021-10-31",
-        "end_date": "2024-08-11",
+        "end_date": "2024-08-18",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -15743,7 +15743,7 @@
         "id": "LANDSAT/LC09/C02/T1_TOA",
         "name": "USGS Landsat 9 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "2021-10-31",
-        "end_date": "2024-08-13",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15820,7 +15820,7 @@
         "id": "LANDSAT/LC09/C02/T2",
         "name": "USGS Landsat 9 Collection 2 Tier 2 Raw Scenes",
         "start_date": "2021-11-02",
-        "end_date": "2024-08-13",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15897,7 +15897,7 @@
         "id": "LANDSAT/LC09/C02/T2_L2",
         "name": "USGS Landsat 9 Level 2, Collection 2, Tier 2",
         "start_date": "2021-10-31",
-        "end_date": "2024-08-11",
+        "end_date": "2024-08-18",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -15982,7 +15982,7 @@
         "id": "LANDSAT/LC09/C02/T2_TOA",
         "name": "USGS Landsat 9 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2021-11-02",
-        "end_date": "2024-08-13",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -19600,7 +19600,7 @@
         "id": "MODIS/061/MCD15A3H",
         "name": "MCD15A3H.061 MODIS Leaf Area Index/FPAR 4-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2024-07-31",
+        "end_date": "2024-08-08",
         "type": "image_collection",
         "bands": {
             "Fpar": {
@@ -19731,7 +19731,7 @@
         "id": "MODIS/061/MCD19A1_GRANULES",
         "name": "MCD19A1.061: Land Surface BRF Daily L2G Global 500m and 1km",
         "start_date": "2000-12-21",
-        "end_date": "2024-08-06",
+        "end_date": "2024-08-14",
         "type": "image_collection",
         "bands": {
             "Sur_refl1": {
@@ -19836,7 +19836,7 @@
         "id": "MODIS/061/MCD19A2_GRANULES",
         "name": "MCD19A2.061: Terra & Aqua MAIAC Land Aerosol Optical Depth Daily 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-06",
+        "end_date": "2024-08-14",
         "type": "image_collection",
         "bands": {
             "Optical_Depth_047": {
@@ -19897,7 +19897,7 @@
         "id": "MODIS/061/MCD43A1",
         "name": "MCD43A1.061 MODIS BRDF-Albedo Model Parameters Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-30",
+        "end_date": "2024-08-06",
         "type": "image_collection",
         "bands": {
             "BRDF_Albedo_Parameters_Band1_iso": {
@@ -20066,7 +20066,7 @@
         "id": "MODIS/061/MCD43A2",
         "name": "MCD43A2.061 MODIS BRDF-Albedo Quality Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-30",
+        "end_date": "2024-08-06",
         "type": "image_collection",
         "bands": {
             "Snow_BRDF_Albedo": {
@@ -20151,7 +20151,7 @@
         "id": "MODIS/061/MCD43A3",
         "name": "MCD43A3.061 MODIS Albedo Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-30",
+        "end_date": "2024-08-06",
         "type": "image_collection",
         "bands": {
             "Albedo_BSA_Band1": {
@@ -20280,7 +20280,7 @@
         "id": "MODIS/061/MCD43A4",
         "name": "MCD43A4.061 MODIS Nadir BRDF-Adjusted Reflectance Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-30",
+        "end_date": "2024-08-06",
         "type": "image_collection",
         "bands": {
             "Nadir_Reflectance_Band1": {
@@ -20345,7 +20345,7 @@
         "id": "MODIS/061/MCD43C3",
         "name": "MCD43C3.061 BRDF/Albedo Daily L3 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-30",
+        "end_date": "2024-08-08",
         "type": "image_collection",
         "bands": {
             "Albedo_BSA_Band1": {
@@ -20429,7 +20429,7 @@
         "id": "MODIS/061/MCD64A1",
         "name": "MCD64A1.061 MODIS Burned Area Monthly Global 500m",
         "start_date": "2000-11-01",
-        "end_date": "2024-05-01",
+        "end_date": "2024-06-01",
         "type": "image_collection",
         "bands": {
             "BurnDate": {
@@ -20507,7 +20507,7 @@
         "id": "MODIS/061/MOD09A1",
         "name": "MOD09A1.061 Terra Surface Reflectance 8-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2024-07-27",
+        "end_date": "2024-08-04",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -20568,7 +20568,7 @@
         "id": "MODIS/061/MOD09CMG",
         "name": "MOD09CMG.061 Terra Surface Reflectance Daily L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-10",
+        "end_date": "2024-08-15",
         "type": "image_collection",
         "bands": {
             "Coarse_Resolution_Surface_Reflectance_Band_1": {
@@ -20652,7 +20652,7 @@
         "id": "MODIS/061/MOD09GA",
         "name": "MOD09GA.061 Terra Surface Reflectance Daily Global 1km and 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-10",
+        "end_date": "2024-08-13",
         "type": "image_collection",
         "bands": {
             "num_observations_1km": {
@@ -20749,7 +20749,7 @@
         "id": "MODIS/061/MOD09GQ",
         "name": "MOD09GQ.061 Terra Surface Reflectance Daily Global 250m",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-10",
+        "end_date": "2024-08-13",
         "type": "image_collection",
         "bands": {
             "num_observations": {
@@ -20790,7 +20790,7 @@
         "id": "MODIS/061/MOD09Q1",
         "name": "MOD09Q1.061 Terra Surface Reflectance 8-Day Global 250m",
         "start_date": "2000-02-18",
-        "end_date": "2024-07-27",
+        "end_date": "2024-08-04",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -20815,7 +20815,7 @@
         "id": "MODIS/061/MOD10A1",
         "name": "MOD10A1.061 Terra Snow Cover Daily Global 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-10",
+        "end_date": "2024-08-18",
         "type": "image_collection",
         "bands": {
             "NDSI_Snow_Cover": {
@@ -20860,7 +20860,7 @@
         "id": "MODIS/061/MOD11A1",
         "name": "MOD11A1.061 Terra Land Surface Temperature and Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-06",
+        "end_date": "2024-08-13",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -20917,7 +20917,7 @@
         "id": "MODIS/061/MOD11A2",
         "name": "MOD11A2.061 Terra Land Surface Temperature and Emissivity 8-Day Global 1km",
         "start_date": "2000-02-18",
-        "end_date": "2024-07-27",
+        "end_date": "2024-08-04",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -20974,7 +20974,7 @@
         "id": "MODIS/061/MOD13A1",
         "name": "MOD13A1.061 Terra Vegetation Indices 16-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2024-07-11",
+        "end_date": "2024-07-27",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -21031,7 +21031,7 @@
         "id": "MODIS/061/MOD13A2",
         "name": "MOD13A2.061 Terra Vegetation Indices 16-Day Global 1km",
         "start_date": "2000-02-18",
-        "end_date": "2024-07-11",
+        "end_date": "2024-07-27",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -21088,7 +21088,7 @@
         "id": "MODIS/061/MOD13A3",
         "name": "MOD13A3.061 Vegetation Indices Monthly L3 Global 1 km SIN Grid",
         "start_date": "2000-02-01",
-        "end_date": "2024-06-01",
+        "end_date": "2024-07-01",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -21141,7 +21141,7 @@
         "id": "MODIS/061/MOD13C1",
         "name": "MOD13C1.061: Terra Vegetation Indices 16-Day L3 Global 0.05 Deg Climate Modeling Grid",
         "start_date": "2000-02-18",
-        "end_date": "2024-07-11",
+        "end_date": "2024-07-27",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -21202,7 +21202,7 @@
         "id": "MODIS/061/MOD13Q1",
         "name": "MOD13Q1.061 Terra Vegetation Indices 16-Day Global 250m",
         "start_date": "2000-02-18",
-        "end_date": "2024-07-11",
+        "end_date": "2024-07-27",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -21259,7 +21259,7 @@
         "id": "MODIS/061/MOD14A1",
         "name": "MOD14A1.061: Terra Thermal Anomalies & Fire Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-03",
+        "end_date": "2024-08-11",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -21284,7 +21284,7 @@
         "id": "MODIS/061/MOD14A2",
         "name": "MOD14A2.061: Terra Thermal Anomalies & Fire 8-Day Global 1km",
         "start_date": "2000-02-18",
-        "end_date": "2024-07-27",
+        "end_date": "2024-08-04",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -21301,7 +21301,7 @@
         "id": "MODIS/061/MOD15A2H",
         "name": "MOD15A2H.061: Terra Leaf Area Index/FPAR 8-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2024-07-27",
+        "end_date": "2024-08-04",
         "type": "image_collection",
         "bands": {
             "Fpar_500m": {
@@ -21334,7 +21334,7 @@
         "id": "MODIS/061/MOD16A2",
         "name": "MOD16A2.061: Terra Net Evapotranspiration 8-Day Global 500m",
         "start_date": "2001-01-01",
-        "end_date": "2024-07-19",
+        "end_date": "2024-07-27",
         "type": "image_collection",
         "bands": {
             "ET": {
@@ -21392,7 +21392,7 @@
         "id": "MODIS/061/MOD17A2H",
         "name": "MOD17A2H.061: Terra Gross Primary Productivity 8-Day Global 500m",
         "start_date": "2021-01-01",
-        "end_date": "2024-07-27",
+        "end_date": "2024-08-04",
         "type": "image_collection",
         "bands": {
             "Gpp": {
@@ -21455,7 +21455,7 @@
         "id": "MODIS/061/MOD21A1D",
         "name": "MOD21A1D.061 Terra Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-10",
+        "end_date": "2024-08-17",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -21492,7 +21492,7 @@
         "id": "MODIS/061/MOD21A1N",
         "name": "MOD21A1N.061 Terra Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-11",
+        "end_date": "2024-08-18",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -21529,7 +21529,7 @@
         "id": "MODIS/061/MOD21C1",
         "name": "MOD21C1.061 Terra Land Surface Temperature and 3-Band Emissivity Daily L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-11",
+        "end_date": "2024-08-18",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -21616,7 +21616,7 @@
         "id": "MODIS/061/MOD21C2",
         "name": "MOD21C2.061 Terra Land Surface Temperature and 3-Band Emissivity 8-Day L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-27",
+        "end_date": "2024-08-04",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -21851,7 +21851,7 @@
         "id": "MODIS/061/MYD09A1",
         "name": "MYD09A1.061 Aqua Surface Reflectance 8-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2024-07-27",
+        "end_date": "2024-08-04",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -21912,7 +21912,7 @@
         "id": "MODIS/061/MYD09CMG",
         "name": "MYD09CMG.061 Aqua Surface Reflectance Daily L3 Global 0.05 Deg CMG",
         "start_date": "2002-07-04",
-        "end_date": "2024-08-06",
+        "end_date": "2024-08-16",
         "type": "image_collection",
         "bands": {
             "Coarse_Resolution_Surface_Reflectance_Band_1": {
@@ -21996,7 +21996,7 @@
         "id": "MODIS/061/MYD09GA",
         "name": "MYD09GA.061 Aqua Surface Reflectance Daily Global 1km and 500m",
         "start_date": "2002-07-04",
-        "end_date": "2024-08-10",
+        "end_date": "2024-08-13",
         "type": "image_collection",
         "bands": {
             "num_observations_1km": {
@@ -22093,7 +22093,7 @@
         "id": "MODIS/061/MYD09GQ",
         "name": "MYD09GQ.061 Aqua Surface Reflectance Daily Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2024-08-10",
+        "end_date": "2024-08-13",
         "type": "image_collection",
         "bands": {
             "num_observations": {
@@ -22134,7 +22134,7 @@
         "id": "MODIS/061/MYD09Q1",
         "name": "MYD09Q1.061 Aqua Surface Reflectance 8-Day Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2024-07-27",
+        "end_date": "2024-08-04",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -22159,7 +22159,7 @@
         "id": "MODIS/061/MYD10A1",
         "name": "MYD10A1.061 Aqua Snow Cover Daily Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2024-08-10",
+        "end_date": "2024-08-18",
         "type": "image_collection",
         "bands": {
             "NDSI_Snow_Cover": {
@@ -22204,7 +22204,7 @@
         "id": "MODIS/061/MYD11A1",
         "name": "MYD11A1.061 Aqua Land Surface Temperature and Emissivity Daily Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2024-08-06",
+        "end_date": "2024-08-13",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -22261,7 +22261,7 @@
         "id": "MODIS/061/MYD11A2",
         "name": "MYD11A2.061 Aqua Land Surface Temperature and Emissivity 8-Day Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2024-07-27",
+        "end_date": "2024-08-04",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -22493,7 +22493,7 @@
         "id": "MODIS/061/MYD13A3",
         "name": "MYD13A3.061 Aqua Vegetation Indices Monthly L3 Global 1 km SIN Grid",
         "start_date": "2002-07-01",
-        "end_date": "2024-06-01",
+        "end_date": "2024-07-01",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -22603,7 +22603,7 @@
         "id": "MODIS/061/MYD14A1",
         "name": "MYD14A1.061: Aqua Thermal Anomalies & Fire Daily Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2024-08-03",
+        "end_date": "2024-08-11",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -22628,7 +22628,7 @@
         "id": "MODIS/061/MYD14A2",
         "name": "MYD14A2.061: Aqua Thermal Anomalies & Fire 8-Day Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2024-07-27",
+        "end_date": "2024-08-04",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -22645,7 +22645,7 @@
         "id": "MODIS/061/MYD15A2H",
         "name": "MYD15A2H.061: Aqua Leaf Area Index/FPAR 8-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2024-07-27",
+        "end_date": "2024-08-04",
         "type": "image_collection",
         "bands": {
             "Fpar_500m": {
@@ -22678,7 +22678,7 @@
         "id": "MODIS/061/MYD17A2H",
         "name": "MYD17A2H.061: Aqua Gross Primary Productivity 8-Day Global 500m",
         "start_date": "2021-01-01",
-        "end_date": "2024-07-27",
+        "end_date": "2024-08-04",
         "type": "image_collection",
         "bands": {
             "Gpp": {
@@ -22720,7 +22720,7 @@
         "id": "MODIS/061/MYD21A1D",
         "name": "MYD21A1D.061 Aqua Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-10",
+        "end_date": "2024-08-16",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -22757,7 +22757,7 @@
         "id": "MODIS/061/MYD21A1N",
         "name": "MYD21A1N.061 Aqua Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-11",
+        "end_date": "2024-08-18",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -22794,7 +22794,7 @@
         "id": "MODIS/061/MYD21C1",
         "name": "MYD21C1.061 Aqua Land Surface Temperature and 3-Band Emissivity Daily L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-11",
+        "end_date": "2024-08-18",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -22881,7 +22881,7 @@
         "id": "MODIS/061/MYD21C2",
         "name": "MYD21C2.061 Aqua Land Surface Temperature and 3-Band Emissivity 8-Day L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2024-07-27",
+        "end_date": "2024-08-04",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -23385,7 +23385,7 @@
         "id": "NASA/EMIT/L2B/CH4ENH",
         "name": "Earth Surface Mineral Dust Source Investigation- Methane Enhancement",
         "start_date": "2022-08-10",
-        "end_date": "2024-07-20",
+        "end_date": "2024-07-30",
         "type": "image_collection",
         "bands": {
             "vertical_column_enhancement": {
@@ -23398,7 +23398,7 @@
         "id": "NASA/EMIT/L2B/CH4PLM",
         "name": "Earth Surface Mineral Dust Source Investigation- Methane Plume Complexes",
         "start_date": "2022-08-10",
-        "end_date": "2024-07-03",
+        "end_date": "2024-07-28",
         "type": "image_collection",
         "bands": {
             "methane_plume_complex": {
@@ -23411,7 +23411,7 @@
         "id": "NASA/EMIT/L1B/RAD",
         "name": "EMIT L1B At-Sensor Calibrated Radiance and Geolocation Data 60 m",
         "start_date": "2022-08-09",
-        "end_date": "2024-08-10",
+        "end_date": "2024-08-17",
         "type": "image_collection",
         "bands": {
             "radiance_0": {
@@ -24774,7 +24774,7 @@
         "id": "NASA/GEOS-CF/v1/fcst/htf",
         "name": "GEOS-CF fcst htf v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2022-10-01",
-        "end_date": "2024-08-12",
+        "end_date": "2024-08-18",
         "type": "image_collection",
         "bands": {
             "CO": {
@@ -24831,7 +24831,7 @@
         "id": "NASA/GEOS-CF/v1/fcst/tavg1hr",
         "name": "GEOS-CF fcst tavg1hr v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2022-10-01",
-        "end_date": "2024-08-11",
+        "end_date": "2024-08-18",
         "type": "image_collection",
         "bands": {
             "ACET": {
@@ -25384,7 +25384,7 @@
         "id": "NASA/GEOS-CF/v1/rpl/htf",
         "name": "GEOS-CF rpl htf v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2018-01-01",
-        "end_date": "2024-08-12",
+        "end_date": "2024-08-18",
         "type": "image_collection",
         "bands": {
             "CO": {
@@ -25441,7 +25441,7 @@
         "id": "NASA/GEOS-CF/v1/rpl/tavg1hr",
         "name": "GEOS-CF rpl tavg1hr v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2018-01-01",
-        "end_date": "2024-08-11",
+        "end_date": "2024-08-18",
         "type": "image_collection",
         "bands": {
             "ACET": {
@@ -26480,7 +26480,7 @@
         "id": "NASA/GPM_L3/IMERG_V07",
         "name": "GPM: Global Precipitation Measurement (GPM) Release 07",
         "start_date": "2000-06-01",
-        "end_date": "2024-08-12",
+        "end_date": "2024-08-15",
         "type": "image_collection",
         "bands": {
             "MWobservationTime": {
@@ -31587,7 +31587,7 @@
         "id": "NASA/GSFC/MERRA/lnd/2",
         "name": "MERRA-2 M2T1NXLND: Land Surface Diagnostics V5.12.4",
         "start_date": "1980-01-01",
-        "end_date": "2024-07-01",
+        "end_date": "2024-07-31",
         "type": "image_collection",
         "bands": {
             "BASEFLOW": {
@@ -32146,7 +32146,7 @@
         "id": "NASA/HLS/HLSL30/v002",
         "name": "HLSL30: HLS-2 Landsat Operational Land Imager Surface Reflectance and TOA Brightness Daily Global 30m",
         "start_date": "2013-04-11",
-        "end_date": "2024-08-11",
+        "end_date": "2024-08-16",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -32213,7 +32213,7 @@
         "id": "NASA/LANCE/NOAA20_VIIRS/C2",
         "name": "VJ114IMGTDL_NRT Daily Raster: VIIRS (NOAA-20) Band 375m Active Fire",
         "start_date": "2023-10-08",
-        "end_date": "2024-08-11",
+        "end_date": "2024-08-18",
         "type": "image_collection",
         "bands": {
             "Bright_ti4": {
@@ -32254,7 +32254,7 @@
         "id": "NASA/LANCE/SNPP_VIIRS/C2",
         "name": "VNP14IMGTDL_NRT Daily Raster: VIIRS (S-NPP) Band 375m Active Fire",
         "start_date": "2023-09-03",
-        "end_date": "2024-08-11",
+        "end_date": "2024-08-18",
         "type": "image_collection",
         "bands": {
             "Bright_ti4": {
@@ -32722,7 +32722,7 @@
         "id": "NASA/SMAP/SPL4SMGP/007",
         "name": "SPL4SMGP.007 SMAP L4 Global 3-hourly 9-km Surface and Root Zone Soil Moisture",
         "start_date": "2015-03-31",
-        "end_date": "2024-08-10",
+        "end_date": "2024-08-17",
         "type": "image_collection",
         "bands": {
             "sm_surface": {
@@ -32988,7 +32988,7 @@
         "id": "NASA/SMAP/SPL3SMP_E/006",
         "name": "SPL3SMP_E.006 SMAP L3 Radiometer Global Daily 9 km Soil Moisture",
         "start_date": "2023-12-04",
-        "end_date": "2024-08-10",
+        "end_date": "2024-08-17",
         "type": "image_collection",
         "bands": {
             "soil_moisture_am": {
@@ -33061,7 +33061,7 @@
         "id": "NASA/VIIRS/002/VNP09GA",
         "name": "VNP09GA: VIIRS Surface Reflectance Daily 500m and 1km",
         "start_date": "2012-01-19",
-        "end_date": "2024-08-08",
+        "end_date": "2024-08-16",
         "type": "image_collection",
         "bands": {
             "M1": {
@@ -33190,7 +33190,7 @@
         "id": "NASA/VIIRS/002/VNP09H1",
         "name": "VNP09H1: VIIRS Surface Reflectance 8-Day L3 Global 500m",
         "start_date": "2012-01-19",
-        "end_date": "2024-07-27",
+        "end_date": "2024-08-04",
         "type": "image_collection",
         "bands": {
             "SurfReflect_I1": {
@@ -33216,10 +33216,83 @@
         }
     },
     {
+        "id": "NASA/VIIRS/002/VNP13A1",
+        "name": "VNP13A1.002: VIIRS Vegetation Indices 16-Day 500m",
+        "start_date": "2012-01-17",
+        "end_date": "2024-07-27",
+        "type": "image_collection",
+        "bands": {
+            "EVI": {
+                "units": null,
+                "resolution": 463.3127165279165
+            },
+            "EVI2": {
+                "units": null,
+                "resolution": 463.3127165279165
+            },
+            "NDVI": {
+                "units": null,
+                "resolution": 463.3127165279165
+            },
+            "NIR_reflectance": {
+                "units": null,
+                "resolution": 463.3127165279165
+            },
+            "SWIR1_reflectance": {
+                "units": null,
+                "resolution": 463.3127165279165
+            },
+            "SWIR2_reflectance": {
+                "units": null,
+                "resolution": 463.3127165279165
+            },
+            "SWIR3_reflectance": {
+                "units": null,
+                "resolution": 463.3127165279165
+            },
+            "VI_Quality": {
+                "units": null,
+                "resolution": 463.3127165279165
+            },
+            "red_reflectance": {
+                "units": null,
+                "resolution": 463.3127165279165
+            },
+            "green_reflectance": {
+                "units": null,
+                "resolution": 463.3127165279165
+            },
+            "blue_reflectance": {
+                "units": null,
+                "resolution": 463.3127165279165
+            },
+            "composite_day_of_the_year": {
+                "units": null,
+                "resolution": 463.3127165279165
+            },
+            "pixel_reliability": {
+                "units": null,
+                "resolution": 463.3127165279165
+            },
+            "relative_azimuth_angle": {
+                "units": null,
+                "resolution": 463.3127165279165
+            },
+            "sun_zenith_angle": {
+                "units": null,
+                "resolution": 463.3127165279165
+            },
+            "view_zenith_angle": {
+                "units": null,
+                "resolution": 463.3127165279165
+            }
+        }
+    },
+    {
         "id": "NASA/VIIRS/002/VNP15A2H",
         "name": "VNP15A2H: LAI/FPAR 8-Day L4 Global 500m SIN Grid",
         "start_date": "2012-01-17",
-        "end_date": "2024-07-27",
+        "end_date": "2024-08-04",
         "type": "image_collection",
         "bands": {
             "Fpar": {
@@ -33245,6 +33318,80 @@
             "LaiStdDev": {
                 "units": null,
                 "resolution": 463.3127165279165
+            }
+        }
+    },
+    {
+        "id": "NASA/VIIRS/002/VNP21A1D",
+        "name": "VNP21A1D.002: Day Land Surface Temperature and Emissivity Daily 1km",
+        "start_date": "2012-01-19",
+        "end_date": "2024-08-16",
+        "type": "image_collection",
+        "bands": {
+            "LST_1KM": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "QC": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "Emis_14": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "Emis_15": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "Emis_16": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "View_Angle": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "View_Time": {
+                "units": null,
+                "resolution": 926.625433055833
+            }
+        }
+    },
+    {
+        "id": "NASA/VIIRS/002/VNP21A1N",
+        "name": "VNP21A1N.002: Night Land Surface Temperature and Emissivity Daily 1km",
+        "start_date": "2012-01-19",
+        "end_date": "2024-08-16",
+        "type": "image_collection",
+        "bands": {
+            "LST_1KM": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "QC": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "Emis_14": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "Emis_15": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "Emis_16": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "View_Angle": {
+                "units": null,
+                "resolution": 926.625433055833
+            },
+            "View_Time": {
+                "units": null,
+                "resolution": 926.625433055833
             }
         }
     },
@@ -35262,7 +35409,7 @@
         "id": "NOAA/GOES/18/FDCC",
         "name": "GOES-18 FDCC Series ABI Level 2 Fire/Hot Spot Characterization CONUS",
         "start_date": "2022-10-13",
-        "end_date": "2024-08-13",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "Area": {
@@ -35291,7 +35438,7 @@
         "id": "NOAA/GOES/18/FDCF",
         "name": "GOES-18 FDCF Series ABI Level 2 Fire/Hot Spot Characterization Full Disk",
         "start_date": "2022-10-13",
-        "end_date": "2024-08-13",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "Area": {
@@ -35320,7 +35467,7 @@
         "id": "NOAA/GOES/18/MCMIPC",
         "name": "GOES-18 MCMIPC Series ABI Level 2 Cloud and Moisture Imagery CONUS",
         "start_date": "2018-12-04",
-        "end_date": "2024-08-13",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -35457,7 +35604,7 @@
         "id": "NOAA/GOES/18/MCMIPF",
         "name": "GOES-18 MCMIPF Series ABI Level 2 Cloud and Moisture Imagery Full Disk",
         "start_date": "2018-12-04",
-        "end_date": "2024-08-13",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -35594,7 +35741,7 @@
         "id": "NOAA/GOES/18/MCMIPM",
         "name": "GOES-18 MCMIPM Series ABI Level 2 Cloud and Moisture Imagery Full Disk",
         "start_date": "2018-12-04",
-        "end_date": "2024-08-13",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -35802,79 +35949,6 @@
         }
     },
     {
-        "id": "NOAA/VIIRS/001/VNP13A1",
-        "name": "VNP13A1: VIIRS Vegetation Indices 16-Day 500m",
-        "start_date": "2012-01-17",
-        "end_date": "2022-03-06",
-        "type": "image_collection",
-        "bands": {
-            "EVI": {
-                "units": null,
-                "resolution": 463.3127165279165
-            },
-            "EVI2": {
-                "units": null,
-                "resolution": 463.3127165279165
-            },
-            "NDVI": {
-                "units": null,
-                "resolution": 463.3127165279165
-            },
-            "NIR_reflectance": {
-                "units": null,
-                "resolution": 463.3127165279165
-            },
-            "SWIR1_reflectance": {
-                "units": null,
-                "resolution": 463.3127165279165
-            },
-            "SWIR2_reflectance": {
-                "units": null,
-                "resolution": 463.3127165279165
-            },
-            "SWIR3_reflectance": {
-                "units": null,
-                "resolution": 463.3127165279165
-            },
-            "VI_Quality": {
-                "units": null,
-                "resolution": 463.3127165279165
-            },
-            "red_reflectance": {
-                "units": null,
-                "resolution": 463.3127165279165
-            },
-            "green_reflectance": {
-                "units": null,
-                "resolution": 463.3127165279165
-            },
-            "blue_reflectance": {
-                "units": null,
-                "resolution": 463.3127165279165
-            },
-            "composite_day_of_the_year": {
-                "units": null,
-                "resolution": 463.3127165279165
-            },
-            "pixel_reliability": {
-                "units": null,
-                "resolution": 463.3127165279165
-            },
-            "relative_azimuth_angle": {
-                "units": null,
-                "resolution": 463.3127165279165
-            },
-            "sun_zenith_angle": {
-                "units": null,
-                "resolution": 463.3127165279165
-            },
-            "view_zenith_angle": {
-                "units": null,
-                "resolution": 463.3127165279165
-            }
-        }
-    },
-    {
         "id": "NOAA/VIIRS/001/VNP14A1",
         "name": "VNP14A1: Thermal Anomalies/Fire Daily L3 Global 1km SIN Grid",
         "start_date": "2012-01-19",
@@ -35894,80 +35968,6 @@
                 "resolution": 926.625433055833
             },
             "sample": {
-                "units": null,
-                "resolution": 926.625433055833
-            }
-        }
-    },
-    {
-        "id": "NOAA/VIIRS/001/VNP21A1D",
-        "name": "VNP21A1D: Day Land Surface Temperature and Emissivity Daily 1km",
-        "start_date": "2012-01-19",
-        "end_date": "2024-05-01",
-        "type": "image_collection",
-        "bands": {
-            "LST_1KM": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "QC": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "Emis_14": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "Emis_15": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "Emis_16": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "View_Angle": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "View_Time": {
-                "units": null,
-                "resolution": 926.625433055833
-            }
-        }
-    },
-    {
-        "id": "NOAA/VIIRS/001/VNP21A1N",
-        "name": "VNP21A1N: Night Land Surface Temperature and Emissivity Daily 1km",
-        "start_date": "2012-01-19",
-        "end_date": "2024-05-01",
-        "type": "image_collection",
-        "bands": {
-            "LST_1KM": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "QC": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "Emis_14": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "Emis_15": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "Emis_16": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "View_Angle": {
-                "units": null,
-                "resolution": 926.625433055833
-            },
-            "View_Time": {
                 "units": null,
                 "resolution": 926.625433055833
             }
@@ -36248,7 +36248,7 @@
         "id": "NOAA/VIIRS/001/VNP46A1",
         "name": "VNP46A1: VIIRS Daily Gridded Day Night Band 500m Linear Lat Lon Grid Night",
         "start_date": "2012-01-19",
-        "end_date": "2024-08-10",
+        "end_date": "2024-08-18",
         "type": "image_collection",
         "bands": {
             "BrightnessTemperature_M12": {
@@ -36361,7 +36361,7 @@
         "id": "NOAA/VIIRS/001/VNP46A2",
         "name": "VNP46A2: VIIRS Lunar Gap-Filled BRDF Nighttime Lights Daily L3 Global 500m",
         "start_date": "2012-01-19",
-        "end_date": "2024-07-24",
+        "end_date": "2024-08-11",
         "type": "image_collection",
         "bands": {
             "DNB_BRDF_Corrected_NTL": {
@@ -36561,7 +36561,7 @@
         "bands": {
             "ppt": {
                 "units": null,
-                "resolution": 4638.312116390109
+                "resolution": 4638.312116423505
             },
             "tmean": {
                 "units": null,
@@ -36569,23 +36569,23 @@
             },
             "tmin": {
                 "units": null,
-                "resolution": 4638.312116390109
+                "resolution": 4638.312116423505
             },
             "tmax": {
                 "units": null,
-                "resolution": 4638.312116390109
+                "resolution": 4638.312116423505
             },
             "tdmean": {
                 "units": null,
-                "resolution": 4638.312116390109
+                "resolution": 4638.312116423505
             },
             "vpdmin": {
                 "units": null,
-                "resolution": 4638.312116390109
+                "resolution": 4638.312116423505
             },
             "vpdmax": {
                 "units": null,
-                "resolution": 4638.312116390109
+                "resolution": 4638.312116423505
             }
         }
     },
@@ -40662,6 +40662,2714 @@
         }
     },
     {
+        "id": "projects/neon-prod-earthengine/assets/DEM/001",
+        "name": "NEON Digital Elevation Model (DEM)",
+        "start_date": "2013-01-01",
+        "end_date": "2023-07-06",
+        "type": "image_collection",
+        "bands": {
+            "DTM": {
+                "units": null,
+                "resolution": 1
+            },
+            "DSM": {
+                "units": null,
+                "resolution": 1
+            }
+        }
+    },
+    {
+        "id": "projects/neon-prod-earthengine/assets/HSI_REFL/001",
+        "name": "NEON Directional Surface Reflectance",
+        "start_date": "2013-01-01",
+        "end_date": "2021-09-05",
+        "type": "image_collection",
+        "bands": {
+            "B001": {
+                "units": null
+            },
+            "B002": {
+                "units": null
+            },
+            "B003": {
+                "units": null
+            },
+            "B004": {
+                "units": null
+            },
+            "B005": {
+                "units": null
+            },
+            "B006": {
+                "units": null
+            },
+            "B007": {
+                "units": null
+            },
+            "B008": {
+                "units": null
+            },
+            "B009": {
+                "units": null
+            },
+            "B010": {
+                "units": null
+            },
+            "B011": {
+                "units": null
+            },
+            "B012": {
+                "units": null
+            },
+            "B013": {
+                "units": null
+            },
+            "B014": {
+                "units": null
+            },
+            "B015": {
+                "units": null
+            },
+            "B016": {
+                "units": null
+            },
+            "B017": {
+                "units": null
+            },
+            "B018": {
+                "units": null
+            },
+            "B019": {
+                "units": null
+            },
+            "B020": {
+                "units": null
+            },
+            "B021": {
+                "units": null
+            },
+            "B022": {
+                "units": null
+            },
+            "B023": {
+                "units": null
+            },
+            "B024": {
+                "units": null
+            },
+            "B025": {
+                "units": null
+            },
+            "B026": {
+                "units": null
+            },
+            "B027": {
+                "units": null
+            },
+            "B028": {
+                "units": null
+            },
+            "B029": {
+                "units": null
+            },
+            "B030": {
+                "units": null
+            },
+            "B031": {
+                "units": null
+            },
+            "B032": {
+                "units": null
+            },
+            "B033": {
+                "units": null
+            },
+            "B034": {
+                "units": null
+            },
+            "B035": {
+                "units": null
+            },
+            "B036": {
+                "units": null
+            },
+            "B037": {
+                "units": null
+            },
+            "B038": {
+                "units": null
+            },
+            "B039": {
+                "units": null
+            },
+            "B040": {
+                "units": null
+            },
+            "B041": {
+                "units": null
+            },
+            "B042": {
+                "units": null
+            },
+            "B043": {
+                "units": null
+            },
+            "B044": {
+                "units": null
+            },
+            "B045": {
+                "units": null
+            },
+            "B046": {
+                "units": null
+            },
+            "B047": {
+                "units": null
+            },
+            "B048": {
+                "units": null
+            },
+            "B049": {
+                "units": null
+            },
+            "B050": {
+                "units": null
+            },
+            "B051": {
+                "units": null
+            },
+            "B052": {
+                "units": null
+            },
+            "B053": {
+                "units": null
+            },
+            "B054": {
+                "units": null
+            },
+            "B055": {
+                "units": null
+            },
+            "B056": {
+                "units": null
+            },
+            "B057": {
+                "units": null
+            },
+            "B058": {
+                "units": null
+            },
+            "B059": {
+                "units": null
+            },
+            "B060": {
+                "units": null
+            },
+            "B061": {
+                "units": null
+            },
+            "B062": {
+                "units": null
+            },
+            "B063": {
+                "units": null
+            },
+            "B064": {
+                "units": null
+            },
+            "B065": {
+                "units": null
+            },
+            "B066": {
+                "units": null
+            },
+            "B067": {
+                "units": null
+            },
+            "B068": {
+                "units": null
+            },
+            "B069": {
+                "units": null
+            },
+            "B070": {
+                "units": null
+            },
+            "B071": {
+                "units": null
+            },
+            "B072": {
+                "units": null
+            },
+            "B073": {
+                "units": null
+            },
+            "B074": {
+                "units": null
+            },
+            "B075": {
+                "units": null
+            },
+            "B076": {
+                "units": null
+            },
+            "B077": {
+                "units": null
+            },
+            "B078": {
+                "units": null
+            },
+            "B079": {
+                "units": null
+            },
+            "B080": {
+                "units": null
+            },
+            "B081": {
+                "units": null
+            },
+            "B082": {
+                "units": null
+            },
+            "B083": {
+                "units": null
+            },
+            "B084": {
+                "units": null
+            },
+            "B085": {
+                "units": null
+            },
+            "B086": {
+                "units": null
+            },
+            "B087": {
+                "units": null
+            },
+            "B088": {
+                "units": null
+            },
+            "B089": {
+                "units": null
+            },
+            "B090": {
+                "units": null
+            },
+            "B091": {
+                "units": null
+            },
+            "B092": {
+                "units": null
+            },
+            "B093": {
+                "units": null
+            },
+            "B094": {
+                "units": null
+            },
+            "B095": {
+                "units": null
+            },
+            "B096": {
+                "units": null
+            },
+            "B097": {
+                "units": null
+            },
+            "B098": {
+                "units": null
+            },
+            "B099": {
+                "units": null
+            },
+            "B100": {
+                "units": null
+            },
+            "B101": {
+                "units": null
+            },
+            "B102": {
+                "units": null
+            },
+            "B103": {
+                "units": null
+            },
+            "B104": {
+                "units": null
+            },
+            "B105": {
+                "units": null
+            },
+            "B106": {
+                "units": null
+            },
+            "B107": {
+                "units": null
+            },
+            "B108": {
+                "units": null
+            },
+            "B109": {
+                "units": null
+            },
+            "B110": {
+                "units": null
+            },
+            "B111": {
+                "units": null
+            },
+            "B112": {
+                "units": null
+            },
+            "B113": {
+                "units": null
+            },
+            "B114": {
+                "units": null
+            },
+            "B115": {
+                "units": null
+            },
+            "B116": {
+                "units": null
+            },
+            "B117": {
+                "units": null
+            },
+            "B118": {
+                "units": null
+            },
+            "B119": {
+                "units": null
+            },
+            "B120": {
+                "units": null
+            },
+            "B121": {
+                "units": null
+            },
+            "B122": {
+                "units": null
+            },
+            "B123": {
+                "units": null
+            },
+            "B124": {
+                "units": null
+            },
+            "B125": {
+                "units": null
+            },
+            "B126": {
+                "units": null
+            },
+            "B127": {
+                "units": null
+            },
+            "B128": {
+                "units": null
+            },
+            "B129": {
+                "units": null
+            },
+            "B130": {
+                "units": null
+            },
+            "B131": {
+                "units": null
+            },
+            "B132": {
+                "units": null
+            },
+            "B133": {
+                "units": null
+            },
+            "B134": {
+                "units": null
+            },
+            "B135": {
+                "units": null
+            },
+            "B136": {
+                "units": null
+            },
+            "B137": {
+                "units": null
+            },
+            "B138": {
+                "units": null
+            },
+            "B139": {
+                "units": null
+            },
+            "B140": {
+                "units": null
+            },
+            "B141": {
+                "units": null
+            },
+            "B142": {
+                "units": null
+            },
+            "B143": {
+                "units": null
+            },
+            "B144": {
+                "units": null
+            },
+            "B145": {
+                "units": null
+            },
+            "B146": {
+                "units": null
+            },
+            "B147": {
+                "units": null
+            },
+            "B148": {
+                "units": null
+            },
+            "B149": {
+                "units": null
+            },
+            "B150": {
+                "units": null
+            },
+            "B151": {
+                "units": null
+            },
+            "B152": {
+                "units": null
+            },
+            "B153": {
+                "units": null
+            },
+            "B154": {
+                "units": null
+            },
+            "B155": {
+                "units": null
+            },
+            "B156": {
+                "units": null
+            },
+            "B157": {
+                "units": null
+            },
+            "B158": {
+                "units": null
+            },
+            "B159": {
+                "units": null
+            },
+            "B160": {
+                "units": null
+            },
+            "B161": {
+                "units": null
+            },
+            "B162": {
+                "units": null
+            },
+            "B163": {
+                "units": null
+            },
+            "B164": {
+                "units": null
+            },
+            "B165": {
+                "units": null
+            },
+            "B166": {
+                "units": null
+            },
+            "B167": {
+                "units": null
+            },
+            "B168": {
+                "units": null
+            },
+            "B169": {
+                "units": null
+            },
+            "B170": {
+                "units": null
+            },
+            "B171": {
+                "units": null
+            },
+            "B172": {
+                "units": null
+            },
+            "B173": {
+                "units": null
+            },
+            "B174": {
+                "units": null
+            },
+            "B175": {
+                "units": null
+            },
+            "B176": {
+                "units": null
+            },
+            "B177": {
+                "units": null
+            },
+            "B178": {
+                "units": null
+            },
+            "B179": {
+                "units": null
+            },
+            "B180": {
+                "units": null
+            },
+            "B181": {
+                "units": null
+            },
+            "B182": {
+                "units": null
+            },
+            "B183": {
+                "units": null
+            },
+            "B184": {
+                "units": null
+            },
+            "B185": {
+                "units": null
+            },
+            "B186": {
+                "units": null
+            },
+            "B187": {
+                "units": null
+            },
+            "B188": {
+                "units": null
+            },
+            "B189": {
+                "units": null
+            },
+            "B190": {
+                "units": null
+            },
+            "B191": {
+                "units": null
+            },
+            "B192": {
+                "units": null
+            },
+            "B193": {
+                "units": null
+            },
+            "B194": {
+                "units": null
+            },
+            "B195": {
+                "units": null
+            },
+            "B196": {
+                "units": null
+            },
+            "B197": {
+                "units": null
+            },
+            "B198": {
+                "units": null
+            },
+            "B199": {
+                "units": null
+            },
+            "B200": {
+                "units": null
+            },
+            "B201": {
+                "units": null
+            },
+            "B202": {
+                "units": null
+            },
+            "B203": {
+                "units": null
+            },
+            "B204": {
+                "units": null
+            },
+            "B205": {
+                "units": null
+            },
+            "B206": {
+                "units": null
+            },
+            "B207": {
+                "units": null
+            },
+            "B208": {
+                "units": null
+            },
+            "B209": {
+                "units": null
+            },
+            "B210": {
+                "units": null
+            },
+            "B211": {
+                "units": null
+            },
+            "B212": {
+                "units": null
+            },
+            "B213": {
+                "units": null
+            },
+            "B214": {
+                "units": null
+            },
+            "B215": {
+                "units": null
+            },
+            "B216": {
+                "units": null
+            },
+            "B217": {
+                "units": null
+            },
+            "B218": {
+                "units": null
+            },
+            "B219": {
+                "units": null
+            },
+            "B220": {
+                "units": null
+            },
+            "B221": {
+                "units": null
+            },
+            "B222": {
+                "units": null
+            },
+            "B223": {
+                "units": null
+            },
+            "B224": {
+                "units": null
+            },
+            "B225": {
+                "units": null
+            },
+            "B226": {
+                "units": null
+            },
+            "B227": {
+                "units": null
+            },
+            "B228": {
+                "units": null
+            },
+            "B229": {
+                "units": null
+            },
+            "B230": {
+                "units": null
+            },
+            "B231": {
+                "units": null
+            },
+            "B232": {
+                "units": null
+            },
+            "B233": {
+                "units": null
+            },
+            "B234": {
+                "units": null
+            },
+            "B235": {
+                "units": null
+            },
+            "B236": {
+                "units": null
+            },
+            "B237": {
+                "units": null
+            },
+            "B238": {
+                "units": null
+            },
+            "B239": {
+                "units": null
+            },
+            "B240": {
+                "units": null
+            },
+            "B241": {
+                "units": null
+            },
+            "B242": {
+                "units": null
+            },
+            "B243": {
+                "units": null
+            },
+            "B244": {
+                "units": null
+            },
+            "B245": {
+                "units": null
+            },
+            "B246": {
+                "units": null
+            },
+            "B247": {
+                "units": null
+            },
+            "B248": {
+                "units": null
+            },
+            "B249": {
+                "units": null
+            },
+            "B250": {
+                "units": null
+            },
+            "B251": {
+                "units": null
+            },
+            "B252": {
+                "units": null
+            },
+            "B253": {
+                "units": null
+            },
+            "B254": {
+                "units": null
+            },
+            "B255": {
+                "units": null
+            },
+            "B256": {
+                "units": null
+            },
+            "B257": {
+                "units": null
+            },
+            "B258": {
+                "units": null
+            },
+            "B259": {
+                "units": null
+            },
+            "B260": {
+                "units": null
+            },
+            "B261": {
+                "units": null
+            },
+            "B262": {
+                "units": null
+            },
+            "B263": {
+                "units": null
+            },
+            "B264": {
+                "units": null
+            },
+            "B265": {
+                "units": null
+            },
+            "B266": {
+                "units": null
+            },
+            "B267": {
+                "units": null
+            },
+            "B268": {
+                "units": null
+            },
+            "B269": {
+                "units": null
+            },
+            "B270": {
+                "units": null
+            },
+            "B271": {
+                "units": null
+            },
+            "B272": {
+                "units": null
+            },
+            "B273": {
+                "units": null
+            },
+            "B274": {
+                "units": null
+            },
+            "B275": {
+                "units": null
+            },
+            "B276": {
+                "units": null
+            },
+            "B277": {
+                "units": null
+            },
+            "B278": {
+                "units": null
+            },
+            "B279": {
+                "units": null
+            },
+            "B280": {
+                "units": null
+            },
+            "B281": {
+                "units": null
+            },
+            "B282": {
+                "units": null
+            },
+            "B283": {
+                "units": null
+            },
+            "B284": {
+                "units": null
+            },
+            "B285": {
+                "units": null
+            },
+            "B286": {
+                "units": null
+            },
+            "B287": {
+                "units": null
+            },
+            "B288": {
+                "units": null
+            },
+            "B289": {
+                "units": null
+            },
+            "B290": {
+                "units": null
+            },
+            "B291": {
+                "units": null
+            },
+            "B292": {
+                "units": null
+            },
+            "B293": {
+                "units": null
+            },
+            "B294": {
+                "units": null
+            },
+            "B295": {
+                "units": null
+            },
+            "B296": {
+                "units": null
+            },
+            "B297": {
+                "units": null
+            },
+            "B298": {
+                "units": null
+            },
+            "B299": {
+                "units": null
+            },
+            "B300": {
+                "units": null
+            },
+            "B301": {
+                "units": null
+            },
+            "B302": {
+                "units": null
+            },
+            "B303": {
+                "units": null
+            },
+            "B304": {
+                "units": null
+            },
+            "B305": {
+                "units": null
+            },
+            "B306": {
+                "units": null
+            },
+            "B307": {
+                "units": null
+            },
+            "B308": {
+                "units": null
+            },
+            "B309": {
+                "units": null
+            },
+            "B310": {
+                "units": null
+            },
+            "B311": {
+                "units": null
+            },
+            "B312": {
+                "units": null
+            },
+            "B313": {
+                "units": null
+            },
+            "B314": {
+                "units": null
+            },
+            "B315": {
+                "units": null
+            },
+            "B316": {
+                "units": null
+            },
+            "B317": {
+                "units": null
+            },
+            "B318": {
+                "units": null
+            },
+            "B319": {
+                "units": null
+            },
+            "B320": {
+                "units": null
+            },
+            "B321": {
+                "units": null
+            },
+            "B322": {
+                "units": null
+            },
+            "B323": {
+                "units": null
+            },
+            "B324": {
+                "units": null
+            },
+            "B325": {
+                "units": null
+            },
+            "B326": {
+                "units": null
+            },
+            "B327": {
+                "units": null
+            },
+            "B328": {
+                "units": null
+            },
+            "B329": {
+                "units": null
+            },
+            "B330": {
+                "units": null
+            },
+            "B331": {
+                "units": null
+            },
+            "B332": {
+                "units": null
+            },
+            "B333": {
+                "units": null
+            },
+            "B334": {
+                "units": null
+            },
+            "B335": {
+                "units": null
+            },
+            "B336": {
+                "units": null
+            },
+            "B337": {
+                "units": null
+            },
+            "B338": {
+                "units": null
+            },
+            "B339": {
+                "units": null
+            },
+            "B340": {
+                "units": null
+            },
+            "B341": {
+                "units": null
+            },
+            "B342": {
+                "units": null
+            },
+            "B343": {
+                "units": null
+            },
+            "B344": {
+                "units": null
+            },
+            "B345": {
+                "units": null
+            },
+            "B346": {
+                "units": null
+            },
+            "B347": {
+                "units": null
+            },
+            "B348": {
+                "units": null
+            },
+            "B349": {
+                "units": null
+            },
+            "B350": {
+                "units": null
+            },
+            "B351": {
+                "units": null
+            },
+            "B352": {
+                "units": null
+            },
+            "B353": {
+                "units": null
+            },
+            "B354": {
+                "units": null
+            },
+            "B355": {
+                "units": null
+            },
+            "B356": {
+                "units": null
+            },
+            "B357": {
+                "units": null
+            },
+            "B358": {
+                "units": null
+            },
+            "B359": {
+                "units": null
+            },
+            "B360": {
+                "units": null
+            },
+            "B361": {
+                "units": null
+            },
+            "B362": {
+                "units": null
+            },
+            "B363": {
+                "units": null
+            },
+            "B364": {
+                "units": null
+            },
+            "B365": {
+                "units": null
+            },
+            "B366": {
+                "units": null
+            },
+            "B367": {
+                "units": null
+            },
+            "B368": {
+                "units": null
+            },
+            "B369": {
+                "units": null
+            },
+            "B370": {
+                "units": null
+            },
+            "B371": {
+                "units": null
+            },
+            "B372": {
+                "units": null
+            },
+            "B373": {
+                "units": null
+            },
+            "B374": {
+                "units": null
+            },
+            "B375": {
+                "units": null
+            },
+            "B376": {
+                "units": null
+            },
+            "B377": {
+                "units": null
+            },
+            "B378": {
+                "units": null
+            },
+            "B379": {
+                "units": null
+            },
+            "B380": {
+                "units": null
+            },
+            "B381": {
+                "units": null
+            },
+            "B382": {
+                "units": null
+            },
+            "B383": {
+                "units": null
+            },
+            "B384": {
+                "units": null
+            },
+            "B385": {
+                "units": null
+            },
+            "B386": {
+                "units": null
+            },
+            "B387": {
+                "units": null
+            },
+            "B388": {
+                "units": null
+            },
+            "B389": {
+                "units": null
+            },
+            "B390": {
+                "units": null
+            },
+            "B391": {
+                "units": null
+            },
+            "B392": {
+                "units": null
+            },
+            "B393": {
+                "units": null
+            },
+            "B394": {
+                "units": null
+            },
+            "B395": {
+                "units": null
+            },
+            "B396": {
+                "units": null
+            },
+            "B397": {
+                "units": null
+            },
+            "B398": {
+                "units": null
+            },
+            "B399": {
+                "units": null
+            },
+            "B400": {
+                "units": null
+            },
+            "B401": {
+                "units": null
+            },
+            "B402": {
+                "units": null
+            },
+            "B403": {
+                "units": null
+            },
+            "B404": {
+                "units": null
+            },
+            "B405": {
+                "units": null
+            },
+            "B406": {
+                "units": null
+            },
+            "B407": {
+                "units": null
+            },
+            "B408": {
+                "units": null
+            },
+            "B409": {
+                "units": null
+            },
+            "B410": {
+                "units": null
+            },
+            "B411": {
+                "units": null
+            },
+            "B412": {
+                "units": null
+            },
+            "B413": {
+                "units": null
+            },
+            "B414": {
+                "units": null
+            },
+            "B415": {
+                "units": null
+            },
+            "B416": {
+                "units": null
+            },
+            "B417": {
+                "units": null
+            },
+            "B418": {
+                "units": null
+            },
+            "B419": {
+                "units": null
+            },
+            "B420": {
+                "units": null
+            },
+            "B421": {
+                "units": null
+            },
+            "B422": {
+                "units": null
+            },
+            "B423": {
+                "units": null
+            },
+            "B424": {
+                "units": null
+            },
+            "B425": {
+                "units": null
+            },
+            "B426": {
+                "units": null
+            },
+            "B427": {
+                "units": null
+            },
+            "B428": {
+                "units": null
+            },
+            "B429": {
+                "units": null
+            },
+            "B430": {
+                "units": null
+            },
+            "B431": {
+                "units": null
+            },
+            "B432": {
+                "units": null
+            },
+            "B433": {
+                "units": null
+            },
+            "B434": {
+                "units": null
+            },
+            "B435": {
+                "units": null
+            },
+            "B436": {
+                "units": null
+            },
+            "B437": {
+                "units": null
+            },
+            "B438": {
+                "units": null
+            },
+            "B439": {
+                "units": null
+            },
+            "B440": {
+                "units": null
+            },
+            "B441": {
+                "units": null
+            },
+            "B442": {
+                "units": null
+            }
+        }
+    },
+    {
+        "id": "projects/neon-prod-earthengine/assets/HSI_REFL/002",
+        "name": "NEON Bidirectional Surface Reflectance",
+        "start_date": "2013-01-01",
+        "end_date": "2022-07-14",
+        "type": "image_collection",
+        "bands": {
+            "B001": {
+                "units": null
+            },
+            "B002": {
+                "units": null
+            },
+            "B003": {
+                "units": null
+            },
+            "B004": {
+                "units": null
+            },
+            "B005": {
+                "units": null
+            },
+            "B006": {
+                "units": null
+            },
+            "B007": {
+                "units": null
+            },
+            "B008": {
+                "units": null
+            },
+            "B009": {
+                "units": null
+            },
+            "B010": {
+                "units": null
+            },
+            "B011": {
+                "units": null
+            },
+            "B012": {
+                "units": null
+            },
+            "B013": {
+                "units": null
+            },
+            "B014": {
+                "units": null
+            },
+            "B015": {
+                "units": null
+            },
+            "B016": {
+                "units": null
+            },
+            "B017": {
+                "units": null
+            },
+            "B018": {
+                "units": null
+            },
+            "B019": {
+                "units": null
+            },
+            "B020": {
+                "units": null
+            },
+            "B021": {
+                "units": null
+            },
+            "B022": {
+                "units": null
+            },
+            "B023": {
+                "units": null
+            },
+            "B024": {
+                "units": null
+            },
+            "B025": {
+                "units": null
+            },
+            "B026": {
+                "units": null
+            },
+            "B027": {
+                "units": null
+            },
+            "B028": {
+                "units": null
+            },
+            "B029": {
+                "units": null
+            },
+            "B030": {
+                "units": null
+            },
+            "B031": {
+                "units": null
+            },
+            "B032": {
+                "units": null
+            },
+            "B033": {
+                "units": null
+            },
+            "B034": {
+                "units": null
+            },
+            "B035": {
+                "units": null
+            },
+            "B036": {
+                "units": null
+            },
+            "B037": {
+                "units": null
+            },
+            "B038": {
+                "units": null
+            },
+            "B039": {
+                "units": null
+            },
+            "B040": {
+                "units": null
+            },
+            "B041": {
+                "units": null
+            },
+            "B042": {
+                "units": null
+            },
+            "B043": {
+                "units": null
+            },
+            "B044": {
+                "units": null
+            },
+            "B045": {
+                "units": null
+            },
+            "B046": {
+                "units": null
+            },
+            "B047": {
+                "units": null
+            },
+            "B048": {
+                "units": null
+            },
+            "B049": {
+                "units": null
+            },
+            "B050": {
+                "units": null
+            },
+            "B051": {
+                "units": null
+            },
+            "B052": {
+                "units": null
+            },
+            "B053": {
+                "units": null
+            },
+            "B054": {
+                "units": null
+            },
+            "B055": {
+                "units": null
+            },
+            "B056": {
+                "units": null
+            },
+            "B057": {
+                "units": null
+            },
+            "B058": {
+                "units": null
+            },
+            "B059": {
+                "units": null
+            },
+            "B060": {
+                "units": null
+            },
+            "B061": {
+                "units": null
+            },
+            "B062": {
+                "units": null
+            },
+            "B063": {
+                "units": null
+            },
+            "B064": {
+                "units": null
+            },
+            "B065": {
+                "units": null
+            },
+            "B066": {
+                "units": null
+            },
+            "B067": {
+                "units": null
+            },
+            "B068": {
+                "units": null
+            },
+            "B069": {
+                "units": null
+            },
+            "B070": {
+                "units": null
+            },
+            "B071": {
+                "units": null
+            },
+            "B072": {
+                "units": null
+            },
+            "B073": {
+                "units": null
+            },
+            "B074": {
+                "units": null
+            },
+            "B075": {
+                "units": null
+            },
+            "B076": {
+                "units": null
+            },
+            "B077": {
+                "units": null
+            },
+            "B078": {
+                "units": null
+            },
+            "B079": {
+                "units": null
+            },
+            "B080": {
+                "units": null
+            },
+            "B081": {
+                "units": null
+            },
+            "B082": {
+                "units": null
+            },
+            "B083": {
+                "units": null
+            },
+            "B084": {
+                "units": null
+            },
+            "B085": {
+                "units": null
+            },
+            "B086": {
+                "units": null
+            },
+            "B087": {
+                "units": null
+            },
+            "B088": {
+                "units": null
+            },
+            "B089": {
+                "units": null
+            },
+            "B090": {
+                "units": null
+            },
+            "B091": {
+                "units": null
+            },
+            "B092": {
+                "units": null
+            },
+            "B093": {
+                "units": null
+            },
+            "B094": {
+                "units": null
+            },
+            "B095": {
+                "units": null
+            },
+            "B096": {
+                "units": null
+            },
+            "B097": {
+                "units": null
+            },
+            "B098": {
+                "units": null
+            },
+            "B099": {
+                "units": null
+            },
+            "B100": {
+                "units": null
+            },
+            "B101": {
+                "units": null
+            },
+            "B102": {
+                "units": null
+            },
+            "B103": {
+                "units": null
+            },
+            "B104": {
+                "units": null
+            },
+            "B105": {
+                "units": null
+            },
+            "B106": {
+                "units": null
+            },
+            "B107": {
+                "units": null
+            },
+            "B108": {
+                "units": null
+            },
+            "B109": {
+                "units": null
+            },
+            "B110": {
+                "units": null
+            },
+            "B111": {
+                "units": null
+            },
+            "B112": {
+                "units": null
+            },
+            "B113": {
+                "units": null
+            },
+            "B114": {
+                "units": null
+            },
+            "B115": {
+                "units": null
+            },
+            "B116": {
+                "units": null
+            },
+            "B117": {
+                "units": null
+            },
+            "B118": {
+                "units": null
+            },
+            "B119": {
+                "units": null
+            },
+            "B120": {
+                "units": null
+            },
+            "B121": {
+                "units": null
+            },
+            "B122": {
+                "units": null
+            },
+            "B123": {
+                "units": null
+            },
+            "B124": {
+                "units": null
+            },
+            "B125": {
+                "units": null
+            },
+            "B126": {
+                "units": null
+            },
+            "B127": {
+                "units": null
+            },
+            "B128": {
+                "units": null
+            },
+            "B129": {
+                "units": null
+            },
+            "B130": {
+                "units": null
+            },
+            "B131": {
+                "units": null
+            },
+            "B132": {
+                "units": null
+            },
+            "B133": {
+                "units": null
+            },
+            "B134": {
+                "units": null
+            },
+            "B135": {
+                "units": null
+            },
+            "B136": {
+                "units": null
+            },
+            "B137": {
+                "units": null
+            },
+            "B138": {
+                "units": null
+            },
+            "B139": {
+                "units": null
+            },
+            "B140": {
+                "units": null
+            },
+            "B141": {
+                "units": null
+            },
+            "B142": {
+                "units": null
+            },
+            "B143": {
+                "units": null
+            },
+            "B144": {
+                "units": null
+            },
+            "B145": {
+                "units": null
+            },
+            "B146": {
+                "units": null
+            },
+            "B147": {
+                "units": null
+            },
+            "B148": {
+                "units": null
+            },
+            "B149": {
+                "units": null
+            },
+            "B150": {
+                "units": null
+            },
+            "B151": {
+                "units": null
+            },
+            "B152": {
+                "units": null
+            },
+            "B153": {
+                "units": null
+            },
+            "B154": {
+                "units": null
+            },
+            "B155": {
+                "units": null
+            },
+            "B156": {
+                "units": null
+            },
+            "B157": {
+                "units": null
+            },
+            "B158": {
+                "units": null
+            },
+            "B159": {
+                "units": null
+            },
+            "B160": {
+                "units": null
+            },
+            "B161": {
+                "units": null
+            },
+            "B162": {
+                "units": null
+            },
+            "B163": {
+                "units": null
+            },
+            "B164": {
+                "units": null
+            },
+            "B165": {
+                "units": null
+            },
+            "B166": {
+                "units": null
+            },
+            "B167": {
+                "units": null
+            },
+            "B168": {
+                "units": null
+            },
+            "B169": {
+                "units": null
+            },
+            "B170": {
+                "units": null
+            },
+            "B171": {
+                "units": null
+            },
+            "B172": {
+                "units": null
+            },
+            "B173": {
+                "units": null
+            },
+            "B174": {
+                "units": null
+            },
+            "B175": {
+                "units": null
+            },
+            "B176": {
+                "units": null
+            },
+            "B177": {
+                "units": null
+            },
+            "B178": {
+                "units": null
+            },
+            "B179": {
+                "units": null
+            },
+            "B180": {
+                "units": null
+            },
+            "B181": {
+                "units": null
+            },
+            "B182": {
+                "units": null
+            },
+            "B183": {
+                "units": null
+            },
+            "B184": {
+                "units": null
+            },
+            "B185": {
+                "units": null
+            },
+            "B186": {
+                "units": null
+            },
+            "B187": {
+                "units": null
+            },
+            "B188": {
+                "units": null
+            },
+            "B189": {
+                "units": null
+            },
+            "B190": {
+                "units": null
+            },
+            "B191": {
+                "units": null
+            },
+            "B192": {
+                "units": null
+            },
+            "B193": {
+                "units": null
+            },
+            "B194": {
+                "units": null
+            },
+            "B195": {
+                "units": null
+            },
+            "B196": {
+                "units": null
+            },
+            "B197": {
+                "units": null
+            },
+            "B198": {
+                "units": null
+            },
+            "B199": {
+                "units": null
+            },
+            "B200": {
+                "units": null
+            },
+            "B201": {
+                "units": null
+            },
+            "B202": {
+                "units": null
+            },
+            "B203": {
+                "units": null
+            },
+            "B204": {
+                "units": null
+            },
+            "B205": {
+                "units": null
+            },
+            "B206": {
+                "units": null
+            },
+            "B207": {
+                "units": null
+            },
+            "B208": {
+                "units": null
+            },
+            "B209": {
+                "units": null
+            },
+            "B210": {
+                "units": null
+            },
+            "B211": {
+                "units": null
+            },
+            "B212": {
+                "units": null
+            },
+            "B213": {
+                "units": null
+            },
+            "B214": {
+                "units": null
+            },
+            "B215": {
+                "units": null
+            },
+            "B216": {
+                "units": null
+            },
+            "B217": {
+                "units": null
+            },
+            "B218": {
+                "units": null
+            },
+            "B219": {
+                "units": null
+            },
+            "B220": {
+                "units": null
+            },
+            "B221": {
+                "units": null
+            },
+            "B222": {
+                "units": null
+            },
+            "B223": {
+                "units": null
+            },
+            "B224": {
+                "units": null
+            },
+            "B225": {
+                "units": null
+            },
+            "B226": {
+                "units": null
+            },
+            "B227": {
+                "units": null
+            },
+            "B228": {
+                "units": null
+            },
+            "B229": {
+                "units": null
+            },
+            "B230": {
+                "units": null
+            },
+            "B231": {
+                "units": null
+            },
+            "B232": {
+                "units": null
+            },
+            "B233": {
+                "units": null
+            },
+            "B234": {
+                "units": null
+            },
+            "B235": {
+                "units": null
+            },
+            "B236": {
+                "units": null
+            },
+            "B237": {
+                "units": null
+            },
+            "B238": {
+                "units": null
+            },
+            "B239": {
+                "units": null
+            },
+            "B240": {
+                "units": null
+            },
+            "B241": {
+                "units": null
+            },
+            "B242": {
+                "units": null
+            },
+            "B243": {
+                "units": null
+            },
+            "B244": {
+                "units": null
+            },
+            "B245": {
+                "units": null
+            },
+            "B246": {
+                "units": null
+            },
+            "B247": {
+                "units": null
+            },
+            "B248": {
+                "units": null
+            },
+            "B249": {
+                "units": null
+            },
+            "B250": {
+                "units": null
+            },
+            "B251": {
+                "units": null
+            },
+            "B252": {
+                "units": null
+            },
+            "B253": {
+                "units": null
+            },
+            "B254": {
+                "units": null
+            },
+            "B255": {
+                "units": null
+            },
+            "B256": {
+                "units": null
+            },
+            "B257": {
+                "units": null
+            },
+            "B258": {
+                "units": null
+            },
+            "B259": {
+                "units": null
+            },
+            "B260": {
+                "units": null
+            },
+            "B261": {
+                "units": null
+            },
+            "B262": {
+                "units": null
+            },
+            "B263": {
+                "units": null
+            },
+            "B264": {
+                "units": null
+            },
+            "B265": {
+                "units": null
+            },
+            "B266": {
+                "units": null
+            },
+            "B267": {
+                "units": null
+            },
+            "B268": {
+                "units": null
+            },
+            "B269": {
+                "units": null
+            },
+            "B270": {
+                "units": null
+            },
+            "B271": {
+                "units": null
+            },
+            "B272": {
+                "units": null
+            },
+            "B273": {
+                "units": null
+            },
+            "B274": {
+                "units": null
+            },
+            "B275": {
+                "units": null
+            },
+            "B276": {
+                "units": null
+            },
+            "B277": {
+                "units": null
+            },
+            "B278": {
+                "units": null
+            },
+            "B279": {
+                "units": null
+            },
+            "B280": {
+                "units": null
+            },
+            "B281": {
+                "units": null
+            },
+            "B282": {
+                "units": null
+            },
+            "B283": {
+                "units": null
+            },
+            "B284": {
+                "units": null
+            },
+            "B285": {
+                "units": null
+            },
+            "B286": {
+                "units": null
+            },
+            "B287": {
+                "units": null
+            },
+            "B288": {
+                "units": null
+            },
+            "B289": {
+                "units": null
+            },
+            "B290": {
+                "units": null
+            },
+            "B291": {
+                "units": null
+            },
+            "B292": {
+                "units": null
+            },
+            "B293": {
+                "units": null
+            },
+            "B294": {
+                "units": null
+            },
+            "B295": {
+                "units": null
+            },
+            "B296": {
+                "units": null
+            },
+            "B297": {
+                "units": null
+            },
+            "B298": {
+                "units": null
+            },
+            "B299": {
+                "units": null
+            },
+            "B300": {
+                "units": null
+            },
+            "B301": {
+                "units": null
+            },
+            "B302": {
+                "units": null
+            },
+            "B303": {
+                "units": null
+            },
+            "B304": {
+                "units": null
+            },
+            "B305": {
+                "units": null
+            },
+            "B306": {
+                "units": null
+            },
+            "B307": {
+                "units": null
+            },
+            "B308": {
+                "units": null
+            },
+            "B309": {
+                "units": null
+            },
+            "B310": {
+                "units": null
+            },
+            "B311": {
+                "units": null
+            },
+            "B312": {
+                "units": null
+            },
+            "B313": {
+                "units": null
+            },
+            "B314": {
+                "units": null
+            },
+            "B315": {
+                "units": null
+            },
+            "B316": {
+                "units": null
+            },
+            "B317": {
+                "units": null
+            },
+            "B318": {
+                "units": null
+            },
+            "B319": {
+                "units": null
+            },
+            "B320": {
+                "units": null
+            },
+            "B321": {
+                "units": null
+            },
+            "B322": {
+                "units": null
+            },
+            "B323": {
+                "units": null
+            },
+            "B324": {
+                "units": null
+            },
+            "B325": {
+                "units": null
+            },
+            "B326": {
+                "units": null
+            },
+            "B327": {
+                "units": null
+            },
+            "B328": {
+                "units": null
+            },
+            "B329": {
+                "units": null
+            },
+            "B330": {
+                "units": null
+            },
+            "B331": {
+                "units": null
+            },
+            "B332": {
+                "units": null
+            },
+            "B333": {
+                "units": null
+            },
+            "B334": {
+                "units": null
+            },
+            "B335": {
+                "units": null
+            },
+            "B336": {
+                "units": null
+            },
+            "B337": {
+                "units": null
+            },
+            "B338": {
+                "units": null
+            },
+            "B339": {
+                "units": null
+            },
+            "B340": {
+                "units": null
+            },
+            "B341": {
+                "units": null
+            },
+            "B342": {
+                "units": null
+            },
+            "B343": {
+                "units": null
+            },
+            "B344": {
+                "units": null
+            },
+            "B345": {
+                "units": null
+            },
+            "B346": {
+                "units": null
+            },
+            "B347": {
+                "units": null
+            },
+            "B348": {
+                "units": null
+            },
+            "B349": {
+                "units": null
+            },
+            "B350": {
+                "units": null
+            },
+            "B351": {
+                "units": null
+            },
+            "B352": {
+                "units": null
+            },
+            "B353": {
+                "units": null
+            },
+            "B354": {
+                "units": null
+            },
+            "B355": {
+                "units": null
+            },
+            "B356": {
+                "units": null
+            },
+            "B357": {
+                "units": null
+            },
+            "B358": {
+                "units": null
+            },
+            "B359": {
+                "units": null
+            },
+            "B360": {
+                "units": null
+            },
+            "B361": {
+                "units": null
+            },
+            "B362": {
+                "units": null
+            },
+            "B363": {
+                "units": null
+            },
+            "B364": {
+                "units": null
+            },
+            "B365": {
+                "units": null
+            },
+            "B366": {
+                "units": null
+            },
+            "B367": {
+                "units": null
+            },
+            "B368": {
+                "units": null
+            },
+            "B369": {
+                "units": null
+            },
+            "B370": {
+                "units": null
+            },
+            "B371": {
+                "units": null
+            },
+            "B372": {
+                "units": null
+            },
+            "B373": {
+                "units": null
+            },
+            "B374": {
+                "units": null
+            },
+            "B375": {
+                "units": null
+            },
+            "B376": {
+                "units": null
+            },
+            "B377": {
+                "units": null
+            },
+            "B378": {
+                "units": null
+            },
+            "B379": {
+                "units": null
+            },
+            "B380": {
+                "units": null
+            },
+            "B381": {
+                "units": null
+            },
+            "B382": {
+                "units": null
+            },
+            "B383": {
+                "units": null
+            },
+            "B384": {
+                "units": null
+            },
+            "B385": {
+                "units": null
+            },
+            "B386": {
+                "units": null
+            },
+            "B387": {
+                "units": null
+            },
+            "B388": {
+                "units": null
+            },
+            "B389": {
+                "units": null
+            },
+            "B390": {
+                "units": null
+            },
+            "B391": {
+                "units": null
+            },
+            "B392": {
+                "units": null
+            },
+            "B393": {
+                "units": null
+            },
+            "B394": {
+                "units": null
+            },
+            "B395": {
+                "units": null
+            },
+            "B396": {
+                "units": null
+            },
+            "B397": {
+                "units": null
+            },
+            "B398": {
+                "units": null
+            },
+            "B399": {
+                "units": null
+            },
+            "B400": {
+                "units": null
+            },
+            "B401": {
+                "units": null
+            },
+            "B402": {
+                "units": null
+            },
+            "B403": {
+                "units": null
+            },
+            "B404": {
+                "units": null
+            },
+            "B405": {
+                "units": null
+            },
+            "B406": {
+                "units": null
+            },
+            "B407": {
+                "units": null
+            },
+            "B408": {
+                "units": null
+            },
+            "B409": {
+                "units": null
+            },
+            "B410": {
+                "units": null
+            },
+            "B411": {
+                "units": null
+            },
+            "B412": {
+                "units": null
+            },
+            "B413": {
+                "units": null
+            },
+            "B414": {
+                "units": null
+            },
+            "B415": {
+                "units": null
+            },
+            "B416": {
+                "units": null
+            },
+            "B417": {
+                "units": null
+            },
+            "B418": {
+                "units": null
+            },
+            "B419": {
+                "units": null
+            },
+            "B420": {
+                "units": null
+            },
+            "B421": {
+                "units": null
+            },
+            "B422": {
+                "units": null
+            },
+            "B423": {
+                "units": null
+            },
+            "B424": {
+                "units": null
+            },
+            "B425": {
+                "units": null
+            },
+            "B426": {
+                "units": null
+            },
+            "B427": {
+                "units": null
+            },
+            "B428": {
+                "units": null
+            },
+            "B429": {
+                "units": null
+            },
+            "B430": {
+                "units": null
+            },
+            "B431": {
+                "units": null
+            },
+            "B432": {
+                "units": null
+            },
+            "B433": {
+                "units": null
+            },
+            "B434": {
+                "units": null
+            },
+            "B435": {
+                "units": null
+            },
+            "B436": {
+                "units": null
+            },
+            "B437": {
+                "units": null
+            },
+            "B438": {
+                "units": null
+            },
+            "B439": {
+                "units": null
+            },
+            "B440": {
+                "units": null
+            },
+            "B441": {
+                "units": null
+            },
+            "B442": {
+                "units": null
+            }
+        }
+    },
+    {
+        "id": "projects/neon-prod-earthengine/assets/RGB/001",
+        "name": "NEON RGB Camera Imagery",
+        "start_date": "2013-01-01",
+        "end_date": "2023-05-17",
+        "type": "image_collection",
+        "bands": {
+            "R": {
+                "units": null,
+                "resolution": 0.1
+            },
+            "G": {
+                "units": null,
+                "resolution": 0.1
+            },
+            "B": {
+                "units": null,
+                "resolution": 0.1
+            }
+        }
+    },
+    {
         "id": "projects/ngis-cat/assets/DEA/NIDEM",
         "name": "Preview National Intertidal Digital Elevation Model 25m 1.0.0",
         "start_date": "1986-08-16",
@@ -40716,7 +43424,7 @@
         "id": "projects/sat-io/open-datasets/us-drought-monitor",
         "name": "United States Drought Monitor",
         "start_date": "2000-01-04",
-        "end_date": "2024-07-30",
+        "end_date": "2024-08-06",
         "type": "image_collection",
         "bands": {
             "b1": {
