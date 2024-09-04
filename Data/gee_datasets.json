@@ -76,7 +76,7 @@
         "id": "ASTER/AST_L1T_003",
         "name": "ASTER L1T Radiance",
         "start_date": "2000-03-04",
-        "end_date": "2024-08-25",
+        "end_date": "2024-08-26",
         "type": "image_collection",
         "bands": {
             "B01": {
@@ -486,7 +486,7 @@
         "id": "COPERNICUS/S1_GRD",
         "name": "Sentinel-1 SAR GRD: C-band Synthetic Aperture Radar Ground Range Detected, log scaling",
         "start_date": "2014-10-03",
-        "end_date": "2024-08-27",
+        "end_date": "2024-09-03",
         "type": "image_collection",
         "bands": {
             "HH": {
@@ -2796,7 +2796,7 @@
         "id": "ECMWF/ERA5_LAND/DAILY_AGGR",
         "name": "ERA5-Land Daily Aggregated - ECMWF Climate Reanalysis",
         "start_date": "1950-01-02",
-        "end_date": "2024-08-19",
+        "end_date": "2024-08-27",
         "type": "image_collection",
         "bands": {
             "dewpoint_temperature_2m": {
@@ -4626,19 +4626,6 @@
         }
     },
     {
-        "id": "EDF/MethaneSAT/MethaneAIR/methaneair-L4area-2021",
-        "name": "MethaneAIR L4 Area Sources 2021",
-        "start_date": "2021-08-07",
-        "end_date": "2021-08-11",
-        "type": "image",
-        "bands": {
-            "flux": {
-                "units": null,
-                "resolution": 1113.1949079329097
-            }
-        }
-    },
-    {
         "id": "EDF/MethaneSAT/MethaneAIR/L4area",
         "name": "MethaneAIR L4 Area Sources v1",
         "start_date": "2021-07-30",
@@ -4648,6 +4635,31 @@
             "flux": {
                 "units": null,
                 "resolution": 1113.1949079327392
+            }
+        }
+    },
+    {
+        "id": "EDF/MethaneSAT/MethaneAIR/L3concentration",
+        "name": "MethaneAIR L3 Concentration v1",
+        "start_date": "2023-05-25",
+        "end_date": "2023-10-13",
+        "type": "image_collection",
+        "bands": {
+            "XCH4": {
+                "units": null,
+                "resolution": 10.307360258636455
+            },
+            "albedo": {
+                "units": null,
+                "resolution": 10.307360258636455
+            },
+            "surface_pressure": {
+                "units": null,
+                "resolution": 10.307360258636455
+            },
+            "terrain_height": {
+                "units": null,
+                "resolution": 10.307360258636455
             }
         }
     },
@@ -5989,7 +6001,7 @@
         "id": "GOOGLE/CLOUD_SCORE_PLUS/V1/S2_HARMONIZED",
         "name": "Cloud Score+ S2_HARMONIZED V1",
         "start_date": "2015-06-27",
-        "end_date": "2024-08-27",
+        "end_date": "2024-09-03",
         "type": "image_collection",
         "bands": {
             "cs": {
@@ -6006,7 +6018,7 @@
         "id": "GOOGLE/DYNAMICWORLD/V1",
         "name": "Dynamic World V1",
         "start_date": "2015-06-27",
-        "end_date": "2024-08-27",
+        "end_date": "2024-09-03",
         "type": "image_collection",
         "bands": {
             "water": {
@@ -14117,7 +14129,7 @@
         "id": "JAXA/GPM_L3/GSMaP/v7/operational",
         "name": "GSMaP Operational: Global Satellite Mapping of Precipitation - V7",
         "start_date": "2014-03-01",
-        "end_date": "2024-08-26",
+        "end_date": "2024-09-03",
         "type": "image_collection",
         "bands": {
             "hourlyPrecipRate": {
@@ -14146,7 +14158,7 @@
         "id": "JAXA/GPM_L3/GSMaP/v8/operational",
         "name": "GSMaP Operational: Global Satellite Mapping of Precipitation - V8",
         "start_date": "1998-01-01",
-        "end_date": "2024-08-26",
+        "end_date": "2024-09-03",
         "type": "image_collection",
         "bands": {
             "hourlyPrecipRate": {
@@ -14718,7 +14730,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_BAI",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day BAI Composite",
         "start_date": "1984-01-01",
-        "end_date": "2024-08-20",
+        "end_date": "2024-08-28",
         "type": "image_collection",
         "bands": {
             "BAI": {
@@ -14731,7 +14743,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_EVI",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day EVI Composite",
         "start_date": "1984-01-01",
-        "end_date": "2024-08-20",
+        "end_date": "2024-08-28",
         "type": "image_collection",
         "bands": {
             "EVI": {
@@ -14744,7 +14756,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_NBR",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day NBR Composite",
         "start_date": "1984-01-01",
-        "end_date": "2024-08-20",
+        "end_date": "2024-08-28",
         "type": "image_collection",
         "bands": {
             "NBRT": {
@@ -14756,7 +14768,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_NDVI",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day NDVI Composite",
         "start_date": "1984-01-01",
-        "end_date": "2024-08-20",
+        "end_date": "2024-08-28",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -14769,7 +14781,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_NDWI",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day NDWI Composite",
         "start_date": "1984-01-01",
-        "end_date": "2024-08-20",
+        "end_date": "2024-08-28",
         "type": "image_collection",
         "bands": {
             "NDWI": {
@@ -14996,7 +15008,7 @@
         "id": "LANDSAT/LC08/C02/T1",
         "name": "USGS Landsat 8 Collection 2 Tier 1 Raw Scenes",
         "start_date": "2013-03-18",
-        "end_date": "2024-08-20",
+        "end_date": "2024-08-28",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15158,7 +15170,7 @@
         "id": "LANDSAT/LC08/C02/T1_RT",
         "name": "USGS Landsat 8 Collection 2 Tier 1 and Real-Time data Raw Scenes",
         "start_date": "2013-03-18",
-        "end_date": "2024-08-27",
+        "end_date": "2024-09-03",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15235,7 +15247,7 @@
         "id": "LANDSAT/LC08/C02/T1_RT_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 1 and Real-Time data TOA Reflectance",
         "start_date": "2013-03-18",
-        "end_date": "2024-08-27",
+        "end_date": "2024-09-03",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15312,7 +15324,7 @@
         "id": "LANDSAT/LC08/C02/T1_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "2013-03-18",
-        "end_date": "2024-08-20",
+        "end_date": "2024-08-28",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15389,7 +15401,7 @@
         "id": "LANDSAT/LC08/C02/T2",
         "name": "USGS Landsat 8 Collection 2 Tier 2 Raw Scenes",
         "start_date": "2021-10-28",
-        "end_date": "2024-08-20",
+        "end_date": "2024-08-28",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15551,7 +15563,7 @@
         "id": "LANDSAT/LC08/C02/T2_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2021-10-28",
-        "end_date": "2024-08-20",
+        "end_date": "2024-08-28",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15628,7 +15640,7 @@
         "id": "LANDSAT/LC09/C02/T1",
         "name": "USGS Landsat 9 Collection 2 Tier 1 Raw Scenes",
         "start_date": "2021-10-31",
-        "end_date": "2024-08-27",
+        "end_date": "2024-09-03",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15705,7 +15717,7 @@
         "id": "LANDSAT/LC09/C02/T1_L2",
         "name": "USGS Landsat 9 Level 2, Collection 2, Tier 1",
         "start_date": "2021-10-31",
-        "end_date": "2024-08-25",
+        "end_date": "2024-08-31",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -15790,7 +15802,7 @@
         "id": "LANDSAT/LC09/C02/T1_TOA",
         "name": "USGS Landsat 9 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "2021-10-31",
-        "end_date": "2024-08-27",
+        "end_date": "2024-09-03",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15867,7 +15879,7 @@
         "id": "LANDSAT/LC09/C02/T2",
         "name": "USGS Landsat 9 Collection 2 Tier 2 Raw Scenes",
         "start_date": "2021-11-02",
-        "end_date": "2024-08-27",
+        "end_date": "2024-09-03",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -15944,7 +15956,7 @@
         "id": "LANDSAT/LC09/C02/T2_L2",
         "name": "USGS Landsat 9 Level 2, Collection 2, Tier 2",
         "start_date": "2021-10-31",
-        "end_date": "2024-08-25",
+        "end_date": "2024-08-31",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -16029,7 +16041,7 @@
         "id": "LANDSAT/LC09/C02/T2_TOA",
         "name": "USGS Landsat 9 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2021-11-02",
-        "end_date": "2024-08-27",
+        "end_date": "2024-09-03",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -19782,7 +19794,7 @@
         "id": "MODIS/061/MCD15A3H",
         "name": "MCD15A3H.061 MODIS Leaf Area Index/FPAR 4-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2024-08-16",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "Fpar": {
@@ -19913,7 +19925,7 @@
         "id": "MODIS/061/MCD19A1_GRANULES",
         "name": "MCD19A1.061: Land Surface BRF Daily L2G Global 500m and 1km",
         "start_date": "2000-12-21",
-        "end_date": "2024-08-22",
+        "end_date": "2024-08-25",
         "type": "image_collection",
         "bands": {
             "Sur_refl1": {
@@ -20018,7 +20030,7 @@
         "id": "MODIS/061/MCD19A2_GRANULES",
         "name": "MCD19A2.061: Terra & Aqua MAIAC Land Aerosol Optical Depth Daily 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-22",
+        "end_date": "2024-08-25",
         "type": "image_collection",
         "bands": {
             "Optical_Depth_047": {
@@ -20079,7 +20091,7 @@
         "id": "MODIS/061/MCD43A1",
         "name": "MCD43A1.061 MODIS BRDF-Albedo Model Parameters Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-15",
+        "end_date": "2024-08-18",
         "type": "image_collection",
         "bands": {
             "BRDF_Albedo_Parameters_Band1_iso": {
@@ -20248,7 +20260,7 @@
         "id": "MODIS/061/MCD43A2",
         "name": "MCD43A2.061 MODIS BRDF-Albedo Quality Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-15",
+        "end_date": "2024-08-18",
         "type": "image_collection",
         "bands": {
             "Snow_BRDF_Albedo": {
@@ -20333,7 +20345,7 @@
         "id": "MODIS/061/MCD43A3",
         "name": "MCD43A3.061 MODIS Albedo Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-15",
+        "end_date": "2024-08-18",
         "type": "image_collection",
         "bands": {
             "Albedo_BSA_Band1": {
@@ -20462,7 +20474,7 @@
         "id": "MODIS/061/MCD43A4",
         "name": "MCD43A4.061 MODIS Nadir BRDF-Adjusted Reflectance Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-15",
+        "end_date": "2024-08-18",
         "type": "image_collection",
         "bands": {
             "Nadir_Reflectance_Band1": {
@@ -20527,7 +20539,7 @@
         "id": "MODIS/061/MCD43C3",
         "name": "MCD43C3.061 BRDF/Albedo Daily L3 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-15",
+        "end_date": "2024-08-18",
         "type": "image_collection",
         "bands": {
             "Albedo_BSA_Band1": {
@@ -20689,7 +20701,7 @@
         "id": "MODIS/061/MOD09A1",
         "name": "MOD09A1.061 Terra Surface Reflectance 8-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2024-08-04",
+        "end_date": "2024-08-12",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -20750,7 +20762,7 @@
         "id": "MODIS/061/MOD09CMG",
         "name": "MOD09CMG.061 Terra Surface Reflectance Daily L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-24",
+        "end_date": "2024-08-25",
         "type": "image_collection",
         "bands": {
             "Coarse_Resolution_Surface_Reflectance_Band_1": {
@@ -20834,7 +20846,7 @@
         "id": "MODIS/061/MOD09GA",
         "name": "MOD09GA.061 Terra Surface Reflectance Daily Global 1km and 500m",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-24",
+        "end_date": "2024-08-25",
         "type": "image_collection",
         "bands": {
             "num_observations_1km": {
@@ -21042,7 +21054,7 @@
         "id": "MODIS/061/MOD11A1",
         "name": "MOD11A1.061 Terra Land Surface Temperature and Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-24",
+        "end_date": "2024-08-25",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -21441,7 +21453,7 @@
         "id": "MODIS/061/MOD14A1",
         "name": "MOD14A1.061: Terra Thermal Anomalies & Fire Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-11",
+        "end_date": "2024-08-19",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -21466,7 +21478,7 @@
         "id": "MODIS/061/MOD14A2",
         "name": "MOD14A2.061: Terra Thermal Anomalies & Fire 8-Day Global 1km",
         "start_date": "2000-02-18",
-        "end_date": "2024-08-04",
+        "end_date": "2024-08-12",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -21483,7 +21495,7 @@
         "id": "MODIS/061/MOD15A2H",
         "name": "MOD15A2H.061: Terra Leaf Area Index/FPAR 8-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2024-08-04",
+        "end_date": "2024-08-12",
         "type": "image_collection",
         "bands": {
             "Fpar_500m": {
@@ -21574,7 +21586,7 @@
         "id": "MODIS/061/MOD17A2H",
         "name": "MOD17A2H.061: Terra Gross Primary Productivity 8-Day Global 500m",
         "start_date": "2021-01-01",
-        "end_date": "2024-08-04",
+        "end_date": "2024-08-12",
         "type": "image_collection",
         "bands": {
             "Gpp": {
@@ -21637,7 +21649,7 @@
         "id": "MODIS/061/MOD21A1D",
         "name": "MOD21A1D.061 Terra Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-24",
+        "end_date": "2024-08-25",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -22033,7 +22045,7 @@
         "id": "MODIS/061/MYD09A1",
         "name": "MYD09A1.061 Aqua Surface Reflectance 8-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2024-08-04",
+        "end_date": "2024-08-12",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -22094,7 +22106,7 @@
         "id": "MODIS/061/MYD09CMG",
         "name": "MYD09CMG.061 Aqua Surface Reflectance Daily L3 Global 0.05 Deg CMG",
         "start_date": "2002-07-04",
-        "end_date": "2024-08-24",
+        "end_date": "2024-08-25",
         "type": "image_collection",
         "bands": {
             "Coarse_Resolution_Surface_Reflectance_Band_1": {
@@ -22178,7 +22190,7 @@
         "id": "MODIS/061/MYD09GA",
         "name": "MYD09GA.061 Aqua Surface Reflectance Daily Global 1km and 500m",
         "start_date": "2002-07-04",
-        "end_date": "2024-08-24",
+        "end_date": "2024-08-25",
         "type": "image_collection",
         "bands": {
             "num_observations_1km": {
@@ -22316,7 +22328,7 @@
         "id": "MODIS/061/MYD09Q1",
         "name": "MYD09Q1.061 Aqua Surface Reflectance 8-Day Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2024-08-04",
+        "end_date": "2024-08-12",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -22386,7 +22398,7 @@
         "id": "MODIS/061/MYD11A1",
         "name": "MYD11A1.061 Aqua Land Surface Temperature and Emissivity Daily Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2024-08-22",
+        "end_date": "2024-08-25",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -22443,7 +22455,7 @@
         "id": "MODIS/061/MYD11A2",
         "name": "MYD11A2.061 Aqua Land Surface Temperature and Emissivity 8-Day Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2024-08-04",
+        "end_date": "2024-08-12",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -22557,7 +22569,7 @@
         "id": "MODIS/061/MYD13C1",
         "name": "MYD13C1.061: Aqua Vegetation Indices 16-Day L3 Global 0.05 Deg CMG",
         "start_date": "2002-07-04",
-        "end_date": "2024-07-19",
+        "end_date": "2024-08-04",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -22728,7 +22740,7 @@
         "id": "MODIS/061/MYD13Q1",
         "name": "MYD13Q1.061 Aqua Vegetation Indices 16-Day Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2024-07-19",
+        "end_date": "2024-08-04",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -22785,7 +22797,7 @@
         "id": "MODIS/061/MYD14A1",
         "name": "MYD14A1.061: Aqua Thermal Anomalies & Fire Daily Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2024-08-11",
+        "end_date": "2024-08-19",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -22827,7 +22839,7 @@
         "id": "MODIS/061/MYD15A2H",
         "name": "MYD15A2H.061: Aqua Leaf Area Index/FPAR 8-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2024-08-04",
+        "end_date": "2024-08-12",
         "type": "image_collection",
         "bands": {
             "Fpar_500m": {
@@ -22860,7 +22872,7 @@
         "id": "MODIS/061/MYD17A2H",
         "name": "MYD17A2H.061: Aqua Gross Primary Productivity 8-Day Global 500m",
         "start_date": "2021-01-01",
-        "end_date": "2024-08-04",
+        "end_date": "2024-08-12",
         "type": "image_collection",
         "bands": {
             "Gpp": {
@@ -22902,7 +22914,7 @@
         "id": "MODIS/061/MYD21A1D",
         "name": "MYD21A1D.061 Aqua Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-24",
+        "end_date": "2024-08-25",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -22939,7 +22951,7 @@
         "id": "MODIS/061/MYD21A1N",
         "name": "MYD21A1N.061 Aqua Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2024-08-24",
+        "end_date": "2024-08-25",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -24787,6 +24799,2331 @@
         }
     },
     {
+        "id": "NASA/EMIT/L2A/RFL",
+        "name": "EMIT L2A Estimated Surface Reflectance and Uncertainty and Masks 60 m",
+        "start_date": "2022-08-09",
+        "end_date": "2024-08-17",
+        "type": "image_collection",
+        "bands": {
+            "reflectance_0": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_1": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_2": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_3": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_4": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_5": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_6": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_7": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_8": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_9": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_10": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_11": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_12": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_13": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_14": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_15": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_16": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_17": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_18": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_19": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_20": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_21": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_22": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_23": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_24": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_25": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_26": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_27": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_28": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_29": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_30": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_31": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_32": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_33": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_34": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_35": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_36": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_37": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_38": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_39": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_40": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_41": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_42": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_43": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_44": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_45": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_46": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_47": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_48": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_49": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_50": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_51": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_52": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_53": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_54": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_55": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_56": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_57": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_58": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_59": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_60": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_61": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_62": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_63": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_64": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_65": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_66": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_67": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_68": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_69": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_70": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_71": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_72": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_73": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_74": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_75": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_76": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_77": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_78": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_79": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_80": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_81": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_82": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_83": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_84": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_85": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_86": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_87": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_88": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_89": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_90": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_91": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_92": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_93": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_94": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_95": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_96": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_97": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_98": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_99": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_100": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_101": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_102": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_103": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_104": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_105": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_106": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_107": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_108": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_109": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_110": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_111": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_112": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_113": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_114": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_115": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_116": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_117": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_118": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_119": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_120": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_121": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_122": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_123": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_124": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_125": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_126": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_127": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_128": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_129": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_130": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_131": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_132": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_133": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_134": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_135": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_136": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_137": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_138": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_139": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_140": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_141": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_142": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_143": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_144": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_145": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_146": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_147": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_148": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_149": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_150": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_151": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_152": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_153": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_154": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_155": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_156": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_157": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_158": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_159": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_160": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_161": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_162": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_163": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_164": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_165": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_166": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_167": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_168": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_169": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_170": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_171": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_172": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_173": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_174": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_175": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_176": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_177": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_178": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_179": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_180": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_181": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_182": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_183": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_184": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_185": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_186": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_187": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_188": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_189": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_190": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_191": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_192": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_193": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_194": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_195": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_196": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_197": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_198": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_199": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_200": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_201": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_202": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_203": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_204": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_205": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_206": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_207": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_208": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_209": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_210": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_211": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_212": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_213": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_214": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_215": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_216": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_217": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_218": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_219": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_220": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_221": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_222": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_223": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_224": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_225": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_226": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_227": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_228": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_229": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_230": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_231": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_232": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_233": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_234": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_235": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_236": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_237": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_238": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_239": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_240": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_241": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_242": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_243": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_244": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_245": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_246": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_247": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_248": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_249": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_250": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_251": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_252": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_253": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_254": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_255": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_256": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_257": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_258": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_259": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_260": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_261": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_262": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_263": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_264": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_265": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_266": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_267": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_268": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_269": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_270": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_271": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_272": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_273": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_274": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_275": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_276": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_277": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_278": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_279": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_280": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_281": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_282": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_283": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_284": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_0": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_1": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_2": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_3": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_4": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_5": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_6": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_7": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_8": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_9": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_10": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_11": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_12": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_13": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_14": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_15": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_16": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_17": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_18": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_19": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_20": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_21": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_22": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_23": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_24": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_25": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_26": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_27": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_28": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_29": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_30": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_31": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_32": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_33": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_34": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_35": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_36": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_37": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_38": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_39": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_40": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_41": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_42": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_43": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_44": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_45": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_46": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_47": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_48": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_49": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_50": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_51": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_52": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_53": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_54": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_55": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_56": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_57": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_58": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_59": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_60": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_61": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_62": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_63": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_64": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_65": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_66": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_67": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_68": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_69": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_70": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_71": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_72": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_73": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_74": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_75": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_76": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_77": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_78": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_79": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_80": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_81": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_82": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_83": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_84": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_85": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_86": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_87": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_88": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_89": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_90": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_91": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_92": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_93": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_94": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_95": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_96": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_97": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_98": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_99": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_100": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_101": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_102": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_103": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_104": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_105": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_106": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_107": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_108": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_109": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_110": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_111": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_112": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_113": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_114": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_115": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_116": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_117": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_118": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_119": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_120": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_121": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_122": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_123": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_124": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_125": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_126": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_127": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_128": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_129": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_130": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_131": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_132": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_133": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_134": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_135": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_136": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_137": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_138": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_139": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_140": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_141": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_142": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_143": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_144": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_145": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_146": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_147": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_148": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_149": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_150": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_151": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_152": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_153": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_154": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_155": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_156": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_157": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_158": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_159": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_160": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_161": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_162": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_163": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_164": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_165": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_166": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_167": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_168": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_169": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_170": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_171": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_172": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_173": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_174": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_175": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_176": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_177": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_178": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_179": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_180": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_181": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_182": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_183": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_184": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_185": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_186": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_187": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_188": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_189": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_190": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_191": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_192": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_193": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_194": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_195": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_196": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_197": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_198": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_199": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_200": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_201": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_202": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_203": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_204": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_205": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_206": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_207": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_208": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_209": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_210": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_211": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_212": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_213": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_214": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_215": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_216": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_217": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_218": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_219": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_220": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_221": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_222": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_223": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_224": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_225": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_226": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_227": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_228": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_229": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_230": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_231": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_232": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_233": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_234": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_235": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_236": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_237": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_238": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_239": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_240": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_241": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_242": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_243": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_244": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_245": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_246": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_247": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_248": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_249": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_250": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_251": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_252": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_253": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_254": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_255": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_256": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_257": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_258": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_259": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_260": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_261": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_262": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_263": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_264": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_265": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_266": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_267": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_268": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_269": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_270": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_271": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_272": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_273": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_274": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_275": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_276": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_277": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_278": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_279": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_280": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_281": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_282": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_283": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "reflectance_uncertainity_284": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "elev": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "cloud_flag": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "cirrus_flag": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "water_flag": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "spacecraft_flag": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "dilated_cloud_flag": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "AOD550": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "H2O": {
+                "units": null,
+                "resolution": 60.361048046492165
+            },
+            "aggregate_flag": {
+                "units": null,
+                "resolution": 60.361048046492165
+            }
+        }
+    },
+    {
         "id": "NASA/FLDAS/NOAH01/C/GL/M/V001",
         "name": "FLDAS: Famine Early Warning Systems Network (FEWS NET) Land Data Assimilation System",
         "start_date": "1982-01-01",
@@ -24956,7 +27293,7 @@
         "id": "NASA/GEOS-CF/v1/fcst/htf",
         "name": "GEOS-CF fcst htf v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2022-10-01",
-        "end_date": "2024-08-26",
+        "end_date": "2024-09-02",
         "type": "image_collection",
         "bands": {
             "CO": {
@@ -25013,7 +27350,7 @@
         "id": "NASA/GEOS-CF/v1/fcst/tavg1hr",
         "name": "GEOS-CF fcst tavg1hr v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2022-10-01",
-        "end_date": "2024-08-26",
+        "end_date": "2024-09-02",
         "type": "image_collection",
         "bands": {
             "ACET": {
@@ -25566,7 +27903,7 @@
         "id": "NASA/GEOS-CF/v1/rpl/htf",
         "name": "GEOS-CF rpl htf v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2018-01-01",
-        "end_date": "2024-08-26",
+        "end_date": "2024-09-02",
         "type": "image_collection",
         "bands": {
             "CO": {
@@ -25623,7 +27960,7 @@
         "id": "NASA/GEOS-CF/v1/rpl/tavg1hr",
         "name": "GEOS-CF rpl tavg1hr v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2018-01-01",
-        "end_date": "2024-08-26",
+        "end_date": "2024-09-02",
         "type": "image_collection",
         "bands": {
             "ACET": {
@@ -26346,7 +28683,7 @@
         "id": "NASA/GLDAS/V022/CLSM/G025/DA1D",
         "name": "GLDAS-2.2: Global Land Data Assimilation System",
         "start_date": "2003-01-01",
-        "end_date": "2024-04-29",
+        "end_date": "2024-04-30",
         "type": "image_collection",
         "bands": {
             "ACond_tavg": {
@@ -26662,7 +28999,7 @@
         "id": "NASA/GPM_L3/IMERG_V07",
         "name": "GPM: Global Precipitation Measurement (GPM) Release 07",
         "start_date": "2000-06-01",
-        "end_date": "2024-08-17",
+        "end_date": "2024-08-19",
         "type": "image_collection",
         "bands": {
             "MWobservationTime": {
@@ -27025,7 +29362,7 @@
         "id": "NASA/GSFC/MERRA/aer_nv/2",
         "name": "MERRA-2 M2I3NVAER: Aerosol Mixing Ratio V5.12.4",
         "start_date": "1980-01-01",
-        "end_date": "2024-07-01",
+        "end_date": "2024-08-01",
         "type": "image_collection",
         "bands": {
             "AIRDENS_1": {
@@ -32328,7 +34665,7 @@
         "id": "NASA/HLS/HLSL30/v002",
         "name": "HLSL30: HLS-2 Landsat Operational Land Imager Surface Reflectance and TOA Brightness Daily Global 30m",
         "start_date": "2013-04-11",
-        "end_date": "2024-08-23",
+        "end_date": "2024-08-31",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -32395,7 +34732,7 @@
         "id": "NASA/LANCE/NOAA20_VIIRS/C2",
         "name": "VJ114IMGTDL_NRT Daily Raster: VIIRS (NOAA-20) Band 375m Active Fire",
         "start_date": "2023-10-08",
-        "end_date": "2024-08-25",
+        "end_date": "2024-09-01",
         "type": "image_collection",
         "bands": {
             "Bright_ti4": {
@@ -32436,7 +34773,7 @@
         "id": "NASA/LANCE/SNPP_VIIRS/C2",
         "name": "VNP14IMGTDL_NRT Daily Raster: VIIRS (S-NPP) Band 375m Active Fire",
         "start_date": "2023-09-03",
-        "end_date": "2024-08-25",
+        "end_date": "2024-09-01",
         "type": "image_collection",
         "bands": {
             "Bright_ti4": {
@@ -32904,7 +35241,7 @@
         "id": "NASA/SMAP/SPL4SMGP/007",
         "name": "SPL4SMGP.007 SMAP L4 Global 3-hourly 9-km Surface and Root Zone Soil Moisture",
         "start_date": "2015-03-31",
-        "end_date": "2024-08-25",
+        "end_date": "2024-09-01",
         "type": "image_collection",
         "bands": {
             "sm_surface": {
@@ -33170,7 +35507,7 @@
         "id": "NASA/SMAP/SPL3SMP_E/006",
         "name": "SPL3SMP_E.006 SMAP L3 Radiometer Global Daily 9 km Soil Moisture",
         "start_date": "2023-12-04",
-        "end_date": "2024-08-23",
+        "end_date": "2024-08-31",
         "type": "image_collection",
         "bands": {
             "soil_moisture_am": {
@@ -33474,7 +35811,7 @@
         "id": "NASA/VIIRS/002/VNP14A1",
         "name": "VNP14A1.002: Thermal Anomalies/Fire Daily L3 Global 1km SIN Grid",
         "start_date": "2012-01-19",
-        "end_date": "2024-08-25",
+        "end_date": "2024-08-26",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -33532,7 +35869,7 @@
         "id": "NASA/VIIRS/002/VNP21A1D",
         "name": "VNP21A1D.002: Day Land Surface Temperature and Emissivity Daily 1km",
         "start_date": "2012-01-19",
-        "end_date": "2024-08-25",
+        "end_date": "2024-08-26",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -33569,7 +35906,7 @@
         "id": "NASA/VIIRS/002/VNP21A1N",
         "name": "VNP21A1N.002: Night Land Surface Temperature and Emissivity Daily 1km",
         "start_date": "2012-01-19",
-        "end_date": "2024-08-25",
+        "end_date": "2024-08-26",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -35616,7 +37953,7 @@
         "id": "NOAA/GOES/18/FDCC",
         "name": "GOES-18 FDCC Series ABI Level 2 Fire/Hot Spot Characterization CONUS",
         "start_date": "2022-10-13",
-        "end_date": "2024-08-27",
+        "end_date": "2024-09-03",
         "type": "image_collection",
         "bands": {
             "Area": {
@@ -35645,7 +37982,7 @@
         "id": "NOAA/GOES/18/FDCF",
         "name": "GOES-18 FDCF Series ABI Level 2 Fire/Hot Spot Characterization Full Disk",
         "start_date": "2022-10-13",
-        "end_date": "2024-08-27",
+        "end_date": "2024-09-03",
         "type": "image_collection",
         "bands": {
             "Area": {
@@ -35674,7 +38011,7 @@
         "id": "NOAA/GOES/18/MCMIPC",
         "name": "GOES-18 MCMIPC Series ABI Level 2 Cloud and Moisture Imagery CONUS",
         "start_date": "2018-12-04",
-        "end_date": "2024-08-27",
+        "end_date": "2024-09-03",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -35811,7 +38148,7 @@
         "id": "NOAA/GOES/18/MCMIPF",
         "name": "GOES-18 MCMIPF Series ABI Level 2 Cloud and Moisture Imagery Full Disk",
         "start_date": "2018-12-04",
-        "end_date": "2024-08-27",
+        "end_date": "2024-09-03",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -35948,7 +38285,7 @@
         "id": "NOAA/GOES/18/MCMIPM",
         "name": "GOES-18 MCMIPM Series ABI Level 2 Cloud and Moisture Imagery Full Disk",
         "start_date": "2018-12-04",
-        "end_date": "2024-08-27",
+        "end_date": "2024-09-03",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -36430,7 +38767,7 @@
         "id": "NOAA/VIIRS/001/VNP46A1",
         "name": "VNP46A1: VIIRS Daily Gridded Day Night Band 500m Linear Lat Lon Grid Night",
         "start_date": "2012-01-19",
-        "end_date": "2024-08-18",
+        "end_date": "2024-08-31",
         "type": "image_collection",
         "bands": {
             "BrightnessTemperature_M12": {
@@ -36543,7 +38880,7 @@
         "id": "NOAA/VIIRS/001/VNP46A2",
         "name": "VNP46A2: VIIRS Lunar Gap-Filled BRDF Nighttime Lights Daily L3 Global 500m",
         "start_date": "2012-01-19",
-        "end_date": "2024-08-11",
+        "end_date": "2024-08-24",
         "type": "image_collection",
         "bands": {
             "DNB_BRDF_Corrected_NTL": {
@@ -38833,7 +41170,7 @@
     {
         "id": "USGS/3DEP/1m",
         "name": "USGS 3DEP 1m National Map",
-        "start_date": "1998-08-16",
+        "start_date": "2015-01-01",
         "end_date": "2006-01-01",
         "type": "image_collection",
         "bands": {
@@ -39902,6 +42239,23 @@
             "tstat_r": {
                 "units": null,
                 "resolution": 231.656358264
+            }
+        }
+    },
+    {
+        "id": "WRI/SBTN/naturalLands/v1",
+        "name": "SBTN Natural Lands Map v1",
+        "start_date": "2020-01-01",
+        "end_date": "2020-01-01",
+        "type": "image_collection",
+        "bands": {
+            "classification": {
+                "units": null,
+                "resolution": 27.829872698318393
+            },
+            "natural": {
+                "units": null,
+                "resolution": 27.829872698318393
             }
         }
     },
@@ -43606,7 +45960,7 @@
         "id": "projects/sat-io/open-datasets/us-drought-monitor",
         "name": "United States Drought Monitor",
         "start_date": "2000-01-04",
-        "end_date": "2024-08-13",
+        "end_date": "2024-08-20",
         "type": "image_collection",
         "bands": {
             "b1": {
