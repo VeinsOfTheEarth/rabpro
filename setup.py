@@ -19,7 +19,7 @@ setuptools.setup(
     scripts=["rabpro/cli/rabpro"],
     python_requires=">=3.7",
     install_requires=[
-        "gdal",
+        "gdal<3.10.0",
         "numpy",
         "geopandas>=0.7.0",
         "scikit-image",
