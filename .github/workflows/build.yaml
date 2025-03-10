@@ -96,3 +96,5 @@ jobs:
           python -m pytest
           # coverage run -m pytest
           # coverage report -m
+        env:
+          EARTH_ENGINE_PROJECT: ${{ secrets.EARTH_ENGINE_PROJECT }}
