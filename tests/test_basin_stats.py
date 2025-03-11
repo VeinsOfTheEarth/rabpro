@@ -41,7 +41,7 @@ def test_unvalidated_dataset():
         gee_feature_path="users/jstacompute/planet_bounds",
         validate_dataset_list=False,
     )
-
+    print(urls)
     res = rabpro.basin_stats.fetch_gee(urls, ["w"])
     assert res.shape[0] == 1
 
