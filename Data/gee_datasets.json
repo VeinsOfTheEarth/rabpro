@@ -922,7 +922,7 @@
         "id": "COPERNICUS/S1_GRD",
         "name": "Sentinel-1 SAR GRD: C-band Synthetic Aperture Radar Ground Range Detected, log scaling",
         "start_date": "2014-10-03",
-        "end_date": "2025-09-02",
+        "end_date": "2025-09-10",
         "type": "image_collection",
         "bands": {
             "HH": {
@@ -3228,10 +3228,1187 @@
         }
     },
     {
+        "id": "ECMWF/ERA5/HOURLY",
+        "name": "ERA5 Hourly - ECMWF Climate Reanalysis",
+        "start_date": "1940-01-01",
+        "end_date": "2025-09-03",
+        "type": "image_collection",
+        "bands": {
+            "dewpoint_temperature_2m": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "temperature_2m": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "ice_temperature_layer_1": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "ice_temperature_layer_2": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "ice_temperature_layer_3": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "ice_temperature_layer_4": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_sea_level_pressure": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "sea_surface_temperature": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "skin_temperature": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "surface_pressure": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "u_component_of_wind_100m": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "v_component_of_wind_100m": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "u_component_of_neutral_wind_10m": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "u_component_of_wind_10m": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "v_component_of_neutral_wind_10m": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "v_component_of_wind_10m": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "instantaneous_10m_wind_gust": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_boundary_layer_dissipation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_convective_precipitation_rate": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_convective_snowfall_rate": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_eastward_gravity_wave_surface_stress": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_eastward_turbulent_surface_stress": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_evaporation_rate": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_gravity_wave_dissipation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_large_scale_precipitation_fraction": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_large_scale_precipitation_rate": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_large_scale_snowfall_rate": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_northward_gravity_wave_surface_stress": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_northward_turbulent_surface_stress": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_potential_evaporation_rate": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_runoff_rate": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_snow_evaporation_rate": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_snowfall_rate": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_snowmelt_rate": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_sub_surface_runoff_rate": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_surface_direct_short_wave_radiation_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_surface_direct_short_wave_radiation_flux_clear_sky": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_surface_downward_long_wave_radiation_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_surface_downward_long_wave_radiation_flux_clear_sky": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_surface_downward_short_wave_radiation_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_surface_downward_short_wave_radiation_flux_clear_sky": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_surface_downward_uv_radiation_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_surface_latent_heat_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_surface_net_long_wave_radiation_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_surface_net_long_wave_radiation_flux_clear_sky": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_surface_net_short_wave_radiation_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_surface_net_short_wave_radiation_flux_clear_sky": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_surface_runoff_rate": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_surface_sensible_heat_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_top_downward_short_wave_radiation_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_top_net_long_wave_radiation_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_top_net_long_wave_radiation_flux_clear_sky": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_top_net_short_wave_radiation_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_top_net_short_wave_radiation_flux_clear_sky": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_total_precipitation_rate": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_vertically_integrated_moisture_divergence": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "clear_sky_direct_solar_radiation_at_surface": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "downward_uv_radiation_at_the_surface": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "forecast_logarithm_of_surface_roughness_for_heat": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "instantaneous_surface_sensible_heat_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "near_ir_albedo_for_diffuse_radiation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "near_ir_albedo_for_direct_radiation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "surface_latent_heat_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "surface_net_solar_radiation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "surface_net_solar_radiation_clear_sky": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "surface_net_thermal_radiation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "surface_net_thermal_radiation_clear_sky": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "surface_sensible_heat_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "surface_solar_radiation_downward_clear_sky": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "surface_solar_radiation_downwards": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "surface_thermal_radiation_downward_clear_sky": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "surface_thermal_radiation_downwards": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "toa_incident_solar_radiation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "top_net_solar_radiation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "top_net_solar_radiation_clear_sky": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "top_net_thermal_radiation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "top_net_thermal_radiation_clear_sky": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "total_sky_direct_solar_radiation_at_surface": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "uv_visible_albedo_for_diffuse_radiation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "uv_visible_albedo_for_direct_radiation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "cloud_base_height": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "high_cloud_cover": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "low_cloud_cover": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "medium_cloud_cover": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "total_cloud_cover": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "total_column_cloud_ice_water": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "total_column_cloud_liquid_water": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "lake_bottom_temperature": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "lake_cover": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "lake_depth": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "lake_ice_depth": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "lake_ice_temperature": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "lake_mix_layer_depth": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "lake_mix_layer_temperature": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "lake_shape_factor": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "lake_total_layer_temperature": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "evaporation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "potential_evaporation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "runoff": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "sub_surface_runoff": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "surface_runoff": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "convective_precipitation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "convective_rain_rate": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "instantaneous_large_scale_surface_precipitation_fraction": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "large_scale_precipitation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "large_scale_precipitation_fraction": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "large_scale_rain_rate": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "precipitation_type": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "total_column_rain_water": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "total_precipitation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "convective_snowfall": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "convective_snowfall_rate_water_equivalent": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "large_scale_snowfall": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "large_scale_snowfall_rate_water_equivalent": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "snow_albedo": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "snow_density": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "snow_depth": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "snow_evaporation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "snowfall": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "snowmelt": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "temperature_of_snow_layer": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "total_column_snow_water": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "soil_temperature_level_1": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "soil_temperature_level_2": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "soil_temperature_level_3": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "soil_temperature_level_4": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "soil_type": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_divergence_of_cloud_frozen_water_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_divergence_of_cloud_liquid_water_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_divergence_of_geopotential_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_divergence_of_kinetic_energy_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_divergence_of_mass_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_divergence_of_moisture_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_divergence_of_ozone_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_divergence_of_thermal_energy_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_divergence_of_total_energy_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_eastward_cloud_frozen_water_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_eastward_cloud_liquid_water_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_eastward_geopotential_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_eastward_heat_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_eastward_kinetic_energy_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_eastward_mass_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_eastward_ozone_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_eastward_total_energy_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_eastward_water_vapour_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_energy_conversion": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_kinetic_energy": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_mass_of_atmosphere": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_mass_tendency": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_northward_cloud_frozen_water_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_northward_cloud_liquid_water_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_northward_geopotential_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_northward_heat_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_northward_kinetic_energy_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_northward_mass_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_northward_ozone_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "high_vegetation_cover": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "leaf_area_index_high_vegetation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "leaf_area_index_low_vegetation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "low_vegetation_cover": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "type_of_high_vegetation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "type_of_low_vegetation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "air_density_over_the_oceans": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "coefficient_of_drag_with_waves": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "free_convective_velocity_over_the_oceans": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "maximum_individual_wave_height": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "mean_direction_of_total_swell": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "mean_direction_of_wind_waves": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "mean_period_of_total_swell": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "mean_period_of_wind_waves": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "mean_square_slope_of_waves": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "mean_wave_direction": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "mean_wave_direction_of_first_swell_partition": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "mean_wave_direction_of_second_swell_partition": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "mean_wave_direction_of_third_swell_partition": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "mean_wave_period": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "mean_wave_period_based_on_first_moment": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "mean_wave_period_based_on_first_moment_for_swell": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "mean_wave_period_based_on_first_moment_for_wind_waves": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "mean_wave_period_based_on_second_moment_for_swell": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "mean_wave_period_based_on_second_moment_for_wind_waves": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "mean_wave_period_of_first_swell_partition": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "mean_wave_period_of_second_swell_partition": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "mean_wave_period_of_third_swell_partition": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "mean_zero_crossing_wave_period": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "model_bathymetry": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "normalized_energy_flux_into_ocean": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "normalized_energy_flux_into_waves": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "normalized_stress_into_ocean": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "ocean_surface_stress_equivalent_10m_neutral_wind_direction": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "ocean_surface_stress_equivalent_10m_neutral_wind_speed": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "peak_wave_period": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "period_corresponding_to_maximum_individual_wave_height": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "significant_height_of_combined_wind_waves_and_swell": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "significant_height_of_total_swell": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "significant_height_of_wind_waves": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "significant_wave_height_of_first_swell_partition": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "significant_wave_height_of_second_swell_partition": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "significant_wave_height_of_third_swell_partition": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "angle_of_sub_gridscale_orography": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "anisotropy_of_sub_gridscale_orography": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "benjamin_feir_index": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "boundary_layer_dissipation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "boundary_layer_height": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "charnock": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "convective_available_potential_energy": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "convective_inhibition": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "duct_base_height": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "eastward_gravity_wave_surface_stress": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "eastward_turbulent_surface_stress": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "forecast_albedo": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "forecast_surface_roughness": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "friction_velocity": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "gravity_wave_dissipation": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "instantaneous_eastward_turbulent_surface_stress": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "instantaneous_moisture_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "instantaneous_northward_turbulent_surface_stress": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "k_index": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "land_sea_mask": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "mean_vertical_gradient_of_refractivity_inside_trapping_layer": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "minimum_vertical_gradient_of_refractivity_inside_trapping_layer": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "northward_gravity_wave_surface_stress": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "northward_turbulent_surface_stress": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "sea_ice_cover": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "skin_reservoir_content": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "slope_of_sub_gridscale_orography": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "standard_deviation_of_filtered_subgrid_orography": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "standard_deviation_of_orography": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "total_column_ozone": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "total_column_supercooled_liquid_water": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "total_column_water": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "total_column_water_vapour": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "total_totals_index": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "trapping_layer_base_height": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "trapping_layer_top_height": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "u_component_stokes_drift": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "v_component_stokes_drift": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "vertical_integral_of_northward_total_energy_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_northward_water_vapour_flux": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_potential_and_internal_energy": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_potential_internal_and_latent_energy": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_temperature": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_thermal_energy": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_integral_of_total_energy": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertically_integrated_moisture_divergence": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "volumetric_soil_water_layer_1": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "volumetric_soil_water_layer_2": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "volumetric_soil_water_layer_3": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "volumetric_soil_water_layer_4": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "wave_spectral_directional_width": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "wave_spectral_directional_width_for_swell": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "wave_spectral_directional_width_for_wind_waves": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "wave_spectral_kurtosis": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "wave_spectral_peakedness": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "wave_spectral_skewness": {
+                "units": null,
+                "resolution": 55659.74539663678
+            },
+            "zero_degree_level": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "wind_gust_since_previous_post_processing_10m": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "geopotential": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "maximum_2m_temperature_since_previous_post_processing": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "maximum_total_precipitation_rate_since_previous_post_processing": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "minimum_2m_temperature_since_previous_post_processing": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "minimum_total_precipitation_rate_since_previous_post_processing": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "divergence_500hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "divergence_850hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "fraction_of_cloud_cover_500hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "fraction_of_cloud_cover_850hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "ozone_mass_mixing_ratio_500hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "ozone_mass_mixing_ratio_850hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "potential_vorticity_500hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "potential_vorticity_850hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "relative_humidity_500hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "relative_humidity_850hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "specific_cloud_ice_water_content_500hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "specific_cloud_ice_water_content_850hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "specific_cloud_liquid_water_content_500hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "specific_cloud_liquid_water_content_850hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "specific_humidity_500hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "specific_humidity_850hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "specific_rain_water_content_500hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "specific_rain_water_content_850hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "specific_snow_water_content_500hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "specific_snow_water_content_850hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "temperature_500hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "temperature_850hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "u_component_of_wind_500hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "u_component_of_wind_850hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "v_component_of_wind_500hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "v_component_of_wind_850hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_velocity_500hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vertical_velocity_850hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vorticity_500hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            },
+            "vorticity_850hPa": {
+                "units": null,
+                "resolution": 27829.87269831839
+            }
+        }
+    },
+    {
         "id": "ECMWF/ERA5_LAND/DAILY_AGGR",
         "name": "ERA5-Land Daily Aggregated - ECMWF Climate Reanalysis",
         "start_date": "1950-01-02",
-        "end_date": "2025-08-27",
+        "end_date": "2025-09-03",
         "type": "image_collection",
         "bands": {
             "dewpoint_temperature_2m": {
@@ -4125,7 +5302,7 @@
         "id": "ECMWF/ERA5_LAND/MONTHLY_AGGR",
         "name": "ERA5-Land Monthly Aggregated - ECMWF Climate Reanalysis",
         "start_date": "1950-02-01",
-        "end_date": "2025-07-01",
+        "end_date": "2025-08-01",
         "type": "image_collection",
         "bands": {
             "dewpoint_temperature_2m": {
@@ -5064,7 +6241,7 @@
         "id": "ECMWF/NRT_FORECAST/IFS/OPER",
         "name": "ECMWF Near-Realtime IFS Atmospheric Forecasts",
         "start_date": "2024-11-12",
-        "end_date": "2025-09-02",
+        "end_date": "2025-09-09",
         "type": "image_collection",
         "bands": {
             "u_component_of_wind_100m_sfc": {
@@ -5553,7 +6730,7 @@
         "id": "ECMWF/NRT_FORECAST/IFS/WAVE",
         "name": "ECMWF Near-Realtime IFS Wave Forecasts",
         "start_date": "2024-11-12",
-        "end_date": "2025-09-02",
+        "end_date": "2025-09-09",
         "type": "image_collection",
         "bands": {
             "mean_zero_crossing_wave_period_sfc": {
@@ -5582,7 +6759,7 @@
         "id": "ECMWF/NRT_FORECAST/IFS/SCWV",
         "name": "ECMWF Near-Realtime IFS Wave (Short-Cutoff) Forecasts",
         "start_date": "2024-11-12",
-        "end_date": "2025-09-02",
+        "end_date": "2025-09-09",
         "type": "image_collection",
         "bands": {
             "mean_zero_crossing_wave_period_sfc": {
@@ -6791,7 +7968,7 @@
         "id": "FAO/WAPOR/3/L1_AETI_D",
         "name": "WAPOR Actual Evapotranspiration and Interception 3.0",
         "start_date": "2018-01-01",
-        "end_date": "2025-08-11",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "L1-AETI-D": {
@@ -6804,7 +7981,7 @@
         "id": "FAO/WAPOR/3/L1_E_D",
         "name": "WAPOR Dekadal Evaporation 3.0",
         "start_date": "2018-01-01",
-        "end_date": "2025-08-11",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "L1-E-D": {
@@ -6817,7 +7994,7 @@
         "id": "FAO/WAPOR/3/L1_I_D",
         "name": "WAPOR Dekadal Interception 3.0",
         "start_date": "2009-01-01",
-        "end_date": "2025-08-11",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "L1-I-D": {
@@ -6843,7 +8020,7 @@
         "id": "FAO/WAPOR/3/L1_RET_E",
         "name": "WAPOR Daily Reference Evapotranspiration 3.0",
         "start_date": "2018-01-01",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-07",
         "type": "image_collection",
         "bands": {
             "L1-RET-E": {
@@ -6856,7 +8033,7 @@
         "id": "FAO/WAPOR/3/L1_T_D",
         "name": "WAPOR Dekadal Transpiration 3.0",
         "start_date": "2009-01-01",
-        "end_date": "2025-08-11",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "L1-T-D": {
@@ -7061,7 +8238,7 @@
         "id": "GOOGLE/CLOUD_SCORE_PLUS/V1/S2_HARMONIZED",
         "name": "Cloud Score+ S2_HARMONIZED V1",
         "start_date": "2015-06-27",
-        "end_date": "2025-09-02",
+        "end_date": "2025-09-09",
         "type": "image_collection",
         "bands": {
             "cs": {
@@ -7078,7 +8255,7 @@
         "id": "GOOGLE/DYNAMICWORLD/V1",
         "name": "Dynamic World V1",
         "start_date": "2015-06-27",
-        "end_date": "2025-09-02",
+        "end_date": "2025-09-09",
         "type": "image_collection",
         "bands": {
             "water": {
@@ -15580,7 +16757,7 @@
         "id": "JAXA/GPM_L3/GSMaP/v7/operational",
         "name": "GSMaP Operational: Global Satellite Mapping of Precipitation - V7",
         "start_date": "2014-03-01",
-        "end_date": "2025-09-02",
+        "end_date": "2025-09-09",
         "type": "image_collection",
         "bands": {
             "hourlyPrecipRate": {
@@ -15609,7 +16786,7 @@
         "id": "JAXA/GPM_L3/GSMaP/v8/operational",
         "name": "GSMaP Operational: Global Satellite Mapping of Precipitation - V8",
         "start_date": "1998-01-01",
-        "end_date": "2025-09-02",
+        "end_date": "2025-09-09",
         "type": "image_collection",
         "bands": {
             "hourlyPrecipRate": {
@@ -16268,7 +17445,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_BAI",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day BAI Composite",
         "start_date": "1984-01-01",
-        "end_date": "2025-08-29",
+        "end_date": "2025-09-06",
         "type": "image_collection",
         "bands": {
             "BAI": {
@@ -16281,7 +17458,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_EVI",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day EVI Composite",
         "start_date": "1984-01-01",
-        "end_date": "2025-08-29",
+        "end_date": "2025-09-06",
         "type": "image_collection",
         "bands": {
             "EVI": {
@@ -16294,7 +17471,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_NBR",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day NBR Composite",
         "start_date": "1984-01-01",
-        "end_date": "2025-08-29",
+        "end_date": "2025-09-06",
         "type": "image_collection",
         "bands": {
             "NBR": {
@@ -16307,7 +17484,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_NDVI",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day NDVI Composite",
         "start_date": "1984-01-01",
-        "end_date": "2025-08-29",
+        "end_date": "2025-09-06",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -16320,7 +17497,7 @@
         "id": "LANDSAT/COMPOSITES/C02/T1_L2_8DAY_NDWI",
         "name": "Landsat Collection 2 Tier 1 Level 2 8-Day NDWI Composite",
         "start_date": "1984-01-01",
-        "end_date": "2025-08-29",
+        "end_date": "2025-09-06",
         "type": "image_collection",
         "bands": {
             "NDWI": {
@@ -16548,7 +17725,7 @@
         "id": "LANDSAT/LC08/C02/T1",
         "name": "USGS Landsat 8 Collection 2 Tier 1 Raw Scenes",
         "start_date": "2013-03-18",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-08",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -16710,7 +17887,7 @@
         "id": "LANDSAT/LC08/C02/T1_RT",
         "name": "USGS Landsat 8 Collection 2 Tier 1 and Real-Time data Raw Scenes",
         "start_date": "2013-03-18",
-        "end_date": "2025-09-02",
+        "end_date": "2025-09-09",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -16787,7 +17964,7 @@
         "id": "LANDSAT/LC08/C02/T1_RT_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 1 and Real-Time data TOA Reflectance",
         "start_date": "2013-03-18",
-        "end_date": "2025-09-02",
+        "end_date": "2025-09-09",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -16864,7 +18041,7 @@
         "id": "LANDSAT/LC08/C02/T1_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "2013-03-18",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-08",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -16941,7 +18118,7 @@
         "id": "LANDSAT/LC08/C02/T2",
         "name": "USGS Landsat 8 Collection 2 Tier 2 Raw Scenes",
         "start_date": "2021-10-28",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-08",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -17103,7 +18280,7 @@
         "id": "LANDSAT/LC08/C02/T2_TOA",
         "name": "USGS Landsat 8 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2021-10-28",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-08",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -17180,7 +18357,7 @@
         "id": "LANDSAT/LC09/C02/T1",
         "name": "USGS Landsat 9 Collection 2 Tier 1 Raw Scenes",
         "start_date": "2021-10-31",
-        "end_date": "2025-09-02",
+        "end_date": "2025-09-09",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -17257,7 +18434,7 @@
         "id": "LANDSAT/LC09/C02/T1_L2",
         "name": "USGS Landsat 9 Level 2, Collection 2, Tier 1",
         "start_date": "2021-10-31",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-07",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -17342,7 +18519,7 @@
         "id": "LANDSAT/LC09/C02/T1_TOA",
         "name": "USGS Landsat 9 Collection 2 Tier 1 TOA Reflectance",
         "start_date": "2021-10-31",
-        "end_date": "2025-09-02",
+        "end_date": "2025-09-09",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -17419,7 +18596,7 @@
         "id": "LANDSAT/LC09/C02/T2",
         "name": "USGS Landsat 9 Collection 2 Tier 2 Raw Scenes",
         "start_date": "2021-11-02",
-        "end_date": "2025-09-02",
+        "end_date": "2025-09-09",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -17496,7 +18673,7 @@
         "id": "LANDSAT/LC09/C02/T2_L2",
         "name": "USGS Landsat 9 Level 2, Collection 2, Tier 2",
         "start_date": "2021-10-31",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-07",
         "type": "image_collection",
         "bands": {
             "SR_B1": {
@@ -17581,7 +18758,7 @@
         "id": "LANDSAT/LC09/C02/T2_TOA",
         "name": "USGS Landsat 9 Collection 2 Tier 2 TOA Reflectance",
         "start_date": "2021-11-02",
-        "end_date": "2025-09-02",
+        "end_date": "2025-09-09",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -21336,7 +22513,7 @@
         "id": "MODIS/061/MCD15A3H",
         "name": "MCD15A3H.061 MODIS Leaf Area Index/FPAR 4-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2025-08-21",
+        "end_date": "2025-08-29",
         "type": "image_collection",
         "bands": {
             "Fpar": {
@@ -21369,7 +22546,7 @@
         "id": "MODIS/061/MCD19A1_GRANULES",
         "name": "MCD19A1.061: Land Surface BRF Daily L2G Global 500m and 1km",
         "start_date": "2000-12-21",
-        "end_date": "2025-08-27",
+        "end_date": "2025-09-07",
         "type": "image_collection",
         "bands": {
             "Sur_refl1": {
@@ -21474,7 +22651,7 @@
         "id": "MODIS/061/MCD19A2_GRANULES",
         "name": "MCD19A2.061: Terra & Aqua MAIAC Land Aerosol Optical Depth Daily 1km",
         "start_date": "2000-02-24",
-        "end_date": "2025-08-27",
+        "end_date": "2025-09-07",
         "type": "image_collection",
         "bands": {
             "Optical_Depth_047": {
@@ -21535,7 +22712,7 @@
         "id": "MODIS/061/MCD43A1",
         "name": "MCD43A1.061 MODIS BRDF-Albedo Model Parameters Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2025-08-20",
+        "end_date": "2025-08-25",
         "type": "image_collection",
         "bands": {
             "BRDF_Albedo_Parameters_Band1_iso": {
@@ -21704,7 +22881,7 @@
         "id": "MODIS/061/MCD43A2",
         "name": "MCD43A2.061 MODIS BRDF-Albedo Quality Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2025-08-20",
+        "end_date": "2025-08-30",
         "type": "image_collection",
         "bands": {
             "Snow_BRDF_Albedo": {
@@ -21789,7 +22966,7 @@
         "id": "MODIS/061/MCD43A3",
         "name": "MCD43A3.061 MODIS Albedo Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2025-08-20",
+        "end_date": "2025-08-30",
         "type": "image_collection",
         "bands": {
             "Albedo_BSA_Band1": {
@@ -21918,7 +23095,7 @@
         "id": "MODIS/061/MCD43A4",
         "name": "MCD43A4.061 MODIS Nadir BRDF-Adjusted Reflectance Daily 500m",
         "start_date": "2000-02-24",
-        "end_date": "2025-08-20",
+        "end_date": "2025-08-30",
         "type": "image_collection",
         "bands": {
             "Nadir_Reflectance_Band1": {
@@ -21983,7 +23160,7 @@
         "id": "MODIS/061/MCD43C3",
         "name": "MCD43C3.061 BRDF/Albedo Daily L3 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2025-08-20",
+        "end_date": "2025-08-30",
         "type": "image_collection",
         "bands": {
             "Albedo_BSA_Band1": {
@@ -22145,7 +23322,7 @@
         "id": "MODIS/061/MOD09A1",
         "name": "MOD09A1.061 Terra Surface Reflectance 8-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2025-08-13",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -22206,7 +23383,7 @@
         "id": "MODIS/061/MOD09CMG",
         "name": "MOD09CMG.061 Terra Surface Reflectance Daily L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-06",
         "type": "image_collection",
         "bands": {
             "Coarse_Resolution_Surface_Reflectance_Band_1": {
@@ -22290,7 +23467,7 @@
         "id": "MODIS/061/MOD09GA",
         "name": "MOD09GA.061 Terra Surface Reflectance Daily Global 1km and 500m",
         "start_date": "2000-02-24",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-06",
         "type": "image_collection",
         "bands": {
             "num_observations_1km": {
@@ -22387,7 +23564,7 @@
         "id": "MODIS/061/MOD09GQ",
         "name": "MOD09GQ.061 Terra Surface Reflectance Daily Global 250m",
         "start_date": "2000-02-24",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-06",
         "type": "image_collection",
         "bands": {
             "num_observations": {
@@ -22428,7 +23605,7 @@
         "id": "MODIS/061/MOD09Q1",
         "name": "MOD09Q1.061 Terra Surface Reflectance 8-Day Global 250m",
         "start_date": "2000-02-18",
-        "end_date": "2025-08-13",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -22572,7 +23749,7 @@
         "id": "MODIS/061/MOD11A2",
         "name": "MOD11A2.061 Terra Land Surface Temperature and Emissivity 8-Day Global 1km",
         "start_date": "2000-02-18",
-        "end_date": "2025-08-13",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -22629,7 +23806,7 @@
         "id": "MODIS/061/MOD13A1",
         "name": "MOD13A1.061 Terra Vegetation Indices 16-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2025-07-28",
+        "end_date": "2025-08-13",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -22686,7 +23863,7 @@
         "id": "MODIS/061/MOD13A2",
         "name": "MOD13A2.061 Terra Vegetation Indices 16-Day Global 1km",
         "start_date": "2000-02-18",
-        "end_date": "2025-07-28",
+        "end_date": "2025-08-13",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -22796,7 +23973,7 @@
         "id": "MODIS/061/MOD13C1",
         "name": "MOD13C1.061: Terra Vegetation Indices 16-Day L3 Global 0.05 Deg Climate Modeling Grid",
         "start_date": "2000-02-18",
-        "end_date": "2025-07-28",
+        "end_date": "2025-08-13",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -22857,7 +24034,7 @@
         "id": "MODIS/061/MOD13Q1",
         "name": "MOD13Q1.061 Terra Vegetation Indices 16-Day Global 250m",
         "start_date": "2000-02-18",
-        "end_date": "2025-07-28",
+        "end_date": "2025-08-13",
         "type": "image_collection",
         "bands": {
             "NDVI": {
@@ -22914,7 +24091,7 @@
         "id": "MODIS/061/MOD14A1",
         "name": "MOD14A1.061: Terra Thermal Anomalies & Fire Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2025-08-20",
+        "end_date": "2025-08-28",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -22939,7 +24116,7 @@
         "id": "MODIS/061/MOD14A2",
         "name": "MOD14A2.061: Terra Thermal Anomalies & Fire 8-Day Global 1km",
         "start_date": "2000-02-18",
-        "end_date": "2025-08-13",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -22956,7 +24133,7 @@
         "id": "MODIS/061/MOD15A2H",
         "name": "MOD15A2H.061: Terra Leaf Area Index/FPAR 8-Day Global 500m",
         "start_date": "2000-02-18",
-        "end_date": "2025-08-13",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "Fpar_500m": {
@@ -22989,7 +24166,7 @@
         "id": "MODIS/061/MOD16A2",
         "name": "MOD16A2.061: Terra Net Evapotranspiration 8-Day Global 500m",
         "start_date": "2021-01-01",
-        "end_date": "2025-08-13",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "ET": {
@@ -23047,7 +24224,7 @@
         "id": "MODIS/061/MOD17A2H",
         "name": "MOD17A2H.061: Terra Gross Primary Productivity 8-Day Global 500m",
         "start_date": "2021-01-01",
-        "end_date": "2025-08-13",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "Gpp": {
@@ -23110,7 +24287,7 @@
         "id": "MODIS/061/MOD21A1D",
         "name": "MOD21A1D.061 Terra Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-06",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -23147,7 +24324,7 @@
         "id": "MODIS/061/MOD21A1N",
         "name": "MOD21A1N.061 Terra Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2025-09-01",
+        "end_date": "2025-09-07",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -23184,7 +24361,7 @@
         "id": "MODIS/061/MOD21C1",
         "name": "MOD21C1.061 Terra Land Surface Temperature and 3-Band Emissivity Daily L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2025-09-01",
+        "end_date": "2025-09-07",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -23271,7 +24448,7 @@
         "id": "MODIS/061/MOD21C2",
         "name": "MOD21C2.061 Terra Land Surface Temperature and 3-Band Emissivity 8-Day L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2025-08-13",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -23543,7 +24720,7 @@
         "id": "MODIS/061/MYD09A1",
         "name": "MYD09A1.061 Aqua Surface Reflectance 8-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2025-08-13",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -23604,7 +24781,7 @@
         "id": "MODIS/061/MYD09CMG",
         "name": "MYD09CMG.061 Aqua Surface Reflectance Daily L3 Global 0.05 Deg CMG",
         "start_date": "2002-07-04",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-06",
         "type": "image_collection",
         "bands": {
             "Coarse_Resolution_Surface_Reflectance_Band_1": {
@@ -23688,7 +24865,7 @@
         "id": "MODIS/061/MYD09GA",
         "name": "MYD09GA.061 Aqua Surface Reflectance Daily Global 1km and 500m",
         "start_date": "2002-07-04",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-06",
         "type": "image_collection",
         "bands": {
             "num_observations_1km": {
@@ -23785,7 +24962,7 @@
         "id": "MODIS/061/MYD09GQ",
         "name": "MYD09GQ.061 Aqua Surface Reflectance Daily Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-06",
         "type": "image_collection",
         "bands": {
             "num_observations": {
@@ -23826,7 +25003,7 @@
         "id": "MODIS/061/MYD09Q1",
         "name": "MYD09Q1.061 Aqua Surface Reflectance 8-Day Global 250m",
         "start_date": "2002-07-04",
-        "end_date": "2025-08-13",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "sur_refl_b01": {
@@ -23953,7 +25130,7 @@
         "id": "MODIS/061/MYD11A2",
         "name": "MYD11A2.061 Aqua Land Surface Temperature and Emissivity 8-Day Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2025-08-13",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "LST_Day_1km": {
@@ -24295,7 +25472,7 @@
         "id": "MODIS/061/MYD14A1",
         "name": "MYD14A1.061: Aqua Thermal Anomalies & Fire Daily Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2025-08-20",
+        "end_date": "2025-08-28",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -24320,7 +25497,7 @@
         "id": "MODIS/061/MYD14A2",
         "name": "MYD14A2.061: Aqua Thermal Anomalies & Fire 8-Day Global 1km",
         "start_date": "2002-07-04",
-        "end_date": "2025-08-13",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -24337,7 +25514,7 @@
         "id": "MODIS/061/MYD15A2H",
         "name": "MYD15A2H.061: Aqua Leaf Area Index/FPAR 8-Day Global 500m",
         "start_date": "2002-07-04",
-        "end_date": "2025-08-13",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "Fpar_500m": {
@@ -24370,7 +25547,7 @@
         "id": "MODIS/061/MYD16A2",
         "name": "MYD16A2.061: Aqua Net Evapotranspiration 8-Day L4 Global 500m SIN Grid V061",
         "start_date": "2021-01-01",
-        "end_date": "2025-08-13",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "ET": {
@@ -24399,7 +25576,7 @@
         "id": "MODIS/061/MYD17A2H",
         "name": "MYD17A2H.061: Aqua Gross Primary Productivity 8-Day Global 500m",
         "start_date": "2021-01-01",
-        "end_date": "2025-08-13",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "Gpp": {
@@ -24441,7 +25618,7 @@
         "id": "MODIS/061/MYD21A1D",
         "name": "MYD21A1D.061 Aqua Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-06",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -24478,7 +25655,7 @@
         "id": "MODIS/061/MYD21A1N",
         "name": "MYD21A1N.061 Aqua Land Surface Temperature and 3-Band Emissivity Daily Global 1km",
         "start_date": "2000-02-24",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-07",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -24515,7 +25692,7 @@
         "id": "MODIS/061/MYD21C1",
         "name": "MYD21C1.061 Aqua Land Surface Temperature and 3-Band Emissivity Daily L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-07",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -24602,7 +25779,7 @@
         "id": "MODIS/061/MYD21C2",
         "name": "MYD21C2.061 Aqua Land Surface Temperature and 3-Band Emissivity 8-Day L3 Global 0.05 Deg CMG",
         "start_date": "2000-02-24",
-        "end_date": "2025-08-13",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "Count_Day": {
@@ -28918,7 +30095,7 @@
         "id": "NASA/GEOS-CF/v1/fcst/htf",
         "name": "GEOS-CF fcst htf v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2022-10-01",
-        "end_date": "2025-09-01",
+        "end_date": "2025-09-08",
         "type": "image_collection",
         "bands": {
             "CO": {
@@ -28975,7 +30152,7 @@
         "id": "NASA/GEOS-CF/v1/fcst/tavg1hr",
         "name": "GEOS-CF fcst tavg1hr v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2022-10-01",
-        "end_date": "2025-09-01",
+        "end_date": "2025-09-08",
         "type": "image_collection",
         "bands": {
             "ACET": {
@@ -29528,7 +30705,7 @@
         "id": "NASA/GEOS-CF/v1/rpl/htf",
         "name": "GEOS-CF rpl htf v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2018-01-01",
-        "end_date": "2025-09-01",
+        "end_date": "2025-09-08",
         "type": "image_collection",
         "bands": {
             "CO": {
@@ -29585,7 +30762,7 @@
         "id": "NASA/GEOS-CF/v1/rpl/tavg1hr",
         "name": "GEOS-CF rpl tavg1hr v1: Goddard Earth Observing System Composition Forecast",
         "start_date": "2018-01-01",
-        "end_date": "2025-09-01",
+        "end_date": "2025-09-08",
         "type": "image_collection",
         "bands": {
             "ACET": {
@@ -30595,7 +31772,7 @@
         "id": "NASA/GPM_L3/IMERG_MONTHLY_V07",
         "name": "GPM: Monthly Global Precipitation Measurement (GPM) vRelease 07",
         "start_date": "2000-06-01",
-        "end_date": "2025-03-01",
+        "end_date": "2025-04-01",
         "type": "image_collection",
         "bands": {
             "gaugeRelativeWeighting": {
@@ -30624,7 +31801,7 @@
         "id": "NASA/GPM_L3/IMERG_V07",
         "name": "GPM: Global Precipitation Measurement (GPM) Release 07",
         "start_date": "2000-06-01",
-        "end_date": "2025-09-02",
+        "end_date": "2025-09-09",
         "type": "image_collection",
         "bands": {
             "MWobservationTime": {
@@ -36359,7 +37536,7 @@
         "id": "NASA/HLS/HLSS30/v002",
         "name": "HLSS30: HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily Global 30m",
         "start_date": "2015-11-28",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-04",
         "type": "image_collection",
         "bands": {
             "B1": {
@@ -36453,7 +37630,7 @@
         "id": "NASA/LANCE/NOAA20_VIIRS/C2",
         "name": "VJ114IMGTDL_NRT Daily Raster: VIIRS (NOAA-20) Band 375m Active Fire",
         "start_date": "2023-10-08",
-        "end_date": "2025-09-02",
+        "end_date": "2025-09-08",
         "type": "image_collection",
         "bands": {
             "Bright_ti4": {
@@ -36494,7 +37671,7 @@
         "id": "NASA/LANCE/SNPP_VIIRS/C2",
         "name": "VNP14IMGTDL_NRT Daily Raster: VIIRS (S-NPP) Band 375m Active Fire",
         "start_date": "2023-09-03",
-        "end_date": "2025-09-02",
+        "end_date": "2025-09-09",
         "type": "image_collection",
         "bands": {
             "Bright_ti4": {
@@ -36975,7 +38152,7 @@
         "id": "NASA/SMAP/SPL4SMGP/008",
         "name": "SPL4SMGP.008 SMAP L4 Global 3-hourly 9-km Surface and Root Zone Soil Moisture",
         "start_date": "2015-03-31",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-07",
         "type": "image_collection",
         "bands": {
             "sm_surface": {
@@ -37241,7 +38418,7 @@
         "id": "NASA/SMAP/SPL3SMP_E/006",
         "name": "SPL3SMP_E.006 SMAP L3 Radiometer Global Daily 9 km Soil Moisture",
         "start_date": "2023-12-04",
-        "end_date": "2025-09-01",
+        "end_date": "2025-09-08",
         "type": "image_collection",
         "bands": {
             "soil_moisture_am": {
@@ -37314,7 +38491,7 @@
         "id": "NASA/TEMPO/HCHO_L3",
         "name": "TEMPO gridded HCHO vertical columns V03",
         "start_date": "2023-08-01",
-        "end_date": "2025-09-02",
+        "end_date": "2025-09-09",
         "type": "image_collection",
         "bands": {
             "weight": {
@@ -37403,7 +38580,7 @@
         "id": "NASA/TEMPO/HCHO_L3_QA",
         "name": "TEMPO gridded HCHO (QA filtered) vertical columns V03",
         "start_date": "2023-08-01",
-        "end_date": "2025-09-02",
+        "end_date": "2025-09-09",
         "type": "image_collection",
         "bands": {
             "weight": {
@@ -37492,7 +38669,7 @@
         "id": "NASA/TEMPO/NO2_L3",
         "name": "TEMPO gridded NO2 tropospheric and stratospheric columns V03",
         "start_date": "2023-08-01",
-        "end_date": "2025-09-02",
+        "end_date": "2025-09-09",
         "type": "image_collection",
         "bands": {
             "weight": {
@@ -37641,7 +38818,7 @@
         "id": "NASA/TEMPO/NO2_L3_QA",
         "name": "TEMPO gridded NO2 (QA filtered) tropospheric and stratospheric columns V03",
         "start_date": "2023-08-01",
-        "end_date": "2025-09-02",
+        "end_date": "2025-09-09",
         "type": "image_collection",
         "bands": {
             "weight": {
@@ -37790,7 +38967,7 @@
         "id": "NASA/VIIRS/002/VNP09GA",
         "name": "VNP09GA: VIIRS Surface Reflectance Daily 500m and 1km",
         "start_date": "2012-01-19",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-08",
         "type": "image_collection",
         "bands": {
             "M1": {
@@ -37919,7 +39096,7 @@
         "id": "NASA/VIIRS/002/VNP09H1",
         "name": "VNP09H1: VIIRS Surface Reflectance 8-Day L3 Global 500m",
         "start_date": "2012-01-19",
-        "end_date": "2025-08-13",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "SurfReflect_I1": {
@@ -37948,7 +39125,7 @@
         "id": "NASA/VIIRS/002/VNP13A1",
         "name": "VNP13A1.002: VIIRS Vegetation Indices 16-Day 500m",
         "start_date": "2012-01-17",
-        "end_date": "2025-08-13",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "EVI": {
@@ -38021,7 +39198,7 @@
         "id": "NASA/VIIRS/002/VNP14A1",
         "name": "VNP14A1.002: Thermal Anomalies/Fire Daily L3 Global 1km SIN Grid",
         "start_date": "2012-01-19",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-06",
         "type": "image_collection",
         "bands": {
             "FireMask": {
@@ -38046,7 +39223,7 @@
         "id": "NASA/VIIRS/002/VNP15A2H",
         "name": "VNP15A2H: LAI/FPAR 8-Day L4 Global 500m SIN Grid",
         "start_date": "2012-01-17",
-        "end_date": "2025-08-13",
+        "end_date": "2025-08-21",
         "type": "image_collection",
         "bands": {
             "Fpar": {
@@ -38079,7 +39256,7 @@
         "id": "NASA/VIIRS/002/VNP21A1D",
         "name": "VNP21A1D.002: Day Land Surface Temperature and Emissivity Daily 1km",
         "start_date": "2012-01-19",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-05",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -38116,7 +39293,7 @@
         "id": "NASA/VIIRS/002/VNP21A1N",
         "name": "VNP21A1N.002: Night Land Surface Temperature and Emissivity Daily 1km",
         "start_date": "2012-01-19",
-        "end_date": "2025-08-31",
+        "end_date": "2025-09-06",
         "type": "image_collection",
         "bands": {
             "LST_1KM": {
@@ -38186,7 +39363,7 @@
         "id": "NASA/VIIRS/002/VNP46A2",
         "name": "VNP46A2: VIIRS Lunar Gap-Filled BRDF Nighttime Lights Daily L3 Global 500m",
         "start_date": "2012-01-19",
-        "end_date": "2025-08-25",
+        "end_date": "2025-09-02",
         "type": "image_collection",
         "bands": {
             "DNB_BRDF_Corrected_NTL": {
@@ -39308,7 +40485,7 @@
         "id": "NOAA/CPC/Precipitation",
         "name": "CPC Global Unified Gauge-Based Analysis of Daily Precipitation",
         "start_date": "2006-01-01",
-        "end_date": "2025-09-01",
+        "end_date": "2025-09-08",
         "type": "image_collection",
         "bands": {
             "precipitation": {
@@ -39325,7 +40502,7 @@
         "id": "NOAA/CPC/Temperature",
         "name": "CPC Global Unified Temperature",
         "start_date": "1979-01-01",
-        "end_date": "2025-09-01",
+        "end_date": "2025-09-08",
         "type": "image_collection",
         "bands": {
             "tmax": {
@@ -40347,7 +41524,7 @@
         "id": "NOAA/GOES/18/FDCC",
         "name": "GOES-18 FDCC Series ABI Level 2 Fire/Hot Spot Characterization CONUS",
         "start_date": "2022-10-13",
-        "end_date": "2025-09-03",
+        "end_date": "2025-09-10",
         "type": "image_collection",
         "bands": {
             "Area": {
@@ -40376,7 +41553,7 @@
         "id": "NOAA/GOES/18/FDCF",
         "name": "GOES-18 FDCF Series ABI Level 2 Fire/Hot Spot Characterization Full Disk",
         "start_date": "2022-10-13",
-        "end_date": "2025-09-03",
+        "end_date": "2025-09-10",
         "type": "image_collection",
         "bands": {
             "Area": {
@@ -40405,7 +41582,7 @@
         "id": "NOAA/GOES/18/MCMIPC",
         "name": "GOES-18 MCMIPC Series ABI Level 2 Cloud and Moisture Imagery CONUS",
         "start_date": "2018-12-04",
-        "end_date": "2025-09-03",
+        "end_date": "2025-09-10",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -40542,7 +41719,7 @@
         "id": "NOAA/GOES/18/MCMIPF",
         "name": "GOES-18 MCMIPF Series ABI Level 2 Cloud and Moisture Imagery Full Disk",
         "start_date": "2018-12-04",
-        "end_date": "2025-09-03",
+        "end_date": "2025-09-10",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -40679,7 +41856,7 @@
         "id": "NOAA/GOES/18/MCMIPM",
         "name": "GOES-18 MCMIPM Series ABI Level 2 Cloud and Moisture Imagery Mesoscale",
         "start_date": "2022-05-11",
-        "end_date": "2025-09-03",
+        "end_date": "2025-09-10",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -40816,7 +41993,7 @@
         "id": "NOAA/GOES/19/FDCC",
         "name": "GOES-19 FDCC Series ABI Level 2 Fire/Hot Spot Characterization CONUS",
         "start_date": "2025-04-07",
-        "end_date": "2025-09-03",
+        "end_date": "2025-09-10",
         "type": "image_collection",
         "bands": {
             "Area": {
@@ -40845,7 +42022,7 @@
         "id": "NOAA/GOES/19/FDCF",
         "name": "GOES-19 FDCF Series ABI Level 2 Fire/Hot Spot Characterization Full Disk",
         "start_date": "2025-04-07",
-        "end_date": "2025-09-03",
+        "end_date": "2025-09-10",
         "type": "image_collection",
         "bands": {
             "Area": {
@@ -40874,7 +42051,7 @@
         "id": "NOAA/GOES/19/MCMIPC",
         "name": "GOES-19 MCMIPC Series ABI Level 2 Cloud and Moisture Imagery CONUS",
         "start_date": "2025-04-07",
-        "end_date": "2025-09-03",
+        "end_date": "2025-09-10",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -41011,7 +42188,7 @@
         "id": "NOAA/GOES/19/MCMIPF",
         "name": "GOES-19 MCMIPF Series ABI Level 2 Cloud and Moisture Imagery Full Disk",
         "start_date": "2025-04-07",
-        "end_date": "2025-09-03",
+        "end_date": "2025-09-10",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -41148,7 +42325,7 @@
         "id": "NOAA/GOES/19/MCMIPM",
         "name": "GOES-19 MCMIPM Series ABI Level 2 Cloud and Moisture Imagery Mesoscale",
         "start_date": "2025-04-07",
-        "end_date": "2025-09-03",
+        "end_date": "2025-09-10",
         "type": "image_collection",
         "bands": {
             "CMI_C01": {
@@ -42827,23 +44004,6 @@
         }
     },
     {
-        "id": "Oxford/MAP/EVI_5km_Monthly",
-        "name": "Oxford MAP EVI: Malaria Atlas Project Gap-Filled Enhanced Vegetation Index",
-        "start_date": "2001-02-01",
-        "end_date": "2015-06-01",
-        "type": "image_collection",
-        "bands": {
-            "Mean": {
-                "units": null,
-                "resolution": 4638.312116386213
-            },
-            "FilledProportion": {
-                "units": null,
-                "resolution": 4638.312116386213
-            }
-        }
-    },
-    {
         "id": "Oxford/MAP/IGBP_Fractional_Landcover_5km_Annual",
         "name": "Oxford MAP: Malaria Atlas Project Fractional International Geosphere-Biosphere Programme Landcover",
         "start_date": "2001-01-01",
@@ -42927,74 +44087,6 @@
                 "resolution": 4638.312116386213
             },
             "No_Data": {
-                "units": null,
-                "resolution": 4638.312116386213
-            }
-        }
-    },
-    {
-        "id": "Oxford/MAP/LST_Day_5km_Monthly",
-        "name": "Oxford MAP LST: Malaria Atlas Project Gap-Filled Daytime Land Surface Temperature",
-        "start_date": "2001-03-01",
-        "end_date": "2015-06-01",
-        "type": "image_collection",
-        "bands": {
-            "Mean": {
-                "units": null,
-                "resolution": 4638.312116386213
-            },
-            "FilledProportion": {
-                "units": null,
-                "resolution": 4638.312116386213
-            }
-        }
-    },
-    {
-        "id": "Oxford/MAP/LST_Night_5km_Monthly",
-        "name": "Oxford MAP LST: Malaria Atlas Project Gap-Filled Nighttime Land Surface Temperature",
-        "start_date": "2001-03-01",
-        "end_date": "2015-06-01",
-        "type": "image_collection",
-        "bands": {
-            "Mean": {
-                "units": null,
-                "resolution": 4638.312116386213
-            },
-            "FilledProportion": {
-                "units": null,
-                "resolution": 4638.312116386213
-            }
-        }
-    },
-    {
-        "id": "Oxford/MAP/TCB_5km_Monthly",
-        "name": "Oxford MAP TCB: Malaria Atlas Project Gap-Filled Tasseled Cap Brightness",
-        "start_date": "2001-02-01",
-        "end_date": "2015-01-01",
-        "type": "image_collection",
-        "bands": {
-            "Mean": {
-                "units": null,
-                "resolution": 4638.312116386213
-            },
-            "FilledProportion": {
-                "units": null,
-                "resolution": 4638.312116386213
-            }
-        }
-    },
-    {
-        "id": "Oxford/MAP/TCW_5km_Monthly",
-        "name": "Oxford MAP TCW: Malaria Atlas Project Gap-Filled Tasseled Cap Wetness",
-        "start_date": "2001-02-01",
-        "end_date": "2015-01-01",
-        "type": "image_collection",
-        "bands": {
-            "Mean": {
-                "units": null,
-                "resolution": 4638.312116386213
-            },
-            "FilledProportion": {
                 "units": null,
                 "resolution": 4638.312116386213
             }
@@ -49837,7 +50929,7 @@
         "id": "projects/sat-io/open-datasets/us-drought-monitor",
         "name": "United States Drought Monitor",
         "start_date": "2000-01-04",
-        "end_date": "2025-08-19",
+        "end_date": "2025-08-26",
         "type": "image_collection",
         "bands": {
             "DM": {
