@@ -59,7 +59,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: Set up conda environment
-        uses: conda-incubator/setup-miniconda@v3
+        uses: conda-incubator/setup-miniconda@v4
         with:
           python-version: ${{ matrix.python-version }}
           miniforge-variant: Miniforge3
